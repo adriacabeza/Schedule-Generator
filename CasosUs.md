@@ -9,7 +9,7 @@
 - Borrar grup: Permet borrar un grup associat a una assignatura
 - Sortir: sortir de la gestió de grups
 
-###Gestionar Assignatura
+### Gestionar Assignatura
 
 > Fer gestions per portar o dirigir les assignatures. Una assignatura és una matèria o grup de matèries que conformen un programa que ha d'ésser ensenyat per un professor dins un període de temps determinat i que formen part d'un pla d'estudis. 
 
@@ -21,7 +21,7 @@
 
 - Sortir: sortir de la gestió d'assignatura
 
-  ###Gestionar Pla d'Estudi
+  ### Gestionar Pla d'Estudi
 
   > Fer gestions per portar o dirigir els plans d'estudi. Un pla d'estudis és el programa on es detalla el conjunt d'ensenyaments que s'han d'efectuar per a cumplir una titulació.
 
