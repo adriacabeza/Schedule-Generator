@@ -18,7 +18,7 @@
 - Borrar assignatura: S’elimina una assignatura de la base de dades.
 - Sortir: sortir de la gestió d'assignatura
 
-###Gestionar Pla d'Estudi
+### Gestionar Pla d'Estudi
 
 > Fer gestions per portar o dirigir els plans d'estudi. Un pla d'estudis és el programa on es detalla el conjunt d'ensenyaments que s'han d'efectuar per a cumplir una titulació.
 
