@@ -1,6 +1,6 @@
 package model;
 
-public class Grup 
+public class Grup{
 
 
     private int capacitat;

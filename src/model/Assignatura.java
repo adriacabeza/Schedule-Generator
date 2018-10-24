@@ -125,7 +125,7 @@ public class Assignatura {
     public void modificarGrups(int num_grups, int grup_cap, int sgrup_num){
         this.grups = new HashMap<Integer, Grup>();
         for(int i = 10; i <= num_grups; i+=10){
-            grups.put(i, new Grup(i, grup_cap, sgrup_num);
+            grups.put(i, new Grup(i, grup_cap, sgrup_num));
         }
         // quan es faci la UI caldra carregar com a valor per defecte de capacitat i num_sgrups el
         // valor que ja tenien els antics grups i subgrups en cas que existissin!
