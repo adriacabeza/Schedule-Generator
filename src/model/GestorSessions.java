@@ -9,9 +9,13 @@ public class GestorSessions {
         return ourInstance;
     }
 
-    //constructora privada
-    private GestorSessions() {
+
+    //TODO: agafar la info de l'assignatura amb el seu nom i pensar si el seu únic atribut es una infosessió
+    public InfoSessions getInfoSessioLab(String nomAss){
+
     }
 
-    //funcions etc
+    public InfoSessions getSessioTeo(String nomAss){
+
+    }
 }

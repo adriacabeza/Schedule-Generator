@@ -2,6 +2,9 @@ package model;
 
 import java.util.Date;
 
+/**
+ * @author Adrià Cabeza
+ */
 public abstract class Assignacio {
 
     private String diaSetmana;
