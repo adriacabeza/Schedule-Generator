@@ -1,12 +1,13 @@
 package model;
+import java.util.ArrayList;
 
 public class Grup{
 
 
     private int capacitat;
     private String nom;
-    private AssignacioT[] teories;
-    private Subgrup[] subgrups;
+    private ArrayList<AssignacioT> teories;
+    private ArrayList<Subgrup> subgrups;
     
     
     
@@ -17,7 +18,7 @@ public class Grup{
     * @param teo conjunt de classes de teoria que te el grup
     * @param subgrups subgrups del qual es composa el grup
     */
-    public Grup(int capacitat, String nom, AssignacioT[] teo, Subgrup[] subgrups){
+    public Grup(int capacitat, String nom, ArrayList<AssignacioT> teo, ArrayList<Subgrup> subgrups){
         this.capacitat = capacitat;
         this.nom = nom;
         this.teories = teo;
@@ -51,7 +52,7 @@ public class Grup{
     * Obtenir les sessions de teoria del grup
     * @return les sessions de teoria del grup
     */
-    public AssignacioT[] getTeoria(){
+    public ArrayList<AssignacioT> getTeoria(){
         return teories;
     }
     
@@ -60,7 +61,7 @@ public class Grup{
     * Obtenir els subgrups del grup
     * @return els subgrups del grup
     */
-    public Subgrup[] getSubgrups(){
+    public ArrayList<Subgrup> getSubgrups(){
         return subgrups;
     }
     
@@ -92,7 +93,7 @@ public class Grup{
     * Actualitza les sessions de teoria del grup
     * @param teories noves sessions de teoria
     */
-    public void setAssignacioT(AssignacioT[] teories){
+    public void setAssignacioT(ArrayList<AssignacioT> teories){
         this.teories = teories;
     }
     
@@ -101,7 +102,7 @@ public class Grup{
     * Actualitza els subgrups del grup
     * @param s nous subgrups
     */
-    public void setSubgrups(Subgrup[] s){
+    public void setSubgrups(ArrayList<Subgrup> s){
         this.subgrups = s;
     }
     

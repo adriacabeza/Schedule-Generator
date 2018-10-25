@@ -1,11 +1,12 @@
 package model;
+import java.util.ArrayList;
 
 public class Quadrimestre {
 
     private int nivell;
     private String especialitat; 
     private PlaEstudis plaestudis;
-    private Assignatura[] assignatures;
+    private ArrayList<Assignatura> assignatures;
     
     
     
@@ -16,7 +17,7 @@ public class Quadrimestre {
     * @param p pla d'estudis al qual pertany el quadrimestre
     * @param a conjunt d'assignatures del qual es composa el quadrimestre
     */
-    public Quadrimestre(int nivell, String especialitat, PlaEstudis p, Assignatura[] a){
+    public Quadrimestre(int nivell, String especialitat, PlaEstudis p, ArrayList<Assignatura> a){
         this.nivell = nivell;
         this.especialitat = especialitat;
         this.plaestudis = p;
@@ -61,7 +62,7 @@ public class Quadrimestre {
     * Obtenir les assignatures del Qaudrimestre
     * @return Assignatures del Quadrimestre
     */
-    public Assignatura[] getAssignatures(){
+    public ArrayList<Assignatura> getAssignatures(){
         return assignatures;
     }
     
@@ -102,7 +103,7 @@ public class Quadrimestre {
     * Actualitza les assignatures del Quadrimestre
     * @param a noves assignatures
     */
-    public void setAssignatures(Assignatures[] a){      //mirar si assignatures.size() >= 4??
+    public void setAssignatures(ArrayList<Assignatura> a){      //mirar si assignatures.size() >= 4??
         this.assignatures = a;
     }
 }
