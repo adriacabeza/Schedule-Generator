@@ -107,3 +107,16 @@ public class Grup{
     }
     
 }
+/* 
+grup (int i, grup cap, num sub){
+  name = i;
+  grupcap = grupcap
+    for (int j = 1; j<=numsub; j++){
+		subgrup.insert(i+j, new subgrup(i+j, grupcap/numsub,this));
+    }
+} 
+                       
+                       
+                       subgrup (int i, subgrupcap, Grup pare);
+
+*/
