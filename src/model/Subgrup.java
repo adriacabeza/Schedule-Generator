@@ -1,21 +1,20 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Subgrup extends Grup {
 	
 	private Grup grup;
-	private ArrayList<AssignacioL> laboratoris;
-	
-	
+	private ArrayList<AssignacioT> laboratoris;
 	/**
 	 * Crea un nou subgrup 
 	 * @param capacitat capacitat del grup
-     * @param nom nom del grup
-     * @param teo conjunt de classes de teoria que te el grup
-     * @param subgrups subgrups del qual es composa el grup
-     * @param laboratoris laboratoris que té el subgrup
+     * @param num num del subgrup
+     * @param pare grup pare del subgrup
 	 */
-	public Subgrup(int capacitat, String nom, ArrayList<AssignacioT> teo, ArrayList<Subgrup> subgrups, ArrayList<AssignacioL> laboratoris ) {
-		super(capacitat,nom,teo,subgrups);
-		this.laboratoris = laboratoris;
+	public Subgrup(int num, int capacitat, Grup pare ) {
+		this.num = num;
+		this.capacitat = capacitat;
+		this.grup = pare;
 	}
 }

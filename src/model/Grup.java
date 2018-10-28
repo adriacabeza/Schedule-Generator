@@ -1,28 +1,29 @@
 package model;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Grup{
 
 
-    private int capacitat;
-    private String nom;
-    private ArrayList<AssignacioT> teories;
-    private ArrayList<Subgrup> subgrups;
+    protected int capacitat;
+    protected int num;
+    protected ArrayList<AssignacioT> teories;
+    protected Map<Integer, Grup> subgrups;
     
     
     
     /**
     * Crea un nou grup amb la informació pertinent
     * @param capacitat capacitat del grup
-    * @param nom nom del grup
-    * @param teo conjunt de classes de teoria que te el grup
-    * @param subgrups subgrups del qual es composa el grup
+    * @param num num del grup
+    * @param num_subgrups subgrups del qual es composa el grup
     */
-    public Grup(int capacitat, String nom, ArrayList<AssignacioT> teo, ArrayList<Subgrup> subgrups){
+    public Grup(int num, int capacitat, int num_subgrups){
         this.capacitat = capacitat;
-        this.nom = nom;
-        this.teories = teo;
-        this.subgrups = subgrups;
+        this.num = num;
+        for (int j = 1; j<=num_subgrups; j++){
+            subgrups.put(num+j, new Subgrup(num+j, capacitat/num_subgrups,this));
+        }
     }
     
     
@@ -41,10 +42,10 @@ public class Grup{
     
     /**
     * Obtenir el nom del grup
-    * @return nom del grup
+    * @return num del grup
     */
-    public String getNom(){
-        return nom;
+    public int getNum(){
+        return num;
     }
     
     
@@ -61,7 +62,7 @@ public class Grup{
     * Obtenir els subgrups del grup
     * @return els subgrups del grup
     */
-    public ArrayList<Subgrup> getSubgrups(){
+    public Map<Integer, Grup> getSubgrups(){
         return subgrups;
     }
     
@@ -82,10 +83,10 @@ public class Grup{
     
     /**
     * Actualitza el nom del grup
-    * @param nom nou nom del grup
+    * @param num nou nom del grup
     */
-    public void setNom(String nom){
-        this.nom = nom;
+    public void setNom(int num){
+        this.num = num;
     }
     
     
@@ -102,7 +103,7 @@ public class Grup{
     * Actualitza els subgrups del grup
     * @param s nous subgrups
     */
-    public void setSubgrups(ArrayList<Subgrup> s){
+    public void setSubgrups(Map<Integer, Grup> s){
         this.subgrups = s;
     }
     
@@ -112,7 +113,7 @@ grup (int i, grup cap, num sub){
   name = i;
   grupcap = grupcap
     for (int j = 1; j<=numsub; j++){
-		subgrup.insert(i+j, new subgrup(i+j, grupcap/numsub,this));
+		subgrup.insert(i+j, new subgrup(i+j, cap/sub,this));
     }
 } 
                        
