@@ -1,29 +1,28 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Assignatura {
 
     private String nom;
-    private Quadrimestre quadrimestre;
     private InfoSessions teoria;
     private InfoSessions laboratori;
     private Map<Integer, Grup> grups;
+    private ArrayList<Assignatura> correquisit;
 
     /**
      * Crea una assignatura nova amb grups i la informació corresponent
      * @param nom nom de l'assignatura
-     * @param q quadrimestre al qual pertany l'assignatura
      * @param grup_num nombre de grups que té l'assignatura
      * @param grup_cap capacitat per grup
      * @param sgrup_num nombre de subgrups per cada grup
      * @param t informació de les sessions de teoria
      * @param l informació de les sessions de laboratori
      */
-    public Assignatura(String nom, Quadrimestre q, int grup_num, int grup_cap, int sgrup_num, Teoria t, Laboratori l){
+    public Assignatura(String nom, int grup_num, int grup_cap, int sgrup_num, Teoria t, Laboratori l){
         this.nom = nom;
-        this.quadrimestre = q;
         this.laboratori = l;
         this.teoria = t;
         modificarGrups(grup_num, grup_cap, sgrup_num);
@@ -37,14 +36,6 @@ public class Assignatura {
      */
     public String getNom(){
         return nom;
-    }
-
-    /**
-     * Obtenir quadrimestre del qual forma part de l'assignatura
-     * @return quadrimestre
-     */
-    public Quadrimestre getQuadrimestre() {
-        return quadrimestre;
     }
 
     /**
@@ -99,14 +90,6 @@ public class Assignatura {
     }
 
     /**
-     * Actualitza el quadrimestre del qual forma part l'assignatura
-     * @param quadrimestre
-     */
-    public void setQuadrimestre(Quadrimestre quadrimestre) {
-        this.quadrimestre = quadrimestre;
-    }
-
-    /**
      * Actualitza la informació de les sessions de teoria
      * @param teoria
      */
@@ -132,5 +115,22 @@ public class Assignatura {
 
         // restriccio: un cop estan generats els horaris no es poden modificar els grups
         // modificar els grups implica borrar qualsevol assignació que aquests tinguin
+    }
+
+
+    /**
+     * Assigna a una assignatura una altra assignatura com a correquisit
+     * @param a Assignatura correquisit de self
+     */
+    public void afegeixCorrequisit(Assignatura a){
+        correquisit.add(a);
+    }
+
+    /**
+     * Esborra una assignatura com a correquisit d'aquesta
+     * @param a Assignatura a esborrar de self
+     */
+    public void esborraCorrequisit(Assignatura a){
+        correquisit.remove(a);
     }
 }

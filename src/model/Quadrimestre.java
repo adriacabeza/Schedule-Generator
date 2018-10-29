@@ -8,8 +8,6 @@ public class Quadrimestre {
     private PlaEstudis plaestudis;
     private ArrayList<Assignatura> assignatures;
     
-    
-    
     /**
     * Crea un nou quadrimestre amb el nivell, especialitat i informació pertinent
     * @param nivell nivell del quadrimestre

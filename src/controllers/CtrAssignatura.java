@@ -1,4 +1,6 @@
 package controllers;
+import model.*;
+import java.util.HashMap;
 
 public class CtrAssignatura {
     private static CtrAssignatura ourInstance = new CtrAssignatura();
@@ -7,6 +9,98 @@ public class CtrAssignatura {
         return ourInstance;
     }
 
+    private HashMap<String, Assignatura> assignatures;
+
     private CtrAssignatura() {
+        //carrega totes les assignatures de la DB o d'on sigui, si n'hi ha
+    }
+
+    /**
+     * Permet donar d'alta una nova instancia d'assignatura
+     * @param nom Nom de l'assignatura
+     * @param grup_num Numero de grups que tindrà l'assignatura
+     * @param grup_cap Capacitat dels grups de l'assignatura
+     * @param sgrup_num Numero de subgrups de laboratori que tindra l'assignatura
+     */
+    void creaAssignatura(String nom, int grup_num, int grup_cap, int sgrup_num, null, null){
+        assignatures.put(nom, new Assignatura(nom, grup_num, grup_cap, sgrup_num, null, null));
+    }
+
+    /**
+     * Permet esborrar una assignatura
+     * @param nom_assignatura nom de l'assignatura a esborrar
+     */
+    void esborraAssignatura(String nom_assignatura){
+        assignatures.remove(nom_assignatura);
+    }
+
+    /**
+     * Permet modificar la informació sobre les sessions de teoria d'una assignatura
+     * @param nom_assig Nom de l'assignatura
+     * @param duracio Duració de les sessions de teoria
+     * @param num_sessions Numero de sessions setmanals de l'assignatura
+     */
+    void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions){
+        Teoria t = new Teoria(num_sessions, duracio);
+        assignatures.get(nom_assig).setTeoria(t);
+    }
+
+    /**
+     * Permet modificar la informació sobre les sessions de laboratori d'una assignatura
+     * @param nom_assig Nom de l'assignatura
+     * @param duracio Duració de les sessions de laboratori
+     * @param num_sessions Numero de sessions setmanals de l'assignatura
+     */
+    void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions){
+        Laboratori t = new Laboratori(num_sessions, duracio);
+        assignatures.get(nom_assig).setLaboratori(t);
+    }
+
+    /**
+     * Permet modificar els grups i subgrups d'una assignatura
+     * @param nom_assig nom de l'assignatura
+     * @param num_grups numero de grups  de l'assignatura
+     * @param grup_cap capacitat de cada grup
+     * @param sgrup_num capacitat dels subgrups
+     */
+    void modificarGrups(String nom_assig, int num_grups, int grup_cap, int sgrup_num) {
+        assignatures.get(nom_assig).modificarGrups(num_grups, grup_cap, sgrup_num);
+    }
+
+    /**
+     * Permet afegir una relacio de correquisits entre dues assignatures
+     * @param nom_a nom de d'una assignatura
+     * @param nom_b nom de l'altre assignatura
+     */
+    void afegeixCorrequisit(String nom_a, String nom_b){
+        assignatures.get(nom_a).afegeixCorrequisit(assignatures.get(nom_b));
+        assignatures.get(nom_b).afegeixCorrequisit(assignatures.get(nom_a));
+    }
+
+    /**
+     * Esborra la relació de correqusiits entre dues assignatures
+     * @param nom_a nom de d'una assignatura
+     * @param nom_b nom de l'altre assignatura
+     */
+    void esborraCorrequisit(String nom_a, String nom_b){
+        assignatures.get(nom_a).esborraCorrequisit(assignatures.get(nom_b));
+        assignatures.get(nom_b).esborraCorrequisit(assignatures.get(nom_a));
+    }
+
+    /**
+     * Obte una copia de totes les assignatures
+     * @param nom nom de l'assignatura que busquem
+     * @return assignatura amb nom especificat si existeix
+     */
+    Assignatura getAssignatura(String nom) {
+        return assignatures.get(nom);
+    }
+
+    /**
+     * Obte totes les assignatures
+     * @return totes les assignatures
+     */
+    HashMap<String, Assignatura> getAssignatures(){
+        return assignatures;
     }
 }
