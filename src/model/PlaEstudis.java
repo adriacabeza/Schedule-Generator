@@ -1,13 +1,11 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class PlaEstudis {
     private String nomTitulacio;
     private Date any;
     private boolean obsolet;
-    private ArrayList<Quadrimestre> quadrimestres; //TODO:preguntar si hauria de ser un ArrayList de quadrimestres
 
 
     /**
@@ -15,13 +13,11 @@ public class PlaEstudis {
      * @param nomTitulacio nom de la titulació
      * @param any any que es crea el pla d'estudis
      * @param obsolet booleà que indica si està obsolet
-     * @param quadrimestres quadrimestres que conté el pla d'estudis
      */
-    public PlaEstudis(String nomTitulacio, Date any, boolean obsolet, ArrayList<Quadrimestre> quadrimestres) {
+    public PlaEstudis(String nomTitulacio, Date any, boolean obsolet) {
         this.nomTitulacio = nomTitulacio;
         this.any = any;
         this.obsolet = obsolet;
-        this.quadrimestres = quadrimestres;
     }
 
     /********** GETTERS ********/
@@ -41,15 +37,6 @@ public class PlaEstudis {
 
     public Date getAny() {
         return any;
-    }
-
-    /**
-     * Obtenir els quadrimestres del pla d'estudis
-     * @return quadrimestres
-     */
-
-    public ArrayList<Quadrimestre> getQuadrimestres() {
-        return quadrimestres;
     }
 
     /**
@@ -86,14 +73,6 @@ public class PlaEstudis {
      */
     public void setObsolet(boolean obsolet) {
         this.obsolet = obsolet;
-    }
-
-    /**
-     * Actualitza els quadrimestres del pla d'estudis
-     * @param quadrimestres
-     */
-    public void setQuadrimestres(ArrayList<Quadrimestre> quadrimestres) {
-        this.quadrimestres = quadrimestres;
     }
 
 }

@@ -22,8 +22,8 @@ public class CtrAssignatura {
      * @param grup_cap Capacitat dels grups de l'assignatura
      * @param sgrup_num Numero de subgrups de laboratori que tindra l'assignatura
      */
-    void creaAssignatura(String nom, int grup_num, int grup_cap, int sgrup_num, null, null){
-        assignatures.put(nom, new Assignatura(nom, grup_num, grup_cap, sgrup_num, null, null));
+    void creaAssignatura(String nom, int grup_num, int grup_cap, int sgrup_num, int quadrimestre, Teoria t, Laboratori l){
+        assignatures.put(nom, new Assignatura(nom, grup_num, grup_cap, sgrup_num, quadrimestre, t, l));
     }
 
     /**
@@ -42,7 +42,9 @@ public class CtrAssignatura {
      */
     void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions){
         Teoria t = new Teoria(num_sessions, duracio);
-        assignatures.get(nom_assig).setTeoria(t);
+        Assignatura a = getAssignatura(nom_assig);
+        a.setTeoria(t);
+        assignatures.put(nom_assig, a);
     }
 
     /**
@@ -52,8 +54,10 @@ public class CtrAssignatura {
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      */
     void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions){
-        Laboratori t = new Laboratori(num_sessions, duracio);
-        assignatures.get(nom_assig).setLaboratori(t);
+        Laboratori l = new Laboratori(num_sessions, duracio);
+        Assignatura a = getAssignatura(nom_assig);
+        a.setLaboratori(l);
+        assignatures.put(nom_assig, a);
     }
 
     /**
@@ -64,7 +68,9 @@ public class CtrAssignatura {
      * @param sgrup_num capacitat dels subgrups
      */
     void modificarGrups(String nom_assig, int num_grups, int grup_cap, int sgrup_num) {
-        assignatures.get(nom_assig).modificarGrups(num_grups, grup_cap, sgrup_num);
+        Assignatura a = assignatures.get(nom_assig);
+        a.modificarGrups(num_grups, grup_cap, sgrup_num);
+        assignatures.put(nom_assig, a);
     }
 
     /**
@@ -73,8 +79,14 @@ public class CtrAssignatura {
      * @param nom_b nom de l'altre assignatura
      */
     void afegeixCorrequisit(String nom_a, String nom_b){
-        assignatures.get(nom_a).afegeixCorrequisit(assignatures.get(nom_b));
-        assignatures.get(nom_b).afegeixCorrequisit(assignatures.get(nom_a));
+        Assignatura a = assignatures.get(nom_a);
+        a.afegeixCorrequisit(assignatures.get(nom_b));
+
+        Assignatura b = assignatures.get(nom_b);
+        b.afegeixCorrequisit(assignatures.get(nom_a));
+
+        assignatures.put(nom_a, a);
+        assignatures.put(nom_b, b);
     }
 
     /**
@@ -83,8 +95,14 @@ public class CtrAssignatura {
      * @param nom_b nom de l'altre assignatura
      */
     void esborraCorrequisit(String nom_a, String nom_b){
-        assignatures.get(nom_a).esborraCorrequisit(assignatures.get(nom_b));
-        assignatures.get(nom_b).esborraCorrequisit(assignatures.get(nom_a));
+        Assignatura a = assignatures.get(nom_a);
+        a.esborraCorrequisit(assignatures.get(nom_b));
+
+        Assignatura b = assignatures.get(nom_b);
+        b.esborraCorrequisit(assignatures.get(nom_a));
+
+        assignatures.put(nom_a, a);
+        assignatures.put(nom_b, b);
     }
 
     /**

@@ -11,6 +11,7 @@ public class Assignatura {
     private InfoSessions laboratori;
     private Map<Integer, Grup> grups;
     private ArrayList<Assignatura> correquisit;
+    private int quadrimestre;
 
     /**
      * Crea una assignatura nova amb grups i la informació corresponent
@@ -21,10 +22,11 @@ public class Assignatura {
      * @param t informació de les sessions de teoria
      * @param l informació de les sessions de laboratori
      */
-    public Assignatura(String nom, int grup_num, int grup_cap, int sgrup_num, Teoria t, Laboratori l){
+    public Assignatura(String nom, int grup_num, int grup_cap, int sgrup_num, int quadrimestre, Teoria t, Laboratori l){
         this.nom = nom;
         this.laboratori = l;
         this.teoria = t;
+        this.quadrimestre = quadrimestre;
         modificarGrups(grup_num, grup_cap, sgrup_num);
     }
 
@@ -37,6 +39,8 @@ public class Assignatura {
     public String getNom(){
         return nom;
     }
+
+    public int getQuadrimestre() { return quadrimestre; }
 
     /**
      * Obtenir informació de les sessions de laboratori de l'assignatura
@@ -97,6 +101,8 @@ public class Assignatura {
         this.teoria = teoria;
     }
 
+    public void setQuadrimestre(int quadrimestre) { this.quadrimestre = quadrimestre; }
+
     /******* OTHER ******/
 
     /**
@@ -110,11 +116,6 @@ public class Assignatura {
         for(int i = 10; i <= num_grups; i+=10){
             grups.put(i, new Grup(i, grup_cap, sgrup_num));
         }
-        // quan es faci la UI caldra carregar com a valor per defecte de capacitat i num_sgrups el
-        // valor que ja tenien els antics grups i subgrups en cas que existissin!
-
-        // restriccio: un cop estan generats els horaris no es poden modificar els grups
-        // modificar els grups implica borrar qualsevol assignació que aquests tinguin
     }
 
 
@@ -132,5 +133,23 @@ public class Assignatura {
      */
     public void esborraCorrequisit(Assignatura a){
         correquisit.remove(a);
+    }
+
+
+    /**
+     * Retorna una llista dels correquisits de l'assignatura
+     * @return llista de correquisits
+     */
+    public ArrayList<Assignatura> getCorrequisits() {
+        return correquisit;
+    }
+
+    /**
+     * Diu si una assignatura és correquisit de la primera
+     * @param a assignatura a comparar
+     * @return cert si és correquisit, fals altrament
+     */
+    public boolean esCorrequisit(Assignatura a){
+        return correquisit.contains(a);
     }
 }
