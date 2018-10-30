@@ -2,10 +2,14 @@
 
 ### Gestionar grups
 > Fer gestions per portar o dirigir els grups. Un grup és un conjunt d'estudiants que fan una assignatura en una mateixa aula.
-- Crear grup: Permet crear un nou grup i assignar-lo a una assignatura
-- Modificar grups: Permet modificar el tamany dels grups
-- Borrar grup: Permet borrar un grup associat a una assignatura
-- Sortir: sortir de la gestió de grups
+### Crear grup
+> Permet crear un nou grup i assignar-lo a una assignatura
+### Modificar grups
+> Permet modificar el tamany dels grups
+### Borrar grup
+> Permet borrar un grup associat a una assignatura
+### Sortir
+> Sortir de la gestió de grups
 
 ### Gestionar Assignatura
 > L'usuari visualitzarà totes les assignatures, des d'allà podrà consultar-ne una, modificar-la o esborrar-la. A més també podr crear una assignatura. 
