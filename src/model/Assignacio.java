@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 /**
  * @author Adrià Cabeza
  */
@@ -9,7 +7,10 @@ public abstract class Assignacio {
 
     private String diaSetmana;
     private int hora;
-    private int aula;
+    private int aula; //aula ha de ser un objecte de tipus aula
+    //TODO: guardar aqui tambe assignatura i NUMERO de grup, al objecte grup s'hi accedira des d'assignatura,
+    //TODO: mirar navegavilitat del uml
+
 
     /**
     Crea una assignació nova amb la informació corresponent
@@ -72,5 +73,11 @@ public abstract class Assignacio {
      */
     public void setAula(int aula) {
         this.aula = aula;
+    }
+
+    //TODO: implement equals for assignacio (hora, <PK> d'aula i dia son iguals)
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

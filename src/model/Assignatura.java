@@ -118,7 +118,6 @@ public class Assignatura {
         }
     }
 
-
     /**
      * Assigna a una assignatura una altra assignatura com a correquisit
      * @param a Assignatura correquisit de self

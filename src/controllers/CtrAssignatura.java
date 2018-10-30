@@ -22,7 +22,7 @@ public class CtrAssignatura {
      * @param grup_cap Capacitat dels grups de l'assignatura
      * @param sgrup_num Numero de subgrups de laboratori que tindra l'assignatura
      */
-    void creaAssignatura(String nom, int grup_num, int grup_cap, int sgrup_num, int quadrimestre, Teoria t, Laboratori l){
+    public void creaAssignatura(String nom, int grup_num, int grup_cap, int sgrup_num, int quadrimestre, Teoria t, Laboratori l){
         assignatures.put(nom, new Assignatura(nom, grup_num, grup_cap, sgrup_num, quadrimestre, t, l));
     }
 
@@ -30,7 +30,7 @@ public class CtrAssignatura {
      * Permet esborrar una assignatura
      * @param nom_assignatura nom de l'assignatura a esborrar
      */
-    void esborraAssignatura(String nom_assignatura){
+    public void esborraAssignatura(String nom_assignatura){
         assignatures.remove(nom_assignatura);
     }
 
@@ -40,7 +40,7 @@ public class CtrAssignatura {
      * @param duracio Duració de les sessions de teoria
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      */
-    void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions){
+    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions){
         Teoria t = new Teoria(num_sessions, duracio);
         Assignatura a = getAssignatura(nom_assig);
         a.setTeoria(t);
@@ -53,7 +53,7 @@ public class CtrAssignatura {
      * @param duracio Duració de les sessions de laboratori
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      */
-    void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions){
+    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions){
         Laboratori l = new Laboratori(num_sessions, duracio);
         Assignatura a = getAssignatura(nom_assig);
         a.setLaboratori(l);
@@ -67,7 +67,7 @@ public class CtrAssignatura {
      * @param grup_cap capacitat de cada grup
      * @param sgrup_num capacitat dels subgrups
      */
-    void modificarGrups(String nom_assig, int num_grups, int grup_cap, int sgrup_num) {
+    public void modificarGrups(String nom_assig, int num_grups, int grup_cap, int sgrup_num) {
         Assignatura a = assignatures.get(nom_assig);
         a.modificarGrups(num_grups, grup_cap, sgrup_num);
         assignatures.put(nom_assig, a);
@@ -78,7 +78,7 @@ public class CtrAssignatura {
      * @param nom_a nom de d'una assignatura
      * @param nom_b nom de l'altre assignatura
      */
-    void afegeixCorrequisit(String nom_a, String nom_b){
+    public void afegeixCorrequisit(String nom_a, String nom_b){
         Assignatura a = assignatures.get(nom_a);
         a.afegeixCorrequisit(assignatures.get(nom_b));
 
@@ -94,7 +94,7 @@ public class CtrAssignatura {
      * @param nom_a nom de d'una assignatura
      * @param nom_b nom de l'altre assignatura
      */
-    void esborraCorrequisit(String nom_a, String nom_b){
+    public void esborraCorrequisit(String nom_a, String nom_b){
         Assignatura a = assignatures.get(nom_a);
         a.esborraCorrequisit(assignatures.get(nom_b));
 
@@ -110,7 +110,7 @@ public class CtrAssignatura {
      * @param nom nom de l'assignatura que busquem
      * @return assignatura amb nom especificat si existeix
      */
-    Assignatura getAssignatura(String nom) {
+    public Assignatura getAssignatura(String nom) {
         return assignatures.get(nom);
     }
 
@@ -118,7 +118,7 @@ public class CtrAssignatura {
      * Obte totes les assignatures
      * @return totes les assignatures
      */
-    HashMap<String, Assignatura> getAssignatures(){
+    public HashMap<String, Assignatura> getAssignatures(){
         return assignatures;
     }
 }
