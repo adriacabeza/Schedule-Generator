@@ -15,10 +15,6 @@ public class CtrGeneradorHoraris {
 
     public void CtrGeneradorHoraris() {
         //carrega l'horari de donde sea
-        //pillar totes les assignatures
-        HashMap<String, Assignatura> assignatures = CtrAssignatura.getAssignatures();
-        LOQUESEA assignacions = CtrAssignacio.getAssignacions();
-
 
 
     }
@@ -41,7 +37,10 @@ public class CtrGeneradorHoraris {
 
     public void creaHorari(){
 
-
+        //pillar totes les assignatures o la seva infosessió tant de laboratori com de teoria
+        HashMap<String, Assignatura> assignatures = CtrAssignatura.getAssignatures();
+        HashMap<String,InfoSessions> infolab = CtrlSessions.getSessionsLab();
+        HashMap<String,InfoSessions> infoteo = CtrlSessions.getSessionsTeo();
 
 
 
@@ -50,6 +49,11 @@ public class CtrGeneradorHoraris {
     }
 
     public void modificaHorari(){
+        //coge las assignacions ya hechas
+        LOQUESEA assignacionsLab = CtrAssignacio.getAssignacionsLab();
+        LOQUESEA assignacionsTeo = CtrAssignacio.getAssignacionsTeo();
+
+
 
     }
 

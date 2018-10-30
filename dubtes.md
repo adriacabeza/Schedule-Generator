@@ -32,7 +32,7 @@
   - **No poden haver-hi dues classes a la mateixa hora a la mateixa aula**
   - **Correquisits (dos assignatures que s'han de fer a la vegada de manera que no es poden solapar)**
   - **No ens poden passar del període lectiu** 
-  - **S'han de fer totes les hores de cada assignatura ***
+  - **S'han de fer totes les hores de cada assignatura **
 
   Es poden veure com si fossin paràmetres, sí. L'algorisme a l'hora de veure si .
 
