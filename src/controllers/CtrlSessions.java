@@ -33,7 +33,6 @@ public class CtrlSessions {
 
     }
 
-
     /**
      * Et retorna una infosessió amb tota la informació de la sessió de teoria de l'assignatura
      * @param nomAss
@@ -45,11 +44,24 @@ public class CtrlSessions {
     }
 
 
+    /**
+     * Permet modificar la informació sobre el número de sessions de teoria d'una assignatura
+     * @param nomAss Nom de l'assignatura
+     * @param num Número de les sessions de laboratori
+     */
+
+
     public void modificaNumSessiosL(String nomAss,int num){
         InfoSessions sessio = sessionsL.get(nomAss);
         sessio.setNumSessions(num);
         sessionsL.put(nomAss, sessio);
     }
+
+    /**
+     * Permet modificar la informació sobre el número de sessions de teoria d'una assignatura
+     * @param nomAss Nom de l'assignatura
+     * @param num Duració de les sessions de teoria
+     */
 
     public void modificaNumSessiosT(String nomAss,int num){
         InfoSessions sessio = sessionsT.get(nomAss);
@@ -58,6 +70,12 @@ public class CtrlSessions {
     }
 
 
+    /**
+     * Permet modificar la informació sobre les sessions de teoria d'una assignatura
+     * @param nomAss Nom de l'assignatura
+     * @param num Duració de les sessions de teoria
+     */
+
     public void modificaDuracióSessioT(String nomAss,int num){
         InfoSessions sessio = sessionsT.get(nomAss);
         sessio.setDuracioSessions(num);
@@ -65,17 +83,30 @@ public class CtrlSessions {
 
     }
 
+    /**
+     * Permet modificar la informació sobre les sessions de laboratori d'una assignatura
+     * @param nomAss Nom de l'assignatura
+     * @param num Duració de les sessions de laboratori
+     */
+
     public void modificaDuracióSessioL(String nomAss,int num) {
         InfoSessions sessio = sessionsL.get(nomAss);
         sessio.setDuracioSessions(num);
         sessionsL.put(nomAss, sessio);
     }
 
-
-        public HashMap<String,InfoSessions> getSessionsLab(){
+    /**
+     *Retorna totes les sessions de laboratori que hi ha de cada assignatura
+     * @return sessionsSL
+     */
+    public HashMap<String,InfoSessions> getSessionsLab(){
         return sessionsL;
     }
 
+    /**
+     * Retorna totes les sessions de teoria que hi ha de cada assignatura
+     * @return sessionsT
+     */
     public HashMap<String,InfoSessions> getSessionsTeo(){
         return sessionsT;
     }

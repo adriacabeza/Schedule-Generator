@@ -30,8 +30,8 @@ public class CtrGeneradorHoraris {
 
     public void checkConsistency(){
         //pillar totes les restriccions NOT YET IMPLEMENTED
-        LOQUESEA restriccions = CtrRestriccions.getRestriccions();
-
+        LOQUESEA restriccions = CtrRestriccions.getRestriccions();//
+        // for each restriccio check if if it satisfied
 
     }
 
@@ -41,9 +41,12 @@ public class CtrGeneradorHoraris {
         HashMap<String, Assignatura> assignatures = CtrAssignatura.getAssignatures();
         HashMap<String,InfoSessions> infolab = CtrlSessions.getSessionsLab();
         HashMap<String,InfoSessions> infoteo = CtrlSessions.getSessionsTeo();
+        //TODO: aclarar lo de si necessito dos sessions lab i teoria, aclarar també des de on es modifiquen les coses si al
+        //controller d'aula o al de sessions, s'han de tenir totes les classes fetes per a començar a picar codi bé
 
 
 
+        //CtrAssignacio.crearAssignacio(Aula aula, Assignatura assignatura, int grup, int hora, int dia, boolean teoria)
 
 
     }

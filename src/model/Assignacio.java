@@ -9,7 +9,7 @@ public abstract class Assignacio {
     private int hora;
     private int aula; //aula ha de ser un objecte de tipus aula
     //TODO: guardar aqui tambe assignatura i NUMERO de grup, al objecte grup s'hi accedira des d'assignatura,
-    //TODO: mirar navegavilitat del uml
+
 
 
     /**
@@ -24,6 +24,7 @@ public abstract class Assignacio {
         this.diaSetmana = diaSetmana;
         this.hora = hora;
         this.aula = aula;
+
     }
 
     /********** GETTERS ********/
