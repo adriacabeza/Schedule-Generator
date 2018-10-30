@@ -7,7 +7,7 @@ public class Aula {
 	private int planta;
 	private int aula;
 	private String tipusAula;
-	private ArrayList<Assginacio> assignacions;
+	private ArrayList<Assignacio> assignacions;
 	
 	
 	/**
@@ -18,7 +18,7 @@ public class Aula {
 	 * @param tipusAula indica el tipus que es l'aula
 	 * @param assignacions indica totes les assigancions que te aquesta aula
 	 */
-	public Aula(String edifici, int planta, int aula, String tipusAula, ArrayList<Assginacio> assignacions) {
+	public Aula(String edifici, int planta, int aula, String tipusAula, ArrayList<Assignacio> assignacions) {
 		this.edifici = edifici;
 		this.planta = planta;
 		this.aula = aula;
@@ -70,10 +70,10 @@ public class Aula {
 	
 	
 	/**
-	 * Obtenir les assigancions que té aquesta aula
-	 * @return les assignacions que té l'aula
+	 * Obtenir les assigancions que tï¿½ aquesta aula
+	 * @return les assignacions que tï¿½ l'aula
 	 */
-	public ArrayList<Assginacio> getAssignacions(){
+	public ArrayList<Assignacio> getAssignacions(){
 		return assignacions;
 	}
 	
@@ -102,7 +102,7 @@ public class Aula {
 	
 	
 	/**
-	 * Actualitza el número de aula
+	 * Actualitza el nï¿½mero de aula
 	 * @param aula indica el nou numero d'aula
 	 */
 	public void setAula(int aula) {
@@ -123,7 +123,7 @@ public class Aula {
 	 * Actualitza les assignacions corresponents a una aula
 	 * @param assignacions indica les noves assignacions a la aula
 	 */
-	public void setAssignacions(ArrayList<Assginacio> assignacions) {
+	public void setAssignacions(ArrayList<Assignacio> assignacions) {
 		this.assignacions = assignacions;
 	}
 	
