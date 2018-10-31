@@ -9,25 +9,22 @@ public class Assignatura {
     private String nom;
     private InfoSessions teoria;
     private InfoSessions laboratori;
-    private Map<Integer, Grup> grups;
-    private ArrayList<Assignatura> correquisit;
+    private Map<Integer, Grup> grups = new HashMap<>();
+    private ArrayList<Assignatura> correquisit = new ArrayList<>();
     private int quadrimestre;
+    private PlaEstudis plaEstudis;
 
     /**
      * Crea una assignatura nova amb grups i la informació corresponent
      * @param nom nom de l'assignatura
-     * @param grup_num nombre de grups que té l'assignatura
-     * @param grup_cap capacitat per grup
-     * @param sgrup_num nombre de subgrups per cada grup
      * @param t informació de les sessions de teoria
      * @param l informació de les sessions de laboratori
      */
-    public Assignatura(String nom, int grup_num, int grup_cap, int sgrup_num, int quadrimestre, Teoria t, Laboratori l){
+    public Assignatura(String nom, int quadrimestre, Teoria t, Laboratori l){
         this.nom = nom;
         this.laboratori = l;
         this.teoria = t;
         this.quadrimestre = quadrimestre;
-        modificarGrups(grup_num, grup_cap, sgrup_num);
     }
 
     /********** GETTERS ********/
@@ -150,5 +147,9 @@ public class Assignatura {
      */
     public boolean esCorrequisit(Assignatura a){
         return correquisit.contains(a);
+    }
+
+    public boolean hasGroups() {
+        return !this.grups.isEmpty();
     }
 }

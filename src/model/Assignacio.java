@@ -8,7 +8,8 @@ public abstract class Assignacio {
     private String diaSetmana;
     private int hora;
     private int aula; //aula ha de ser un objecte de tipus aula
-    //TODO: guardar aqui tambe assignatura i NUMERO de grup, al objecte grup s'hi accedira des d'assignatura,
+
+    //TODO: guardar aqui tambe assignatura. posar-la a la constructora
 
 
 

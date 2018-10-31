@@ -1,13 +1,18 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class PlaEstudis {
     private String nomTitulacio;
     private Date any;
+    private ArrayList<Assignatura> assignatures;
     private boolean obsolet;
 
 
+    //TODO: void afegirAssignatura(Assignatura a)
+    //TODO: void esborrarAssignatura(String nomA)
+    //TODO: ArrayLsit<Assignatures> getAssignatures()
     /**
      * Crea un Pla d'Estudis nou amb la seva informació corresponent
      * @param nomTitulacio nom de la titulació
