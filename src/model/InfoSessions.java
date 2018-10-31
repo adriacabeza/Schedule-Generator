@@ -10,7 +10,8 @@ public abstract class InfoSessions {
 
     /**
      * Crea una nova instancia d'informació de sessions i li assigna els seus atributs
-     * @param numSessions numero de sessions setmanals del tipus especificat
+     *
+     * @param numSessions     numero de sessions setmanals del tipus especificat
      * @param duracioSessions duracio de cada sessio
      */
     public InfoSessions(int numSessions, int duracioSessions) {
@@ -20,6 +21,7 @@ public abstract class InfoSessions {
 
     /**
      * Retorna el numero de sessions setmanals del tipus especificat
+     *
      * @return numero de sessions
      */
     public int getNumSessions() {
@@ -28,6 +30,7 @@ public abstract class InfoSessions {
 
     /**
      * Assigna un nou numero de sessions setmanals
+     *
      * @param numSessions numero de sessions
      */
     public void setNumSessions(int numSessions) {
@@ -36,6 +39,7 @@ public abstract class InfoSessions {
 
     /**
      * Retorna la duracio del es sessions del tipus especificat
+     *
      * @return duracio de les sessions
      */
     public int getDuracioSessions() {
@@ -44,6 +48,7 @@ public abstract class InfoSessions {
 
     /**
      * Assigna una nova duracio a les sessions
+     *
      * @param duracioSessions duracio de les sessions
      */
     public void setDuracioSessions(int duracioSessions) {

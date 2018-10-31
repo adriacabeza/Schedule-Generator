@@ -1,6 +1,6 @@
 package exceptions;
 
-public class RestriccioIntegritatException extends Exception{
+public class RestriccioIntegritatException extends Exception {
     @Override
     public String getMessage() {
         return super.getMessage();

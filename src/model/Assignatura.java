@@ -6,7 +6,6 @@ package model;
 
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
-import jdk.management.resource.ResourceRequestDeniedException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,9 +71,29 @@ public class Assignatura {
      * Obtenir tots els grups de l'assignatura
      *
      * @return grups de l'assignatura
+     * @throws NotFoundException
      */
-    public Map<Integer, Grup> getGrups() {
-        return grups;
+    public Map<Integer, Grup> getGrups() throws NotFoundException {
+        if (hasGroups()) {
+            return grups;
+        } else {
+            throw new NotFoundException("No hi ha grups a mostrar per l'assignatura " + this.toString());
+        }
+    }
+
+    /**
+     * Obtenir tots els subgrups donat l'identificador d'un grup
+     *
+     * @param num identificador del grup
+     * @return Llista de subgrups
+     * @throws NotFoundException
+     */
+    public ArrayList<Subgrup> getSubgrups(int num) throws NotFoundException {
+        if (grups.containsKey(num)) {
+            return grups.get(num).getSubgrups();
+        } else {
+            throw new NotFoundException("Grup not found");
+        }
     }
 
     /**
@@ -82,16 +101,15 @@ public class Assignatura {
      *
      * @param num nombre del grup
      * @return grup amb número identificador sol·licitat
+     * @throws NotFoundException
      */
     public Grup getGrup(int num) throws NotFoundException {
-        if (grups.containsKey(num)){
+        if (grups.containsKey(num)) {
             return grups.get(num);
-        }else{
+        } else {
             throw new NotFoundException("Grup not found");
         }
     }
-
-    /****** SETTERS ********/
 
     /**
      * Actualitza la informació de les sessions de laboratori
@@ -122,11 +140,19 @@ public class Assignatura {
         this.teoria = new Teoria(numSessions, duracioSessions);
     }
 
-    public void setQuadrimestre(int quadrimestre) {
-        this.quadrimestre = quadrimestre;
+    /**
+     * Actualitza el quadrimestre al qual forma part una assignatura
+     *
+     * @param quadrimestre quadrimestre al que forma part aquesta
+     * @throws RestriccioIntegritatException
+     */
+    public void setQuadrimestre(int quadrimestre) throws RestriccioIntegritatException {
+        if (this.quadrimestre != quadrimestre && !this.correquisit.isEmpty()) {
+            throw new RestriccioIntegritatException("No pots cambiar el quadrimestre d'una assignatura amb correquisits");
+        } else {
+            this.quadrimestre = quadrimestre;
+        }
     }
-
-    /******* OTHER ******/
 
     /**
      * Modifica el nombre de grups disponibles, així com la seva capacitat i el numero de subgrups si escau
@@ -144,22 +170,33 @@ public class Assignatura {
 
     /**
      * Assigna a una assignatura una altra assignatura com a correquisit
+     *
      * @param a Assignatura correquisit de self
-     */ //TODO mirar que siguin del mateix quadrimestre
+     * @throws RestriccioIntegritatException
+     */
     public void afegeixCorrequisit(Assignatura a) throws RestriccioIntegritatException {
-        if (!correquisit.contains(a)) {
-            correquisit.add(a);
-        } else {
-            throw new RestriccioIntegritatException("L'assignatura " + a.toString() + " ja està assignada com a correquisit")
+
+        if (correquisit.contains(a)) {
+            throw new RestriccioIntegritatException("L'assignatura " + a.toString() + " ja està assignada com a correquisit");
         }
+
+        if (a.getNom().equals(this.nom)) {
+            throw new RestriccioIntegritatException("L'assignatura " + a.toString() + " no pot ser correquisit d'ella mateixa");
+        }
+
+        if (this.quadrimestre != a.getQuadrimestre()) {
+            throw new RestriccioIntegritatException("Les assignatures han de formar part del mateix quadrimestre per ser correquisits");
+        }
+        correquisit.add(a);
     }
 
     /**
      * Esborra una assignatura com a correquisit d'aquesta
      *
      * @param a Assignatura a esborrar de self
+     * @throws NotFoundException
      */
-    public void esborraCorrequisit(Assignatura a) throws NotFoundException{
+    public void esborraCorrequisit(Assignatura a) throws NotFoundException {
         if (correquisit.contains(a)) {
             correquisit.remove(a);
         } else {
@@ -167,13 +204,13 @@ public class Assignatura {
         }
     }
 
-
     /**
      * Retorna una llista dels correquisits de l'assignatura
+     *
      * @return llista de correquisits
      */
     public ArrayList<Assignatura> getCorrequisits() {
-        return correquisit;
+        return this.correquisit;
     }
 
     /**
@@ -183,11 +220,12 @@ public class Assignatura {
      * @return cert si és correquisit, fals altrament
      */
     public boolean esCorrequisit(Assignatura a) {
-        return correquisit.contains(a);
+        return this.correquisit.contains(a);
     }
 
     /**
      * Retorna cert si una assignatura ja te grups creats
+     *
      * @return Cert si te grups creats, fals altrament
      */
     public boolean hasGroups() {

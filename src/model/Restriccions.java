@@ -6,10 +6,10 @@ public class Restriccions {
     public static Restriccions getInstance() {
         return ourInstance;
     }
-//TODO: tenemos que tener las restricciones unàries, binarias i n-arias
+
+    //TODO: tenemos que tener las restricciones unàries, binarias i n-arias
     private Restriccions() {
     }
-
 
 
 }
