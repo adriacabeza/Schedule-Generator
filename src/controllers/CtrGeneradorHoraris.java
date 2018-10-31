@@ -45,8 +45,8 @@ public class CtrGeneradorHoraris {
         //HashMap<String, Assignatura> assignatures = CtrAssignatura.getAssignatures();
 
 
-        HashMap<String,InfoSessions> infolab = CtrlSessions.getSessionsLab();
-        HashMap<String,InfoSessions> infoteo = CtrlSessions.getSessionsTeo();
+        //HashMap<String,InfoSessions> infolab = CtrlSessions.getSessionsLab();
+        //HashMap<String,InfoSessions> infoteo = CtrlSessions.getSessionsTeo();
         //TODO: aclarar lo de si necessito dos sessions lab i teoria, aclarar també des de on es modifiquen les coses si al
         //controller d'aula o al de sessions, s'han de tenir totes les classes fetes per a començar a picar codi bé
 
@@ -78,8 +78,8 @@ public class CtrGeneradorHoraris {
 
     public void modificaHorari(){
         //coge las assignacions ya hechas
-        LOQUESEA assignacionsLab = CtrAssignacio.getAssignacionsLab();
-        LOQUESEA assignacionsTeo = CtrAssignacio.getAssignacionsTeo();
+        //LOQUESEA assignacionsLab = CtrAssignacio.getAssignacionsLab();
+        //LOQUESEA assignacionsTeo = CtrAssignacio.getAssignacionsTeo();
 
 
 

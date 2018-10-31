@@ -16,8 +16,8 @@ public class CtrDomini {
 
     private HashMap<String, Assignatura> assignatures = new HashMap<>();
     private HashMap<String, PlaEstudis> plaEstudis = new HashMap<>();
+    private HashMap<String, Aula> aules = new HashMap<>();
 
-    private ArrayList<Aula> aules = new ArrayList<Aula>();
     private ArrayList<Assignacio> assignacions = new ArrayList<Assignacio>();
     private Restriccions r;
 
@@ -141,15 +141,31 @@ public class CtrDomini {
     }
 
 
-    /** sobre aules */
-    public void crearAula();
-    public void modificarAula();
-    public void consultarAula();
-    public void esborrarAula();
+    /******************* AULES ************************/
+
+    public void creaAula(String edifici, int planta, int aula, String tipusAula, ArrayList<Assignacio> assignacions){
+        aules.put(edifici + String.valueOf(planta) + String.valueOf(aula),new Aula(edifici, planta,aula,tipusAula,assignacions));
+    }
+
+    public void esborrarAula(String edifici, int planta, int aula){
+        aules.remove(edifici + String.valueOf(planta) + String.valueOf(aula));
+    }
+
+    public void modificarAula(){
+
+    }
+
+    public void consultarAula(){
+
+    }
+
 
     /** sobre assignacions */
-    public void generarHorari();
+    public void generarHorari(){
 
+    }
+
+    /*
     public void crearAssignacio(Aula aula, Assignatura assignatura, int grup, int hora, int dia, boolean teoria){
         Assignacio a;
         if (teoria) {
@@ -158,6 +174,6 @@ public class CtrDomini {
             a = new AssignacioL(dia, hora, aula, assignatura, grup); //on grup es un subgrup
         }
         assignacions.add(a);
-    }
+    }*/
 
 }

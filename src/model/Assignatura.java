@@ -76,10 +76,11 @@ public class Assignatura {
 
     /**
      * Actualitza la informació de les sessions de laboratori
-     * @param laboratori
+     * @param numSessions sessions de laboratori
+     * @param
      */
-    public void setLaboratori(InfoSessions laboratori) {
-        this.laboratori = laboratori;
+    public void setLaboratori(int numSessions, int duracioSessions) {
+        this.laboratori = new Teoria(numSessions, duracioSessions)
     }
 
     /**
@@ -94,8 +95,8 @@ public class Assignatura {
      * Actualitza la informació de les sessions de teoria
      * @param teoria
      */
-    public void setTeoria(InfoSessions teoria) {
-        this.teoria = teoria;
+    public void setTeoria(int numSessions, int duracioSessions) {
+        this.teoria = new Teoria(numSessions, duracioSessions);
     }
 
     public void setQuadrimestre(int quadrimestre) { this.quadrimestre = quadrimestre; }
