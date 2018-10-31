@@ -2,6 +2,7 @@ package model;
 
 public class AssignacioT extends Assignacio {
     private String tipusAula;
+    //TODO GUARDAR AQUI EL GRUP posarlo a la constructora
     /**
      * Crea una assignació de teoria
       @param diaSetmana dia de la setmana pot ser un número del 1 al 5
@@ -10,7 +11,6 @@ public class AssignacioT extends Assignacio {
      */
 
     public AssignacioT(String diaSetmana, int hora, int aula, String tipusAula) {
-
         super(diaSetmana, hora, aula);
         this.tipusAula = tipusAula;
     }

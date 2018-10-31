@@ -2,6 +2,7 @@ package model;
 
 public class AssignacioL extends Assignacio {
     private String tipusAula;
+    //TODO guardar aqui el SUBGRUP, posarlo a la constructora
 
     /**
         * Crea una assignació de laboratori

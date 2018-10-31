@@ -42,7 +42,7 @@ public class CtrGeneradorHoraris {
     public void creaHorari(){
 
         //pillar totes les assignatures o la seva infosessió tant de laboratori com de teoria
-        HashMap<String, Assignatura> assignatures = CtrAssignatura.getAssignatures();
+        //HashMap<String, Assignatura> assignatures = CtrAssignatura.getAssignatures();
 
 
         HashMap<String,InfoSessions> infolab = CtrlSessions.getSessionsLab();

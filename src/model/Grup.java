@@ -6,7 +6,7 @@ public class Grup{
 
     private int capacitat;
     private String nom;
-    private ArrayList<AssignacioT> teories;
+    private ArrayList<AssignacioT> teories; //TODO erase
     private ArrayList<Subgrup> subgrups;
     
     
@@ -17,7 +17,7 @@ public class Grup{
     * @param nom nom del grup
     * @param teo conjunt de classes de teoria que te el grup
     * @param subgrups subgrups del qual es composa el grup
-    */
+    */ //TODO hacer bien la constructora y crear desde aqui los subgrupos
     public Grup(int capacitat, String nom, ArrayList<AssignacioT> teo, ArrayList<Subgrup> subgrups){
         this.capacitat = capacitat;
         this.nom = nom;
@@ -25,7 +25,7 @@ public class Grup{
         this.subgrups = subgrups;
     }
     
-    
+
     
     /********** GETTERS ********/
     
@@ -83,7 +83,7 @@ public class Grup{
     /**
     * Actualitza el nom del grup
     * @param nom nou nom del grup
-    */
+    */ //TODO erase
     public void setNom(String nom){
         this.nom = nom;
     }
@@ -92,7 +92,7 @@ public class Grup{
     /**
     * Actualitza les sessions de teoria del grup
     * @param teories noves sessions de teoria
-    */
+    */ //TODO erase
     public void setAssignacioT(ArrayList<AssignacioT> teories){
         this.teories = teories;
     }
@@ -101,7 +101,7 @@ public class Grup{
     /**
     * Actualitza els subgrups del grup
     * @param s nous subgrups
-    */
+    */ //TODO erase
     public void setSubgrups(ArrayList<Subgrup> s){
         this.subgrups = s;
     }

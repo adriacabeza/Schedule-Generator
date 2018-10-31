@@ -17,15 +17,7 @@ public class CtrAssignacio {
 
     }
 
-    public void crearAssignacio(Aula aula, Assignatura assignatura, int grup, int hora, int dia, boolean teoria){
-        Assignacio a;
-        if (teoria) {
-            a = new AssignacioT(dia, hora, aula, assignatura, grup);
-        } else {
-            a = new AssignacioL(dia, hora, aula, assignatura, grup); //on grup es un subgrup
-        }
-        assignacions.add(a);
-    }
+
 
     /**
      *
