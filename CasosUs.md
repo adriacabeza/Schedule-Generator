@@ -8,8 +8,7 @@
 > Permet modificar el tamany dels grups
 ### Borrar grup
 > Permet borrar un grup associat a una assignatura
-### Sortir
-> Sortir de la gestió de grups
+
 
 ### Gestionar Assignatura
 > L'usuari visualitzarà totes les assignatures, des d'allà podrà consultar-ne una, modificar-la o esborrar-la. A més també podr crear una assignatura. 
