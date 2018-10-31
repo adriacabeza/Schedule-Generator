@@ -15,8 +15,10 @@ public class Aula {
 	 * @param edifici indica el nom del edifici on esta situada l'aula
 	 * @param planta indica la planta on esta situada l'aula
 	 * @param aula indica el numero que tindra l'aula
-	 * @param tipusAula indica el tipus que es l'aula
+	 * @param tipusAula indica el tipus que es l'aula //TODO: toni comenta que quizás no haga falta guardarlo
 	 * @param assignacions indica totes les assigancions que te aquesta aula
+	 *
+	 *
 	 */
 	public Aula(String edifici, int planta, int aula, String tipusAula, ArrayList<Assignacio> assignacions) {
 		this.edifici = edifici;
