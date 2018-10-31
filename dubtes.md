@@ -57,3 +57,11 @@
   >
   > també existeix el backjumping que en comptes de tirar enrere salta a una variable d'abans 
 
+## NEW COMMENTS
+
+el profe comenta que cada clase tendra que tener su driver y que salga en el prompt un menú del estilo
+0 - salir
+1 - crear elemento
+2 - modificar elemento
+Y luego que vayan haciendote instrucciones 
+
