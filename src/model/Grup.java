@@ -6,8 +6,8 @@ public class Grup{
 
     private int capacitat;
     private String nom;
-    private ArrayList<AssignacioT> teories; //TODO erase
-    private ArrayList<Subgrup> subgrups;
+    //private ArrayList<AssignacioT> teories; //TODO erase
+    private ArrayList<Subgrup> subgrups; //TODO hacerlo hashmap o algo con key un int que sea el numero de subgrupo
     
     
     
@@ -21,7 +21,7 @@ public class Grup{
     public Grup(int capacitat, String nom, ArrayList<AssignacioT> teo, ArrayList<Subgrup> subgrups){
         this.capacitat = capacitat;
         this.nom = nom;
-        this.teories = teo;
+        //this.teories = teo;
         this.subgrups = subgrups;
     }
     
@@ -51,10 +51,10 @@ public class Grup{
     /**
     * Obtenir les sessions de teoria del grup
     * @return les sessions de teoria del grup
-    */
-    public ArrayList<AssignacioT> getTeoria(){
+    */ //TODO erase
+    /*public ArrayList<AssignacioT> getTeoria(){
         return teories;
-    }
+    }*/
     
     
     /**
@@ -79,33 +79,23 @@ public class Grup{
         this.capacitat = capacitat;
     }
     
-    
+
     /**
     * Actualitza el nom del grup
     * @param nom nou nom del grup
     */ //TODO erase
-    public void setNom(String nom){
+    /*public void setNom(String nom){
         this.nom = nom;
-    }
-    
-    
-    /**
-    * Actualitza les sessions de teoria del grup
-    * @param teories noves sessions de teoria
-    */ //TODO erase
-    public void setAssignacioT(ArrayList<AssignacioT> teories){
-        this.teories = teories;
-    }
-    
+    }      */
     
     /**
     * Actualitza els subgrups del grup
     * @param s nous subgrups
     */ //TODO erase
-    public void setSubgrups(ArrayList<Subgrup> s){
+    /*public void setSubgrups(ArrayList<Subgrup> s){
         this.subgrups = s;
-    }
-    
+    }*/
+
 }
 /* 
 grup (int i, grup cap, num sub){

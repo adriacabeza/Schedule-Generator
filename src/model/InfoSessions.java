@@ -1,3 +1,7 @@
+/**
+ * @author Aina Garcia
+ */
+
 package model;
 
 public abstract class InfoSessions {

@@ -1,3 +1,7 @@
+/**
+ * @author Aina Garcia
+ */
+
 package model;
 
 import java.util.ArrayList;
@@ -77,15 +81,15 @@ public class Assignatura {
     /**
      * Actualitza la informació de les sessions de laboratori
      * @param numSessions sessions de laboratori
-     * @param
+     * @param duracioSessions duracio de les sessions
      */
     public void setLaboratori(int numSessions, int duracioSessions) {
-        this.laboratori = new Teoria(numSessions, duracioSessions)
+        this.laboratori = new Teoria(numSessions, duracioSessions);
     }
 
     /**
      * Actualitza el nom de l'assignatura
-     * @param nom
+     * @param nom nom de l'assignatura
      */
     public void setNom(String nom) {
         this.nom = nom;
@@ -93,7 +97,8 @@ public class Assignatura {
 
     /**
      * Actualitza la informació de les sessions de teoria
-     * @param teoria
+     * @param numSessions numero de sessions setmanals
+     * @param duracioSessions duracio de cada sessio
      */
     public void setTeoria(int numSessions, int duracioSessions) {
         this.teoria = new Teoria(numSessions, duracioSessions);
