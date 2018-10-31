@@ -111,4 +111,6 @@ public class CtrlSessions {
         return sessionsT;
     }
 
+    //em falten els removes i creadors
+
 }

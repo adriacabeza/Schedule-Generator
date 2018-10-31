@@ -54,7 +54,7 @@ public class CtrGeneradorHoraris {
 
         //CtrAssignacio.crearAssignacio(Aula aula, Assignatura assignatura, int grup, int hora, int dia, boolean teoria)
 
-
+        solve();
     }
 
     public void backtracking_search(){
@@ -63,14 +63,18 @@ public class CtrGeneradorHoraris {
     }
 
 
-    public void solve(){
+    public void solve() {
         //removes unary constraints and then uses backtracking
+        if (! remove_unary());
     }
 
     public Boolean remove_unary(){
         //removes unary constraints and will return False if failure
     }
 
+    public void setAssignacio(){
+        //et pilla ja l assignatura i l'assignació que li tocaria i els junta
+    }
 
     public void modificaHorari(){
         //coge las assignacions ya hechas
