@@ -17,7 +17,7 @@ public abstract class Assignacio {
     Crea una assignació nova amb la informació corresponent
     @param diaSetmana dia de la setmana pot ser un número del 1 al 5
     @param hora hora a la que se li assigna l'assignacio
-    TODO: mirar si hem de guardar la hora de finalització
+    TODO: mirar si hem de guardar la hora de finalització TONI APPROVES
     @param aula identificador d'una aula a la que se li ha fet una assignació
      */
 
