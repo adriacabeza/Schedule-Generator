@@ -16,22 +16,24 @@ public class Assignatura {
     private String nom;
     private InfoSessions teoria;
     private InfoSessions laboratori;
-    private Map<Integer, Grup> grups = new HashMap<>();
-    private ArrayList<Assignatura> correquisit = new ArrayList<>();
+    private Map<Integer, Grup> grups;
+    private ArrayList<Assignatura> correquisit;
     private int quadrimestre;
 
     /**
      * Crea una assignatura nova amb grups i la informació corresponent
      *
      * @param nom nom de l'assignatura
-     * @param t   informació de les sessions de teoria
-     * @param l   informació de les sessions de laboratori
+     * @param t   informació de les sessions de teoria, pot ser null
+     * @param l   informació de les sessions de laboratori, pot ser null
      */
     public Assignatura(String nom, int quadrimestre, Teoria t, Laboratori l) {
         this.nom = nom;
         this.laboratori = l;
         this.teoria = t;
         this.quadrimestre = quadrimestre;
+        grups = new HashMap<>();
+        correquisit = new ArrayList<>();
     }
 
     /********** GETTERS ********/
@@ -53,8 +55,12 @@ public class Assignatura {
      * Obtenir informació de les sessions de laboratori de l'assignatura
      *
      * @return informació de laboratori
+     * @throws NotFoundException si no te sessions de laboratori
      */
-    public InfoSessions getLaboratori() {
+    public InfoSessions getLaboratori() throws NotFoundException {
+        if (laboratori == null) {
+            throw new NotFoundException("No existeixen sessions de laboratori per l'assignatura " + this.toString());
+        }
         return laboratori;
     }
 
@@ -62,8 +68,12 @@ public class Assignatura {
      * Obtenir informació de les sessions de teoria de l'assignatura
      *
      * @return informació de teoria
+     * @throws NotFoundException si no te sessions de teoria
      */
-    public InfoSessions getTeoria() {
+    public InfoSessions getTeoria() throws NotFoundException {
+        if (teoria == null) {
+            throw new NotFoundException("No existeixen sessions de teoria per l'assignatura " + this.toString());
+        }
         return teoria;
     }
 
@@ -71,14 +81,13 @@ public class Assignatura {
      * Obtenir tots els grups de l'assignatura
      *
      * @return grups de l'assignatura
-     * @throws NotFoundException
+     * @throws NotFoundException si no existeixen grups per l'assignatura
      */
     public Map<Integer, Grup> getGrups() throws NotFoundException {
-        if (hasGroups()) {
-            return grups;
-        } else {
+        if (!hasGroups()) {
             throw new NotFoundException("No hi ha grups a mostrar per l'assignatura " + this.toString());
         }
+        return grups;
     }
 
     /**
@@ -86,14 +95,13 @@ public class Assignatura {
      *
      * @param num identificador del grup
      * @return Llista de subgrups
-     * @throws NotFoundException
+     * @throws NotFoundException si no existeixen subgrups del grup de l'assignatura
      */
     public ArrayList<Subgrup> getSubgrups(int num) throws NotFoundException {
-        if (grups.containsKey(num)) {
-            return grups.get(num).getSubgrups();
-        } else {
+        if (!grups.containsKey(num)) {
             throw new NotFoundException("Grup not found");
         }
+        return grups.get(num).getSubgrups();
     }
 
     /**
@@ -101,14 +109,13 @@ public class Assignatura {
      *
      * @param num nombre del grup
      * @return grup amb número identificador sol·licitat
-     * @throws NotFoundException
+     * @throws NotFoundException si no existeix el grup especificat
      */
     public Grup getGrup(int num) throws NotFoundException {
-        if (grups.containsKey(num)) {
-            return grups.get(num);
-        } else {
+        if (!grups.containsKey(num)) {
             throw new NotFoundException("Grup not found");
         }
+        return grups.get(num);
     }
 
     /**
@@ -118,16 +125,7 @@ public class Assignatura {
      * @param duracioSessions duracio de les sessions
      */
     public void setLaboratori(int numSessions, int duracioSessions) {
-        this.laboratori = new Teoria(numSessions, duracioSessions);
-    }
-
-    /**
-     * Actualitza el nom de l'assignatura
-     *
-     * @param nom nom de l'assignatura
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
+        this.laboratori = new Laboratori(numSessions, duracioSessions);
     }
 
     /**
@@ -144,7 +142,7 @@ public class Assignatura {
      * Actualitza el quadrimestre al qual forma part una assignatura
      *
      * @param quadrimestre quadrimestre al que forma part aquesta
-     * @throws RestriccioIntegritatException
+     * @throws RestriccioIntegritatException si l'assignatura te correquisits
      */
     public void setQuadrimestre(int quadrimestre) throws RestriccioIntegritatException {
         if (this.quadrimestre != quadrimestre && !this.correquisit.isEmpty()) {
@@ -172,7 +170,7 @@ public class Assignatura {
      * Assigna a una assignatura una altra assignatura com a correquisit
      *
      * @param a Assignatura correquisit de self
-     * @throws RestriccioIntegritatException
+     * @throws RestriccioIntegritatException si l'assignacio ja existeix, si l'assignatura es ella mateixa o si formen part de quadrimestres diferents
      */
     public void afegeixCorrequisit(Assignatura a) throws RestriccioIntegritatException {
 
@@ -194,7 +192,7 @@ public class Assignatura {
      * Esborra una assignatura com a correquisit d'aquesta
      *
      * @param a Assignatura a esborrar de self
-     * @throws NotFoundException
+     * @throws NotFoundException si l'assignatura no es correquisit
      */
     public void esborraCorrequisit(Assignatura a) throws NotFoundException {
         if (correquisit.contains(a)) {
@@ -208,8 +206,12 @@ public class Assignatura {
      * Retorna una llista dels correquisits de l'assignatura
      *
      * @return llista de correquisits
+     * @throws NotFoundException si l'assignatura no te correquisits
      */
-    public ArrayList<Assignatura> getCorrequisits() {
+    public ArrayList<Assignatura> getCorrequisits() throws NotFoundException {
+        if (this.correquisit.isEmpty()) {
+            throw new NotFoundException("L'assignatura " + this.toString() + " no te correquisits");
+        }
         return this.correquisit;
     }
 
@@ -232,6 +234,11 @@ public class Assignatura {
         return !this.grups.isEmpty();
     }
 
+    /**
+     * Override del metode toString per la representacio de la classe de forma textual
+     *
+     * @return nom de la classe
+     */
     @Override
     public String toString() {
         return this.nom.toUpperCase();

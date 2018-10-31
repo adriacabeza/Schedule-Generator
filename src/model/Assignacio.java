@@ -11,7 +11,6 @@ public abstract class Assignacio {
 
     //TODO: guardar aqui tambe assignatura. posar-la a la constructora
 
-
     /**
      * Crea una assignació nova amb la informació corresponent
      *

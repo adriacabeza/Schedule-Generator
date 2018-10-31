@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+
 public class CtrDomini {
 
     private static CtrDomini ourInstance = new CtrDomini();
@@ -65,7 +66,7 @@ public class CtrDomini {
      *
      * @param nom Nom del pla d'estudis
      * @return tota la informació del pla d'estudis i les seves relacions
-     * @throws NotFoundException si mo existex el pla d'estudis especificat
+     * @throws NotFoundException si no existex el pla d'estudis especificat
      */
     public PlaEstudis consultarPlaEsudis(String nom) throws NotFoundException {
         if (!plaEstudis.containsKey(nom)) {
