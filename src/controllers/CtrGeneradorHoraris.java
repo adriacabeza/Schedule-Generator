@@ -29,27 +29,48 @@ public class CtrGeneradorHoraris {
     }
 
     public void checkConsistency(){
-        //pillar totes les restriccions NOT YET IMPLEMENTED
-        LOQUESEA restriccions = CtrRestriccions.getRestriccions();//
-        // for each restriccio check if if it satisfied
+        //returns true if the constraint is satisfied with "these" values
 
     }
+
+
+    public Boolean isComplete(){
+        //returns true if all the subjects are already assigned
+    }
+
 
     public void creaHorari(){
 
         //pillar totes les assignatures o la seva infosessió tant de laboratori com de teoria
         HashMap<String, Assignatura> assignatures = CtrAssignatura.getAssignatures();
+
+
         HashMap<String,InfoSessions> infolab = CtrlSessions.getSessionsLab();
         HashMap<String,InfoSessions> infoteo = CtrlSessions.getSessionsTeo();
         //TODO: aclarar lo de si necessito dos sessions lab i teoria, aclarar també des de on es modifiquen les coses si al
         //controller d'aula o al de sessions, s'han de tenir totes les classes fetes per a començar a picar codi bé
 
-
+        //necessito ara pillar totes les restriccions que s'hagin seleccionat
 
         //CtrAssignacio.crearAssignacio(Aula aula, Assignatura assignatura, int grup, int hora, int dia, boolean teoria)
 
 
     }
+
+    public void backtracking_search(){
+        //aixo pilla una variable que no esta assignada
+        // mires si es consistent i si no fas backtracking sino es el resultat
+    }
+
+
+    public void solve(){
+        //removes unary constraints and then uses backtracking
+    }
+
+    public Boolean remove_unary(){
+        //removes unary constraints and will return False if failure
+    }
+
 
     public void modificaHorari(){
         //coge las assignacions ya hechas
