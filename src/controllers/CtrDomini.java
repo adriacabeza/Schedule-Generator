@@ -1,5 +1,7 @@
 package controllers;
 
+import exceptions.NotFoundException;
+import exceptions.RestriccioIntegritatException;
 import model.*;
 
 import java.util.ArrayList;
@@ -32,16 +34,28 @@ public class CtrDomini {
      * @param nom Nom del pla d'estudis
      * @param any Any d'inici del nou pla d'estudis
      */
-    public void crearPlaEstudis(String nom, Date any) {
-        plaEstudis.put(nom, new PlaEstudis(nom, any, false));
+    public void crearPlaEstudis(String nom, Date any) throws RestriccioIntegritatException{
+        if (!plaEstudis.containsKey(nom)) {
+            plaEstudis.put(nom, new PlaEstudis(nom, any, false));
+        } else {
+            throw new RestriccioIntegritatException("Ja existeix un pla d'estudis amb nom " + nom.toUpperCase());
+        }
     }
 
     /**
      * Esborra del sistema un pla d'estudis OBSOLET
      * @param nom Nom del pla d'estudis
      */
-    public void esborrarPlaEstudis(String nom){
-        plaEstudis.remove(nom); //TODO comprovar que el pla en questio estigui obsolet, sino no es pot esborrar
+    public void esborrarPlaEstudis(String nom) throws NotFoundException, RestriccioIntegritatException {
+        if (plaEstudis.containsKey(nom)) {
+            if (plaEstudis.get(nom).isObsolet()) {
+                plaEstudis.remove(nom);
+            } else {
+                throw new RestriccioIntegritatException("No es pot esborrar un pla d'estudis no obsolet");
+            }
+        } else {
+            throw new NotFoundException("No s'ha trobat el pla d'estudis " + nom.toUpperCase());
+        }
     }
 
     /**
@@ -49,8 +63,12 @@ public class CtrDomini {
      * @param nom Nom del pla d'estudis
      * @return tota la informació del pla d'estudis i les seves relacions
      */
-    public PlaEstudis consultarPlaEsudis(String nom){
-        return plaEstudis.get(nom);
+    public PlaEstudis consultarPlaEsudis(String nom) throws NotFoundException{
+        if (plaEstudis.containsKey(nom)){
+            return plaEstudis.get(nom);
+        } else {
+            throw new NotFoundException("No existeix un pla d'estudis amb nom " + nom.toUpperCase());
+        }
     }
 
     /**
@@ -73,21 +91,31 @@ public class CtrDomini {
 
     /************** ASSIGNATURES ***************/
 
-    public void crearAssignatura(String nom, int quadrimestre, Teoria t, Laboratori l) {
-        assignatures.put(nom, new Assignatura(nom, quadrimestre, t, l));
+    public void crearAssignatura(String nom, int quadrimestre, Teoria t, Laboratori l) throws RestriccioIntegritatException{
+        if (!assignatures.containsKey(nom)){
+            assignatures.put(nom, new Assignatura(nom, quadrimestre, t, l));
+        } else {
+            throw new RestriccioIntegritatException("Ja existeix una assignatura amb nom " + nom.toUpperCase());
+        }
     }
 
 
-    public Assignatura consultarAssignatura(String nom) {
-        return assignatures.get(nom);
+    public Assignatura consultarAssignatura(String nom) throws NotFoundException {
+        if (assignatures.containsKey(nom)) {
+            return assignatures.get(nom);
+        } else {
+            throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nom.toUpperCase());
+        }
+
     }
 
-    public void esborrarAssignatura(String nomA){
-        assignatures.remove(nomA);
+    public void esborrarAssignatura(String nomA) throws NotFoundException{
+        if (assignatures.containsKey(nomA)) {
+            assignatures.remove(nomA);
+        } else {
+            throw new NotFoundException("No es pot esborrar l'assignatura " + nomA.toUpperCase() + " perque no existeix");
+        }
     }
-
-
-
 
     /**
      * Permet modificar la informació sobre les sessions de teoria d'una assignatura
@@ -95,8 +123,12 @@ public class CtrDomini {
      * @param duracio Duració de les sessions de teoria
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      */
-    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions){
-        assignatures.get(nom_assig).setTeoria(new Teoria(num_sessions, duracio));
+    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions) throws NotFoundException{
+        if (assignatures.containsKey(nom_assig)){
+            assignatures.get(nom_assig).setTeoria(num_sessions, duracio);
+        } else {
+            throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig.toString());
+        }
     }
 
     /**
@@ -105,8 +137,12 @@ public class CtrDomini {
      * @param duracio Duració de les sessions de laboratori
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      */
-    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions){
-        assignatures.get(nom_assig).setLaboratori(new Laboratori(num_sessions, duracio));
+    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions) throws NotFoundException{
+        if (assignatures.containsKey(nom_assig)){
+            assignatures.get(nom_assig).setLaboratori(num_sessions, duracio);
+        } else {
+            throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig.toString());
+        }
     }
 
     /**
@@ -116,8 +152,12 @@ public class CtrDomini {
      * @param grup_cap capacitat de cada grup
      * @param sgrup_num capacitat dels subgrups
      */
-    public void modificarGrups(String nom_assig, int num_grups, int grup_cap, int sgrup_num) {
-        assignatures.get(nom_assig).modificarGrups(num_grups, grup_cap, sgrup_num);
+    public void modificarGrups(String nom_assig, int num_grups, int grup_cap, int sgrup_num) throws NotFoundException {
+        if (assignatures.containsKey(nom_assig)){
+            assignatures.get(nom_assig).modificarGrups(num_grups, grup_cap, sgrup_num);
+        } else {
+            throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig.toString());
+        }
     }
 
     /**
@@ -125,9 +165,17 @@ public class CtrDomini {
      * @param nom_a nom de d'una assignatura
      * @param nom_b nom de l'altre assignatura
      */
-    public void afegeixCorrequisit(String nom_a, String nom_b){
-        assignatures.get(nom_a).afegeixCorrequisit(assignatures.get(nom_b));
-        assignatures.get(nom_b).afegeixCorrequisit(assignatures.get(nom_a));
+    public void afegeixCorrequisit(String nom_a, String nom_b) throws NotFoundException, RestriccioIntegritatException {
+        if (assignatures.containsKey(nom_a) && assignatures.containsKey(nom_b) && !nom_a.equals(nom_b)) {
+            assignatures.get(nom_a).afegeixCorrequisit(assignatures.get(nom_b));
+            assignatures.get(nom_b).afegeixCorrequisit(assignatures.get(nom_a));
+        } else if (!assignatures.containsKey(nom_a)) {
+            throw new NotFoundException("No existeix l'assignatura " + nom_a.toUpperCase());
+        } else if (!assignatures.containsKey(nom_b)) {
+            throw new NotFoundException("No existeix l'assignatura " + nom_b.toUpperCase());
+        } else {
+            throw new RestriccioIntegritatException("Una assignatura no pot ser correquisit d'ella mateixa");
+        }
     }
 
     /**
@@ -135,9 +183,15 @@ public class CtrDomini {
      * @param nom_a nom de d'una assignatura
      * @param nom_b nom de l'altre assignatura
      */
-    public void esborraCorrequisit(String nom_a, String nom_b){
-        assignatures.get(nom_a).esborraCorrequisit(assignatures.get(nom_b));
-        assignatures.get(nom_b).esborraCorrequisit(assignatures.get(nom_a));
+    public void esborraCorrequisit(String nom_a, String nom_b) throws NotFoundException{
+        if (assignatures.containsKey(nom_a) && assignatures.containsKey(nom_b)) {
+            assignatures.get(nom_a).esborraCorrequisit(assignatures.get(nom_b));
+            assignatures.get(nom_b).esborraCorrequisit(assignatures.get(nom_a));
+        } else if (!assignatures.containsKey(nom_a)) {
+            throw new NotFoundException("No existeix l'assignatura " + nom_a.toUpperCase());
+        } else if (!assignatures.containsKey(nom_b)) {
+            throw new NotFoundException("No existeix l'assignatura " + nom_b.toUpperCase());
+        }
     }
 
 

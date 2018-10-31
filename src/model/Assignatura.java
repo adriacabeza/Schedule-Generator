@@ -4,6 +4,10 @@
 
 package model;
 
+import exceptions.NotFoundException;
+import exceptions.RestriccioIntegritatException;
+import jdk.management.resource.ResourceRequestDeniedException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,15 +20,15 @@ public class Assignatura {
     private Map<Integer, Grup> grups = new HashMap<>();
     private ArrayList<Assignatura> correquisit = new ArrayList<>();
     private int quadrimestre;
-    private PlaEstudis plaEstudis;
 
     /**
      * Crea una assignatura nova amb grups i la informació corresponent
+     *
      * @param nom nom de l'assignatura
-     * @param t informació de les sessions de teoria
-     * @param l informació de les sessions de laboratori
+     * @param t   informació de les sessions de teoria
+     * @param l   informació de les sessions de laboratori
      */
-    public Assignatura(String nom, int quadrimestre, Teoria t, Laboratori l){
+    public Assignatura(String nom, int quadrimestre, Teoria t, Laboratori l) {
         this.nom = nom;
         this.laboratori = l;
         this.teoria = t;
@@ -35,16 +39,20 @@ public class Assignatura {
 
     /**
      * Obtenir nom de l'assignatura
+     *
      * @return nom de l'assignatura
      */
-    public String getNom(){
+    public String getNom() {
         return nom;
     }
 
-    public int getQuadrimestre() { return quadrimestre; }
+    public int getQuadrimestre() {
+        return quadrimestre;
+    }
 
     /**
      * Obtenir informació de les sessions de laboratori de l'assignatura
+     *
      * @return informació de laboratori
      */
     public InfoSessions getLaboratori() {
@@ -53,6 +61,7 @@ public class Assignatura {
 
     /**
      * Obtenir informació de les sessions de teoria de l'assignatura
+     *
      * @return informació de teoria
      */
     public InfoSessions getTeoria() {
@@ -61,6 +70,7 @@ public class Assignatura {
 
     /**
      * Obtenir tots els grups de l'assignatura
+     *
      * @return grups de l'assignatura
      */
     public Map<Integer, Grup> getGrups() {
@@ -69,18 +79,24 @@ public class Assignatura {
 
     /**
      * Obtenir un grup concret d'aquesta assignatura
+     *
      * @param num nombre del grup
      * @return grup amb número identificador sol·licitat
      */
-    public Grup getGrup(int num){
-        return grups.get(num);
+    public Grup getGrup(int num) throws NotFoundException {
+        if (grups.containsKey(num)){
+            return grups.get(num);
+        }else{
+            throw new NotFoundException("Grup not found");
+        }
     }
 
     /****** SETTERS ********/
 
     /**
      * Actualitza la informació de les sessions de laboratori
-     * @param numSessions sessions de laboratori
+     *
+     * @param numSessions     sessions de laboratori
      * @param duracioSessions duracio de les sessions
      */
     public void setLaboratori(int numSessions, int duracioSessions) {
@@ -89,6 +105,7 @@ public class Assignatura {
 
     /**
      * Actualitza el nom de l'assignatura
+     *
      * @param nom nom de l'assignatura
      */
     public void setNom(String nom) {
@@ -97,26 +114,30 @@ public class Assignatura {
 
     /**
      * Actualitza la informació de les sessions de teoria
-     * @param numSessions numero de sessions setmanals
+     *
+     * @param numSessions     numero de sessions setmanals
      * @param duracioSessions duracio de cada sessio
      */
     public void setTeoria(int numSessions, int duracioSessions) {
         this.teoria = new Teoria(numSessions, duracioSessions);
     }
 
-    public void setQuadrimestre(int quadrimestre) { this.quadrimestre = quadrimestre; }
+    public void setQuadrimestre(int quadrimestre) {
+        this.quadrimestre = quadrimestre;
+    }
 
     /******* OTHER ******/
 
     /**
      * Modifica el nombre de grups disponibles, així com la seva capacitat i el numero de subgrups si escau
+     *
      * @param num_grups nombre de grups que es vol tenir per l'assignatura
-     * @param grup_cap capacitat d'alumnes per cada grup
+     * @param grup_cap  capacitat d'alumnes per cada grup
      * @param sgrup_num nombre de subgrups que es vol tenir per cada grup
      */
-    public void modificarGrups(int num_grups, int grup_cap, int sgrup_num){
+    public void modificarGrups(int num_grups, int grup_cap, int sgrup_num) {
         this.grups = new HashMap<Integer, Grup>();
-        for(int i = 10; i <= num_grups; i+=10){
+        for (int i = 10; i <= num_grups; i += 10) {
             grups.put(i, new Grup(i, grup_cap, sgrup_num));
         }
     }
@@ -124,17 +145,26 @@ public class Assignatura {
     /**
      * Assigna a una assignatura una altra assignatura com a correquisit
      * @param a Assignatura correquisit de self
-     */
-    public void afegeixCorrequisit(Assignatura a){
-        correquisit.add(a);
+     */ //TODO mirar que siguin del mateix quadrimestre
+    public void afegeixCorrequisit(Assignatura a) throws RestriccioIntegritatException {
+        if (!correquisit.contains(a)) {
+            correquisit.add(a);
+        } else {
+            throw new RestriccioIntegritatException("L'assignatura " + a.toString() + " ja està assignada com a correquisit")
+        }
     }
 
     /**
      * Esborra una assignatura com a correquisit d'aquesta
+     *
      * @param a Assignatura a esborrar de self
      */
-    public void esborraCorrequisit(Assignatura a){
-        correquisit.remove(a);
+    public void esborraCorrequisit(Assignatura a) throws NotFoundException{
+        if (correquisit.contains(a)) {
+            correquisit.remove(a);
+        } else {
+            throw new NotFoundException(this.toString() + " no conté " + a.toString() + " com a correquisit");
+        }
     }
 
 
@@ -148,14 +178,24 @@ public class Assignatura {
 
     /**
      * Diu si una assignatura és correquisit de la primera
+     *
      * @param a assignatura a comparar
      * @return cert si és correquisit, fals altrament
      */
-    public boolean esCorrequisit(Assignatura a){
+    public boolean esCorrequisit(Assignatura a) {
         return correquisit.contains(a);
     }
 
+    /**
+     * Retorna cert si una assignatura ja te grups creats
+     * @return Cert si te grups creats, fals altrament
+     */
     public boolean hasGroups() {
         return !this.grups.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        return this.nom.toUpperCase();
     }
 }
