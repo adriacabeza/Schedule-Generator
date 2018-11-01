@@ -1,12 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Grup {
 
 
     private int capacitat;
     private String nom;
+//    private HashMap<int, Subgrup> subgrups;
     private ArrayList<Subgrup> subgrups = new ArrayList<>(); //TODO hacerlo hashmap o algo con key un int que sea el numero de subgrupo
 
 
