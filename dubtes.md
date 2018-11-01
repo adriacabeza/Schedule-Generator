@@ -32,7 +32,7 @@
   - **No poden haver-hi dues classes a la mateixa hora a la mateixa aula**
   - **Correquisits (dos assignatures que s'han de fer a la vegada de manera que no es poden solapar)**
   - **No ens poden passar del període lectiu** 
-  - **S'han de fer totes les hores de cada assignatura ***
+  - **S'han de fer totes les hores de cada assignatura **
 
   Es poden veure com si fossin paràmetres, sí. L'algorisme a l'hora de veure si .
 
@@ -56,4 +56,12 @@
   > N-CONSISTENT, ARCH CONSISTENCIA ENTRE DUES VARIABLES ELS DOMINIS SIGUIN CONSISTENS ENTRE ELLS, ENTRE TRES VARIABLES ELS VALORS DELS SEUS DOMINIS... QUAN MÉS GRAN ÉS LA N MÉS INEFICIENT ÉS EL PROBLEMA
   >
   > també existeix el backjumping que en comptes de tirar enrere salta a una variable d'abans 
+
+## NEW COMMENTS
+
+el profe comenta que cada clase tendra que tener su driver y que salga en el prompt un menú del estilo
+0 - salir
+1 - crear elemento
+2 - modificar elemento
+Y luego que vayan haciendote instrucciones 
 

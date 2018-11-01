@@ -1,119 +1,110 @@
 package model;
+
 import java.util.ArrayList;
-import java.util.Map;
 
-public class Grup{
+public class Grup {
 
 
-    protected int capacitat;
-    protected int num;
-    protected ArrayList<AssignacioT> teories;
-    protected Map<Integer, Grup> subgrups;
-    
-    
-    
+    private int capacitat;
+    private String nom;
+    //private ArrayList<AssignacioT> teories; //TODO erase
+    private ArrayList<Subgrup> subgrups = new ArrayList<>(); //TODO hacerlo hashmap o algo con key un int que sea el numero de subgrupo
+
+
     /**
-    * Crea un nou grup amb la informació pertinent
-    * @param capacitat capacitat del grup
-    * @param num num del grup
-    * @param num_subgrups subgrups del qual es composa el grup
-    */
-    public Grup(int num, int capacitat, int num_subgrups){
+     * Crea un nou grup amb la informació pertinent
+     *
+     * @param capacitat capacitat del grup
+     * @param nom       nom del grup
+     * @param teo       conjunt de classes de teoria que te el grup
+     * @param subgrups  subgrups del qual es composa el grup
+     */ //TODO hacer bien la constructora y crear desde aqui los subgrupos
+    public Grup(int capacitat, String nom, ArrayList<AssignacioT> teo, ArrayList<Subgrup> subgrups) {
         this.capacitat = capacitat;
-        this.num = num;
-        for (int j = 1; j<=num_subgrups; j++){
-            subgrups.put(num+j, new Subgrup(num+j, capacitat/num_subgrups,this));
-        }
+        this.nom = nom;
+        //this.teories = teo;
+        this.subgrups = subgrups;
     }
-    
-    
-    
+
+
     /********** GETTERS ********/
-    
-    
+
+
     /**
-    * Obtenir la capacitat del grup
-    * @return capacitat del grup
-    */
-    public int getCapacitat(){
+     * Obtenir la capacitat del grup
+     *
+     * @return capacitat del grup
+     */
+    public int getCapacitat() {
         return capacitat;
     }
-    
-    
+
+
     /**
-    * Obtenir el nom del grup
-    * @return num del grup
-    */
-    public int getNum(){
-        return num;
+     * Obtenir el nom del grup
+     *
+     * @return nom del grup
+     */
+    public String getNom() {
+        return nom;
     }
-    
-    
+
+
     /**
-    * Obtenir les sessions de teoria del grup
-    * @return les sessions de teoria del grup
-    */
-    public ArrayList<AssignacioT> getTeoria(){
+     * Obtenir les sessions de teoria del grup
+     * @return les sessions de teoria del grup
+     */ //TODO erase
+    /*public ArrayList<AssignacioT> getTeoria(){
         return teories;
-    }
-    
-    
+    }*/
+
+
     /**
-    * Obtenir els subgrups del grup
-    * @return els subgrups del grup
-    */
-    public Map<Integer, Grup> getSubgrups(){
+     * Obtenir els subgrups del grup
+     *
+     * @return els subgrups del grup
+     */
+    public ArrayList<Subgrup> getSubgrups() {
         return subgrups;
     }
-    
-    
-    
+
+
     /****** SETTERS ********/
-    
-    
-    
+
+
     /**
-    * Actualitza la capacitat del grup
-    * @param capacitat nova capacitat del grup
-    */
-    public void setCapacitat(int capacitat){
+     * Actualitza la capacitat del grup
+     *
+     * @param capacitat nova capacitat del grup
+     */
+    public void setCapacitat(int capacitat) {
         this.capacitat = capacitat;
     }
-    
-    
+
+
     /**
-    * Actualitza el nom del grup
-    * @param num nou nom del grup
-    */
-    public void setNom(int num){
-        this.num = num;
-    }
-    
-    
+     * Actualitza el nom del grup
+     * @param nom nou nom del grup
+     */ //TODO erase
+    /*public void setNom(String nom){
+        this.nom = nom;
+    }      */
+
     /**
-    * Actualitza les sessions de teoria del grup
-    * @param teories noves sessions de teoria
-    */
-    public void setAssignacioT(ArrayList<AssignacioT> teories){
-        this.teories = teories;
-    }
-    
-    
-    /**
-    * Actualitza els subgrups del grup
-    * @param s nous subgrups
-    */
-    public void setSubgrups(Map<Integer, Grup> s){
+     * Actualitza els subgrups del grup
+     * @param s nous subgrups
+     */ //TODO erase
+    /*public void setSubgrups(ArrayList<Subgrup> s){
         this.subgrups = s;
-    }
-    
+    }*/
+
 }
 /* 
 grup (int i, grup cap, num sub){
   name = i;
   grupcap = grupcap
     for (int j = 1; j<=numsub; j++){
-		subgrup.insert(i+j, new subgrup(i+j, cap/sub,this));
+		subgrup.insert(i+j, new subgrup(i+j, grupcap/numsub,this));
     }
 } 
                        

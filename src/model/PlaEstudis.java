@@ -6,28 +6,32 @@ import java.util.Date;
 public class PlaEstudis {
     private String nomTitulacio;
     private Date any;
+    private ArrayList<Assignatura> assignatures;
     private boolean obsolet;
-    private ArrayList<Quadrimestre> quadrimestres; //TODO:preguntar si hauria de ser un ArrayList de quadrimestres
 
+
+    //TODO: void afegirAssignatura(Assignatura a)
+    //TODO: void esborrarAssignatura(String nomA)
+    //TODO: ArrayLsit<Assignatures> getAssignatures()
 
     /**
      * Crea un Pla d'Estudis nou amb la seva informació corresponent
+     *
      * @param nomTitulacio nom de la titulació
-     * @param any any que es crea el pla d'estudis
-     * @param obsolet booleà que indica si està obsolet
-     * @param quadrimestres quadrimestres que conté el pla d'estudis
+     * @param any          any que es crea el pla d'estudis
+     * @param obsolet      booleà que indica si està obsolet
      */
-    public PlaEstudis(String nomTitulacio, Date any, boolean obsolet, ArrayList<Quadrimestre> quadrimestres) {
+    public PlaEstudis(String nomTitulacio, Date any, boolean obsolet) {
         this.nomTitulacio = nomTitulacio;
         this.any = any;
         this.obsolet = obsolet;
-        this.quadrimestres = quadrimestres;
     }
 
     /********** GETTERS ********/
 
     /**
      * Obtenir el nom de la titulació
+     *
      * @return nomTitulacio
      */
     public String getNomTitulacio() {
@@ -36,6 +40,7 @@ public class PlaEstudis {
 
     /**
      * Obtenir any del pla d'estudis
+     *
      * @return any del pla d'estudis
      */
 
@@ -44,16 +49,8 @@ public class PlaEstudis {
     }
 
     /**
-     * Obtenir els quadrimestres del pla d'estudis
-     * @return quadrimestres
-     */
-
-    public ArrayList<Quadrimestre> getQuadrimestres() {
-        return quadrimestres;
-    }
-
-    /**
      * Et retorna si si el pla d'estudis està obsolet
+     *
      * @return obsolet
      */
     public boolean isObsolet() {
@@ -65,6 +62,7 @@ public class PlaEstudis {
 
     /**
      * Actualitza el nom de la titulació
+     *
      * @param nomTitulacio
      */
     public void setNomTitulacio(String nomTitulacio) {
@@ -73,6 +71,7 @@ public class PlaEstudis {
 
     /**
      * Actualitza l'any del pla d'estudis
+     *
      * @param any
      */
     public void setAny(Date any) {
@@ -82,18 +81,11 @@ public class PlaEstudis {
 
     /**
      * Actualitza la informació de si sobre està obsolet
+     *
      * @param obsolet
      */
     public void setObsolet(boolean obsolet) {
         this.obsolet = obsolet;
-    }
-
-    /**
-     * Actualitza els quadrimestres del pla d'estudis
-     * @param quadrimestres
-     */
-    public void setQuadrimestres(ArrayList<Quadrimestre> quadrimestres) {
-        this.quadrimestres = quadrimestres;
     }
 
 }

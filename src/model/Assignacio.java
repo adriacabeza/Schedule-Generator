@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 /**
  * @author Adrià Cabeza
  */
@@ -9,40 +7,50 @@ public abstract class Assignacio {
 
     private String diaSetmana;
     private int hora;
-    private int aula;
+    private int aula; //aula ha de ser un objecte de tipus aula
+
+    //TODO: guardar aqui tambe assignatura. posar-la a la constructora
 
     /**
-    Crea una assignació nova amb la informació corresponent
-    @param diaSetmana dia de la setmana pot ser un número del 1 al 5
-    @param hora hora a la que se li assigna l'assignacio
-    TODO: mirar si hem de guardar la hora de finalització
-    @param aula identificador d'una aula a la que se li ha fet una assignació
+     * Crea una assignació nova amb la informació corresponent
+     *
+     * @param diaSetmana dia de la setmana pot ser un número del 1 al 5
+     * @param hora       hora a la que se li assigna l'assignacio
+     *                   TODO: mirar si hem de guardar la hora de finalització TONI APPROVES
+     * @param aula       identificador d'una aula a la que se li ha fet una assignació
      */
 
     public Assignacio(String diaSetmana, int hora, int aula) {
         this.diaSetmana = diaSetmana;
         this.hora = hora;
         this.aula = aula;
+
     }
 
     /********** GETTERS ********/
 
 
-    /** Obtenir dia de la setmana
+    /**
+     * Obtenir dia de la setmana
+     *
      * @return dia diaSetmana
      */
     public String getDiaSetmana() {
         return diaSetmana;
     }
 
-    /** Obtenir la hora de l'assignació
+    /**
+     * Obtenir la hora de l'assignació
+     *
      * @return hora de l'assignació
      */
     public int getHora() {
         return hora;
     }
 
-    /** Obtenir l'aula de l'assignació
+    /**
+     * Obtenir l'aula de l'assignació
+     *
      * @return aula de l'assignació
      */
     public int getAula() {
@@ -52,7 +60,9 @@ public abstract class Assignacio {
     /****** SETTERS ********/
 
 
-    /** Actualitza el dia de la setmana
+    /**
+     * Actualitza el dia de la setmana
+     *
      * @param diaSetmana
      */
     public void setDiaSetmana(String diaSetmana) {
@@ -60,17 +70,27 @@ public abstract class Assignacio {
     }
 
 
-    /** Actualitza la hora de l'assignació
+    /**
+     * Actualitza la hora de l'assignació
+     *
      * @param hora
      */
     public void setHora(int hora) {
         this.hora = hora;
     }
 
-    /** Actualitza l'aula de l'assignació
+    /**
+     * Actualitza l'aula de l'assignació
+     *
      * @param aula
      */
     public void setAula(int aula) {
         this.aula = aula;
+    }
+
+    //TODO: implement equals for assignacio (hora, <PK> d'aula i dia son iguals)
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }
