@@ -1,6 +1,11 @@
 package model;
+import model.*;
 
-public class Restriccions {
+
+public abstract class Restriccions {
+
+    int id;
+
     private static Restriccions ourInstance = new Restriccions();
 
     public static Restriccions getInstance() {
@@ -8,8 +13,17 @@ public class Restriccions {
     }
 
     //TODO: tenemos que tener las restricciones unàries, binarias i n-arias
-    private Restriccions() {
+    public Restriccions(int id) {
+        this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public abstract boolean compleix();
 }
