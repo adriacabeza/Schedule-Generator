@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Subgrup extends Grup {
 
     private Grup grup;
-    // private ArrayList<AssignacioL> laboratoris; //TODO erase
 
 
     /**
@@ -19,6 +18,5 @@ public class Subgrup extends Grup {
      */
     public Subgrup(int capacitat, String nom, ArrayList<AssignacioT> teo, ArrayList<Subgrup> subgrups, ArrayList<AssignacioL> laboratoris) {
         super(capacitat, nom, teo, subgrups);
-        //this.laboratoris = laboratoris; //TODO erase
     }
 }

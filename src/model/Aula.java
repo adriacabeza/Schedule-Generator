@@ -8,7 +8,7 @@ public class Aula {
     private int planta;
     private int aula;
     private String tipusAula;
-    //private ArrayList<Assignacio> assignacions; //TODO erase
+
 
 
     /**
@@ -25,7 +25,6 @@ public class Aula {
         this.planta = planta;
         this.aula = aula;
         this.tipusAula = tipusAula;
-        //this.assignacions = assignacions; //TODO erase
     }
 
 
@@ -72,15 +71,6 @@ public class Aula {
     }
 
 
-    //TODO erase
-    /**
-     * Obtenir les assigancions que t� aquesta aula
-     * @return les assignacions que t� l'aula
-     */
-	/*public ArrayList<Assignacio> getAssignacions(){
-		return assignacions;
-	}*/
-
 
     /****** SETTERS ********/
 
@@ -124,14 +114,5 @@ public class Aula {
         this.tipusAula = tipusaula;
     }
 
-
-    /**
-     * Actualitza les assignacions corresponents a una aula
-     *
-     * @param assignacions indica les noves assignacions a la aula
-     */
-	/* public void setAssignacions(ArrayList<Assignacio> assignacions) {
-		this.assignacions = assignacions;
-	} */ //TODO erase
 
 }

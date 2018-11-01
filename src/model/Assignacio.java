@@ -1,15 +1,13 @@
 package model;
 
-/**
- * @author Adrià Cabeza
- */
+
+
 public abstract class Assignacio {
 
     private String diaSetmana;
     private int hora;
     private int aula; //aula ha de ser un objecte de tipus aula
-
-    //TODO: guardar aqui tambe assignatura. posar-la a la constructora
+    private Assignatura assignatura;
 
     /**
      * Crea una assignació nova amb la informació corresponent
@@ -20,10 +18,11 @@ public abstract class Assignacio {
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
      */
 
-    public Assignacio(String diaSetmana, int hora, int aula) {
+    public Assignacio(String diaSetmana, int hora, int aula, Assignatura assignatura) {
         this.diaSetmana = diaSetmana;
         this.hora = hora;
         this.aula = aula;
+        this.assignatura = assignatura;
 
     }
 
@@ -57,6 +56,17 @@ public abstract class Assignacio {
         return aula;
     }
 
+    /**
+     * Obtenir una assignatura d'una assignació
+     * @return assigntura de l'assignació
+     */
+
+    public Assignatura getAssignatura() {
+        return assignatura;
+    }
+
+
+
     /****** SETTERS ********/
 
 
@@ -88,9 +98,18 @@ public abstract class Assignacio {
         this.aula = aula;
     }
 
-    //TODO: implement equals for assignacio (hora, <PK> d'aula i dia son iguals)
+
+    /**
+     * Actualitza l'assignatura d'una assignació
+     * @param assignatura
+     */
+    public void setAssignatura(Assignatura assignatura) {
+        this.assignatura = assignatura;
+    }
+
+
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Assignacio obj) {
+        return (this.diaSetmana.equals(obj.getDiaSetmana()) && (this.hora == obj.getHora()) && (this.aula == obj.getAula())  && (this.assignatura == obj.getAssignatura()));
     }
 }

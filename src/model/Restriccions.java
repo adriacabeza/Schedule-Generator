@@ -1,15 +1,28 @@
 package model;
+import model.*;
 
-public class Restriccions {
-    private static Restriccions ourInstance = new Restriccions();
 
-    public static Restriccions getInstance() {
-        return ourInstance;
+public abstract class Restriccions {
+
+    int id;
+//
+//    private static Restriccions ourInstance = new Restriccions();
+//    //TODO: preguntar a aina que coño e ezto i why dafuq cannot be abstract
+//    public static Restriccions getInstance() {
+//        return ourInstance;
+//    }
+
+    public Restriccions(int id) {
+        this.id = id;
     }
 
-    //TODO: tenemos que tener las restricciones unàries, binarias i n-arias
-    private Restriccions() {
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public abstract boolean compleix();
 }

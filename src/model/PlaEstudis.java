@@ -10,9 +10,6 @@ public class PlaEstudis {
     private boolean obsolet;
 
 
-    //TODO: void afegirAssignatura(Assignatura a)
-    //TODO: void esborrarAssignatura(String nomA)
-    //TODO: ArrayLsit<Assignatures> getAssignatures()
 
     /**
      * Crea un Pla d'Estudis nou amb la seva informació corresponent
@@ -87,5 +84,32 @@ public class PlaEstudis {
     public void setObsolet(boolean obsolet) {
         this.obsolet = obsolet;
     }
+
+    /**
+     * Afegeix una assignatura al pla d'estudis
+     * @param a que és l'objecte assignatura
+     */
+    public void afegirAssignatura(Assignatura a){
+        this.assignatures.add(a);
+    }
+
+    /**
+     * Esborra una assignatura del pla d'estudis
+     * @param nomA que és el nom de l'assignatura
+     */
+    void esborrarAssignatura(String nomA){
+        this.assignatures.remove(nomA);
+    }
+
+    /**
+     * Retorna el conjunt d'assignatures del pla d'estudis
+     * @return assignatures
+     */
+    ArrayList<Assignatura> getAssignatures(){
+        return assignatures;
+    }
+
+
+
 
 }
