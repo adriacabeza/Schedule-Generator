@@ -2,7 +2,7 @@ package model;
 
 public class AssignacioL extends Assignacio {
     private String tipusAula;
-    //TODO guardar aqui el SUBGRUP, posarlo a la constructora
+    private Subgrup subgrup;
 
     /**
      * Crea una assignació de laboratori
@@ -12,9 +12,10 @@ public class AssignacioL extends Assignacio {
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
      * @param tipusAula  tipus d'aula
      */
-    public AssignacioL(String diaSetmana, int hora, int aula, String tipusAula) {
-        super(diaSetmana, hora, aula);
+    public AssignacioL(String diaSetmana, int hora, int aula, String tipusAula, Assignatura assignatura, Subgrup subgrup) {
+        super(diaSetmana, hora, aula, assignatura);
         this.tipusAula = tipusAula;
+        this.subgrup = subgrup;
     }
 
     /**
@@ -34,5 +35,22 @@ public class AssignacioL extends Assignacio {
 
     public void setTipusAula(String tipusAula) {
         this.tipusAula = tipusAula;
+    }
+
+
+    /**
+     * Obtenir el subgrup
+     * @return subgrup de l'assignació
+     */
+    public Subgrup getSubgrup() {
+        return subgrup;
+    }
+
+    /**
+     * Actualitza el subgrup
+     * @param subgrup de l'assignació
+     */
+    public void setSubgrup(Subgrup subgrup) {
+        this.subgrup = subgrup;
     }
 }

@@ -7,12 +7,11 @@ public abstract class Restriccions {
     int id;
 
     private static Restriccions ourInstance = new Restriccions();
-
+    //TODO: preguntar a aina que coño e ezto i why dafuq cannot be abstract
     public static Restriccions getInstance() {
         return ourInstance;
     }
 
-    //TODO: tenemos que tener las restricciones unàries, binarias i n-arias
     public Restriccions(int id) {
         this.id = id;
     }

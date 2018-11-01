@@ -24,6 +24,12 @@ public class CtrDomini {
     private ArrayList<Assignacio> assignacions = new ArrayList<Assignacio>();
     private Restriccions r;
 
+
+    private String crearkey(String edifici, int planta, int aula){
+        return edifici + String.valueOf(planta)+ String.valueOf(aula);
+    }
+
+
     private CtrDomini() {
 
     }
@@ -238,9 +244,10 @@ public class CtrDomini {
 
     /******************* AULES ************************/
 
-    // TODO fer excepcions i comentarles, fer alguna funcio mes si cal pel controller i una funcio que et buildeji auto la key
+
+    // TODO fer excepcions i comentarles, fer alguna funcio mes si cal pel controller
     public void creaAula(String edifici, int planta, int aula, String tipusAula, ArrayList<Assignacio> assignacions) throws RestriccioIntegritatException {
-        String nomaula = edifici + planta + aula;
+        String nomaula = crearkey(edifici , planta , aula);
 
         if (!aules.containsKey(nomaula)) {
             aules.put(nomaula, new Aula(edifici, planta, aula, tipusAula, assignacions));

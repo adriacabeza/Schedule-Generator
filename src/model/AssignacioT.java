@@ -2,7 +2,7 @@ package model;
 
 public class AssignacioT extends Assignacio {
     private String tipusAula;
-    //TODO GUARDAR AQUI EL GRUP posarlo a la constructora
+    private Grup grup;
 
     /**
      * Crea una assignació de teoria
@@ -12,8 +12,9 @@ public class AssignacioT extends Assignacio {
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
      */
 
-    public AssignacioT(String diaSetmana, int hora, int aula, String tipusAula) {
-        super(diaSetmana, hora, aula);
+    public AssignacioT(String diaSetmana, int hora, int aula, String tipusAula, Assignatura assignatura, Grup grup) {
+        super(diaSetmana, hora, aula,assignatura);
+        this.grup = grup;
         this.tipusAula = tipusAula;
     }
 
@@ -35,5 +36,22 @@ public class AssignacioT extends Assignacio {
 
     public void setTipusAula(String tipusAula) {
         this.tipusAula = tipusAula;
+    }
+
+
+    /**
+     * Obtenir el grup
+     * @return grup
+     */
+    public Grup getGrup() {
+        return grup;
+    }
+
+    /**
+     * Actualitza el grup de l'assignació
+     * @param grup
+     */
+    public void setGrup(Grup grup) {
+        this.grup = grup;
     }
 }
