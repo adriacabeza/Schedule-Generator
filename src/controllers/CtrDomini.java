@@ -18,6 +18,8 @@ public class CtrDomini {
         return ourInstance;
     }
 
+
+
     private HashMap<String, Assignatura> assignatures = new HashMap<String,Assignatura>();
     private HashMap<String, PlaEstudis> plaEstudis = new HashMap<String,PlaEstudis>();
     private HashMap<String, Aula> aules = new HashMap<String,Aula>();
@@ -286,11 +288,7 @@ public class CtrDomini {
 //    HashMap<String, Aula> aules = aules;
 
 
-    private HashMap<String, Assignatura> assignatures = new HashMap<String,Assignatura>();
-    private HashMap<String, PlaEstudis> plaEstudis = new HashMap<String,PlaEstudis>();
-    private HashMap<String, Aula> aules = new HashMap<String,Aula>();
-    private Assignacio [][][] horari = new Assignacio [12][5][aules.size()];
-    private Restriccions r;
+
 
     private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
     private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
@@ -299,10 +297,10 @@ public class CtrDomini {
 
     //TODO: no entiendo pa que sirve pla d'estudi, las assignaturas estas son todas?
 
-    public boolean creaHorari(int i, String diaSetmana, int hora ){
+    public boolean creaHorari(int i, int diaSetmana, int hora, int aula ){
 
         if(i == assignatures.size()) {
-            return true;
+            return true; //horari fet
         }
         else{
             Assignatura assig = assignatures2.get(i);
@@ -318,9 +316,11 @@ public class CtrDomini {
                         }
 /**
  * mirar si la duració de la infosessió (de teoria o de pràtica) que és un atribut d'assignatura + la hroa a la que ho volem posar ens passaríem o no
+ * en tota la duració de infosessió l'aula estigui lliure, que no es solapin teoria i laboratori durant tota la llarga de la sessió , contador de número de sessions que estem fent
+ * sobretot per el backtracking
  */
 
-                    }//TODO que no es solapin teoria i laboratori
+                    }
                     if (horari[i][j][k] == null) {
                         horari[i][j][k] = new AssignacioT(diaSetmana, hora, aula, "teoria", assig, grups2.get(k)); //aixo et crea les classes de teoria
                     }
