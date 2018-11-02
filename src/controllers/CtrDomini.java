@@ -313,7 +313,12 @@ public class CtrDomini {
                     for(int l = 0; l < subgrups.size(); ++l){
                         if (horari[i][j][k] == null) {
                             horari[i][j][k] = new AssignacioL(diaSetmana, hora, aula, "laboratori", assig, subgrups.get(l)); //aixo et crea els laboratoris
+                            //mirar si es pot, sinó es pot la treuen i proven el següent
+                            //si es pot col·locar fan la següent
                         }
+/**
+ * mirar si la duració de la infosessió (de teoria o de pràtica) que és un atribut d'assignatura + la hroa a la que ho volem posar ens passaríem o no
+ */
 
                     }//TODO que no es solapin teoria i laboratori
                     if (horari[i][j][k] == null) {
