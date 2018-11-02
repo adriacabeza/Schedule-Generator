@@ -7,6 +7,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class CtrDomini {
@@ -284,12 +285,54 @@ public class CtrDomini {
 //    HashMap<String, Assignatura> assignatures = assignatures;
 //    HashMap<String, Aula> aules = aules;
 
-    public void creaHorari(int i){
+
+    private HashMap<String, Assignatura> assignatures = new HashMap<String,Assignatura>();
+    private HashMap<String, PlaEstudis> plaEstudis = new HashMap<String,PlaEstudis>();
+    private HashMap<String, Aula> aules = new HashMap<String,Aula>();
+    private Assignacio [][][] horari = new Assignacio [12][5][aules.size()];
+    private Restriccions r;
+
+    private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
+    private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
 
 
 
+    //TODO: no entiendo pa que sirve pla d'estudi, las assignaturas estas son todas?
+
+    public boolean creaHorari(int i, String diaSetmana, int hora ){
+
+        if(i == assignatures.size()) {
+            return true;
+        }
+        else{
+            Assignatura assig = assignatures2.get(i);
+            for(int j = 0; j < assig.GetSizeGrups() ;++j) {
+                ArrayList<Grup> grups2 = new ArrayList<Grup>(assig.getGrups().values()); //TODO arreglar chapuza
+                for( int k = 0; k < grups2.size(); ++k){
+                    ArrayList<Subgrup> subgrups = grups2.get(k).getSubgrups();
+                    for(int l = 0; l < subgrups.size(); ++l){
+                        if (horari[i][j][k] == null) {
+                            horari[i][j][k] = new AssignacioL(diaSetmana, hora, aula, "laboratori", assig, subgrups.get(l)); //aixo et crea els laboratoris
+                        }
+
+                    }//TODO que no es solapin teoria i laboratori
+                    if (horari[i][j][k] == null) {
+                        horari[i][j][k] = new AssignacioT(diaSetmana, hora, aula, "teoria", assig, grups2.get(k)); //aixo et crea les classes de teoria
+                    }
+
+
+                }
+
+            }
+
+        }
 
     }
+
+
+
+
+
 
     /*
     public void crearAssignacio(Aula aula, Assignatura assignatura, int grup, int hora, int dia, boolean teoria){
