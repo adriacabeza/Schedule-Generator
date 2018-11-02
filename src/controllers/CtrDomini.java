@@ -17,11 +17,10 @@ public class CtrDomini {
         return ourInstance;
     }
 
-    private HashMap<String, Assignatura> assignatures = new HashMap<>();
-    private HashMap<String, PlaEstudis> plaEstudis = new HashMap<>();
-    private HashMap<String, Aula> aules = new HashMap<>();
-
-    private ArrayList<Assignacio> assignacions = new ArrayList<Assignacio>();
+    private HashMap<String, Assignatura> assignatures = new HashMap<String,Assignatura>();
+    private HashMap<String, PlaEstudis> plaEstudis = new HashMap<String,PlaEstudis>();
+    private HashMap<String, Aula> aules = new HashMap<String,Aula>();
+    private Assignacio [][][] horari = new Assignacio [12][5][aules.size()];
     private Restriccions r;
 
 
@@ -33,6 +32,8 @@ public class CtrDomini {
     private CtrDomini() {
 
     }
+
+
 
     /****************** PLA D'ESTUDIS *******************/
 
@@ -278,7 +279,15 @@ public class CtrDomini {
     /**
      * sobre assignacions
      */
-    public void generarHorari() {
+
+//
+//    HashMap<String, Assignatura> assignatures = assignatures;
+//    HashMap<String, Aula> aules = aules;
+
+    public void creaHorari(int i){
+
+
+
 
     }
 
