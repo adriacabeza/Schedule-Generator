@@ -12,7 +12,7 @@ public class AssignacioL extends Assignacio {
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
      * @param tipusAula  tipus d'aula
      */
-    public AssignacioL(String diaSetmana, int hora, int aula, String tipusAula, Assignatura assignatura, Subgrup subgrup) {
+    public AssignacioL(String diaSetmana, int hora, Aula aula, String tipusAula, Assignatura assignatura, Subgrup subgrup) {
         super(diaSetmana, hora, aula, assignatura);
         this.tipusAula = tipusAula;
         this.subgrup = subgrup;

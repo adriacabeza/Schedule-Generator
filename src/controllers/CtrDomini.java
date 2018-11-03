@@ -288,20 +288,20 @@ public class CtrDomini {
     //TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado
 
     public String fromInt2dia(int dia){
-        if(dia == 1) return "Dilluns";
-        else if(dia == 2) return "Dimarts";
-        else if(dia == 3) return "Dimecres;";
-        else if (dia == 4) return "Dijous";
-        else if (dia == 5) return "Divendres";
+        if(dia == 0) return "Dilluns";
+        else if(dia == 1) return "Dimarts";
+        else if(dia == 2) return "Dimecres;";
+        else if (dia == 3) return "Dijous";
+        else if (dia == 4) return "Divendres";
 
     }
 
     public boolean comprovarini(int aula, int dia, int hora) {
         if (aula > aules2.size()) {
             return true;
-        } else if (dia > 5) {
+        } else if (dia > 4) {
             return true;
-        } else if (hora > 6) {
+        } else if (hora > 11) {
             return true;
         }
     }
@@ -311,7 +311,9 @@ public class CtrDomini {
     private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
     private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
 
-    public boolean comprovar_restricciones(Aula aula,Grup grup, int dia, int hora, Assignatura assig) throws NotFoundException {
+    public boolean comprovar_restricciones(int aula1,int grup, int dia, int hora, Assignatura assig, boolean teolab) throws NotFoundException {
+        Aula aula = aules2.get(aula1);
+        Grup grup = grups; //ESPERAR A TONI
         if (aula.getCapacitat() < grup.getCapacitat()) return false; //restricció que mira si la capacitat és la adequada
 
         for (int i = 0; i < aules.size(); ++i) {
@@ -322,10 +324,20 @@ public class CtrDomini {
         for (int i = 0; i < aules.size(); ++i) {
             if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
         } //restricció que mira si ja està posat una assignatura del mateix nivell
+
+        if(teolab) {//eso significa que la asignación sería de teoría
+            if (aula.getTipusAula() == "laboratori") return false;
+        } else {
+            if(aula.getTipusAula() == "teoria") return false;
+        }
+
+
         return true;
     }
 
-    public boolean creaHorari(int i, int dia, int hora, int aula, int grup) {
+//TODO: contador de les sessions que ha tinc  i pillar infosessions per lo de duracio i tal i tema grup i subgrup
+
+    public boolean creaHorari(int i, int dia, int hora, int aula, int grup) throws NotFoundException {
 
         if(comprovarini(aula,dia,hora)) return false; //això lo que fa es parar la recursivitat per aquesta via perquè no pot comprovar ni per un dissabte, ni per aules ni hores que no existeixen
 
@@ -337,11 +349,11 @@ public class CtrDomini {
         else {
             Assignatura assig = assignatures2.get(i); //esta es la asignatura que toca
             if(toca hacer_teoria){
-                if (biene) { //comprovar restriciones
-                    horari[hora][dia][aula] = new AssignacioT(hora, fromInt2dia(dia), aula, "teoria",assig, grup );
+                if (comprovar_restricciones(aula, grup, dia, hora, assig,1)) { //comprovar restriciones
+                    horari[hora][dia][aula] = new AssignacioT(fromInt2dia(dia), hora, aules2.get(aula), "teoria",assig, grup );
                     if(grup == grups.size()) //comprovar si ja és l'últim grup de l'assignatura
-                        creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
-                    else creaHorari(i,0,0,0,assig,grup+1); //vamos a buscarle sitio al siguiente grupo
+                        creaHorari(i + 1, 0, 0, 0,0);//vamos a provar pa la asignatura siguiente
+                    else creaHorari(i,0,0,0,grup+1); //vamos a buscarle sitio al siguiente grupo
 
                 } else {
                     boolean b = creaHorari(i, dia + 1, hora, aula, grup); //voy a provar para el siguiente dia
@@ -355,11 +367,10 @@ public class CtrDomini {
                     }
                 }
             }
-//TODO checkear si las comprovaciones de los booleanos b,b1 y b2 hacen falta porque creo que no
             else { //toca los de laboratorio
-              if(biene){ //comprovar restricciones
-                  horari[hora][dia][aula] =  new AssignacioL(hora, fromInt2dia(dia), aula, "laboratori",assig, grup );
-                  creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+              if(comprovar_restricciones(aula, grup, dia, hora, assig,0)){ //comprovar restricciones
+                  horari[hora][dia][aula] =  new AssignacioL(fromInt2dia(dia), hora, aules2.get(aula), "laboratori",assig, grup );
+                  creaHorari(i + 1, 0, 0, 0,0);//vamos a provar pa la asignatura siguiente
               }
               else{
                   boolean b = creaHorari(i, dia + 1, hora, aula, grup); //voy a provar para el siguiente dia
