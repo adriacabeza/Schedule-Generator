@@ -283,10 +283,28 @@ public class CtrDomini {
      * sobre assignacions
      */
 
-//
-//    HashMap<String, Assignatura> assignatures = assignatures;
-//    HashMap<String, Aula> aules = aules;
 
+
+    //TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado
+
+    public String fromInt2dia(int dia){
+        if(dia == 1) return "Dilluns";
+        else if(dia == 2) return "Dimarts";
+        else if(dia == 3) return "Dimecres;";
+        else if (dia == 4) return "Dijous";
+        else if (dia == 5) return "Divendres";
+
+    }
+
+    public boolean comprovarini(int aula, int dia, int hora) {
+        if (aula > aules2.size()) {
+            return true;
+        } else if (dia > 5) {
+            return true;
+        } else if (hora > 6) {
+            return true;
+        }
+    }
 
 
 
@@ -294,47 +312,63 @@ public class CtrDomini {
     private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
 
 
+    public boolean creaHorari(int i, int dia, int hora, int aula, int grup) {
 
-    //TODO: no entiendo pa que sirve pla d'estudi, las assignaturas estas son todas?
+        if(comprovarini(aula,dia,hora)) return false; //això lo que fa es parar la recursivitat per aquesta via perquè no pot comprovar ni per un dissabte, ni per aules ni hores que no existeixen
 
-    public boolean creaHorari(int i, int diaSetmana, int hora, int aula ){
-
-        if(i == assignatures.size()) {
-            return true; //horari fet
+        if (i == assignatures.size()) {
+            return true; //ja que he mirat totes les asssignatures osea que DONE
         }
-        else{
-            Assignatura assig = assignatures2.get(i);
-            for(int j = 0; j < assig.GetSizeGrups() ;++j) {
-                ArrayList<Grup> grups2 = new ArrayList<Grup>(assig.getGrups().values()); //TODO arreglar chapuza
-                for( int k = 0; k < grups2.size(); ++k){
-                    ArrayList<Subgrup> subgrups = grups2.get(k).getSubgrups();
-                    for(int l = 0; l < subgrups.size(); ++l){
-                        if (horari[i][j][k] == null) {
-                            horari[i][j][k] = new AssignacioL(diaSetmana, hora, aula, "laboratori", assig, subgrups.get(l)); //aixo et crea els laboratoris
-                            //mirar si es pot, sinó es pot la treuen i proven el següent
-                            //si es pot col·locar fan la següent
+
+
+        else {
+            Assignatura assig = assignatures2.get(i); //esta es la asignatura que toca
+
+            if(toca hacer_teoria){
+                if (biene) { //comprovar restriciones
+                    horari[hora][dia][aula] = new AssignacioT(hora, fromInt2dia(dia), aula, "teoria",assig, grup );
+                    if(grup == grups.size()) //comprovar si ja és l'últim grup de l'assignatura
+                        creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+                    else creaHorari(i,0,0,0,assig,grup+1); //vamos a buscarle sitio al siguiente grupo
+
+                } else {
+                    boolean b = creaHorari(i, dia + 1, hora, aula, grup); //voy a provar para el siguiente dia
+                    if (!b) {
+                        boolean b1 = creaHorari(i, dia, hora + 1, aula, grup); //voy a provar para el siguiente hora
+                        if (!b1) {
+                            boolean b2 = creaHorari(i, dia, hora, aula + 1, grup); //voy a provar para el siguiente aula
+                            if(b2) return false; //no se puede hacer el horario de ninguna manera
                         }
+
+                    }
+                }
+            }
+
+            else { //toca los de laboratorio
+              if(biene){ //comprovar restricciones
+                  horari[hora][dia][aula] =  new AssignacioL(hora, fromInt2dia(dia), aula, "laboratori",assig, grup );
+                  creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+              }
+              else{
+                  boolean b = creaHorari(i, dia + 1, hora, aula, grup); //voy a provar para el siguiente dia
+                  if (!b) {
+                      boolean b1 = creaHorari(i, dia, hora + 1, aula, grup); //voy a provar para el siguiente hora
+                      if (!b1) {
+                          boolean b2 = creaHorari(i, dia, hora, aula + 1, grup); //voy a provar para el siguiente aula
+                          if(b2) return false; //no se puede hacer el horario de ninguna manera
+                      }
+
+                  }
+              }
+            }
+        }
+    }
+
 /**
  * mirar si la duració de la infosessió (de teoria o de pràtica) que és un atribut d'assignatura + la hroa a la que ho volem posar ens passaríem o no
  * en tota la duració de infosessió l'aula estigui lliure, que no es solapin teoria i laboratori durant tota la llarga de la sessió , contador de número de sessions que estem fent
  * sobretot per el backtracking
  */
-
-                    }
-                    if (horari[i][j][k] == null) {
-                        horari[i][j][k] = new AssignacioT(diaSetmana, hora, aula, "teoria", assig, grups2.get(k)); //aixo et crea les classes de teoria
-                    }
-
-
-                }
-
-            }
-
-        }
-
-    }
-
-
 
 
 
