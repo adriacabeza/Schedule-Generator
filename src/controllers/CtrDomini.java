@@ -289,52 +289,57 @@ public class CtrDomini {
 
 
 
+    public String fromInt2dia(int dia){
+        if(dia == 1) return "Dilluns";
+        else if(dia == 2) return "Dimarts";
+        else if(dia == 3) return "Dimecres;";
+        else if (dia == 4) return "Dijous";
+        else if (dia == 5) return "Divendres";
+
+    }
+
 
     private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
     private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
+  /*  private Assignacio [][][] horari = new Assignacio [12][5][aules.size()]; String diaSetmana, int hora, int aula, String tipusAula, Assignatura assignatura, Grup grup) {*/
 
+    public boolean creaHorari(int i, int dia, int hora, int aula) {
 
-
-    //TODO: no entiendo pa que sirve pla d'estudi, las assignaturas estas son todas?
-
-    public boolean creaHorari(int i, int diaSetmana, int hora, int aula ){
-
-        if(i == assignatures.size()) {
-            return true; //horari fet
+        if (i == assignatures.size()) {
+            return true; //ja que he mirat totes les asssignatures osea que DONE
         }
-        else{
-            Assignatura assig = assignatures2.get(i);
-            for(int j = 0; j < assig.GetSizeGrups() ;++j) {
-                ArrayList<Grup> grups2 = new ArrayList<Grup>(assig.getGrups().values()); //TODO arreglar chapuza
-                for( int k = 0; k < grups2.size(); ++k){
-                    ArrayList<Subgrup> subgrups = grups2.get(k).getSubgrups();
-                    for(int l = 0; l < subgrups.size(); ++l){
-                        if (horari[i][j][k] == null) {
-                            horari[i][j][k] = new AssignacioL(diaSetmana, hora, aula, "laboratori", assig, subgrups.get(l)); //aixo et crea els laboratoris
-                            //mirar si es pot, sinó es pot la treuen i proven el següent
-                            //si es pot col·locar fan la següent
-                        }
+        else {
+            if(toca hacer_teoria){
+                if (biene) { //comprovar restriciones
+                    horari[hora][dia][aula] = new AssignacioT(hora, fromInt2dia(dia), aula, "teoria", );
+                    creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+                    //TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado
+                } else {
+                    creaHorari(i, dia + 1, hora, aula);
+                    creaHorari(i, dia, hora + 1, aula);
+                    creaHorari(i, dia, hora, aula + 1);
+                }
+            }
+
+            else { //toca los de laboratorio
+              if(biene){ //comprovar restricciones
+                  horari[hora][dia][aula] =  new AssignacioL(hora, fromInt2dia(dia), aula, "laboratori", );
+                  creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+              }
+              else{
+                  creaHorari(i, dia + 1, hora, aula);
+                  creaHorari(i, dia, hora + 1, aula);
+                  creaHorari(i, dia, hora, aula + 1);
+              }
+            }
+        }
+}
+
 /**
  * mirar si la duració de la infosessió (de teoria o de pràtica) que és un atribut d'assignatura + la hroa a la que ho volem posar ens passaríem o no
  * en tota la duració de infosessió l'aula estigui lliure, que no es solapin teoria i laboratori durant tota la llarga de la sessió , contador de número de sessions que estem fent
  * sobretot per el backtracking
  */
-
-                    }
-                    if (horari[i][j][k] == null) {
-                        horari[i][j][k] = new AssignacioT(diaSetmana, hora, aula, "teoria", assig, grups2.get(k)); //aixo et crea les classes de teoria
-                    }
-
-
-                }
-
-            }
-
-        }
-
-    }
-
-
 
 
 

@@ -251,4 +251,9 @@ public class Assignatura {
     public String toString() {
         return this.nom.toUpperCase();
     }
+
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 }
