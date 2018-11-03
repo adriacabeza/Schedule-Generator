@@ -8,6 +8,7 @@ public class Aula {
     private int planta;
     private int aula;
     private String tipusAula;
+    private int capacitat;
     private ArrayList<Assignacio> assignacions;
 
 
@@ -130,5 +131,13 @@ public class Aula {
      */
     public void setAssignacions(ArrayList<Assignacio> assignacions) {
         this.assignacions = assignacions;
+    }
+
+    public int getCapacitat() {
+        return capacitat;
+    }
+
+    public void setCapacitat(int capacitat) {
+        this.capacitat = capacitat;
     }
 }

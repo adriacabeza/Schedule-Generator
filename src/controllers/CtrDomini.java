@@ -311,6 +311,19 @@ public class CtrDomini {
     private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
     private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
 
+    public boolean comprovar_restricciones(Aula aula,Grup grup, int dia, int hora, Assignatura assig) throws NotFoundException {
+        if (aula.getCapacitat() < grup.getCapacitat()) return false; //restricció que mira si la capacitat és la adequada
+
+        for (int i = 0; i < aules.size(); ++i) {
+            if (horari[hora][dia][i].getAssignatura().getCorrequisits().contains(assig)) return false;
+        } //restricció que mira si ja està posada una assignatura correquisit en aquesta hora
+
+
+        for (int i = 0; i < aules.size(); ++i) {
+            if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
+        } //restricció que mira si ja està posat una assignatura del mateix nivell
+        return true;
+    }
 
     public boolean creaHorari(int i, int dia, int hora, int aula, int grup) {
 
@@ -323,7 +336,6 @@ public class CtrDomini {
 
         else {
             Assignatura assig = assignatures2.get(i); //esta es la asignatura que toca
-
             if(toca hacer_teoria){
                 if (biene) { //comprovar restriciones
                     horari[hora][dia][aula] = new AssignacioT(hora, fromInt2dia(dia), aula, "teoria",assig, grup );
@@ -343,7 +355,7 @@ public class CtrDomini {
                     }
                 }
             }
-
+//TODO checkear si las comprovaciones de los booleanos b,b1 y b2 hacen falta porque creo que no
             else { //toca los de laboratorio
               if(biene){ //comprovar restricciones
                   horari[hora][dia][aula] =  new AssignacioL(hora, fromInt2dia(dia), aula, "laboratori",assig, grup );
