@@ -91,6 +91,14 @@ public class Assignatura {
     }
 
     /**
+     * Obtenir la quantitat de grups que hi ha a una assignatura
+     * @return grups.size()
+     */
+    public int GetSizeGrups(){
+        return  grups.size();
+    }
+
+    /**
      * Obtenir tots els subgrups donat l'identificador d'un grup
      *
      * @param num identificador del grup

@@ -7,6 +7,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class CtrDomini {
@@ -16,6 +17,8 @@ public class CtrDomini {
     public static CtrDomini getInstance() {
         return ourInstance;
     }
+
+
 
     private HashMap<String, Assignatura> assignatures = new HashMap<String,Assignatura>();
     private HashMap<String, PlaEstudis> plaEstudis = new HashMap<String,PlaEstudis>();
@@ -284,12 +287,57 @@ public class CtrDomini {
 //    HashMap<String, Assignatura> assignatures = assignatures;
 //    HashMap<String, Aula> aules = aules;
 
-    public void creaHorari(int i){
 
 
 
+    private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
+    private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
+
+
+
+    //TODO: no entiendo pa que sirve pla d'estudi, las assignaturas estas son todas?
+
+    public boolean creaHorari(int i, int diaSetmana, int hora, int aula ){
+
+        if(i == assignatures.size()) {
+            return true; //horari fet
+        }
+        else{
+            Assignatura assig = assignatures2.get(i);
+            for(int j = 0; j < assig.GetSizeGrups() ;++j) {
+                ArrayList<Grup> grups2 = new ArrayList<Grup>(assig.getGrups().values()); //TODO arreglar chapuza
+                for( int k = 0; k < grups2.size(); ++k){
+                    ArrayList<Subgrup> subgrups = grups2.get(k).getSubgrups();
+                    for(int l = 0; l < subgrups.size(); ++l){
+                        if (horari[i][j][k] == null) {
+                            horari[i][j][k] = new AssignacioL(diaSetmana, hora, aula, "laboratori", assig, subgrups.get(l)); //aixo et crea els laboratoris
+                            //mirar si es pot, sinó es pot la treuen i proven el següent
+                            //si es pot col·locar fan la següent
+                        }
+/**
+ * mirar si la duració de la infosessió (de teoria o de pràtica) que és un atribut d'assignatura + la hroa a la que ho volem posar ens passaríem o no
+ * en tota la duració de infosessió l'aula estigui lliure, que no es solapin teoria i laboratori durant tota la llarga de la sessió , contador de número de sessions que estem fent
+ * sobretot per el backtracking
+ */
+
+                    }
+                    if (horari[i][j][k] == null) {
+                        horari[i][j][k] = new AssignacioT(diaSetmana, hora, aula, "teoria", assig, grups2.get(k)); //aixo et crea les classes de teoria
+                    }
+
+
+                }
+
+            }
+
+        }
 
     }
+
+
+
+
+
 
     /*
     public void crearAssignacio(Aula aula, Assignatura assignatura, int grup, int hora, int dia, boolean teoria){
