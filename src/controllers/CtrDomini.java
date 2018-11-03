@@ -312,7 +312,7 @@ public class CtrDomini {
     private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
 
 
-    public boolean creaHorari(int i, int dia, int hora, int aula) {
+    public boolean creaHorari(int i, int dia, int hora, int aula, int grup) {
 
         if(comprovarini(aula,dia,hora)) return false; //això lo que fa es parar la recursivitat per aquesta via perquè no pot comprovar ni per un dissabte, ni per aules ni hores que no existeixen
 
@@ -326,25 +326,39 @@ public class CtrDomini {
 
             if(toca hacer_teoria){
                 if (biene) { //comprovar restriciones
-                    horari[hora][dia][aula] = new AssignacioT(hora, fromInt2dia(dia), aula, "teoria", );
-                    creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+                    horari[hora][dia][aula] = new AssignacioT(hora, fromInt2dia(dia), aula, "teoria",assig, grup );
+                    if(grup == grups.size()) //comprovar si ja és l'últim grup de l'assignatura
+                        creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+                    else creaHorari(i,0,0,0,assig,grup+1); //vamos a buscarle sitio al siguiente grupo
 
                 } else {
-                    creaHorari(i, dia + 1, hora, aula);
-                    creaHorari(i, dia, hora + 1, aula);
-                    creaHorari(i, dia, hora, aula + 1);
+                    boolean b = creaHorari(i, dia + 1, hora, aula, grup); //voy a provar para el siguiente dia
+                    if (!b) {
+                        boolean b1 = creaHorari(i, dia, hora + 1, aula, grup); //voy a provar para el siguiente hora
+                        if (!b1) {
+                            boolean b2 = creaHorari(i, dia, hora, aula + 1, grup); //voy a provar para el siguiente aula
+                            if(b2) return false; //no se puede hacer el horario de ninguna manera
+                        }
+
+                    }
                 }
             }
 
             else { //toca los de laboratorio
               if(biene){ //comprovar restricciones
-                  horari[hora][dia][aula] =  new AssignacioL(hora, fromInt2dia(dia), aula, "laboratori", );
+                  horari[hora][dia][aula] =  new AssignacioL(hora, fromInt2dia(dia), aula, "laboratori",assig, grup );
                   creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
               }
               else{
-                  creaHorari(i, dia + 1, hora, aula);
-                  creaHorari(i, dia, hora + 1, aula);
-                  creaHorari(i, dia, hora, aula + 1);
+                  boolean b = creaHorari(i, dia + 1, hora, aula, grup); //voy a provar para el siguiente dia
+                  if (!b) {
+                      boolean b1 = creaHorari(i, dia, hora + 1, aula, grup); //voy a provar para el siguiente hora
+                      if (!b1) {
+                          boolean b2 = creaHorari(i, dia, hora, aula + 1, grup); //voy a provar para el siguiente aula
+                          if(b2) return false; //no se puede hacer el horario de ninguna manera
+                      }
+
+                  }
               }
             }
         }
