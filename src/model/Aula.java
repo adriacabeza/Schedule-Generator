@@ -8,7 +8,7 @@ public class Aula {
     private int planta;
     private int aula;
     private String tipusAula;
-
+    private ArrayList<Assignacio> assignacions;
 
 
     /**
@@ -25,6 +25,7 @@ public class Aula {
         this.planta = planta;
         this.aula = aula;
         this.tipusAula = tipusAula;
+        this.assignacions = assignacions;
     }
 
 
@@ -70,6 +71,14 @@ public class Aula {
         return tipusAula;
     }
 
+    /**
+     * Obtenir les assignacions
+     *
+     * @return assignacions
+     */
+    public ArrayList<Assignacio> getAssignacions() {
+        return assignacions;
+    }
 
 
     /****** SETTERS ********/
@@ -114,5 +123,12 @@ public class Aula {
         this.tipusAula = tipusaula;
     }
 
-
+    /**
+     * Actualitza les assignacions
+     *
+     * @param assignacions indica les noves assignacions
+     */
+    public void setAssignacions(ArrayList<Assignacio> assignacions) {
+        this.assignacions = assignacions;
+    }
 }
