@@ -26,6 +26,13 @@ public abstract class Assignacio {
 
     }
 
+    public Assignacio(){
+        diaSetmana = null;
+        hora = -1;
+        aula = -1;
+        assignatura = new Assignatura();
+    }
+
     /********** GETTERS ********/
 
 
