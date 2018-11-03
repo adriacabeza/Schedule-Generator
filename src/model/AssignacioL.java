@@ -18,11 +18,6 @@ public class AssignacioL extends Assignacio {
         this.subgrup = subgrup;
     }
 
-    public AssignacioL(){
-        super();
-        this.tipusAula = null;
-        this.subgrup = new Subgrup();
-    }
 
     /**
      * Obtenir tipus d'aula

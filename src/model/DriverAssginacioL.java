@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverAssginacioL {            //TODO: necessitariem creadors buits per a poderlos usar aqui ja que si no hem de ficar tot el relacionat amb un assignatura, grup, aula i a mes a mes el de assignacio
@@ -20,42 +21,22 @@ public class DriverAssginacioL {            //TODO: necessitariem creadors buits
 
     public static AssignacioL creador(Scanner s){
         String dia, tipusaula;
-        int hora,opt;
+        int hora,opt,aula;
         System.out.println("Introdueix el dia de la setmana");
         dia = s.next();
         System.out.println("Introdueix la hora");
         hora = s.nextInt();
         System.out.println("Introdueix el tipus d'Aula");
         tipusaula = s.next();
-        System.out.print("Ara escull si vols crear una aula:");
-        System.out.println("1: procedim a crear la aula relacionada amb aquesta assignacio");
-        System.out.println("2: li assigem una aula 'buida' denotada per -1");
-        int aula
-        opt = s.nextInt();
-        if(opt == 1){
-            aula = s.nextInt();
-        }
-        else {
-            aula = -1;
-        }
+        System.out.print("Ara indicarem l'aula");
+        System.out.print("Introdueix el numero d'aula");
+        aula = s.nextInt();
         Subgrup sub;
-        System.out.print("Ara escull si vols crear un subgrup:");
-        opt = s.nextInt();
-        if(opt == 1){
-            sub = creaSubgrup(s);
-        }
-        else {
-           sub = new Subgrup();
-        }
+        System.out.print("Ara indicarem el subgrup:");
+        sub = creaSubgrup(s);
         Assignatura assig;
-        System.out.print("Ara escull si vols crear una assignatura:");
-        opt = s.nextInt();
-        if(opt == 1){
-            assig = creaAssignatura(s);
-        }
-        else {
-            assig = new Assignatura();
-        }
+        System.out.print("Ara indicarem la assignatura:");
+        assig = creaAssignatura(s);
         AssignacioL assign = new AssignacioL(dia, hora, aula, tipusaula, assig, sub);
         return assign;
 
@@ -108,6 +89,22 @@ public class DriverAssginacioL {            //TODO: necessitariem creadors buits
             }
         }
     }
+
+    public static Subgrup creaSubgrup(Scanner s){
+        int opt;
+        System.out.print("Introdueix el numero de subgrup");
+        opt = s.nextInt();
+        return new Subgrup(0, opt , new ArrayList<AssignacioT> () , new ArrayList<Subgrup>() , new ArrayList<>() );
+    }
+
+    public static Assignatura creaAssignatura(Scanner s){
+        System.out.print("Introdueix el nom de la assignatura");
+        String nom = s.next();
+        System.out.print("Introdueix el numero de quadrimestre de la assignatura");
+        int quad = s.nextInt();
+        return new Assignatura(nom, quad, null, null );
+    }
+
 
     public static void modificaAssignacio(AssignacioL a, Scanner s){
         int opt = 0;
@@ -169,24 +166,6 @@ public class DriverAssginacioL {            //TODO: necessitariem creadors buits
                     break;
             }
         }
-
-    }
-
-
-    public static Subgrup creaSubgrup(Scanner s){
-        Subgrup sub = new Subgrup();
-        System.out.println("introdueix el numero de subgrup");
-        int aux = s.nextInt();
-        sub.setNum(aux);
-        return sub;
-    }
-
-    public static Assignatura creaAssignatura(Scanner s){
-        Assignatura sub = new Assignatura();
-        System.out.println("introdueix el nom de la assignatura");
-        String nom = s.next();
-        System.out.println("introdueix el quadrimestre de la assignatura");
-        int quadri = s.nextInt();
 
     }
 
