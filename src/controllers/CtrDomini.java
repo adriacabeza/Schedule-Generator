@@ -283,11 +283,9 @@ public class CtrDomini {
      * sobre assignacions
      */
 
-//
-//    HashMap<String, Assignatura> assignatures = assignatures;
-//    HashMap<String, Aula> aules = aules;
 
 
+    //TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado
 
     public String fromInt2dia(int dia){
         if(dia == 1) return "Dilluns";
@@ -298,22 +296,39 @@ public class CtrDomini {
 
     }
 
+    public boolean comprovarini(int aula, int dia, int hora) {
+        if (aula > aules2.size()) {
+            return true;
+        } else if (dia > 5) {
+            return true;
+        } else if (hora > 6) {
+            return true;
+        }
+    }
+
+
 
     private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
     private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
-  /*  private Assignacio [][][] horari = new Assignacio [12][5][aules.size()]; String diaSetmana, int hora, int aula, String tipusAula, Assignatura assignatura, Grup grup) {*/
+
 
     public boolean creaHorari(int i, int dia, int hora, int aula) {
+
+        if(comprovarini(aula,dia,hora)) return false; //això lo que fa es parar la recursivitat per aquesta via perquè no pot comprovar ni per un dissabte, ni per aules ni hores que no existeixen
 
         if (i == assignatures.size()) {
             return true; //ja que he mirat totes les asssignatures osea que DONE
         }
+
+
         else {
+            Assignatura assig = assignatures2.get(i); //esta es la asignatura que toca
+
             if(toca hacer_teoria){
                 if (biene) { //comprovar restriciones
                     horari[hora][dia][aula] = new AssignacioT(hora, fromInt2dia(dia), aula, "teoria", );
                     creaHorari(i + 1, 0, 0, 0);//vamos a provar pa la asignatura siguiente
-                    //TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado
+
                 } else {
                     creaHorari(i, dia + 1, hora, aula);
                     creaHorari(i, dia, hora + 1, aula);
@@ -333,7 +348,7 @@ public class CtrDomini {
               }
             }
         }
-}
+    }
 
 /**
  * mirar si la duració de la infosessió (de teoria o de pràtica) que és un atribut d'assignatura + la hroa a la que ho volem posar ens passaríem o no
