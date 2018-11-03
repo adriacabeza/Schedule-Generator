@@ -8,28 +8,22 @@ public class Grup {
 
     private int capacitat;
     private int num;
-//    private HashMap<int, Subgrup> subgrups;
-    private ArrayList<Subgrup> subgrups = new ArrayList<>(); //TODO hacerlo hashmap o algo con key un int que sea el numero de subgrupo
-
+    private HashMap<Integer, Subgrup> subgrups = new HashMap<Integer, Subgrup>();
+    //TODO: mirar si hay que mantener la lista de Assignacio desde grupo tmbn
 
     /**
      * Crea un nou grup amb la informació pertinent
      *
      * @param capacitat capacitat del grup
      * @param num       nom del grup
-     * @param teo       conjunt de classes de teoria que te el grup
      * @param subgrups  subgrups del qual es composa el grup
-     */ //TODO hacer bien la constructora y crear desde aqui los subgrupos
-    public Grup(int capacitat, int num, ArrayList<AssignacioT> teo, ArrayList<Subgrup> subgrups) {
-        this.capacitat = capacitat;
+     */
+    public Grup(int num, int capacitat, int subgrups ) {
         this.num = num;
-        //this.teories = teo;
-        this.subgrups = subgrups;
-    }
-
-    public Grup(){
-        capacitat = -1;
-        num = -1;
+        this.capacitat = capacitat;
+        for (int j = 1; j<=subgrups; j++){
+            this.subgrups.put(num+j, new Subgrup(num+j, capacitat/subgrups,0, this));
+        }
     }
 
 
@@ -63,7 +57,7 @@ public class Grup {
      *
      * @return els subgrups del grup
      */
-    public ArrayList<Subgrup> getSubgrups() {
+    public HashMap<Integer, Subgrup> getSubgrups() {
         return subgrups;
     }
 
