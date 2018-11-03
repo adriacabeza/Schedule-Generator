@@ -94,7 +94,7 @@ public class DriverAssginacioL {            //TODO: necessitariem creadors buits
         int opt;
         System.out.print("Introdueix el numero de subgrup");
         opt = s.nextInt();
-        return new Subgrup(0, opt , new ArrayList<AssignacioT> () , new ArrayList<Subgrup>() , new ArrayList<>() );
+        return new Subgrup(opt, 0 , 0 , null );
     }
 
     public static Assignatura creaAssignatura(Scanner s){
