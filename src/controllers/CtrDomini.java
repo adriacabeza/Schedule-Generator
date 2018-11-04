@@ -369,7 +369,6 @@ public class CtrDomini {
                           boolean b2 = creaHorari(i, dia, hora, aula + 1, grup); //voy a provar para el siguiente aula
                           if(b2) return false; //no se puede hacer el horario de ninguna manera
                       }
-
                   }
               }
             }
@@ -397,3 +396,29 @@ public class CtrDomini {
     }*/
 
 }
+
+
+    public ArrayList<AssignaturaMonosessio> mishmash (ArrayList<Assignatura> assignatures2){
+        ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
+        Teoria auxteo;
+        Laboratori auxlab;
+        int sesteo,seslab,valor
+        for(Assignatura a : assignatures2){
+            auxlab = a.getLaboratori();     //TODO: mirar com fer per a que no es throwee exception en cas de null, maybe alguna fucnio per poder mirar abans?
+            seslab = auxlab.getNumSessions();
+            auxlab.setNumSessions(1);
+            auxteo = a.getTeoria();
+            sesteo = auxteo.getNumSessions();
+            auxteo.setNumSessions(1);
+            valor = 8;                      //TODO: hauristica a assignar
+            for(int i = 0; i < seslab ; ++i) {
+                res.add(new AssignaturaMonosessio(a, auxlab, valor));
+                valor /= 2;
+            }
+            valor = 8;
+            for(int i = 0; i < sesteo ; ++i) {
+                res.add(new AssignaturaMonosessio(a, auxteo, valor));
+                valor /= 2;
+            }
+        }
+    }
