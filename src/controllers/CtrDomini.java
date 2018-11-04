@@ -310,10 +310,11 @@ public class CtrDomini {
 
     private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
     private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
+    private ArrayList <AssignaturaMonosessio> mishmash = mishmash(assignatures2); //TODO arreglar chapuza
 
-    public boolean comprovar_restricciones(int aula1,int grup, int dia, int hora, Assignatura assig, boolean teolab) throws NotFoundException {
+    public boolean comprovar_restricciones_teoria(int aula1,Grup grup, int dia, int hora, Assignatura assig) throws NotFoundException {
         Aula aula = aules2.get(aula1);
-        Grup grup = grups; //ESPERAR A TONI
+
         if (aula.getCapacitat() < grup.getCapacitat()) return false; //restricció que mira si la capacitat és la adequada
 
         for (int i = 0; i < aules.size(); ++i) {
@@ -325,88 +326,94 @@ public class CtrDomini {
             if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
         } //restricció que mira si ja està posat una assignatura del mateix nivell
 
-        if(teolab) {//eso significa que la asignación sería de teoría
-            if (aula.getTipusAula() == "laboratori") return false;
-        } else {
-            if(aula.getTipusAula() == "teoria") return false;
-        }
+
+/*
+        if (aula.getTipusAula() == "laboratori") return false; TONI DICE QUE NO
+*/
+
 
 
         return true;
     }
 
-//TODO: contador de les sessions que ha tinc  i pillar infosessions per lo de duracio i tal i tema grup i subgrup
 
-    public boolean creaHorari(int i, int dia, int hora, int aula, int grup) throws NotFoundException {
+    public boolean comprovar_restricciones_lab(int aula1,Subgrup subgrup, int dia, int hora, Assignatura assig) throws NotFoundException {
+        Aula aula = aules2.get(aula1);
+
+        if (aula.getCapacitat() < subgrup.getCapacitat()) return false; //restricció que mira si la capacitat és la adequada
+
+
+        //AQUÍ SE COMPLICAN LAS RESTRICCIONES
+        /*for (int i = 0; i < aules.size(); ++i) {
+            if (horari[hora][dia][i].getAssignatura().getCorrequisits().contains(assig)) return false;
+        }
+            if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
+        }
+
+        for(int i = 0; i< aules.size(); ++i) {
+            if (horari[hora][dia][i].getAssignatura() == assig && horari[hora][dia][i].getAula().getTipusAula() == "teoria")
+        }*/
+
+
+        if (aula.getTipusAula() == "teoria") return false;
+
+        return true;
+    }
+
+
+    public boolean creaHorari(int i, int dia, int hora, int aula, int grup, int subgrup) throws NotFoundException {
 
         if(comprovarini(aula,dia,hora)) return false; //això lo que fa es parar la recursivitat per aquesta via perquè no pot comprovar ni per un dissabte, ni per aules ni hores que no existeixen
 
-        if (i == assignatures.size()) {
+        if (i == mishmash.size()) {
             return true; //ja que he mirat totes les asssignatures osea que DONE
         }
 
-
         else {
             Assignatura assig = assignatures2.get(i); //esta es la asignatura que toca
-            if(toca hacer_teoria){
-                if (comprovar_restricciones(aula, grup, dia, hora, assig,1)) { //comprovar restriciones
-                    horari[hora][dia][aula] = new AssignacioT(fromInt2dia(dia), hora, aules2.get(aula), "teoria",assig, grup );
-                    if(grup == grups.size()) //comprovar si ja és l'últim grup de l'assignatura
-                        creaHorari(i + 1, 0, 0, 0,0);//vamos a provar pa la asignatura siguiente
-                    else creaHorari(i,0,0,0,grup+1); //vamos a buscarle sitio al siguiente grupo
+            if(mishmash.get(i).getAssig().get  ){ //saber si es teoria o no
+                Grup grup1  = mishmash.get(i).getAssig().getGrup(grup);
+                if (comprovar_restricciones_teoria(aula, grup1,dia, hora, assig)) {
+                    horari[hora][dia][aula] = new AssignacioT(fromInt2dia(dia), hora, aules2.get(aula), "teoria",assig, grup1);
+                    if(grup == assig.getGrups().size()) //comprovar si ja és l'últim grup de l'assignatura
+                        creaHorari(i + 1, 0, 0, 0,0,0);//vamos a provar pa la asignatura siguiente
+                    else creaHorari(i,0,0,0,grup+10, subgrup); //vamos a buscarle sitio al siguiente grupo
 
                 } else {
-                    boolean b = creaHorari(i, dia + 1, hora, aula, grup); //voy a provar para el siguiente dia
+                    boolean b = creaHorari(i, dia + 1, hora, aula, grup,subgrup); //voy a provar para el siguiente dia
                     if (!b) {
-                        boolean b1 = creaHorari(i, dia, hora + 1, aula, grup); //voy a provar para el siguiente hora
+                        boolean b1 = creaHorari(i, dia, hora + 1, aula, grup,subgrup); //voy a provar para el siguiente hora
                         if (!b1) {
-                            boolean b2 = creaHorari(i, dia, hora, aula + 1, grup); //voy a provar para el siguiente aula
+                            boolean b2 = creaHorari(i, dia, hora, aula + 1, grup,subgrup); //voy a provar para el siguiente aula
                             if(b2) return false; //no se puede hacer el horario de ninguna manera
                         }
 
                     }
                 }
             }
-            else { //toca los de laboratorio
-              if(comprovar_restricciones(aula, grup, dia, hora, assig,0)){ //comprovar restricciones
-                  horari[hora][dia][aula] =  new AssignacioL(fromInt2dia(dia), hora, aules2.get(aula), "laboratori",assig, grup );
-                  creaHorari(i + 1, 0, 0, 0,0);//vamos a provar pa la asignatura siguiente
+            else {
+                Grup grup1  = assig.getGrup(grup);
+                Subgrup subgrup1 = grup1.getSubgrups().get(subgrup);
+              if(comprovar_restricciones_lab(aula, subgrup1, dia, hora, assig)){ //comprovar restricciones
+                  horari[hora][dia][aula] =  new AssignacioL(fromInt2dia(dia), hora, aules2.get(aula), "laboratori",assig, subgrup1 );
+                  if(subgrup == mishmash.get(i).getAssig().getSubgrups(grup).size())
+                     creaHorari(i + 1, 0, 0, 0,0,0);//vamos a provar pa la asignatura siguiente
+                  else creaHorari(i,0,0,0, grup,subgrup+1);
               }
               else{
-                  boolean b = creaHorari(i, dia + 1, hora, aula, grup); //voy a provar para el siguiente dia
+                  boolean b = creaHorari(i, dia + 1, hora, aula, grup,subgrup); //voy a provar para el siguiente dia
                   if (!b) {
-                      boolean b1 = creaHorari(i, dia, hora + 1, aula, grup); //voy a provar para el siguiente hora
+                      boolean b1 = creaHorari(i, dia, hora + 1, aula, grup,subgrup); //voy a provar para el siguiente hora
                       if (!b1) {
-                          boolean b2 = creaHorari(i, dia, hora, aula + 1, grup); //voy a provar para el siguiente aula
+                          boolean b2 = creaHorari(i, dia, hora, aula + 1, grup,subgrup); //voy a provar para el siguiente aula
                           if(b2) return false; //no se puede hacer el horario de ninguna manera
                       }
                   }
               }
             }
         }
+        return false; //en teoria no tendría que llegar nunca aquí
     }
-
-/**
- * mirar si la duració de la infosessió (de teoria o de pràtica) que és un atribut d'assignatura + la hroa a la que ho volem posar ens passaríem o no
- * en tota la duració de infosessió l'aula estigui lliure, que no es solapin teoria i laboratori durant tota la llarga de la sessió , contador de número de sessions que estem fent
- * sobretot per el backtracking
- */
-
-
-
-
-    /*
-    public void crearAssignacio(Aula aula, Assignatura assignatura, int grup, int hora, int dia, boolean teoria){
-        Assignacio a;
-        if (teoria) {
-            a = new AssignacioT(dia, hora, aula, assignatura, grup);
-        } else {
-            a = new AssignacioL(dia, hora, aula, assignatura, grup); //on grup es un subgrup
-        }
-        assignacions.add(a);
-    }*/
-
-}
 
 
     public ArrayList<AssignaturaMonosessio> mishmash (ArrayList<Assignatura> assignatures2){
