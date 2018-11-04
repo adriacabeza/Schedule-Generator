@@ -15,7 +15,7 @@ public class Subgrup extends Grup {
      * @param subgrups    subgrups del qual es composa el grup
      */
     public Subgrup(int num, int capacitat, int subgrups, Grup grup) {
-        super(capacitat, num, subgrups);
+        super(num, capacitat, subgrups);
         this.grup = grup;
     }
 }

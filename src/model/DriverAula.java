@@ -22,14 +22,15 @@ public class DriverAula {
     public static Aula creador(Scanner s){
         String edifici,tipusaula;
         int planta, aula;
-        System.out.print("Introdueix el nom de l'edifici");
+        System.out.println("Introdueix el nom de l'edifici");
         edifici = s.next();
-        System.out.print("Introdueix el la planta en la que es situa l'aula");
+        System.out.println("Introdueix el la planta en la que es situa l'aula");
         planta = s.nextInt();
-        System.out.print("Introdueix el numero de l'aula");
+        System.out.println("Introdueix el numero de l'aula");
         aula = s.nextInt();
-        System.out.print("Introdueix el tipus d'aula");
+        System.out.println("Introdueix el tipus d'aula");
         tipusaula = s.next();
+        System.out.println("Ara procedirem a crear les assignacions");
         ArrayList<Assignacio> assig = crearAssigs(s,tipusaula);
         return new Aula(edifici, planta, aula, tipusaula, assig);
     }
@@ -42,11 +43,11 @@ public class DriverAula {
         int hora;
         tipusaula = tipusaulaG;
         while (opt == 1){
-            System.out.print("Introdueix el dia de la assigancio");
+            System.out.println("Introdueix el dia de la assigancio");
             dia = s.next();
-            System.out.print("Introdueix la hora de la assigancio");
+            System.out.println("Introdueix la hora de la assigancio");
             hora = s.nextInt();
-            System.out.print("Indica amb un 1 si la assignacio es de teoria o 0 si es de laboratori");
+            System.out.println("Indica amb un 1 si la assignacio es de teoria o 0 si es de laboratori");
             opt = s.nextInt();
             if(opt == 1){
                 res.add(new AssignacioT(dia, hora, null, tipusaula, null, null));
@@ -54,7 +55,7 @@ public class DriverAula {
             else {
                 res.add(new AssignacioL(dia, hora, null, tipusaula, null, null)); //per a testeg no ens importa que sigui coherent nomes que funcioni(?)
             }
-            System.out.print("Introdueix un 1 si vols afegir una altra assignacio");
+            System.out.println("Introdueix un 1 si vols afegir una altra assignacio, qualsevol altre numero en cas contrari");
             opt = s.nextInt();
         }
         return res;
@@ -96,10 +97,10 @@ public class DriverAula {
                         case 0:
                             for (int i = 0; i<assig.size() ; ++i){
                                 if(AssignacioL.class.equals(assig.get(i))){
-                                    System.out.println("Assignació de laboratori en la posicio " + i );
+                                    System.out.println("Assignació de laboratori en la posicio " + (i+1) );
                                 }
                                 else {
-                                    System.out.println("Assignació de teoria en la posicio " + i);
+                                    System.out.println("Assignació de teoria en la posicio " + (i+1));
                                 }
                                 System.out.println("Programada pel dia " + assig.get(i).getDiaSetmana() + " a la hora " + assig.get(i).getHora() );
                             }
@@ -107,13 +108,13 @@ public class DriverAula {
                         case 1:
                             System.out.println("hi han " + assig.size() + " assignacions, quina vols consultar? (posa el numero)");
                             aux = s.nextInt();
-                            if(AssignacioL.class.equals(assig.get(aux))){
+                            if(AssignacioL.class.equals(assig.get(aux-1))){
                                 System.out.println("Assignació de laboratori");
                             }
                             else {
                                 System.out.println("Assignació de teoria");
                             }
-                            System.out.println("Programada pel dia " + assig.get(aux).getDiaSetmana() + " a la hora " + assig.get(aux).getHora() );
+                            System.out.println("Programada pel dia " + assig.get(aux-1).getDiaSetmana() + " a la hora " + assig.get(aux-1).getHora() );
                             break;
                         default:
                             opcioinavalida();
@@ -170,8 +171,8 @@ public class DriverAula {
                     break;
 
                 case 5:
-                    System.out.println("Hi han " + a.getAssignacions().size() + " assignacions");
-                    System.out.println("Vols treure una assignacio (0) o modificar (1)");
+                    System.out.println("Hi ha(n) " + a.getAssignacions().size() + " assignacion(s)");
+                    System.out.println("Vols treure una assignacio (0) , modificar (1) o afegir (2)");
                     aux = s.nextInt();
                     if (aux == 0) {
                         System.out.println("Indica el numero de la assignacio que vols treure");
@@ -179,22 +180,22 @@ public class DriverAula {
                         if(aux > a.getAssignacions().size() || aux < 0){
                             System.out.println("Posicio invalida");
                         }
-                        else{
-                            a.getAssignacions().remove(aux);
+                        else {
+                            a.getAssignacions().remove(aux-1);
                         }
                     }
-                    else{
+                    else if (aux == 1){
                         System.out.println("Indica el numero de la assignacio que vols modificar");
                         aux = s.nextInt();
                         if(aux > a.getAssignacions().size() || aux < 0){
                             System.out.println("Posicio invalida");
                         }
                         else{
-                            Assignacio ass = a.getAssignacions().get(aux);
-                            a.getAssignacions().remove(aux);
+                            Assignacio ass = a.getAssignacions().get(aux-1);
+                            a.getAssignacions().remove(aux-1);
                             aux = 0;
                             int num;
-                            while(aux != 4){
+                            while(aux != 3){
                                 System.out.println("Indica l'atribut que vols modificar:");
                                 System.out.println("1: modifica el dia");
                                 System.out.println("2: modifica la hora");
@@ -221,6 +222,10 @@ public class DriverAula {
                             a.getAssignacions().add(ass);
                         }
                     }
+                    else if(aux ==2){
+                        a.getAssignacions().addAll(crearAssigs(s,a.getTipusAula()));
+                    }
+                    else opcioinavalida();
                     break;
 
                 case 6:
@@ -234,7 +239,7 @@ public class DriverAula {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        Aula aula;
+        Aula aula = new Aula(null,0,0,null,new ArrayList<>());
         while(option != 4){
             mostraopcions();
             option = scan.nextInt();
@@ -242,6 +247,7 @@ public class DriverAula {
                 case 1: //creem una aula
                     aula = creador(scan);
                     creat = true;
+                    break;
 
                 case 2: //consultem els atributs
                     if(!creat){

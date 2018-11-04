@@ -105,7 +105,7 @@ public class Assignatura {
      * @return Llista de subgrups
      * @throws NotFoundException si no existeixen subgrups del grup de l'assignatura
      */
-    public ArrayList<Subgrup> getSubgrups(int num) throws NotFoundException {
+    public HashMap<Integer, Subgrup> getSubgrups(int num) throws NotFoundException {
         if (!grups.containsKey(num)) {
             throw new NotFoundException("Grup not found");
         }

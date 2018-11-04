@@ -18,7 +18,7 @@ public class Grup {
      * @param num       nom del grup
      * @param subgrups  subgrups del qual es composa el grup
      */
-    public Grup(int num, int capacitat, int subgrups ) {
+    public Grup(int num, int capacitat, int subgrups ) {    //TODO: throwear exception si no es multiplo 10? ie: 10,20,30?
         this.num = num;
         this.capacitat = capacitat;
         for (int j = 1; j<=subgrups; j++){
@@ -82,6 +82,6 @@ public class Grup {
      */
     public void setNum(int num){
         this.num = num;
-    }
+    }   //TODO: modificar num identificador de subgrups
 }
 

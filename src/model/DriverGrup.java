@@ -19,11 +19,11 @@ public class DriverGrup {
 
     public static Grup creador(Scanner s){
         int capacitat, num, subgrups;
-        System.out.print("Introdueix el numero del grup");
+        System.out.println("Introdueix el numero del grup");
         num = s.nextInt();
-        System.out.print("Introdueix la capacitat del grup");
+        System.out.println("Introdueix la capacitat del grup");
         capacitat = s.nextInt();
-        System.out.print("Introdueix el nombre de subgrups que vols");
+        System.out.println("Introdueix el nombre de subgrups que vols");
         subgrups = s.nextInt();
         return new Grup(num, capacitat, subgrups);
     }
@@ -97,7 +97,7 @@ public class DriverGrup {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        Grup g;
+        Grup g = new Grup(0,0,0);
         while(option != 4) {
             mostraopcions();
             option = scan.nextInt();
