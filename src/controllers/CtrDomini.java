@@ -413,12 +413,12 @@ public class CtrDomini {
         ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
         Teoria auxteo;
         Laboratori auxlab;
-        int sesteo,seslab,valor
+        int sesteo,seslab,valor;
         for(Assignatura a : assignatures2){
             auxlab = a.getLaboratori();     //TODO: mirar com fer per a que no es throwee exception en cas de null, maybe alguna fucnio per poder mirar abans?
             seslab = auxlab.getNumSessions();
             auxlab.setNumSessions(1);
-            auxteo = a.getTeoria();
+            auxteo = a.getTeoria();         //TODO: concretar que significa un valor de 1 a sessions i la possibilitat de un valor 0.
             sesteo = auxteo.getNumSessions();
             auxteo.setNumSessions(1);
             valor = 8;                      //TODO: hauristica a assignar

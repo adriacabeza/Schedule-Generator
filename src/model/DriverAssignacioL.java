@@ -179,7 +179,7 @@ public class DriverAssginacioL {            //TODO: necessitariem creadors buits
             mostraopcions();
             option = scan.nextInt();
             switch(option){
-                case 1: //creem una ssignació
+                case 1: //creem una asignació
                     AssignacioL assig2 = creador(scan);             //Usem un assig auxiliar per si l'usuari s'ha equivocat
                     assig = assig2;
                     creat = true;
