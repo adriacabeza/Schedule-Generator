@@ -62,7 +62,7 @@ public class Grup {
     }
 
 
-    /****** SETTERS ********/
+    /****** SETTERS ********/       //TODO: al modificar aquestes caracteristiques tmb hauriem de modificar els subgrups
 
 
     /**
@@ -84,16 +84,4 @@ public class Grup {
         this.num = num;
     }
 }
-/* 
-grup (int i, grup cap, num sub){
-  name = i;
-  grupcap = grupcap
-    for (int j = 1; j<=numsub; j++){
-		subgrup.insert(i+j, new subgrup(i+j, grupcap/numsub,this));
-    }
-} 
-                       
-                       
-                       subgrup (int i, subgrupcap, Grup pare);
 
-*/

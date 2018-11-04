@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class DriverGrup {
@@ -28,11 +29,68 @@ public class DriverGrup {
     }
 
     public static void mostra(Grup g, Scanner s){
+        int opt = 0;
+        while(opt != 4){
+            System.out.println("Escull que vols consultar:");
+            System.out.println("1: numero del grup");
+            System.out.println("2: capacitat del grup");
+            System.out.println("3: subgrups");
+            System.out.println("4: sortir");
+            opt = s.nextInt();
+            switch(opt){
+                case 1:
+                    System.out.println(g.getNum());
+                    break;
 
+                case 2:
+                    System.out.println(g.getCapacitat());
+                    break;
+
+                case 3:
+                    g.getSubgrups().forEach((key,value) -> System.out.println(key));
+                    break;
+
+                case 4:
+                    break;
+
+                default:
+                    opcioinavalida();
+                    break;
+            }
+        }
     }
 
     public static void modifica(Grup g, Scanner s){
+        int opt = 0;
+        int aux;
+        while(opt != 3) {
+            System.out.println("Escull que vols modificar:");
+            System.out.println("1: numero del grup");
+            System.out.println("2: capacitat del grup");
+            System.out.println("3: sortir");
+            opt = s.nextInt();
+            switch(opt){
+                case 1:
+                    System.out.println("Introdueix el nou numero de grup");
+                    aux = s.nextInt();
+                    g.setNum(aux);
+                    break;
 
+                case 2:
+                    System.out.println("Introdueix la nova capacitat del grup");
+                    aux = s.nextInt();
+                    g.setCapacitat(aux);
+                    break;
+
+                case 3:
+                    break;
+
+                default:
+                    opcioinavalida();
+                    break;
+
+            }
+        }
     }
 
     public static void main(String [] args){

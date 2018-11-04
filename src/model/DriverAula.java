@@ -30,18 +30,17 @@ public class DriverAula {
         aula = s.nextInt();
         System.out.print("Introdueix el tipus d'aula");
         tipusaula = s.next();
-        ArrayList<Assignacio> assig = crearAssigs(s, aula, tipusaula);
+        ArrayList<Assignacio> assig = crearAssigs(s,tipusaula);
         return new Aula(edifici, planta, aula, tipusaula, assig);
     }
 
-    public static ArrayList<Assignacio> crearAssigs(Scanner s, int aulaG, String tipusaulaG){
+    public static ArrayList<Assignacio> crearAssigs(Scanner s, String tipusaulaG){
         int opt = 1;
         ArrayList<Assignacio> res = new ArrayList<Assignacio>();
         Assignacio assig;
         String dia,tipusaula;
-        int hora, aula;
+        int hora;
         tipusaula = tipusaulaG;
-        aula = aulaG;
         while (opt == 1){
             System.out.print("Introdueix el dia de la assigancio");
             dia = s.next();
@@ -50,10 +49,10 @@ public class DriverAula {
             System.out.print("Indica amb un 1 si la assignacio es de teoria o 0 si es de laboratori");
             opt = s.nextInt();
             if(opt == 1){
-                res.add(new AssignacioT(dia, hora, aula, tipusaula, null, null));
+                res.add(new AssignacioT(dia, hora, null, tipusaula, null, null));
             }
             else {
-                res.add(new AssignacioL(dia, hora, aula, tipusaula, null, null));
+                res.add(new AssignacioL(dia, hora, null, tipusaula, null, null)); //per a testeg no ens importa que sigui coherent nomes que funcioni(?)
             }
             System.out.print("Introdueix un 1 si vols afegir una altra assignacio");
             opt = s.nextInt();
@@ -65,7 +64,7 @@ public class DriverAula {
         int opt = 0;
         int aux;
         while(opt != 6){
-            System.out.println("Escull que vols consultar.");
+            System.out.println("Escull que vols consultar:");
             System.out.println("1: Per el nom de l'edifici");
             System.out.println("2: Per la planta");
             System.out.println("3: Per la aula");
