@@ -6,7 +6,7 @@ public abstract class Assignacio {
 
     private String diaSetmana;
     private int hora;
-    private int aula; //aula ha de ser un objecte de tipus aula
+    private Aula aula;
     private Assignatura assignatura;
 
     /**
@@ -18,7 +18,7 @@ public abstract class Assignacio {
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
      */
 
-    public Assignacio(String diaSetmana, int hora, int aula, Assignatura assignatura) {
+    public Assignacio(String diaSetmana, int hora, Aula aula, Assignatura assignatura) {
         this.diaSetmana = diaSetmana;
         this.hora = hora;
         this.aula = aula;
@@ -52,7 +52,7 @@ public abstract class Assignacio {
      *
      * @return aula de l'assignació
      */
-    public int getAula() {
+    public Aula getAula() {
         return aula;
     }
 
@@ -94,7 +94,7 @@ public abstract class Assignacio {
      *
      * @param aula
      */
-    public void setAula(int aula) {
+    public void setAula(Aula aula) {
         this.aula = aula;
     }
 
@@ -108,7 +108,7 @@ public abstract class Assignacio {
     }
 
 
-    @Override
+/*    @Override*/
     public boolean equals(Assignacio obj) {
         return (this.diaSetmana.equals(obj.getDiaSetmana()) && (this.hora == obj.getHora()) && (this.aula == obj.getAula())  && (this.assignatura == obj.getAssignatura()));
     }

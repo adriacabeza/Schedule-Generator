@@ -12,7 +12,7 @@ public class AssignacioT extends Assignacio {
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
      */
 
-    public AssignacioT(String diaSetmana, int hora, int aula, String tipusAula, Assignatura assignatura, Grup grup) {
+    public AssignacioT(String diaSetmana, int hora, Aula aula, String tipusAula, Assignatura assignatura, Grup grup) {
         super(diaSetmana, hora, aula,assignatura);
         this.grup = grup;
         this.tipusAula = tipusAula;
