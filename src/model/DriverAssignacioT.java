@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DriverAssignacioL {
+public class DriverAssignacioT {
 
     public static void mostraopcions(){
         System.out.println("Escull una opcio:");
@@ -21,7 +21,7 @@ public class DriverAssignacioL {
         System.out.println("");
     }
 
-    public static AssignacioL creador(Scanner s){
+    public static AssignacioT creador(Scanner s){
         String dia, tipusaula;
         int hora,opt;
         Aula aula;
@@ -31,26 +31,26 @@ public class DriverAssignacioL {
         hora = s.nextInt();
         System.out.println("Ara indicarem l'aula");
         aula = creaAula(s);
-        Subgrup sub;
-        System.out.println("Ara indicarem el subgrup:");
-        sub = creaSubgrup(s);
+        Grup grup;
+        System.out.println("Ara indicarem el grup:");
+        grup = creaGrup(s);
         Assignatura assig;
         System.out.println("Ara indicarem la assignatura:");
         assig = creaAssignatura(s);
-        AssignacioL assign = new AssignacioL(dia, hora, aula, assig, sub);
+        AssignacioT assign = new AssignacioT(dia, hora, aula, assig, grup);
         return assign;
 
 
     }
 
-    public static void mostra(AssignacioL a, Scanner s){
+    public static void mostra(AssignacioT a, Scanner s){
         int opt = 0;
         while(opt != 6){
             System.out.println("Escull que vols consultar.");
             System.out.println("1: Per el dia de la setmana");
             System.out.println("2: Per la hora");
             System.out.println("3: Per la aula");
-            System.out.println("4: Per el subgrup");
+            System.out.println("4: Per el grup");
             System.out.println("5: Per la assignatura");
             System.out.println("6: per sortir");
             opt = s.nextInt();
@@ -67,7 +67,7 @@ public class DriverAssignacioL {
                     System.out.println(a.getAula().getAula());  //TODO: printear todos los atributos?
                     break;
                 case 4:
-                    System.out.println(a.getSubgrup().getNum());
+                    System.out.println(a.getGrup().getNum());
                     break;
 
                 case 5:
@@ -85,11 +85,11 @@ public class DriverAssignacioL {
         }
     }
 
-    public static Subgrup creaSubgrup(Scanner s){
+    public static Grup creaGrup(Scanner s){
         int opt;
         System.out.println("Introdueix el numero de subgrup");
         opt = s.nextInt();
-        return new Subgrup(opt, 0 , 0 , null );
+        return new Grup(opt, 0 , 0 );
     }
 
     public static Assignatura creaAssignatura(Scanner s){
@@ -112,7 +112,7 @@ public class DriverAssignacioL {
     }
 
 
-    public static void modificaAssignacio(AssignacioL a, Scanner s){
+    public static void modificaAssignacio(AssignacioT a, Scanner s){
         int opt = 0;
         String auxs;
         int auxi;
@@ -121,7 +121,7 @@ public class DriverAssignacioL {
             System.out.println("1: Per el dia de la setmana");
             System.out.println("2: Per la hora");
             System.out.println("4: Per la aula");
-            System.out.println("5: Per el subgrup");
+            System.out.println("5: Per el grup");
             System.out.println("6: Per la assignatura");
             System.out.println("7: per sortir");
             opt = s.nextInt();
@@ -139,12 +139,12 @@ public class DriverAssignacioL {
                     break;
 
                 case 3:
-                   modificaAula(s, a.getAula());
+                    modificaAula(s, a.getAula());
                     break;
                 case 4:
-                    System.out.println("Introdueix el nou numero de subgrup");
+                    System.out.println("Introdueix el nou numero de grup");
                     auxi = s.nextInt();
-                    a.getSubgrup().setNum(auxi);
+                    a.getGrup().setNum(auxi);
                     break;
 
                 case 5:
@@ -217,13 +217,13 @@ public class DriverAssignacioL {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        AssignacioL assig = new AssignacioL(null,0,null,null,null,null);
+        AssignacioT assig = new AssignacioT(null,0,null,null,null);
         while(option != 4){
             mostraopcions();
             option = scan.nextInt();
             switch(option){
                 case 1: //creem una asignació
-                    AssignacioL assig2 = creador(scan);
+                    AssignacioT assig2 = creador(scan);
                     assig = assig2;
                     creat = true;
                     break;
