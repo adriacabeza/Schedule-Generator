@@ -7,6 +7,7 @@ package model;
 public abstract class InfoSessions {
     private int numSessions;
     private int duracioSessions;
+    private Aula.TipusAula tAula;
 
     /**
      * Crea una nova instancia d'informació de sessions i li assigna els seus atributs
@@ -14,9 +15,10 @@ public abstract class InfoSessions {
      * @param numSessions     numero de sessions setmanals del tipus especificat
      * @param duracioSessions duracio de cada sessio
      */
-    public InfoSessions(int numSessions, int duracioSessions) {
+    public InfoSessions(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
         this.numSessions = numSessions;
         this.duracioSessions = duracioSessions;
+        this.tAula = tAula;
     }
 
     /**
@@ -53,5 +55,21 @@ public abstract class InfoSessions {
      */
     public void setDuracioSessions(int duracioSessions) {
         this.duracioSessions = duracioSessions;
+    }
+
+    /**
+     * Assigna un nou tipus d'aula requerit per dur a terme aquest tipus de sessions
+     * @param tAula tipus de l'aula
+     */
+    public void settAula(Aula.TipusAula tAula) {
+        this.tAula = Aula.TipusAula.NORMAL;
+    }
+
+    /**
+     * Consulta el tipus d'aula requerit per el tipus de sessio
+     * @return tipus d'aula
+     */
+    public Aula.TipusAula gettAula(){
+        return tAula;
     }
 }

@@ -4,13 +4,19 @@ import java.util.ArrayList;
 
 public class Aula {
 
+    public enum TipusAula {
+        NORMAL,
+        LABORATORI,
+        PCS
+    }
+
     private String edifici;
     private int planta;
     private int aula;
-    private String tipusAula;
+
+    private TipusAula tAula; //TODO cambiar tot el que va amb strings per TipusAula
     private int capacitat;
     private ArrayList<Assignacio> assignacions;
-
 
     /**
      * Crea una nova aula
@@ -19,13 +25,13 @@ public class Aula {
      * @param planta       indica la planta on esta situada l'aula
      * @param aula         indica el numero que tindra l'aula
      * @param tipusAula    indica el tipus que es l'aula //TODO: toni comenta que quizás no haga falta guardarlo
-     * @param assignacions indica totes les assigancions que te aquesta aula
-     */
-    public Aula(String edifici, int planta, int aula, String tipusAula, ArrayList<Assignacio> assignacions) {
+     * @param assignacions indica totes les assigancions que te aquesta aula //TODO no haurien d'estar
+     */ //TODO no inicialitzes la capacitat?
+    public Aula(String edifici, int planta, int aula, TipusAula tipusAula, ArrayList<Assignacio> assignacions) {
         this.edifici = edifici;
         this.planta = planta;
         this.aula = aula;
-        this.tipusAula = tipusAula;
+        this.tAula = tipusAula;
         this.assignacions = assignacions;
     }
 
@@ -68,8 +74,8 @@ public class Aula {
      *
      * @return el tipus de aula
      */
-    public String getTipusAula() {
-        return tipusAula;
+    public TipusAula getTipusAula() {
+        return tAula;
     }
 
     /**
@@ -120,8 +126,8 @@ public class Aula {
      *
      * @param tipusaula indica el nou tipus d'aula
      */
-    public void setTipusAula(String tipusaula) {
-        this.tipusAula = tipusaula;
+    public void setTipusAula(TipusAula tipusaula) {
+        this.tAula = tipusaula;
     }
 
     /**

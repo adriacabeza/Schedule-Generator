@@ -1,10 +1,11 @@
-package model;
+package drivers;
 
-import java.util.HashMap;
-import java.util.Iterator;
+import model.Grup;
+import model.Subgrup;
+
 import java.util.Scanner;
 
-public class DriverGrup {
+public class DriverSubgrup {
     public static void mostraopcions(){
         System.out.println("Escull una opcio:");
         System.out.println("1: Crear Grup");
@@ -17,25 +18,22 @@ public class DriverGrup {
         System.out.println("");
     }
 
-    public static Grup creador(Scanner s){
-        int capacitat, num, subgrups;
-        System.out.println("Introdueix el numero del grup");
+    public static Subgrup creador(Scanner s){
+        int capacitat, num;
+        System.out.println("Introdueix el numero del subgrup");
         num = s.nextInt();
-        System.out.println("Introdueix la capacitat del grup");
+        System.out.println("Introdueix la capacitat del subgrup");
         capacitat = s.nextInt();
-        System.out.println("Introdueix el nombre de subgrups que vols");
-        subgrups = s.nextInt();
-        return new Grup(num, capacitat, subgrups);
+        return new Subgrup(num, capacitat, 0, null);
     }
 
-    public static void mostra(Grup g, Scanner s){
+    public static void mostra(Subgrup g, Scanner s){
         int opt = 0;
         while(opt != 4){
             System.out.println("Escull que vols consultar:");
-            System.out.println("1: numero del grup");
-            System.out.println("2: capacitat del grup");
-            System.out.println("3: subgrups");
-            System.out.println("4: sortir");
+            System.out.println("1: numero del subgrup");
+            System.out.println("2: capacitat del subgrup");
+            System.out.println("3: sortir");
             opt = s.nextInt();
             switch(opt){
                 case 1:
@@ -46,11 +44,8 @@ public class DriverGrup {
                     System.out.println(g.getCapacitat());
                     break;
 
-                case 3:
-                    g.getSubgrups().forEach((key,value) -> System.out.println(key));
-                    break;
 
-                case 4:
+                case 3:
                     break;
 
                 default:
@@ -65,8 +60,8 @@ public class DriverGrup {
         int aux;
         while(opt != 3) {
             System.out.println("Escull que vols modificar:");
-            System.out.println("1: numero del grup");
-            System.out.println("2: capacitat del grup");
+            System.out.println("1: numero del subgrup");
+            System.out.println("2: capacitat del subgrup");
             System.out.println("3: sortir");
             opt = s.nextInt();
             switch(opt){
@@ -97,13 +92,13 @@ public class DriverGrup {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        Grup g = new Grup(0,0,0);
+        Subgrup sg = new Subgrup(0,0,0,null);
         while(option != 4) {
             mostraopcions();
             option = scan.nextInt();
             switch (option){
                 case 1:
-                    g = creador(scan);
+                    sg = creador(scan);
                     creat = true;
                     break;
 
@@ -113,7 +108,7 @@ public class DriverGrup {
                         System.out.println("");
                     }
                     else{
-                        mostra(g,scan);
+                        mostra(sg,scan);
                     }
                     break;
 
@@ -123,7 +118,7 @@ public class DriverGrup {
                         System.out.println("");
                     }
                     else{
-                        modifica(g,scan);
+                        modifica(sg,scan);
                     }
                     break;
 

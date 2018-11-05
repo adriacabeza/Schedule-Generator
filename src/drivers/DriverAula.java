@@ -1,4 +1,9 @@
-package model;
+package drivers;
+
+import model.Assignacio;
+import model.AssignacioL;
+import model.AssignacioT;
+import model.Aula;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,8 +25,10 @@ public class DriverAula {
     }
 
     public static Aula creador(Scanner s){
-        String edifici,tipusaula;
+        String edifici, tipusaula;
         int planta, aula;
+        Aula.TipusAula tAula;
+
         System.out.println("Introdueix el nom de l'edifici");
         edifici = s.next();
         System.out.println("Introdueix el la planta en la que es situa l'aula");
@@ -30,9 +37,20 @@ public class DriverAula {
         aula = s.nextInt();
         System.out.println("Introdueix el tipus d'aula");
         tipusaula = s.next();
+        if (tipusaula.equalsIgnoreCase("normal")){
+            tAula = Aula.TipusAula.NORMAL;
+        }
+        if (tipusaula.equalsIgnoreCase("pcs")) {
+            tAula = Aula.TipusAula.PCS;
+        }
+        if (tipusaula.equalsIgnoreCase("laboratori")){
+            tAula = Aula.TipusAula.LABORATORI;
+        }
+
+
         System.out.println("Ara procedirem a crear les assignacions");
         ArrayList<Assignacio> assig = crearAssigs(s,tipusaula);
-        return new Aula(edifici, planta, aula, tipusaula, assig);
+        return new Aula(edifici, planta, aula, tAula, assig);
     }
 
     public static ArrayList<Assignacio> crearAssigs(Scanner s, String tipusaulaG){

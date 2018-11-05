@@ -1,6 +1,10 @@
-package model;
+package drivers;
 
 import exceptions.RestriccioIntegritatException;
+import model.AssignacioL;
+import model.Assignatura;
+import model.Aula;
+import model.Subgrup;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +26,8 @@ public class DriverAssignacioL {
     }
 
     public static AssignacioL creador(Scanner s){
-        String dia, tipusaula;
+        String dia;
+        Aula.TipusAula tipusAula;
         int hora,opt;
         Aula aula;
         System.out.println("Introdueix el dia de la setmana");
@@ -108,7 +113,7 @@ public class DriverAssignacioL {
         planta = s.nextInt();
         System.out.println("Introdueix el numero de l'aula");
         aula = s.nextInt();
-        return new Aula(edifici, planta, aula, null, null);
+        return new Aula(edifici, planta, aula, Aula.TipusAula.NORMAL, null);
     }
 
 

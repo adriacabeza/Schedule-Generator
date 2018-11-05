@@ -97,7 +97,7 @@ public class PlaEstudis {
      * Esborra una assignatura del pla d'estudis
      * @param nomA que és el nom de l'assignatura
      */
-    void esborrarAssignatura(String nomA){
+    public void esborrarAssignatura(String nomA){
         this.assignatures.remove(nomA);
     }
 
@@ -105,11 +105,7 @@ public class PlaEstudis {
      * Retorna el conjunt d'assignatures del pla d'estudis
      * @return assignatures
      */
-    ArrayList<Assignatura> getAssignatures(){
+    public ArrayList<Assignatura> getAssignatures(){
         return assignatures;
     }
-
-
-
-
 }

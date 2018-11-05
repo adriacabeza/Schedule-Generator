@@ -1,7 +1,7 @@
 package model;
 
 public class AssignacioL extends Assignacio {
-    private String tipusAula;
+    private Aula.TipusAula tipusAula;
     private Subgrup subgrup;
 
     /**
@@ -12,7 +12,7 @@ public class AssignacioL extends Assignacio {
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
      * @param tipusAula  tipus d'aula
      */
-    public AssignacioL(String diaSetmana, int hora, Aula aula, String tipusAula, Assignatura assignatura, Subgrup subgrup) {
+    public AssignacioL(String diaSetmana, int hora, Aula aula, Aula.TipusAula tipusAula, Assignatura assignatura, Subgrup subgrup) {
         super(diaSetmana, hora, aula, assignatura);
         this.tipusAula = tipusAula;
         this.subgrup = subgrup;
@@ -24,7 +24,7 @@ public class AssignacioL extends Assignacio {
      *
      * @return tipusAula
      */
-    public String getTipusAula() {
+    public Aula.TipusAula getTipusAula() {
         return tipusAula;
     }
 
@@ -34,7 +34,7 @@ public class AssignacioL extends Assignacio {
      * @param tipusAula
      */
 
-    public void setTipusAula(String tipusAula) {
+    public void setTipusAula(Aula.TipusAula tipusAula) {
         this.tipusAula = tipusAula;
     }
 

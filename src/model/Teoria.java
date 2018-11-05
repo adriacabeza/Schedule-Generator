@@ -12,7 +12,7 @@ public class Teoria extends InfoSessions {
      * @param numSessions     número de sessions de teoria
      * @param duracioSessions duració de les sessions de teoria
      */
-    public Teoria(int numSessions, int duracioSessions) {
-        super(numSessions, duracioSessions);
+    public Teoria(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
+        super(numSessions, duracioSessions, tAula);
     }
 }

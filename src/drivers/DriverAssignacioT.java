@@ -1,6 +1,10 @@
-package model;
+package drivers;
 
 import exceptions.RestriccioIntegritatException;
+import model.AssignacioT;
+import model.Assignatura;
+import model.Aula;
+import model.Grup;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +26,8 @@ public class DriverAssignacioT {
     }
 
     public static AssignacioT creador(Scanner s){
-        String dia, tipusaula;
+        String dia;
+        Aula.TipusAula tipusaula;
         int hora,opt;
         Aula aula;
         System.out.println("Introdueix el dia de la setmana");
