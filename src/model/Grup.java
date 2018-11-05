@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Grup {
@@ -83,5 +82,10 @@ public class Grup {
     public void setNum(int num){
         this.num = num;
     }   //TODO: modificar num identificador de subgrups
+
+    @Override
+    public String toString() {
+        return "id: " + num + " capacitat: " + capacitat;
+    }
 }
 

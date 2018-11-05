@@ -15,4 +15,9 @@ public class Teoria extends InfoSessions {
     public Teoria(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
         super(numSessions, duracioSessions, tAula);
     }
+
+    @Override
+    public String toString() {
+        return "Info teoria: \n\t numSessions: " + getNumSessions() + "\n\t duracio: " + getDuracioSessions() + "\n\t tipusAula: " + gettAula();
+    }
 }

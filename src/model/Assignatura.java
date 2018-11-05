@@ -92,10 +92,11 @@ public class Assignatura {
 
     /**
      * Obtenir la quantitat de grups que hi ha a una assignatura
+     *
      * @return grups.size()
      */
-    public int GetSizeGrups(){
-        return  grups.size();
+    public int GetSizeGrups() {
+        return grups.size();
     }
 
     /**
@@ -131,9 +132,10 @@ public class Assignatura {
      *
      * @param numSessions     sessions de laboratori
      * @param duracioSessions duracio de les sessions
+     * @param tAula           tipus aula
      */
-    public void setLaboratori(int numSessions, int duracioSessions) {
-        this.laboratori = new Laboratori(numSessions, duracioSessions);
+    public void setLaboratori(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
+        this.laboratori = new Laboratori(numSessions, duracioSessions, tAula);
     }
 
     /**
@@ -141,9 +143,10 @@ public class Assignatura {
      *
      * @param numSessions     numero de sessions setmanals
      * @param duracioSessions duracio de cada sessio
+     * @param tAula           tipus aula
      */
-    public void setTeoria(int numSessions, int duracioSessions) {
-        this.teoria = new Teoria(numSessions, duracioSessions);
+    public void setTeoria(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
+        this.teoria = new Teoria(numSessions, duracioSessions, tAula);
     }
 
     /**
@@ -169,8 +172,8 @@ public class Assignatura {
      */
     public void modificarGrups(int num_grups, int grup_cap, int sgrup_num) {
         this.grups = new HashMap<Integer, Grup>();
-        for (int i = 10; i <= num_grups; i += 10) {
-            grups.put(i, new Grup(i, grup_cap, sgrup_num));
+        for (int i = 10; i <= num_grups*10; i += 10) {
+            this.grups.put(i, new Grup(i, grup_cap, sgrup_num));
         }
     }
 

@@ -282,7 +282,7 @@ public class CtrDomini {
     }
 
     public void consultarAula(String edifici, int planta, int aula) throws NotFoundException {
-        String key = crearkey(edifici,planta,aula);
+        String key = crearkey(edifici, planta, aula);
         if (!aules.containsKey(key)) {
             throw new NotFoundException("No existeix l'aula especificada");
         } else {
@@ -447,3 +447,4 @@ public class CtrDomini {
             }
         }
     }
+}
