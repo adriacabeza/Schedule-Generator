@@ -140,7 +140,11 @@ public class DriverInfoSessions {
 
                     tAula = Aula.stringToTipusAula(tipusAula);
                     if (tAula != null) {
-                        t = new Teoria(numses, duracio, tAula);
+                        if (t == null) {
+                            t = new Teoria(numses, duracio, tAula);
+                        } else {
+                            System.out.println("Ja hi ha una InfoTeoria creada, proba a modificar-la");
+                        }
                     } else {
                         System.out.println("Tipus d'aula incorrecte, recorda que pot ser \"pcs, normal, laboratori\"");
                     }
@@ -153,7 +157,11 @@ public class DriverInfoSessions {
 
                     tAula = Aula.stringToTipusAula(tipusAula);
                     if (tAula != null) {
-                        l = new Laboratori(numses, duracio, tAula);
+                        if (l == null) {
+                            l = new Laboratori(numses, duracio, tAula);
+                        } else {
+                            System.out.println("Ja hi ha una InfoTeoria creada, proba a modificar-la");
+                        }
                     } else {
                         System.out.println("Tipus d'aula incorrecte, recorda que pot ser \"pcs, normal, laboratori\"");
                     }

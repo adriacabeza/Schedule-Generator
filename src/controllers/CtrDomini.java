@@ -5,10 +5,7 @@ import exceptions.RestriccioIntegritatException;
 import model.*;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public class CtrDomini {
@@ -170,11 +167,11 @@ public class CtrDomini {
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      * @throws NotFoundException si no existeix l'assignatura amb el nom especificat
      */
-    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions) throws NotFoundException {
+    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions, Aula.TipusAula tAula) throws NotFoundException {
         if (!assignatures.containsKey(nom_assig)) {
             throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig.toString());
         }
-        assignatures.get(nom_assig).setTeoria(num_sessions, duracio);
+        assignatures.get(nom_assig).setTeoria(num_sessions, duracio, tAula);
     }
 
     /**
@@ -185,11 +182,11 @@ public class CtrDomini {
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      * @throws NotFoundException si no existeix l'assignatura amb el nom especificat
      */
-    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions) throws NotFoundException {
+    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions, Aula.TipusAula tAula) throws NotFoundException {
         if (!assignatures.containsKey(nom_assig)) {
             throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig.toString());
         }
-        assignatures.get(nom_assig).setLaboratori(num_sessions, duracio);
+        assignatures.get(nom_assig).setLaboratori(num_sessions, duracio, tAula);
     }
 
     /**

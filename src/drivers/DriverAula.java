@@ -111,7 +111,7 @@ public class DriverAula {
                     System.out.println("Indica si vols veure totes les assignatures prement 0 o una en concret prement 1.");
                     aux = s.nextInt();
                     ArrayList<Assignacio> assig = a.getAssignacions();
-                    switch(aux){
+                    switch(aux){teoria
                         case 0:
                             for (int i = 0; i<assig.size() ; ++i){
                                 if(AssignacioL.class.equals(assig.get(i))){
