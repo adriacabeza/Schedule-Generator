@@ -146,4 +146,16 @@ public class Aula {
     public void setCapacitat(int capacitat) {
         this.capacitat = capacitat;
     }
+
+    public static TipusAula stringToTipusAula(String s) {
+        if (s.equalsIgnoreCase("normal")) {
+            return Aula.TipusAula.NORMAL;
+        } else if (s.equalsIgnoreCase("pcs")) {
+            return Aula.TipusAula.PCS;
+        } else if (s.equalsIgnoreCase("laboratori")) {
+            return Aula.TipusAula.LABORATORI;
+        } else {
+            return null;
+        }
+    }
 }

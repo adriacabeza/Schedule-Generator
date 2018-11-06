@@ -35,7 +35,7 @@ public class DriverAssignatura {
         System.out.println("\t 9 - Assigna informacio sessions laboratori");
         System.out.println("\t    input: 9 <nom assignatura> <numero de sessions setmanals> <duracio de les sessions> <tipus aula requerit>");
         System.out.println("\t 10 - Sortir");
-        System.out.println("\t    input: 9");
+        System.out.println("\t    input: 10");
     }
 
     public static void main(String[] args) {
@@ -56,7 +56,6 @@ public class DriverAssignatura {
             int ng, cap, nsg, ns, d;
             Aula.TipusAula tAula;
             int quadrimestre;
-
 
             switch (option) {
                 case 0:
@@ -88,21 +87,13 @@ public class DriverAssignatura {
                                 System.out.println("\t " + sit.next().toString());
                             }
                         }
-
-                        //TODO fer net
-                    } catch (NotFoundException n) {
-                        System.out.println(n.getMessage());
-                    }
+                    } catch (NotFoundException n) {}
                     try {
                         System.out.println(assignatures.get(nomA).getTeoria().toString());
-                    } catch (NotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    } catch (NotFoundException e) {}
                     try {
                         System.out.println(assignatures.get(nomA).getLaboratori().toString());
-                    } catch (NotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    } catch (NotFoundException e) {}
                     break;
                 case 4:
                     nomA = scan.next();
@@ -149,17 +140,12 @@ public class DriverAssignatura {
                     d = scan.nextInt();
                     tipusAula = scan.next();
 
-                    if (tipusAula.equalsIgnoreCase("normal")) {
-                        tAula = Aula.TipusAula.NORMAL;
-                    } else if (tipusAula.equalsIgnoreCase("pcs")) {
-                        tAula = Aula.TipusAula.PCS;
-                    } else if (tipusAula.equalsIgnoreCase("laboratori")) {
-                        tAula = Aula.TipusAula.LABORATORI;
+                    tAula = Aula.stringToTipusAula(tipusAula);
+                    if (tAula != null) {
+                        assignatures.get(nomA).setTeoria(ns, d, tAula);
                     } else {
                         System.out.println("Tipus d'aula incorrecte, recorda que pot ser \"pcs, normal, laboratori\"");
-                        break;
                     }
-                    assignatures.get(nomA).setTeoria(ns, d, tAula);
                     break;
                 case 9:
                     nomA = scan.next();
@@ -167,17 +153,12 @@ public class DriverAssignatura {
                     d = scan.nextInt();
                     tipusAula = scan.next();
 
-                    if (tipusAula.equalsIgnoreCase("normal")) {
-                        tAula = Aula.TipusAula.NORMAL;
-                    } else if (tipusAula.equalsIgnoreCase("pcs")) {
-                        tAula = Aula.TipusAula.PCS;
-                    } else if (tipusAula.equalsIgnoreCase("laboratori")) {
-                        tAula = Aula.TipusAula.LABORATORI;
+                    tAula = Aula.stringToTipusAula(tipusAula);
+                    if (tAula != null) {
+                        assignatures.get(nomA).setLaboratori(ns, d, tAula);
                     } else {
                         System.out.println("Tipus d'aula incorrecte, recorda que pot ser \"pcs, normal, laboratori\"");
-                        break;
                     }
-                    assignatures.get(nomA).setLaboratori(ns, d, tAula);
                     break;
                 default:
                     System.out.println("Opció incorrecte. Introdueix una opcio vàlida");

@@ -72,4 +72,5 @@ public abstract class InfoSessions {
     public Aula.TipusAula gettAula(){
         return tAula;
     }
+
 }
