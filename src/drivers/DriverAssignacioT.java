@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class DriverAssignacioT {
 
-    public static void mostraopcions(){
+    private static void mostraopcions(){
         System.out.println("Escull una opcio:");
         System.out.println("1: Crear Assginacio");
         System.out.println("2: Consultar atributs");
@@ -20,12 +20,12 @@ public class DriverAssignacioT {
         System.out.println("4: Sortir");
     }
 
-    public static void opcioinavalida(){
+    private static void opcioinavalida(){
         System.out.println("Has escollit una opcio incorrecta.");
         System.out.println("");
     }
 
-    public static AssignacioT creador(Scanner s){
+    private static AssignacioT creador(Scanner s){
         String dia;
         Aula.TipusAula tipusaula;
         int hora,opt;
@@ -42,13 +42,13 @@ public class DriverAssignacioT {
         Assignatura assig;
         System.out.println("Ara indicarem la assignatura:");
         assig = creaAssignatura(s);
-        AssignacioT assign = new AssignacioT(dia, hora, aula, assig, grup);
+        AssignacioT assign = new AssignacioT(dia, hora, aula, Aula.TipusAula.NORMAL ,assig, grup);
         return assign;
 
 
     }
 
-    public static void mostra(AssignacioT a, Scanner s){
+    private static void mostra(AssignacioT a, Scanner s){
         int opt = 0;
         while(opt != 6){
             System.out.println("Escull que vols consultar.");
@@ -90,21 +90,22 @@ public class DriverAssignacioT {
         }
     }
 
-    public static Grup creaGrup(Scanner s){
+    private static Grup creaGrup(Scanner s){
         int opt;
         System.out.println("Introdueix el numero de subgrup");
         opt = s.nextInt();
         return new Grup(opt, 0 , 0 );
     }
 
-    public static Assignatura creaAssignatura(Scanner s){
+    private static Assignatura creaAssignatura(Scanner s){
         System.out.println("Introdueix el nom de la assignatura");
         String nom = s.next();
         System.out.println("Introdueix el numero de quadrimestre de la assignatura");
         int quad = s.nextInt();
         return new Assignatura(nom, quad, null, null );
     }
-    public static Aula creaAula(Scanner s){
+
+    private static Aula creaAula(Scanner s){
         String edifici;
         int planta, aula;
         System.out.println("Introdueix el nom de l'edifici");
@@ -117,7 +118,7 @@ public class DriverAssignacioT {
     }
 
 
-    public static void modificaAssignacio(AssignacioT a, Scanner s){
+    private static void modificaAssignacio(AssignacioT a, Scanner s){
         int opt = 0;
         String auxs;
         int auxi;
@@ -162,7 +163,7 @@ public class DriverAssignacioT {
                         a.getAssignatura().setQuadrimestre(auxi);
                     }
                     catch(RestriccioIntegritatException e){
-
+                        e.printStackTrace();
                     }
 
 
@@ -177,7 +178,7 @@ public class DriverAssignacioT {
 
     }
 
-    public static void modificaAula(Scanner s , Aula a){
+    private static void modificaAula(Scanner s , Aula a){
         int opt = 0;
         int aux;
         String auxs;
@@ -222,14 +223,13 @@ public class DriverAssignacioT {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        AssignacioT assig = new AssignacioT(null,0,null,null,null);
+        AssignacioT assig = new AssignacioT(null,0,null,null,null, null);
         while(option != 4){
             mostraopcions();
             option = scan.nextInt();
             switch(option){
                 case 1: //creem una asignació
-                    AssignacioT assig2 = creador(scan);
-                    assig = assig2;
+                    assig = creador(scan);
                     creat = true;
                     break;
 
@@ -246,7 +246,7 @@ public class DriverAssignacioT {
                 case 3: //modifiquem
                     if(!creat){
                         System.out.println("Error: no hi ha una Assignació creada");
-                        System.out.println("");
+                        System.out.println(""); //TODO: System.lineSeparator() mirate esto TONI
                     }
                     else{
                         modificaAssignacio(assig,scan);

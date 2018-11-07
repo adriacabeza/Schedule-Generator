@@ -23,16 +23,33 @@ public class CtrDomini {
     private Assignacio[][][] horari;
     private Restriccions r;
 
+    private ArrayList<Assignatura> assignatures2 = new ArrayList<>(assignatures.values());
+    private ArrayList<Aula> aules2 = new ArrayList<>(aules.values());
+    private ArrayList<AssignaturaMonosessio> mishmash = mishmash(assignatures2);
+
 
     private String crearkey(String edifici, int planta, int aula) {
         return edifici + String.valueOf(planta) + String.valueOf(aula);
-    } //TODO there should be a decode key function too
+    }
+
+    private String getedificifromKey(String key){
+        return key.substring(0,2); //THAT MEANS THE WE ONLY HAVE BUILDING OF TWO CHARS
+    }
+
+    private String getplantafromKey(String key){
+        return key.substring(2,3);
+    }
+
+    private String getaulafromKey(String key){
+        return key.substring(3);
+    }
+
 
 
     private CtrDomini() {
-        assignatures = new HashMap<String, Assignatura>();
-        plaEstudis = new HashMap<String, PlaEstudis>();
-        aules = new HashMap<String, Aula>();
+        assignatures = new HashMap<>();
+        plaEstudis = new HashMap<>();
+        aules = new HashMap<>();
         horari = new Assignacio[12][5][aules.size()];
     }
 
@@ -169,7 +186,7 @@ public class CtrDomini {
      */
     public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions, Aula.TipusAula tAula) throws NotFoundException {
         if (!assignatures.containsKey(nom_assig)) {
-            throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig.toString());
+            throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig);
         }
         assignatures.get(nom_assig).setTeoria(num_sessions, duracio, tAula);
     }
@@ -184,7 +201,7 @@ public class CtrDomini {
      */
     public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions, Aula.TipusAula tAula) throws NotFoundException {
         if (!assignatures.containsKey(nom_assig)) {
-            throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig.toString());
+            throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig);
         }
         assignatures.get(nom_assig).setLaboratori(num_sessions, duracio, tAula);
     }
@@ -293,34 +310,54 @@ public class CtrDomini {
      */
 
 
-    //TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado
-    public String fromInt2dia(int dia) {
+
+    private String fromInt2dia(int dia) {
         if (dia == 0) return "Dilluns";
         else if (dia == 1) return "Dimarts";
         else if (dia == 2) return "Dimecres;";
         else if (dia == 3) return "Dijous";
-        else if (dia == 4) return "Divendres";
+        else return "Divendres";
 
     }
 
-    public boolean comprovarini(int aula, int dia, int hora) {
+    private int fromdia2int(String dia) {
+        if (dia.equals("Dilluns")) return 0;
+        else if (dia.equals("Dimarts")) return 1;
+        else if (dia.equals("Dimecres")) return 2;
+        else if (dia.equals("Dijous")) return 3;
+        else return 4;
+    }
+
+
+    private int gethora(int hora){
+        if(hora == 0) return 8;
+        else if (hora == 1) return 9;
+        else if (hora == 2) return 10;
+        else if (hora == 3) return 11;
+        else if (hora == 4) return 12;
+        else if (hora == 5) return 13;
+        else if (hora == 6) return 14;
+        else if (hora == 7) return 15;
+        else if (hora == 8) return 16;
+        else if (hora == 9) return 17;
+        else if (hora == 10) return 18;
+        else return 19;
+    }
+
+
+    private boolean comprovarini(int aula, int dia, int hora) {
         if (aula > aules2.size()) {
             return true;
-        } else if (dia > 4) {
-            return true;
-        } else if (hora > 11) {
+        } else if (dia > 4 || hora > 11) {
             return true;
         }
+        return false;
     }
 
 
-    private ArrayList<Assignatura> assignatures2 = new ArrayList<Assignatura>(assignatures.values()); //TODO arreglar chapuza
-    private ArrayList<Aula> aules2 = new ArrayList<Aula>(aules.values()); //TODO arreglar chapuza
-    private ArrayList<AssignaturaMonosessio> mishmash = mishmash(assignatures2); //TODO arreglar chapuza
-
-    public boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig) throws NotFoundException {
+    private boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig) throws NotFoundException {
         Aula aula = aules2.get(aula1);
-
+        //COMPROVAR A RESTRICCIONS LO DE DURACIÓ
         if (aula.getCapacitat() < grup.getCapacitat())
             return false; //restricció que mira si la capacitat és la adequada
 
@@ -334,18 +371,18 @@ public class CtrDomini {
         } //restricció que mira si ja està posat una assignatura del mateix nivell
 
 
-/*
+        /*
         if (aula.getTipusAula() == "laboratori") return false; TONI DICE QUE NO
-*/
+        */
 
 
         return true;
     }
 
 
-    public boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig) throws NotFoundException {
+    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig){
         Aula aula = aules2.get(aula1);
-
+        //COMPROVAR A RESTRICCIONS LO DE DURACIÓ
         if (aula.getCapacitat() < subgrup.getCapacitat())
             return false; //restricció que mira si la capacitat és la adequada
 
@@ -362,13 +399,63 @@ public class CtrDomini {
         }*/
 
 
-        if (aula.getTipusAula() == "teoria") return false;
+        //if (aula.getTipusAula() == "teoria") return false;
 
         return true;
     }
 
+    private void printarHorari_aula(Aula aula){
+        int numAula = assignatures2.indexOf(aula);
+        for(int i = 0; i < 12; ++i){
+            for(int j = 0; j < 5; ++j){
+               Assignacio assignacio = horari[i][j][numAula]; //S HAURIA DE PRINTAR AIXO
+            }
 
-    public boolean creaHorari(int i, int dia, int hora, int aula, int grup, int subgrup) throws NotFoundException {
+        }
+    }
+
+    private void printarHorari_auladia(Aula aula,String dia){
+        int numAula = assignatures2.indexOf(aula);
+        int numdia = fromdia2int(dia);
+        for(int i = 0; i < 12; ++i){
+                Assignacio assignacio = horari[i][numdia][numAula]; //S HAURIA DE PRINTAR AIXO
+            }
+
+    }
+
+    private void printarHorari_aulahora(Aula aula,int hora){
+        int nhora = gethora(hora);
+        int numAula = assignatures2.indexOf(aula);
+        for(int i = 0; i < 5; ++i){
+            Assignacio assignacio = horari[nhora][i][numAula]; // S HAURIA DE PRINTAR AIXO
+        }
+
+    }
+
+    public void printarHorari_hora(int hora){
+        int nhora = gethora(hora);
+        for(int i = 0; i < 5; ++i){
+            for(int j = 0; j < aules2.size(); ++j){
+                Assignacio assignacio = horari[nhora][i][j]; // S HAURIA DE PRINTAR AIXO
+            }
+
+        }
+
+    }
+
+    public void printarHorari_hora(String dia){
+        int numdia = fromdia2int(dia);
+        for(int i = 0; i < 12; ++i){
+            for(int j = 0; j < aules2.size(); ++j){
+                Assignacio assignacio = horari[i][numdia][j]; // S'HAURIA DE PRINTAR AIXO
+            }
+
+        }
+
+    }
+
+
+    private boolean creaHorari(int i, int dia, int hora, int aula, int grup, int subgrup) throws NotFoundException {
 
         if (comprovarini(aula, dia, hora))
             return false; //això lo que fa es parar la recursivitat per aquesta via perquè no pot comprovar ni per un dissabte, ni per aules ni hores que no existeixen
@@ -377,10 +464,14 @@ public class CtrDomini {
             return true; //ja que he mirat totes les asssignatures osea que DONE
         } else {
             Assignatura assig = assignatures2.get(i); //esta es la asignatura que toca
-            if (mishmash.get(i).getAssig().get) { //saber si es teoria o no
+            if (mishmash.get(i).getAssig().HJKLFDKLDJKLFJD){ //saber si es teoria o no
                 Grup grup1 = mishmash.get(i).getAssig().getGrup(grup);
                 if (comprovar_restricciones_teoria(aula, grup1, dia, hora, assig)) {
-                    horari[hora][dia][aula] = new AssignacioT(fromInt2dia(dia), hora, aules2.get(aula), "teoria", assig, grup1);
+                    int duracio = mishmash.get(i).getSessio().getDuracioSessions();
+
+                    for(int z = 0; z<duracio;++z) {
+                        horari[hora+z][dia][aula] = new AssignacioT(fromInt2dia(dia), hora+z, aules2.get(aula), mishmash.get(i).getSessio().gettAula(), assig, grup1);
+                    }
                     if (grup == assig.getGrups().size()) //comprovar si ja és l'últim grup de l'assignatura
                         creaHorari(i + 1, 0, 0, 0, 0, 0);//vamos a provar pa la asignatura siguiente
                     else creaHorari(i, 0, 0, 0, grup + 10, subgrup); //vamos a buscarle sitio al siguiente grupo
@@ -400,7 +491,10 @@ public class CtrDomini {
                 Grup grup1 = assig.getGrup(grup);
                 Subgrup subgrup1 = grup1.getSubgrups().get(subgrup);
                 if (comprovar_restricciones_lab(aula, subgrup1, dia, hora, assig)) { //comprovar restricciones
-                    horari[hora][dia][aula] = new AssignacioL(fromInt2dia(dia), hora, aules2.get(aula), "laboratori", assig, subgrup1);
+                    int duracio = mishmash.get(i).getSessio().getDuracioSessions();
+                    for(int z = 0; z<duracio;++z) {
+                        horari[hora+z][dia][aula] = new AssignacioL(fromInt2dia(dia), hora+z, aules2.get(aula),  mishmash.get(i).getSessio().gettAula(), assig, subgrup1);
+                    }
                     if (subgrup == mishmash.get(i).getAssig().getSubgrups(grup).size())
                         creaHorari(i + 1, 0, 0, 0, 0, 0);//vamos a provar pa la asignatura siguiente
                     else creaHorari(i, 0, 0, 0, grup, subgrup + 1);
@@ -420,19 +514,19 @@ public class CtrDomini {
     }
 
 
-    public ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) {
+    private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
         ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
         Teoria auxteo;
         Laboratori auxlab;
         int sesteo, seslab, valor;
         for (Assignatura a : assignatures2) {
-            auxlab = a.getLaboratori();     //TODO: mirar com fer per a que no es throwee exception en cas de null, maybe alguna fucnio per poder mirar abans?
+            auxlab = (Laboratori) a.getLaboratori();
             seslab = auxlab.getNumSessions();
             auxlab.setNumSessions(1);
-            auxteo = a.getTeoria();         //TODO: concretar que significa un valor de 1 a sessions i la possibilitat de un valor 0.
+            auxteo = (Teoria) a.getTeoria();         //TODO: concretar que significa un valor de 1 a sessions i la possibilitat de un valor 0.
             sesteo = auxteo.getNumSessions();
             auxteo.setNumSessions(1);
-            valor = 8;                      //TODO: hauristica a assignar
+            valor = 8;                      //TODO: heuristica a assignar
             for (int i = 0; i < seslab; ++i) {
                 res.add(new AssignaturaMonosessio(a, auxlab, valor));
                 valor /= 2;
@@ -442,6 +536,8 @@ public class CtrDomini {
                 res.add(new AssignaturaMonosessio(a, auxteo, valor));
                 valor /= 2;
             }
-        }
+        } return res;
     }
 }
+
+//TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado

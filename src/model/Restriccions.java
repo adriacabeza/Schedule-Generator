@@ -4,11 +4,10 @@ import model.*;
 
 public abstract class Restriccions {
 
-    int id;
-    boolean active;
-//
+    private int id;
+    private boolean active;
+
 //    private static Restriccions ourInstance = new Restriccions();
-//    //TODO: preguntar a aina que coño e ezto i why dafuq cannot be abstract
 //    public static Restriccions getInstance() {
 //        return ourInstance;
 //    }
@@ -28,4 +27,6 @@ public abstract class Restriccions {
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    public boolean isable() { return false; }
 }
