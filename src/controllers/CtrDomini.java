@@ -321,11 +321,18 @@ public class CtrDomini {
     }
 
     private int fromdia2int(String dia) {
-        if (dia.equals("Dilluns")) return 0;
-        else if (dia.equals("Dimarts")) return 1;
-        else if (dia.equals("Dimecres")) return 2;
-        else if (dia.equals("Dijous")) return 3;
-        else return 4;
+        switch (dia) {
+            case "Dilluns":
+                return 0;
+            case "Dimarts":
+                return 1;
+            case "Dimecres":
+                return 2;
+            case "Dijous":
+                return 3;
+            case "Divendres":
+                return 4;
+        }
     }
 
 
@@ -346,62 +353,9 @@ public class CtrDomini {
 
 
     private boolean comprovarini(int aula, int dia, int hora) {
-        if (aula > aules2.size()) {
-            return true;
-        } else if (dia > 4 || hora > 11) {
-            return true;
-        }
+        if (aula > aules2.size() || dia > 4 || hora > 11) return true;
+
         return false;
-    }
-
-
-    private boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig) throws NotFoundException {
-        Aula aula = aules2.get(aula1);
-        //COMPROVAR A RESTRICCIONS LO DE DURACIÓ
-        if (aula.getCapacitat() < grup.getCapacitat())
-            return false; //restricció que mira si la capacitat és la adequada
-
-        for (int i = 0; i < aules.size(); ++i) {
-            if (horari[hora][dia][i].getAssignatura().getCorrequisits().contains(assig)) return false;
-        } //restricció que mira si ja està posada una assignatura correquisit en aquesta hora
-
-
-        for (int i = 0; i < aules.size(); ++i) {
-            if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
-        } //restricció que mira si ja està posat una assignatura del mateix nivell
-
-
-        /*
-        if (aula.getTipusAula() == "laboratori") return false; TONI DICE QUE NO
-        */
-
-
-        return true;
-    }
-
-
-    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig){
-        Aula aula = aules2.get(aula1);
-        //COMPROVAR A RESTRICCIONS LO DE DURACIÓ
-        if (aula.getCapacitat() < subgrup.getCapacitat())
-            return false; //restricció que mira si la capacitat és la adequada
-
-
-        //AQUÍ SE COMPLICAN LAS RESTRICCIONES
-        /*for (int i = 0; i < aules.size(); ++i) {
-            if (horari[hora][dia][i].getAssignatura().getCorrequisits().contains(assig)) return false;
-        }
-            if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
-        }
-
-        for(int i = 0; i< aules.size(); ++i) {
-            if (horari[hora][dia][i].getAssignatura() == assig && horari[hora][dia][i].getAula().getTipusAula() == "teoria")
-        }*/
-
-
-        //if (aula.getTipusAula() == "teoria") return false;
-
-        return true;
     }
 
     private void printarHorari_aula(Aula aula){
@@ -452,6 +406,20 @@ public class CtrDomini {
 
         }
 
+    }
+
+    private boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig){
+        Aula aula = aules2.get(aula1);
+        if (aula.getCapacitat() < grup.getCapacitat()) return false;
+
+        return false;
+    }
+    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig){
+        Aula aula = aules2.get(aula1);
+        if (aula.getCapacitat() < subgrup.getCapacitat()) return false;
+
+
+        return false;
     }
 
 
