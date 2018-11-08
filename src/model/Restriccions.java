@@ -29,6 +29,8 @@ public abstract class Restriccions {
     }
 
     public boolean isable() { return false; }
+
+
 }
 
 //    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig){

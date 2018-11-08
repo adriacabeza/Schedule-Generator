@@ -311,6 +311,8 @@ public class CtrDomini {
 
 
 
+
+
     private String fromInt2dia(int dia) {
         if (dia == 0) return "Dilluns";
         else if (dia == 1) return "Dimarts";
@@ -432,7 +434,7 @@ public class CtrDomini {
             return true; //ja que he mirat totes les asssignatures osea que DONE
         } else {
             Assignatura assig = assignatures2.get(i); //esta es la asignatura que toca
-            if (mishmash.get(i).getAssig().HJKLFDKLDJKLFJD){ //saber si es teoria o no
+            if (mishmash.get(i)){ //saber si es teoria o no
                 Grup grup1 = mishmash.get(i).getAssig().getGrup(grup);
                 if (comprovar_restricciones_teoria(aula, grup1, dia, hora, assig)) {
                     int duracio = mishmash.get(i).getSessio().getDuracioSessions();
@@ -463,8 +465,14 @@ public class CtrDomini {
                     for(int z = 0; z<duracio;++z) {
                         horari[hora+z][dia][aula] = new AssignacioL(fromInt2dia(dia), hora+z, aules2.get(aula),  mishmash.get(i).getSessio().gettAula(), assig, subgrup1);
                     }
-                    if (subgrup == mishmash.get(i).getAssig().getSubgrups(grup).size())
-                        creaHorari(i + 1, 0, 0, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+                    if (subgrup == mishmash.get(i).getAssig().getSubgrups(grup).size()) {
+                        if (grup == assig.getGrups().size()) {
+                            creaHorari(i + 1, 0, 0, 0, 0, 0);//vamos a provar pa la asignatura siguiente
+                        } else {
+                            creaHorari(i, 0, 0, 0, grup + 1, 0);//vamos a provar pa la asignatura siguiente
+                        }
+                    }
+
                     else creaHorari(i, 0, 0, 0, grup, subgrup + 1);
                 } else {
                     boolean b = creaHorari(i, dia + 1, hora, aula, grup, subgrup); //voy a provar para el siguiente dia
