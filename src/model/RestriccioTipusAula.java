@@ -14,8 +14,8 @@ public class RestriccioTipusAula extends  Restriccions {
     }
 
     @Override
-    public boolean isable(Assignacio[][][] horari, int hora, int aula, int dia, ArrayList<Aula> aules2) {
-        if(horari[hora][dia][aula].getAula().getTipusAula() == aules2.get(aula).getTipusAula() ) return true;
+    public boolean isable(Assignacio[][][] horari, int hora, int aula, int dia, Aula.TipusAula tt) {
+        if(horari[hora][dia][aula].getAula().getTipusAula() == tt) return true; //tt és el tipusAula que em diu mishmash
         return true;
     }
 }

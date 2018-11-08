@@ -34,7 +34,7 @@ public abstract class Restriccions {
         this.active = active;
     }
 
-    public boolean isable() { return false; }
+    public abstract boolean isable();
 
 
 }
@@ -43,10 +43,7 @@ public abstract class Restriccions {
 //        for(int i = 0; i< aules.size(); ++i) {
 //            if (horari[hora][dia][i].getAssignatura() == assig)
 //        }*/
-//
-//
-//
-//        return true;
+// return true;
 //    }
 
 
@@ -61,11 +58,3 @@ public abstract class Restriccions {
 //            if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
 //        } //restricció que mira si ja està posat una assignatura del mateix nivell
 //
-//
-//        /*
-//        if (aula.getTipusAula() == "laboratori") return false; TONI DICE QUE NO
-//        */
-//
-//
-//        return true;
-//    }

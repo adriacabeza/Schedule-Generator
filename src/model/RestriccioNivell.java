@@ -20,4 +20,5 @@ public class RestriccioNivell extends Restriccions {
         for(int i = 0; i<aules2.size(); ++i) if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
         return true;
     }
+
 }
