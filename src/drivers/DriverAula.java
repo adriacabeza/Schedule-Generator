@@ -53,7 +53,7 @@ public class DriverAula {
         return new Aula(edifici, planta, aula, tAula, assig);
     }
 
-    public static ArrayList<Assignacio> crearAssigs(Scanner s, String tipusaulaG){
+    public static ArrayList<Assignacio> crearAssigs(Scanner s, String tipusaulaG){ //TODO:mismo error que lo de tipusaula
         int opt = 1;
         ArrayList<Assignacio> res = new ArrayList<Assignacio>();
         Assignacio assig;
@@ -111,7 +111,7 @@ public class DriverAula {
                     System.out.println("Indica si vols veure totes les assignatures prement 0 o una en concret prement 1.");
                     aux = s.nextInt();
                     ArrayList<Assignacio> assig = a.getAssignacions();
-                    switch(aux){teoria
+                    switch(aux){//teoria
                         case 0:
                             for (int i = 0; i<assig.size() ; ++i){
                                 if(AssignacioL.class.equals(assig.get(i))){

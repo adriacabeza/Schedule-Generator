@@ -13,7 +13,7 @@ public abstract class Restriccions {
 //    }
 
 
-    public Restriccions() {
+    public Restriccions(int id, boolean active) {
         this.id = 0;
         this.active = false;
     }

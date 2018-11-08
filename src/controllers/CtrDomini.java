@@ -25,7 +25,15 @@ public class CtrDomini {
 
     private ArrayList<Assignatura> assignatures2 = new ArrayList<>(assignatures.values());
     private ArrayList<Aula> aules2 = new ArrayList<>(aules.values());
-    private ArrayList<AssignaturaMonosessio> mishmash = mishmash(assignatures2);
+    private ArrayList<AssignaturaMonosessio> mishmash;
+
+    {
+        try {
+            mishmash = mishmash(assignatures2);
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private String crearkey(String edifici, int planta, int aula) {
@@ -332,7 +340,7 @@ public class CtrDomini {
                 return 2;
             case "Dijous":
                 return 3;
-            case "Divendres":
+            default :
                 return 4;
         }
     }
@@ -434,7 +442,7 @@ public class CtrDomini {
             return true; //ja que he mirat totes les asssignatures osea que DONE
         } else {
             Assignatura assig = assignatures2.get(i); //esta es la asignatura que toca
-            if (mishmash.get(i)){ //saber si es teoria o no
+            if (mishmash.get(i).getSessio().getNumSessions() == 1){ //TODO ESTO ESTA MAL LOHE PUESTO PQ NECESITO QUE TONI ACABE
                 Grup grup1 = mishmash.get(i).getAssig().getGrup(grup);
                 if (comprovar_restricciones_teoria(aula, grup1, dia, hora, assig)) {
                     int duracio = mishmash.get(i).getSessio().getDuracioSessions();

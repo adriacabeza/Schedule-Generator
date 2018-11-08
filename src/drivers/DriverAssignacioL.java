@@ -36,13 +36,16 @@ public class DriverAssignacioL {
         hora = s.nextInt();
         System.out.println("Ara indicarem l'aula");
         aula = creaAula(s);
+        Aula.TipusAula tt;
+        System.out.println("Ara indicarem el tipus d'aula");
+        tt = creaTipusAula(s); //TODO: maybe afegir els tipus d'aula que hi ha, en plan les opcions que hi ha
         Subgrup sub;
         System.out.println("Ara indicarem el subgrup:");
         sub = creaSubgrup(s);
         Assignatura assig;
         System.out.println("Ara indicarem la assignatura:");
         assig = creaAssignatura(s);
-        AssignacioL assign = new AssignacioL(dia, hora, aula, assig, sub);
+        AssignacioL assign = new AssignacioL(dia, hora, aula,tt,assig, sub);
         return assign;
 
 
