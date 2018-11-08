@@ -1,5 +1,9 @@
 package model;
 
+import exceptions.NotFoundException;
+
+import java.util.ArrayList;
+
 public class RestriccioCorrequisit extends Restriccions {
 
     private int id;
@@ -17,11 +21,13 @@ public class RestriccioCorrequisit extends Restriccions {
 
 
     @Override
-    public boolean isable(Assignacio[][][] horari, int hora, int dia, int i,Assignatura assig) {
-          for (int i = 0; i < aules.size(); ++i) {
-            if (horari[hora][dia][i].getAssignatura().getCorrequisits().contains(assig)) return false;
-  }
-            if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
-        }
+    public boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig, ArrayList<Aula> aules2) {
+        for (int j = 0; j < aules2.size(); ++j) {
+            try {
+                if (horari[hora][dia][j].getAssignatura().getCorrequisits().contains(assig)) return false;
+            } catch (NotFoundException e) {
+                return true;
+            }
+        } return true;
     }
 }

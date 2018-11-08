@@ -12,6 +12,12 @@ public abstract class Restriccions {
 //        return ourInstance;
 //    }
 
+
+    public Restriccions() {
+        this.id = 0;
+        this.active = false;
+    }
+
     public int getId() {
         return id;
     }
@@ -33,21 +39,12 @@ public abstract class Restriccions {
 
 }
 
-//    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig){
-//
-//        //AQUÍ SE COMPLICAN LAS RESTRICCIONES
-//        /*for (int i = 0; i < aules.size(); ++i) {
-//            if (horari[hora][dia][i].getAssignatura().getCorrequisits().contains(assig)) return false;
-//        }
-//            if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
-//        }
-//
+//    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig){//
 //        for(int i = 0; i< aules.size(); ++i) {
-//            if (horari[hora][dia][i].getAssignatura() == assig && horari[hora][dia][i].getAula().getTipusAula() == "teoria")
+//            if (horari[hora][dia][i].getAssignatura() == assig)
 //        }*/
 //
 //
-//        //if (aula.getTipusAula() == "teoria") return false;
 //
 //        return true;
 //    }
