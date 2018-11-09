@@ -71,7 +71,6 @@ public class CtrDomini {
     }
 
 
-
     private CtrDomini() {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();

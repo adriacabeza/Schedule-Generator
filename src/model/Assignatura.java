@@ -53,6 +53,7 @@ public class Assignatura {
         return quadrimestre;
     }
 
+    //TODO enlloc de fer aixo, fer getCapacitatLab, getDuracioLab, getNumSessLab etc.
     /**
      * Obtenir informació de les sessions de laboratori de l'assignatura
      *
@@ -256,7 +257,6 @@ public class Assignatura {
     public String toString() {
         return this.nom.toUpperCase();
     }
-
 
     public void setNom(String nom) {
         this.nom = nom;
