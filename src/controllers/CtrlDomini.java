@@ -9,9 +9,9 @@ import model.Aula.TipusAula;
 
 import java.util.*;
 
-public class CtrDomini {
+public class CtrlDomini {
 
-    private static CtrDomini ourInstance;
+    private static CtrlDomini ourInstance;
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
@@ -24,7 +24,7 @@ public class CtrDomini {
     private ArrayList<Aula> aules2;
     private ArrayList<AssignaturaMonosessio> mishmash;
 
-    private CtrDomini() {
+    private CtrlDomini() {
         assignatures = new HashMap<>();
 
         plaEstudis = new HashMap<>();
@@ -40,9 +40,9 @@ public class CtrDomini {
         }
     }
 
-    public static CtrDomini getInstance() {
+    public static CtrlDomini getInstance() {
         if (ourInstance == null) {
-            ourInstance = new CtrDomini();
+            ourInstance = new CtrlDomini();
         }
         return ourInstance;
     }

@@ -1,5 +1,6 @@
 package drivers;
 
+import controllers.CtrlIO;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import model.Assignatura;
@@ -60,11 +61,13 @@ public class DriverAssignatura {
             switch (option) {
                 case 0:
                     menu();
+                    //CtrlIO.getInstance().guardaAssignatures(assignatures);
+                    assignatures = CtrlIO.getInstance().carregaAssignatures("assignatures.json");
                     break;
                 case 1:
                     nomA = scan.next();
                     quadrimestre = scan.nextInt();
-                    assignatures.put(nomA, new Assignatura(nomA, quadrimestre, null, null));
+                    assignatures.put(nomA, new Assignatura(nomA, quadrimestre));
                     break;
                 case 2:
                     nomA = scan.next();
@@ -160,6 +163,7 @@ public class DriverAssignatura {
                         System.out.println("Tipus d'aula incorrecte, recorda que pot ser \"pcs, normal, laboratori\"");
                     }
                     break;
+
                 default:
                     System.out.println("Opció incorrecte. Introdueix una opcio vàlida");
                     break;

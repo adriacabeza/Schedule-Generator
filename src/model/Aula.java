@@ -1,14 +1,15 @@
 package model;
 
-import com.google.gson.annotations.Expose;
-
-import java.util.ArrayList;
+import com.google.gson.annotations.SerializedName;
 
 public class Aula {
 
     public enum TipusAula {
+        @SerializedName("normal")
         NORMAL,
+        @SerializedName("laboratori")
         LABORATORI,
+        @SerializedName("pcs")
         PCS
     }
 
@@ -16,10 +17,8 @@ public class Aula {
     private int planta;
     private int aula;
 
-    private TipusAula tAula; //TODO cambiar tot el que va amb strings per TipusAula
+    private TipusAula tAula;
     private int capacitat;
-
-    @Expose(serialize = false)
 
     /**
      * Crea una nova aula
@@ -27,9 +26,8 @@ public class Aula {
      * @param edifici      indica el nom del edifici on esta situada l'aula
      * @param planta       indica la planta on esta situada l'aula
      * @param aula         indica el numero que tindra l'aula
-     * @param tipusAula    indica el tipus que es l'aula //TODO: toni comenta que quizás no haga falta guardarlo
-     * @param assignacions indica totes les assigancions que te aquesta aula //TODO no haurien d'estar
-     */ //TODO no inicialitzes la capacitat?
+     * @param tipusAula    indica el tipus que es l'aula
+     */
     public Aula(String edifici, int planta, int aula, TipusAula tipusAula, int capacitat) {
         this.edifici = edifici;
         this.planta = planta;
@@ -37,10 +35,6 @@ public class Aula {
         this.tAula = tipusAula;
         this.capacitat = capacitat;
     }
-
-
-    /********** GETTERS ********/
-
 
     /**
      * Obtenir l'edifici de l'aula
@@ -80,8 +74,6 @@ public class Aula {
     public TipusAula getTipusAula() {
         return tAula;
     }
-
-    /****** SETTERS ********/
 
     /**
      * Actualitza l'edifici de l'aula
