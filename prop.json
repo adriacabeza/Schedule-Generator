@@ -1,0 +1,71 @@
+{"aules":{
+    "A5101":{"tAula":"NORMAL", "edifici":"A5", "planta":"1", "aula":"01", "capacitat":50},
+    "A5102":{"tAula":"NORMAL", "edifici":"A5", "planta":"1", "aula":"02", "capacitat":40},
+    "A5103":{"tAula":"NORMAL", "edifici":"A5", "planta":"1", "aula":"03", "capacitat":40},
+    "A4201":{"tAula":"LABORATORI", "edifici":"A4", "planta":"2", "aula":"01", "capacitat":30},
+    "A3203":{"tAula":"LABORATORI", "edifici":"A4", "planta":"1", "aula":"01", "capacitat":30},
+    "A3203":{"tAula":"PCS", "edifici":"A3", "planta":"2", "aula":"03", "capacitat":45},
+    "A3103":{"tAula":"PCS", "edifici":"A3", "planta":"1", "aula":"03", "capacitat":45},
+    "A5105":{"tAula":"PCS", "edifici":"A5", "planta":"1", "aula":"05", "capacitat":40}
+}
+}
+
+{"assignatures":{
+    "A":{
+        "nom":"A",
+        "teoria":{
+            "numSessions": 3, "duracioSesions":2,"tAula":"NORMAL"
+        },
+        "laboratori":{
+            "numSessions": 3, "duracioSesions":2,"tAula":"LABORATORI"
+        },
+        "grups":{
+            "10":{
+                "capacitat":30,
+                "num":10,
+      
+        
+            }
+        }
+    },
+
+    "TC":{
+        "nom":"TC",
+        "teoria":{
+            "numSessions": 4, "duracioSesions":2,"tAula":"NORMAL"
+        },
+        "laboratori":{
+            "numSessions": 2, "duracioSesions":2,"tAula":"LABORATORI"
+        },
+        "grups":{
+            "10":{
+                "capacitat":20,
+                "num":10,
+                "subgrups":{
+                    "11":{
+                        
+
+                    },
+                    "12":{
+
+                    }
+                }
+        
+        }
+
+
+
+    }
+    }
+}
+
+{"plaEstudis":{
+    "nomTitulacio":"Enginyeria Informàtica",
+    "any":2010,
+    "assignatura":{
+
+    }, 
+    "obsolet": false
+}}
+
+
