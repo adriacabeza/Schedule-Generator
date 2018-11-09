@@ -12,8 +12,8 @@
 > L'usuari podrà afegir el número d’hores, tipus i duració de les sessions d'una assignatura per a crear-la i assignar-la a un pla d'estudis.
 ### Modificar assignatura
   > Permet modificar les característiques d’una o vàries assignatures.
-~~### Borrar assignatura
-  > NO LO TENEMOS XS~~
+~~### Borrar assignatura~~
+  ~~> NO LO TENEMOS XS~~
 
 ### Gestionar Pla d'Estudi
 > L'usuari podrà visualitzar els plans d'estudis existents amb el seu nom, els seu respectiu any i si està obsolet, a més, també podrà veure de cada pla d'estudi les seves assignatures. Des d'aquesta pantalla podrà modificar les seves característiques de nom i si està obsolet o no. A més a la vista d'assignatures pots esborrar-ne una d'un pla d'estudis i amb un botó es podrà accedir a una vista de les assignatures que ja hi ha inserides al sistema i no estan al pla d'estudis per a poder-les afegir.
@@ -22,8 +22,8 @@
 
 ### Modificar pla d’estudi
 > Permet modificar les relacions d’assignatures d’un pla d’estudi
-### Borrar pla d’estudi
-> LO PONES OBSOLETO Y YA, NO?
+~~### Borrar pla d’estudi~~
+~~> LO PONES OBSOLETO Y YA, NO?~~
 
 ### Gestionar Aules
 > Fer gestions per portar o dirigir les aules. Una aula és una sala d'un centre docent destinada a fer-hi classe.
@@ -31,8 +31,8 @@
 > Permet crear una aula, assignar-li el número o nom identificador i la seva capacitat.
 ###  Modificar aula
 > Permet modificar el número identificador o la capacitat d’una o vàries aules.
-### Borrar aula
-> Elimina una aula de la base de dades.
+~~### Borrar aula~~
+~~> Elimina una aula de la base de dades.~~
 
 ### Consultar
 > Cada entitat del nostre sistema tindrà la opció de consultar la informació de la pertinent entitat(assignatura, pla d'estudis, titulació, aules, grups...) i visualitzar de manera adequada assignatures, pla d'estudis, titulació o aules.
