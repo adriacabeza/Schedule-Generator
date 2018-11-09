@@ -36,16 +36,13 @@ public class DriverAssignacioL {
         hora = s.nextInt();
         System.out.println("Ara indicarem l'aula");
         aula = creaAula(s);
-        Aula.TipusAula tt;
-        System.out.println("Ara indicarem el tipus d'aula");
-        tt = creaTipusAula(s); //TODO: maybe afegir els tipus d'aula que hi ha, en plan les opcions que hi ha
         Subgrup sub;
         System.out.println("Ara indicarem el subgrup:");
         sub = creaSubgrup(s);
         Assignatura assig;
         System.out.println("Ara indicarem la assignatura:");
         assig = creaAssignatura(s);
-        AssignacioL assign = new AssignacioL(dia, hora, aula,tt,assig, sub);
+        AssignacioL assign = new AssignacioL(dia, hora, aula,aula.getTipusAula(),assig, sub);
         return assign;
 
 
@@ -108,15 +105,29 @@ public class DriverAssignacioL {
         return new Assignatura(nom, quad, null, null );
     }
     public static Aula creaAula(Scanner s){
-        String edifici;
-        int planta, aula;
+        String edifici, tipusaula;
+        int planta, aula, capacitat;
+        Aula.TipusAula tAula;
         System.out.println("Introdueix el nom de l'edifici");
         edifici = s.next();
         System.out.println("Introdueix el la planta en la que es situa l'aula");
         planta = s.nextInt();
         System.out.println("Introdueix el numero de l'aula");
         aula = s.nextInt();
-        return new Aula(edifici, planta, aula, Aula.TipusAula.NORMAL, null);
+        System.out.println("Introdueix la capacitat de l'aula");
+        capacitat = s.nextInt();
+        System.out.println("Introdueix el tipus d'aula, en cas d'input erroni sera una aula normal");
+        tipusaula = s.next();
+        if (tipusaula.equalsIgnoreCase("pcs")) {
+            tAula = Aula.TipusAula.PCS;
+        }
+        else if (tipusaula.equalsIgnoreCase("laboratori")){
+            tAula = Aula.TipusAula.LABORATORI;
+        }
+        else
+            tAula = Aula.TipusAula.NORMAL;
+
+        return new Aula(edifici, planta, aula, tAula, capacitat, null);
     }
 
 
@@ -128,10 +139,10 @@ public class DriverAssignacioL {
             System.out.println("Escull que vols modificar.");
             System.out.println("1: Per el dia de la setmana");
             System.out.println("2: Per la hora");
-            System.out.println("4: Per la aula");
-            System.out.println("5: Per el subgrup");
-            System.out.println("6: Per la assignatura");
-            System.out.println("7: per sortir");
+            System.out.println("3: Per la aula");
+            System.out.println("4: Per el subgrup");
+            System.out.println("5: Per la assignatura");
+            System.out.println("6: per sortir");
             opt = s.nextInt();
             switch(opt){
                 case 1:
@@ -184,12 +195,13 @@ public class DriverAssignacioL {
         int opt = 0;
         int aux;
         String auxs;
-        while(opt != 4){
+        while(opt != 5){
             System.out.println("Escull que vols modificar:");
             System.out.println("1: Per el nom de l'edifici");
             System.out.println("2: Per la planta");
             System.out.println("3: Per la aula");
-            System.out.println("4: per sortir");
+            System.out.println("4: Per la capacitat de l'aula");
+            System.out.println("5: per sortir");
             opt = s.nextInt();
             switch(opt) {
                 case 1:
@@ -211,6 +223,12 @@ public class DriverAssignacioL {
                     break;
 
                 case 4:
+                    System.out.println("Introdueix la nova capacitat");
+                    aux = s.nextInt();
+                    a.setCapacitat(aux);
+                    break;
+
+                case 5:
                     break;
                 default:
                     opcioinavalida();

@@ -4,6 +4,7 @@
 
 package model;
 
+import com.google.gson.annotations.Expose;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 
@@ -17,6 +18,7 @@ public class Assignatura {
     private InfoSessions teoria;
     private InfoSessions laboratori;
     private Map<Integer, Grup> grups;
+    @Expose(serialize = false)
     private ArrayList<Assignatura> correquisit;
     private int quadrimestre;
 

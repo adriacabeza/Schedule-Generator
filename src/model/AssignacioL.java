@@ -3,6 +3,7 @@ package model;
 public class AssignacioL extends Assignacio {
     private Aula.TipusAula tipusAula;
     private Subgrup subgrup;
+    private int polla;
 
     /**
      * Crea una assignació de laboratori
@@ -18,6 +19,17 @@ public class AssignacioL extends Assignacio {
         this.subgrup = subgrup;
     }
 
+    /**
+     *
+     * @return
+     */
+    public int getPolla() {
+        return polla;
+    }
+
+    public void setPolla(int polla) {
+        this.polla = polla;
+    }
 
     /**
      * Obtenir tipus d'aula

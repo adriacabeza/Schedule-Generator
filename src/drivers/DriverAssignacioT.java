@@ -106,15 +106,19 @@ public class DriverAssignacioT {
     }
 
     private static Aula creaAula(Scanner s){
-        String edifici;
-        int planta, aula;
+        String edifici, tipusaula;
+        int planta, aula, capacitat;
+        Aula.TipusAula tAula;
         System.out.println("Introdueix el nom de l'edifici");
         edifici = s.next();
         System.out.println("Introdueix el la planta en la que es situa l'aula");
         planta = s.nextInt();
         System.out.println("Introdueix el numero de l'aula");
         aula = s.nextInt();
-        return new Aula(edifici, planta, aula, null, null);
+        System.out.println("Introdueix la capacitat de l'aula");
+        capacitat = s.nextInt();
+        tAula = Aula.TipusAula.NORMAL;
+        return new Aula(edifici, planta, aula, tAula, capacitat, null);
     }
 
 
@@ -126,10 +130,10 @@ public class DriverAssignacioT {
             System.out.println("Escull que vols modificar.");
             System.out.println("1: Per el dia de la setmana");
             System.out.println("2: Per la hora");
-            System.out.println("4: Per la aula");
-            System.out.println("5: Per el grup");
-            System.out.println("6: Per la assignatura");
-            System.out.println("7: per sortir");
+            System.out.println("3: Per la aula");
+            System.out.println("4: Per el grup");
+            System.out.println("5: Per la assignatura");
+            System.out.println("6: per sortir");
             opt = s.nextInt();
             switch(opt){
                 case 1:
@@ -182,12 +186,13 @@ public class DriverAssignacioT {
         int opt = 0;
         int aux;
         String auxs;
-        while(opt != 4){
+        while(opt != 5){
             System.out.println("Escull que vols modificar:");
             System.out.println("1: Per el nom de l'edifici");
             System.out.println("2: Per la planta");
             System.out.println("3: Per la aula");
-            System.out.println("4: per sortir");
+            System.out.println("4: Per la capacitat de l'aula");
+            System.out.println("5: per sortir");
             opt = s.nextInt();
             switch(opt) {
                 case 1:
@@ -209,6 +214,12 @@ public class DriverAssignacioT {
                     break;
 
                 case 4:
+                    System.out.println("Introdueix la nova capacitat");
+                    aux = s.nextInt();
+                    a.setCapacitat(aux);
+                    break;
+
+                case 5:
                     break;
                 default:
                     opcioinavalida();

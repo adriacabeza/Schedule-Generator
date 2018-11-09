@@ -1,5 +1,7 @@
 package model;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 
 public class Aula {
@@ -16,6 +18,8 @@ public class Aula {
 
     private TipusAula tAula; //TODO cambiar tot el que va amb strings per TipusAula
     private int capacitat;
+
+    @Expose(serialize = false)
     private ArrayList<Assignacio> assignacions;
 
     /**
@@ -27,11 +31,12 @@ public class Aula {
      * @param tipusAula    indica el tipus que es l'aula //TODO: toni comenta que quizás no haga falta guardarlo
      * @param assignacions indica totes les assigancions que te aquesta aula //TODO no haurien d'estar
      */ //TODO no inicialitzes la capacitat?
-    public Aula(String edifici, int planta, int aula, TipusAula tipusAula, ArrayList<Assignacio> assignacions) {
+    public Aula(String edifici, int planta, int aula, TipusAula tipusAula, int capacitat, ArrayList<Assignacio> assignacions) {
         this.edifici = edifici;
         this.planta = planta;
         this.aula = aula;
         this.tAula = tipusAula;
+        this.capacitat = capacitat;
         this.assignacions = assignacions;
     }
 

@@ -11,7 +11,7 @@ public abstract class Restriccions {
 //    public static Restriccions getInstance() {
 //        return ourInstance;
 //    }
-
+//que restriccions torni un arraylist dels dies i les horesque podria la susodicha asignatura
 
     public Restriccions(int id, boolean active) {
         this.id = 0;

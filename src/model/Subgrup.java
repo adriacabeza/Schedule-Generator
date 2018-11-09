@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 public class Subgrup extends Grup {
 
-    private Grup grup;
-
-
     /**
      * Crea un nou subgrup
      *
@@ -16,6 +13,5 @@ public class Subgrup extends Grup {
      */
     public Subgrup(int num, int capacitat, int subgrups, Grup grup) {
         super(num, capacitat, subgrups);
-        this.grup = grup;
     }
 }
