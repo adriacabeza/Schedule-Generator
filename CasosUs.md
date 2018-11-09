@@ -1,42 +1,43 @@
 ## Casos d'us - PROP 
 
 ### Gestionar grups
-> Fer gestions per portar o dirigir els grups. Un grup és un conjunt d'estudiants que fan una assignatura en una mateixa aula.
+> L'usuari visualitzarà tots els grups, des d'allà podrà consultar-ne un, modificarlo o esborrar-lo. A més també pot crear des d'allà un grup.
 ### Crear grup
-> Permet crear un nou grup i assignar-lo a una assignatura
-### Modificar grups
-> Permet modificar el tamany dels grups
-### Borrar grup
-> Permet borrar un grup associat a una assignatura
+> L'usuari haurà d'inserir en diversos camps el número de grup, la capacitat, i la quantitat de subgrups que té el susdit.
+~~### Modificar grups
+> NO EN TENIM HEHE YOLO
+~~ ~~Borrar grup
+> TAMPOCO LO TENEMOS YOLO 2
 
 
 ### Gestionar Assignatura
 > L'usuari visualitzarà totes les assignatures, des d'allà podrà consultar-ne una, modificar-la o esborrar-la. A més també podr crear una assignatura. 
 ### Crear Assignatura
-> Permet crear una assignatura, assignar-li el número d’hores, tipus i duració de les seves sessions i assignar-la al pla d’estudis corresponent.
+> L'usuari podrà afegir el número d’hores, tipus i duració de les sessions d'una assignatura per a crear-la i assignar-la a un pla d'estudis.
 ### Modificar assignatura
   > Permet modificar les característiques d’una o vàries assignatures.
-### Borrar assignatura
-  > S’elimina una assignatura de la base de dades.
+~~### Borrar assignatura
+  > NO LO TENEMOS XS
 
 ### Gestionar Pla d'Estudi
-> Fer gestions per portar o dirigir els plans d'estudi. Un pla d'estudis és el programa on es detalla el conjunt d'ensenyaments que s'han d'efectuar per a cumplir una titulació.
+> L'usuari podrà visualitzar els plans d'estudis existents amb el seu nom, els seu respectiu any i si està obsolet, a més, també podrà veure de cada pla d'estudi les seves assignatures. Des d'aquesta pantalla podrà modificar les seves característiques de nom i si està obsolet o no. A més a la vista d'assignatures pots esborrar-ne una d'un pla d'estudis i amb un botó es podrà accedir a una vista de les assignatures que ja hi ha inserides al sistema i no estan al pla d'estudis per a poder-les afegir.
 ### Crear pla d’estudi
-> Permet crear un nou pla d’estudi
+> L'usuari podrà crear un pla d'estudis buit sense cap assignatura afegint un nom, el seu any i si està obsolet
+
 ### Modificar pla d’estudi
 > Permet modificar les relacions d’assignatures d’un pla d’estudi
 ### Borrar pla d’estudi
-> Permet elliminar un pla d’estudi obsolet
+> LO PONES OBSOLETO Y YA, NO?
 
 
-### Gestionar Titulació 
+~~### Gestionar Titulació 
 > Fer gestions per portar o dirigir les titulacions. Quan parlem d'una titulació ens referim a un titol acadèmic.
 ### Crear titulació
 > Permet crear una nova titulacio on se li assignara un o mes plans d’estudis
 ### Modificar tiulació
 > Permet modificar els atributs de la titulacio i gestionar els plans d’estudi que la conformen
 ### Borrar titulació
-> Permet borrar una titulació
+> PA QUE QUIERES ESO
 
 
 ### Gestionar Aules
@@ -49,7 +50,7 @@
 > Elimina una aula de la base de dades.
 
 
-### Gestionar unitat docent
+~~### Gestionar unitat docent
 > Fer gestions per portar o dirigir una unitat docent. Una unitat docent és un centre on s'imparteix una o més titulacions. 
 ### Crear unitat docent 
 > Permet crear una unitat docent.
@@ -59,13 +60,7 @@
 > Permet borrar una unitat docent.
 
 ### Consultar
-> Cercar informació sobre el sistema, aquí és pot demanar informació sobre assignatures, pla d'estudis, titulació o aules.
-###  Consultar assignatura
-###  Consultar pla d’estudis
-###  Consultar titulació
-###  Consultar aules
-###  Consultar grups
- 
+> Cada entitat del nostre sistema tindrà la opció de consultar la informació de la pertinent entitat(assignatura, pla d'estudis, titulació, aules, grups...) i visualitzar de manera adequada assignatures, pla d'estudis, titulació o aules.
 
 ### Generar Horaris
 > Aquí és on es crea l'horari fent servir la informació prèviament introduïts.
