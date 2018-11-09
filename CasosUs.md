@@ -6,7 +6,7 @@
 > L'usuari haurà d'inserir en diversos camps el número de grup, la capacitat, i la quantitat de subgrups que té el susdit.
 ~~### Modificar grups
 > NO EN TENIM HEHE YOLO
-~~ ~~Borrar grup
+### Borrar grup
 > TAMPOCO LO TENEMOS YOLO 2~~
 
 
@@ -30,7 +30,7 @@
 > LO PONES OBSOLETO Y YA, NO?
 
 
-~~### Gestionar Titulació 
+~~Gestionar Titulació 
 > Fer gestions per portar o dirigir les titulacions. Quan parlem d'una titulació ens referim a un titol acadèmic.
 ### Crear titulació
 > Permet crear una nova titulacio on se li assignara un o mes plans d’estudis
