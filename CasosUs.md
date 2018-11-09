@@ -1,4 +1,4 @@
-## Casos d'us - PROP 
+# Casos d'us - PROP 
 
 ### Gestionar grups
 > L'usuari visualitzarà tots els grups, des d'allà podrà consultar-ne un, modificarlo o esborrar-lo. A més també pot crear des d'allà un grup.
