@@ -18,7 +18,7 @@
 ### Gestionar Pla d'Estudi
 > L'usuari podrà visualitzar els plans d'estudis existents amb el seu nom, els seu respectiu any i si està obsolet, a més, també podrà veure de cada pla d'estudi les seves assignatures. Des d'aquesta pantalla podrà modificar les seves característiques de nom i si està obsolet o no. A més a la vista d'assignatures pots esborrar-ne una d'un pla d'estudis i amb un botó es podrà accedir a una vista de les assignatures que ja hi ha inserides al sistema i no estan al pla d'estudis per a poder-les afegir.
 ### Crear pla d’estudi
-> L'usuari podrà crear un pla d'estudis buit sense cap assignatura afegint un nom, el seu any i si està obsolet
+> L'usuari podrà crear un pla d'estudis buit sense cap assignatura afegint un nom, el seu any i si està obsolet.
 
 ### Modificar pla d’estudi
 > Permet modificar les relacions d’assignatures d’un pla d’estudi
@@ -26,7 +26,7 @@
 ~~> LO PONES OBSOLETO Y YA, NO?~~
 
 ### Gestionar Aules
-> Fer gestions per portar o dirigir les aules. Una aula és una sala d'un centre docent destinada a fer-hi classe.
+> L'usuari dispondrà d'una llista amb diverses aules nombrades segons l'edifici, la planta i el número de aula. Des d'allà podrà consultar el tipus i la capacitat de l'aula. Des d'allà es podrà accedir a la creació d'una aula amb un botó i modificar una aula seleccionada.
 ### Crear aula
 > Permet crear una aula, assignar-li el número o nom identificador i la seva capacitat.
 ###  Modificar aula
