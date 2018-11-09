@@ -19,7 +19,7 @@ public class Assignatura {
     private InfoSessions laboratori;
     private Map<Integer, Grup> grups;
     @Expose(serialize = false)
-    private ArrayList<Assignatura> correquisit;
+    private ArrayList<String> correquisit;
     private int quadrimestre;
 
     /**
@@ -53,7 +53,31 @@ public class Assignatura {
         return quadrimestre;
     }
 
-    //TODO enlloc de fer aixo, fer getCapacitatLab, getDuracioLab, getNumSessLab etc.
+    public int getNumSessionsLab() {
+        return this.laboratori.getNumSessions();
+    }
+
+    public int getDuracioSessionsLab() {
+        return this.laboratori.getDuracioSessions();
+    }
+
+    public Aula.TipusAula getTipusAulaLab() {
+        return this.laboratori.gettAula();
+    }
+
+    public int getNumSessionsTeo() {
+        return this.teoria.getNumSessions();
+    }
+
+    public int getDuracioSessionsTeo() {
+        return this.teoria.getDuracioSessions();
+    }
+
+    public Aula.TipusAula getTipusAulaTeo() {
+        return this.teoria.gettAula();
+    }
+
+
     /**
      * Obtenir informació de les sessions de laboratori de l'assignatura
      *
@@ -175,7 +199,7 @@ public class Assignatura {
      */
     public void modificarGrups(int num_grups, int grup_cap, int sgrup_num) {
         this.grups = new HashMap<Integer, Grup>();
-        for (int i = 10; i <= num_grups*10; i += 10) {
+        for (int i = 10; i <= num_grups * 10; i += 10) {
             this.grups.put(i, new Grup(i, grup_cap, sgrup_num));
         }
     }
@@ -188,7 +212,7 @@ public class Assignatura {
      */
     public void afegeixCorrequisit(Assignatura a) throws RestriccioIntegritatException {
 
-        if (correquisit.contains(a)) {
+        if (correquisit.contains(a.getNom())) {
             throw new RestriccioIntegritatException("L'assignatura " + a.toString() + " ja està assignada com a correquisit");
         }
 
@@ -199,7 +223,7 @@ public class Assignatura {
         if (this.quadrimestre != a.getQuadrimestre()) {
             throw new RestriccioIntegritatException("Les assignatures han de formar part del mateix quadrimestre per ser correquisits");
         }
-        correquisit.add(a);
+        correquisit.add(a.getNom());
     }
 
     /**
@@ -208,7 +232,7 @@ public class Assignatura {
      * @param a Assignatura a esborrar de self
      * @throws NotFoundException si l'assignatura no es correquisit
      */
-    public void esborraCorrequisit(Assignatura a) throws NotFoundException {
+    public void esborraCorrequisit(String a) throws NotFoundException {
         if (correquisit.contains(a)) {
             correquisit.remove(a);
         } else {
@@ -222,7 +246,7 @@ public class Assignatura {
      * @return llista de correquisits
      * @throws NotFoundException si l'assignatura no te correquisits
      */
-    public ArrayList<Assignatura> getCorrequisits() throws NotFoundException {
+    public ArrayList<String> getCorrequisits() throws NotFoundException {
         if (this.correquisit.isEmpty()) {
             throw new NotFoundException("L'assignatura " + this.toString() + " no te correquisits");
         }
@@ -235,7 +259,7 @@ public class Assignatura {
      * @param a assignatura a comparar
      * @return cert si és correquisit, fals altrament
      */
-    public boolean esCorrequisit(Assignatura a) {
+    public boolean esCorrequisit(String a) {
         return this.correquisit.contains(a);
     }
 

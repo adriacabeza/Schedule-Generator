@@ -12,4 +12,21 @@ public abstract class InfoSessions {
         duracioSessions = 2;
         tAula = Aula.TipusAula.NORMAL;
     }
+
+    public int getNumSessions() {
+        return 2;
+    }
+
+    public int getDuracioSessions(){
+        return 2;
+    }
+
+    public Aula.TipusAula gettAula() {
+        return Aula.TipusAula.NORMAL;
+    }
+
+    @Override
+    public String toString() {
+        return "Sample Info";
+    }
 }

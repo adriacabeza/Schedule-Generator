@@ -289,8 +289,8 @@ public class CtrDomini {
         if (!assignatures.containsKey(nom_b)) {
             throw new NotFoundException("No existeix l'assignatura " + nom_b.toUpperCase());
         }
-        assignatures.get(nom_a).esborraCorrequisit(assignatures.get(nom_b));
-        assignatures.get(nom_b).esborraCorrequisit(assignatures.get(nom_a));
+        assignatures.get(nom_a).esborraCorrequisit(nom_b);
+        assignatures.get(nom_b).esborraCorrequisit(nom_a);
     }
 
 
