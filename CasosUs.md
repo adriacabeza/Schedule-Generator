@@ -7,7 +7,7 @@
 ~~### Modificar grups
 > NO EN TENIM HEHE YOLO
 ~~ ~~Borrar grup
-> TAMPOCO LO TENEMOS YOLO 2
+> TAMPOCO LO TENEMOS YOLO 2~~
 
 
 ### Gestionar Assignatura
@@ -17,7 +17,7 @@
 ### Modificar assignatura
   > Permet modificar les característiques d’una o vàries assignatures.
 ~~### Borrar assignatura
-  > NO LO TENEMOS XS
+  > NO LO TENEMOS XS~~
 
 ### Gestionar Pla d'Estudi
 > L'usuari podrà visualitzar els plans d'estudis existents amb el seu nom, els seu respectiu any i si està obsolet, a més, també podrà veure de cada pla d'estudi les seves assignatures. Des d'aquesta pantalla podrà modificar les seves característiques de nom i si està obsolet o no. A més a la vista d'assignatures pots esborrar-ne una d'un pla d'estudis i amb un botó es podrà accedir a una vista de les assignatures que ja hi ha inserides al sistema i no estan al pla d'estudis per a poder-les afegir.
@@ -37,7 +37,7 @@
 ### Modificar tiulació
 > Permet modificar els atributs de la titulacio i gestionar els plans d’estudi que la conformen
 ### Borrar titulació
-> PA QUE QUIERES ESO
+> PA QUE QUIERES ESO~~
 
 
 ### Gestionar Aules
@@ -57,7 +57,7 @@
 ### Modificar unitat docent
 > Permet modificar els atributs de la unitat docent i gestionar les aules i titulacións de la mateixa. 
 ### Borrar unitat docent
-> Permet borrar una unitat docent.
+> Permet borrar una unitat docent.~~
 
 ### Consultar
 > Cada entitat del nostre sistema tindrà la opció de consultar la informació de la pertinent entitat(assignatura, pla d'estudis, titulació, aules, grups...) i visualitzar de manera adequada assignatures, pla d'estudis, titulació o aules.
