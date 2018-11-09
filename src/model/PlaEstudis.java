@@ -1,15 +1,12 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class PlaEstudis {
     private String nomTitulacio;
-    private Date any;
+    private int any;
     private ArrayList<String> assignatures;
     private boolean obsolet;
-
-
 
     /**
      * Crea un Pla d'Estudis nou amb la seva informació corresponent
@@ -18,7 +15,7 @@ public class PlaEstudis {
      * @param any          any que es crea el pla d'estudis
      * @param obsolet      booleà que indica si està obsolet
      */
-    public PlaEstudis(String nomTitulacio, Date any, boolean obsolet) {
+    public PlaEstudis(String nomTitulacio, int any, boolean obsolet) {
         this.nomTitulacio = nomTitulacio;
         this.any = any;
         this.obsolet = obsolet;
@@ -41,7 +38,7 @@ public class PlaEstudis {
      * @return any del pla d'estudis
      */
 
-    public Date getAny() {
+    public int getAny() {
         return any;
     }
 
@@ -71,7 +68,7 @@ public class PlaEstudis {
      *
      * @param any
      */
-    public void setAny(Date any) {
+    public void setAny(int any) {
         this.any = any;
     }
 

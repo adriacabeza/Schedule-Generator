@@ -26,13 +26,11 @@ public class Assignatura {
      * Crea una assignatura nova amb grups i la informació corresponent
      *
      * @param nom nom de l'assignatura
-     * @param t   informació de les sessions de teoria, pot ser null
-     * @param l   informació de les sessions de laboratori, pot ser null
      */
-    public Assignatura(String nom, int quadrimestre, Teoria t, Laboratori l) {
+    public Assignatura(String nom, int quadrimestre) {
         this.nom = nom;
-        this.laboratori = l;
-        this.teoria = t;
+        this.laboratori = null;
+        this.teoria = null;
         this.quadrimestre = quadrimestre;
         grups = new HashMap<>();
         correquisit = new ArrayList<>();
@@ -162,7 +160,7 @@ public class Assignatura {
      * @param tAula           tipus aula
      */
     public void setLaboratori(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
-        this.laboratori = new Laboratori(numSessions, duracioSessions, tAula);
+        this.laboratori = new Laboratori(numSessions, duracioSessions, tAula, nom);
     }
 
     /**
@@ -173,7 +171,7 @@ public class Assignatura {
      * @param tAula           tipus aula
      */
     public void setTeoria(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
-        this.teoria = new Teoria(numSessions, duracioSessions, tAula);
+        this.teoria = new Teoria(numSessions, duracioSessions, tAula, nom);
     }
 
     /**

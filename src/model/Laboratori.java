@@ -12,8 +12,8 @@ public class Laboratori extends InfoSessions {
      * @param numSessions     número de sessions de laboratori
      * @param duracioSessions duració de les sessions de laboratori
      */
-    public Laboratori(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
-        super(numSessions, duracioSessions, tAula);
+    public Laboratori(int numSessions, int duracioSessions, Aula.TipusAula tAula, String assignatura) {
+        super(numSessions, duracioSessions, tAula, assignatura);
     }
 
     @Override

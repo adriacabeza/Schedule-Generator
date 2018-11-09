@@ -81,8 +81,7 @@ public class Aula {
         return tAula;
     }
 
-        /****** SETTERS ********/
-
+    /****** SETTERS ********/
 
     /**
      * Actualitza l'edifici de l'aula

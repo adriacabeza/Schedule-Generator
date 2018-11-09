@@ -54,7 +54,7 @@ public class CtrDomini {
      * @param any Any d'inici del nou pla d'estudis
      * @throws RestriccioIntegritatException si ja existia aquell pla d'estudis
      */
-    public void crearPlaEstudis(String nom, Date any) throws RestriccioIntegritatException {
+    public void crearPlaEstudis(String nom, int any) throws RestriccioIntegritatException {
         if (plaEstudis.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix un pla d'estudis amb nom " + nom.toUpperCase());
         }
@@ -92,6 +92,8 @@ public class CtrDomini {
         return plaEstudis.get(nom);
     }
 
+
+    //TODO fix dis
     /**
      * Afegeix una assignatura anteriorment creada al pla d'estudis indicat
      *
@@ -99,7 +101,7 @@ public class CtrDomini {
      * @param nomA Nom de l'assignatura
      */
     public void afegirAssignaturaPla(String nomP, String nomA) {
-        plaEstudis.get(nomP).afegirAssignatura(assignatures.get(nomA));
+        plaEstudis.get(nomP).afegirAssignatura(assignatures.get(nomA).getNom());
     }
 
     /**
@@ -117,7 +119,7 @@ public class CtrDomini {
      *
      * @param nomP Pla d'estudis
      */
-    public ArrayList<Assignatura> consultarAssignaturesPlaEstudis(String nomP) {
+    public ArrayList<String> consultarAssignaturesPlaEstudis(String nomP) {
         return plaEstudis.get(nomP).getAssignatures();
     }
 
@@ -126,15 +128,13 @@ public class CtrDomini {
      *
      * @param nom          Nom de l'assignatura
      * @param quadrimestre Quadrimestre al qual pertany
-     * @param t            Informacio de les sessions de teoria, si en te, null altrament
-     * @param l            Informacio de les sessions de laboratori, si en te, null altrament
      * @throws RestriccioIntegritatException si ja existia una assignatura identificada pel mateix nom
      */
-    public void crearAssignatura(String nom, int quadrimestre, Teoria t, Laboratori l) throws RestriccioIntegritatException {
+    public void crearAssignatura(String nom, int quadrimestre) throws RestriccioIntegritatException {
         if (assignatures.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix una assignatura amb nom " + nom.toUpperCase());
         }
-        assignatures.put(nom, new Assignatura(nom, quadrimestre, t, l));
+        assignatures.put(nom, new Assignatura(nom, quadrimestre));
     }
 
     /**

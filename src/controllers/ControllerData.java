@@ -34,11 +34,7 @@ public class ControllerData {
 
         HashMap<String, Assignatura> AssignaturaArray = new Gson().fromJson("",assignaturatype);
         HashMap<String,PlaEstudis> PlaEstudiArray = new Gson().fromJson("",plaestudistype);
-
-
-
     }
-
 }
 
 

@@ -34,8 +34,20 @@ public class CtrInputOutput {
 
     /* ESCRIPTURA DE FITXERS */
 
-    public void guardaHorari(Horari horari){
+
+    public void guardaHorari(){
 
     }
 
+    public void guardaAssignatures(){
+
+    }
+
+    public void guardaInfoSessions(){
+
+    }
+
+    public void guardaAules(){
+
+    }
 }
