@@ -29,17 +29,6 @@
 ### Borrar pla d’estudi
 > LO PONES OBSOLETO Y YA, NO?
 
-
-~~Gestionar Titulació 
-> Fer gestions per portar o dirigir les titulacions. Quan parlem d'una titulació ens referim a un titol acadèmic.
-### Crear titulació
-> Permet crear una nova titulacio on se li assignara un o mes plans d’estudis
-### Modificar tiulació
-> Permet modificar els atributs de la titulacio i gestionar els plans d’estudi que la conformen
-### Borrar titulació
-> PA QUE QUIERES ESO~~
-
-
 ### Gestionar Aules
 > Fer gestions per portar o dirigir les aules. Una aula és una sala d'un centre docent destinada a fer-hi classe.
 ### Crear aula
@@ -48,16 +37,6 @@
 > Permet modificar el número identificador o la capacitat d’una o vàries aules.
 ### Borrar aula
 > Elimina una aula de la base de dades.
-
-
-~~### Gestionar unitat docent
-> Fer gestions per portar o dirigir una unitat docent. Una unitat docent és un centre on s'imparteix una o més titulacions. 
-### Crear unitat docent 
-> Permet crear una unitat docent.
-### Modificar unitat docent
-> Permet modificar els atributs de la unitat docent i gestionar les aules i titulacións de la mateixa. 
-### Borrar unitat docent
-> Permet borrar una unitat docent.~~
 
 ### Consultar
 > Cada entitat del nostre sistema tindrà la opció de consultar la informació de la pertinent entitat(assignatura, pla d'estudis, titulació, aules, grups...) i visualitzar de manera adequada assignatures, pla d'estudis, titulació o aules.
