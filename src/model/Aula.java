@@ -20,7 +20,6 @@ public class Aula {
     private int capacitat;
 
     @Expose(serialize = false)
-    private ArrayList<Assignacio> assignacions;
 
     /**
      * Crea una nova aula
@@ -31,13 +30,12 @@ public class Aula {
      * @param tipusAula    indica el tipus que es l'aula //TODO: toni comenta que quizás no haga falta guardarlo
      * @param assignacions indica totes les assigancions que te aquesta aula //TODO no haurien d'estar
      */ //TODO no inicialitzes la capacitat?
-    public Aula(String edifici, int planta, int aula, TipusAula tipusAula, int capacitat, ArrayList<Assignacio> assignacions) {
+    public Aula(String edifici, int planta, int aula, TipusAula tipusAula, int capacitat) {
         this.edifici = edifici;
         this.planta = planta;
         this.aula = aula;
         this.tAula = tipusAula;
         this.capacitat = capacitat;
-        this.assignacions = assignacions;
     }
 
 
@@ -83,17 +81,7 @@ public class Aula {
         return tAula;
     }
 
-    /**
-     * Obtenir les assignacions
-     *
-     * @return assignacions
-     */
-    public ArrayList<Assignacio> getAssignacions() {
-        return assignacions;
-    }
-
-
-    /****** SETTERS ********/
+        /****** SETTERS ********/
 
 
     /**
@@ -135,15 +123,6 @@ public class Aula {
         this.tAula = tipusaula;
     }
 
-    /**
-     * Actualitza les assignacions
-     *
-     * @param assignacions indica les noves assignacions
-     */
-    public void setAssignacions(ArrayList<Assignacio> assignacions) {
-        this.assignacions = assignacions;
-    }
-
     public int getCapacitat() {
         return capacitat;
     }
@@ -162,5 +141,21 @@ public class Aula {
         } else {
             return null;
         }
+    }
+
+    public static String crearkey(String edifici, int planta, int aula) {
+        return edifici + String.valueOf(planta) + String.valueOf(aula);
+    }
+
+    public static String getedificifromKey(String key){
+        return key.substring(0,2); //THAT MEANS THE WE ONLY HAVE BUILDING OF TWO CHARS
+    }
+
+    public static String getplantafromKey(String key){
+        return key.substring(2,3);
+    }
+
+    public static String getaulafromKey(String key){
+        return key.substring(3);
     }
 }

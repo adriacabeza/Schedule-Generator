@@ -4,10 +4,11 @@ package model;
 
 public abstract class Assignacio {
 
-    private String diaSetmana;
-    private int hora;
-    private Aula aula;
-    private Assignatura assignatura;
+    protected String diaSetmana;
+    protected Aula.TipusAula tipusAula;
+    protected int hora;
+    protected Aula aula;
+    protected Assignatura assignatura;
 
     /**
      * Crea una assignació nova amb la informació corresponent
@@ -65,6 +66,15 @@ public abstract class Assignacio {
         return assignatura;
     }
 
+    /**
+     * Obtenir tipus d'aula
+     *
+     * @return tipusAula
+     */
+    public Aula.TipusAula getTipusAula() {
+        return tipusAula;
+    }
+
 
 
     /****** SETTERS ********/
@@ -105,6 +115,16 @@ public abstract class Assignacio {
      */
     public void setAssignatura(Assignatura assignatura) {
         this.assignatura = assignatura;
+    }
+
+    /**
+     * Actualitza el tipus d'aula
+     *
+     * @param tipusAula
+     */
+
+    public void setTipusAula(Aula.TipusAula tipusAula) {
+        this.tipusAula = tipusAula;
     }
 
 

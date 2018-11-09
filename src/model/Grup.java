@@ -5,9 +5,9 @@ import java.util.HashMap;
 public class Grup {
 
 
-    private int capacitat;
-    private int num;
-    private HashMap<Integer, Subgrup> subgrups = new HashMap<Integer, Subgrup>();
+    protected int capacitat;
+    protected int num;
+    protected HashMap<Integer, Subgrup> subgrups = new HashMap<Integer, Subgrup>();
     //TODO: mirar si hay que mantener la lista de Assignacio desde grupo tmbn
 
     /**
@@ -17,7 +17,7 @@ public class Grup {
      * @param num       nom del grup
      * @param subgrups  subgrups del qual es composa el grup
      */
-    public Grup(int num, int capacitat, int subgrups ) {    //TODO: throwear exception si no es multiplo 10? ie: 10,20,30?
+    public Grup(int num, int capacitat, int subgrups) {    //TODO: throwear exception si no es multiplo 10? ie: 10,20,30?
         this.num = num;
         this.capacitat = capacitat;
         for (int j = 1; j<=subgrups; j++){

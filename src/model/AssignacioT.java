@@ -1,7 +1,6 @@
 package model;
 
 public class AssignacioT extends Assignacio {
-    private Aula.TipusAula tipusAula;
     private Grup grup;
 
     /**
@@ -17,27 +16,6 @@ public class AssignacioT extends Assignacio {
         this.grup = grup;
         this.tipusAula = tipusAula;
     }
-
-    /**
-     * Obtenir tipus d'aula
-     *
-     * @return tipusAula
-     */
-    public Aula.TipusAula getTipusAula() {
-        return tipusAula;
-    }
-
-
-    /**
-     * Actualitza el tipus d'aula
-     *
-     * @param tipusAula
-     */
-
-    public void setTipusAula(Aula.TipusAula tipusAula) {
-        this.tipusAula = tipusAula;
-    }
-
 
     /**
      * Obtenir el grup

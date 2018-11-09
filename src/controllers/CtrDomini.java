@@ -9,23 +9,30 @@ import model.Aula.TipusAula;
 
 import java.util.*;
 
-
 public class CtrDomini {
 
+    private static CtrDomini ourInstance;
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
-    private Assignacio[][][] horari;
+    private Assignacio[][][] horari; //TODO esto va a estar aqui?
     private Restriccions r;
 
-
-    private static CtrDomini ourInstance;
-
-    private ArrayList<Assignatura> assignatures2 = new ArrayList<>();
-    private ArrayList<Aula> aules2 = new ArrayList<>();
+    // TODO esto tiene que estar aqui o puedo simplemente pasarlo donde se necesite como parametro? si esta aqui es
+    // TODO mas dificil de actualitzar porque tengo que ir haciendolo en paralelo con el map
+    private ArrayList<Assignatura> assignatures2;
+    private ArrayList<Aula> aules2;
     private ArrayList<AssignaturaMonosessio> mishmash;
 
-    {
+    private CtrDomini() {
+        assignatures = new HashMap<>();
+
+        plaEstudis = new HashMap<>();
+        aules = new HashMap<>();
+        assignatures2 = new ArrayList<>();
+        aules2 = new ArrayList<>();
+        horari = new Assignacio[12][5][aules2.size()];
+
         try {
             mishmash = mishmash(assignatures2);
         } catch (NotFoundException e) {
@@ -33,60 +40,12 @@ public class CtrDomini {
         }
     }
 
-    //AQUESTES HAN DE PASSAR-LI
-    public void crearAulesJSON(){
-            GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();
-            System.out.println(gson.toJson(aules));
-    }
-
-    public void crearAssignaturesJSON(){
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        System.out.println(gson.toJson(assignatures));
-    }
-
-    public void crearPlaEstudisJSON(){
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        System.out.println(gson.toJson(plaEstudis));
-    }
-
-
-
-    private String crearkey(String edifici, int planta, int aula) {
-        return edifici + String.valueOf(planta) + String.valueOf(aula);
-    }
-
-    private String getedificifromKey(String key){
-        return key.substring(0,2); //THAT MEANS THE WE ONLY HAVE BUILDING OF TWO CHARS
-    }
-
-    private String getplantafromKey(String key){
-        return key.substring(2,3);
-    }
-
-    private String getaulafromKey(String key){
-        return key.substring(3);
-    }
-
-
-    private CtrDomini() {
-        assignatures = new HashMap<>();
-        plaEstudis = new HashMap<>();
-        aules = new HashMap<>();
-        horari = new Assignacio[12][5][aules2.size()];
-    }
-
     public static CtrDomini getInstance() {
-        if(ourInstance == null){
+        if (ourInstance == null) {
             ourInstance = new CtrDomini();
         }
         return ourInstance;
     }
-
-
-    /****************** PLA D'ESTUDIS *******************/
 
     /**
      * Crea un nou pla d'estudis no obsolet i sense cap assignatura
@@ -161,9 +120,6 @@ public class CtrDomini {
     public ArrayList<Assignatura> consultarAssignaturesPlaEstudis(String nomP) {
         return plaEstudis.get(nomP).getAssignatures();
     }
-
-
-    /************** ASSIGNATURES ***************/
 
     /**
      * Permet crear una nova assignatura
@@ -293,76 +249,89 @@ public class CtrDomini {
         assignatures.get(nom_b).esborraCorrequisit(nom_a);
     }
 
-
-    /******************* AULES ************************/
-
-
     // TODO fer excepcions i comentarles, fer alguna funcio mes si cal pel controller
-    public void creaAula(String edifici, int planta, int aula, int capacitat, TipusAula tipusAula, ArrayList<Assignacio> assignacions) throws RestriccioIntegritatException {
-        String nomaula = crearkey(edifici, planta, aula);
 
-        if (!aules.containsKey(nomaula)) {
-            aules.put(nomaula, new Aula(edifici, planta, aula, tipusAula, capacitat, assignacions));
+    /**
+     * Permet donar d'alta una nova aula al sistema
+     *
+     * @param edifici   edifici en el que es troba l'aula
+     * @param planta    planta a la que es troba l'aula
+     * @param aula      numero d'aula dins d'una planta i un edifici
+     * @param capacitat numero de persones que caben a l'aula
+     * @param tipusAula tipus d'aula, pot ser pcs, normal o laboratori
+     * @throws RestriccioIntegritatException quan s'intenta crear una aula ja existent
+     */
+    public void creaAula(String edifici, int planta, int aula, int capacitat, TipusAula tipusAula) throws RestriccioIntegritatException {
+        String nomAula = Aula.crearkey(edifici, planta, aula);
+
+        if (!aules.containsKey(nomAula)) {
+            aules.put(nomAula, new Aula(edifici, planta, aula, tipusAula, capacitat));
         } else {
-            throw new RestriccioIntegritatException("Ja existeix una aula amb nom d'aula " + nomaula.toUpperCase());
+            throw new RestriccioIntegritatException("Ja existeix una aula amb nom d'aula " + nomAula.toUpperCase());
         }
     }
 
+    /**
+     * Esborra una aula del sistema
+     *
+     * @param edifici edifici en el que es troba l'aula
+     * @param planta  planta a la que es troba l'aula
+     * @param aula    numero d'aula dins d'una planta i un edifici
+     * @throws NotFoundException quan s'intenta borrar una aula inexistent
+     */
     public void esborrarAula(String edifici, int planta, int aula) throws NotFoundException {
-        String nomaula = edifici + planta + aula;
+        String nomAula = Aula.crearkey(edifici, planta, aula);
 
-        if (aules.containsKey(nomaula)) {
-            aules.remove(nomaula);
+        if (aules.containsKey(nomAula)) {
+            aules.remove(nomAula);
         } else {
-            throw new NotFoundException("No es pot esborrar l'aula " + nomaula + " perque no existeix");
-        }
-    }
-
-    public void modificarAula(Aula a, int capacitat, String edifici, int planta, int aula, TipusAula tipusAula, ArrayList<Assignacio> assignacions) {
-        a.setEdifici(edifici);
-        a.setAssignacions(assignacions);
-        a.setAula(aula);
-        a.setPlanta(planta);
-        a.setTipusAula(tipusAula);
-        a.setCapacitat(capacitat);
-    }
-
-    public void consultarAula(String edifici, int planta, int aula) throws NotFoundException {
-        String key = crearkey(edifici, planta, aula);
-        if (!aules.containsKey(key)) {
-            throw new NotFoundException("No existeix l'aula especificada");
-        } else {
-            aules.get(key);
+            throw new NotFoundException("No es pot esborrar l'aula " + nomAula + " perque no existeix");
         }
     }
 
 
     /**
-     * sobre assignacions
+     * Permet modificar una aula
+     *
+     * @param key       nom i localitzacio de l'aula
+     * @param capacitat nova capacitat de l'aula
+     * @param tipusAula nou tipus d'aula per l'aula
+     * @throws NotFoundException quan es vol modificar una aula inexistent
      */
+    public void modificarAula(String key, int capacitat, TipusAula tipusAula) throws NotFoundException {
+        if (aules.containsKey(key)) {
+            aules.get(key).setCapacitat(capacitat);
+            aules.get(key).setTipusAula(tipusAula);
+        } else {
+            throw new NotFoundException("No es pot modificar l'aula " + key + " perque no existeix");
+        }
+    }
 
+    /**
+     * Permet consultar una aula amb el nom d'aula especificat
+     *
+     * @param key nom i localitzacio de l'aula
+     * @return l'aula corresponent al nom si existeix
+     * @throws NotFoundException si no existeix l'aula buscada
+     */
+    public Aula consultarAula(String key) throws NotFoundException {
+        if (!aules.containsKey(key)) {
+            throw new NotFoundException("No existeix l'aula especificada");
+        } else {
+            return aules.get(key);
+        }
+    }
 
+    //func generar horari
+    //consultar restriccions
 
-//    public static void crearJSON(){
-//        JSONObject obj = new JSONObject();
-//
-//        obj.put("");
-//
-//        JSONArray aules = new JSONArray();
-//        aules.add()
-//        try {
-//            FileWriter file = new FileWriter("data.json");
-//            file.write(obj.toJSONString());
-//            file.flush();
-//            file.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        System.out.print(obj.toJSONString());
-//    }
+    //algo mes?
 
+    //TODO vvvvvvvvvvvv HASTA AQUI ES CONTROLADOR DE DOMINIO, LO DEMAS SE TIENE QUE MOVER vvvvvvvvvvvv
 
+    /**
+     * A CLASSE HORARI, RESTRICCIONS, DOMINI I ALGORITME
+     */
 
     private String fromInt2dia(int dia) {
         if (dia == 0) return "Dilluns";
@@ -383,14 +352,14 @@ public class CtrDomini {
                 return 2;
             case "Dijous":
                 return 3;
-            default :
+            default:
                 return 4;
         }
     }
 
 
-    private int gethora(int hora){
-        if(hora == 0) return 8;
+    private int gethora(int hora) {
+        if (hora == 0) return 8;
         else if (hora == 1) return 9;
         else if (hora == 2) return 10;
         else if (hora == 3) return 11;
@@ -411,38 +380,38 @@ public class CtrDomini {
         return false;
     }
 
-    private void printarHorari_aula(Aula aula){
+    private void printarHorari_aula(Aula aula) {
         int numAula = assignatures2.indexOf(aula);
-        for(int i = 0; i < 12; ++i){
-            for(int j = 0; j < 5; ++j){
-               Assignacio assignacio = horari[i][j][numAula]; //S HAURIA DE PRINTAR AIXO
+        for (int i = 0; i < 12; ++i) {
+            for (int j = 0; j < 5; ++j) {
+                Assignacio assignacio = horari[i][j][numAula]; //S HAURIA DE PRINTAR AIXO
             }
 
         }
     }
 
-    private void printarHorari_auladia(Aula aula,String dia){
+    private void printarHorari_auladia(Aula aula, String dia) {
         int numAula = assignatures2.indexOf(aula);
         int numdia = fromdia2int(dia);
-        for(int i = 0; i < 12; ++i){
-                Assignacio assignacio = horari[i][numdia][numAula]; //S HAURIA DE PRINTAR AIXO
-            }
+        for (int i = 0; i < 12; ++i) {
+            Assignacio assignacio = horari[i][numdia][numAula]; //S HAURIA DE PRINTAR AIXO
+        }
 
     }
 
-    private void printarHorari_aulahora(Aula aula,int hora){
+    private void printarHorari_aulahora(Aula aula, int hora) {
         int nhora = gethora(hora);
         int numAula = assignatures2.indexOf(aula);
-        for(int i = 0; i < 5; ++i){
+        for (int i = 0; i < 5; ++i) {
             Assignacio assignacio = horari[nhora][i][numAula]; // S HAURIA DE PRINTAR AIXO
         }
 
     }
 
-    public void printarHorari_hora(int hora){
+    public void printarHorari_hora(int hora) {
         int nhora = gethora(hora);
-        for(int i = 0; i < 5; ++i){
-            for(int j = 0; j < aules2.size(); ++j){
+        for (int i = 0; i < 5; ++i) {
+            for (int j = 0; j < aules2.size(); ++j) {
                 Assignacio assignacio = horari[nhora][i][j]; // S HAURIA DE PRINTAR AIXO
             }
 
@@ -450,10 +419,10 @@ public class CtrDomini {
 
     }
 
-    public void printarHorari_hora(String dia){
+    public void printarHorari_hora(String dia) {
         int numdia = fromdia2int(dia);
-        for(int i = 0; i < 12; ++i){
-            for(int j = 0; j < aules2.size(); ++j){
+        for (int i = 0; i < 12; ++i) {
+            for (int j = 0; j < aules2.size(); ++j) {
                 Assignacio assignacio = horari[i][numdia][j]; // S'HAURIA DE PRINTAR AIXO
             }
 
@@ -461,23 +430,23 @@ public class CtrDomini {
 
     }
 
-    private boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig, int duracio){
+    private boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig, int duracio) {
         Aula aula = aules2.get(aula1);
         if (aula.getCapacitat() < grup.getCapacitat()) return false;
-        for(int i = 0; i < duracio; ++i)  {
-            if((hora+i) >= 12) return false;
-            else if(horari[hora+i][dia][aula1] != null) return false;
+        for (int i = 0; i < duracio; ++i) {
+            if ((hora + i) >= 12) return false;
+            else if (horari[hora + i][dia][aula1] != null) return false;
         }
         return true;
     }
 
 
-    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig, int duracio){
+    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig, int duracio) {
         Aula aula = aules2.get(aula1);
         if (aula.getCapacitat() < subgrup.getCapacitat()) return false;
-        for(int i = 0; i < duracio; ++i)  {
-            if((hora+i) >= 12) return false;
-            else if(horari[hora+i][dia][aula1] != null) return false;
+        for (int i = 0; i < duracio; ++i) {
+            if ((hora + i) >= 12) return false;
+            else if (horari[hora + i][dia][aula1] != null) return false;
         }
         return true;
     }
@@ -543,56 +512,52 @@ public class CtrDomini {
                         }
 
 
-
-                             else{
-                                boolean b = creaHorari(i, dia + 1, hora, aula, grup, subgrup); //voy a provar para el siguiente dia
-                                if (!b) {
-                                    boolean b1 = creaHorari(i, 0, hora + 1, aula, grup, subgrup); //voy a provar para el siguiente hora
-                                    if (!b1) {
-                                        boolean b2 = creaHorari(i, dia, hora, aula + 1, grup, subgrup); //voy a provar para el siguiente aula
-                                        if (b2) return false; //no se puede hacer el horario de ninguna manera
-                                    }
-
-                                }
-                            }
-                        }
                     else {
-                        Subgrup subgrup1 = grup1.getSubgrups().get(subgrup);
-                        if (comprovar_restricciones_lab(aula, subgrup1, dia, hora, assig, duracio)) { //comprovar restricciones
-                            for (int z = 0; z < duracio; ++z) {
-                                horari[hora + z][dia][aula] = new AssignacioL(fromInt2dia(dia), hora + z, aules2.get(aula), mishmash.get(i).getSessio().gettAula(), assig, subgrup1);
+                        boolean b = creaHorari(i, dia + 1, hora, aula, grup, subgrup); //voy a provar para el siguiente dia
+                        if (!b) {
+                            boolean b1 = creaHorari(i, 0, hora + 1, aula, grup, subgrup); //voy a provar para el siguiente hora
+                            if (!b1) {
+                                boolean b2 = creaHorari(i, dia, hora, aula + 1, grup, subgrup); //voy a provar para el siguiente aula
+                                if (b2) return false; //no se puede hacer el horario de ninguna manera
                             }
-                            if (subgrup == (mishmash.get(i).getAssig().getSubgrups(grup).size() - 1)) {
-                                if (grup == assig.getGrups().size()) {
-                                   if(creaHorari(i + 1, 0, 0, 0, 0, 0)) return true;//vamos a provar pa la asignatura siguiente
 
-                                } else {
-                                    creaHorari(i, 0, 0, 0, grup + 10, 0);//vamos a provar pa la asignatura siguiente
-                                }
-
-
-                            } else creaHorari(i, 0, 0, 0, grup, subgrup + 1);
                         }
+                    }
+                } else {
+                    Subgrup subgrup1 = grup1.getSubgrups().get(subgrup);
+                    if (comprovar_restricciones_lab(aula, subgrup1, dia, hora, assig, duracio)) { //comprovar restricciones
+                        for (int z = 0; z < duracio; ++z) {
+                            horari[hora + z][dia][aula] = new AssignacioL(fromInt2dia(dia), hora + z, aules2.get(aula), mishmash.get(i).getSessio().gettAula(), assig, subgrup1);
+                        }
+                        if (subgrup == (mishmash.get(i).getAssig().getSubgrups(grup).size() - 1)) {
+                            if (grup == assig.getGrups().size()) {
+                                if (creaHorari(i + 1, 0, 0, 0, 0, 0))
+                                    return true;//vamos a provar pa la asignatura siguiente
+
+                            } else {
+                                creaHorari(i, 0, 0, 0, grup + 10, 0);//vamos a provar pa la asignatura siguiente
+                            }
 
 
-                        else {
-                            boolean b = creaHorari(i, dia + 1, hora, aula, grup, subgrup); //voy a provar para el siguiente dia
-                            if (!b) {
-                                boolean b1 = creaHorari(i, 0, hora + 1, aula, grup, subgrup); //voy a provar para el siguiente hora
-                                if (!b1) {
-                                    boolean b2 = creaHorari(i, dia, hora, aula + 1, grup, subgrup); //voy a provar para el siguiente aula
-                                    if (b2) return false; //no se puede hacer el horario de ninguna manera
-                                }
+                        } else creaHorari(i, 0, 0, 0, grup, subgrup + 1);
+                    } else {
+                        boolean b = creaHorari(i, dia + 1, hora, aula, grup, subgrup); //voy a provar para el siguiente dia
+                        if (!b) {
+                            boolean b1 = creaHorari(i, 0, hora + 1, aula, grup, subgrup); //voy a provar para el siguiente hora
+                            if (!b1) {
+                                boolean b2 = creaHorari(i, dia, hora, aula + 1, grup, subgrup); //voy a provar para el siguiente aula
+                                if (b2) return false; //no se puede hacer el horario de ninguna manera
                             }
                         }
                     }
                 }
-                return false; //en teoria no tendría que llegar nunca aquí
             }
+            return false; //en teoria no tendría que llegar nunca aquí
         }
+    }
 
 
-    public boolean generaHorari(){
+    public boolean generaHorari() {
         assignatures2 = new ArrayList<>(assignatures.values());
         aules2 = new ArrayList<>(aules.values());
         horari = new Assignacio[12][5][aules2.size()];
@@ -602,7 +567,7 @@ public class CtrDomini {
             e.printStackTrace();
         }
         try {
-            return creaHorari(0,0,0,0,10,11);
+            return creaHorari(0, 0, 0, 0, 10, 11);
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
@@ -612,7 +577,7 @@ public class CtrDomini {
     private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
         ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
         Teoria auxteo;
-        Laboratori auxlab = new Laboratori(0,0,null);
+        Laboratori auxlab = new Laboratori(0, 0, null);
         int sesteo, seslab, valor;
         seslab = 0;             //si no comp se queja
         boolean lab;
@@ -622,8 +587,8 @@ public class CtrDomini {
                 auxlab = (Laboratori) a.getLaboratori();
                 seslab = auxlab.getNumSessions();
                 lab = true;
+            } catch (NotFoundException e) {
             }
-            catch(NotFoundException e) {}
             auxteo = (Teoria) a.getTeoria();         //TODO: concretar que significa un valor de 1 a sessions i la possibilitat de un valor 0.
             sesteo = auxteo.getNumSessions();
             valor = 8;                      //TODO: heuristica a assignar
@@ -636,9 +601,53 @@ public class CtrDomini {
                 res.add(new AssignaturaMonosessio(a, auxteo, valor));
                 valor /= 2;
             }
-        } return res;
+        }
+        return res;
     }
 
 }
 
 //TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado
+
+
+    /**
+     * AL CTRL IO
+     */
+
+//AQUESTES HAN DE PASSAR-LI
+    public void crearAulesJSON() {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        System.out.println(gson.toJson(aules));
+    }
+
+    public void crearAssignaturesJSON() {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        System.out.println(gson.toJson(assignatures));
+    }
+
+    public void crearPlaEstudisJSON() {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        System.out.println(gson.toJson(plaEstudis));
+    }
+
+//    public static void crearJSON(){
+//        JSONObject obj = new JSONObject();
+//
+//        obj.put("");
+//
+//        JSONArray aules = new JSONArray();
+//        aules.add()
+//        try {
+//            FileWriter file = new FileWriter("data.json");
+//            file.write(obj.toJSONString());
+//            file.flush();
+//            file.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.print(obj.toJSONString());
+//    }

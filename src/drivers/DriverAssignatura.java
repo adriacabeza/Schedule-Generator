@@ -98,9 +98,9 @@ public class DriverAssignatura {
                 case 4:
                     nomA = scan.next();
                     try {
-                        ArrayList<Assignatura> a = assignatures.get(nomA).getCorrequisits();
-                        for (Assignatura assig : a) {
-                            System.out.println(assig.toString());
+                        ArrayList<String> a = assignatures.get(nomA).getCorrequisits();
+                        for (String assig : a) {
+                            System.out.println(assig);
                         }
 
                     } catch (NotFoundException n) {
@@ -123,8 +123,8 @@ public class DriverAssignatura {
                     nomA = scan.next();
                     nomB = scan.next();
                     try {
-                        assignatures.get(nomA).esborraCorrequisit(assignatures.get(nomB));
-                        assignatures.get(nomB).esborraCorrequisit(assignatures.get(nomA));
+                        assignatures.get(nomA).esborraCorrequisit(nomB);
+                        assignatures.get(nomB).esborraCorrequisit(nomA);
                     } catch (NotFoundException n) {
                         System.out.println(n.getMessage());
                     }
@@ -132,7 +132,7 @@ public class DriverAssignatura {
                 case 7:
                     nomA = scan.next();
                     nomB = scan.next();
-                    System.out.println(assignatures.get(nomA).esCorrequisit(assignatures.get(nomB)));
+                    System.out.println(assignatures.get(nomA).esCorrequisit(nomB));
                     break;
                 case 8:
                     nomA = scan.next();

@@ -6,7 +6,7 @@ import java.util.Date;
 public class PlaEstudis {
     private String nomTitulacio;
     private Date any;
-    private ArrayList<Assignatura> assignatures;
+    private ArrayList<String> assignatures;
     private boolean obsolet;
 
 
@@ -89,7 +89,7 @@ public class PlaEstudis {
      * Afegeix una assignatura al pla d'estudis
      * @param a que és l'objecte assignatura
      */
-    public void afegirAssignatura(Assignatura a){
+    public void afegirAssignatura(String a){
         this.assignatures.add(a);
     }
 
@@ -105,7 +105,7 @@ public class PlaEstudis {
      * Retorna el conjunt d'assignatures del pla d'estudis
      * @return assignatures
      */
-    public ArrayList<Assignatura> getAssignatures(){
+    public ArrayList<String> getAssignatures(){
         return assignatures;
     }
 }

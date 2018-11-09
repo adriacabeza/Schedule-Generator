@@ -5,9 +5,9 @@
 package model;
 
 public abstract class InfoSessions {
-    private int numSessions;
-    private int duracioSessions;
-    private Aula.TipusAula tAula;
+    protected int numSessions;
+    protected int duracioSessions;
+    protected Aula.TipusAula tAula;
 
     /**
      * Crea una nova instancia d'informació de sessions i li assigna els seus atributs
