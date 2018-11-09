@@ -4,10 +4,6 @@
 > L'usuari visualitzarà tots els grups, des d'allà podrà consultar-ne un, modificarlo o esborrar-lo. A més també pot crear des d'allà un grup.
 ### Crear grup
 > L'usuari haurà d'inserir en diversos camps el número de grup, la capacitat, i la quantitat de subgrups que té el susdit.
-~~### Modificar grups
-> NO EN TENIM HEHE YOLO
-### Borrar grup
-> TAMPOCO LO TENEMOS YOLO 2~~
 
 
 ### Gestionar Assignatura
