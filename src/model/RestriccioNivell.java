@@ -13,13 +13,9 @@ public class RestriccioNivell extends Restriccions {
         super(2,true);
     }
 
-    public boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig, ArrayList<Aula> aules2) {
+    @Override
+    public boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig, ArrayList<Aula> aules2, Aula aula3) {
         for(int i = 0; i<aules2.size(); ++i) if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getQuadrimestre()) return false;
         return true;
-    }
-
-    @Override
-    public boolean isable() {
-        return false;
     }
 }

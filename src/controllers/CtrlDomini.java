@@ -17,6 +17,7 @@ public class CtrlDomini {
     private HashMap<String, Aula> aules;
     private Assignacio[][][] horari; //TODO esto va a estar aqui?
     private Restriccions r;
+    private HashMap<String,Restriccions> restriccions_unaries;
 
     // TODO esto tiene que estar aqui o puedo simplemente pasarlo donde se necesite como parametro? si esta aqui es
     // TODO mas dificil de actualitzar porque tengo que ir haciendolo en paralelo con el map
@@ -362,6 +363,10 @@ public class CtrlDomini {
         }
     }
 
+    void creaRestriccionsUnaries(){
+
+    }
+
 
     private int gethora(int hora) {
         if (hora == 0) return 8;
@@ -474,18 +479,29 @@ public class CtrlDomini {
     }*/
 
 
-    private boolean creaHorari(Domini domini, Assignacio[][][] horari, AssignaturaMonosessio mishmash, ArrayList<Aula> aules2){
+  /*  private boolean creaHorari(Domini domini, Assignacio[][][] horari, AssignaturaMonosessio mishmash, ArrayList<Aula> aules2){
         //a horari tinc l'horari buit, o el que s'ha anat fent
         //a domini tinc les possibilitats de cada grup, osea els dies als que pot anar, les hores a les
         //que pot anar i les aules a les que pot anar
         //a mishmash tinc a cada slot una assignatura i la seva informació de la sessió, ho he de fer per cada grup i subgrup de
         //l'assignatura
         //a aules2 tinc el total d'aules
+        if (mishmash.size() == 0){
+            return true; //all the groups were placed
+        }
+        else {
+            //pillar primera opció valida
+            horari[][][] = new Assignacio()
+                    //fer copia domini
+            podar_opcions(domini);
+            if(creaHorari()) return true;
+            else{
+                //pillar següent opció valida
+                creaHorari()
+            }
 
-
-
-
-    }
+        }
+    }*/
 
 
     public boolean generaHorari() {
@@ -498,15 +514,14 @@ public class CtrlDomini {
             e.printStackTrace();
         }
         try {
-            return creaHorari(0, 0, 0, 0, 10, 11);
+            //return creaHorari(0, 0, 0, 0, 10, 11);
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
         return false;
 
-
         Domini domini = new Domini(HashMap<Integer, HashMap<Integer, Set<Aula>>> domini);
-        domini.aplica_restriccions_unaries();
+        domini.aplica_restriccions_unaries(restriccions_unaries);
     }
 
     private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
@@ -566,6 +581,7 @@ public class CtrlDomini {
         Gson gson = builder.create();
         System.out.println(gson.toJson(plaEstudis));
     }
+
 
 //    public static void crearJSON(){
 //        JSONObject obj = new JSONObject();

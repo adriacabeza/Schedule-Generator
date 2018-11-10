@@ -15,14 +15,12 @@ public class RestriccioAulaDia extends Restriccions {
             super(4,true);
         }
 
-        public boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig,Aula aula3) throws NotFoundException {
+
+        @Override
+        public boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig, ArrayList<Aula> aules2, Aula aula3){
             if(hora == hora && aula3 == aula) return false;
             return true;
         }
 
-        @Override
-        public boolean isable() {
-            return false;
-        }
 }
 
