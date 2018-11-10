@@ -29,7 +29,7 @@ public class DriverSubgrup {
 
     public static void mostra(Subgrup g, Scanner s){
         int opt = 0;
-        while(opt != 4){
+        while(opt != 3){
             System.out.println("Escull que vols consultar:");
             System.out.println("1: numero del subgrup");
             System.out.println("2: capacitat del subgrup");
