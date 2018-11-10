@@ -326,6 +326,11 @@ public class CtrlDomini {
     //consultar restriccions
 
     //algo mes?
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //TODO vvvvvvvvvvvv HASTA AQUI ES CONTROLADOR DE DOMINIO, LO DEMAS SE TIENE QUE MOVER vvvvvvvvvvvv
 
@@ -468,92 +473,18 @@ public class CtrlDomini {
         }
     }*/
 
-    private boolean creaHorari(int i, int dia, int hora, int aula, int grup, int subgrup) throws NotFoundException {
 
-        if (comprovarini(aula, dia, hora))
-            return false; //això lo que fa es parar la recursivitat per aquesta via perquè no pot comprovar ni per un dissabte, ni per aules ni hores que no existeixen
-
-        if (i == mishmash.size()) {
-            return true; //ja que he mirat totes les asssignatures osea que DONE
-        } else {
-            Assignatura assig = mishmash.get(i).getAssig(); //esta es la asignatura que toca
-            if (mishmash.get(i).getSessio().getClass() == Teoria.class) {
-                System.out.println(grup);
-                System.out.println(assig.getNom());
-                Grup grup1 = mishmash.get(i).getAssig().getGrup(grup);
-                int duracio = mishmash.get(i).getSessio().getDuracioSessions();
-                if (comprovar_restricciones_teoria(aula, grup1, dia, hora, assig, duracio)) {
-                    for (int z = 0; z < duracio; ++z) {
-                        horari[hora + z][dia][aula] = new AssignacioT(fromInt2dia(dia), hora + z, aules2.get(aula), mishmash.get(i).getSessio().gettAula(), assig, grup1);
-                    }
-                    if (grup == (assig.getGrups().size() - 1)) //comprovar si ja és l'últim grup de l'assignatura
-                        if (creaHorari(i + 1, 0, 0, 0, 0, 0)) return true;//vamos a provar pa la asignatura siguiente
-                        else {
-                            for (int z = 0; z < duracio; ++z) {
-                                horari[hora + z][dia][aula] = null;
-                            }
-                            if (creaHorari(i + 1, 0, 0, 0, 0, 0))
-                                return true; //si esta al final de dia passar a hora mes u i dia 0
-                            else {
-                                for (int z = 0; z < duracio; ++z) {
-                                    horari[hora + z][dia][aula] = null;
-                                }
-                                boolean b = creaHorari(i, dia + 1, hora, aula, grup, subgrup); //voy a provar para el siguiente dia
-                                if (!b) {
-                                    boolean b1 = creaHorari(i, 0, hora + 1, aula, grup, subgrup); //voy a provar para el siguiente hora
-                                    if (!b1) {
-                                        boolean b2 = creaHorari(i, dia, hora, aula + 1, grup, subgrup); //voy a provar para el siguiente aula
-                                        if (b2) return false; //no se puede hacer el horario de ninguna manera
-                                    }
-                                } else {
-                                    if (creaHorari(i, 0, 0, 0, grup + 10, subgrup)) return true;
-                                }
-                            }
-                        }
+    private boolean creaHorari(Domini domini, Assignacio[][][] horari, AssignaturaMonosessio mishmash, ArrayList<Aula> aules2){
+        //a horari tinc l'horari buit, o el que s'ha anat fent
+        //a domini tinc les possibilitats de cada grup, osea els dies als que pot anar, les hores a les
+        //que pot anar i les aules a les que pot anar
+        //a mishmash tinc a cada slot una assignatura i la seva informació de la sessió, ho he de fer per cada grup i subgrup de
+        //l'assignatura
+        //a aules2 tinc el total d'aules
 
 
-                    else {
-                        boolean b = creaHorari(i, dia + 1, hora, aula, grup, subgrup); //voy a provar para el siguiente dia
-                        if (!b) {
-                            boolean b1 = creaHorari(i, 0, hora + 1, aula, grup, subgrup); //voy a provar para el siguiente hora
-                            if (!b1) {
-                                boolean b2 = creaHorari(i, dia, hora, aula + 1, grup, subgrup); //voy a provar para el siguiente aula
-                                if (b2) return false; //no se puede hacer el horario de ninguna manera
-                            }
-
-                        }
-                    }
-                } else {
-                    Subgrup subgrup1 = grup1.getSubgrups().get(subgrup);
-                    if (comprovar_restricciones_lab(aula, subgrup1, dia, hora, assig, duracio)) { //comprovar restricciones
-                        for (int z = 0; z < duracio; ++z) {
-                            horari[hora + z][dia][aula] = new AssignacioL(fromInt2dia(dia), hora + z, aules2.get(aula), mishmash.get(i).getSessio().gettAula(), assig, subgrup1);
-                        }
-                        if (subgrup == (mishmash.get(i).getAssig().getSubgrups(grup).size() - 1)) {
-                            if (grup == assig.getGrups().size()) {
-                                if (creaHorari(i + 1, 0, 0, 0, 0, 0))
-                                    return true;//vamos a provar pa la asignatura siguiente
-
-                            } else {
-                                creaHorari(i, 0, 0, 0, grup + 10, 0);//vamos a provar pa la asignatura siguiente
-                            }
 
 
-                        } else creaHorari(i, 0, 0, 0, grup, subgrup + 1);
-                    } else {
-                        boolean b = creaHorari(i, dia + 1, hora, aula, grup, subgrup); //voy a provar para el siguiente dia
-                        if (!b) {
-                            boolean b1 = creaHorari(i, 0, hora + 1, aula, grup, subgrup); //voy a provar para el siguiente hora
-                            if (!b1) {
-                                boolean b2 = creaHorari(i, dia, hora, aula + 1, grup, subgrup); //voy a provar para el siguiente aula
-                                if (b2) return false; //no se puede hacer el horario de ninguna manera
-                            }
-                        }
-                    }
-                }
-            }
-            return false; //en teoria no tendría que llegar nunca aquí
-        }
     }
 
 
@@ -572,6 +503,10 @@ public class CtrlDomini {
             e.printStackTrace();
         }
         return false;
+
+
+        Domini domini = new Domini(HashMap<Integer, HashMap<Integer, Set<Aula>>> domini);
+        domini.aplica_restriccions_unaries();
     }
 
     private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
@@ -607,7 +542,6 @@ public class CtrlDomini {
 
 }
 
-//TODO quitar a las asignaturas siguientes la posibilidad de que miren los gaps(de dia, hora y aula) que ya se han asignado
 
 
     /**
