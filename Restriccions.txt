@@ -1,6 +1,6 @@
 1- No deixar fer clase en una aula en una hora en concret                                                               //RestAulaHora?
 2- No deixar fer clase a un grup (o subgrup) d'una assignatura en una hora en concret                                   //RestGrupHora? - Pendent
-3- No es pot fer clase de lab si en el mateix dia ja hi ha una de teoria del grup general                               //RestSubgrupLab
-4- No es pot fer clase de teoria si ja hi ha un laboratori d'un dels seus subgrups en marxa                             //RestGrupTeo
+3- No es pot fer clase de lab si en el mateix dia ja hi ha una de teoria del grup general o solapament de laboratoris d'un mateix grup                               //RestSubgrupLab
+4- No es pot fer clase de teoria si ja hi ha un laboratori d'un dels seus subgrups en marxa o un solapament de teories                             //RestGrupTeo
 5- No es pot fer cap clase en aquesta hora si ja hi ha una altra d'una assignatura del mateix quadrimestre i grup       //RestQuadrimestre
 6- No es pot fer cap clase en aquesta hora si ja hi ha una altra assignatura que es correquisit d'aquesta amb el mateix grup //RestCorr
