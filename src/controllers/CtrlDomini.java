@@ -503,6 +503,36 @@ public class CtrlDomini {
         }
     }*/
 
+    private boolean creaHorari(int i, Assignacio[][][] horari) {
+
+        if (i == mishmash.size()) return true;
+        int duracio = mishmash.get(i).getSessio().getDuracioSessions();
+        boolean teoria = (mishmash.get(i).getSessio().getClass() == Teoria.class);
+        for (int l = 0; l < 4; ++l) {
+            for (int m = 0; m < 11; ++m) {
+                for (int k = 0; k < aules2.size(); ++k) {
+                    for (int z = 0; z < duracio; ++z) {
+                        if (teoria)
+                            horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                        else
+                            horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+
+                    }
+                    if (creaHorari(i + 1, horari)) return true;
+                    else {
+                        //no se ha podido hacer, borramos lo que hemos puesto
+                        for (int z = 0; z < duracio; ++z) {
+                            horari[m + z][l][k] = null;
+                        }
+                    }
+                }
+
+            }
+
+        }
+        return false;
+    }
+
 
     public boolean generaHorari() {
         assignatures2 = new ArrayList<>(assignatures.values());
@@ -513,15 +543,7 @@ public class CtrlDomini {
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
-        try {
-            //return creaHorari(0, 0, 0, 0, 10, 11);
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        }
-        return false;
-
-        Domini domini = new Domini(HashMap<Integer, HashMap<Integer, Set<Aula>>> domini);
-        domini.aplica_restriccions_unaries(restriccions_unaries);
+        return creaHorari(0, horari);
     }
 
     private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
@@ -579,6 +601,7 @@ public class CtrlDomini {
      */
 
 //AQUESTES HAN DE PASSAR-LI
+/*
     public void crearAulesJSON() {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
@@ -596,6 +619,7 @@ public class CtrlDomini {
         Gson gson = builder.create();
         System.out.println(gson.toJson(plaEstudis));
     }
+*/
 
 
 //    public static void crearJSON(){

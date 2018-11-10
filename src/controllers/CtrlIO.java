@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.Assignatura;
 import model.Aula;
+import model.PlaEstudis;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -96,7 +97,7 @@ public class CtrlIO {
         }
     }
 
-    public void guardaAules((HashMap<String, Aules> aules){
+    public void guardaAules(HashMap<String, Aules> aules){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             String json = gson.toJson(aules);
@@ -108,7 +109,7 @@ public class CtrlIO {
         }
     }
 
-    public void guardaPlaDEstudis((HashMap<String, PlaEstudis> ps){
+    public void guardaPlaDEstudis(HashMap<String, PlaEstudis> ps){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             String json = gson.toJson(ps);
