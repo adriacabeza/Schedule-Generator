@@ -538,12 +538,17 @@ public class CtrlDomini {
         assignatures2 = new ArrayList<>(assignatures.values());
         aules2 = new ArrayList<>(aules.values());
         horari = new Assignacio[12][5][aules2.size()];
+
         try {
             mishmash = mishmash(assignatures2);
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
         return creaHorari(0, horari);
+    }
+
+    private void ordena_mishamash() {
+        Collections.sort(mishmash);
     }
 
     private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {

@@ -1,7 +1,7 @@
 package model;
 
 
-public class AssignaturaMonosessio {
+public class AssignaturaMonosessio implements Comparable<AssignaturaMonosessio>{
 
     private Assignatura assig;
     private InfoSessions sessio;
@@ -43,5 +43,10 @@ public class AssignaturaMonosessio {
     }
     public void setValor(int valor){
         this.valor = valor;
+    }
+      @Override
+    public int compareTo(AssignaturaMonosessio o) {
+        int comparevalue = o.getValor();
+        return comparevalue-this.valor;
     }
 }
