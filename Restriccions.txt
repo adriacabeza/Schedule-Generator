@@ -1,0 +1,5 @@
+1- No deixar fer clase en una aula en una hora en concret                                     //RestAulaHora?
+2- No deixar fer clase a un grup d'una assignatura en una hora en concret (pot ser subgrup)   //RestGrupHora?
+3- No es pot fer clase de lab si en el mateix dia ja hi ha una de teoria del grup general     //RestSub?
+4- No es pot fer clase de teoria si ja hi ha un laboratori d'un dels seus subgrups en marxa   //RestGrup
+5- No es pot 
