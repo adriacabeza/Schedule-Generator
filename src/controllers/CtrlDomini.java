@@ -537,13 +537,13 @@ public class CtrlDomini {
 
         }
     }
-    1 A 1 2 2 NORMAL 3 10 0 2 2   LP 1 1 2 LABORATORI 3 1 1 1 2  TC 1 1 2 LABORATORI 3 1 1 1 1   2 POLLA 1998 1     3 A 4 2 LABORATORI 50 1 6
+    1 A 1 3 1 NORMAL 10 1 1 2 2   LP 2 2 2 LABORATORI 10 1 1 1 2  G 3 3 1 LABORATORI 5 1 1 1 2  TC 2 2 1 LABORATORI 4 1 1 1 1   2 POLLA 1998 1     3 A 4 2 LABORATORI 50 2  A 3 2 LABORATORI 50 1 6
 
     */
 
     private boolean creaHorari(int i, Assignacio[][][] horari) {
 
-        if (i == (mishmash.size()-1)) return true;
+        if (i == (mishmash.size())) return true;
         int duracio = mishmash.get(i).getSessio().getDuracioSessions();
         boolean teoria = (mishmash.get(i).getSessio().getClass() == Teoria.class);
         for (int l = 0; l < 5; ++l) {
