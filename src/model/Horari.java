@@ -33,6 +33,73 @@ public class Horari {
         this.horari = new Assignacio[12][5][aules2.size()];
     }
 
+    private void printarHorari_aula(Aula aula) {
+        int numAula = assignatures2.indexOf(aula);
+        for (int i = 0; i < 12; ++i) {
+            for (int j = 0; j < 5; ++j) {
+                Assignacio assignacio = horari[i][j][numAula]; //S HAURIA DE PRINTAR AIXO
+            }
+
+        }
+    }
+
+    public void printarHoraritot() {
+        int count= 0;
+        for (int i = 0; i < 12; ++i) {
+            for (int j = 0; j < 5; ++j) {
+                for(int k = 0; k<aules2.size();++k)
+                    if(horari[i][j][k] == null) System.out.println("VACÍO");
+                    else {
+                        ++count;
+                        System.out.println("Aula: "+ horari[i][j][k].getAula().getkey() +" es fa assignatura: "+horari[i][j][k].getAssignatura());
+                    }
+            }
+        }
+        System.out.println("Se han asignado "+ count+ (" sesiones."));
+    }
+
+    private void printarHorari_auladia(Aula aula, String dia) {
+        int numAula = assignatures2.indexOf(aula);
+        int numdia = fromdia2int(dia);
+        for (int i = 0; i < 12; ++i) {
+            System.out.println("Aula: "+ horari[i][numdia][numAula].getAula().getkey() +" es fa assignatura: "+horari[i][numdia][numAula].getAssignatura());
+        }
+
+    }
+
+    private void printarHorari_aulahora(Aula aula, int hora) {
+        int nhora = gethora(hora);
+        int numAula = assignatures2.indexOf(aula);
+        for (int i = 0; i < 5; ++i) {
+            System.out.println("Aula: "+ horari[nhora][i][numAula].getAula().getkey() +" es fa assignatura: "+horari[nhora][i][numAula].getAssignatura());
+        }
+
+    }
+
+    public void printarHorari_hora(int hora) {
+        int nhora = gethora(hora);
+        for (int i = 0; i < 5; ++i) {
+            for (int j = 0; j < aules2.size(); ++j) {
+                System.out.println(horari[nhora][i][j]); // S HAURIA DE PRINTAR AIXO
+                System.out.println("Aula: "+ horari[nhora][i][j].getAula().getkey() +" es fa assignatura: "+horari[nhora][i][j].getAssignatura());
+
+            }
+
+        }
+
+    }
+
+    public void printarHorari_hora(String dia) {
+        int numdia = fromdia2int(dia);
+        for (int i = 0; i < 12; ++i) {
+            for (int j = 0; j < aules2.size(); ++j) {
+                System.out.println("Aula: "+ horari[i][numdia][j].getAula().getkey() +" es fa assignatura: "+horari[i][numdia][j].getAssignatura());
+            }
+
+        }
+
+    }
+
     private int fromdia2int(String dia) {
         switch (dia) {
             case "Dilluns":
@@ -165,6 +232,7 @@ public class Horari {
             e.printStackTrace();
         }
         return creaHorari(0, horari);
+
     }
 
     private void ordena_mishamash() {
