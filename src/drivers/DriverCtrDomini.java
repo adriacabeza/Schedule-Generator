@@ -151,9 +151,9 @@ public class DriverCtrDomini {
                     ctrl.generaHorari();
                     break;
                 case 7:
-                    ctrl.printarHorari_hora(0);
+                    ctrl.printarHoraritot();
                     break;
-                case 11:
+                case 8:
                     break;
                 default:
                     System.out.println("Opció incorrecte. Introdueix una opcio vàlida");

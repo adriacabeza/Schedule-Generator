@@ -400,6 +400,18 @@ public class CtrlDomini {
         }
     }
 
+    public void printarHoraritot() {
+        for (int i = 0; i < 12; ++i) {
+            for (int j = 0; j < 5; ++j) {
+                for(int k = 0; k<aules2.size();++k)
+                    if(horari[i][j][k] == null) System.out.println("VACÍO");
+                    else {
+                        System.out.println("Aula: "+ horari[i][j][k].getAula().getEdifici()+ horari[i][j][k].getAula().getPlanta()+  horari[i][j][k].getAula().getAula() +" es fa assignatura: "+horari[i][j][k].getAssignatura());
+                    }
+            }
+        }
+    }
+
     private void printarHorari_auladia(Aula aula, String dia) {
         int numAula = assignatures2.indexOf(aula);
         int numdia = fromdia2int(dia);
@@ -422,7 +434,7 @@ public class CtrlDomini {
         int nhora = gethora(hora);
         for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < aules2.size(); ++j) {
-                Assignacio assignacio = horari[nhora][i][j]; // S HAURIA DE PRINTAR AIXO
+                System.out.println(horari[nhora][i][j]); // S HAURIA DE PRINTAR AIXO
             }
 
         }
@@ -433,7 +445,7 @@ public class CtrlDomini {
         int numdia = fromdia2int(dia);
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < aules2.size(); ++j) {
-                Assignacio assignacio = horari[i][numdia][j]; // S'HAURIA DE PRINTAR AIXO
+                System.out.println(horari[i][numdia][j]); // S'HAURIA DE PRINTAR AIXO
             }
 
         }
@@ -501,7 +513,10 @@ public class CtrlDomini {
             }
 
         }
-    }*/
+    }
+    1 A 1 3 2 LABORATORI 3 10 0 2 2     LP 2 3 2 NORMAL 3 10 0 1 2   TC 1 1 1 NORMAL 1 10 0 1 1   2 POLLA 1998 1 3 A 4 2 LABORATORI 50 1 6 7
+
+    */
 
     private boolean creaHorari(int i, Assignacio[][][] horari) {
 
@@ -511,25 +526,34 @@ public class CtrlDomini {
         for (int l = 0; l < 4; ++l) {
             for (int m = 0; m < 11; ++m) {
                 for (int k = 0; k < aules2.size(); ++k) {
-                    for (int z = 0; z < duracio; ++z) {
-                        if (teoria)
-                            horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
-                        else
-                            horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
-
+                    if (horari[m][l][k] == null) {
+                        if(teoria) {
+                            if (comprovar_restricciones_teoria()) {
+                                for (int z = 0; z < duracio; ++z) {
+                                    horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                }
+                            }
+                        }
+                        else{
+                            if(comprovar_restricciones_lab()) {
+                                for (int z = 0; z < duracio; ++z) {
+                                    horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+                                }
+                            }
+                        }
                     }
-                    if (creaHorari(i + 1, horari)) return true;
-                    else {
-                        //no se ha podido hacer, borramos lo que hemos puesto
-                        for (int z = 0; z < duracio; ++z) {
-                            horari[m + z][l][k] = null;
+
+                        if (creaHorari(i + 1, horari)) return true;
+                        else {
+                            //no se ha podido hacer, borramos lo que hemos puesto
+                            for (int z = 0; z < duracio; ++z) {
+                                horari[m + z][l][k] = null;
+                            }
                         }
                     }
                 }
 
             }
-
-        }
         return false;
     }
 
