@@ -6,21 +6,25 @@ import java.util.ArrayList;
 
 public class RestriccioAulaDia extends Restriccions {
 
-        private int id;
-        private boolean active;
-        private int hora;
-        private Aula aula;
+    private int dia;
+    private Aula aula;
 
-        public RestriccioAulaDia() {
-            super(4,true);
-        }
+    public RestriccioAulaDia(int dia) {
+        super(4);
+        this.dia = dia;
+
+    }
+
+    @Override
+    public boolean isable() throws NotFoundException {
+        return false;
+    }
 
 
-        @Override
-        public boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig, ArrayList<Aula> aules2, Aula aula3){
-            if(hora == hora && aula3 == aula) return false;
-            return true;
-        }
+    public boolean isable( Aula aula, int dia){
+        if(this.dia == dia && aula.getKey() == this.aula.getKey()) return false;
+        return true;
+    }
 
 }
 

@@ -138,7 +138,7 @@ public class Aula {
         return edifici + String.valueOf(planta) + String.valueOf(aula);
     }
 
-    public String getkey(){
+    public String getKey(){
         return edifici+String.valueOf(planta)+String.valueOf(aula);
     }
 

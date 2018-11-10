@@ -16,7 +16,9 @@ public class CtrlDomini {
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
     //private Assignacio[][][] horari; //TODO esto va a estar aqui?
-    private Restriccions r;
+    private RestriccioCorrequisit resCorr;
+    private RestriccioNivell resNiv;
+    private RestriccioTipusAula resTip;
     //private HashMap<String,Restriccions> restriccions_unaries;
 
     // TODO esto tiene que estar aqui o puedo simplemente pasarlo donde se necesite como parametro? si esta aqui es
