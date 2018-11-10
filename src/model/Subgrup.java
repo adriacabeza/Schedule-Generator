@@ -11,7 +11,7 @@ public class Subgrup extends Grup {
      * @param num         nom del grup
      * @param subgrups    subgrups del qual es composa el grup
      */
-    public Subgrup(int num, int capacitat, int subgrups, Grup grup) {
+    public Subgrup(int num, int capacitat, int subgrups) {
         super(num, capacitat, subgrups);
     }
 }

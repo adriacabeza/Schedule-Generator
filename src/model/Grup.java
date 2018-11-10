@@ -21,7 +21,7 @@ public class Grup {
         this.num = num;
         this.capacitat = capacitat;
         for (int j = 1; j<=subgrups; j++){
-            this.subgrups.put(num+j, new Subgrup(num+j, capacitat/subgrups,0, this));
+            this.subgrups.put(num+j, new Subgrup(num+j, capacitat/subgrups,0));
         }
     }
 
