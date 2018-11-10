@@ -24,7 +24,7 @@ public class DriverSubgrup {
         num = s.nextInt();
         System.out.println("Introdueix la capacitat del subgrup");
         capacitat = s.nextInt();
-        return new Subgrup(num, capacitat, 0, null);
+        return new Subgrup(num, capacitat, 0);
     }
 
     public static void mostra(Subgrup g, Scanner s){
@@ -92,7 +92,7 @@ public class DriverSubgrup {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        Subgrup sg = new Subgrup(0,0,0,null);
+        Subgrup sg = new Subgrup(0,0,0);
         while(option != 4) {
             mostraopcions();
             option = scan.nextInt();

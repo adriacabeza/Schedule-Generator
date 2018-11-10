@@ -102,7 +102,7 @@ public class DriverAssignacioT {
         String nom = s.next();
         System.out.println("Introdueix el numero de quadrimestre de la assignatura");
         int quad = s.nextInt();
-        return new Assignatura(nom, quad, null, null );
+        return new Assignatura(nom, quad);
     }
 
     private static Aula creaAula(Scanner s){
@@ -118,7 +118,7 @@ public class DriverAssignacioT {
         System.out.println("Introdueix la capacitat de l'aula");
         capacitat = s.nextInt();
         tAula = Aula.TipusAula.NORMAL;
-        return new Aula(edifici, planta, aula, tAula, capacitat, null);
+        return new Aula(edifici, planta, aula, tAula, capacitat);
     }
 
 

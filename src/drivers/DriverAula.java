@@ -1,8 +1,5 @@
 package drivers;
 
-import model.Assignacio;
-import model.AssignacioL;
-import model.AssignacioT;
 import model.Aula;
 
 import java.util.ArrayList;
@@ -49,7 +46,7 @@ public class DriverAula {
         System.out.println("Introdueix la capacitat de l'aula");
         capacitat = s.nextInt();
 
-        return new Aula(edifici, planta, aula, tAula, capacitat,null);
+        return new Aula(edifici, planta, aula, tAula, capacitat);
     }
 
     public static void mostra(Aula a, Scanner s){
@@ -153,7 +150,7 @@ public class DriverAula {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        Aula aula = new Aula(null,0,0, null,0,new ArrayList<>());
+        Aula aula = new Aula(null,0,0, null,0);
         while(option != 4){
             mostraopcions();
             option = scan.nextInt();
