@@ -3,8 +3,16 @@ package model;
 import exceptions.NotFoundException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Horari {
+    private Assignacio[][][] horari;
+    private ArrayList<AssignaturaMonosessio> mishmash;
+    //ESTO DE ABAJO VA AQUÍ O NO??
+    private ArrayList<Assignatura> assignatures2;
+    private ArrayList<Aula> aules2;
 
     private String fromInt2dia(int dia) {
         if (dia == 0) return "Dilluns";
@@ -151,6 +159,56 @@ public class Horari {
             e.printStackTrace();
         }
         return creaHorari(0, horari);
+    }
+
+    private void ordena_mishamash() {
+        Collections.sort(mishmash);
+    }
+
+    private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
+        ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
+        Teoria auxteo;
+        Laboratori auxlab = new Laboratori(0, 0, null, null);
+        int sesteo, seslab, valor;
+        Map<Integer, Grup> grups;
+        Grup g;
+        HashMap<Integer, Subgrup> subgrups;
+        seslab = 0;             //si no comp se queja
+        boolean lab;
+        for (Assignatura a : assignatures2) {
+            lab = false;
+            try {
+                auxlab = (Laboratori) a.getLaboratori();
+                seslab = auxlab.getNumSessions();
+                lab = true;
+            } catch (NotFoundException e) {}
+            auxteo = (Teoria) a.getTeoria();         //TODO: concretar que significa un valor de 1 a sessions i la possibilitat de un valor 0.
+            sesteo = auxteo.getNumSessions();
+            valor = 8;                      //TODO: heuristica a assignar
+            for (int i = 0; lab && i < seslab; ++i) {
+                grups = a.getGrups();
+                for (int key : grups.keySet()){
+                    g = grups.get(key);
+                    subgrups = g.getSubgrups();
+                    for (int subg : subgrups.keySet()){
+                        res.add(new AssignaturaMonosessio(a, auxlab, g, subgrups.get(subg), valor));
+                    }
+
+                }
+
+                valor /= 2;
+            }
+            valor = 8;
+            for (int i = 0; i < sesteo; ++i) {
+                grups = a.getGrups();
+                for (int key : grups.keySet()){
+                    res.add(new AssignaturaMonosessio(a, auxteo, grups.get(key), null, valor));
+                }
+
+                valor /= 2;
+            }
+        }
+        return res;
     }
 
 

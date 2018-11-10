@@ -17,7 +17,7 @@ public class CtrlDomini {
     private HashMap<String, Aula> aules;
     private Assignacio[][][] horari; //TODO esto va a estar aqui?
     private Restriccions r;
-    private HashMap<String,Restriccions> restriccions_unaries;
+    //private HashMap<String,Restriccions> restriccions_unaries;
 
     // TODO esto tiene que estar aqui o puedo simplemente pasarlo donde se necesite como parametro? si esta aqui es
     // TODO mas dificil de actualitzar porque tengo que ir haciendolo en paralelo con el map
@@ -322,6 +322,12 @@ public class CtrlDomini {
             return aules.get(key);
         }
     }
+
+
+//    public Horari crearHorari(){
+//
+//    }
+
 
     //func generar horari
     //consultar restriccions
