@@ -384,12 +384,6 @@ public class CtrlDomini {
     }
 
 
-    private boolean comprovarini(int aula, int dia, int hora) {
-        if (aula > aules2.size() || dia > 4 || hora > 11) return true;
-
-        return false;
-    }
-
     private void printarHorari_aula(Aula aula) {
         int numAula = assignatures2.indexOf(aula);
         for (int i = 0; i < 12; ++i) {
