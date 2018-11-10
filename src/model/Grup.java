@@ -83,6 +83,7 @@ public class Grup {
         this.num = num;
     }   //TODO: modificar num identificador de subgrups
 
+
     @Override
     public String toString() {
         return "id: " + num + " capacitat: " + capacitat;

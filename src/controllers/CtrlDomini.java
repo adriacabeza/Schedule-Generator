@@ -408,7 +408,7 @@ public class CtrlDomini {
                     if(horari[i][j][k] == null) System.out.println("VACÍO");
                     else {
                         ++count;
-                        System.out.println("Aula: "+ horari[i][j][k].getAula().getEdifici()+ horari[i][j][k].getAula().getPlanta()+  horari[i][j][k].getAula().getAula() +" es fa assignatura: "+horari[i][j][k].getAssignatura());
+                        System.out.println("Aula: "+ horari[i][j][k].getAula().getkey() +" es fa assignatura: "+horari[i][j][k].getAssignatura());
                     }
             }
         }
@@ -419,7 +419,7 @@ public class CtrlDomini {
         int numAula = assignatures2.indexOf(aula);
         int numdia = fromdia2int(dia);
         for (int i = 0; i < 12; ++i) {
-            Assignacio assignacio = horari[i][numdia][numAula]; //S HAURIA DE PRINTAR AIXO
+            System.out.println("Aula: "+ horari[i][numdia][numAula].getAula().getkey() +" es fa assignatura: "+horari[i][numdia][numAula].getAssignatura());
         }
 
     }
@@ -428,7 +428,7 @@ public class CtrlDomini {
         int nhora = gethora(hora);
         int numAula = assignatures2.indexOf(aula);
         for (int i = 0; i < 5; ++i) {
-            Assignacio assignacio = horari[nhora][i][numAula]; // S HAURIA DE PRINTAR AIXO
+            System.out.println("Aula: "+ horari[nhora][i][numAula].getAula().getkey() +" es fa assignatura: "+horari[nhora][i][numAula].getAssignatura());
         }
 
     }
@@ -438,6 +438,8 @@ public class CtrlDomini {
         for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < aules2.size(); ++j) {
                 System.out.println(horari[nhora][i][j]); // S HAURIA DE PRINTAR AIXO
+                System.out.println("Aula: "+ horari[nhora][i][j].getAula().getkey() +" es fa assignatura: "+horari[nhora][i][j].getAssignatura());
+
             }
 
         }
@@ -448,7 +450,7 @@ public class CtrlDomini {
         int numdia = fromdia2int(dia);
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < aules2.size(); ++j) {
-                System.out.println(horari[i][numdia][j]); // S'HAURIA DE PRINTAR AIXO
+                System.out.println("Aula: "+ horari[i][numdia][j].getAula().getkey() +" es fa assignatura: "+horari[i][numdia][j].getAssignatura());
             }
 
         }
@@ -598,6 +600,7 @@ public class CtrlDomini {
 
         try {
             mishmash = mishmash(assignatures2);
+            ordena_mishamash();
         } catch (NotFoundException e) {
             e.printStackTrace();
         }

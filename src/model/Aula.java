@@ -138,6 +138,10 @@ public class Aula {
         return edifici + String.valueOf(planta) + String.valueOf(aula);
     }
 
+    public String getkey(){
+        return edifici+String.valueOf(planta)+String.valueOf(aula);
+    }
+
     public static String getedificifromKey(String key){
         return key.substring(0,2); //THAT MEANS THE WE ONLY HAVE BUILDING OF TWO CHARS
     }
