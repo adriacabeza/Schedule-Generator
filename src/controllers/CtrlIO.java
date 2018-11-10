@@ -27,11 +27,33 @@ public class CtrlIO {
     /* LECTURA DE FITXERS */
 
     public void carregaAules(String filepath){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try {
+            FileReader fr = new FileReader(filepath);
 
+            HashMap<String, Aula> a = gson.fromJson(fr, new TypeToken<HashMap<String, Aula>>(){}.getType());
+            fr.close();
+            return a;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void carregaPlansDEstudi(String filepath) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try {
+            FileReader fr = new FileReader(filepath);
 
+            HashMap<String, PlaEstudis> ps = gson.fromJson(fr, new TypeToken<HashMap<String, PlaEstudis>>(){}.getType());
+            fr.close();
+            return ps;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
 
     }
 
@@ -69,18 +91,32 @@ public class CtrlIO {
             FileWriter fw = new FileWriter("assignatures.json");
             fw.write(json);
             fw.close();
-            System.out.println(json);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void guardaAules(){
-
+    public void guardaAules((HashMap<String, Aules> aules){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try {
+            String json = gson.toJson(aules);
+            FileWriter fw = new FileWriter("aules.json");
+            fw.write(json);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void guardaPlaDEstudis(){
-
+    public void guardaPlaDEstudis((HashMap<String, PlaEstudis> ps){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try {
+            String json = gson.toJson(ps);
+            FileWriter fw = new FileWriter("aules.json");
+            fw.write(json);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
