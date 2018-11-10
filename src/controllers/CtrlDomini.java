@@ -401,15 +401,18 @@ public class CtrlDomini {
     }
 
     public void printarHoraritot() {
+        int count= 0;
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < 5; ++j) {
                 for(int k = 0; k<aules2.size();++k)
                     if(horari[i][j][k] == null) System.out.println("VACÍO");
                     else {
+                        ++count;
                         System.out.println("Aula: "+ horari[i][j][k].getAula().getEdifici()+ horari[i][j][k].getAula().getPlanta()+  horari[i][j][k].getAula().getAula() +" es fa assignatura: "+horari[i][j][k].getAssignatura());
                     }
             }
         }
+        System.out.println("Se han asignado "+ count+ (" sesiones."));
     }
 
     private void printarHorari_auladia(Aula aula, String dia) {
@@ -454,10 +457,20 @@ public class CtrlDomini {
 
     private boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig, int duracio) {
         Aula aula = aules2.get(aula1);
-        if (aula.getCapacitat() < grup.getCapacitat()) return false;
+        if (aula.getCapacitat() <= grup.getCapacitat()) {
+            System.out.println("La capacitat és insuficient");
+            return false;
+        }
         for (int i = 0; i < duracio; ++i) {
-            if ((hora + i) >= 12) return false;
-            else if (horari[hora + i][dia][aula1] != null) return false;
+            if ((hora + i) >= 12){
+                System.out.println("Se pasa del horario");
+                return false;
+            }
+            else if (horari[hora + i][dia][aula1] != null) {
+                System.out.println("Con la assignatura "+assig.getNom()+" fallo.");
+                System.out.println("Ya está puesta la hora "+ (hora+i) + ", el dia "+ fromInt2dia(dia));
+                return false;
+            }
         }
         return true;
     }
@@ -514,34 +527,35 @@ public class CtrlDomini {
 
         }
     }
-    1 A 1 3 2 LABORATORI 3 10 0 2 2     LP 2 3 2 NORMAL 3 10 0 1 2   TC 1 1 1 NORMAL 1 10 0 1 1   2 POLLA 1998 1 3 A 4 2 LABORATORI 50 1 6 7
+    1 A 1 2 2 NORMAL 3 10 0 2 2   LP 1 10 2 LABORATORI 3 10 0 1 2   TC 1 1 1 LABORATORI 1 10 0 1 1   2 POLLA 1998 1     3 A 4 2 LABORATORI 50 1 6
 
     */
 
     private boolean creaHorari(int i, Assignacio[][][] horari) {
 
-        if (i == mishmash.size()) return true;
+        if (i == (mishmash.size()-1)) return true;
         int duracio = mishmash.get(i).getSessio().getDuracioSessions();
         boolean teoria = (mishmash.get(i).getSessio().getClass() == Teoria.class);
         for (int l = 0; l < 4; ++l) {
             for (int m = 0; m < 11; ++m) {
                 for (int k = 0; k < aules2.size(); ++k) {
                     if (horari[m][l][k] == null) {
-                        if(teoria) {
-                            if (comprovar_restricciones_teoria()) {
+                        if (teoria) {
+                            if (comprovar_restricciones_teoria(k, mishmash.get(i).getGrup(), l, m, mishmash.get(i).getAssig(), duracio)) {
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                    System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
                                 }
                             }
-                        }
-                        else{
-                            if(comprovar_restricciones_lab()) {
-                                for (int z = 0; z < duracio; ++z) {
-                                    horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
-                                }
+                        } else {
+                            //                        if(comprovar_restricciones_lab(k,mishmash.get(i).getSub(),l,m,mishmash.get(i).getAssig(),duracio)) {
+                            for (int z = 0; z < duracio; ++z) {
+                                horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+                                System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
                             }
                         }
-                    }
+
+
 
                         if (creaHorari(i + 1, horari)) return true;
                         else {
@@ -552,9 +566,12 @@ public class CtrlDomini {
                         }
                     }
                 }
-
             }
+        }
+
+        System.out.println("no se ha podido hacer el horario de esta manera, let's backtrack");
         return false;
+
     }
 
 
