@@ -1,9 +1,10 @@
-package controllers;
+ package controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.Assignatura;
+import model.Aula;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -30,7 +31,6 @@ public class CtrlIO {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             FileReader fr = new FileReader(filepath);
-
             HashMap<String, Aula> a = gson.fromJson(fr, new TypeToken<HashMap<String, Aula>>(){}.getType());
             fr.close();
             return a;

@@ -1,5 +1,8 @@
 package model;
+import exceptions.NotFoundException;
 import model.*;
+
+import java.util.ArrayList;
 
 
 public abstract class Restriccions {
@@ -34,7 +37,7 @@ public abstract class Restriccions {
         this.active = active;
     }
 
-    public abstract boolean isable();
+    public abstract boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig, ArrayList<Aula> aules2, Aula aula3) throws NotFoundException;
 
 
 }
