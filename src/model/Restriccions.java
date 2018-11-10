@@ -8,17 +8,14 @@ import java.util.ArrayList;
 public abstract class Restriccions {
 
     private int id;
-    private boolean active;
-
 //    private static Restriccions ourInstance = new Restriccions();
 //    public static Restriccions getInstance() {
 //        return ourInstance;
 //    }
 //que restriccions torni un arraylist dels dies i les horesque podria la susodicha asignatura
 
-    public Restriccions(int id, boolean active) {
-        this.id = 0;
-        this.active = false;
+    public Restriccions(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -29,15 +26,7 @@ public abstract class Restriccions {
         this.id = id;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public abstract boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig, ArrayList<Aula> aules2, Aula aula3) throws NotFoundException;
+    public abstract boolean isable() throws NotFoundException; //li posarem els parametres necessaris en cada subclasse
 
 
 }
