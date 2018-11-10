@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverAssignacioL {
-
+/*
     public static void mostraopcions(){
         System.out.println("Escull una opcio:");
         System.out.println("1: Crear Assginacio");
@@ -283,5 +283,5 @@ public class DriverAssignacioL {
             }
 
         }
-    }
+    }*/
 }

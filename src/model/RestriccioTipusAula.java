@@ -1,5 +1,7 @@
 package model;
 
+import exceptions.NotFoundException;
+
 import java.util.ArrayList;
 
 public class RestriccioTipusAula extends  Restriccions {
@@ -11,13 +13,10 @@ public class RestriccioTipusAula extends  Restriccions {
         super(3,true);
     }
 
-    public boolean isable(Assignacio[][][] horari, int hora, int aula, int dia, Aula.TipusAula tt) {
-        if(horari[hora][dia][aula].getAula().getTipusAula() == tt) return true; //tt és el tipusAula que em diu mishmash
-        return true;
-    }
 
     @Override
-    public boolean isable() {
-        return false;
+    public boolean isable(Assignacio[][][] horari, int hora, int dia, Assignatura assig, ArrayList<Aula> aules2, Aula aula3) throws NotFoundException {
+        //if(aula3.getTipusAula() == ) return true; //tt és el tipusAula que em diu mishmash
+        return true;
     }
 }
