@@ -7,8 +7,10 @@ public class RestAulaHora extends Restriccions {
     private int hora;
     private Aula aula;
 
-    public RestAulaHora(int id) {
+    public RestAulaHora(int id, int hora, Aula aula) {
         super(id);
+        this.hora = hora;
+        this.aula = aula;
     }
 
     @Override
