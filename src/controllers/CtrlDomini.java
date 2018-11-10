@@ -18,7 +18,11 @@ public class CtrlDomini {
     //private Assignacio[][][] horari; //TODO esto va a estar aqui?
     private RestriccioCorrequisit resCorr;
     private RestriccioNivell resNiv;
-    private RestriccioTipusAula resTip;
+    private RestriccioAula resAul;
+    private RestriccioGrupTeo resTeo;
+    private RestriccioSubgrupLab resSub;
+    private ArrayList<RestriccioAulaDia> resAulDia;
+    private ArrayList<RestriccioAulaHora> resAulaHora;
     //private HashMap<String,Restriccions> restriccions_unaries;
 
     // TODO esto tiene que estar aqui o puedo simplemente pasarlo donde se necesite como parametro? si esta aqui es
@@ -40,6 +44,14 @@ public class CtrlDomini {
         } catch (NotFoundException e) {
             e.printStackTrace();
         }*/
+        resCorr = new RestriccioCorrequisit();
+        resNiv = new RestriccioNivell();
+        resAul = new RestriccioAula();
+        resTeo = new RestriccioGrupTeo();
+        resSub = new RestriccioSubgrupLab();
+        resAulDia = new ArrayList<>();
+        resAulaHora = new ArrayList<>();
+
     }
 
     public static CtrlDomini getInstance() {
@@ -326,7 +338,7 @@ public class CtrlDomini {
 
 
     public Assignacio[][][] crearHorari(){
-        Horari newhorari = new Horari(assignatures,aules);
+        Horari newhorari = new Horari(assignatures,aules,resCorr,resNiv,resAul,resTeo,resSub,resAulDia,resAulaHora);
         newhorari.generaHorari();
         newhorari.printarHoraritot();
         return newhorari.getHorari();

@@ -10,7 +10,7 @@ public class RestriccioAulaDia extends Restriccions {
     private Aula aula;
 
     public RestriccioAulaDia(int dia) {
-        super(4);
+        super(6);
         this.dia = dia;
 
     }

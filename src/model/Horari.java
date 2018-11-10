@@ -51,7 +51,7 @@ public class Horari {
                     if(horari[i][j][k] == null) System.out.println("VACÍO");
                     else {
                         ++count;
-                        System.out.println("Aula: "+ horari[i][j][k].getAula().getkey() +" es fa assignatura: "+horari[i][j][k].getAssignatura());
+                        System.out.println("Aula: "+ horari[i][j][k].getAula().getKey() +" es fa assignatura: "+horari[i][j][k].getAssignatura());
                     }
             }
         }
@@ -62,7 +62,7 @@ public class Horari {
         int numAula = assignatures2.indexOf(aula);
         int numdia = fromdia2int(dia);
         for (int i = 0; i < 12; ++i) {
-            System.out.println("Aula: "+ horari[i][numdia][numAula].getAula().getkey() +" es fa assignatura: "+horari[i][numdia][numAula].getAssignatura());
+            System.out.println("Aula: "+ horari[i][numdia][numAula].getAula().getKey() +" es fa assignatura: "+horari[i][numdia][numAula].getAssignatura());
         }
 
     }
@@ -71,7 +71,7 @@ public class Horari {
         int nhora = gethora(hora);
         int numAula = assignatures2.indexOf(aula);
         for (int i = 0; i < 5; ++i) {
-            System.out.println("Aula: "+ horari[nhora][i][numAula].getAula().getkey() +" es fa assignatura: "+horari[nhora][i][numAula].getAssignatura());
+            System.out.println("Aula: "+ horari[nhora][i][numAula].getAula().getKey() +" es fa assignatura: "+horari[nhora][i][numAula].getAssignatura());
         }
 
     }
@@ -81,7 +81,7 @@ public class Horari {
         for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < aules2.size(); ++j) {
                 System.out.println(horari[nhora][i][j]); // S HAURIA DE PRINTAR AIXO
-                System.out.println("Aula: "+ horari[nhora][i][j].getAula().getkey() +" es fa assignatura: "+horari[nhora][i][j].getAssignatura());
+                System.out.println("Aula: "+ horari[nhora][i][j].getAula().getKey() +" es fa assignatura: "+horari[nhora][i][j].getAssignatura());
 
             }
 
@@ -93,7 +93,7 @@ public class Horari {
         int numdia = fromdia2int(dia);
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < aules2.size(); ++j) {
-                System.out.println("Aula: "+ horari[i][numdia][j].getAula().getkey() +" es fa assignatura: "+horari[i][numdia][j].getAssignatura());
+                System.out.println("Aula: "+ horari[i][numdia][j].getAula().getKey() +" es fa assignatura: "+horari[i][numdia][j].getAssignatura());
             }
 
         }
@@ -256,11 +256,11 @@ public class Horari {
                 seslab = auxlab.getNumSessions();
                 lab = true;
             } catch (NotFoundException e) {}
-            auxteo = (Teoria) a.getTeoria();         //TODO: concretar que significa un valor de 1 a sessions i la possibilitat de un valor 0.
+            auxteo = (Teoria) a.getTeoria();
             sesteo = auxteo.getNumSessions();
+            grups = a.getGrups();
             valor = 8;                      //TODO: heuristica a assignar
             for (int i = 0; lab && i < seslab; ++i) {
-                grups = a.getGrups();
                 for (int key : grups.keySet()){
                     g = grups.get(key);
                     subgrups = g.getSubgrups();
@@ -274,7 +274,6 @@ public class Horari {
             }
             valor = 8;
             for (int i = 0; i < sesteo; ++i) {
-                grups = a.getGrups();
                 for (int key : grups.keySet()){
                     res.add(new AssignaturaMonosessio(a, auxteo, grups.get(key), null, valor));
                 }
