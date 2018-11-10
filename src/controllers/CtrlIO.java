@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.Assignatura;
 import model.Aula;
+import model.PlaEstudis;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -33,12 +34,12 @@ public class CtrlIO {
             FileReader fr = new FileReader(filepath);
             HashMap<String, Aula> a = gson.fromJson(fr, new TypeToken<HashMap<String, Aula>>(){}.getType());
             fr.close();
-            return a;
+      //      return a;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+      //  return null;
     }
 
     public void carregaPlansDEstudi(String filepath) {
@@ -48,12 +49,12 @@ public class CtrlIO {
 
             HashMap<String, PlaEstudis> ps = gson.fromJson(fr, new TypeToken<HashMap<String, PlaEstudis>>(){}.getType());
             fr.close();
-            return ps;
+           // return ps;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+      //  return null;
 
     }
 
@@ -96,7 +97,7 @@ public class CtrlIO {
         }
     }
 
-    public void guardaAules((HashMap<String, Aules> aules){
+    public void guardaAules(HashMap<String, Aula> aules){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             String json = gson.toJson(aules);
@@ -108,7 +109,7 @@ public class CtrlIO {
         }
     }
 
-    public void guardaPlaDEstudis((HashMap<String, PlaEstudis> ps){
+    public void guardaPlaDEstudis(HashMap<String, PlaEstudis> ps){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             String json = gson.toJson(ps);

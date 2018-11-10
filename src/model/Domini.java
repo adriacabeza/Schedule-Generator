@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Domini {
 
-    private HashMap<Integer,HashMap <Integer, Set<String>>> domini;
+   /* private HashMap<Integer,HashMap <Integer, Set<String>>> domini;
 
     public HashMap<Integer, HashMap<Integer, Set<String>>> getDomini() {
         return domini;
@@ -59,5 +59,5 @@ public class Domini {
 
 
         return this;
-    }
+    }*/
 }
