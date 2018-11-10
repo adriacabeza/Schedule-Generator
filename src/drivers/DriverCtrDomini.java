@@ -30,16 +30,16 @@ public class DriverCtrDomini {
 
     public static void creaAssignatures(Scanner s, CtrlDomini c) {
         String nom, tipusAula;
-        Aula.TipusAula Atipus;
+        Aula.TipusAula Atipus, Atipusl;
         int opcio, opciol, quadrimestre, nsest, nsesl, dsest, dsesl, gnum, gcap, gsub;
-        Teoria t;
-        Laboratori l = null;
+        nsesl = dsesl = 0;
+        Atipusl = Aula.TipusAula.NORMAL;
         opcio = 0;
         while (opcio != 1) {
             System.out.println("introdueix el nom de la assignatura i el quadrimestre al qual pertany");
             nom = s.next();
             quadrimestre = s.nextInt();
-            System.out.println("Introdueix el numero de sessions, la duracio de sessions, el tipus d'aula de les sessions de teoria, el numero de grups de la assignatura, la capacitat d'aquests grups, i el numero de subgrups");
+            System.out.println("Introdueix el numero de sessions, la duracio de sessions, el tipus d'aula de les sessions de teoria(si no s'introdueix un tipus valid es fara per defecte normal), el numero de grups de la assignatura, la capacitat d'aquests grups, i el numero de subgrups");
             nsest = s.nextInt();
             dsest = s.nextInt();
             tipusAula = s.next();
@@ -47,29 +47,27 @@ public class DriverCtrDomini {
             gcap = s.nextInt();
             gsub = s.nextInt();
             Atipus = Aula.stringToTipusAula(tipusAula);
-            if (Atipus != null) {
-                t = new Teoria(nsest, dsest, Atipus);
-            } else {
+            if (Atipus == null) {
                 System.out.println("Tipus d'aula incorrecte, recorda que pot ser \"pcs, normal, laboratori\"");
-                continue;
+                Atipus = Aula.TipusAula.NORMAL;
             }
             System.out.println("introdueix un 0 si la assigantura tindra sessions de laboratori, qualsevol altre numero en cas contrari");
             opciol = s.nextInt();
             if (opciol == 0) {
-                System.out.println("Introdueix el numero de sessions, la duracio de sessions i el tipus d'aula de les sessions de laboratori");
+                System.out.println("Introdueix el numero de sessions, la duracio de sessions i el tipus d'aula de les sessions de laboratori , si no s'introdueix un tipus valid es fara per defecte normal");
                 nsesl = s.nextInt();
                 dsesl = s.nextInt();
                 tipusAula = s.next();
-                Atipus = Aula.stringToTipusAula(tipusAula);
-                if (Atipus != null) {
-                    l = new Laboratori(nsesl, dsesl, Atipus);
-                } else {
+                Atipusl = Aula.stringToTipusAula(tipusAula);
+                if (Atipusl == null) {
                     System.out.println("Tipus d'aula incorrecte, recorda que pot ser \"pcs, normal, laboratori\"");
-                    continue;
+                    Atipusl = Aula.TipusAula.NORMAL;
                 }
             }
             try {
-                c.crearAssignatura(nom, quadrimestre, t, l);
+                c.crearAssignatura(nom, quadrimestre);
+                c.modificaInformacioTeoria(nom, dsest, nsest, Atipus);
+                if(opciol == 0) c.modificaInformacioLaboratori(nom, nsesl, dsesl , Atipusl);
                 c.modificarGrups(nom, gnum, gcap, gsub);
             } catch (RestriccioIntegritatException e) {
                 e.printStackTrace();
@@ -83,18 +81,14 @@ public class DriverCtrDomini {
 
     public static void crearPlaEstudis(Scanner s, CtrlDomini c) {
         String aux;
-        Date date;
+        int any;
         int opt = 0;
         while (opt != 1) {
-            System.out.println("introdueix el nom i l'any <YYYY>");
-            DateFormat format = new SimpleDateFormat("YYYY");
+            System.out.println("introdueix el nom i l'any");
             aux = s.next();
+            any = s.nextInt();
             try {
-                date = format.parse(s.next());
-                c.crearPlaEstudis(aux, date);
-
-            } catch (ParseException e) {
-                System.out.println("error en l'input de any");
+                c.crearPlaEstudis(aux, any);
             } catch (RestriccioIntegritatException e) {
                 e.printStackTrace();
             }
@@ -122,7 +116,7 @@ public class DriverCtrDomini {
                 tAula = Aula.TipusAula.NORMAL;
             capacitat = s.nextInt();
             try {
-                c.creaAula(edifici, planta, aula, capacitat, tAula, null);
+                c.creaAula(edifici, planta, aula, capacitat, tAula);
             } catch (RestriccioIntegritatException e) {
                 e.printStackTrace();
             }
