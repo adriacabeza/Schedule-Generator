@@ -23,6 +23,16 @@ public class Horari {
 
     }
 
+    public Assignacio[][][] getHorari() {
+        return horari;
+    }
+
+    public Horari(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules) {
+        this.assignatures2 = new ArrayList<>(assignatures.values());
+        this.aules2 = new ArrayList<>(aules.values());
+        this.horari = new Assignacio[12][5][aules2.size()];
+    }
+
     private int fromdia2int(String dia) {
         switch (dia) {
             case "Dilluns":
@@ -148,10 +158,6 @@ public class Horari {
 
 
     public boolean generaHorari() {
-        assignatures2 = new ArrayList<>(assignatures.values());
-        aules2 = new ArrayList<>(aules.values());
-        horari = new Assignacio[12][5][aules2.size()];
-
         try {
             mishmash = mishmash(assignatures2);
             ordena_mishamash();

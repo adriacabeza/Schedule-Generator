@@ -324,9 +324,11 @@ public class CtrlDomini {
     }
 
 
-//    public Horari crearHorari(){
-//
-//    }
+    public Assignacio[][][] crearHorari(){
+        Horari newhorari = new Horari(assignatures,aules);
+        newhorari.generaHorari();
+        return newhorari.getHorari();
+    }
 
 
     //func generar horari
