@@ -22,9 +22,10 @@ public class DriverCtrDomini {
         System.out.println("3: crea aules");
         System.out.println("4: consulta atributs");
         System.out.println("5: modifica atributs");
-        System.out.println("6: genera horari");
-        System.out.println("7: consulta horari");
+        System.out.println("6: NOTDISPONIBLE genera horari");
+        System.out.println("7: NOTDISPONIBLE consulta horari");
         System.out.println("8: sortir");
+        System.out.println("9: genera horari des de la classe Horari");
 
     }
 
@@ -147,14 +148,16 @@ public class DriverCtrDomini {
                     break;
                 case 5:
                     break;
-                case 6:
+                /*case 6:
                     ctrl.generaHorari();
                     break;
                 case 7:
                     ctrl.printarHoraritot();
-                    break;
+                    break;*/
                 case 8:
                     break;
+                case 9:
+                    ctrl.crearHorari();
                 default:
                     System.out.println("Opció incorrecte. Introdueix una opcio vàlida");
                     break;

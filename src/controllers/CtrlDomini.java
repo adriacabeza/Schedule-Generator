@@ -15,30 +15,29 @@ public class CtrlDomini {
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
-    private Assignacio[][][] horari; //TODO esto va a estar aqui?
+    //private Assignacio[][][] horari; //TODO esto va a estar aqui?
     private Restriccions r;
     //private HashMap<String,Restriccions> restriccions_unaries;
 
     // TODO esto tiene que estar aqui o puedo simplemente pasarlo donde se necesite como parametro? si esta aqui es
     // TODO mas dificil de actualitzar porque tengo que ir haciendolo en paralelo con el map
-    private ArrayList<Assignatura> assignatures2;
+   /* private ArrayList<Assignatura> assignatures2;
     private ArrayList<Aula> aules2;
-    private ArrayList<AssignaturaMonosessio> mishmash;
+    private ArrayList<AssignaturaMonosessio> mishmash;*/
 
     private CtrlDomini() {
         assignatures = new HashMap<>();
-
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
-        assignatures2 = new ArrayList<>();
-        aules2 = new ArrayList<>();
-        horari = new Assignacio[12][5][aules2.size()];
+     //   assignatures2 = new ArrayList<>();
+       // aules2 = new ArrayList<>();
+    //    horari = new Assignacio[12][5][aules2.size()];
 
-        try {
+    /*    try {
             mishmash = mishmash(assignatures2);
         } catch (NotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public static CtrlDomini getInstance() {
@@ -327,6 +326,7 @@ public class CtrlDomini {
     public Assignacio[][][] crearHorari(){
         Horari newhorari = new Horari(assignatures,aules);
         newhorari.generaHorari();
+        newhorari.printarHoraritot();
         return newhorari.getHorari();
     }
 
@@ -345,7 +345,7 @@ public class CtrlDomini {
 
     /**
      * A CLASSE HORARI, RESTRICCIONS, DOMINI I ALGORITME
-     */
+
 
     private String fromInt2dia(int dia) {
         if (dia == 0) return "Dilluns";
@@ -369,10 +369,6 @@ public class CtrlDomini {
             default:
                 return 4;
         }
-    }
-
-    void creaRestriccionsUnaries(){
-
     }
 
 
@@ -459,6 +455,8 @@ public class CtrlDomini {
 
     }
 
+
+
     private boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig, int duracio) {
         Aula aula = aules2.get(aula1);
         if (aula.getCapacitat() <= grup.getCapacitat()) {
@@ -500,7 +498,7 @@ public class CtrlDomini {
         return true;
     }
 
-    /*private void ferHorari(){
+    private void ferHorari(){
         HashMap<Grup,HashMap<Integer,Set< HashMap<Integer,Set<Aula> >>>> Shrek;
         filtra_restriccions(Shrek);
     }
@@ -543,7 +541,7 @@ public class CtrlDomini {
     }
     1 A 1 3 1 NORMAL 10 1 1 2 2   LP 2 2 2 LABORATORI 10 1 1 1 2  G 3 3 1 LABORATORI 5 1 1 1 2  TC 2 2 1 LABORATORI 4 1 1 1 1   2 POLLA 1998 1     3 A 4 2 LABORATORI 50 2  A 3 2 LABORATORI 50 1 6
 
-    */
+
 
     private boolean creaHorari(int i, Assignacio[][][] horari) {
 
@@ -657,7 +655,7 @@ public class CtrlDomini {
             }
         }
         return res;
-    }
+    }*/
 
 }
 
