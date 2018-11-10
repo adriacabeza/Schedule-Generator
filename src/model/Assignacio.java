@@ -76,6 +76,13 @@ public abstract class Assignacio {
     }
 
 
+    /**
+     * Obtenir grup
+     *
+     * @return grup
+     */
+    public abstract Grup getGrup();
+
 
     /****** SETTERS ********/
 

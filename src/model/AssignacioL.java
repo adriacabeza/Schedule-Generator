@@ -34,9 +34,8 @@ public class AssignacioL extends Assignacio {
      * Obtenir el subgrup
      * @return subgrup de l'assignació
      */
-    public Subgrup getSubgrup() {
-        return subgrup;
-    }
+    @Override
+    public Subgrup getGrup(){ return  subgrup;}
 
     /**
      * Actualitza el subgrup
