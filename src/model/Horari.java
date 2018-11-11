@@ -2,10 +2,7 @@ package model;
 
 import exceptions.NotFoundException;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Horari {
     private Assignacio[][][] horari;
@@ -339,8 +336,9 @@ public class Horari {
         return creaHorari(0, horari);
 
     }
+    //PRUEBAS
     //1 A 1 3 1 NORMAL 8 1 1 2 2   LP 2 2 2 LABORATORI 9 1 1 1 2  G 3 3 1 LABORATORI 5 1 1 1 2  TC 2 2 1 LABORATORI 4 1 1 1 1   2 POLLA 1998 1     3 A 4 2 NORMAL 50 2  A 3 2 LABORATORI 50 1 1 LI 1 2 3 NORMAL 2 30 3 0 3 1 PCS 1 3 C 1 2 PCS 50 1
-
+    //1 LP 2 2 2 LABORATORI 9 1 1 1 1   2 POLLA 1998 1     3 A 4 2 NORMAL 50 2  A 3 2 LABORATORI 0 1
     /**
      * Ordena una estructura de dades per a realitzar assignacions més distribuides
      */
@@ -406,18 +404,84 @@ public class Horari {
     ////////////////AQUÍHAGOMISPRUEBASPARALODEFORWARDCHECKING///////////////////
     ///////////////////////////////////////////////////////////////////////////
 
-/*    public void filtrarestricciones() {
-        HashMap<Grup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats; //esto supongo que sería un atributo de la clase que tendría que inicializar
+    HashMap<AssignaturaMonosessio,ArrayList<Integer> > possibilitats = new HashMap<>();
+
+   public boolean filtrarestricciones() {
         //aquí en teoria tendría un grupo y dentro sus posibilidades, primero las horas que puede, luego los días y luego las aulas
-        ArrayList<Integer> aules_possibles = null;
+        ArrayList<Integer> aules_possibles = new ArrayList<>();
         for (int i = 0; i < mishmash.size(); ++i) { //tots els grups que tinc que assignar
                     for (int k = 0; k < aules2.size(); ++k) {
-                        if (resAul.isable(aules2.get(k), mishmash.get(i))) aules_possibles.add(k) ;
+                        boolean b = resAul.isable(aules2.get(k), mishmash.get(i));
+                        if (b) aules_possibles.add(k) ;
                     }
 
-
+            possibilitats.put(mishmash.get(i), aules_possibles);
+            aules_possibles = new ArrayList<>();
         }
+        for(ArrayList a: possibilitats.values()){
+           if(a.size() == 0) return true;
+       }
+       return false;
+   }
 
 
-    }*/
+
+    private boolean creaHorari2(int i, Assignacio[][][] horari) {
+
+        if (i == (mishmash.size())) return true;
+        int duracio = mishmash.get(i).getSessio().getDuracioSessions();
+        boolean teoria = (mishmash.get(i).getSessio().getClass() == Teoria.class);
+        for (int l = 0; l < 5; ++l) {
+            for (int m = 0; m < 12; ++m) {
+                for (int k = 0; k < possibilitats.get(mishmash.get(i)).size(); ++k) {
+                    if (horari[m][l][k] == null) {
+                        if (teoria) {
+                            if (comprovar_restricciones(aules2.get(possibilitats.get(mishmash.get(i)).get(k)), l, m, mishmash.get(i), duracio, k)) {
+                                for (int z = 0; z < duracio; ++z) {
+                                    horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                }
+                                if (creaHorari(i + 1, horari)) return true;
+                                else {
+                                    for (int z = 0; z < duracio; ++z) {
+                                        horari[m + z][l][k] = null;
+                                    }
+                                }
+                            }
+                        } else {
+                            if (comprovar_restricciones(aules2.get(possibilitats.get(mishmash.get(i)).get(k)), l, m, mishmash.get(i), duracio, k)) {
+                                for (int z = 0; z < duracio; ++z) {
+                                    horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+                                }
+                                if (creaHorari(i + 1, horari)) return true;
+                                else {
+                                    for (int z = 0; z < duracio; ++z) {
+                                        horari[m + z][l][k] = null;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+    public boolean generaHorari2() {
+        try {
+            mishmash = mishmash(assignatures2);
+            ordena_mishamash();
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+        if(filtrarestricciones()) {
+            System.out.println("No es pot generar l'horari");
+            return false;
+        }
+        return creaHorari2(0, horari);
+
+    }
 }

@@ -330,4 +330,13 @@ public class CtrlDomini {
         newhorari.printarHoraritot();
         return newhorari.getHorari();
     }
+
+    //ESTO ES DE PRUEBA, MEJORAS
+
+    public Assignacio[][][] crearHorari2() {
+        Horari newhorari = new Horari(assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
+        newhorari.generaHorari2();
+        newhorari.printarHoraritot();
+        return newhorari.getHorari();
+    }
 }
