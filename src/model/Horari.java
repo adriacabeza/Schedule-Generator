@@ -10,7 +10,6 @@ import java.util.Map;
 public class Horari {
     private Assignacio[][][] horari;
     private ArrayList<AssignaturaMonosessio> mishmash;
-    //ESTO DE ABAJO VA AQUÍ O NO??
     private ArrayList<Assignatura> assignatures2;
     private ArrayList<Aula> aules2;
     private RestriccioCorrequisit resCorr;
@@ -160,14 +159,14 @@ public class Horari {
         return true;
     }
     private boolean comprovar_restricciones(Aula aula1, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula) {
-        if(!check_boundaries(posaula,dia,hora,assig,duracio)) return false; //ens passem o de hores de dia o hi ha una altre classe mes endevant
-        if(!resNiv.isable(horari,hora,dia,assig,aules2)) return false; //violem la restriccio de nivell
-        try {
-            if(!resCorr.isable(horari,hora,dia,assig,aules2)) return false; //violem restriccio de correquisit
+       if(!check_boundaries(posaula,dia,hora,assig,duracio)) return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
+       if(!resNiv.isable(horari,hora,dia,assig,aules2)) return false; //violem la restriccio de nivell
+      try {
+           if(!resCorr.isable(horari,hora,dia,assig,aules2)) return false; //violem restriccio de correquisit
         } catch (NotFoundException e) {}
-        if(!resAul.isable(aula1,assig)) return false; //violem restriccio de aula
-        if(!resTeo.isable(horari,hora,dia,assig,aules2)) return false; //violem restriccio de clases de teoria
-        if(!resSub.isable(horari,hora,dia,assig,aules2)) return false;
+         //TODO esto hace que no se asigne ninguna aula    if(!resAul.isable(aula1,assig)) return false; //violem restriccio de aula
+        // TODO ESTO PETA     if(!resTeo.isable(horari,hora,dia,assig,aules2)) return false; //violem restriccio de clases de teoria
+        //TODO ESTO peta        if(!resSub.isable(horari,hora,dia,assig,aules2)) return false;
         for(RestriccioAulaDia ad : resAulDia) if(!ad.isable(aula1,dia)) return false; //en aquesta aula no pot haber clase avui
         for(RestriccioAulaHora ah : resAulaHora) if(!ah.isable(aula1,dia,hora)) return false; //en aquesta aula no pot haber clase a aquesta hora  //TODO maybe posar aquesta a check boundaries?
         return true;

@@ -18,7 +18,7 @@ public class Grup {
      */
     public Grup(int num, int capacitat, int subgrups) {
         this.num = num;
-        if(num %10 != 0) throw new IllegalArgumentException("El número de grup ha de ser múltiple de 10");
+        //if(num %10 != 0) throw new IllegalArgumentException("El número de grup ha de ser múltiple de 10");
         this.capacitat = capacitat;
         for (int j = 1; j<=subgrups; j++){
             this.subgrups.put(num+j, new Subgrup(num+j, capacitat/subgrups,0));
