@@ -1,13 +1,12 @@
 package controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import model.*;
 import model.Aula.TipusAula;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CtrlDomini {
 
@@ -324,7 +323,8 @@ public class CtrlDomini {
     }
 
 
-    /**
+    /**    protected ignatura;
+
      * Crea l'horari mitjançant backtracking
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */

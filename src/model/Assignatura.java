@@ -19,11 +19,6 @@ public class Assignatura {
     private Laboratori laboratori;
     private Map<Integer, Grup> grups;
 
-    //for the json creation
-    private int numeroGrups;
-    private int numeroSubgrups;
-    private int capacitatGrups;
-
     private ArrayList<String> correquisit;
     private int quadrimestre;
 
@@ -161,29 +156,6 @@ public class Assignatura {
     }
 
     /**
-     * Obtenir la quantitat de grups que hi ha a una assignatura
-     *
-     * @return grups.size()
-     */
-    public int GetSizeGrups() {
-        return grups.size();
-    }
-
-    /**
-     * Obtenir tots els subgrups donat l'identificador d'un grup
-     *
-     * @param num identificador del grup
-     * @return Llista de subgrups
-     * @throws NotFoundException si no existeixen subgrups del grup de l'assignatura
-     */
-    public HashMap<Integer, Subgrup> getSubgrups(int num) throws NotFoundException {
-        if (!grups.containsKey(num)) {
-            throw new NotFoundException("Grup not found");
-        }
-        return grups.get(num).getSubgrups();
-    }
-
-    /**
      * Obtenir un grup concret d'aquesta assignatura
      *
      * @param num nombre del grup
@@ -205,7 +177,7 @@ public class Assignatura {
      * @param tAula           tipus aula
      */
     public void setLaboratori(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
-        this.laboratori = new Laboratori(numSessions, duracioSessions, tAula, nom);
+        this.laboratori = new Laboratori(numSessions, duracioSessions, tAula);
     }
 
     /**
@@ -216,7 +188,7 @@ public class Assignatura {
      * @param tAula           tipus aula
      */
     public void setTeoria(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
-        this.teoria = new Teoria(numSessions, duracioSessions, tAula, nom);
+        this.teoria = new Teoria(numSessions, duracioSessions, tAula);
     }
 
     /**
@@ -241,10 +213,6 @@ public class Assignatura {
      * @param sgrup_num nombre de subgrups que es vol tenir per cada grup
      */
     public void modificarGrups(int num_grups, int grup_cap, int sgrup_num) {
-        this.numeroGrups = num_grups;
-        this.numeroSubgrups = sgrup_num;
-        this.capacitatGrups = grup_cap;
-
         this.grups = new HashMap<Integer, Grup>();
         for (int i = 10; i <= num_grups * 10; i += 10) {
             this.grups.put(i, new Grup(i, grup_cap, sgrup_num));
@@ -335,12 +303,5 @@ public class Assignatura {
      */
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    /**
-     * Genera els grups d'una assignatura
-     */
-    public void generarGrups() {
-        modificarGrups(this.numeroGrups, this.capacitatGrups, this.numeroSubgrups);
     }
 }

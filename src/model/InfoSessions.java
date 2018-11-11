@@ -5,7 +5,6 @@
 package model;
 
 public abstract class InfoSessions {
-    protected String assignatura;
     protected int numSessions;
     protected int duracioSessions;
     protected Aula.TipusAula tAula;
@@ -16,14 +15,14 @@ public abstract class InfoSessions {
      * @param numSessions     numero de sessions setmanals del tipus especificat
      * @param duracioSessions duracio de cada sessio
      */
-    public InfoSessions(int numSessions, int duracioSessions, Aula.TipusAula tAula, String assignatura) {
-        this.assignatura = assignatura;
+    public InfoSessions(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
         this.numSessions = numSessions;
         this.duracioSessions = duracioSessions;
         this.tAula = tAula;
     }
 
-    /**
+    /**    protected ignatura;
+
      * Retorna el numero de sessions setmanals del tipus especificat
      *
      * @return numero de sessions
