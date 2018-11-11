@@ -16,11 +16,6 @@ public class RestriccioAulaHora extends Restriccions {
         this.aula = aula;
     }
 
-    @Override
-    public boolean isable() throws NotFoundException {
-        return false;
-    }
-
     public boolean isable(Aula aula, int dia,  int hora){
         if(aula.getKey() == this.aula.getKey() && dia == this.dia && hora == this.hora) return false;
         return true;

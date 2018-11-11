@@ -2,7 +2,6 @@ package model;
 
 public class AssignacioL extends Assignacio {
     private Subgrup subgrup;
-    private int polla;
 
     /**
      * Crea una assignació de laboratori
@@ -16,18 +15,6 @@ public class AssignacioL extends Assignacio {
         super(diaSetmana, hora, aula, assignatura);
         this.tipusAula = tipusAula;
         this.subgrup = subgrup;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getPolla() {
-        return polla;
-    }
-
-    public void setPolla(int polla) {
-        this.polla = polla;
     }
 
     /**
