@@ -8,7 +8,6 @@ public class Grup {
     protected int capacitat;
     protected int num;
     protected HashMap<Integer, Subgrup> subgrups = new HashMap<Integer, Subgrup>();
-    //TODO: mirar si hay que mantener la lista de Assignacio desde grupo tmbn
 
     /**
      * Crea un nou grup amb la informació pertinent
@@ -17,17 +16,14 @@ public class Grup {
      * @param num       nom del grup
      * @param subgrups  subgrups del qual es composa el grup
      */
-    public Grup(int num, int capacitat, int subgrups) {    //TODO: throwear exception si no es multiplo 10? ie: 10,20,30?
+    public Grup(int num, int capacitat, int subgrups) {
         this.num = num;
+        if(num %10 != 0) throw new IllegalArgumentException("El número de grup ha de ser múltiple de 10");
         this.capacitat = capacitat;
         for (int j = 1; j<=subgrups; j++){
             this.subgrups.put(num+j, new Subgrup(num+j, capacitat/subgrups,0));
         }
     }
-
-
-    /********** GETTERS ********/
-
 
     /**
      * Obtenir la capacitat del grup
@@ -40,28 +36,23 @@ public class Grup {
 
 
     /**
-     * Obtenir el nom del grup
+     * Obtenir el número del grup
      *
-     * @return nom del grup
+     * @return num el número del grup
      */
     public int getNum() {
         return num;
     }
 
 
-
-
     /**
      * Obtenir els subgrups del grup
      *
-     * @return els subgrups del grup
+     * @return subgrups els subgrups del grup
      */
     public HashMap<Integer, Subgrup> getSubgrups() {
         return subgrups;
     }
-
-
-    /****** SETTERS ********/       //TODO: al modificar aquestes caracteristiques tmb hauriem de modificar els subgrups
 
 
     /**
@@ -81,9 +72,13 @@ public class Grup {
      */
     public void setNum(int num){
         this.num = num;
-    }   //TODO: modificar num identificador de subgrups
+    }
 
 
+    /**
+     * Obtenir el grup en format String
+     * @return el grup en format string
+     */
     @Override
     public String toString() {
         return "id: " + num + " capacitat: " + capacitat;

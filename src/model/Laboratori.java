@@ -16,6 +16,10 @@ public class Laboratori extends InfoSessions {
         super(numSessions, duracioSessions, tAula, assignatura);
     }
 
+    /**
+     * Obtenir la sessió de laboratori en format string
+     * @return la sessió de laboratori en format string
+     */
     @Override
     public String toString() {
         return "Info laboratori: \n\t numSessions: " + getNumSessions() + "\n\t duracio: " + getDuracioSessions() + "\n\t tipusAula: " + gettAula();

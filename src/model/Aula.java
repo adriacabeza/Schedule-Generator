@@ -114,13 +114,29 @@ public class Aula {
         this.tAula = tipusaula;
     }
 
+    /**
+     * Obtenir la capacitat d'una aula
+     * @return capacitat indica la capacitat d'una aula
+     */
+
     public int getCapacitat() {
         return capacitat;
     }
 
+    /**
+     * Actualitza la capacitat d'una aula
+     * @param capacitat indica la nova capacitat de l'aula
+     */
+
     public void setCapacitat(int capacitat) {
         this.capacitat = capacitat;
     }
+
+    /**
+     *Obtenir un TipusAula
+     * @param s indica en un string el tipus d'aula
+     * @return tipusaula definida pel paràmetre
+     */
 
     public static TipusAula stringToTipusAula(String s) {
         if (s.equalsIgnoreCase("normal")) {
@@ -134,22 +150,52 @@ public class Aula {
         }
     }
 
+    /**
+     * Crea la key d'una aula a partir de l'edifici, la planta
+     * i l'aula
+     * @param edifici indica l'edifici
+     * @param planta indica el número de planta
+     * @param aula indica una aula
+     * @return la key formada pels paràmetres d'entrada
+     */
+
     public static String crearkey(String edifici, int planta, int aula) {
         return edifici + String.valueOf(planta) + String.valueOf(aula);
     }
+
+    /**
+     * Obtenir la key de l'aula a partir de l'edifici, la planta i
+     * l'aula
+     * @return la key de l'aula
+     */
 
     public String getKey(){
         return edifici+String.valueOf(planta)+String.valueOf(aula);
     }
 
+    /**
+     *Obtenir l'edifici a partir d'una aula
+     * @param key indica una aula
+     * @return retorna l'edifici del paràmetre d'entrada
+     */
     public static String getedificifromKey(String key){
         return key.substring(0,2); //THAT MEANS THE WE ONLY HAVE BUILDING OF TWO CHARS
     }
 
+    /**
+     * Obtenir la planta a partir de l'aula
+     * @param key indica una aula
+     * @return la planta de l'aula
+     */
     public static String getplantafromKey(String key){
         return key.substring(2,3);
     }
 
+    /**
+     * Obtenir el número d'aula a partir de l'identificador d'aula
+     * @param key indica una aula
+     * @return el número d'aula
+     */
     public static String getaulafromKey(String key){
         return key.substring(3);
     }

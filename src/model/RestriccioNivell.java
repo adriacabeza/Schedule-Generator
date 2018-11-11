@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class RestriccioNivell extends Restriccions {
 
+
     public RestriccioNivell() {
         super(2);
     }

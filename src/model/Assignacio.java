@@ -15,7 +15,6 @@ public abstract class Assignacio {
      *
      * @param diaSetmana dia de la setmana pot ser un número del 1 al 5
      * @param hora       hora a la que se li assigna l'assignacio
-     *                   TODO: mirar si hem de guardar la hora de finalització TONI APPROVES
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
      */
 
@@ -26,9 +25,6 @@ public abstract class Assignacio {
         this.assignatura = assignatura;
 
     }
-
-    /********** GETTERS ********/
-
 
     /**
      * Obtenir dia de la setmana
@@ -59,7 +55,7 @@ public abstract class Assignacio {
 
     /**
      * Obtenir una assignatura d'una assignació
-     * @return assigntura de l'assignació
+     * @return assignatura
      */
 
     public Assignatura getAssignatura() {
@@ -77,20 +73,17 @@ public abstract class Assignacio {
 
 
     /**
-     * Obtenir grup
+     * Obtenir el grup
      *
      * @return grup
      */
     public abstract Grup getGrup();
 
 
-    /****** SETTERS ********/
-
-
     /**
      * Actualitza el dia de la setmana
      *
-     * @param diaSetmana
+     * @param diaSetmana nou dia de la setmana per a l'assignació
      */
     public void setDiaSetmana(String diaSetmana) {
         this.diaSetmana = diaSetmana;
@@ -100,7 +93,7 @@ public abstract class Assignacio {
     /**
      * Actualitza la hora de l'assignació
      *
-     * @param hora
+     * @param hora nova hora de l'assignació
      */
     public void setHora(int hora) {
         this.hora = hora;
@@ -109,7 +102,7 @@ public abstract class Assignacio {
     /**
      * Actualitza l'aula de l'assignació
      *
-     * @param aula
+     * @param aula nova aula de l'assignació
      */
     public void setAula(Aula aula) {
         this.aula = aula;
@@ -118,7 +111,7 @@ public abstract class Assignacio {
 
     /**
      * Actualitza l'assignatura d'una assignació
-     * @param assignatura
+     * @param assignatura nova assignatura de l'assignació
      */
     public void setAssignatura(Assignatura assignatura) {
         this.assignatura = assignatura;
@@ -136,6 +129,11 @@ public abstract class Assignacio {
 
 
 /*    @Override*/
+    /**
+     * Defineix l'igualtat per a dues assignacions
+     * @param obj assignació a la que comparar
+     * @return true si les dues assignacions son iguals i false si no ho son
+     */
     public boolean equals(Assignacio obj) {
         return (this.diaSetmana.equals(obj.getDiaSetmana()) && (this.hora == obj.getHora()) && (this.aula == obj.getAula())  && (this.assignatura == obj.getAssignatura()));
     }

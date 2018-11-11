@@ -234,6 +234,7 @@ public class Horari {
         return creaHorari(0, horari);
 
     }
+    //1 A 1 3 1 NORMAL 10 1 1 2 2   LP 2 2 2 LABORATORI 10 1 1 1 2  G 3 3 1 LABORATORI 5 1 1 1 2  TC 2 2 1 LABORATORI 4 1 1 1 1   2 POLLA 1998 1     3 A 4 2 LABORATORI 50 2  A 3 2 LABORATORI 50 1
 
     private void ordena_mishamash() {
         Collections.sort(mishmash);

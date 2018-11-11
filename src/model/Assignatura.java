@@ -41,8 +41,6 @@ public class Assignatura {
         correquisit = new ArrayList<>();
     }
 
-    /********** GETTERS ********/
-
     /**
      * Obtenir nom de l'assignatura
      *
@@ -52,30 +50,75 @@ public class Assignatura {
         return nom;
     }
 
+
+    /**
+     * Obtenir el quadrimestre d'una assignatura
+     * @return el quadrimestre de l'assignatura
+     */
     public int getQuadrimestre() {
         return quadrimestre;
     }
 
-    public int getNumSessionsLab() {
+    /**
+     * Obtenir el número de sessions de laboratori
+     * @return el número de sessions de laboratori
+     * @throws NotFoundException si no te sessions de laboratori
+     */
+
+    public int getNumSessionsLab() throws NotFoundException {
+        if (laboratori == null) {
+            throw new NotFoundException("No existeixen sessions de laboratori per l'assignatura " + this.toString());
+        }
         return this.laboratori.getNumSessions();
     }
 
-    public int getDuracioSessionsLab() {
+    /**
+     * Obtenir la duració de les sessions de laboratori
+     * @return la duració de les sessions de laboratori
+     * @throws NotFoundException si no te sessions de laboratori
+     */
+
+    public int getDuracioSessionsLab() throws NotFoundException {
+        if (laboratori == null) {
+            throw new NotFoundException("No existeixen sessions de laboratori per l'assignatura " + this.toString());
+        }
         return this.laboratori.getDuracioSessions();
     }
 
-    public Aula.TipusAula getTipusAulaLab() {
+    /**
+     * Obtenir el tipus d'aula d'una sessió de laboratori de l'assignatura
+     * @return el tipus d'aula d'una sessió de laboratori de l'assignatura
+     * @throws NotFoundException si no te sessions de laboratori
+     */
+    public Aula.TipusAula getTipusAulaLab() throws NotFoundException {
+        if (laboratori == null) {
+            throw new NotFoundException("No existeixen sessions de laboratori per l'assignatura " + this.toString());
+        }
         return this.laboratori.gettAula();
     }
 
+    /**
+     * Obtenir el número de sessions de teoria de l'assignatura
+     * @return el número de sessions de teoria de l'assignatura
+     */
     public int getNumSessionsTeo() {
         return this.teoria.getNumSessions();
     }
+    //TODO: mirar si a les de teoria he de mirar si pot ser null o no
+
+    /**
+     * Obtenir la duració de les sessions de teoria de l'assignatura
+     * @return la duració de les sessions de teoria de l'assignatura
+     */
 
     public int getDuracioSessionsTeo() {
         return this.teoria.getDuracioSessions();
     }
 
+    /**
+     * Obtenir el tipus d'aula de les sessions de teoria de l'assignatura
+     * @return  el tipus d'aula de les sessions de teoria de l'assignatura
+     */
     public Aula.TipusAula getTipusAulaTeo() {
         return this.teoria.gettAula();
     }
@@ -83,7 +126,6 @@ public class Assignatura {
 
     /**
      * Obtenir informació de les sessions de laboratori de l'assignatura
-     *
      * @return informació de laboratori
      * @throws NotFoundException si no te sessions de laboratori
      */
@@ -96,7 +138,6 @@ public class Assignatura {
 
     /**
      * Obtenir informació de les sessions de teoria de l'assignatura
-     *
      * @return informació de teoria
      * @throws NotFoundException si no te sessions de teoria
      */
@@ -109,7 +150,6 @@ public class Assignatura {
 
     /**
      * Obtenir tots els grups de l'assignatura
-     *
      * @return grups de l'assignatura
      * @throws NotFoundException si no existeixen grups per l'assignatura
      */
@@ -289,10 +329,17 @@ public class Assignatura {
         return this.nom.toUpperCase();
     }
 
+    /**
+     * Actualitza el nom d'una assignatura
+     * @param nom nom de l'assignatura
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     * Genera els grups d'una assignatura
+     */
     public void generarGrups() {
         modificarGrups(this.numeroGrups, this.capacitatGrups, this.numeroSubgrups);
     }

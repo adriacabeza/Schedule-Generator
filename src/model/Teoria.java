@@ -16,6 +16,10 @@ public class Teoria extends InfoSessions {
         super(numSessions, duracioSessions, tAula, assignatura);
     }
 
+    /**
+     * Obtenir la sessió de teoria en format string
+     * @return la sessió de teoria en format string
+     */
     @Override
     public String toString() {
         return "Info teoria: \n\t numSessions: " + getNumSessions() + "\n\t duracio: " + getDuracioSessions() + "\n\t tipusAula: " + gettAula();
