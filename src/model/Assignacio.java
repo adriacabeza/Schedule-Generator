@@ -5,7 +5,6 @@ package model;
 public abstract class Assignacio {
 
     protected String diaSetmana;
-    protected Aula.TipusAula tipusAula;
     protected int hora;
     protected Aula aula;
     protected Assignatura assignatura;
@@ -62,15 +61,6 @@ public abstract class Assignacio {
         return assignatura;
     }
 
-    /**
-     * Obtenir tipus d'aula
-     *
-     * @return tipusAula
-     */
-    public Aula.TipusAula getTipusAula() {
-        return tipusAula;
-    }
-
 
     /**
      * Obtenir el grup
@@ -116,17 +106,6 @@ public abstract class Assignacio {
     public void setAssignatura(Assignatura assignatura) {
         this.assignatura = assignatura;
     }
-
-    /**
-     * Actualitza el tipus d'aula
-     *
-     * @param tipusAula
-     */
-
-    public void setTipusAula(Aula.TipusAula tipusAula) {
-        this.tipusAula = tipusAula;
-    }
-
 
 /*    @Override*/
     /**

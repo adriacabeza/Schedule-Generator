@@ -6,8 +6,6 @@ import model.Assignatura;
 import model.Aula;
 import model.Grup;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverAssignacioT {
@@ -42,7 +40,7 @@ public class DriverAssignacioT {
         Assignatura assig;
         System.out.println("Ara indicarem la assignatura:");
         assig = creaAssignatura(s);
-        AssignacioT assign = new AssignacioT(dia, hora, aula, Aula.TipusAula.NORMAL ,assig, grup);
+        AssignacioT assign = new AssignacioT(dia, hora, aula ,assig, grup);
         return assign;
 
 
@@ -234,7 +232,7 @@ public class DriverAssignacioT {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        AssignacioT assig = new AssignacioT(null,0,null,null,null, null);
+        AssignacioT assig = new AssignacioT(null,0,null,null,null);
         while(option != 4){
             mostraopcions();
             option = scan.nextInt();

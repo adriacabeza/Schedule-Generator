@@ -308,7 +308,7 @@ public class Backtracking2 {
                         if (teoria) {
                             if (comprovar_restricciones(aules2.get(possibilitats.get(mishmash.get(i)).get(k)), l, m, mishmash.get(i), duracio, k)) {
                                 for (int z = 0; z < duracio; ++z) {
-                                    horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                    horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
                                 }
                                 if (creaHorari(i + 1, horari)) return true;
                                 else {
@@ -320,7 +320,7 @@ public class Backtracking2 {
                         } else {
                             if (comprovar_restricciones(aules2.get(possibilitats.get(mishmash.get(i)).get(k)), l, m, mishmash.get(i), duracio, k)) {
                                 for (int z = 0; z < duracio; ++z) {
-                                    horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+                                    horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
                                 }
                                 if (creaHorari(i + 1, horari)) return true;
                                 else {
@@ -373,7 +373,7 @@ public class Backtracking2 {
     private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
         ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
         Teoria auxteo;
-        Laboratori auxlab = new Laboratori(0, 0, null, null);
+        Laboratori auxlab = new Laboratori(0, 0, null);
         int sesteo, seslab, valor;
         Map<Integer, Grup> grups;
         Grup g;

@@ -9,11 +9,9 @@ public class AssignacioL extends Assignacio {
      * @param diaSetmana dia de la setmana pot ser un número del 1 al 5
      * @param hora       hora a la que se li assigna l'assignacio
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
-     * @param tipusAula  tipus d'aula
      */
-    public AssignacioL(String diaSetmana, int hora, Aula aula, Aula.TipusAula tipusAula, Assignatura assignatura, Subgrup subgrup) {
+    public AssignacioL(String diaSetmana, int hora, Aula aula, Assignatura assignatura, Subgrup subgrup) {
         super(diaSetmana, hora, aula, assignatura);
-        this.tipusAula = tipusAula;
         this.subgrup = subgrup;
     }
 
