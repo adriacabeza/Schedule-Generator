@@ -21,14 +21,18 @@ public class RestriccioSubgrupLab extends Restriccions{
      * @return true si es pot realitzar l'assignació
      */
     public boolean isable(Assignacio[][][] horari, int hora, int dia, AssignaturaMonosessio assig, ArrayList<Aula> aules2){
-        int grup = assig.getSub().getNum()/10;
-        for (int j = 0; j < aules2.size(); ++j) {
-            Assignacio a = horari[hora][dia][j];
-            if(a.getAssignatura().getNom() == assig.getAssig().getNom()) {
-                if (a.getGrup().getNum() == assig.getSub().getNum())
-                    return false;                           //solapament de laboratoris
-                if (a.getGrup().getNum() / 10 == grup)
-                    return false;                           //solapament teoria-laboratori
+        if(assig.getSub() != null) {
+            int grup = assig.getSub().getNum() / 10;
+            for (int j = 0; j < aules2.size(); ++j) {
+                Assignacio a = horari[hora][dia][j];
+                if (a != null) {
+                    if (a.getAssignatura().getNom() == assig.getAssig().getNom()) {
+                        if (a.getGrup().getNum() == assig.getSub().getNum())
+                            return false;                           //solapament de laboratoris
+                        if (a.getGrup().getNum() / 10 == grup)
+                            return false;                           //solapament teoria-laboratori
+                    }
+                }
             }
         }
         return true;

@@ -25,7 +25,10 @@ public class RestriccioGrupTeo extends Restriccions {
         int grup = assig.getGrup().getNum()/10;
         for (int j = 0; j < aules2.size(); ++j) {
             Assignacio a = horari[hora][dia][j];
-            if(a.getAssignatura().getNom() == assig.getAssig().getNom() && a.getGrup().getNum()/10 == grup) return false;                       //solapament teories o teoria-qualsevol laboratori
+            if(a != null) {
+                if (a.getAssignatura().getNom() == assig.getAssig().getNom() && a.getGrup().getNum() / 10 == grup)
+                    return false;                       //solapament teories o teoria-qualsevol laboratori
+            }
         }
         return true;
     }

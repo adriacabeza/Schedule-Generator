@@ -6,4 +6,5 @@
 6- No es pot fer cap clase en aquesta hora si ja hi ha una altra assignatura que es correquisit d'aquesta amb el mateix grup //RestCorr
 
 
-7- No es pot fer clase d un determinat grup a una planta (pensat per els minusvalids).
+7- No es pot fer classe d un determinat grup a una planta (pensat per els minusvalids).
+8- No es pot fer classe de matins en una assignatura de matins, no es pot fer classe de tardes en una assignatura de tardes
