@@ -19,11 +19,6 @@ public class Assignatura {
     private Laboratori laboratori;
     private Map<Integer, Grup> grups;
 
-    //for the json creation
-    private int numeroGrups;
-    private int numeroSubgrups;
-    private int capacitatGrups;
-
     private ArrayList<String> correquisit;
     private int quadrimestre;
 
@@ -241,10 +236,6 @@ public class Assignatura {
      * @param sgrup_num nombre de subgrups que es vol tenir per cada grup
      */
     public void modificarGrups(int num_grups, int grup_cap, int sgrup_num) {
-        this.numeroGrups = num_grups;
-        this.numeroSubgrups = sgrup_num;
-        this.capacitatGrups = grup_cap;
-
         this.grups = new HashMap<Integer, Grup>();
         for (int i = 10; i <= num_grups * 10; i += 10) {
             this.grups.put(i, new Grup(i, grup_cap, sgrup_num));
@@ -335,12 +326,5 @@ public class Assignatura {
      */
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    /**
-     * Genera els grups d'una assignatura
-     */
-    public void generarGrups() {
-        modificarGrups(this.numeroGrups, this.capacitatGrups, this.numeroSubgrups);
     }
 }
