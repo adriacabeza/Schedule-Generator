@@ -7,7 +7,7 @@ public class Grup {
 
     protected int capacitat;
     protected int num;
-    protected HashMap<Integer, Subgrup> subgrups = new HashMap<Integer, Subgrup>();
+    private HashMap<Integer, Subgrup> subgrups = new HashMap<Integer, Subgrup>();
 
     /**
      * Crea un nou grup amb la informació pertinent
