@@ -13,6 +13,13 @@ public class Horari {
     //ESTO DE ABAJO VA AQUÍ O NO??
     private ArrayList<Assignatura> assignatures2;
     private ArrayList<Aula> aules2;
+    private RestriccioCorrequisit resCorr;
+    private RestriccioNivell resNiv;
+    private RestriccioAula resAul;
+    private RestriccioGrupTeo resTeo;
+    private RestriccioSubgrupLab resSub;
+    private ArrayList<RestriccioAulaDia> resAulDia;
+    private ArrayList<RestriccioAulaHora> resAulaHora;
 
     private String fromInt2dia(int dia) {
         if (dia == 0) return "Dilluns";
@@ -27,10 +34,18 @@ public class Horari {
         return horari;
     }
 
-    public Horari(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules) {
+    public Horari(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules, RestriccioCorrequisit resCorr,RestriccioNivell resNiv, RestriccioAula resAul, RestriccioGrupTeo resTeo,
+                  RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora) {
         this.assignatures2 = new ArrayList<>(assignatures.values());
         this.aules2 = new ArrayList<>(aules.values());
         this.horari = new Assignacio[12][5][aules2.size()];
+        this.resCorr = resCorr;
+        this.resNiv = resNiv;
+        this.resAul = resAul;
+        this.resTeo = resTeo;
+        this.resSub = resSub;
+        this.resAulDia = resAulDia;
+        this.resAulaHora = resAulaHora;
     }
 
     private void printarHorari_aula(Aula aula) {
@@ -130,47 +145,36 @@ public class Horari {
         else if (hora == 10) return 18;
         else return 19;
     }
-
-    private boolean comprovar_restricciones_teoria(int aula1, Grup grup, int dia, int hora, Assignatura assig, int duracio) {
-        Aula aula = aules2.get(aula1);
-        if (aula.getCapacitat() <= grup.getCapacitat()) {
-            System.out.println("La capacitat és insuficient");
-            return false;
-        }
+    private boolean check_boundaries(int posaula, int dia, int hora,  AssignaturaMonosessio assig, int duracio){
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12){
                 System.out.println("Se pasa del horario");
                 return false;
             }
-            else if (horari[hora + i][dia][aula1] != null) {
-                System.out.println("Con la assignatura "+assig.getNom()+" fallo.");
+            else if (horari[hora + i][dia][posaula] != null) {
+                System.out.println("Con la assignatura "+assig.getAssig().getNom()+" fallo.");
                 System.out.println("Ya está puesta la hora "+ (hora+i) + ", el dia "+ fromInt2dia(dia));
                 return false;
             }
         }
         return true;
     }
-
-
-    private boolean comprovar_restricciones_lab(int aula1, Subgrup subgrup, int dia, int hora, Assignatura assig, int duracio) {
-        Aula aula = aules2.get(aula1);
-        if (aula.getCapacitat() <= subgrup.getCapacitat()) {
-            System.out.println("La capacitat és insuficient");
-            return false;
-        }
-        for (int i = 0; i < duracio; ++i) {
-            if ((hora + i) >= 12){
-                System.out.println("Se pasa del horario");
-                return false;
-            }
-            else if (horari[hora + i][dia][aula1] != null) {
-                System.out.println("Con la assignatura "+assig.getNom()+" fallo.");
-                System.out.println("Ya está puesta la hora "+ (hora+i) + ", el dia "+ fromInt2dia(dia));
-                return false;
-            }
-        }
+    private boolean comprovar_restricciones(Aula aula1, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula) {
+        if(!check_boundaries(posaula,dia,hora,assig,duracio)) return false; //ens passem o de hores de dia o hi ha una altre classe mes endevant
+        if(!resNiv.isable(horari,hora,dia,assig,aules2)) return false; //violem la restriccio de nivell
+        try {
+            if(!resCorr.isable(horari,hora,dia,assig,aules2)) return false; //violem restriccio de correquisit
+        } catch (NotFoundException e) {}
+        if(!resAul.isable(aula1,assig)) return false; //violem restriccio de aula
+        if(!resTeo.isable(horari,hora,dia,assig,aules2)) return false; //violem restriccio de clases de teoria
+        if(!resSub.isable(horari,hora,dia,assig,aules2)) return false;
+        for(RestriccioAulaDia ad : resAulDia) if(!ad.isable(aula1,dia)) return false; //en aquesta aula no pot haber clase avui
+        for(RestriccioAulaHora ah : resAulaHora) if(!ah.isable(aula1,dia,hora)) return false; //en aquesta aula no pot haber clase a aquesta hora  //TODO maybe posar aquesta a check boundaries?
         return true;
     }
+
+
+
 
 
 
@@ -184,7 +188,7 @@ public class Horari {
                 for (int k = 0; k < aules2.size(); ++k) {
                     if (horari[m][l][k] == null) {
                         if (teoria) {
-                            if (comprovar_restricciones_teoria(k, mishmash.get(i).getGrup(), l, m, mishmash.get(i).getAssig(), duracio)) {
+                            if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
                                     System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
@@ -198,7 +202,7 @@ public class Horari {
                                 }
                             }
                         } else {
-                            if (comprovar_restricciones_lab(k, mishmash.get(i).getSub(), l, m, mishmash.get(i).getAssig(), duracio)) {
+                            if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
                                     System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
