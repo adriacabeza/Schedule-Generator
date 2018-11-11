@@ -23,11 +23,13 @@ public class Horari {
         if(b) {
             Backtracking backtracking = new Backtracking(assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
             backtracking.generaHorari();
+            backtracking.printarHoraritot();
             horari = backtracking.getHorari();
         }
         else {
             Backtracking2 backtracking2 = new Backtracking2(assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
             backtracking2.generaHorari();
+            backtracking2.printarHoraritot();
             horari = backtracking2.getHorari();
         }
     }

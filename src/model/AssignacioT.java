@@ -14,7 +14,6 @@ public class AssignacioT extends Assignacio {
     public AssignacioT(String diaSetmana, int hora, Aula aula, Aula.TipusAula tipusAula, Assignatura assignatura, Grup grup) {
         super(diaSetmana, hora, aula,assignatura);
         this.grup = grup;
-        this.tipusAula = tipusAula;
     }
 
     /**

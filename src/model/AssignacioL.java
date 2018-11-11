@@ -13,7 +13,6 @@ public class AssignacioL extends Assignacio {
      */
     public AssignacioL(String diaSetmana, int hora, Aula aula, Aula.TipusAula tipusAula, Assignatura assignatura, Subgrup subgrup) {
         super(diaSetmana, hora, aula, assignatura);
-        this.tipusAula = tipusAula;
         this.subgrup = subgrup;
     }
 

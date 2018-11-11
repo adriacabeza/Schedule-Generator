@@ -229,11 +229,11 @@ public class Backtracking2 {
     private boolean check_boundaries(int posaula, int dia, int hora, AssignaturaMonosessio assig, int duracio) {
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12) {
-                System.out.println("Se pasa del horario");
+              //  System.out.println("Se pasa del horario");
                 return false;
             } else if (horari[hora + i][dia][posaula] != null) {
-                System.out.println("Con la assignatura " + assig.getAssig().getNom() + " fallo.");
-                System.out.println("Ya está puesta la hora " + (hora + i) + ", el dia " + fromInt2dia(dia));
+              //  System.out.println("Con la assignatura " + assig.getAssig().getNom() + " fallo.");
+               // System.out.println("Ya está puesta la hora " + (hora + i) + ", el dia " + fromInt2dia(dia));
                 return false;
             }
         }
@@ -284,6 +284,15 @@ public class Backtracking2 {
                 boolean b = resAul.isable(aules2.get(k), mishmash.get(i));
                 if (b) aules_possibles.add(k) ;
             }
+//
+//            for(int a=0; a<aules_possibles.size(); ++a){
+//                for(int d = 0; d<5; ++d){
+//                    for(int h = 0; h<12;++h){
+//
+//                    }
+//                }
+//
+//            }
 
             possibilitats.put(mishmash.get(i), aules_possibles);
             aules_possibles = new ArrayList<>();
@@ -301,31 +310,33 @@ public class Backtracking2 {
         if (i == (mishmash.size())) return true;
         int duracio = mishmash.get(i).getSessio().getDuracioSessions();
         boolean teoria = (mishmash.get(i).getSessio().getClass() == Teoria.class);
+        ArrayList<Integer> possibles_aules = possibilitats.get(mishmash.get(i));
         for (int l = 0; l < 5; ++l) {
             for (int m = 0; m < 12; ++m) {
-                for (int k = 0; k < possibilitats.get(mishmash.get(i)).size(); ++k) {
-                    if (horari[m][l][k] == null) {
+              for (int k = 0; k < possibles_aules.size(); ++k) {
+                    int aula = possibles_aules.get(k);
+                    if (horari[m][l][aula] == null) {
                         if (teoria) {
-                            if (comprovar_restricciones(aules2.get(possibilitats.get(mishmash.get(i)).get(k)), l, m, mishmash.get(i), duracio, k)) {
+                            if (comprovar_restricciones(aules2.get(aula), l, m, mishmash.get(i), duracio, k)) {
                                 for (int z = 0; z < duracio; ++z) {
-                                    horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                    horari[m + z][l][aula] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(aula), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
                                 }
                                 if (creaHorari(i + 1, horari)) return true;
                                 else {
                                     for (int z = 0; z < duracio; ++z) {
-                                        horari[m + z][l][k] = null;
+                                        horari[m + z][l][aula] = null;
                                     }
                                 }
                             }
                         } else {
                             if (comprovar_restricciones(aules2.get(possibilitats.get(mishmash.get(i)).get(k)), l, m, mishmash.get(i), duracio, k)) {
                                 for (int z = 0; z < duracio; ++z) {
-                                    horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+                                    horari[m + z][l][aula] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(aula), mishmash.get(i).getSessio().gettAula(), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
                                 }
                                 if (creaHorari(i + 1, horari)) return true;
                                 else {
                                     for (int z = 0; z < duracio; ++z) {
-                                        horari[m + z][l][k] = null;
+                                        horari[m + z][l][aula] = null;
                                     }
                                 }
                             }
@@ -373,7 +384,7 @@ public class Backtracking2 {
     private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
         ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
         Teoria auxteo;
-        Laboratori auxlab = new Laboratori(0, 0, null, null);
+        Laboratori auxlab = new Laboratori(0, 0, null);
         int sesteo, seslab, valor;
         Map<Integer, Grup> grups;
         Grup g;
