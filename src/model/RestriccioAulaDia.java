@@ -13,7 +13,7 @@ public class RestriccioAulaDia extends Restriccions {
 
     /**
      * Crea una restricció on es comprova si es pot realitzar una assignació en una determinada aula en un determinat dia
-     * @param dia
+     * @param dia dia a comprovar
      */
     public RestriccioAulaDia(int dia) {
         super(6);

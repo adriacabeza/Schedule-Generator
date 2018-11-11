@@ -61,8 +61,8 @@ public class DriverAssignatura {
             switch (option) {
                 case 0:
                     menu();
-                    //CtrlIO.getInstance().guardaAssignatures(assignatures);
-                    assignatures = CtrlIO.getInstance().carregaAssignatures("assignatures.json");
+                    CtrlIO.getInstance().guardaAssignatures(assignatures);
+                    //assignatures = CtrlIO.getInstance().carregaAssignatures("assignatures.json");
                     break;
                 case 1:
                     nomA = scan.next();
