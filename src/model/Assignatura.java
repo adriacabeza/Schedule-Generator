@@ -156,29 +156,6 @@ public class Assignatura {
     }
 
     /**
-     * Obtenir la quantitat de grups que hi ha a una assignatura
-     *
-     * @return grups.size()
-     */
-    public int GetSizeGrups() {
-        return grups.size();
-    }
-
-    /**
-     * Obtenir tots els subgrups donat l'identificador d'un grup
-     *
-     * @param num identificador del grup
-     * @return Llista de subgrups
-     * @throws NotFoundException si no existeixen subgrups del grup de l'assignatura
-     */
-    public HashMap<Integer, Subgrup> getSubgrups(int num) throws NotFoundException {
-        if (!grups.containsKey(num)) {
-            throw new NotFoundException("Grup not found");
-        }
-        return grups.get(num).getSubgrups();
-    }
-
-    /**
      * Obtenir un grup concret d'aquesta assignatura
      *
      * @param num nombre del grup
@@ -200,7 +177,7 @@ public class Assignatura {
      * @param tAula           tipus aula
      */
     public void setLaboratori(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
-        this.laboratori = new Laboratori(numSessions, duracioSessions, tAula, nom);
+        this.laboratori = new Laboratori(numSessions, duracioSessions, tAula);
     }
 
     /**
@@ -211,7 +188,7 @@ public class Assignatura {
      * @param tAula           tipus aula
      */
     public void setTeoria(int numSessions, int duracioSessions, Aula.TipusAula tAula) {
-        this.teoria = new Teoria(numSessions, duracioSessions, tAula, nom);
+        this.teoria = new Teoria(numSessions, duracioSessions, tAula);
     }
 
     /**
