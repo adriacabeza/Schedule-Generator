@@ -324,19 +324,22 @@ public class CtrlDomini {
     }
 
 
+    /**
+     * Crea l'horari mitjançant backtracking
+     * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
+     */
     public Assignacio[][][] crearHorari() {
-        Horari newhorari = new Horari(assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
-        newhorari.generaHorari();
-        newhorari.printarHoraritot();
+        Horari newhorari = new Horari(true, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
         return newhorari.getHorari();
     }
 
-    //ESTO ES DE PRUEBA, MEJORAS
 
+    /**
+     * Crea l'horari mitjançant backtracking i forward checking
+     * @return  l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
+     */
     public Assignacio[][][] crearHorari2() {
-        Horari newhorari = new Horari(assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
-        newhorari.generaHorari2();
-        newhorari.printarHoraritot();
+        Horari newhorari = new Horari(false, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
         return newhorari.getHorari();
     }
 }
