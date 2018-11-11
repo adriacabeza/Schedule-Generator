@@ -17,7 +17,7 @@ public class RestriccioAula extends  Restriccions {
     }
 
 
-    public boolean isable( Aula aula, AssignaturaMonosessio assig) throws NotFoundException {
+    public boolean isable( Aula aula, AssignaturaMonosessio assig) {
         return (aula.getCapacitat() >= assig.getGrup().getCapacitat() && aula.getTipusAula() == assig.getSessio().gettAula());
     }
 
