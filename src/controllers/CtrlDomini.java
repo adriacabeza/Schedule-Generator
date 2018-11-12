@@ -161,6 +161,15 @@ public class CtrlDomini {
         if (!assignatures.containsKey(nomA)) {
             throw new NotFoundException("No es pot esborrar l'assignatura " + nomA.toUpperCase() + " perque no existeix");
         }
+        for (PlaEstudis plaest : plaEstudis.values()) {
+            if (plaest.hasAssignatura(nomA)) {
+                plaest.esborrarAssignatura(nomA);
+            }
+        }
+
+        for (Assignatura a : assignatures.values()) {
+            if (a.esCorrequisit(nomA)) a.esborraCorrequisit(nomA);
+        }
         assignatures.remove(nomA);
     }
 

@@ -90,6 +90,10 @@ public class PlaEstudis {
         this.assignatures.add(a);
     }
 
+    public boolean hasAssignatura(String nomA) {
+        return assignatures.contains(nomA);
+    }
+
     /**
      * Esborra una assignatura del pla d'estudis
      * @param nomA que és el nom de l'assignatura
