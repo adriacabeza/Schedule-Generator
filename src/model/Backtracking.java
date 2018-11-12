@@ -224,11 +224,11 @@ public class Backtracking {
     private boolean check_boundaries(int posaula, int dia, int hora, AssignaturaMonosessio assig, int duracio) {
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12) {
-                System.out.println("Se pasa del horario");
+          //      System.out.println("Se pasa del horario");
                 return false;
             } else if (horari[hora + i][dia][posaula] != null) {
-                System.out.println("Con la assignatura " + assig.getAssig().getNom() + " fallo.");
-                System.out.println("Ya está puesta la hora " + (hora + i) + ", el dia " + fromInt2dia(dia));
+         //       System.out.println("Con la assignatura " + assig.getAssig().getNom() + " fallo.");
+          //      System.out.println("Ya está puesta la hora " + (hora + i) + ", el dia " + fromInt2dia(dia));
                 return false;
             }
         }
@@ -280,8 +280,9 @@ public class Backtracking {
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
-        return creaHorari(0, horari);
-
+        boolean b = creaHorari(0, horari);
+        if (!b) System.out.println("No es pot realitzar l'horari");
+        return b;
     }
 
     /**
