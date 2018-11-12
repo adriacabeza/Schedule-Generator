@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Aquest driver preten probar Teoria i Laboratori a traves de les mateixes funcionalitats
  */
 public class DriverInfoSessions {
-    /*
+
     public static void menu() {
         System.out.println("Driver InfoSessions");
         System.out.println("Opcions:");
@@ -173,5 +173,5 @@ public class DriverInfoSessions {
             }
             option = scan.nextInt();
         }
-    }*/
+    }
 }

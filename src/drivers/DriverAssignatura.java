@@ -8,6 +8,7 @@ import model.Aula;
 import model.Grup;
 import model.Subgrup;
 
+import java.io.IOException;
 import java.util.*;
 
 public class DriverAssignatura {
@@ -61,7 +62,11 @@ public class DriverAssignatura {
             switch (option) {
                 case 0:
                     menu();
-                    CtrlIO.getInstance().guardaAssignatures(assignatures);
+                    try {
+                        CtrlIO.getInstance().guardaAssignatures(assignatures);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     //assignatures = CtrlIO.getInstance().carregaAssignatures("assignatures.json");
                     break;
                 case 1:

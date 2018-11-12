@@ -1,15 +1,5 @@
 package drivers;
 
-import exceptions.RestriccioIntegritatException;
-import model.AssignacioL;
-import model.Assignatura;
-import model.Aula;
-import model.Subgrup;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class DriverAssignacioL {
 /*
     public static void mostraopcions(){
@@ -42,7 +32,7 @@ public class DriverAssignacioL {
         Assignatura assig;
         System.out.println("Ara indicarem la assignatura:");
         assig = creaAssignatura(s);
-        AssignacioL assign = new AssignacioL(dia, hora, aula,aula.getTipusAula(),assig, sub);
+        AssignacioL assign = new AssignacioL(dia, hora, aula, assig, sub);
         return assign;
 
 
@@ -72,7 +62,7 @@ public class DriverAssignacioL {
                     System.out.println(a.getAula().getAula());  //TODO: printear todos los atributos?
                     break;
                 case 4:
-                    System.out.println(a.getSubgrup().getNum());
+                    System.out.println(a.getSubgrups().getNum());
                     break;
 
                 case 5:
@@ -94,7 +84,7 @@ public class DriverAssignacioL {
         int opt;
         System.out.println("Introdueix el numero de subgrup");
         opt = s.nextInt();
-        return new Subgrup(opt, 0 , 0 , null );
+        return new Subgrup(opt, 0 , 0);
     }
 
     public static Assignatura creaAssignatura(Scanner s){
@@ -102,7 +92,7 @@ public class DriverAssignacioL {
         String nom = s.next();
         System.out.println("Introdueix el numero de quadrimestre de la assignatura");
         int quad = s.nextInt();
-        return new Assignatura(nom, quad, null, null );
+        return new Assignatura(nom, quad);
     }
     public static Aula creaAula(Scanner s){
         String edifici, tipusaula;
@@ -127,7 +117,7 @@ public class DriverAssignacioL {
         else
             tAula = Aula.TipusAula.NORMAL;
 
-        return new Aula(edifici, planta, aula, tAula, capacitat, null);
+        return new Aula(edifici, planta, aula, tAula, capacitat);
     }
 
 
@@ -243,7 +233,7 @@ public class DriverAssignacioL {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        AssignacioL assig = new AssignacioL(null,0,null,null,null,null);
+        AssignacioL assig = new AssignacioL(null,0,null,null,null);
         while(option != 4){
             mostraopcions();
             option = scan.nextInt();

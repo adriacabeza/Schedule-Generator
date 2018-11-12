@@ -104,21 +104,24 @@ public class CtrlDomini {
         return plaEstudis.get(nom);
     }
 
-
-    //TODO fix dis
-
     /**
      * Afegeix una assignatura anteriorment creada al pla d'estudis indicat
      *
      * @param nomP Nom del pla d'estudis
      * @param nomA Nom de l'assignatura
      */
-    public void afegirAssignaturaPla(String nomP, String nomA) throws NotFoundException {
+    public void afegirAssignaturaPla(String nomP, String nomA) throws NotFoundException, RestriccioIntegritatException {
         if (!plaEstudis.containsKey(nomP)) {
             throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
         }
         if (!assignatures.containsKey(nomA)) {
             throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nomA.toUpperCase());
+        }
+
+        for (PlaEstudis ps : plaEstudis.values()) {
+            if (ps.hasAssignatura(nomA)) {
+                throw new RestriccioIntegritatException("Ja esta assignada a un pla d'estudis");
+            }
         }
         plaEstudis.get(nomP).afegirAssignatura(nomA);
     }
