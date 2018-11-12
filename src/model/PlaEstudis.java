@@ -19,6 +19,7 @@ public class PlaEstudis {
         this.nomTitulacio = nomTitulacio;
         this.any = any;
         this.obsolet = obsolet;
+        this.assignatures = new ArrayList<>();
     }
 
     /********** GETTERS ********/

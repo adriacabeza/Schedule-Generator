@@ -46,6 +46,19 @@ public class CtrlDomini {
         return ourInstance;
     }
 
+    public void reload(){
+        assignatures = new HashMap<>();
+        plaEstudis = new HashMap<>();
+        aules = new HashMap<>();
+        resCorr = new RestriccioCorrequisit();
+        resNiv = new RestriccioNivell();
+        resAul = new RestriccioAula();
+        resTeo = new RestriccioGrupTeo();
+        resSub = new RestriccioSubgrupLab();
+        resAulDia = new ArrayList<>();
+        resAulaHora = new ArrayList<>();
+    }
+
     /**
      * Crea un nou pla d'estudis no obsolet i sense cap assignatura
      *
@@ -100,8 +113,14 @@ public class CtrlDomini {
      * @param nomP Nom del pla d'estudis
      * @param nomA Nom de l'assignatura
      */
-    public void afegirAssignaturaPla(String nomP, String nomA) {
-        plaEstudis.get(nomP).afegirAssignatura(assignatures.get(nomA).getNom());
+    public void afegirAssignaturaPla(String nomP, String nomA) throws NotFoundException {
+        if (!plaEstudis.containsKey(nomP)) {
+            throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
+        }
+        if (!assignatures.containsKey(nomA)) {
+            throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nomA.toUpperCase());
+        }
+        plaEstudis.get(nomP).afegirAssignatura(nomA);
     }
 
     /**
@@ -110,7 +129,13 @@ public class CtrlDomini {
      * @param nomP Nom del pla d'estudis
      * @param nomA Nom de l'assignatura
      */
-    public void esborrarAssignaturaPla(String nomP, String nomA) {
+    public void esborrarAssignaturaPla(String nomP, String nomA) throws NotFoundException {
+        if (!plaEstudis.containsKey(nomP)) {
+            throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
+        }
+        if (!assignatures.containsKey(nomA)) {
+            throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nomA.toUpperCase());
+        }
         plaEstudis.get(nomP).esborrarAssignatura(nomA);
     }
 
@@ -119,7 +144,11 @@ public class CtrlDomini {
      *
      * @param nomP Pla d'estudis
      */
-    public ArrayList<String> consultarAssignaturesPlaEstudis(String nomP) {
+    //TODO when calling this func check that the array is not empty
+    public ArrayList<String> consultarAssignaturesPlaEstudis(String nomP) throws NotFoundException {
+        if (!plaEstudis.containsKey(nomP)) {
+            throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
+        }
         return plaEstudis.get(nomP).getAssignatures();
     }
 
@@ -161,6 +190,9 @@ public class CtrlDomini {
         if (!assignatures.containsKey(nomA)) {
             throw new NotFoundException("No es pot esborrar l'assignatura " + nomA.toUpperCase() + " perque no existeix");
         }
+
+        // borrem les referencies a l'assignatura de tots els llocs
+
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (plaest.hasAssignatura(nomA)) {
                 plaest.esborrarAssignatura(nomA);
