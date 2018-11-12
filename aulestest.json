@@ -1,0 +1,16 @@
+{
+  "a5003": {
+    "edifici": "a5",
+    "planta": 0,
+    "aula": 3,
+    "tAula": "normal",
+    "capacitat": 60
+  },
+  "a5002": {
+    "edifici": "a5",
+    "planta": 0,
+    "aula": 2,
+    "tAula": "normal",
+    "capacitat": 60
+  }
+}

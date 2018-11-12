@@ -63,7 +63,7 @@ public class DriverAssignatura {
                 case 0:
                     menu();
                     try {
-                        CtrlIO.getInstance().guardaAssignatures(assignatures);
+                        CtrlIO.getInstance().guardaAssignatures(assignatures, "assignatures.json");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

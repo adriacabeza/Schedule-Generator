@@ -68,26 +68,26 @@ public class CtrlIO {
 
     }
 
-    public void guardaAssignatures(HashMap<String, Assignatura> assignatures) throws IOException {
+    public void guardaAssignatures(HashMap<String, Assignatura> assignatures, String filepath) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(assignatures);
-        FileWriter fw = new FileWriter("assignatures.json");
+        FileWriter fw = new FileWriter(filepath);
         fw.write(json);
         fw.close();
     }
 
-    public void guardaAules(HashMap<String, Aula> aules) throws IOException {
+    public void guardaAules(HashMap<String, Aula> aules, String filepath) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(aules);
-        FileWriter fw = new FileWriter("aules.json");
+        FileWriter fw = new FileWriter(filepath);
         fw.write(json);
         fw.close();
     }
 
-    public void guardaPlaDEstudis(HashMap<String, PlaEstudis> ps) throws IOException {
+    public void guardaPlaDEstudis(HashMap<String, PlaEstudis> ps, String filepath) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(ps);
-        FileWriter fw = new FileWriter("plaestudis.json");
+        FileWriter fw = new FileWriter(filepath);
         fw.write(json);
         fw.close();
     }

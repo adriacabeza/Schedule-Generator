@@ -1,0 +1,16 @@
+{
+  "Fisica": {
+    "nomTitulacio": "Fisica",
+    "any": 2012,
+    "assignatures": [],
+    "obsolet": false
+  },
+  "Informatica": {
+    "nomTitulacio": "Informatica",
+    "any": 2010,
+    "assignatures": [
+      "AC"
+    ],
+    "obsolet": false
+  }
+}

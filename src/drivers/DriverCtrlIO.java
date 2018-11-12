@@ -1,6 +1,7 @@
 package drivers;
 
 import controllers.CtrlIO;
+import exceptions.RestriccioIntegritatException;
 import model.Assignatura;
 import model.Aula;
 import model.PlaEstudis;
@@ -36,7 +37,7 @@ public class DriverCtrlIO {
         for (String op : opcions) {
             System.out.println("Opcio " + i + ": " + op);
             System.out.print("\t input: " + i);
-            if (i > 0 && i < 5) System.out.println(" <filepath>");
+            if (i > 0 && i < 8) System.out.println(" <filepath>");
             else System.out.println();
             i++;
         }
@@ -64,6 +65,26 @@ public class DriverCtrlIO {
         HashMap<String, PlaEstudis> pst1 = new HashMap<>();
         HashMap<String, Assignatura> at1 = new HashMap<>();
         HashMap<String, Aula> ast1 = new HashMap<>();
+
+        pst1.put("Informatica", new PlaEstudis("Informatica", 2010, false));
+        pst1.put("Fisica", new PlaEstudis("Fisica", 2012, false));
+        at1.put("AC", new Assignatura("AC", 1));
+        at1.put("ER", new Assignatura("ER", 1));
+
+        try {
+            at1.get("ER").afegeixCorrequisit(at1.get("AC"));
+            at1.get("AC").afegeixCorrequisit(at1.get("ER"));
+        } catch (RestriccioIntegritatException ignored) {
+        }
+
+        at1.get("AC").modificarGrups(2, 10, 2);
+        at1.get("AC").setTeoria(2, 2, Aula.TipusAula.NORMAL);
+        at1.get("AC").setLaboratori(3,4, Aula.TipusAula.LABORATORI);
+        pst1.get("Informatica").afegirAssignatura("AC");
+        ast1.put("a5002", new Aula("a5", 0, 2, Aula.TipusAula.NORMAL, 60));
+        ast1.put("a5003", new Aula("a5", 0, 3, Aula.TipusAula.NORMAL, 60));
+
+
 
         while (option != 13) {
             switch (option) {
@@ -110,20 +131,24 @@ public class DriverCtrlIO {
                     filepath = scan.next(); //TODO
                     break;
                 case 5:
+                    filepath = scan.next(); //TODO
+
                     try {
-                        c.guardaAssignatures(a);
+                        c.guardaAssignatures(a, filepath);
                     } catch (IOException ignored) {
                     }
                     break;
                 case 6:
+                    filepath = scan.next(); //TODO
                     try {
-                        c.guardaPlaDEstudis(ps);
+                        c.guardaPlaDEstudis(ps, filepath);
                     } catch (IOException ignored) {
                     }
                     break;
                 case 7:
                     try {
-                        c.guardaAules(as);
+                        filepath = scan.next(); //TODO
+                        c.guardaAules(as, filepath);
                     } catch (IOException ignored) {
                     }
                     break;
@@ -132,7 +157,10 @@ public class DriverCtrlIO {
                 case 9:
                     HashMap<String, Assignatura> at2 = new HashMap<>();
                     try {
+                        c.guardaAssignatures(at1, "assigtest.json");
                         at2 = c.carregaAssignatures("assigtest.json");
+                        if (at1.equals(at2)) System.out.println("OK");
+                        else System.out.println("KO");
                     } catch (IOException e) {
                         System.out.println("this shouldn't show");
                     }
@@ -140,7 +168,10 @@ public class DriverCtrlIO {
                 case 10:
                     HashMap<String, PlaEstudis> pst2 = new HashMap<>();
                     try {
+                        c.guardaPlaDEstudis(pst1, "plaestudistest.json");
                         pst2 = c.carregaPlansDEstudi("plaestudistest.json");
+                        if (pst1.equals(pst2)) System.out.println("OK");
+                        else System.out.println("KO");
                     } catch (IOException e) {
                         System.out.println("this shouldn't show");
                     }
@@ -148,7 +179,10 @@ public class DriverCtrlIO {
                 case 11:
                     HashMap<String, Aula> ast2 = new HashMap<>();
                     try {
+                        c.guardaAules(ast1, "aulestest.json");
                         ast2 = c.carregaAules("aulestest.json");
+                        if (ast1.equals(ast2)) System.out.println("OK");
+                        else System.out.println("KO");
                     } catch (IOException e) {
                         System.out.println("this shouldn't show");
                     }

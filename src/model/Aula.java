@@ -199,4 +199,10 @@ public class Aula {
     public static String getaulafromKey(String key){
         return key.substring(3);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Aula a = (Aula) obj;
+        return a.getKey().equals(this.getKey());
+    }
 }

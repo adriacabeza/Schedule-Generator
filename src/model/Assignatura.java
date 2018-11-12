@@ -304,4 +304,10 @@ public class Assignatura {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Assignatura a = (Assignatura) obj;
+        return a.getNom().equals(this.nom) && a.getQuadrimestre() == this.quadrimestre;
+    }
 }

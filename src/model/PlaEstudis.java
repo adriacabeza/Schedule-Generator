@@ -110,4 +110,10 @@ public class PlaEstudis {
     public ArrayList<String> getAssignatures(){
         return assignatures;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        PlaEstudis ps = (PlaEstudis) obj;
+        return ps.getNomTitulacio().equals(this.nomTitulacio) && this.any == ps.getAny();
+    }
 }
