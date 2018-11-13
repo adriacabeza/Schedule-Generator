@@ -1,17 +1,39 @@
-Classes a explicar:
 PlaEstudis
+Un plà d’estudis està identificat pel nom de la seva titulació. Té un any d’entrada en vigor i un valor de si esta vigent o obsolet. Inclou també assignatures que només poden estar a un pla d’estudis a la vegada.
+
 Assignatura
+Una assignatura està identificada pel seu nom. Té un quadrimestre al qual en forma part i pot tenir altres assignatures que són correquisits seus, i que per tant, formen part del mateix quadrimestre. També pot tenir associada informació sobre els seus grups i subgrups i informació sobre com son les seves sessions de teoria i laboratori.
+
 Grup
+Un grup està identificat pel nom de l’assignatura al qual pertany i el número de grup. Te  informació com la seva capacitat i pot tenir associats un número de subgrups. La creació d’un grup depen doncs, de tenir una assignatura del qual en forma part.
+
 	Subgrup
+Un subgrup està identificat pel nom de l’assignatura al qual pertany i el número de subgrup. Té informació com la seva capacitat. El seu nom ha de ser coherent amb el nom del grup pare i la seva existència va lligada a l’existencia del grup i de l’assignatura al qual pertany.
+
 InfoSessions
+InfoSessions fa referència a la informació de com seran les sessions de l’assignatura, és a dir, quantes n’hi haurà per setmana, de quantes hores seran les sessions i quin tipus d’aula requereixen per ser realitzades. Estan identificades per l’assignatura de la qual formen part i la seva creació requereix de l’existencia de l’assignatura.
+
 	Teoria
+Informació sobre les sessions de teoria, identificada pel nom de l’assignatura, fa referència a com seran les sessions de teoria concretament.
 	Laboratori
+Informació sobre les sessions de laboratori, identificada pel nom de l’assignatura, fa referència a com seran les sessions de laboratori concretament.
+
 Assignació
+Una assignació fa referència a un slot d’un horari, és a dir, una aula i una assignatura en un dia i hora en concret.
+
 	AssignacioT
+Una assignació de teoria inclou un grup i n’hi haurà tantes com numero de sessions *duració de les sessions hi hagi en la informacio de sessions de teoria per cada subgrup. El tipus d’aula requerit ha de ser el mateix que l’assignat.
+
 	AssignacioL
+Una assignació de laboratori inclou un subgrup i n’hi haurà tantes com numero de sessions *duració de les sessions hi hagi en la informacio de sessions de laboratori per cada subgrup. El tipus d’aula requerit ha de ser el mateix que l’assignat.
+
 Aula
+Una aula està identificada pel seu nom format pel nom de l’edifici, la planta i el numero d’aula. Conté informació com la seva capacitat i atributs com ara la planta, que ens pot servir per exemple, per mirar si es apta per gent amb movilitat reduïda i el tipus d’aula que ens ajuda a comparar-lo amb el requerit per dur a terme assignacions.
+
 AssignaturaMonosessio
+
 Horari
+
 Restriccions
 	RestriccioAula
 	RestriccioGrupTeo
