@@ -56,7 +56,6 @@ public class CtrlIO {
         return ass;
     }
 
-    //TODO return horari type
     public Horari carregaHorari(String filepath) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         FileReader fr = new FileReader(filepath);
