@@ -13,7 +13,7 @@ Drivers: DriverAssignatura
 
 Stubs: Grup, Laboratori, Teoria
 
-Fitxers de dades necessaris: DriverAssignaturaTest.txt (valors de prova per verifica restriccions)
+Fitxers de dades necessaris: DriverAssignaturaTest.txt (valors de prova per verificar restriccions)
 
 Valors estudiats:
     - creació correcte d'una assignatura
