@@ -1,0 +1,24 @@
+Classes a explicar:
+PlaEstudis
+Assignatura
+Grup
+	Subgrup
+InfoSessions
+	Teoria
+	Laboratori
+Assignació
+	AssignacioT
+	AssignacioL
+Aula
+AssignaturaMonosessio
+Horari
+Restriccions
+	RestriccioAula
+	RestriccioGrupTeo
+	RestriccioNivell
+	RestriccioSubgrupLab
+	RestriccioCorrequisit
+	RestriccioAulaDia
+	RestriccioAulaHora
+Backtracking
+Backtracking2
