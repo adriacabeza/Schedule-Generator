@@ -1,3 +1,7 @@
+/**
+ * @author Aina Garcia
+ */
+
 package controllers;
 
 import exceptions.NotFoundException;
@@ -22,9 +26,6 @@ public class CtrlDomini {
     private ArrayList<RestriccioAulaDia> resAulDia;
     private ArrayList<RestriccioAulaHora> resAulaHora;
 
-    // TODO mas dificil de actualitzar porque tengo que ir haciendolo en paralelo con el map
-
-
     private CtrlDomini() {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
@@ -36,7 +37,6 @@ public class CtrlDomini {
         resSub = new RestriccioSubgrupLab();
         resAulDia = new ArrayList<>();
         resAulaHora = new ArrayList<>();
-
     }
 
     public static CtrlDomini getInstance() {
@@ -46,7 +46,7 @@ public class CtrlDomini {
         return ourInstance;
     }
 
-    public void reload(){
+    public void reload() {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
@@ -293,8 +293,6 @@ public class CtrlDomini {
         assignatures.get(nom_b).esborraCorrequisit(nom_a);
     }
 
-    // TODO fer excepcions i comentarles, fer alguna funcio mes si cal pel controller
-
     /**
      * Permet donar d'alta una nova aula al sistema
      *
@@ -367,9 +365,11 @@ public class CtrlDomini {
     }
 
 
-    /**    protected ignatura;
-
+    /**
+     * protected ignatura;
+     * <p>
      * Crea l'horari mitjançant backtracking
+     *
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
     public Assignacio[][][] crearHorari() {
@@ -380,7 +380,8 @@ public class CtrlDomini {
 
     /**
      * Crea l'horari mitjançant backtracking i forward checking
-     * @return  l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
+     *
+     * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
     public Assignacio[][][] crearHorari2() {
         Horari newhorari = new Horari(false, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);

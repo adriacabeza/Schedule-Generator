@@ -1,3 +1,7 @@
+/**
+ * @author Aina Garcia
+ */
+
 package stubs;
 
 import model.Aula;

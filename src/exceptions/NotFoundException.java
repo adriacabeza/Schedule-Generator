@@ -1,3 +1,7 @@
+/**
+ * @author Aina Garcia
+ */
+
 package exceptions;
 
 public class NotFoundException extends Exception {

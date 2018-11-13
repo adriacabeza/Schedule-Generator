@@ -1,3 +1,7 @@
+/**
+ * @author Aina Garcia
+ */
+
 package stubs;
 
 public class Subgrup extends Grup{

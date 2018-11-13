@@ -1,3 +1,8 @@
+/**
+ * @author Aina Garcia
+ */
+
+
 package stubs;
 
 import java.util.HashMap;

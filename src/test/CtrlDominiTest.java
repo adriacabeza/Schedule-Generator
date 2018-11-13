@@ -1,3 +1,7 @@
+/**
+ * @author Aina Garcia
+ */
+
 package test;
 
 import controllers.CtrlDomini;
