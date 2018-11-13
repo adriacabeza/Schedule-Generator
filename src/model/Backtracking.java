@@ -36,7 +36,7 @@ public class Backtracking {
      * @param resAulaHora  restricció d'aula i hora
      */
     public Backtracking(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules, RestriccioCorrequisit resCorr, RestriccioNivell resNiv, RestriccioAula resAul, RestriccioGrupTeo resTeo,
-                  RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora) {
+                        RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora) {
         this.assignatures2 = new ArrayList<>(assignatures.values());
         this.aules2 = new ArrayList<>(aules.values());
         this.horari = new Assignacio[12][5][aules2.size()];
@@ -210,7 +210,6 @@ public class Backtracking {
     }
 
 
-
     /**
      * Comprova que a l'hora de fer una assignació no es passi dels límits de l'horari
      *
@@ -224,11 +223,11 @@ public class Backtracking {
     private boolean check_boundaries(int posaula, int dia, int hora, AssignaturaMonosessio assig, int duracio) {
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12) {
-          //      System.out.println("Se pasa del horario");
+                //      System.out.println("Se pasa del horario");
                 return false;
             } else if (horari[hora + i][dia][posaula] != null) {
-         //       System.out.println("Con la assignatura " + assig.getAssig().getNom() + " fallo.");
-          //      System.out.println("Ya está puesta la hora " + (hora + i) + ", el dia " + fromInt2dia(dia));
+                //       System.out.println("Con la assignatura " + assig.getAssig().getNom() + " fallo.");
+                //      System.out.println("Ya está puesta la hora " + (hora + i) + ", el dia " + fromInt2dia(dia));
                 return false;
             }
         }
@@ -265,7 +264,6 @@ public class Backtracking {
                 return false; //en aquesta aula no pot haber clase a aquesta hora  //TODO maybe posar aquesta a check boundaries?
         return true;
     }
-
 
 
     /**

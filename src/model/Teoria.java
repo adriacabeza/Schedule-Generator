@@ -18,6 +18,7 @@ public class Teoria extends InfoSessions {
 
     /**
      * Obtenir la sessió de teoria en format string
+     *
      * @return la sessió de teoria en format string
      */
     @Override

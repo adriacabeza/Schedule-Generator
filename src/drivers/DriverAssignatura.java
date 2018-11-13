@@ -89,19 +89,22 @@ public class DriverAssignatura {
                         Iterator<Grup> it = grups.values().iterator();
                         while (it.hasNext()) {
                             Grup g = it.next();
-                            Iterator <Subgrup> sit = g.getSubgrups().values().iterator();
+                            Iterator<Subgrup> sit = g.getSubgrups().values().iterator();
                             System.out.println(g.toString());
-                            while (sit.hasNext()){
+                            while (sit.hasNext()) {
                                 System.out.println("\t " + sit.next().toString());
                             }
                         }
-                    } catch (NotFoundException n) {}
+                    } catch (NotFoundException n) {
+                    }
                     try {
                         System.out.println(assignatures.get(nomA).getTeoria().toString());
-                    } catch (NotFoundException e) {}
+                    } catch (NotFoundException e) {
+                    }
                     try {
                         System.out.println(assignatures.get(nomA).getLaboratori().toString());
-                    } catch (NotFoundException e) {}
+                    } catch (NotFoundException e) {
+                    }
                     break;
                 case 4:
                     nomA = scan.next();

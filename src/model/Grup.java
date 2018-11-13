@@ -20,8 +20,8 @@ public class Grup {
         this.num = num;
         //if(num %10 != 0) throw new IllegalArgumentException("El número de grup ha de ser múltiple de 10");
         this.capacitat = capacitat;
-        for (int j = 1; j<=subgrups; j++){
-            this.subgrups.put(num+j, new Subgrup(num+j, capacitat/subgrups,0));
+        for (int j = 1; j <= subgrups; j++) {
+            this.subgrups.put(num + j, new Subgrup(num + j, capacitat / subgrups, 0));
         }
     }
 
@@ -70,13 +70,14 @@ public class Grup {
      *
      * @param num nou nom del grup
      */
-    public void setNum(int num){
+    public void setNum(int num) {
         this.num = num;
     }
 
 
     /**
      * Obtenir el grup en format String
+     *
      * @return el grup en format string
      */
     @Override

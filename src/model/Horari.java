@@ -1,4 +1,5 @@
 package model;
+
 import java.util.*;
 
 public class Horari {
@@ -20,13 +21,12 @@ public class Horari {
      */
     public Horari(boolean b, HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules, RestriccioCorrequisit resCorr, RestriccioNivell resNiv, RestriccioAula resAul, RestriccioGrupTeo resTeo,
                   RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora) {
-        if(b) {
+        if (b) {
             Backtracking backtracking = new Backtracking(assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
             backtracking.generaHorari();
             backtracking.printarHoraritot();
             horari = backtracking.getHorari();
-        }
-        else {
+        } else {
             Backtracking2 backtracking2 = new Backtracking2(assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
             backtracking2.generaHorari();
             backtracking2.printarHoraritot();

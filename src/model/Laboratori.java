@@ -18,6 +18,7 @@ public class Laboratori extends InfoSessions {
 
     /**
      * Obtenir la sessió de laboratori en format string
+     *
      * @return la sessió de laboratori en format string
      */
     @Override

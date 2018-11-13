@@ -1,7 +1,6 @@
 package model;
 
 
-
 public abstract class Assignacio {
 
     protected String diaSetmana;
@@ -54,6 +53,7 @@ public abstract class Assignacio {
 
     /**
      * Obtenir una assignatura d'una assignació
+     *
      * @return assignatura
      */
 
@@ -101,19 +101,22 @@ public abstract class Assignacio {
 
     /**
      * Actualitza l'assignatura d'una assignació
+     *
      * @param assignatura nova assignatura de l'assignació
      */
     public void setAssignatura(Assignatura assignatura) {
         this.assignatura = assignatura;
     }
 
-/*    @Override*/
+    /*    @Override*/
+
     /**
      * Defineix l'igualtat per a dues assignacions
+     *
      * @param obj assignació a la que comparar
      * @return true si les dues assignacions son iguals i false si no ho son
      */
     public boolean equals(Assignacio obj) {
-        return (this.diaSetmana.equals(obj.getDiaSetmana()) && (this.hora == obj.getHora()) && (this.aula == obj.getAula())  && (this.assignatura == obj.getAssignatura()));
+        return (this.diaSetmana.equals(obj.getDiaSetmana()) && (this.hora == obj.getHora()) && (this.aula == obj.getAula()) && (this.assignatura == obj.getAssignatura()));
     }
 }

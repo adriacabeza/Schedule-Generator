@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverPlaEstudis {
-    public static void mostraopcions(){
+    public static void mostraopcions() {
         System.out.println("Escull una opcio:");
         System.out.println("1: Crear Pla d'Estudis");
         System.out.println("2: Consultar atributs");
@@ -14,7 +14,7 @@ public class DriverPlaEstudis {
         System.out.println("4: Sortir");
     }
 
-    public static void opcioinavalida(){
+    public static void opcioinavalida() {
         System.out.println("Has escollit una opcio incorrecta.");
         System.out.println("");
     }
@@ -28,12 +28,11 @@ public class DriverPlaEstudis {
         any = s.nextInt();
         System.out.println("introdueix un 1 si el pla es obsolet, qualsevol altre numero en cas contrari");
         obs = s.nextInt();
-        if(obs == 1) obsolet = true;
-        PlaEstudis pla = new PlaEstudis(nom,any,obsolet);
+        if (obs == 1) obsolet = true;
+        PlaEstudis pla = new PlaEstudis(nom, any, obsolet);
         creaAssig(s, pla);
         return pla;
     }
-
 
 
     public static void mostra(Scanner s, PlaEstudis p) {
@@ -112,32 +111,32 @@ public class DriverPlaEstudis {
                     break;
 
                 case 4:
-                   while(opaux != 3) {
-                       System.out.println("Introdueix un 1 per a afegir assignatures");
-                       System.out.println("Introdueix un 2 per a eliminar assignatures");
-                       System.out.println("Introdueix un 3 per a sortir");
-                       opaux = s.nextInt();
-                       switch (opaux) {
-                           case 1:
-                               System.out.println("Introdueix el nom de la assignatura que vols afegir");
-                               nom = s.next();
-                               p.afegirAssignatura(nom);
-                               break;
+                    while (opaux != 3) {
+                        System.out.println("Introdueix un 1 per a afegir assignatures");
+                        System.out.println("Introdueix un 2 per a eliminar assignatures");
+                        System.out.println("Introdueix un 3 per a sortir");
+                        opaux = s.nextInt();
+                        switch (opaux) {
+                            case 1:
+                                System.out.println("Introdueix el nom de la assignatura que vols afegir");
+                                nom = s.next();
+                                p.afegirAssignatura(nom);
+                                break;
 
-                           case 2:
-                               System.out.println("Introdueix el nom de la assignatura que vols eliminar");
-                               nom = s.next();
-                               p.esborrarAssignatura(nom);
-                               break;
+                            case 2:
+                                System.out.println("Introdueix el nom de la assignatura que vols eliminar");
+                                nom = s.next();
+                                p.esborrarAssignatura(nom);
+                                break;
 
-                           case 3:
-                               break;
+                            case 3:
+                                break;
 
-                           default:
-                               opcioinavalida();
-                               break;
-                       }
-                   }
+                            default:
+                                opcioinavalida();
+                                break;
+                        }
+                    }
                     break;
 
                 case 5:
@@ -149,7 +148,7 @@ public class DriverPlaEstudis {
         }
     }
 
-    public static void creaAssig(Scanner s, PlaEstudis p){
+    public static void creaAssig(Scanner s, PlaEstudis p) {
         ArrayList<String> res = new ArrayList<>();
         String nom;
         int more;
@@ -161,34 +160,33 @@ public class DriverPlaEstudis {
             p.afegirAssignatura(nom);
         }
     }
-    public static void main(String [] args){
+
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         PlaEstudis pe = null;
-        while(option != 4) {
+        while (option != 4) {
             mostraopcions();
             option = scan.nextInt();
-            switch (option){
+            switch (option) {
                 case 1:
                     pe = creador(scan);
                     break;
 
                 case 2:
-                    if(pe == null){
+                    if (pe == null) {
                         System.out.println("Error: no hi ha un pla d'estudis creat");
                         System.out.println("");
-                    }
-                    else{
+                    } else {
                         mostra(scan, pe);
                     }
                     break;
 
                 case 3:
-                    if(pe == null){
+                    if (pe == null) {
                         System.out.println("Error: no hi ha un pla d'estudis creat");
                         System.out.println("");
-                    }
-                    else{
+                    } else {
                         modifica(scan, pe);
                     }
                     break;

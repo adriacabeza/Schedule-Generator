@@ -2,24 +2,23 @@ package drivers;
 
 import model.Grup;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class DriverGrup {
-    public static void mostraopcions(){
+    public static void mostraopcions() {
         System.out.println("Escull una opcio:");
         System.out.println("1: Crear Grup");
         System.out.println("2: Consultar atributs");
         System.out.println("3: Modificar atributs");
         System.out.println("4: Sortir");
     }
-    public static void opcioinavalida(){
+
+    public static void opcioinavalida() {
         System.out.println("Has escollit una opcio incorrecta.");
         System.out.println("");
     }
 
-    public static Grup creador(Scanner s){
+    public static Grup creador(Scanner s) {
         int capacitat, num, subgrups;
         System.out.println("Introdueix el numero del grup");
         num = s.nextInt();
@@ -30,16 +29,16 @@ public class DriverGrup {
         return new Grup(num, capacitat, subgrups);
     }
 
-    public static void mostra(Grup g, Scanner s){
+    public static void mostra(Grup g, Scanner s) {
         int opt = 0;
-        while(opt != 4){
+        while (opt != 4) {
             System.out.println("Escull que vols consultar:");
             System.out.println("1: numero del grup");
             System.out.println("2: capacitat del grup");
             System.out.println("3: subgrups");
             System.out.println("4: sortir");
             opt = s.nextInt();
-            switch(opt){
+            switch (opt) {
                 case 1:
                     System.out.println(g.getNum());
                     break;
@@ -49,7 +48,7 @@ public class DriverGrup {
                     break;
 
                 case 3:
-                    g.getSubgrups().forEach((key,value) -> System.out.println(key));
+                    g.getSubgrups().forEach((key, value) -> System.out.println(key));
                     break;
 
                 case 4:
@@ -62,16 +61,16 @@ public class DriverGrup {
         }
     }
 
-    public static void modifica(Grup g, Scanner s){
+    public static void modifica(Grup g, Scanner s) {
         int opt = 0;
         int aux;
-        while(opt != 3) {
+        while (opt != 3) {
             System.out.println("Escull que vols modificar:");
             System.out.println("1: numero del grup");
             System.out.println("2: capacitat del grup");
             System.out.println("3: sortir");
             opt = s.nextInt();
-            switch(opt){
+            switch (opt) {
                 case 1:
                     System.out.println("Introdueix el nou numero de grup");
                     aux = s.nextInt();
@@ -95,37 +94,35 @@ public class DriverGrup {
         }
     }
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        Grup g = new Grup(0,0,0);
-        while(option != 4) {
+        Grup g = new Grup(0, 0, 0);
+        while (option != 4) {
             mostraopcions();
             option = scan.nextInt();
-            switch (option){
+            switch (option) {
                 case 1:
                     g = creador(scan);
                     creat = true;
                     break;
 
                 case 2:
-                    if(!creat){
+                    if (!creat) {
                         System.out.println("Error: no hi ha un grup creat");
                         System.out.println("");
-                    }
-                    else{
-                        mostra(g,scan);
+                    } else {
+                        mostra(g, scan);
                     }
                     break;
 
                 case 3:
-                    if(!creat){
+                    if (!creat) {
                         System.out.println("Error: no hi ha un grup creat");
                         System.out.println("");
-                    }
-                    else{
-                        modifica(g,scan);
+                    } else {
+                        modifica(g, scan);
                     }
                     break;
 

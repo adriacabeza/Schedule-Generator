@@ -21,8 +21,9 @@ public abstract class InfoSessions {
         this.tAula = tAula;
     }
 
-    /**    protected ignatura;
-
+    /**
+     * protected ignatura;
+     * <p>
      * Retorna el numero de sessions setmanals del tipus especificat
      *
      * @return numero de sessions
@@ -60,6 +61,7 @@ public abstract class InfoSessions {
 
     /**
      * Assigna un nou tipus d'aula requerit per dur a terme aquest tipus de sessions
+     *
      * @param tAula tipus de l'aula
      */
     public void settAula(Aula.TipusAula tAula) {
@@ -68,9 +70,10 @@ public abstract class InfoSessions {
 
     /**
      * Consulta el tipus d'aula requerit per el tipus de sessio
+     *
      * @return tipus d'aula
      */
-    public Aula.TipusAula gettAula(){
+    public Aula.TipusAula gettAula() {
         return tAula;
     }
 

@@ -15,10 +15,11 @@ public class RestriccioCorrequisit extends Restriccions {
 
     /**
      * Retorna si es possible realitzar una assignació d'una assignatura d'un determinat grup comprovant que no hi hagi conflictes amb els correquisits
+     *
      * @param horari horari que es comprova
-     * @param hora hora que es comprova
-     * @param dia dia que es comprova
-     * @param assig assignatura que es comprova
+     * @param hora   hora que es comprova
+     * @param dia    dia que es comprova
+     * @param assig  assignatura que es comprova
      * @param aules2 aules que es comproven
      * @return true si es pot realitzar l'assignació
      * @throws NotFoundException
@@ -26,7 +27,7 @@ public class RestriccioCorrequisit extends Restriccions {
     public boolean isable(Assignacio[][][] horari, int hora, int dia, AssignaturaMonosessio assig, ArrayList<Aula> aules2) throws NotFoundException {
         for (int j = 0; j < aules2.size(); ++j) {
             Assignacio a = horari[hora][dia][j];
-            if(a != null) {
+            if (a != null) {
                 if (a.getAssignatura().getCorrequisits().contains(assig)) {
                     if (a.getClass() == AssignacioL.class && assig.getSessio().getClass() == Laboratori.class) {
                         if (a.getGrup().getNum() == assig.getSub().getNum() || a.getGrup().getNum() / 10 == assig.getSub().getNum() / 10) // mateix subgrup o grup de teoria
@@ -39,7 +40,8 @@ public class RestriccioCorrequisit extends Restriccions {
                     }
                 }
             }
-        } return true;
+        }
+        return true;
     }
 
 }

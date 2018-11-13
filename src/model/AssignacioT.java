@@ -12,12 +12,13 @@ public class AssignacioT extends Assignacio {
      */
 
     public AssignacioT(String diaSetmana, int hora, Aula aula, Assignatura assignatura, Grup grup) {
-        super(diaSetmana, hora, aula,assignatura);
+        super(diaSetmana, hora, aula, assignatura);
         this.grup = grup;
     }
 
     /**
      * Obtenir el grup
+     *
      * @return grup
      */
     public Grup getGrup() {
@@ -26,6 +27,7 @@ public class AssignacioT extends Assignacio {
 
     /**
      * Actualitza el grup de l'assignació
+     *
      * @param grup
      */
     public void setGrup(Grup grup) {

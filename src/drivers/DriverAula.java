@@ -2,12 +2,11 @@ package drivers;
 
 import model.Aula;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverAula {
 
-    public static void mostraopcions(){
+    public static void mostraopcions() {
         System.out.println("Escull una opcio:");
         System.out.println("1: Crear Aula");
         System.out.println("2: Consultar atributs");
@@ -16,12 +15,12 @@ public class DriverAula {
     }
 
 
-    public static void opcioinavalida(){
+    public static void opcioinavalida() {
         System.out.println("Has escollit una opcio incorrecta.");
         System.out.println("");
     }
 
-    public static Aula creador(Scanner s){
+    public static Aula creador(Scanner s) {
         String edifici, tipusaula;
         int planta, aula, capacitat;
         Aula.TipusAula tAula;
@@ -36,11 +35,9 @@ public class DriverAula {
         tipusaula = s.next();
         if (tipusaula.equalsIgnoreCase("pcs")) {
             tAula = Aula.TipusAula.PCS;
-        }
-        else if (tipusaula.equalsIgnoreCase("laboratori")){
+        } else if (tipusaula.equalsIgnoreCase("laboratori")) {
             tAula = Aula.TipusAula.LABORATORI;
-        }
-        else
+        } else
             tAula = Aula.TipusAula.NORMAL;
 
         System.out.println("Introdueix la capacitat de l'aula");
@@ -49,10 +46,10 @@ public class DriverAula {
         return new Aula(edifici, planta, aula, tAula, capacitat);
     }
 
-    public static void mostra(Aula a, Scanner s){
+    public static void mostra(Aula a, Scanner s) {
         int opt = 0;
         int aux;
-        while(opt != 6){
+        while (opt != 6) {
             System.out.println("Escull que vols consultar:");
             System.out.println("1: Per el nom de l'edifici");
             System.out.println("2: Per la planta");
@@ -61,7 +58,7 @@ public class DriverAula {
             System.out.println("5: Per la capacitat de l'aula");
             System.out.println("6: per sortir");
             opt = s.nextInt();
-            switch(opt){
+            switch (opt) {
                 case 1:
                     System.out.println(a.getEdifici());
                     break;
@@ -90,11 +87,11 @@ public class DriverAula {
         }
     }
 
-    public static void modifica (Aula a, Scanner s){
+    public static void modifica(Aula a, Scanner s) {
         int opt = 0;
         int aux;
         String auxs;
-        while(opt != 6){
+        while (opt != 6) {
             System.out.println("Escull que vols modificar:");
             System.out.println("1: Per el nom de l'edifici");
             System.out.println("2: Per la planta");
@@ -102,7 +99,7 @@ public class DriverAula {
             System.out.println("4: Pel tipus d'aula");
             System.out.println("5: per sortir");
             opt = s.nextInt();
-            switch(opt) {
+            switch (opt) {
                 case 1:
                     System.out.println("Introdueix el nou edifici");
                     auxs = s.next();
@@ -127,14 +124,12 @@ public class DriverAula {
                     tipusaula = s.next();
                     if (tipusaula.equalsIgnoreCase("pcs")) {
                         a.setTipusAula(Aula.TipusAula.PCS);
-                    }
-                    else if (tipusaula.equalsIgnoreCase("laboratori")){
+                    } else if (tipusaula.equalsIgnoreCase("laboratori")) {
                         a.setTipusAula(Aula.TipusAula.LABORATORI);
-                    }
-                    else
-                    a.setTipusAula(Aula.TipusAula.NORMAL);
+                    } else
+                        a.setTipusAula(Aula.TipusAula.NORMAL);
 
-                break;
+                    break;
 
                 case 5:
                     break;
@@ -146,37 +141,35 @@ public class DriverAula {
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int option = 0;
         boolean creat = false;
-        Aula aula = new Aula(null,0,0, null,0);
-        while(option != 4){
+        Aula aula = new Aula(null, 0, 0, null, 0);
+        while (option != 4) {
             mostraopcions();
             option = scan.nextInt();
-            switch(option){
+            switch (option) {
                 case 1: //creem una aula
                     aula = creador(scan);
                     creat = true;
                     break;
 
                 case 2: //consultem els atributs
-                    if(!creat){
+                    if (!creat) {
                         System.out.println("Error: no hi ha una Aula creada");
                         System.out.println("");
-                    }
-                    else{
-                        mostra(aula,scan);
+                    } else {
+                        mostra(aula, scan);
                     }
                     break;
 
                 case 3: //modifiquem
-                    if(!creat){
+                    if (!creat) {
                         System.out.println("Error: no hi ha una aula creada");
                         System.out.println("");
-                    }
-                    else{
-                        modifica(aula,scan);
+                    } else {
+                        modifica(aula, scan);
                     }
                     break;
 

@@ -1,9 +1,4 @@
 package model;
-import exceptions.NotFoundException;
-import model.*;
-
-import java.util.ArrayList;
-
 
 public abstract class Restriccions {
 
@@ -13,6 +8,7 @@ public abstract class Restriccions {
 
     /**
      * Es crea una restricció
+     *
      * @param id identificador de la restricció
      */
     public Restriccions(int id) {
@@ -21,6 +17,7 @@ public abstract class Restriccions {
 
     /**
      * Obtenir identificador de la restricció
+     *
      * @return identificador de la restrcicció
      */
     public int getId() {
@@ -29,6 +26,7 @@ public abstract class Restriccions {
 
     /**
      * Actualitza l'identificador de la restricció
+     *
      * @param id nou identificador de la restricció
      */
     public void setId(int id) {

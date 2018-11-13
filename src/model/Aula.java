@@ -23,10 +23,10 @@ public class Aula {
     /**
      * Crea una nova aula
      *
-     * @param edifici      indica el nom del edifici on esta situada l'aula
-     * @param planta       indica la planta on esta situada l'aula
-     * @param aula         indica el numero que tindra l'aula
-     * @param tipusAula    indica el tipus que es l'aula
+     * @param edifici   indica el nom del edifici on esta situada l'aula
+     * @param planta    indica la planta on esta situada l'aula
+     * @param aula      indica el numero que tindra l'aula
+     * @param tipusAula indica el tipus que es l'aula
      */
     public Aula(String edifici, int planta, int aula, TipusAula tipusAula, int capacitat) {
         this.edifici = edifici;
@@ -116,6 +116,7 @@ public class Aula {
 
     /**
      * Obtenir la capacitat d'una aula
+     *
      * @return capacitat indica la capacitat d'una aula
      */
 
@@ -125,6 +126,7 @@ public class Aula {
 
     /**
      * Actualitza la capacitat d'una aula
+     *
      * @param capacitat indica la nova capacitat de l'aula
      */
 
@@ -133,7 +135,8 @@ public class Aula {
     }
 
     /**
-     *Obtenir un TipusAula
+     * Obtenir un TipusAula
+     *
      * @param s indica en un string el tipus d'aula
      * @return tipusaula definida pel paràmetre
      */
@@ -153,9 +156,10 @@ public class Aula {
     /**
      * Crea la key d'una aula a partir de l'edifici, la planta
      * i l'aula
+     *
      * @param edifici indica l'edifici
-     * @param planta indica el número de planta
-     * @param aula indica una aula
+     * @param planta  indica el número de planta
+     * @param aula    indica una aula
      * @return la key formada pels paràmetres d'entrada
      */
 
@@ -166,37 +170,41 @@ public class Aula {
     /**
      * Obtenir la key de l'aula a partir de l'edifici, la planta i
      * l'aula
+     *
      * @return la key de l'aula
      */
 
-    public String getKey(){
-        return edifici+String.valueOf(planta)+String.valueOf(aula);
+    public String getKey() {
+        return edifici + String.valueOf(planta) + String.valueOf(aula);
     }
 
     /**
-     *Obtenir l'edifici a partir d'una aula
+     * Obtenir l'edifici a partir d'una aula
+     *
      * @param key indica una aula
      * @return retorna l'edifici del paràmetre d'entrada
      */
-    public static String getedificifromKey(String key){
-        return key.substring(0,2); //THAT MEANS THE WE ONLY HAVE BUILDING OF TWO CHARS
+    public static String getedificifromKey(String key) {
+        return key.substring(0, 2); //THAT MEANS THE WE ONLY HAVE BUILDING OF TWO CHARS
     }
 
     /**
      * Obtenir la planta a partir de l'aula
+     *
      * @param key indica una aula
      * @return la planta de l'aula
      */
-    public static String getplantafromKey(String key){
-        return key.substring(2,3);
+    public static String getplantafromKey(String key) {
+        return key.substring(2, 3);
     }
 
     /**
      * Obtenir el número d'aula a partir de l'identificador d'aula
+     *
      * @param key indica una aula
      * @return el número d'aula
      */
-    public static String getaulafromKey(String key){
+    public static String getaulafromKey(String key) {
         return key.substring(3);
     }
 

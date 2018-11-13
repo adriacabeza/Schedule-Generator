@@ -85,9 +85,10 @@ public class PlaEstudis {
 
     /**
      * Afegeix una assignatura al pla d'estudis
+     *
      * @param a que és l'objecte assignatura
      */
-    public void afegirAssignatura(String a){
+    public void afegirAssignatura(String a) {
         this.assignatures.add(a);
     }
 
@@ -97,17 +98,19 @@ public class PlaEstudis {
 
     /**
      * Esborra una assignatura del pla d'estudis
+     *
      * @param nomA que és el nom de l'assignatura
      */
-    public void esborrarAssignatura(String nomA){
+    public void esborrarAssignatura(String nomA) {
         this.assignatures.remove(nomA);
     }
 
     /**
      * Retorna el conjunt d'assignatures del pla d'estudis
+     *
      * @return assignatures
      */
-    public ArrayList<String> getAssignatures(){
+    public ArrayList<String> getAssignatures() {
         return assignatures;
     }
 

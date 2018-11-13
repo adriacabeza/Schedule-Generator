@@ -17,13 +17,17 @@ public class AssignacioL extends Assignacio {
 
     /**
      * Obtenir el subgrup
+     *
      * @return subgrup de l'assignació
      */
     @Override
-    public Subgrup getGrup(){ return  subgrup;}
+    public Subgrup getGrup() {
+        return subgrup;
+    }
 
     /**
      * Actualitza el subgrup
+     *
      * @param subgrup de l'assignació
      */
     public void setSubgrup(Subgrup subgrup) {

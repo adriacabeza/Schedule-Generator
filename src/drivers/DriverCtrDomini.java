@@ -4,12 +4,8 @@ package drivers;
 import controllers.CtrlDomini;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
-import model.*;
+import model.Aula;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 
@@ -69,7 +65,7 @@ public class DriverCtrDomini {
             try {
                 c.crearAssignatura(nom, quadrimestre);
                 c.modificaInformacioTeoria(nom, dsest, nsest, Atipus);
-                if(opciol == 0) c.modificaInformacioLaboratori(nom, nsesl, dsesl , Atipusl);
+                if (opciol == 0) c.modificaInformacioLaboratori(nom, nsesl, dsesl, Atipusl);
                 c.modificarGrups(nom, gnum, gcap, gsub);
             } catch (RestriccioIntegritatException e) {
                 e.printStackTrace();

@@ -48,6 +48,7 @@ public class Assignatura {
 
     /**
      * Obtenir el quadrimestre d'una assignatura
+     *
      * @return el quadrimestre de l'assignatura
      */
     public int getQuadrimestre() {
@@ -56,6 +57,7 @@ public class Assignatura {
 
     /**
      * Obtenir el número de sessions de laboratori
+     *
      * @return el número de sessions de laboratori
      * @throws NotFoundException si no te sessions de laboratori
      */
@@ -69,6 +71,7 @@ public class Assignatura {
 
     /**
      * Obtenir la duració de les sessions de laboratori
+     *
      * @return la duració de les sessions de laboratori
      * @throws NotFoundException si no te sessions de laboratori
      */
@@ -82,6 +85,7 @@ public class Assignatura {
 
     /**
      * Obtenir el tipus d'aula d'una sessió de laboratori de l'assignatura
+     *
      * @return el tipus d'aula d'una sessió de laboratori de l'assignatura
      * @throws NotFoundException si no te sessions de laboratori
      */
@@ -94,6 +98,7 @@ public class Assignatura {
 
     /**
      * Obtenir el número de sessions de teoria de l'assignatura
+     *
      * @return el número de sessions de teoria de l'assignatura
      */
     public int getNumSessionsTeo() {
@@ -103,6 +108,7 @@ public class Assignatura {
 
     /**
      * Obtenir la duració de les sessions de teoria de l'assignatura
+     *
      * @return la duració de les sessions de teoria de l'assignatura
      */
 
@@ -112,7 +118,8 @@ public class Assignatura {
 
     /**
      * Obtenir el tipus d'aula de les sessions de teoria de l'assignatura
-     * @return  el tipus d'aula de les sessions de teoria de l'assignatura
+     *
+     * @return el tipus d'aula de les sessions de teoria de l'assignatura
      */
     public Aula.TipusAula getTipusAulaTeo() {
         return this.teoria.gettAula();
@@ -121,6 +128,7 @@ public class Assignatura {
 
     /**
      * Obtenir informació de les sessions de laboratori de l'assignatura
+     *
      * @return informació de laboratori
      * @throws NotFoundException si no te sessions de laboratori
      */
@@ -133,6 +141,7 @@ public class Assignatura {
 
     /**
      * Obtenir informació de les sessions de teoria de l'assignatura
+     *
      * @return informació de teoria
      * @throws NotFoundException si no te sessions de teoria
      */
@@ -145,6 +154,7 @@ public class Assignatura {
 
     /**
      * Obtenir tots els grups de l'assignatura
+     *
      * @return grups de l'assignatura
      * @throws NotFoundException si no existeixen grups per l'assignatura
      */
@@ -299,6 +309,7 @@ public class Assignatura {
 
     /**
      * Actualitza el nom d'una assignatura
+     *
      * @param nom nom de l'assignatura
      */
     public void setNom(String nom) {

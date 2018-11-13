@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class DriverCtrlIO {
-    public static void menu(){
+    public static void menu() {
         ArrayList<String> opcions = new ArrayList<>();
         opcions.add("Consulta menu");
 
@@ -43,7 +43,7 @@ public class DriverCtrlIO {
         System.out.print("> ");
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         CtrlIO c = CtrlIO.getInstance();
         menu();
 
@@ -78,16 +78,15 @@ public class DriverCtrlIO {
 
         at1.get("AC").modificarGrups(2, 10, 2);
         at1.get("AC").setTeoria(2, 2, Aula.TipusAula.NORMAL);
-        at1.get("AC").setLaboratori(3,4, Aula.TipusAula.LABORATORI);
+        at1.get("AC").setLaboratori(3, 4, Aula.TipusAula.LABORATORI);
 
         at1.get("ER").modificarGrups(2, 10, 2);
         at1.get("ER").setTeoria(2, 2, Aula.TipusAula.NORMAL);
-        at1.get("ER").setLaboratori(3,4, Aula.TipusAula.LABORATORI);
+        at1.get("ER").setLaboratori(3, 4, Aula.TipusAula.LABORATORI);
 
         pst1.get("Informatica").afegirAssignatura("AC");
         ast1.put("a5002", new Aula("a5", 0, 2, Aula.TipusAula.NORMAL, 60));
         ast1.put("a5003", new Aula("a5", 0, 3, Aula.TipusAula.LABORATORI, 60));
-
 
 
         while (option != 13) {
@@ -216,7 +215,8 @@ public class DriverCtrlIO {
                         e.printStackTrace();
                     }
                     break;
-                default: break;
+                default:
+                    break;
             }
             option = scan.nextInt();
         }
