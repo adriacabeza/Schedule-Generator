@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import model.Assignatura;
 import model.Aula;
+import model.Horari;
 import model.PlaEstudis;
 
 import java.io.FileReader;
@@ -56,16 +57,25 @@ public class CtrlIO {
     }
 
     //TODO return horari type
-    public void carregaHorari(String filepath) throws IOException {
-
+    public Horari carregaHorari(String filepath) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        FileReader fr = new FileReader(filepath);
+        Horari horari = gson.fromJson(fr, new TypeToken<Horari>() {
+        }.getType());
+        fr.close();
+        return horari;
     }
 
 
     /* ESCRIPTURA DE FITXERS */
 
 
-    public void guardaHorari() {
-
+    public void guardaHorari(Horari h, String filepath) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(h);
+        FileWriter fw = new FileWriter(filepath);
+        fw.write(json);
+        fw.close();
     }
 
     public void guardaAssignatures(HashMap<String, Assignatura> assignatures, String filepath) throws IOException {

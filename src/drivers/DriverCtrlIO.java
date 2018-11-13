@@ -2,9 +2,7 @@ package drivers;
 
 import controllers.CtrlIO;
 import exceptions.RestriccioIntegritatException;
-import model.Assignatura;
-import model.Aula;
-import model.PlaEstudis;
+import model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,6 +58,7 @@ public class DriverCtrlIO {
         HashMap<String, PlaEstudis> ps = new HashMap<>();
         HashMap<String, Assignatura> a = new HashMap<>();
         HashMap<String, Aula> as = new HashMap<>();
+        Horari horari = null;
 
         //IO TESTING
         HashMap<String, PlaEstudis> pst1 = new HashMap<>();
@@ -80,9 +79,14 @@ public class DriverCtrlIO {
         at1.get("AC").modificarGrups(2, 10, 2);
         at1.get("AC").setTeoria(2, 2, Aula.TipusAula.NORMAL);
         at1.get("AC").setLaboratori(3,4, Aula.TipusAula.LABORATORI);
+
+        at1.get("ER").modificarGrups(2, 10, 2);
+        at1.get("ER").setTeoria(2, 2, Aula.TipusAula.NORMAL);
+        at1.get("ER").setLaboratori(3,4, Aula.TipusAula.LABORATORI);
+
         pst1.get("Informatica").afegirAssignatura("AC");
         ast1.put("a5002", new Aula("a5", 0, 2, Aula.TipusAula.NORMAL, 60));
-        ast1.put("a5003", new Aula("a5", 0, 3, Aula.TipusAula.NORMAL, 60));
+        ast1.put("a5003", new Aula("a5", 0, 3, Aula.TipusAula.LABORATORI, 60));
 
 
 
@@ -129,6 +133,15 @@ public class DriverCtrlIO {
                     break;
                 case 4:
                     filepath = scan.next(); //TODO
+                    while (incorrect) {
+                        try {
+                            horari = c.carregaHorari(filepath);
+                            incorrect = false;
+                        } catch (IOException e) {
+                            System.out.print("introdueix un path correcte \n> ");
+                            filepath = scan.next();
+                        }
+                    }
                     break;
                 case 5:
                     filepath = scan.next(); //TODO
@@ -153,6 +166,11 @@ public class DriverCtrlIO {
                     }
                     break;
                 case 8: // TODO
+                    try {
+                        filepath = scan.next(); //TODO
+                        if (horari != null) c.guardaHorari(horari, filepath);
+                    } catch (IOException ignored) {
+                    }
                     break;
                 case 9:
                     HashMap<String, Assignatura> at2 = new HashMap<>();
@@ -188,12 +206,19 @@ public class DriverCtrlIO {
                     }
                     break;
                 case 12: //TODO
+                    try {
+                        a = c.carregaAssignatures("assigtest.json");
+                        ps = c.carregaPlansDEstudi("plaestudistest.json");
+                        as = c.carregaAules("aulestest.json");
+                        horari = new Horari(true, a, as, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(), new RestriccioSubgrupLab(), new ArrayList<>(), new ArrayList<>());
+                        c.guardaHorari(horari, "horaritest.json");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 default: break;
             }
             option = scan.nextInt();
         }
-
-
     }
 }
