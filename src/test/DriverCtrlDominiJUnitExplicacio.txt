@@ -1,0 +1,43 @@
+Objecte de prova: Classe CtrDomini, casos d'us de les funcionalitats principals per gestionar horari, assignatures, aules i plans d'estudi
+
+Elements integrats a la prova: Classes del model instanciades desde el test
+
+Drivers: DriverCtrlDominiJUnit
+    prova totes les funcions del ctrDomini que funcionin correctament i siguin robustes
+
+Stubs: -
+
+Fitxers de dades necessaris: -
+
+Valors estudiats:
+    - alta d'un pla d'estudis, correctament i incorrectament quan n'hi ha un amb el mateix nom
+    - esborrar un pla d'estudis obsolet, fallar quan no esta obsolet i fallar quan no existeix
+    - consultar un pla d'estudis correctament i fallar quan no existeix
+    - afegir correcament una assignatura al pla i fallar quan
+        - ja esta afegida en algun altre pla o a ell mateix
+        - el pla no existeix
+        - l'assignatura no esta donada d'alta
+    - esborrar una assignatura del pla d'estudis correctament i fallar quan:
+        - l'assignatura no existeix
+        - el pla d'estudis no existeix
+        - el pla d'estudis no conte l'assignatura
+    - consultar les assignatures d'un pla d'estudis i fallar quan el pla no existeix
+    - crear una assignatura i fallar si aquesta ja existeix
+    - consultar una assignatura i fallar si aquesta no existeix
+    - esborrar una assignatura i fallar si aquesta no existeix
+    - modificar una assignatura i fallar si aquesta no existeix
+    - afegir correquisits a una assignatura i fallar si
+        - el correquisit es ella mateixa
+        - ella o el correquisit no existeixen
+        - pertanyen a quadrimestres diferents
+    - esborra correquisit d'una assignatura correctament i falla si no existeix l'assignatura
+    - crear una aula nova correctament i fallar si ja existeix una amb el mateix nom
+    - esborrar correctament una aula i fallar si aquesta no existeix
+    - modificar correctament una aula i fallar si aquesta no existeix
+    - consultar una aula correctament i fallar si aquesta no existeix
+    - crear un horari i fallar si no s'ha pogut crear be
+
+Efectes estudiats: -
+
+Operativa: S'obre un menú amb totes les opcions disponibles i l'explicació del que espera rebre
+    - correr el test i esperar un "tots els tests passats"

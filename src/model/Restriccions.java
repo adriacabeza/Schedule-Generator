@@ -2,8 +2,7 @@ package model;
 
 public abstract class Restriccions {
 
-    private int id;
-
+    protected int id;
 //que restriccions torni un arraylist dels dies i les horesque podria la susodicha asignatura
 
     /**
