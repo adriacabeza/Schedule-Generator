@@ -1,0 +1,35 @@
+Objecte de prova: Classe Assignatura, crear assignatura, modificar-la, consultar assignatura per nom
+
+Elements integrats a la prova: Stub grup i stub InfoSessions, teoria i laboratori
+
+Drivers: DriverAssignatura
+    - crear assignatures
+    - modificar assignatura
+    - afegir correquisits
+    - comprobar les restriccions d'integritat de la classe assignatura
+        - no afegir-ne dos amb mateix nom
+        - no tenir-se a ella mateixa com a correquisit
+        - no tenir correquisits de diferents quadrimestres
+
+Stubs: Grup, Laboratori, Teoria
+
+Fitxers de dades necessaris: DriverAssignaturaTest.txt (valors de prova per verifica restriccions)
+
+Valors estudiats:
+    - creació correcte d'una assignatura
+    - consultar correctament una assignatura
+    - modificar els grups correctament d'una assignatura
+    - modificar informació de teoria i laboratori correctament
+    - afegir correquisits correctament
+    - fallar al intentar afegir a la mateixa assignatura com a propi correquisit
+    - fallar al intentar afegir un correquisit de diferent quadrimestre
+    - consultar els correquisits correctament
+    - mirar correctament si dues assignatures son correquisits
+
+Efectes estudiats: -
+
+Operativa: S'obre un menú amb totes les opcions disponibles i l'explicació del que espera rebre
+    - introduir la opció desitjada
+    - introduir parametres que et demani la opció
+    - passar al primer punt si vols seguir fent coses
+    - introduir la opció de sortir
