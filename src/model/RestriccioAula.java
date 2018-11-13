@@ -18,7 +18,7 @@ public class RestriccioAula extends Restriccions {
      * @return true si es pot realitzar la assignació a l'aula
      */
     public boolean isable(Aula aula, AssignaturaMonosessio assig) {
-        return (aula.getCapacitat() >= assig.getGrup().getCapacitat() && aula.getTipusAula() == assig.getSessio().gettAula());
+        return (aula.getCapacitat() >= assig.getGrup().getCapacitat() );//&& aula.getTipusAula() == assig.getSessio().gettAula());
     }
 
 

@@ -261,7 +261,7 @@ public class Backtracking {
             if (!ad.isable(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
         for (RestriccioAulaHora ah : resAulaHora)
             if (!ah.isable(aula1, dia, hora))
-                return false; //en aquesta aula no pot haber clase a aquesta hora  //TODO maybe posar aquesta a check boundaries?
+                return false; //en aquesta aula no pot haber clase a aquesta hora  //TODO maybe posar aquesta a check boundaries?*/
         return true;
     }
 
@@ -362,21 +362,24 @@ public class Backtracking {
                 for (int k = 0; k < aules2.size(); ++k) {
                     if (horari[m][l][k] == null) {
                         if (teoria) {
-                            if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
-                                for (int z = 0; z < duracio; ++z) {
-                                    horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
-                                    // System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
-                                }
-                                if (creaHorari(i + 1, horari)) return true;
-                                else {
-                                    //no se ha podido hacer, borramos lo que hemos puesto
-                                    for (int z = 0; z < duracio; ++z) {
-                                        horari[m + z][l][k] = null;
-                                    }
-                                }
+                           if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
+                           //   System.out.println(mishmash.get(i).getSessio().gettAula());
+                             //  System.out.println(aules2.get(k).getTipusAula());
+                               for (int z = 0; z < duracio; ++z) {
+                                   horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                   // System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
+                               }
+                               if (creaHorari(i + 1, horari)) return true;
+                               else {
+                                   //no se ha podido hacer, borramos lo que hemos puesto
+                                   for (int z = 0; z < duracio; ++z) {
+                                       horari[m + z][l][k] = null;
+                                   }
+                               }
+
                             }
                         } else {
-                            if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
+                           if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
                                     // System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
@@ -388,7 +391,7 @@ public class Backtracking {
                                         horari[m + z][l][k] = null;
                                     }
                                 }
-                            }
+                           }
 
                         }
                     }
