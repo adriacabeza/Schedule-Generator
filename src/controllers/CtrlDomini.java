@@ -364,7 +364,6 @@ public class CtrlDomini {
         }
     }
 
-
     /**
      * protected ignatura;
      * <p>
@@ -372,9 +371,9 @@ public class CtrlDomini {
      *
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
-    public Assignacio[][][] crearHorari() {
+    public Horari crearHorari() {
         Horari newhorari = new Horari(true, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
-        return newhorari.getHorari();
+        return newhorari;
     }
 
 
@@ -383,8 +382,8 @@ public class CtrlDomini {
      *
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
-    public Assignacio[][][] crearHorari2() {
+    public Horari crearHorari2() {
         Horari newhorari = new Horari(false, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
-        return newhorari.getHorari();
+        return newhorari;
     }
 }
