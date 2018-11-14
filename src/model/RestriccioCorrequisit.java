@@ -34,7 +34,7 @@ public class RestriccioCorrequisit extends Restriccions {
                             return false;
                     } else { //un dels dos es teoria
                         int auxnum = assig.getGrup().getNum() / 10;
-                        ;
+
                         if (assig.getSessio().getClass() == Laboratori.class) auxnum = assig.getSub().getNum() / 10;
                         if (a.getGrup().getNum() / 10 == auxnum) return false;
                     }

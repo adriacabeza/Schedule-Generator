@@ -254,6 +254,7 @@ public class Backtracking {
             if (!resCorr.isable(horari, hora, dia, assig, aules2)) return false; //violem restriccio de correquisit
         } catch (NotFoundException e) {
         }
+        if(aula1.getCapacitat() < assig.getGrup().getCapacitat()) return false;
         if (!resAul.isable(aula1, assig)) return false; //violem restriccio de aula
         if (!resTeo.isable(horari, hora, dia, assig, aules2)) return false; //violem restriccio de clases de teoria
         if (!resSub.isable(horari, hora, dia, assig, aules2)) return false;
@@ -363,9 +364,15 @@ public class Backtracking {
                     if (horari[m][l][k] == null) {
                         if (teoria) {
                            if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
-                           //   System.out.println(mishmash.get(i).getSessio().gettAula());
+                            //   System.out.println(mishmash.get(i).getSessio().gettAula());
                              //  System.out.println(aules2.get(k).getTipusAula());
-                               for (int z = 0; z < duracio; ++z) {
+                               Aula.TipusAula a = mishmash.get(i).getSessio().gettAula();
+                               Aula.TipusAula b = aules2.get(k).getTipusAula();
+                               System.out.println(a);
+                               System.out.println(b);
+                               int c= 2;
+                               if(a == b) {
+                                   for (int z = 0; z < duracio; ++z) {
                                    horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
                                    // System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
                                }
@@ -377,9 +384,15 @@ public class Backtracking {
                                    }
                                }
 
-                            }
+                            }}
                         } else {
                            if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
+                               Aula.TipusAula a = mishmash.get(i).getSessio().gettAula();
+                               Aula.TipusAula b = aules2.get(k).getTipusAula();
+                               System.out.println(a);
+                               System.out.println(b);
+                                int c= 2;
+                               if(a == b) {
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
                                     // System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
@@ -391,7 +404,7 @@ public class Backtracking {
                                         horari[m + z][l][k] = null;
                                     }
                                 }
-                           }
+                           }}
 
                         }
                     }

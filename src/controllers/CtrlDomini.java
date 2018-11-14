@@ -386,4 +386,41 @@ public class CtrlDomini {
         Horari newhorari = new Horari(false, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
         return newhorari;
     }
+
+
+    /**
+     * Borra la restricció aula dia corresponent
+     * @param res la restricció aula dia que hem de borrar
+     */
+    public void borrar_restriccio_aula_dia(RestriccioAulaDia res) {
+        resAulDia.remove(res);
+    }
+
+    /**
+     * Borra la restricció aula hora corresponent
+     * @param res la restricció aula hora que hem de borrar
+     */
+    public void borrar_restriccio_aula_hora(RestriccioAulaHora res) {
+        resAulaHora.remove(res);
+    }
+
+    /**
+     * Afegir la restricció aula dia corresponent
+     * @param res la restricció aula dia que afegeix
+     */
+    public void afegir_restriccio_aula_dia(RestriccioAulaDia res){
+        resAulDia.add(res);
+    }
+
+
+    /**
+     * Afegir la restricció aula hora corresponent
+     * @param res la restricció aula hora que afegeix
+     */
+    public void afegir_restriccio_aula_hora(RestriccioAulaDia res){
+        resAulDia.add(res);
+    }
+
+
+
 }

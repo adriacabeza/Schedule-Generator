@@ -1,5 +1,5 @@
 PlaEstudis
-Un plà d’estudis està identificat pel nom de la seva titulació. Té un any d’entrada en vigor i un valor de si esta vigent o obsolet. Inclou també assignatures que només poden estar a un pla d’estudis a la vegada.
+Un pla d’estudis està identificat pel nom de la seva titulació. Té un any d’entrada en vigor i un valor de si esta vigent o obsolet. Inclou també assignatures que només poden estar a un pla d’estudis a la vegada.
 
 Assignatura
 Una assignatura està identificada pel seu nom. Té un quadrimestre al qual en forma part i pot tenir altres assignatures que són correquisits seus, i que per tant, formen part del mateix quadrimestre. També pot tenir associada informació sobre els seus grups i subgrups i informació sobre com son les seves sessions de teoria i laboratori.
@@ -33,8 +33,10 @@ Una aula està identificada pel seu nom format pel nom de l’edifici, la planta
 AssignaturaMonosessio
 
 Horari
+Un horari inclou una matriu d'assignacions que representa la sessió que s'està realitzant a una determinada aula, en una determinada hora en un determinat dia.
 
 Restriccions
+Una restricció està identificada per un enter
 	RestriccioAula
 	RestriccioGrupTeo
 	RestriccioNivell
