@@ -21,7 +21,6 @@ public abstract class Assignacio {
         this.hora = hora;
         this.aula = aula;
         this.assignatura = assignatura;
-
     }
 
     /**

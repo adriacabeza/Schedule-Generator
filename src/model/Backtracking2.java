@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class Backtracking2 {
 
+    //TODO: s'ha de fer JAVADOCS de cada atribut
     private Assignacio[][][] horari;
     private ArrayList<AssignaturaMonosessio> mishmash;
     private ArrayList<Assignatura> assignatures2;
@@ -19,8 +20,8 @@ public class Backtracking2 {
     private RestriccioSubgrupLab resSub;
     private ArrayList<RestriccioAulaDia> resAulDia;
     private ArrayList<RestriccioAulaHora> resAulaHora;
-    //private HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats;
-    private HashMap<AssignaturaMonosessio, ArrayList<Integer>> possibilitats;
+    private HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats;
+   //private HashMap<AssignaturaMonosessio, ArrayList<Integer>> possibilitats;
 
 
     /**
@@ -56,6 +57,73 @@ public class Backtracking2 {
         return horari;
     }
 
+
+
+    /**
+     * Converteix un enter que representa un número en el seu pertinent dia en string
+     *
+     * @param dia enter que representa el dia
+     * @return string que representa el dia
+     */
+    private String fromInt2dia(int dia) {
+        if (dia == 0) return "Dilluns";
+        else if (dia == 1) return "Dimarts";
+        else if (dia == 2) return "Dimecres";
+        else if (dia == 3) return "Dijous";
+        else return "Divendres";
+
+    }
+
+    /**
+     * Printa per consola tot l'horari
+     */
+
+    public void printarHoraritot() {
+        int count = 0;
+        for (int i = 0; i < 12; ++i) {
+            for (int j = 0; j < 5; ++j) {
+                for (int k = 0; k < aules2.size(); ++k)
+                    if (horari[i][j][k] == null) System.out.println("ESPAI BUIT");
+                    else {
+                        ++count;
+                        System.out.println(fromInt2dia(j)+", a les "+getHora(i)+" a l'aula  " + horari[i][j][k].getAula().getKey() +" el grup " + horari[i][j][k].getGrup().getNum()+ " fa " + horari[i][j][k].getAssignatura());
+                    }
+            }
+        }
+        System.out.println("S'han assignat " + count + (" sessions."));
+    }
+
+    /**
+     * Printa per consola l'horari assignat d'una determinada aula en un determinat dia
+     *
+     * @param aula aula escollida a printar
+     * @param dia  dia escollit a printar
+     */
+    private void printarHorari_auladia(Aula aula, String dia) {
+        int numAula = assignatures2.indexOf(aula);
+        int numdia = fromDia2int(dia);
+        for (int i = 0; i < 12; ++i) {
+            System.out.println("Aula: " + horari[i][numdia][numAula].getAula().getKey() + " es fa assignatura: " + horari[i][numdia][numAula].getAssignatura());
+        }
+
+    }
+
+    /**
+     * Printa per consola l'horari assingat d'una determinada aula en una determinada hora
+     *
+     * @param aula aula escollida a printar
+     * @param hora hora escollida a printar
+     */
+    private void printarHorari_aulahora(Aula aula, int hora) {
+        int nhora = getHora(hora);
+        int numAula = assignatures2.indexOf(aula);
+        for (int i = 0; i < 5; ++i) {
+            System.out.println("Aula: " + horari[nhora][i][numAula].getAula().getKey() + " es fa assignatura: " + horari[nhora][i][numAula].getAssignatura());
+        }
+
+    }
+
+
     /**
      * Printa per consola l'horari assignat d'una determinada aula
      *
@@ -71,69 +139,6 @@ public class Backtracking2 {
     }
 
 
-    /**
-     * Converteix un enter que representa un número en el seu pertinent dia en string
-     *
-     * @param dia enter que representa el dia
-     * @return string que representa el dia
-     */
-    private String fromInt2dia(int dia) {
-        if (dia == 0) return "Dilluns";
-        else if (dia == 1) return "Dimarts";
-        else if (dia == 2) return "Dimecres;";
-        else if (dia == 3) return "Dijous";
-        else return "Divendres";
-
-    }
-
-    /**
-     * Printa per consola tot l'horari
-     */
-
-    public void printarHoraritot() {
-        int count = 0;
-        for (int i = 0; i < 12; ++i) {
-            for (int j = 0; j < 5; ++j) {
-                for (int k = 0; k < aules2.size(); ++k)
-                    if (horari[i][j][k] == null) System.out.println("VACÍO");
-                    else {
-                        ++count;
-                        System.out.println("Aula: " + horari[i][j][k].getAula().getKey() + " es fa assignatura: " + horari[i][j][k].getAssignatura() + " per grup:" + horari[i][j][k].getGrup().getNum());
-                    }
-            }
-        }
-        System.out.println("Se han asignado " + count + (" sesiones."));
-    }
-
-    /**
-     * Printa per consola l'horari assignat d'una determinada aula en un determinat dia
-     *
-     * @param aula aula escollida a printar
-     * @param dia  dia escollit a printar
-     */
-    private void printarHorari_auladia(Aula aula, String dia) {
-        int numAula = assignatures2.indexOf(aula);
-        int numdia = fromdia2int(dia);
-        for (int i = 0; i < 12; ++i) {
-            System.out.println("Aula: " + horari[i][numdia][numAula].getAula().getKey() + " es fa assignatura: " + horari[i][numdia][numAula].getAssignatura());
-        }
-
-    }
-
-    /**
-     * Printa per consola l'horari assingat d'una determinada aula en una determinada hora
-     *
-     * @param aula aula escollida a printar
-     * @param hora hora escollida a printar
-     */
-    private void printarHorari_aulahora(Aula aula, int hora) {
-        int nhora = gethora(hora);
-        int numAula = assignatures2.indexOf(aula);
-        for (int i = 0; i < 5; ++i) {
-            System.out.println("Aula: " + horari[nhora][i][numAula].getAula().getKey() + " es fa assignatura: " + horari[nhora][i][numAula].getAssignatura());
-        }
-
-    }
 
     /**
      * Printa per consola l'horari assignat una determinada hora
@@ -141,7 +146,7 @@ public class Backtracking2 {
      * @param hora hora escollida a printar
      */
     public void printarHorari_hora(int hora) {
-        int nhora = gethora(hora);
+        int nhora = getHora(hora);
         for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < aules2.size(); ++j) {
                 System.out.println(horari[nhora][i][j]); // S HAURIA DE PRINTAR AIXO
@@ -160,7 +165,7 @@ public class Backtracking2 {
      */
 
     public void printarHorari_dia(String dia) {
-        int numdia = fromdia2int(dia);
+        int numdia = fromDia2int(dia);
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < aules2.size(); ++j) {
                 System.out.println("Aula: " + horari[i][numdia][j].getAula().getKey() + " es fa assignatura: " + horari[i][numdia][j].getAssignatura());
@@ -176,7 +181,7 @@ public class Backtracking2 {
      * @param dia string que representa un dia
      * @return enter que representa el dia
      */
-    private int fromdia2int(String dia) {
+    private int fromDia2int(String dia) {
         switch (dia) {
             case "Dilluns":
                 return 0;
@@ -197,7 +202,7 @@ public class Backtracking2 {
      * @param hora enter que representa una hora
      * @return hora que representa
      */
-    private int gethora(int hora) {
+    private int getHora(int hora) {
         if (hora == 0) return 8;
         else if (hora == 1) return 9;
         else if (hora == 2) return 10;
@@ -223,7 +228,7 @@ public class Backtracking2 {
      * @param duracio duració de la sessió que es vol assignar
      * @return
      */
-    private boolean check_boundaries(int posaula, int dia, int hora, AssignaturaMonosessio assig, int duracio) {
+    private boolean checkBoundaries(int posaula, int dia, int hora, AssignaturaMonosessio assig, int duracio) {
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12) {
                 //  System.out.println("Se pasa del horario");
@@ -249,18 +254,18 @@ public class Backtracking2 {
      * @param posaula enter que representa l'aula de l'assignació
      * @return true si es pot realitzar l'assignació
      */
-    private boolean comprovar_restricciones(Aula aula1, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula) {
-        if (!check_boundaries(posaula, dia, hora, assig, duracio))
+    private boolean comprovarRestriccions(Aula aula1, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula, Assignacio [][][] horari1) {
+        if (!checkBoundaries(posaula, dia, hora, assig, duracio))
             return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
-        if (!resNiv.isable(horari, hora, dia, assig, aules2)) return false; //violem la restriccio de nivell
+        if (!resNiv.isable(horari1, hora, dia, assig, aules2)) return false; //violem la restriccio de nivell
         try {
-            if (!resCorr.isable(horari, hora, dia, assig, aules2)) return false; //violem restriccio de correquisit
+            if (!resCorr.isable(horari1, hora, dia, assig, aules2)) return false; //violem restriccio de correquisit
         } catch (NotFoundException e) {
         }
         if(aula1.getCapacitat() < assig.getGrup().getCapacitat()) return false;
         if (!resAul.isable(aula1, assig)) return false; //violem restriccio de aula
-        if (!resTeo.isable(horari, hora, dia, assig, aules2)) return false; //violem restriccio de clases de teoria
-        if (!resSub.isable(horari, hora, dia, assig, aules2)) return false;
+        if (!resTeo.isable(horari1, hora, dia, assig, aules2)) return false; //violem restriccio de clases de teoria
+        if (!resSub.isable(horari1, hora, dia, assig, aules2)) return false;
         for (RestriccioAulaDia ad : resAulDia)
             if (!ad.isable(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
         for (RestriccioAulaHora ah : resAulaHora)
@@ -269,19 +274,35 @@ public class Backtracking2 {
         return true;
     }
 
+    /**
+     *
+     *Aquesta funció s'encarrega de fer una poda inicial de les possibilitats de cada assignació que haurem de realitzar
+     * @return true si ja hi ha un cas que no es pot realitzar false si totes tenen possibles solucions
+     */
 
-    //private HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats;
-    public boolean filtrarestricciones() {
-        //aquí en teoria tendría un grupo y dentro sus posibilidades, primero las horas que puede, luego los días y luego las aulas
-        ArrayList<Integer> aules_possibles = new ArrayList<>();
-        for (int i = 0; i < mishmash.size(); ++i) { //tots els grups que tinc que assignar
+    public boolean filtraRestriccions() {
+        for (int i = 0; i < mishmash.size(); ++i) {
+            ArrayList<Integer> aules_possibles = new ArrayList<>();
             for (int k = 0; k < aules2.size(); ++k) {
                 if (resAul.isable(aules2.get(k), mishmash.get(i))) aules_possibles.add(k);
             }
-            //ara a aules possibles tinc les aules possibles que pot fer servir el grup de mishmash
-            //resAulaHora
-            possibilitats.put(mishmash.get(i), aules_possibles);
-            aules_possibles = new ArrayList<>();
+            ArrayList<ArrayList<ArrayList<Integer>>> diahoraaules = new ArrayList<>();
+            for(int d =0; d<5; ++d) {
+                ArrayList<ArrayList<Integer>> horaaules = new ArrayList<>();
+                for (int h = 0; h < 12; ++h) {
+                        ArrayList<Integer> aulesHora = new ArrayList<>();
+                        for (int n = 0; n < aules_possibles.size(); ++n) {
+                            boolean b = true;
+                            for (int j = 0; j < resAulaHora.size(); ++j) {
+                                if (!resAulaHora.get(j).isable(aules2.get(aules_possibles.get(n)), d, h)) b = false;
+                            }
+                            aulesHora.add(aules_possibles.get(n));
+                        }
+                        horaaules.add(h,aulesHora);
+                }
+                diahoraaules.add(d,horaaules);
+            }
+            possibilitats.put(mishmash.get(i), diahoraaules);
         }
         for (ArrayList a : possibilitats.values()) {
             if (a.size() == 0) return true;
@@ -289,16 +310,20 @@ public class Backtracking2 {
         return false;
     }
 
-    public void propagar_possibilitats(int aula){
+    /**
+     * Aquesta funció propaga les restriccions per a efectuar forward checking i fer la poda de domini
+     * @param aula aula que ha de tenir en compte per a podar
+     * @param dia dia que ha de de tenir en compte per a podar
+     * @param hora hora que ha de tenir en compte per a podar
+     */
+
+    public void propagarPossibilitats(int aula, int dia, int hora, AssignaturaMonosessio assig){
         Iterator<AssignaturaMonosessio> it = possibilitats.keySet().iterator();
         while(it.hasNext()){
-            AssignaturaMonosessio key = it.next();
-            if(possibilitats.get(key).contains(aula)){
-                it.remove();
+
+
+
         }
-    }
-
-
 
     }
 
@@ -307,39 +332,41 @@ public class Backtracking2 {
         if (i == (mishmash.size())) return true;
         int duracio = mishmash.get(i).getSessio().getDuracioSessions();
         boolean teoria = (mishmash.get(i).getSessio().getClass() == Teoria.class);
-        ArrayList<Integer> possibles_aules = possibilitats.get(mishmash.get(i));
-        for (int l = 0; l < 5; ++l) {
-            for (int m = 0; m < 12; ++m) {
-                for (int k = 0; k < possibles_aules.size(); ++k) {
-                    int aula = possibles_aules.get(k);
-                    if (horari[m][l][aula] == null) {
+        ArrayList<ArrayList<ArrayList<Integer>>> possibles = new ArrayList<>();
+        Collections.shuffle(possibilitats.get(mishmash.get(i)));
+        for (int d = 0; d < possibles.size(); ++d) {
+            for (int h = 0; h < possibles.get(d).size(); ++h) {
+                for (int a = 0; a < possibles.get(d).get(h).size(); ++a) {
+                    int aula = possibles.get(d).get(h).get(a);
+                    if (horari[h][d][aula] == null) {
                         if (teoria) {
-                            if (comprovar_restricciones(aules2.get(aula), l, m, mishmash.get(i), duracio, k)) {
-                                HashMap<AssignaturaMonosessio,ArrayList<Integer>> clon = new HashMap<AssignaturaMonosessio,ArrayList<Integer>>(possibilitats);
+                            if (comprovarRestriccions(aules2.get(aula), d, h, mishmash.get(i), duracio, a, horari)) {
+                                HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
-                                    horari[m + z][l][aula] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
-                                    propagar_possibilitats(aula);
+                                    horari[h+ z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                    propagarPossibilitats(aula,d,h, mishmash.get(i));
                                 }
                                 if (creaHorari(i + 1, horari)) return true;
                                 else {
                                     possibilitats = clon;
                                     for (int z = 0; z < duracio; ++z) {
-                                        horari[m + z][l][aula] = null;
+                                        horari[h + z][d][aula] = null;
                                     }
                                 }
                             }
                         } else {
-                            if (comprovar_restricciones(aules2.get(possibilitats.get(mishmash.get(i)).get(k)), l, m, mishmash.get(i), duracio, k)) {
-                                HashMap<AssignaturaMonosessio,ArrayList<Integer>> clon = new HashMap<AssignaturaMonosessio,ArrayList<Integer>>(possibilitats);
+                            if (comprovarRestriccions(aules2.get(aula), d, h, mishmash.get(i), duracio, a,horari)) {
+                                HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
-                                    horari[m + z][l][aula] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+                                    horari[h + z][d][aula] = new AssignacioL(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+                                    propagarPossibilitats(aula,d,h, mishmash.get(i));
                                 }
 
                                 if (creaHorari(i + 1, horari)) return true;
                                 else {
                                     possibilitats = clon;
                                     for (int z = 0; z < duracio; ++z) {
-                                        horari[m + z][l][aula] = null;
+                                        horari[h + z][d][aula] = null;
                                     }
                                 }
                             }
@@ -360,7 +387,7 @@ public class Backtracking2 {
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
-        if (filtrarestricciones()) {
+        if (filtraRestriccions()) {
             System.out.println("No es pot generar l'horari");
             return false;
         }

@@ -49,7 +49,10 @@ public class Backtracking {
         this.resAulaHora = resAulaHora;
     }
 
-
+    /**
+     * Obté l'horari
+     * @return l'horari
+     */
     public Assignacio[][][] getHorari() {
         return horari;
     }
@@ -77,7 +80,7 @@ public class Backtracking {
     private String fromInt2dia(int dia) {
         if (dia == 0) return "Dilluns";
         else if (dia == 1) return "Dimarts";
-        else if (dia == 2) return "Dimecres;";
+        else if (dia == 2) return "Dimecres";
         else if (dia == 3) return "Dijous";
         else return "Divendres";
 
@@ -92,14 +95,14 @@ public class Backtracking {
         for (int i = 0; i < 12; ++i) {
             for (int j = 0; j < 5; ++j) {
                 for (int k = 0; k < aules2.size(); ++k)
-                    if (horari[i][j][k] == null) System.out.println("VACÍO");
+                    if (horari[i][j][k] == null) System.out.println("ESPAI BUIT");
                     else {
                         ++count;
-                        System.out.println("Aula: " + horari[i][j][k].getAula().getKey() + " es fa assignatura: " + horari[i][j][k].getAssignatura() + " per grup:" + horari[i][j][k].getGrup().getNum());
+                        System.out.println(fromInt2dia(j)+", a les "+gethora(i)+" a l'aula " + horari[i][j][k].getAula().getKey() +" el grup " + horari[i][j][k].getGrup().getNum()+ " fa " + horari[i][j][k].getAssignatura());
                     }
             }
         }
-        System.out.println("Se han asignado " + count + (" sesiones."));
+        System.out.println("S'han assignat " + count + (" sessions."));
     }
 
     /**
@@ -143,11 +146,8 @@ public class Backtracking {
             for (int j = 0; j < aules2.size(); ++j) {
                 System.out.println(horari[nhora][i][j]); // S HAURIA DE PRINTAR AIXO
                 System.out.println("Aula: " + horari[nhora][i][j].getAula().getKey() + " es fa assignatura: " + horari[nhora][i][j].getAssignatura());
-
             }
-
         }
-
     }
 
     /**
@@ -366,13 +366,8 @@ public class Backtracking {
                            if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
                             //   System.out.println(mishmash.get(i).getSessio().gettAula());
                              //  System.out.println(aules2.get(k).getTipusAula());
-                               Aula.TipusAula a = mishmash.get(i).getSessio().gettAula();
-                               Aula.TipusAula b = aules2.get(k).getTipusAula();
-                               System.out.println(a);
-                               System.out.println(b);
-                               int c= 2;
-                               if(a == b) {
-                                   for (int z = 0; z < duracio; ++z) {
+
+                                for (int z = 0; z < duracio; ++z) {
                                    horari[m + z][l][k] = new AssignacioT(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
                                    // System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
                                }
@@ -384,15 +379,9 @@ public class Backtracking {
                                    }
                                }
 
-                            }}
+                            }
                         } else {
                            if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
-                               Aula.TipusAula a = mishmash.get(i).getSessio().gettAula();
-                               Aula.TipusAula b = aules2.get(k).getTipusAula();
-                               System.out.println(a);
-                               System.out.println(b);
-                                int c= 2;
-                               if(a == b) {
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
                                     // System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));
@@ -404,7 +393,7 @@ public class Backtracking {
                                         horari[m + z][l][k] = null;
                                     }
                                 }
-                           }}
+                           }
 
                         }
                     }

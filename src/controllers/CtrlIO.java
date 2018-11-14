@@ -4,8 +4,7 @@
 
 package controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import model.Assignatura;
 import model.Aula;
@@ -76,6 +75,30 @@ public class CtrlIO {
     public void guardaHorari(Horari h, String filepath) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(h);
+        FileWriter fw = new FileWriter(filepath);
+        fw.write(json);
+        fw.close();
+    }
+
+    public void guardaHorari2(Horari h, String filepath) throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonArray obj = new JsonArray();
+        for(int i = 0; i < h.getHorari().length; ++i){
+            for(int j = 0; j < h.getHorari()[i].length; ++j){
+                for (int k = 0; k < h.getHorari()[i][j].length; ++k){
+                    JsonObject jsonElement= new JsonObject();
+                    if(h.getHorari()[i][j][k] != null) {
+                        jsonElement.addProperty("dia", h.getHorari()[i][j][k].getDiaSetmana());
+                        jsonElement.addProperty("hora", h.getHorari()[i][j][k].getHora());
+                        jsonElement.addProperty("assignatura", h.getHorari()[i][j][k].getAssignatura().getNom().toUpperCase());
+                        jsonElement.addProperty("grup", h.getHorari()[i][j][k].getGrup().getNum());
+                        jsonElement.addProperty("aula", h.getHorari()[i][j][k].getAula().getKey().toUpperCase());
+                        obj.add(jsonElement);
+                    }
+                }
+            }
+        }
+        String json = gson.toJson(obj);
         FileWriter fw = new FileWriter(filepath);
         fw.write(json);
         fw.close();
