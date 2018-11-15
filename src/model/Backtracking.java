@@ -253,7 +253,7 @@ public class Backtracking {
             return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
         if (!resNiv.isable(horari, hora, dia, assig, aules2)) return false; //violem la restriccio de nivell
         try {
-            if (!resCorr.isable(horari, hora, dia, assig, aules2)) return false; //violem restriccio de correquisit
+            if (!resCorr.isAble(horari, hora, dia, assig, aules2)) return false; //violem restriccio de correquisit
         } catch (NotFoundException e) {
         }
         if(aula1.getCapacitat() < assig.getGrup().getCapacitat()) return false;
