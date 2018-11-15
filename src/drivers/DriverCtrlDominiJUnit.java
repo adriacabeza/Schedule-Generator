@@ -1,7 +1,7 @@
 /**
  * @author Aina Garcia
  */
-
+/*
 package drivers;
 
 import org.junit.runner.JUnitCore;
@@ -20,3 +20,4 @@ public class DriverCtrlDominiJUnit {
         if (result.wasSuccessful()) System.out.println("Tots els tests passats");
     }
 }
+*/
