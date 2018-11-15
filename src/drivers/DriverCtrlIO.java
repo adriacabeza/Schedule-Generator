@@ -31,7 +31,8 @@ public class DriverCtrlIO {
         opcions.add("IO Assignatures");
         opcions.add("IO Plans Estudi");
         opcions.add("IO Aules");
-        opcions.add("IO Horari");
+        opcions.add("Realitzar l'horari amb backtracking i forward checking");
+        opcions.add("Realitzar l'horari amb backtracking cronològic");
 
         opcions.add("Sortir");
 
@@ -93,7 +94,7 @@ public class DriverCtrlIO {
         ast1.put("a5003", new Aula("a5", 0, 3, Aula.TipusAula.LABORATORI, 60));
 
 
-        while (option != 13) {
+        while (option != 14) {
             switch (option) {
                 case 0:
                     menu();
@@ -208,12 +209,23 @@ public class DriverCtrlIO {
                         System.out.println("this shouldn't show");
                     }
                     break;
-                case 12: //TODO
+                case 12:
                     try {
                         a = c.carregaAssignatures("assigtest.json");
                         ps = c.carregaPlansDEstudi("plaestudistest.json");
                         as = c.carregaAules("aulestest.json");
                         horari = new Horari(false, a, as, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(), new RestriccioSubgrupLab(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+                        c.guardaHorari2(horari, "horaritest.json");
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                case 13:
+                    try {
+                        a = c.carregaAssignatures("assigtest.json");
+                        ps = c.carregaPlansDEstudi("plaestudistest.json");
+                        as = c.carregaAules("aulestest.json");
+                        horari = new Horari(true, a, as, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(), new RestriccioSubgrupLab(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
                         c.guardaHorari2(horari, "horaritest.json");
 
                     } catch (IOException e) {

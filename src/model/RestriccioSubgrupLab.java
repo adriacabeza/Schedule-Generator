@@ -41,7 +41,7 @@ public class RestriccioSubgrupLab extends Restriccions {
     }
 
     /**
-     *
+     * Retorna si
      * @param check
      * @param assignat
      * @param pos
@@ -62,7 +62,6 @@ public class RestriccioSubgrupLab extends Restriccions {
                 }
             }
         }
-
         return true;
     }
 }
