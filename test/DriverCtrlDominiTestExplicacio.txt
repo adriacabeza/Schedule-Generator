@@ -1,0 +1,25 @@
+Objecte de prova: CtrlDomini
+
+Elements integrats a la prova:
+    - models d'assignatura, grup, teoria, aules, horari i pla d'estudis
+    - casos d'us de funcionalitats basiques de gestió del model i creacio d'horaris
+
+Drivers: DriverCtrlDomini
+
+Stubs: -
+
+Fitxers de dades necessaris:
+    - DriverCtrlDomini.txt
+
+Valors estudiats:
+    - funcionen correctament els casos d'us de creacio, modificacio, consulta i esborrat de classes
+    - permet crear horaris
+    - permet gestionar plans d'estudi i assignatures amb correquistis
+
+Efectes estudiats: -
+
+Operativa: S'obre un menú amb totes les opcions disponibles i l'explicació del que espera rebre
+    - introduir la opció desitjada
+    - introduir parametres que et demani la opció
+    - passar al primer punt si vols seguir fent coses
+    - introduir la opció de sortir

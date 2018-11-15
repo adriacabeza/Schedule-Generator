@@ -57,12 +57,10 @@ public class DriverCtrlDomini {
         System.out.println("\t input: 18 <nom complet aula>");
         System.out.println("Opcio 19: Crea i mostra Horari");
         System.out.println("\t input: 19 <1:bt/2:bt cronologic>");
-        System.out.println("Opcio 20: Aplica filtres");
-        System.out.println("\t input: 20 <restriccions>"); //TODO mirar com fer-ho
-        System.out.println("Opcio 21: Reset");
+        System.out.println("Opcio 20: Reset");
+        System.out.println("\t input: 20");
+        System.out.println("Opcio 21: Surt");
         System.out.println("\t input: 21");
-        System.out.println("Opcio 22: Surt");
-        System.out.println("\t input: 22");
     }
 
     public static void main(String[] args) {
@@ -71,29 +69,13 @@ public class DriverCtrlDomini {
         Scanner scan = new Scanner(System.in);
 
         /* variables pels inputs, se que hi ha moltes pero es per aclarar-me al fer lectures */
-        int option;
-        String nomP;
-        String nomA1;
-        String nomA2;
-        String nomA;
-        String edifici;
-        int planta;
-        int aula;
-        int any;
+        String nomP, nomA1, nomA2, nomA, edifici, taula;
+        int planta, aula, any, quadrimestre, duracio, nums, option, numgrups, numsubgrups, capacitat, capgrups;
         Horari h;
-        int quadrimestre;
-        int duracio;
-        int nums;
-        String taula;
-        int numgrups;
-        int numsubgrups;
-        int capacitat;
-        int capgrups;
-
 
         option = scan.nextInt();
 
-        while (option != 22) {
+        while (option != 21) {
             switch (option) {
                 case 0:
                     menu();
@@ -274,9 +256,6 @@ public class DriverCtrlDomini {
                     edifici = scan.next();
                     planta = scan.nextInt();
                     aula = scan.nextInt();
-                    capacitat = scan.nextInt();
-                    taula = scan.next();
-                    t = Aula.stringToTipusAula(taula);
                     try {
                         c.consultarAula(Aula.crearkey(edifici, planta, aula));
                     } catch (NotFoundException e) {
@@ -306,9 +285,6 @@ public class DriverCtrlDomini {
                     }
                     break;
                 case 20:
-                    //TODO
-                    break;
-                case 21:
                     c.reload();
                     break;
                 default:
@@ -317,5 +293,4 @@ public class DriverCtrlDomini {
             option = scan.nextInt();
         }
     }
-
 }
