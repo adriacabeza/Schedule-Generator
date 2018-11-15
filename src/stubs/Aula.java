@@ -59,6 +59,7 @@ public class Aula {
     }
 
     public void setTipusAula(TipusAula tipusaula) {
+
     }
 
     public int getCapacitat() {
