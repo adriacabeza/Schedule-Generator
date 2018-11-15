@@ -32,4 +32,9 @@ public class RestriccioAulaHora extends Restriccions {
         if (aula.getKey() == this.aula.getKey() && dia == this.dia && hora == this.hora) return false;
         return true;
     }
+
+    public int getDia(){return dia;}
+    public int getHora(){return hora;}
+    public Aula getAula(){return aula;}
+
 }

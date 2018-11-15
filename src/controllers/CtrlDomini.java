@@ -25,6 +25,7 @@ public class CtrlDomini {
     private RestriccioSubgrupLab resSub;
     private ArrayList<RestriccioAulaDia> resAulDia;
     private ArrayList<RestriccioAulaHora> resAulaHora;
+    private ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
 
     private CtrlDomini() {
         assignatures = new HashMap<>();
@@ -37,6 +38,7 @@ public class CtrlDomini {
         resSub = new RestriccioSubgrupLab();
         resAulDia = new ArrayList<>();
         resAulaHora = new ArrayList<>();
+        resMatiTarda = new ArrayList<>();
     }
 
     public static CtrlDomini getInstance() {
@@ -57,6 +59,7 @@ public class CtrlDomini {
         resSub = new RestriccioSubgrupLab();
         resAulDia = new ArrayList<>();
         resAulaHora = new ArrayList<>();
+        resMatiTarda = new ArrayList<>();
     }
 
     /**
@@ -372,7 +375,7 @@ public class CtrlDomini {
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
     public Horari crearHorari() {
-        Horari newhorari = new Horari(true, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
+        Horari newhorari = new Horari(true, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
 
@@ -383,7 +386,7 @@ public class CtrlDomini {
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
     public Horari crearHorari2() {
-        Horari newhorari = new Horari(false, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora);
+        Horari newhorari = new Horari(false, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
 

@@ -12,10 +12,10 @@ public class RestriccioAulaDia extends Restriccions {
      *
      * @param dia dia a comprovar
      */
-    public RestriccioAulaDia(int dia) {
+    public RestriccioAulaDia(int dia, Aula aula) {
         super(6);
         this.dia = dia;
-
+        this.aula = aula;
     }
 
     /**
@@ -29,6 +29,9 @@ public class RestriccioAulaDia extends Restriccions {
         if (this.dia == dia && aula.getKey() == this.aula.getKey()) return false;
         return true;
     }
+
+    public int getDia(){return dia;}
+    public Aula getAula(){return aula;}
 
 }
 

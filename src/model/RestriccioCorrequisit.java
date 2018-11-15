@@ -3,6 +3,7 @@ package model;
 import exceptions.NotFoundException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RestriccioCorrequisit extends Restriccions {
 
@@ -43,5 +44,15 @@ public class RestriccioCorrequisit extends Restriccions {
         }
         return true;
     }
+
+    public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos ,int aula, int dia, int hora) throws NotFoundException {
+        if (assignat.getAssig().getCorrequisits().contains(check.getAssig().getNom())) {
+            if (pos.get(check).get(dia).get(hora).contains(aula)){                      //TODO: no hem de mirar tambe que siguin grups iguals etc?
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }

@@ -20,13 +20,13 @@ public class Backtracking2 {
     private RestriccioSubgrupLab resSub;
     private ArrayList<RestriccioAulaDia> resAulDia;
     private ArrayList<RestriccioAulaHora> resAulaHora;
+    private ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
    //private HashMap<AssignaturaMonosessio, ArrayList<Integer>> possibilitats;
 
 
     /**
      * Construeix un horari un buit amb totes les dades que es necessitarien per a generar-lo
-     *
-     * @param assignatures assignatures que tindrà que tenir l'horari
+     *  @param assignatures assignatures que tindrà que tenir l'horari
      * @param aules        aules que tindrà que tenir l'horari
      * @param resCorr      restricció de correquísit
      * @param resNiv       restricció de nivell
@@ -35,9 +35,10 @@ public class Backtracking2 {
      * @param resSub       restricció de les sessions de laboratori
      * @param resAulDia    restricció de dia i aula
      * @param resAulaHora  restricció d'aula i hora
+     * @param resMatiTarda restriccio de assignatures de matins i tardes
      */
     public Backtracking2(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules, RestriccioCorrequisit resCorr, RestriccioNivell resNiv, RestriccioAula resAul, RestriccioGrupTeo resTeo,
-                         RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora) {
+                         RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora, ArrayList<RestriccioAssigMatiTarda> resMatiTarda) {
         this.assignatures2 = new ArrayList<>(assignatures.values());
         this.aules2 = new ArrayList<>(aules.values());
         this.horari = new Assignacio[12][5][aules2.size()];
@@ -48,6 +49,7 @@ public class Backtracking2 {
         this.resSub = resSub;
         this.resAulDia = resAulDia;
         this.resAulaHora = resAulaHora;
+        this.resMatiTarda = resMatiTarda;
     }
 
 
@@ -255,20 +257,9 @@ public class Backtracking2 {
     private boolean comprovarRestriccions(Aula aula1, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula, Assignacio [][][] horari1) {
         if (!checkBoundaries(posaula, dia, hora, assig, duracio))
             return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
-        if (!resNiv.isable(horari1, hora, dia, assig, aules2)) return false; //violem la restriccio de nivell
-        try {
-            if (!resCorr.isable(horari1, hora, dia, assig, aules2)) return false; //violem restriccio de correquisit
-        } catch (NotFoundException e) {
-        }
         if(aula1.getCapacitat() < assig.getGrup().getCapacitat()) return false;
-        if (!resAul.isable(aula1, assig)) return false; //violem restriccio de aula
         if (!resTeo.isable(horari1, hora, dia, assig, aules2)) return false; //violem restriccio de clases de teoria
         if (!resSub.isable(horari1, hora, dia, assig, aules2)) return false;
-        for (RestriccioAulaDia ad : resAulDia)
-            if (!ad.isable(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
-        for (RestriccioAulaHora ah : resAulaHora)
-            if (!ah.isable(aula1, dia, hora))
-                return false; //en aquesta aula no pot haber clase a aquesta hora  //TODO maybe posar aquesta a check boundaries?
         return true;
     }
 
@@ -284,15 +275,28 @@ public class Backtracking2 {
             for (int k = 0; k < aules2.size(); ++k) {
                 if (resAul.isable(aules2.get(k), mishmash.get(i))) aules_possibles.add(k);
             }
+            Assignatura assig = null;
+            int indexAssig = 0;
+            for(int k = 0; k < resMatiTarda.size(); ++k ){
+                if (resMatiTarda.get(k).getAssig() == mishmash.get(i).getAssig().getNom()){
+                    assig =  mishmash.get(i).getAssig();         //tenim una assignatura o de mati o de tarda
+                    indexAssig = k;
+                }
+            }
             ArrayList<ArrayList<ArrayList<Integer>>> diahoraaules = new ArrayList<>(5);
             for(int d =0; d<5; ++d) {
                 ArrayList<ArrayList<Integer>> horaaules = new ArrayList<>(12);
                 for (int h = 0; h < 12; ++h) {
                         ArrayList<Integer> aulesHora = new ArrayList<>();
-                        for (int n = 0; n < aules_possibles.size(); ++n) {
+                        boolean restriccioMati = true;
+                        if(assig != null) restriccioMati = resMatiTarda.get(indexAssig).isable(assig,h);        //mirem si es de mati, estiguem en el mati i el mateix per la tarda
+                        for (int n = 0; n < aules_possibles.size() && restriccioMati; ++n) {
                             boolean b = true;
-                            for (int j = 0; j < resAulaHora.size(); ++j) {
+                            for (int j = 0; j < resAulaHora.size() && b; ++j) {
                                 if (!resAulaHora.get(j).isable(aules2.get(aules_possibles.get(n)), d, h)) b = false;
+                            }
+                            for (int j = 0; j < resAulDia.size() && b; ++j) {
+                                if (!resAulDia.get(j).isable(aules2.get(aules_possibles.get(n)), d)) b = false;
                             }
                             if(b) aulesHora.add(aules_possibles.get(n));
                         }
@@ -316,7 +320,7 @@ public class Backtracking2 {
      * @param hora hora que ha de tenir en compte per a podar
      */
 
-    public void propagarPossibilitats(int aula, int dia, int hora, AssignaturaMonosessio assig, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos ) {
+    public void propagarPossibilitats(int aula, int dia, int hora, AssignaturaMonosessio assig, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos ) { //TODO: no haurien d'anar aqui ara les comprovacions de resTo, resSub, resNiv i resCorr ja que estem treient les possibilitats que violen alguna d'aquestes
         Iterator<AssignaturaMonosessio> it = pos.keySet().iterator();
         while (it.hasNext()) {
             //per a cada sessió que assigno tinc guardades els dies, hores i aules que puc fer-ho
@@ -326,11 +330,7 @@ public class Backtracking2 {
             AssignaturaMonosessio assignat = (AssignaturaMonosessio) it.next();
             //això treu possibilitat de correquisits; no sé si es pot escriure aixi del tot
             try {
-
-                if (assig.getAssig().getCorrequisits().contains(assignat.getAssig().getNom()))
-                    if(pos.get(assignat).contains(dia))
-                        if(pos.get(assignat).get(dia).contains(hora))
-                            if(pos.get(assignat).get(dia).get(hora).contains(aula)) pos.get(assignat).get(dia).get(hora).remove(aula);
+                if (!resCorr.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula);
             } catch (NotFoundException e) {
                 e.printStackTrace();
             }

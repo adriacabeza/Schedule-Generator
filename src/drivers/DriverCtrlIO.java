@@ -213,7 +213,7 @@ public class DriverCtrlIO {
                         a = c.carregaAssignatures("assigtest.json");
                         ps = c.carregaPlansDEstudi("plaestudistest.json");
                         as = c.carregaAules("aulestest.json");
-                        horari = new Horari(false, a, as, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(), new RestriccioSubgrupLab(), new ArrayList<>(), new ArrayList<>());
+                        horari = new Horari(false, a, as, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(), new RestriccioSubgrupLab(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
                         c.guardaHorari2(horari, "horaritest.json");
 
                     } catch (IOException e) {

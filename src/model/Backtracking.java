@@ -20,12 +20,12 @@ public class Backtracking {
     private RestriccioSubgrupLab resSub;
     private ArrayList<RestriccioAulaDia> resAulDia;
     private ArrayList<RestriccioAulaHora> resAulaHora;
+    private ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
 
 
     /**
      * Construeix un horari un buit amb totes les dades que es necessitarien per a generar-lo
-     *
-     * @param assignatures assignatures que tindrà que tenir l'horari
+     *  @param assignatures assignatures que tindrà que tenir l'horari
      * @param aules        aules que tindrà que tenir l'horari
      * @param resCorr      restricció de correquísit
      * @param resNiv       restricció de nivell
@@ -34,9 +34,10 @@ public class Backtracking {
      * @param resSub       restricció de les sessions de laboratori
      * @param resAulDia    restricció de dia i aula
      * @param resAulaHora  restricció d'aula i hora
+     * @param resMatiTarda restriccio de assignatures de matins i tardes
      */
     public Backtracking(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules, RestriccioCorrequisit resCorr, RestriccioNivell resNiv, RestriccioAula resAul, RestriccioGrupTeo resTeo,
-                        RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora) {
+                        RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora, ArrayList<RestriccioAssigMatiTarda> resMatiTarda) {
         this.assignatures2 = new ArrayList<>(assignatures.values());
         this.aules2 = new ArrayList<>(aules.values());
         this.horari = new Assignacio[12][5][aules2.size()];
@@ -47,6 +48,7 @@ public class Backtracking {
         this.resSub = resSub;
         this.resAulDia = resAulDia;
         this.resAulaHora = resAulaHora;
+        this.resMatiTarda = resMatiTarda;
     }
 
     /**
