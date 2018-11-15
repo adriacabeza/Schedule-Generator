@@ -375,7 +375,20 @@ public class CtrlDomini {
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
     public Horari crearHorari() {
-        Horari newhorari = new Horari(true, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
+        HashMap<String, assignatura> assignatures2 = new HashMap<>();
+        for (PlaEstudis plaest : plaEstudis.values()) {
+            if (!plaest.isObsolet()) {
+                ArrayList<String> a = plaest.getAssignatures();
+                for(String aux : a) {
+                    if (!assignatures2.containsKey(a) && assignatures.containsKey(a)) {
+                        assignatures2.put(a, assignatures.get(a));
+                    }
+                }
+            }
+        }
+        
+        
+        Horari newhorari = new Horari(true, assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
 
@@ -386,7 +399,20 @@ public class CtrlDomini {
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
     public Horari crearHorari2() {
-        Horari newhorari = new Horari(false, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
+        
+        HashMap<String, assignatura> assignatures2 = new HashMap<>();
+        for (PlaEstudis plaest : plaEstudis.values()) {
+            if (!plaest.isObsolet()) {
+                ArrayList<String> a = plaest.getAssignatures();
+                for(String aux : a) {
+                    if (!assignatures2.containsKey(a) && assignatures.containsKey(a)) {
+                        assignatures2.put(a, assignatures.get(a));
+                    }
+                }
+            }
+        }
+        
+        Horari newhorari = new Horari(false, assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
 
