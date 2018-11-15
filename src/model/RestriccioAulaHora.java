@@ -29,7 +29,7 @@ public class RestriccioAulaHora extends Restriccions {
      * @return true si es pot realitzar l'assignació
      */
     public boolean isable(Aula aula, int dia, int hora) {
-        if (aula.getKey() == this.aula.getKey() && dia == this.dia && hora == this.hora) return false;
+        if (aula.getKey().equals(this.aula.getKey()) && dia == this.dia && hora == this.hora) return false;
         return true;
     }
 
