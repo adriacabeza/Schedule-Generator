@@ -43,8 +43,8 @@ public class RestriccioNivell extends Restriccions {
 
     /**
      * Retorna si es possible realitzar una assignació d'una assignatura d'un determinat grup comprovant que no hi hagi conflictes amb el nivell d'una altra assignació
-     * @param check assignació acabada d'inserir al horari
-     * @param assignat assignació a comprovar
+     * @param check assignació a comprovar
+     * @param assignat assignació acabada d'inserir al horari
      * @param pos possibles aules que pot tenir l'assignació a comprovar
      * @param aula aula que es comprova
      * @param hora hora que es comprova

@@ -41,14 +41,14 @@ public class RestriccioSubgrupLab extends Restriccions {
     }
 
     /**
-     * Retorna si
-     * @param check
-     * @param assignat
-     * @param pos
-     * @param aula
-     * @param dia
-     * @param hora
-     * @return
+     * Retorna si es possible realitzar una assignació de laboratori d'un determinat grup comprovant que no hi hagi solapaments
+     *
+     * @param check      sessio de la que mirem si pot haber solapaments
+     * @param assignat   sessio que acabem d'assignar
+     * @param pos        possibles aules que pot tenir l'assignació a comprovar
+     * @param aula       aula que comprovem
+     * @param hora       hora que es comprova
+     * @param dia        dia que es comprova
      */
 
     public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){

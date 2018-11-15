@@ -23,7 +23,7 @@ public class RestriccioGrupTeo extends Restriccions {
      * @param aules2 aules que es comproven
      * @return true si es pot realitzar l'assignació
      */
-    public boolean isable(Assignacio[][][] horari, int hora, int dia, AssignaturaMonosessio assig, ArrayList<Aula> aules2) { //nomes hauriem d'executar aixo si assig es de teoria
+    public boolean isAble(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) { //nomes hauriem d'executar aixo si assig es de teoria
         int grup = assig.getGrup().getNum() / 10;
         for (int j = 0; j < aules2.size(); ++j) {
             Assignacio a = horari[hora][dia][j];
@@ -34,17 +34,18 @@ public class RestriccioGrupTeo extends Restriccions {
         }
         return true;
     }
-//TODO ACABAR AQUESTA DESCRIPCIÓ
+
     /**
-     * @param check
-     * @param assignat
-     * @param pos
-     * @param aula
-     * @param dia
-     * @param hora
-     * @return
+     * Retorna si es possible realitzar una assignació de teoria d'un determinat grup comprovant que no hi hagi solapaments
+     *
+     * @param check      sessio de la que mirem si pot haber solapaments
+     * @param assignat   sessio que acabem d'assignar
+     * @param pos        possibles aules que pot tenir l'assignació a comprovar
+     * @param aula       aula que comprovem
+     * @param hora       hora que es comprova
+     * @param dia        dia que es comprova
      */
-    public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
         if (pos.get(check).get(dia).get(hora).contains(aula)) {
             if (check.getAssig().getNom() == assignat.getAssig().getNom()) {
                 int grup = assignat.getGrup().getNum() / 10;
