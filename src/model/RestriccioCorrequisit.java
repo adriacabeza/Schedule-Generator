@@ -56,8 +56,8 @@ public class RestriccioCorrequisit extends Restriccions {
      * @throws NotFoundException
      */
 
-    public boolean isable2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora) throws NotFoundException {
-        if (assignat.getAssig().getCorrequisits().contains(check.getAssig().getNom()) &&  assignat.getGrup() == check.getGrup()) {
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora) throws NotFoundException {
+        if (assignat.getAssig().getCorrequisits().contains(check.getAssig().getNom()) &&  assignat.getGrup().getNum() == check.getGrup().getNum()) {
             if (pos.get(check).get(dia).get(hora).contains(aula)){
                 return false;
             }
