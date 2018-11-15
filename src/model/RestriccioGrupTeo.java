@@ -34,8 +34,16 @@ public class RestriccioGrupTeo extends Restriccions {
         }
         return true;
     }
-
-
+//TODO ACABAR AQUESTA DESCRIPCIÓ
+    /**
+     * @param check
+     * @param assignat
+     * @param pos
+     * @param aula
+     * @param dia
+     * @param hora
+     * @return
+     */
     public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
         if (pos.get(check).get(dia).get(hora).contains(aula)) {
             if (check.getAssig().getNom() == assignat.getAssig().getNom()) {
