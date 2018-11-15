@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RestriccioNivell extends Restriccions {
 
@@ -31,11 +32,19 @@ public class RestriccioNivell extends Restriccions {
                             return false;
                     } else { //un dels dos es teoria
                         int auxnum = assig.getGrup().getNum() / 10;
-                        ;
                         if (assig.getSessio().getClass() == Laboratori.class) auxnum = assig.getSub().getNum() / 10;
                         if (a.getGrup().getNum() / 10 == auxnum) return false;
                     }
                 }
+            }
+        }
+        return true;
+    }
+
+    public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora)  {
+        if (assignat.getAssig().getQuadrimestre() == check.getAssig().getQuadrimestre()) {
+            if (pos.get(check).get(dia).get(hora).contains(aula)){                      //TODO: no hem de mirar tambe que siguin grups iguals etc?
+                return false;
             }
         }
         return true;

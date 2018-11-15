@@ -336,11 +336,7 @@ public class Backtracking2 {
             }
 
             //aixo treu possibilitat de que tinguessis guardada la aula a aquella hora com a possible
-
-            if(pos.get(assignat).contains(dia))
-               if(pos.get(assignat).get(dia).contains(hora))
-                   if(pos.get(assignat).get(dia).get(hora).contains(aula)) pos.get(assignat).get(dia).get(hora).remove(aula);
-
+            if(!resNiv.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula);
             //aixo seria el for per a iterar a la seva estructura de dades
            /*for(int i = 0; i < possibilidades.size(); ++i) {
                for (int j = 0; j < possibilidades.get(i).size(); ++j) {
