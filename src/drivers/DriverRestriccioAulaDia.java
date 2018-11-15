@@ -87,7 +87,7 @@ public class DriverRestriccioAulaDia {
                     else {
                         aula = creaAula(scan);
                         System.out.println("Introdueix el dia");
-                        if(rest.isable(aula, fromDia2int(scan.next()))) System.out.println("aquesta aula es pot usar en aquest dia");
+                        if(rest.isAble(aula, fromDia2int(scan.next()))) System.out.println("aquesta aula es pot usar en aquest dia");
                         else System.out.println("Error: aquesta aula no se li poden fer assignacions aquest dia");
                     }
                     break;

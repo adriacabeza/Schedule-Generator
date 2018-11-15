@@ -10,7 +10,7 @@ import java.util.Map;
 public class Backtracking {
 
     private Assignacio[][][] horari;
-    private ArrayList<AssignaturaMonosessio> mishmash;
+    private ArrayList<SessioGrup> mishmash;
     private ArrayList<Assignatura> assignatures2;
     private ArrayList<Aula> aules2;
     private RestriccioCorrequisit resCorr;
@@ -222,7 +222,7 @@ public class Backtracking {
      * @param duracio duració de la sessió que es vol assignar
      * @return
      */
-    private boolean check_boundaries(int posaula, int dia, int hora, AssignaturaMonosessio assig, int duracio) {
+    private boolean check_boundaries(int posaula, int dia, int hora, SessioGrup assig, int duracio) {
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12) {
                 //      System.out.println("Se pasa del horario");
@@ -248,7 +248,7 @@ public class Backtracking {
      * @param posaula enter que representa l'aula de l'assignació
      * @return true si es pot realitzar l'assignació
      */
-    private boolean comprovarRestriccions(Aula aula1, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula) {
+    private boolean comprovarRestriccions(Aula aula1, int dia, int hora, SessioGrup assig, int duracio, int posaula) {
         if (!check_boundaries(posaula, dia, hora, assig, duracio))
             return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
         if (!resNiv.isable(horari, hora, dia, assig, aules2)) return false; //violem la restriccio de nivell
@@ -257,13 +257,13 @@ public class Backtracking {
         } catch (NotFoundException e) {
         }
         if(aula1.getCapacitat() < assig.getGrup().getCapacitat()) return false;
-        if (!resAul.isable(aula1, assig)) return false; //violem restriccio de aula
-        if (!resTeo.isable(horari, hora, dia, assig, aules2)) return false; //violem restriccio de clases de teoria
-        if (!resSub.isable(horari, hora, dia, assig, aules2)) return false;
+        if (!resAul.isAble(aula1, assig)) return false; //violem restriccio de aula
+        if (!resTeo.isAble(horari, hora, dia, assig, aules2)) return false; //violem restriccio de clases de teoria
+        if (!resSub.isAble(horari, hora, dia, assig, aules2)) return false;
         for (RestriccioAulaDia ad : resAulDia)
-            if (!ad.isable(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
+            if (!ad.isAble(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
         for (RestriccioAulaHora ah : resAulaHora)
-            if (!ah.isable(aula1, dia, hora))
+            if (!ah.isAble(aula1, dia, hora))
                 return false; //en aquesta aula no pot haver clase a aquesta hora
         return true;
     }
@@ -301,8 +301,8 @@ public class Backtracking {
      * @throws NotFoundException
      */
 
-    private ArrayList<AssignaturaMonosessio> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
-        ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
+    private ArrayList<SessioGrup> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
+        ArrayList<SessioGrup> res = new ArrayList<>();
         Teoria auxteo;
         Laboratori auxlab = new Laboratori(0, 0, null);
         int sesteo, seslab, valor;
@@ -328,7 +328,7 @@ public class Backtracking {
                     g = grups.get(key);
                     subgrups = g.getSubgrups();
                     for (int subg : subgrups.keySet()) {
-                        res.add(new AssignaturaMonosessio(a, auxlab, g, subgrups.get(subg), valor));
+                        res.add(new SessioGrup(a, auxlab, g, subgrups.get(subg), valor));
                     }
                 }
                 valor /= 2;
@@ -336,7 +336,7 @@ public class Backtracking {
             valor = 8;
             for (int i = 0; i < sesteo; ++i) {
                 for (int key : grups.keySet()) {
-                    res.add(new AssignaturaMonosessio(a, auxteo, grups.get(key), null, valor));
+                    res.add(new SessioGrup(a, auxteo, grups.get(key), null, valor));
                 }
 
                 valor /= 2;

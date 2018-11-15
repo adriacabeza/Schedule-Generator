@@ -1,7 +1,7 @@
 package model;
 
 
-public class AssignaturaMonosessio implements Comparable<AssignaturaMonosessio> {
+public class SessioGrup implements Comparable<SessioGrup> {
 
     private Assignatura assig;
     private InfoSessions sessio;
@@ -18,7 +18,7 @@ public class AssignaturaMonosessio implements Comparable<AssignaturaMonosessio> 
      * @param sub    subgrup de l'assignació pertinent
      * @param valor  heurística creada per a crear horaris més distribuïts
      */
-    public AssignaturaMonosessio(Assignatura assig, InfoSessions sessio, Grup grup, Subgrup sub, int valor) {
+    public SessioGrup(Assignatura assig, InfoSessions sessio, Grup grup, Subgrup sub, int valor) {
         this.assig = assig;
         this.sessio = sessio;
         this.grup = grup;
@@ -125,7 +125,7 @@ public class AssignaturaMonosessio implements Comparable<AssignaturaMonosessio> 
      * @return retorna un enter que representa la diferència entre les assignaturesmonosessió
      */
     @Override
-    public int compareTo(AssignaturaMonosessio o) {
+    public int compareTo(SessioGrup o) {
         int comparevalue = o.getValor();
         return comparevalue - this.valor;
     }

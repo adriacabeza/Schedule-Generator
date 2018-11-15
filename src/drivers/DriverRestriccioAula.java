@@ -43,7 +43,7 @@ public class DriverRestriccioAula {
         return new Aula(edifici, planta, aula, tAula, capacitat);
     }
 
-    public static AssignaturaMonosessio creaAssig(Scanner s){
+    public static SessioGrup creaAssig(Scanner s){
         String nom,tipusaula;
         int aux, numses,durses,capacitat, num, subgrups;
         Aula.TipusAula tAula;
@@ -87,7 +87,7 @@ public class DriverRestriccioAula {
             sub = new Subgrup(num, capacitat, 0);
         }
         System.out.println("introdueix el valor que li vols posar a la sessio");
-        return new AssignaturaMonosessio(ass,ses,grup,sub,s.nextInt());
+        return new SessioGrup(ass,ses,grup,sub,s.nextInt());
     }
 
     public static void main(String[] args){
@@ -96,7 +96,7 @@ public class DriverRestriccioAula {
         int hora;
         RestriccioAula rest = null;
         Aula aula = null;
-        AssignaturaMonosessio assig = null;
+        SessioGrup assig = null;
         int opt = 0;
         while(opt != 5){
             mostraopcions();
@@ -141,7 +141,7 @@ public class DriverRestriccioAula {
                 case 4:
                     if(rest == null) System.out.println("Error no s'ha creat una restriccio");
                     else {
-                        if(rest.isable(aula,assig)) System.out.println("es pot assignar aquesta sesio en aquesta aula");
+                        if(rest.isAble(aula,assig)) System.out.println("es pot assignar aquesta sesio en aquesta aula");
                         else System.out.println("no es pot assignar aquesta sessio en aquesta aula");
                         System.out.println("El tipus d'aula es: " + aula.getTipusAula());
                         System.out.println("El tipus d'aula de la sessio es: " + assig.getSessio().gettAula());

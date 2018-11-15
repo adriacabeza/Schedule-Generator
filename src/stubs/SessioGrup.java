@@ -1,5 +1,6 @@
 package stubs;
 
+import model.*;
 import model.Assignatura;
 import model.Aula;
 import model.Grup;
@@ -7,7 +8,7 @@ import model.InfoSessions;
 import model.Laboratori;
 import model.Subgrup;
 
-public class AssignaturaMonosessio implements Comparable<model.AssignaturaMonosessio> {
+public class SessioGrup implements Comparable<model.SessioGrup> {
 
     private model.Assignatura assig;
     private model.InfoSessions sessio;
@@ -24,7 +25,7 @@ public class AssignaturaMonosessio implements Comparable<model.AssignaturaMonose
      * @param sub    subgrup de l'assignació pertinent
      * @param valor  heurística creada per a crear horaris més distribuïts
      */
-    public AssignaturaMonosessio(model.Assignatura assig, model.InfoSessions sessio, model.Grup grup, model.Subgrup sub, int valor) {
+    public SessioGrup(model.Assignatura assig, model.InfoSessions sessio, model.Grup grup, model.Subgrup sub, int valor) {
         this.assig = new Assignatura("EC",0);
         this.sessio = new Laboratori(1,1, Aula.TipusAula.NORMAL);
         this.grup = new Grup(10,1,1);
@@ -131,7 +132,7 @@ public class AssignaturaMonosessio implements Comparable<model.AssignaturaMonose
      * @return retorna un enter que representa la diferència entre les assignaturesmonosessió
      */
     @Override
-    public int compareTo(model.AssignaturaMonosessio o) {
+    public int compareTo(model.SessioGrup o) {
         int comparevalue = o.getValor();
         return comparevalue - this.valor;
     }

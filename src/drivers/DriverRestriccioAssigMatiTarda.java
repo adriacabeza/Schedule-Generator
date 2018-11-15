@@ -52,7 +52,7 @@ public class DriverRestriccioAssigMatiTarda {
                         aux = scan.next();
                         System.out.println("Introdueix la hora");
                         hora = scan.nextInt();
-                        if(rest.isable(new Assignatura(aux,0),hora)) System.out.println("aquesta assignatura es pot assignar a aquesta hora");
+                        if(rest.isAble(new Assignatura(aux,0),hora)) System.out.println("aquesta assignatura es pot assignar a aquesta hora");
                         else System.out.println("Error: aquesta assignatura viola la seva assignacio horaria");
                     }
                     break;
