@@ -246,7 +246,7 @@ public class Backtracking {
      * @param posaula enter que representa l'aula de l'assignació
      * @return true si es pot realitzar l'assignació
      */
-    private boolean comprovar_restricciones(Aula aula1, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula) {
+    private boolean comprovarRestriccions(Aula aula1, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula) {
         if (!check_boundaries(posaula, dia, hora, assig, duracio))
             return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
         if (!resNiv.isable(horari, hora, dia, assig, aules2)) return false; //violem la restriccio de nivell
@@ -363,7 +363,7 @@ public class Backtracking {
                 for (int k = 0; k < aules2.size(); ++k) {
                     if (horari[m][l][k] == null) {
                         if (teoria) {
-                           if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
+                           if (comprovarRestriccions(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
                             //   System.out.println(mishmash.get(i).getSessio().gettAula());
                              //  System.out.println(aules2.get(k).getTipusAula());
 
@@ -381,7 +381,7 @@ public class Backtracking {
 
                             }
                         } else {
-                           if (comprovar_restricciones(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
+                           if (comprovarRestriccions(aules2.get(k), l, m, mishmash.get(i), duracio, k)) {
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[m + z][l][k] = new AssignacioL(fromInt2dia(l), m + z, aules2.get(k), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
                                     // System.out.println(mishmash.get(i).getAssig().getNom() + " ficada a les " + gethora(m + z) + " el " + fromInt2dia(l));

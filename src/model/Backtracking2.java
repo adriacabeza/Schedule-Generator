@@ -353,13 +353,20 @@ public class Backtracking2 {
         }
     }
 
+    /**
+     * Crea l'horari
+     * @param i és l'ièssim que indica de quina sessió estem parlant
+     * @param horari és l'horari que portem assignat
+     * @param possibilitats son el conjunt de possibilitats de les sessions que no hem assignat encara
+     * @return retorna true si ha pogut fer l'horari i si no ha pogut false
+     */
+
     private boolean creaHorari(int i, Assignacio[][][] horari, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
 
         if (i == (mishmash.size())) return true;
         int duracio = mishmash.get(i).getSessio().getDuracioSessions();
         boolean teoria = (mishmash.get(i).getSessio().getClass() == Teoria.class);
         ArrayList<ArrayList<ArrayList<Integer>>> posibles = possibilitats.get(mishmash.get(i));
-      //  Collections.shuffle(posibles);
         for (int d = 0; d < posibles.size() && posibles.get(d) != null; ++d) {
             for (int h = 0; h < posibles.get(d).size() &&  posibles.get(d).get(h) != null; ++h) {
                 for (int a = 0; a < posibles.get(d).get(h).size(); ++a) {
@@ -370,6 +377,7 @@ public class Backtracking2 {
                                 HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h+ z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                    possibilitats.remove(mishmash.get(i));
                                     propagarPossibilitats(aula,d,h, mishmash.get(i),possibilitats);
                                 }
                                 if (creaHorari(i + 1, horari, possibilitats)) return true;
@@ -385,9 +393,9 @@ public class Backtracking2 {
                                 HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][aula] = new AssignacioL(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
+                                    possibilitats.remove(mishmash.get(i));
                                     propagarPossibilitats(aula,d,h, mishmash.get(i), possibilitats);
                                 }
-
                                 if (creaHorari(i + 1, horari, possibilitats)) return true;
                                 else {
                                     possibilitats = clon;
