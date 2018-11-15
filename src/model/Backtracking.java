@@ -161,7 +161,7 @@ public class Backtracking {
     /**
      * S'encarrega de comprovar totes les restriccions per a fer assignacions correctes a l'horari
      *
-     * @param aula1   aula de l'assignació
+     * @param aula   aula de l'assignació
      * @param dia     enter que representa el dia de l'assignació
      * @param hora    enter que representa l'hora de l'assignació
      * @param assig   assignatura de l'assignació
@@ -169,7 +169,7 @@ public class Backtracking {
      * @param posaula enter que representa l'aula de l'assignació
      * @return true si es pot realitzar l'assignació
      */
-    private boolean comprovarRestriccions(Aula aula1, int dia, int hora, SessioGrup assig, int duracio, int posaula) {
+    private boolean comprovarRestriccions(Aula aula, int dia, int hora, SessioGrup assig, int duracio, int posaula) {
         if (!checkBoundaries(posaula, dia, hora, assig, duracio))
             return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
         if (!resNiv.isable(horari, hora, dia, assig, aules)) return false; //violem la restriccio de nivell
@@ -177,15 +177,16 @@ public class Backtracking {
             if (!resCorr.isable(horari, hora, dia, assig, aules)) return false; //violem restriccio de correquisit
         } catch (NotFoundException e) {
         }
-        if(aula1.getCapacitat() < assig.getGrup().getCapacitat()) return false;
-        if (!resAul.isAble(aula1, assig)) return false; //violem restriccio de aula
+        if(aula.getCapacitat() < assig.getGrup().getCapacitat()) return false;
+
+     //  if (!resAul.isAble(aula1, assig)) return false; //violem restriccio de aula
         if (!resTeo.isable(horari, hora, dia, assig, aules)) return false; //violem restriccio de clases de teoria
         if (!resSub.isable(horari, hora, dia, assig, aules)) return false;
         for (RestriccioAulaDia ad : resAulDia)
-            if (!ad.isAble(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
+            if (!ad.isAble(aula, dia)) return false; //en aquesta aula no pot haber clase avui
         for (RestriccioAulaHora ah : resAulaHora)
-            if (!ah.isAble(aula1, dia, hora))
-                return false; //en aquesta aula no pot haver clase a aquesta hora
+            if (!ah.isAble(aula, dia, hora))
+                return false; //en aquesta aula no pot haver clase a aquesta hora*/
         return true;
     }
 
@@ -197,7 +198,7 @@ public class Backtracking {
      */
     public boolean generaHorari() {
         try {
-            sessio = mishmash(assignatures);
+            sessio = creaSessions(assignatures);
             ordena_mishamash();
         } catch (NotFoundException e) {
             e.printStackTrace();
@@ -217,12 +218,12 @@ public class Backtracking {
     /**
      * Crea una estructura de dades amb un grup o subgrup, una sessió i una assignatura
      *
-     * @param assignatures2 conjunt de totes les assignatures que s'han d'assignar
+     * @param assignatures conjunt de totes les assignatures que s'han d'assignar
      * @return l'estructura de dades creada
      * @throws NotFoundException
      */
 
-    private ArrayList<SessioGrup> mishmash(ArrayList<Assignatura> assignatures2) throws NotFoundException {
+    private ArrayList<SessioGrup> creaSessions(ArrayList<Assignatura> assignatures) throws NotFoundException {
         ArrayList<SessioGrup> res = new ArrayList<>();
         Teoria auxteo;
         Laboratori auxlab = new Laboratori(0, 0, null);
@@ -232,7 +233,7 @@ public class Backtracking {
         HashMap<Integer, Subgrup> subgrups;
         seslab = 0;
         boolean lab;
-        for (Assignatura a : assignatures2) {
+        for (Assignatura a : assignatures) {
             lab = false;
             try {
                 auxlab = (Laboratori) a.getLaboratori();
@@ -284,10 +285,10 @@ public class Backtracking {
                 for (int a = 0; a < aules.size(); ++a) {
                     if (horari[h][d][a] == null) {
                         if (teoria) {
-                           if (comprovarRestriccions(aules.get(a), d, h, sessio.get(i), duracio, a)) {
+                           if (comprovarRestriccions(aules.get(a), d, h, sessio.get(i), duracio, a) && aules.get(a).getTipusAula() == sessio.get(i).getSessio().gettAula()) {
                                 for (int z = 0; z < duracio; ++z) {
                                    horari[h + z][d][a] = new AssignacioT(fromInt2dia(d), h + z, aules.get(a), sessio.get(i).getAssig(), sessio.get(i).getGrup());
-                               }
+                                }
                                if (creaHorari(i + 1, horari)) return true;
                                else {
                                    for (int z = 0; z < duracio; ++z) {
