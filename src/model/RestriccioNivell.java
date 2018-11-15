@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class RestriccioNivell extends Restriccions {
 
@@ -24,7 +22,7 @@ public class RestriccioNivell extends Restriccions {
      * @param aules2 aules que es comproven
      * @return true si es pot realitzar l'assignació
      */
-    public boolean isable(Assignacio[][][] horari, int hora, int dia, AssignaturaMonosessio assig, ArrayList<Aula> aules2) {
+    public boolean isable(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) {
         for (int i = 0; i < aules2.size(); ++i) {
             Assignacio a = horari[hora][dia][i];
             if (horari[hora][dia][i] != null) {
@@ -53,7 +51,7 @@ public class RestriccioNivell extends Restriccions {
      * @param dia  dia que es comprova
      * @return true si l'assignació seria compatible amb l'assignació acabada d'inserir a l'horari segons els nivells
      */
-    public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora)  {
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora)  {
         if (assignat.getAssig().getQuadrimestre() == check.getAssig().getQuadrimestre() && assignat.getGrup() == check.getGrup()) {
             if (pos.get(check).get(dia).get(hora).contains(aula)){
                 return false;

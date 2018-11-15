@@ -17,7 +17,7 @@ public class RestriccioAula extends Restriccions {
      * @param assig assignatura que es comprova
      * @return true si es pot realitzar la assignació a l'aula
      */
-    public boolean isable(Aula aula, AssignaturaMonosessio assig) {
+    public boolean isAble(Aula aula, SessioGrup assig) {
       return (aula.getTipusAula() == assig.getSessio().gettAula());
     }
 

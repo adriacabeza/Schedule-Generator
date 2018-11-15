@@ -22,7 +22,7 @@ public class RestriccioSubgrupLab extends Restriccions {
      * @param aules2 aules que es comproven
      * @return true si es pot realitzar l'assignació
      */
-    public boolean isable(Assignacio[][][] horari, int hora, int dia, AssignaturaMonosessio assig, ArrayList<Aula> aules2) {
+    public boolean isAble(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) {
         if (assig.getSub() != null) {
             int grup = assig.getSub().getNum() / 10;
             for (int j = 0; j < aules2.size(); ++j) {
@@ -51,7 +51,7 @@ public class RestriccioSubgrupLab extends Restriccions {
      * @return
      */
 
-    public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
         if (pos.get(check).get(dia).get(hora).contains(aula)) {
             if (check.getAssig().getNom() == assignat.getAssig().getNom()) {
                 if (assignat.getSub() != null) {

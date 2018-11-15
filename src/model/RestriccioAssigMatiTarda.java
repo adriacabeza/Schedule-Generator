@@ -23,7 +23,7 @@ public class RestriccioAssigMatiTarda extends Restriccions {
      * @param hora hora de l'assignació
      * @return true si es pot realitzar
      */
-    public boolean isable(Assignatura assig, int hora){
+    public boolean isAble(Assignatura assig, int hora){
         if(this.assig.equals(assig.getNom())){
             if(mati) return (hora <= 6);
             return (hora > 6);
