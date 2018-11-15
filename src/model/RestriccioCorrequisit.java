@@ -25,7 +25,7 @@ public class RestriccioCorrequisit extends Restriccions {
      * @return true si es pot realitzar l'assignació
      * @throws NotFoundException
      */
-    public boolean isAble(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) throws NotFoundException {
+    public boolean isable(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) throws NotFoundException {
         for (int j = 0; j < aules2.size(); ++j) {
             Assignacio a = horari[hora][dia][j];
             if (a != null) {
@@ -56,7 +56,7 @@ public class RestriccioCorrequisit extends Restriccions {
      * @throws NotFoundException
      */
 
-    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora) throws NotFoundException {
+    public boolean isable2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora) throws NotFoundException {
         if (assignat.getAssig().getCorrequisits().contains(check.getAssig().getNom()) &&  assignat.getGrup() == check.getGrup()) {
             if (pos.get(check).get(dia).get(hora).contains(aula)){
                 return false;

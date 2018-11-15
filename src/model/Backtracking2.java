@@ -7,7 +7,7 @@ import java.util.*;
 public class Backtracking2 {
 
     private Assignacio[][][] horari;
-    private ArrayList<AssignaturaMonosessio> sessions;
+    private ArrayList<SessioGrup> sessions;
     private ArrayList<Assignatura> assignatures;
     private ArrayList<Aula> aules;
     private RestriccioCorrequisit resCorr;
@@ -146,7 +146,7 @@ public class Backtracking2 {
      * @param duracio duració de la sessió que es vol assignar
      * @return
      */
-    private boolean checkBoundaries(int posaula, int dia, int hora, AssignaturaMonosessio assig, int duracio) {
+    private boolean checkBoundaries(int posaula, int dia, int hora, SessioGrup assig, int duracio) {
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12) {
                 return false;
@@ -169,7 +169,7 @@ public class Backtracking2 {
      * @param posaula enter que representa l'aula de l'assignació
      * @return true si es pot realitzar l'assignació
      */
-    private boolean comprovarRestriccions(Aula aula, int dia, int hora, AssignaturaMonosessio assig, int duracio, int posaula) {
+    private boolean comprovarRestriccions(Aula aula, int dia, int hora, SessioGrup assig, int duracio, int posaula) {
         if (!checkBoundaries(posaula, dia, hora, assig, duracio))
             return false;
         if(aula.getCapacitat() < assig.getGrup().getCapacitat()) return false;
@@ -183,7 +183,7 @@ public class Backtracking2 {
      *
      */
 
-    public boolean filtraRestriccions(HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
+    public boolean filtraRestriccions(HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
         for (int i = 0; i < sessions.size(); ++i) {
             ArrayList<Integer> aules_possibles = new ArrayList<>();
             for (int k = 0; k < aules.size(); ++k) {
@@ -234,10 +234,10 @@ public class Backtracking2 {
      * @param hora hora que ha de tenir en compte per a podar
      */
 
-    public boolean propagarPossibilitats(int aula, int dia, int hora, AssignaturaMonosessio sessio, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibles ) { //TODO: no haurien d'anar aqui ara les comprovacions de resTo, resSub, resNiv i resCorr ja que estem treient les possibilitats que violen alguna d'aquestes
-        Iterator<AssignaturaMonosessio> it = possibles.keySet().iterator();
+    public boolean propagarPossibilitats(int aula, int dia, int hora, SessioGrup sessio, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibles ) { //TODO: no haurien d'anar aqui ara les comprovacions de resTo, resSub, resNiv i resCorr ja que estem treient les possibilitats que violen alguna d'aquestes
+        Iterator<SessioGrup> it = possibles.keySet().iterator();
         while (it.hasNext()) {
-            AssignaturaMonosessio assignat = it.next();
+            SessioGrup assignat = it.next();
             boolean borrat = false;
             try {
                 if (!resCorr.isable2(assignat,sessio,possibles,aula,dia,hora)) possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
@@ -274,7 +274,7 @@ public class Backtracking2 {
      * @return retorna true si ha pogut fer l'horari i si no ha pogut false
      */
 
-    private boolean creaHorari(int i, Assignacio[][][] horari, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
+    private boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
 
         if (i == (sessions.size())) return true;
         int duracio = sessions.get(i).getSessio().getDuracioSessions();
@@ -288,7 +288,7 @@ public class Backtracking2 {
                     if (horari[h][d][aula] == null) {
                         if (teoria) {
                             if (comprovarRestriccions(aules.get(aula), d, h, sessions.get(i), duracio, a)) {
-                                HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = (HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>>) possibilitats.clone();
+                                HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = (HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>>) possibilitats.clone();
                                 for (int z = 0; z < duracio && possible; ++z) {
                                     horari[h+z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules.get(aula), sessions.get(i).getAssig(), sessions.get(i).getGrup());
                                     if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
@@ -311,7 +311,7 @@ public class Backtracking2 {
                             }
                         } else {
                             if (comprovarRestriccions(aules.get(aula), d, h, sessions.get(i), duracio, a)) {
-                                HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = (HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>>) possibilitats.clone();
+                                HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = (HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>>) possibilitats.clone();
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][aula] = new AssignacioL(fromInt2dia(d), h + z, aules.get(aula), sessions.get(i).getAssig(), sessions.get(i).getSub());
                                     if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
@@ -350,7 +350,7 @@ public class Backtracking2 {
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
-        HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats = new HashMap<>();
+        HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats = new HashMap<>();
         if(filtraRestriccions(possibilitats)){
             System.out.println("No es pot generar l'horari");
             return false;
@@ -367,8 +367,8 @@ public class Backtracking2 {
      * @throws NotFoundException
      */
 
-    private ArrayList<AssignaturaMonosessio> creaSessions(ArrayList<Assignatura> assignatures) throws NotFoundException {
-        ArrayList<AssignaturaMonosessio> res = new ArrayList<>();
+    private ArrayList<SessioGrup> creaSessions(ArrayList<Assignatura> assignatures) throws NotFoundException {
+        ArrayList<SessioGrup> res = new ArrayList<>();
         Teoria auxteo;
         Laboratori auxlab = new Laboratori(0, 0, null);
         int sesteo, seslab, valor;
@@ -394,7 +394,7 @@ public class Backtracking2 {
                     g = grups.get(key);
                     subgrups = g.getSubgrups();
                     for (int subg : subgrups.keySet()) {
-                        res.add(new AssignaturaMonosessio(a, auxlab, g, subgrups.get(subg), valor));
+                        res.add(new SessioGrup(a, auxlab, g, subgrups.get(subg), valor));
                     }
                 }
                 valor /= 2;
@@ -402,7 +402,7 @@ public class Backtracking2 {
             valor = 8;
             for (int i = 0; i < sesteo; ++i) {
                 for (int key : grups.keySet()) {
-                    res.add(new AssignaturaMonosessio(a, auxteo, grups.get(key), null, valor));
+                    res.add(new SessioGrup(a, auxteo, grups.get(key), null, valor));
                 }
 
                 valor /= 2;
