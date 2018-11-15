@@ -38,6 +38,7 @@ Un horari inclou una matriu d'assignacions que representa la sessió que s'està
 Restriccions
 Una restricció està identificada per un enter
 	RestriccioAula
+		Aquesta restriccio s'assegura que el tipus d'aula de la sessio que estem evaluant es del mateix tipus que el tipus que el de la aula al qual l'asignarem. 
 	RestriccioGrupTeo
 	RestriccioNivell
 	RestriccioSubgrupLab
