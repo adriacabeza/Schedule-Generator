@@ -44,9 +44,21 @@ public class RestriccioCorrequisit extends Restriccions {
         return true;
     }
 
+    /**
+     * Retorna si es possible realitzar una assignació d'una assignatura d'un determinat grup comprovant que no hi hagi conflictes amb els correquisits d'una altra assignació
+     * @param check assignació acabada d'inserir al horari
+     * @param assignat assignació a comprovar
+     * @param pos possibles aules que pot tenir l'assignació a comprovar
+     * @param aula aula que es comprova
+     * @param hora hora que es comprova
+     * @param dia  dia que es comprova
+     * @return true si l'assignació seria compatible amb l'assignació acabada d'inserir a l'horari segons els correquisits
+     * @throws NotFoundException
+     */
+
     public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos ,int aula, int dia, int hora) throws NotFoundException {
-        if (assignat.getAssig().getCorrequisits().contains(check.getAssig().getNom())) {
-            if (pos.get(check).get(dia).get(hora).contains(aula)){                      //TODO: no hem de mirar tambe que siguin grups iguals etc?
+        if (assignat.getAssig().getCorrequisits().contains(check.getAssig().getNom()) &&  assignat.getGrup() == check.getGrup()) {
+            if (pos.get(check).get(dia).get(hora).contains(aula)){
                 return false;
             }
         }

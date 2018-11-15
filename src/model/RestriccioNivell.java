@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RestriccioNivell extends Restriccions {
 
@@ -41,9 +43,19 @@ public class RestriccioNivell extends Restriccions {
         return true;
     }
 
+    /**
+     * Retorna si es possible
+     * @param check
+     * @param assignat
+     * @param pos
+     * @param aula
+     * @param dia
+     * @param hora
+     * @return
+     */
     public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora)  {
-        if (assignat.getAssig().getQuadrimestre() == check.getAssig().getQuadrimestre()) {
-            if (pos.get(check).get(dia).get(hora).contains(aula)){                      //TODO: no hem de mirar tambe que siguin grups iguals etc?
+        if (assignat.getAssig().getQuadrimestre() == check.getAssig().getQuadrimestre() && assignat.getGrup() == check.getGrup()) {
+            if (pos.get(check).get(dia).get(hora).contains(aula)){
                 return false;
             }
         }

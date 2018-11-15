@@ -6,7 +6,6 @@ import java.util.*;
 
 public class Backtracking2 {
 
-    //TODO: s'ha de fer JAVADOCS de cada atribut
     private Assignacio[][][] horari;
     private ArrayList<AssignaturaMonosessio> sessions;
     private ArrayList<Assignatura> assignatures2;
@@ -19,8 +18,6 @@ public class Backtracking2 {
     private ArrayList<RestriccioAulaDia> resAulDia;
     private ArrayList<RestriccioAulaHora> resAulaHora;
     private ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
-   //private HashMap<AssignaturaMonosessio, ArrayList<Integer>> possibilitats;
-
 
     /**
      * Construeix un horari un buit amb totes les dades que es necessitarien per a generar-lo
@@ -261,9 +258,10 @@ public class Backtracking2 {
     }
 
     /**
-     *
-     *Aquesta funció s'encarrega de fer una poda inicial de les possibilitats de cada assignació que haurem de realitzar
+     * Aquesta funció s'encarrega de fer una poda inicial de les possibilitats de cada assignació que haurem de realitzar
+     * @param possibilitats les possibles aules en un determinat dia i hora que podrien ser assignades per cada sessió
      * @return true si ja hi ha un cas que no es pot realitzar false si totes tenen possibles solucions
+     *
      */
 
     public boolean filtraRestriccions(HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
@@ -321,10 +319,8 @@ public class Backtracking2 {
         Iterator<AssignaturaMonosessio> it = pos.keySet().iterator();
         while (it.hasNext()) {
             //per a cada sessió que assigno tinc guardades els dies, hores i aules que puc fer-ho
-            //TODO: ara mateix cada cop que propago possibilitats ho faig per totes les monosessions, incluides les que ja he assignat already
-            //fent servir el putall dels canvis en el total
-            //TODO: fer més maco i guardar un booleà per saber si per alguna restricció ja he borrat l'aula així no miro les altres
             AssignaturaMonosessio assignat = it.next();
+            boolean borrat = false;
             //això treu possibilitat de correquisits; no sé si es pot escriure aixi del tot
             try {
                 if (!resCorr.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));
@@ -333,27 +329,30 @@ public class Backtracking2 {
             }
 
             //aixo treu possibilitat de que tinguessis guardada la aula a aquella hora com a possible
-           if(!resNiv.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));
-           if (!resTeo.isable2(assignat,assig,pos,aula,dia,hora))  pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));; //violem restriccio de clases de teoria
-           if (!resSub.isable2(assignat,assig,pos,aula,dia,hora))  pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));
+           if(!resNiv.isable2(assignat,assig,pos,aula,dia,hora)){
+               pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));
+               borrat = true;
+           }
+           if (!resTeo.isable2(assignat,assig,pos,aula,dia,hora) && !borrat)  {
+               pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));
+               borrat = true;
+           } //violem restriccio de clases de teoria
 
 
-            //aixo seria el for per a iterar a la seva estructura de dades
-           /*for(int i = 0; i < possibilidades.size(); ++i) {
-               for (int j = 0; j < possibilidades.get(i).size(); ++j) {
-                   for (int k = 0; k < possibilidades.get(j).size(); ++k) {
+           if (!resSub.isable2(assignat,assig,pos,aula,dia,hora) && !borrat){
+               pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));
+               borrat = true;
+           }
 
-                   }
-               }
-           }*/
-
-           if(pos.get(assignat).get(dia).get(hora).size() == 0) return true;
+           if(pos.get(assignat).get(dia).get(hora).size() == 0) {
+               return true;
+           }
         }
         return false;
     }
 
     /**
-     * Crea l'horari
+     * Genera l'horari
      * @param i és l'ièssim que indica de quina sessió estem parlant
      * @param horari és l'horari que portem assignat
      * @param possibilitats son el conjunt de possibilitats de les sessions que no hem assignat encara
@@ -374,7 +373,7 @@ public class Backtracking2 {
                     if (horari[h][d][aula] == null) {
                         if (teoria) {
                             if (comprovarRestriccions(aules2.get(aula), d, h, sessions.get(i), duracio, a)) {
-                                HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
+                                HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = (HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>>) possibilitats.clone();
                                 for (int z = 0; z < duracio && possible; ++z) {
                                     horari[h+z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules2.get(aula), sessions.get(i).getAssig(), sessions.get(i).getGrup());
                                     if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
@@ -397,7 +396,7 @@ public class Backtracking2 {
                             }
                         } else {
                             if (comprovarRestriccions(aules2.get(aula), d, h, sessions.get(i), duracio, a)) {
-                                HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
+                                HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = (HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>>) possibilitats.clone();
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][aula] = new AssignacioL(fromInt2dia(d), h + z, aules2.get(aula), sessions.get(i).getAssig(), sessions.get(i).getSub());
                                     if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
@@ -425,7 +424,10 @@ public class Backtracking2 {
         return false;
     }
 
-
+    /**
+     * Genera un horari
+     * @return true si s'ha pogut realitzar l'horari i false si no s'ha pogut
+     */
     public boolean generaHorari() {
         try {
             sessions = creaSessions(assignatures2);
@@ -495,8 +497,4 @@ public class Backtracking2 {
         }
         return res;
     }
-    //PRUEBAS
-    //1 A 1 3 1 NORMAL 8 8 1 2 2   LP 2 2 2 LABORATORI 9 1 1 1 2  G 3 3 1 LABORATORI 5 1 1 1 2  TC 2 2 1 LABORATORI 4 1 1 1 1   2 POLLA 1998 1 3 A 4 2 NORMAL 50 2  A 3 2 LABORATORI 50 1 1 LI 1 2 3 NORMAL 2 30 3 0 3 1 PCS 1 3 C 1 2 PCS 50 1
-    //1 LP 2 2 2 LABORATORI 9 1 1 1 1   2 POLLA 1998 1     3 A 4 2 NORMAL 50 2  A 3 2 LABORATORI 0 1
-
 }

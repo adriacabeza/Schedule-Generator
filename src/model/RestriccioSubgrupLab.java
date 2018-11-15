@@ -13,7 +13,7 @@ public class RestriccioSubgrupLab extends Restriccions {
     }
 
     /**
-     * Retorna si es possible realitzar una assignació de laboratori d'un determinat subgrup comprovant que no hi hagi solapaments
+     * Retorna si es possible realitzar una assignació de laboratori d'un determinat subgrup comprovant que no hi hagi solapaments per al bactracking cronològic
      *
      * @param horari horari que es comprova
      * @param hora   hora que es comprova
@@ -39,6 +39,17 @@ public class RestriccioSubgrupLab extends Restriccions {
         }
         return true;
     }
+
+    /**
+     *
+     * @param check
+     * @param assignat
+     * @param pos
+     * @param aula
+     * @param dia
+     * @param hora
+     * @return
+     */
 
     public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
         if (pos.get(check).get(dia).get(hora).contains(aula)) {

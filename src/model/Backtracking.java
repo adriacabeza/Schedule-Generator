@@ -264,7 +264,7 @@ public class Backtracking {
             if (!ad.isable(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
         for (RestriccioAulaHora ah : resAulaHora)
             if (!ah.isable(aula1, dia, hora))
-                return false; //en aquesta aula no pot haber clase a aquesta hora  //TODO maybe posar aquesta a check boundaries?*/
+                return false; //en aquesta aula no pot haver clase a aquesta hora
         return true;
     }
 
@@ -330,9 +330,7 @@ public class Backtracking {
                     for (int subg : subgrups.keySet()) {
                         res.add(new AssignaturaMonosessio(a, auxlab, g, subgrups.get(subg), valor));
                     }
-
                 }
-
                 valor /= 2;
             }
             valor = 8;
@@ -351,7 +349,7 @@ public class Backtracking {
     /**
      * Crea l'horari
      *
-     * @param i      iterador per a tots els grups que s'han d'assignar
+     * @param i  iterador per a tots els grups que s'han d'assignar
      * @param horari horari que s'ha d'emplenar
      * @return true si s'ha pogut realitzar l'horari
      */
@@ -407,7 +405,4 @@ public class Backtracking {
         return false;
 
     }
-    //PRUEBAS
-    //1 A 1 3 1 NORMAL 8 1 1 2 2   LP 2 2 2 LABORATORI 9 1 1 1 2  G 3 3 1 LABORATORI 5 1 1 1 2  TC 2 2 1 LABORATORI 4 1 1 1 1   2 POLLA 1998 1     3 A 4 2 NORMAL 50 2  A 3 2 LABORATORI 50 1 1 LI 1 2 3 NORMAL 2 30 3 0 3 1 PCS 1 3 C 1 2 PCS 50 1
-    //1 LP 2 2 2 LABORATORI 9 1 1 1 1   2 POLLA 1998 1     3 A 4 2 NORMAL 50 2  A 3 2 LABORATORI 0 1
 }

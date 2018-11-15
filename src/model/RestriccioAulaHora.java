@@ -33,8 +33,29 @@ public class RestriccioAulaHora extends Restriccions {
         return true;
     }
 
-    public int getDia(){return dia;}
-    public int getHora(){return hora;}
-    public Aula getAula(){return aula;}
+    /**
+     * Retorna el dia d'una restricció d'aula en una hora en un dia determinat
+     * @return dia que es comprova a la restrició
+     */
+    public int getDia(){
+        return dia;
+    }
+
+    /**
+     * Retorna la hora d'una restricció d'aula en una hora en un dia determinat
+     * @return dia que es comprova a la restrició
+     */
+    public int getHora(){
+        return hora;
+    }
+
+
+    /**
+     * Retorna l'aula d'una restricció d'aula en una hora
+     * @return aula que es comprova a la restrició
+     */
+    public Aula getAula(){
+        return aula;
+    }
 
 }
