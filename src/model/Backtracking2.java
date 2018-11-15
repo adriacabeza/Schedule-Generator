@@ -187,7 +187,7 @@ public class Backtracking2 {
         for (int i = 0; i < sessions.size(); ++i) {
             ArrayList<Integer> aules_possibles = new ArrayList<>();
             for (int k = 0; k < aules.size(); ++k) {
-                if (resAul.isable(aules.get(k), sessions.get(i)) && (aules.get(k).getCapacitat() >= sessions.get(i).getGrup().getCapacitat())) aules_possibles.add(k);
+                if (resAul.isAble(aules.get(k), sessions.get(i)) && (aules.get(k).getCapacitat() >= sessions.get(i).getGrup().getCapacitat())) aules_possibles.add(k);
             }
             Assignatura assig = null;
             int indexAssig = 0;
@@ -203,14 +203,14 @@ public class Backtracking2 {
                 for (int h = 0; h < 12; ++h) {
                         ArrayList<Integer> aulesHora = new ArrayList<>();
                         boolean restriccioMati = true;
-                        if(assig != null) restriccioMati = resMatiTarda.get(indexAssig).isable(assig,h);        //mirem si es de mati, estiguem en el mati i el mateix per la tarda
+                        if(assig != null) restriccioMati = resMatiTarda.get(indexAssig).isAble(assig,h);        //mirem si es de mati, estiguem en el mati i el mateix per la tarda
                         for (int n = 0; n < aules_possibles.size() && restriccioMati; ++n) {
                             boolean b = true;
                             for (int j = 0; j < resAulaHora.size() && b; ++j) {
-                                if (!resAulaHora.get(j).isable(aules.get(aules_possibles.get(n)), d, h)) b = false;
+                                if (!resAulaHora.get(j).isAble(aules.get(aules_possibles.get(n)), d, h)) b = false;
                             }
                             for (int j = 0; j < resAulDia.size() && b; ++j) {
-                                if (!resAulDia.get(j).isable(aules.get(aules_possibles.get(n)), d)) b = false;
+                                if (!resAulDia.get(j).isAble(aules.get(aules_possibles.get(n)), d)) b = false;
                             }
                             if(b) aulesHora.add(aules_possibles.get(n));
                         }

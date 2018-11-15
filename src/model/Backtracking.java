@@ -178,13 +178,13 @@ public class Backtracking {
         } catch (NotFoundException e) {
         }
         if(aula1.getCapacitat() < assig.getGrup().getCapacitat()) return false;
-        if (!resAul.isable(aula1, assig)) return false; //violem restriccio de aula
+        if (!resAul.isAble(aula1, assig)) return false; //violem restriccio de aula
         if (!resTeo.isable(horari, hora, dia, assig, aules)) return false; //violem restriccio de clases de teoria
         if (!resSub.isable(horari, hora, dia, assig, aules)) return false;
         for (RestriccioAulaDia ad : resAulDia)
-            if (!ad.isable(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
+            if (!ad.isAble(aula1, dia)) return false; //en aquesta aula no pot haber clase avui
         for (RestriccioAulaHora ah : resAulaHora)
-            if (!ah.isable(aula1, dia, hora))
+            if (!ah.isAble(aula1, dia, hora))
                 return false; //en aquesta aula no pot haver clase a aquesta hora
         return true;
     }
