@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RestriccioGrupTeo extends Restriccions {
 
@@ -31,6 +32,20 @@ public class RestriccioGrupTeo extends Restriccions {
                     return false;                       //solapament teories o teoria-qualsevol laboratori
             }
         }
+        return true;
+    }
+
+
+    public boolean isable2(AssignaturaMonosessio check, AssignaturaMonosessio assignat, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
+        if (pos.get(check).get(dia).get(hora).contains(aula)) {
+            if (check.getAssig().getNom() == assignat.getAssig().getNom()) {
+                int grup = assignat.getGrup().getNum() / 10;
+                if (check.getGrup().getNum() / 10 == grup) return false;      //solapament teories
+                if (check.getSub() != null)
+                    if (check.getSub().getNum() / 10 == grup) return false;   //solapament de lab amb teoria
+            }
+        }
+
         return true;
     }
 
