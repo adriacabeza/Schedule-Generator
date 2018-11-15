@@ -59,7 +59,3 @@ public class RestriccioGrupTeo extends Restriccions {
     }
 
 }
-//TODO: fer makefile
-//TODO: arreglar el backtracking gros
-//TODO: mirar tonteries
-//TODO: fer refactor

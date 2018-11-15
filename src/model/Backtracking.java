@@ -147,7 +147,7 @@ public class Backtracking {
      * @param duracio duració de la sessió que es vol assignar
      * @return
      */
-    private boolean check_boundaries(int posaula, int dia, int hora, SessioGrup assig, int duracio) {
+    private boolean checkBoundaries(int posaula, int dia, int hora, SessioGrup assig, int duracio) {
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12) {
                 return false;
@@ -170,7 +170,7 @@ public class Backtracking {
      * @return true si es pot realitzar l'assignació
      */
     private boolean comprovarRestriccions(Aula aula1, int dia, int hora, SessioGrup assig, int duracio, int posaula) {
-        if (!check_boundaries(posaula, dia, hora, assig, duracio))
+        if (!checkBoundaries(posaula, dia, hora, assig, duracio))
             return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
         if (!resNiv.isable(horari, hora, dia, assig, aules)) return false; //violem la restriccio de nivell
         try {
