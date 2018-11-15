@@ -326,7 +326,7 @@ public class Backtracking2 {
             //TODO: ara mateix cada cop que propago possibilitats ho faig per totes les monosessions, incluides les que ja he assignat already
             //fent servir el putall dels canvis en el total
             //TODO: fer més maco i guardar un booleà per saber si per alguna restricció ja he borrat l'aula així no miro les altres
-            AssignaturaMonosessio assignat = (AssignaturaMonosessio) it.next();
+            AssignaturaMonosessio assignat = it.next();
             //això treu possibilitat de correquisits; no sé si es pot escriure aixi del tot
             try {
                 if (!resCorr.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula);
@@ -377,9 +377,9 @@ public class Backtracking2 {
                                 HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h+ z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
-                                    possibilitats.remove(mishmash.get(i));
-                                    propagarPossibilitats(aula,d,h, mishmash.get(i),possibilitats);
+                                    propagarPossibilitats(aula,d,h+z, mishmash.get(i),possibilitats);
                                 }
+                                possibilitats.remove(mishmash.get(i));
                                 if (creaHorari(i + 1, horari, possibilitats)) return true;
                                 else {
                                     possibilitats = clon;
@@ -393,9 +393,9 @@ public class Backtracking2 {
                                 HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][aula] = new AssignacioL(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
-                                    possibilitats.remove(mishmash.get(i));
-                                    propagarPossibilitats(aula,d,h, mishmash.get(i), possibilitats);
+                                    propagarPossibilitats(aula,d,h+z, mishmash.get(i), possibilitats);
                                 }
+                                possibilitats.remove(mishmash.get(i));
                                 if (creaHorari(i + 1, horari, possibilitats)) return true;
                                 else {
                                     possibilitats = clon;
