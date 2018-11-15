@@ -327,7 +327,7 @@ public class Backtracking2 {
             AssignaturaMonosessio assignat = it.next();
             //això treu possibilitat de correquisits; no sé si es pot escriure aixi del tot
             try {
-                if (!resCorr.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));
+                if (!resCorr.isAble2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(pos.get(assignat).get(dia).get(hora).indexOf(aula));
             } catch (NotFoundException e) {
                 e.printStackTrace();
             }
