@@ -272,7 +272,7 @@ public class Backtracking2 {
         for (int i = 0; i < mishmash.size(); ++i) {
             ArrayList<Integer> aules_possibles = new ArrayList<>();
             for (int k = 0; k < aules2.size(); ++k) {
-                if (resAul.isable(aules2.get(k), mishmash.get(i))) aules_possibles.add(k);
+                if (resAul.isable(aules2.get(k), mishmash.get(i)) && (aules2.get(k).getCapacitat() >= mishmash.get(i).getGrup().getCapacitat())) aules_possibles.add(k);
             }
             Assignatura assig = null;
             int indexAssig = 0;
@@ -319,7 +319,7 @@ public class Backtracking2 {
      * @param hora hora que ha de tenir en compte per a podar
      */
 
-    public void propagarPossibilitats(int aula, int dia, int hora, AssignaturaMonosessio assig, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos ) { //TODO: no haurien d'anar aqui ara les comprovacions de resTo, resSub, resNiv i resCorr ja que estem treient les possibilitats que violen alguna d'aquestes
+    public boolean propagarPossibilitats(int aula, int dia, int hora, AssignaturaMonosessio assig, HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> pos ) { //TODO: no haurien d'anar aqui ara les comprovacions de resTo, resSub, resNiv i resCorr ja que estem treient les possibilitats que violen alguna d'aquestes
         Iterator<AssignaturaMonosessio> it = pos.keySet().iterator();
         while (it.hasNext()) {
             //per a cada sessió que assigno tinc guardades els dies, hores i aules que puc fer-ho
@@ -328,17 +328,16 @@ public class Backtracking2 {
             //TODO: fer més maco i guardar un booleà per saber si per alguna restricció ja he borrat l'aula així no miro les altres
             AssignaturaMonosessio assignat = it.next();
             //això treu possibilitat de correquisits; no sé si es pot escriure aixi del tot
-            try {
+          /*  try {
                 if (!resCorr.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula);
             } catch (NotFoundException e) {
                 e.printStackTrace();
             }
 
             //aixo treu possibilitat de que tinguessis guardada la aula a aquella hora com a possible
-            if(!resNiv.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula);
-
+           if(!resNiv.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula);
             if (!resTeo.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula); //violem restriccio de clases de teoria
-            if (!resSub.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula);
+          if (!resSub.isable2(assignat,assig,pos,aula,dia,hora)) pos.get(assignat).get(dia).get(hora).remove(aula);
 
 
             //aixo seria el for per a iterar a la seva estructura de dades
@@ -350,7 +349,9 @@ public class Backtracking2 {
                }
            }*/
 
+           if(pos.get(assignat).get(dia).get(hora).size() == 0) return true;
         }
+        return false;
     }
 
     /**
@@ -370,21 +371,29 @@ public class Backtracking2 {
         for (int d = 0; d < posibles.size() && posibles.get(d) != null; ++d) {
             for (int h = 0; h < posibles.get(d).size() &&  posibles.get(d).get(h) != null; ++h) {
                 for (int a = 0; a < posibles.get(d).get(h).size(); ++a) {
+                    boolean possible = true;
                     int aula = posibles.get(d).get(h).get(a);
                     if (horari[h][d][aula] == null) {
                         if (teoria) {
                             if (comprovarRestriccions(aules2.get(aula), d, h, mishmash.get(i), duracio, a, horari)) {
                                 HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
-                                for (int z = 0; z < duracio; ++z) {
-                                    horari[h+ z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
-                                    propagarPossibilitats(aula,d,h+z, mishmash.get(i),possibilitats);
+                                for (int z = 0; z < duracio && possible; ++z) {
+                                    horari[h+z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getGrup());
+                                    if(propagarPossibilitats(aula,d,h+z, mishmash.get(i),possibilitats)){
+                                        for(int e = 0 ; e <= z; ++e){
+                                            horari[h+e][d][aula] = null;
+                                        }
+                                        possible = false;
+                                    };
                                 }
-                                possibilitats.remove(mishmash.get(i));
-                                if (creaHorari(i + 1, horari, possibilitats)) return true;
-                                else {
-                                    possibilitats = clon;
-                                    for (int z = 0; z < duracio; ++z) {
-                                        horari[h + z][d][aula] = null;
+                                if(possible) {
+                                    possibilitats.remove(mishmash.get(i));
+                                    if (creaHorari(i + 1, horari, possibilitats)) return true;
+                                    else {
+                                        possibilitats = clon;
+                                        for (int z = 0; z < duracio; ++z) {
+                                            horari[h + z][d][aula] = null;
+                                        }
                                     }
                                 }
                             }
@@ -393,7 +402,12 @@ public class Backtracking2 {
                                 HashMap<AssignaturaMonosessio, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<AssignaturaMonosessio,ArrayList<ArrayList<ArrayList<Integer>>>>(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][aula] = new AssignacioL(fromInt2dia(d), h + z, aules2.get(aula), mishmash.get(i).getAssig(), mishmash.get(i).getSub());
-                                    propagarPossibilitats(aula,d,h+z, mishmash.get(i), possibilitats);
+                                    if(propagarPossibilitats(aula,d,h+z, mishmash.get(i),possibilitats)){
+                                        for(int e = 0 ; e <= z; ++e){
+                                            horari[h+e][d][aula] = null;
+                                        }
+                                        possible = false;
+                                    }
                                 }
                                 possibilitats.remove(mishmash.get(i));
                                 if (creaHorari(i + 1, horari, possibilitats)) return true;
