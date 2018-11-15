@@ -1,17 +1,25 @@
 package drivers;
 
+import exceptions.RestriccioIntegritatException;
+import model.AssignacioL;
+import model.Assignatura;
+import model.Aula;
+import model.Subgrup;
+
+import java.util.Scanner;
+
 public class DriverAssignacioL {
-/*
+
     public static void mostraopcions(){
-        System.out.println("Escull una opcio:");
-        System.out.println("1: Crear Assginacio");
+        System.out.println("Escull una opció:");
+        System.out.println("1: Crear Assignació");
         System.out.println("2: Consultar atributs");
         System.out.println("3: Modificar atributs");
         System.out.println("4: Sortir");
     }
 
     public static void opcioinavalida(){
-        System.out.println("Has escollit una opcio incorrecta.");
+        System.out.println("Has escollit una opció incorrecta.");
         System.out.println("");
     }
 
@@ -62,7 +70,7 @@ public class DriverAssignacioL {
                     System.out.println(a.getAula().getAula());  //TODO: printear todos los atributos?
                     break;
                 case 4:
-                    System.out.println(a.getSubgrups().getNum());
+                    System.out.println(a.getGrup().getSubgrups());
                     break;
 
                 case 5:
@@ -151,9 +159,10 @@ public class DriverAssignacioL {
                    modificaAula(s, a.getAula());
                     break;
                 case 4:
-                    System.out.println("Introdueix el nou numero de subgrup");
+                    System.out.println("Introdueix el subgrup i nou numero de subgrup");
+                    int aux0 = s.nextInt();
                     auxi = s.nextInt();
-                    a.getSubgrup().setNum(auxi);
+                    a.getGrup().getSubgrups().get(aux0).setNum(auxi);
                     break;
 
                 case 5:
@@ -273,5 +282,5 @@ public class DriverAssignacioL {
             }
 
         }
-    }*/
+    }
 }
