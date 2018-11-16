@@ -1,0 +1,8 @@
+DIRECTORI FONTS:
+
+ Conte subdirectoris amb el codi font programat per cada estudiant
+
+
+ \Adria: Conte el codi font programat per Adria Cabeza
+ \Aina: Conte el codi font programat per Aina Garcia
+ \Antoni: Conte el codi font programat per Antoni Rambla

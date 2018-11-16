@@ -1,0 +1,28 @@
+Objecte de prova: Classe AssignacioT, crear assignació de laboratori, modificar-la, consultar assignatura per nom
+
+Elements integrats a la prova: Stub grup i stub Aula,Subgrup i Assignatura
+
+Drivers: DriverAssignacioT
+    - crear assignació de teoria
+    - modificar assignació de teoria
+
+Stubs: Grup, Laboratori, Teoria
+
+Fitxers de dades necessaris: DriverAssignacioTTest.txt (valors de prova per verificar restriccions)
+
+Valors estudiats:
+    - creació correcte d'una assignació de teoria
+    - consultar correctament una assignació de teoria
+    - modificar el dia d'una assignació de teoria
+    - modificar la hora d'una assignació de teoria
+    - modificar el número de subgrup d'una assignació de teoria
+    - modificar el nom de l'assignatura d'una assignació de teoria
+      //TODO : CONTINUAR
+
+Efectes estudiats: -
+
+Operativa: S'obre un menú amb totes les opcions disponibles i l'explicació del que espera rebre
+    - introduir la opció desitjada
+    - introduir parametres que et demani la opció
+    - passar al primer punt si vols seguir fent coses
+    - introduir la opció de sortir

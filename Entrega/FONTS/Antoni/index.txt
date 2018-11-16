@@ -1,0 +1,24 @@
+DIRECTORI ANTONI:
+
+- Aula.java: codi de la classe Aula
+- DriverAula.java: codi del driver per testejar la classe Aula
+- DriverGrup.java: codi del driver per testejar la classe Grup
+- DriverRestriccioAulaDia.java: codi del driver per testejar la classe RestriccioAulaDia
+- DriverRestriccioAulaHora.java: codi del driver per testejar la classe RestriccioAulaHora
+- DriverRestriccioGrupTeo.java: codi del driver per testejar la classe RestriccioGrupTeo
+- DriverRestriccioSubgrupLab.java: codi del driver per testejar la classe RestriccioSubgrupLab
+- DriverSessioGrup.java: codi del driver per testejar la classe SessioGrup
+- DriverSubgrup.java: codi del driver per testejar la classe subgrup
+- Grup.java: codi de la classe Grup
+- RestriccioAulaDia.java: codi de la classe RestriccioAulaDia
+- RestriccioAulaHora.java: codi de la classe RestriccioAulaHora
+- RestriccioNivell.java: codi de la classe RestriccioNivell
+- Restriccions.java: codi de la classe Restriccions
+- SBacktracking2.java: codi del stub de la classe backtracking2
+- SessioGrup.java: codi de la classe sessioGrup
+- SRestriccioAula.java: codi del stub de la classe RestriccioAula
+- SRestriccioAulaDia.java: codi del stub de la classe RestriccioAulaDia
+- SRestriccioAulaHora.java: codi del Stub de la classe RestriccioAulaHora
+- SRestriccioCorrequisit.java: codi del stub de la classe RestriccioCorrequisit
+- SRestriccioNivell.java: codi del stub de la classe RestriccioNivell.java
+- Subgrup.java: codi de la classe Subgrup

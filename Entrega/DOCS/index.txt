@@ -1,0 +1,5 @@
+Directori DOCS.
+
+ - DocumentPrimeraEntrega.pdf: Conte informacio del projecte, casos d'us i la seva descripcio, UML, descripcio dels algoritmes, descripcio de les estructures de dades, descripcio de les classes.
+
+ - UML-full: Es la imatge del UML a tamany complet, ja que al document no es veu prou clara.

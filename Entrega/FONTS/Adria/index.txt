@@ -1,0 +1,25 @@
+DIRECTORI ADRIA:
+
+- Assignacio.java: codi de la classe Assignacio
+- AssignacioL.java: codi de la classe AssignacioL
+- AssignacioT.java: codi de la classe AssignacioT
+- Backtracking.java: codi de la classe Backtracking
+- Backtracking2.java: codi de la classeBacktracking2 (backtracking millorat, veure document)
+- DriverAssignacioL.java: codi del driver d'assignacions de laboratori
+- DriverAssignacioT.java: codi del driver d'assignacions de teoria
+- DriverHorari.java: codi del driver per testejar creacio d'horaris
+- DriverPlaEstudis.java: codi del driver per testejar plans d'estudi
+- DriverRestriccioAssigMatiTarda.java: codi del driver per testejar les restriccions d'assignatura mati tarda
+- DriverRestriccioAula.java: codi del driver per testejar les restriccions d'aula
+- DriverRestriccioCorrequisit.java: codi del driver per testejar correquisits
+- DriverRestriccioNivell.java: codi del driver per testejar restriccions de nivell/quadrimestre
+- Horari.java: codi de la classe horari
+- PlaEstudis.java: codi de la classe pla d'estudis
+- RestriccioAssigMatiTarda.java: codi de la classe restriccio assignatures mati tarda
+- RestriccioAula.java: codi de la restriccio tipus aula
+- RestriccioCorrequisit.java: codi de la restriccio de correquisits
+- RestriccioGrupTeo.java: codi de la restriccio de grups de teoria
+- RestriccioSubgrupLab.java: codi de la restriccio subgrups de laboratori
+- SRestriccioAssigMatiTarda.java: codi del Stub de restriccio assignatura mati tarda
+- SRestriccioGrupTeo.java: codi del Stub de la restriccio de grup de teoria
+- SSessioGrup.java: codi del Stub de la classe sessio grup

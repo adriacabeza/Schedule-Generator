@@ -1,0 +1,21 @@
+Objecte de prova: Classe Grup, crear grup, modificar-lo i  consultar grup per número
+
+Elements integrats a la prova: Stub grup i stub InfoSessions, teoria i laboratori
+
+Drivers: DriverGrup
+    - crear grups
+    - modificar grup
+
+Fitxers de dades necessaris: DriverGrupTest.txt (valors de prova per verificar restriccions)
+
+Valors estudiats:
+    - creació correcte d'un grup
+    - consultar correctament un grup
+    - modificar correctament els grups
+    //TODO : CONTINUAR
+
+Operativa: S'obre un menú amb totes les opcions disponibles i l'explicació del que espera rebre
+    - introduir la opció desitjada
+    - introduir parametres que et demani la opció
+    - passar al primer punt si vols seguir fent coses
+    - introduir la opció de sortir

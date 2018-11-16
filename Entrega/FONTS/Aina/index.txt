@@ -1,0 +1,25 @@
+DIRECTORI AINA:
+
+- Assignatura.java: codi de la classe Assignatura
+- CtrlDomini.java: codi del controlador de domini
+- CtrlDominiTest.java: codi de la classe que executa el test de JUnit sobre la classe CtrlDomini
+- CtrlIO.java: codi del controlador d'entrada sortida per treballar amb fitxers de text
+- DriverAssignatura.java: codi del driver per testejar la classe assignatura
+- DriverCtrlDomini.java: codi del driver per testejar el controlador de domini
+- DriverCtrlDominiJUnit: codi del driver per testejar el controlador de domini amb JUNIT
+- DriverCtrlIO: codi del driver per testejar el controlador d'entrada i sortida
+- DriverInfoSessions: codi del driver per testejar les subclasses de InfoSessions (laboratori i teoria)
+- InfoSessions.java: codi de la classe InfoSessions
+- Laboratori.java: codi de la classe Laboratori
+- NotFoundException.java: codi de les excepcions per quan no trobem un objecte buscat
+- RestriccioIntegritatException.java: codi de les excepcions per quan no es cumpleix una restriccio d'integritat del sitema
+- SAssignatura.java: codi del Stub de la classe Assignatura
+- SAula.java: codi del Stub de la classe Aula
+- SGrup.java: codi del Stub de la classe Grup
+- SInfoSessions.java: codi del Stub de la classe InfoSessions
+- SLaboratori.java: codi del Stub de la classe Laboratori
+- STeoria.java: codi del Stub de la classe Teoria
+- SPlaEstudis.java: codi del Stub de la classe Pla d'estudis
+- SSubGrup.java: codi del Stub de la classe subgrup
+- STeoria.java: codi del Stub de la classe Teoria
+- Teoria.java: codi de la classe Teoria

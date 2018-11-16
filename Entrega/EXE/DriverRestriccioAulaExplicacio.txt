@@ -1,0 +1,24 @@
+Objecte de prova: Classe RestriccioAula, crear restriccio, comprovar
+
+Elements integrats a la prova: Aula, SessioGrup
+
+Drivers: DriverRestriccioAula
+    - crear restriccio
+    - comprovar restriccio
+
+Stubs:
+
+Fitxers de dades necessaris: DriverRestriccioAula.txt
+
+Valors estudiats:
+    - creació correcte d'una restriccio
+    - comprobacio correcta del cumpliment o no de la restriccio
+
+
+Efectes estudiats: -
+
+Operativa: S'obre un menú amb totes les opcions disponibles i l'explicació del que espera rebre
+    - introduir la opció desitjada
+    - introduir parametres que et demani la opció
+    - passar al primer punt si vols seguir fent coses
+    - introduir la opció de sortir

@@ -1,0 +1,7 @@
+Directori Arrel:
+
+ /DOCS: Conte la documentacio del projecte
+ /FONTS: Conte el codi font del projecte
+ /EXE: Conte els executables amb els seus respectius tests
+
+ - descripcio.txt: Conte la informacio del grup, noms i adreces electroniques

@@ -1,0 +1,24 @@
+1
+3 2 T
+4 3 T
+5 sample T
+5 normal T
+6 1 2 normal
+1
+3 2 T
+4 3 T
+5 pcs T
+6 1 2 pcs
+1
+2
+3 2 L
+4 3 L
+5 normal L
+7 1 2 normal
+2
+3 2 L
+4 3 L
+5 pcs L
+7 1 2 pcs
+2
+8

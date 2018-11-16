@@ -1,0 +1,932 @@
+{
+  "PRO2": {
+    "nom": "PRO2",
+    "teoria": {
+      "assignatura": "PRO2",
+      "numSessions": 2,
+      "duracioSessions": 2,
+      "tAula": "pcs"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 2,
+        "num": 20,
+        "subgrups": {}
+      },
+      "10": {
+        "capacitat": 2,
+        "num": 10,
+        "subgrups": {}
+      }
+    },
+    "numeroGrups": 2,
+    "numeroSubgrups": 0,
+    "capacitatGrups": 2,
+    "correquisit": [],
+    "quadrimestre": 2
+  },
+  "PRO1": {
+    "nom": "PRO1",
+    "teoria": {
+      "assignatura": "PRO1",
+      "numSessions": 2,
+      "duracioSessions": 4,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "assignatura": "PRO1",
+      "numSessions": 3,
+      "duracioSessions": 3,
+      "tAula": "pcs"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 40,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 10,
+            "num": 21,
+            "subgrups": {}
+          },
+          "22": {
+            "capacitat": 10,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 10,
+            "num": 23,
+            "subgrups": {}
+          },
+          "24": {
+            "capacitat": 10,
+            "num": 24,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 40,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 10,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 10,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 10,
+            "num": 13,
+            "subgrups": {}
+          },
+          "14": {
+            "capacitat": 10,
+            "num": 14,
+            "subgrups": {}
+          }
+        }
+      },
+      "30": {
+        "capacitat": 40,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 10,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 10,
+            "num": 33,
+            "subgrups": {}
+          },
+          "34": {
+            "capacitat": 10,
+            "num": 34,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 10,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 3,
+    "numeroSubgrups": 4,
+    "capacitatGrups": 40,
+    "correquisit": [
+      "IC"
+    ],
+    "quadrimestre": 1
+  },
+  "AS": {
+    "nom": "AS",
+    "teoria": {
+      "assignatura": "AS",
+      "numSessions": 2,
+      "duracioSessions": 4,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "assignatura": "AS",
+      "numSessions": 2,
+      "duracioSessions": 1,
+      "tAula": "normal"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 25,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 25,
+            "num": 21,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 25,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 25,
+            "num": 11,
+            "subgrups": {}
+          }
+        }
+      },
+      "30": {
+        "capacitat": 25,
+        "num": 30,
+        "subgrups": {
+          "31": {
+            "capacitat": 25,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 3,
+    "numeroSubgrups": 1,
+    "capacitatGrups": 25,
+    "correquisit": [],
+    "quadrimestre": 4
+  },
+  "EDA": {
+    "nom": "EDA",
+    "teoria": {
+      "assignatura": "EDA",
+      "numSessions": 3,
+      "duracioSessions": 3,
+      "tAula": "normal"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 25,
+        "num": 20,
+        "subgrups": {}
+      },
+      "10": {
+        "capacitat": 25,
+        "num": 10,
+        "subgrups": {}
+      },
+      "30": {
+        "capacitat": 25,
+        "num": 30,
+        "subgrups": {}
+      }
+    },
+    "numeroGrups": 3,
+    "numeroSubgrups": 0,
+    "capacitatGrups": 25,
+    "correquisit": [
+      "IES"
+    ],
+    "quadrimestre": 3
+  },
+  "LP": {
+    "nom": "LP",
+    "teoria": {
+      "assignatura": "LP",
+      "numSessions": 3,
+      "duracioSessions": 2,
+      "tAula": "pcs"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 10,
+        "num": 20,
+        "subgrups": {}
+      },
+      "10": {
+        "capacitat": 10,
+        "num": 10,
+        "subgrups": {}
+      },
+      "30": {
+        "capacitat": 10,
+        "num": 30,
+        "subgrups": {}
+      }
+    },
+    "numeroGrups": 3,
+    "numeroSubgrups": 0,
+    "capacitatGrups": 10,
+    "correquisit": [],
+    "quadrimestre": 4
+  },
+  "F": {
+    "nom": "F",
+    "teoria": {
+      "assignatura": "F",
+      "numSessions": 2,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 30,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 10,
+            "num": 21,
+            "subgrups": {}
+          },
+          "22": {
+            "capacitat": 10,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 10,
+            "num": 23,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 30,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 10,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 10,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 10,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      },
+      "30": {
+        "capacitat": 30,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 10,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 10,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 10,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 3,
+    "numeroSubgrups": 3,
+    "capacitatGrups": 30,
+    "correquisit": [],
+    "quadrimestre": 1
+  },
+  "IES": {
+    "nom": "IES",
+    "teoria": {
+      "assignatura": "IES",
+      "numSessions": 1,
+      "duracioSessions": 4,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "assignatura": "IES",
+      "numSessions": 3,
+      "duracioSessions": 1,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 20,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 20,
+            "num": 21,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 20,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          }
+        }
+      },
+      "30": {
+        "capacitat": 20,
+        "num": 30,
+        "subgrups": {
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 3,
+    "numeroSubgrups": 1,
+    "capacitatGrups": 20,
+    "correquisit": [
+      "EDA"
+    ],
+    "quadrimestre": 3
+  },
+  "FM": {
+    "nom": "FM",
+    "teoria": {
+      "assignatura": "FM",
+      "numSessions": 3,
+      "duracioSessions": 3,
+      "tAula": "pcs"
+    },
+    "laboratori": {
+      "assignatura": "FM",
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "pcs"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 30,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 30,
+            "num": 21,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 30,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 30,
+            "num": 11,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 2,
+    "numeroSubgrups": 1,
+    "capacitatGrups": 30,
+    "correquisit": [],
+    "quadrimestre": 1
+  },
+  "IC": {
+    "nom": "IC",
+    "teoria": {
+      "assignatura": "IC",
+      "numSessions": 2,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "laboratori": {
+      "assignatura": "IC",
+      "numSessions": 3,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 60,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 20,
+            "num": 21,
+            "subgrups": {}
+          },
+          "22": {
+            "capacitat": 20,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 20,
+            "num": 23,
+            "subgrups": {}
+          }
+        }
+      },
+      "40": {
+        "capacitat": 60,
+        "num": 40,
+        "subgrups": {
+          "41": {
+            "capacitat": 20,
+            "num": 41,
+            "subgrups": {}
+          },
+          "42": {
+            "capacitat": 20,
+            "num": 42,
+            "subgrups": {}
+          },
+          "43": {
+            "capacitat": 20,
+            "num": 43,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 60,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 20,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      },
+      "30": {
+        "capacitat": 60,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 20,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 4,
+    "numeroSubgrups": 3,
+    "capacitatGrups": 60,
+    "correquisit": [
+      "PRO1"
+    ],
+    "quadrimestre": 1
+  },
+  "LI": {
+    "nom": "LI",
+    "teoria": {
+      "assignatura": "LI",
+      "numSessions": 2,
+      "duracioSessions": 4,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "assignatura": "LI",
+      "numSessions": 2,
+      "duracioSessions": 1,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "20": {
+        "capacitat": 25,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 8,
+            "num": 21,
+            "subgrups": {}
+          },
+          "22": {
+            "capacitat": 8,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 8,
+            "num": 23,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 25,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 8,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 8,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 8,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      },
+      "30": {
+        "capacitat": 25,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 8,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 8,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 8,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 3,
+    "numeroSubgrups": 3,
+    "capacitatGrups": 25,
+    "correquisit": [],
+    "quadrimestre": 6
+  },
+  "EC": {
+    "nom": "EC",
+    "teoria": {
+      "assignatura": "EC",
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "laboratori": {
+      "assignatura": "EC",
+      "numSessions": 1,
+      "duracioSessions": 1,
+      "tAula": "normal"
+    },
+    "grups": {
+      "50": {
+        "capacitat": 20,
+        "num": 50,
+        "subgrups": {
+          "51": {
+            "capacitat": 2,
+            "num": 51,
+            "subgrups": {}
+          },
+          "52": {
+            "capacitat": 2,
+            "num": 52,
+            "subgrups": {}
+          },
+          "53": {
+            "capacitat": 2,
+            "num": 53,
+            "subgrups": {}
+          },
+          "54": {
+            "capacitat": 2,
+            "num": 54,
+            "subgrups": {}
+          },
+          "55": {
+            "capacitat": 2,
+            "num": 55,
+            "subgrups": {}
+          },
+          "56": {
+            "capacitat": 2,
+            "num": 56,
+            "subgrups": {}
+          },
+          "57": {
+            "capacitat": 2,
+            "num": 57,
+            "subgrups": {}
+          },
+          "58": {
+            "capacitat": 2,
+            "num": 58,
+            "subgrups": {}
+          },
+          "59": {
+            "capacitat": 2,
+            "num": 59,
+            "subgrups": {}
+          }
+        }
+      },
+      "20": {
+        "capacitat": 20,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 2,
+            "num": 21,
+            "subgrups": {}
+          },
+          "22": {
+            "capacitat": 2,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 2,
+            "num": 23,
+            "subgrups": {}
+          },
+          "24": {
+            "capacitat": 2,
+            "num": 24,
+            "subgrups": {}
+          },
+          "25": {
+            "capacitat": 2,
+            "num": 25,
+            "subgrups": {}
+          },
+          "26": {
+            "capacitat": 2,
+            "num": 26,
+            "subgrups": {}
+          },
+          "27": {
+            "capacitat": 2,
+            "num": 27,
+            "subgrups": {}
+          },
+          "28": {
+            "capacitat": 2,
+            "num": 28,
+            "subgrups": {}
+          },
+          "29": {
+            "capacitat": 2,
+            "num": 29,
+            "subgrups": {}
+          }
+        }
+      },
+      "40": {
+        "capacitat": 20,
+        "num": 40,
+        "subgrups": {
+          "48": {
+            "capacitat": 2,
+            "num": 48,
+            "subgrups": {}
+          },
+          "49": {
+            "capacitat": 2,
+            "num": 49,
+            "subgrups": {}
+          },
+          "41": {
+            "capacitat": 2,
+            "num": 41,
+            "subgrups": {}
+          },
+          "42": {
+            "capacitat": 2,
+            "num": 42,
+            "subgrups": {}
+          },
+          "43": {
+            "capacitat": 2,
+            "num": 43,
+            "subgrups": {}
+          },
+          "44": {
+            "capacitat": 2,
+            "num": 44,
+            "subgrups": {}
+          },
+          "45": {
+            "capacitat": 2,
+            "num": 45,
+            "subgrups": {}
+          },
+          "46": {
+            "capacitat": 2,
+            "num": 46,
+            "subgrups": {}
+          },
+          "47": {
+            "capacitat": 2,
+            "num": 47,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 20,
+        "num": 10,
+        "subgrups": {
+          "16": {
+            "capacitat": 2,
+            "num": 16,
+            "subgrups": {}
+          },
+          "17": {
+            "capacitat": 2,
+            "num": 17,
+            "subgrups": {}
+          },
+          "18": {
+            "capacitat": 2,
+            "num": 18,
+            "subgrups": {}
+          },
+          "19": {
+            "capacitat": 2,
+            "num": 19,
+            "subgrups": {}
+          },
+          "11": {
+            "capacitat": 2,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 2,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 2,
+            "num": 13,
+            "subgrups": {}
+          },
+          "14": {
+            "capacitat": 2,
+            "num": 14,
+            "subgrups": {}
+          },
+          "15": {
+            "capacitat": 2,
+            "num": 15,
+            "subgrups": {}
+          }
+        }
+      },
+      "30": {
+        "capacitat": 20,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 2,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 2,
+            "num": 33,
+            "subgrups": {}
+          },
+          "34": {
+            "capacitat": 2,
+            "num": 34,
+            "subgrups": {}
+          },
+          "35": {
+            "capacitat": 2,
+            "num": 35,
+            "subgrups": {}
+          },
+          "36": {
+            "capacitat": 2,
+            "num": 36,
+            "subgrups": {}
+          },
+          "37": {
+            "capacitat": 2,
+            "num": 37,
+            "subgrups": {}
+          },
+          "38": {
+            "capacitat": 2,
+            "num": 38,
+            "subgrups": {}
+          },
+          "39": {
+            "capacitat": 2,
+            "num": 39,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 2,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 5,
+    "numeroSubgrups": 9,
+    "capacitatGrups": 20,
+    "correquisit": [],
+    "quadrimestre": 2
+  },
+  "TC": {
+    "nom": "TC",
+    "teoria": {
+      "assignatura": "TC",
+      "numSessions": 2,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "assignatura": "TC",
+      "numSessions": 2,
+      "duracioSessions": 1,
+      "tAula": "pcs"
+    },
+    "grups": {
+      "10": {
+        "capacitat": 10,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 10,
+            "num": 11,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "numeroGrups": 1,
+    "numeroSubgrups": 1,
+    "capacitatGrups": 10,
+    "correquisit": [],
+    "quadrimestre": 4
+  }
+}
