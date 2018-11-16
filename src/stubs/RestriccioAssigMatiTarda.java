@@ -1,5 +1,7 @@
 package stubs;
 
+import model.Restriccions;
+
 /**
  * @Author Adria Cabeza
  */
@@ -17,10 +19,6 @@ public class RestriccioAssigMatiTarda extends Restriccions {
     }
 
     public boolean isAble(Assignatura assig, int hora){
-        if(this.assig.equals(assig.getNom())){
-            if(mati) return (hora <= 6);
-            return (hora > 6);
-        }
         return true;
     }
 
