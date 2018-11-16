@@ -32,13 +32,13 @@ Un cop l'iterador arribi a l'última sessió que s'ha d'assignar retorna true pe
 
 #### Pseudocodi del backtracking cronològic:
 
-```java
+```pseudocode
 creaHorari(iterador per sessions, horari,HashMap<Sessió, ArrayList<possibilitats>> pos)
-if(iterador == última sessió ) return 
+if(iterador == última sessió ) return true "S'HA FET L'HORARI"
 for(d -> dies_possibles)
   for(h->d.hores_possibles)
      for(a->h.aules_possibles){
-         if(no està assginat aquest slot al horari){
+         if(no està assignat aquest slot al horari){
              if(es compleixen les restriccions){
                  Assignar a l'horari a l'slot a,d,h durant la duració de la sessió
                  propagarPossibilitats()
@@ -71,18 +71,22 @@ Després de fer una assignació hem en el backtracking cronològic cridem a la p
 
 Llavors per a cada sessió efectuem les diferents restriccions i si alguna ens dóna que l'aula que ens ha entrat com a paràmetre no hauria d'estar com a possibilitat de la sessió la esborrem. Parem de mirar restriccions i continuem. Si en un moment arribem a tenir que una sessió no té cap possibilitat parem i retornem que no es pot seguir fent l'horari d'aquesta manera. Altrament acabem retornant les possibilitats amb la propagació efectuada. 
 
+
+
+
+
 #### Pseudocodi del forward checking:
 
-```java
+```pseudocode
 propagarPossibilitats(aula,dia,hora,HashMap<Sessió, ArrayList<possibilitats>> pos)
 for(i->totes les sessions)
    forAll restriccions:
    		comprovarRestriccio()
-   		if(comprovarRestriccio() ens dóna que hem de borrar l'aula del dia i hora)
+   		if(comprovarRestriccio() ens dóna que hem d'esborrar l'aula del dia i hora)
         	La esborrem dintre les possibilitats i parem de comprovar restriccions
   		if(la sessió acaba no tenint cap possibilitat)
-   			return "no es pot continuar"
- return "es pot continuar"
+   			return false "no es pot continuar"
+ return true "es pot continuar"
 ```
 ## Estructura de Dades
 
