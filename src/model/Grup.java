@@ -1,3 +1,7 @@
+/**
+ * @Author Antoni Rambla
+ */
+
 package model;
 
 import java.util.HashMap;

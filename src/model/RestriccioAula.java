@@ -1,3 +1,6 @@
+/**
+ * @Author Adria Cabeza
+ */
 package model;
 
 public class RestriccioAula extends Restriccions {

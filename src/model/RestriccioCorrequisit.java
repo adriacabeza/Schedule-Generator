@@ -1,3 +1,6 @@
+/**
+ * @Author Adria Cabeza
+ */
 package model;
 
 import exceptions.NotFoundException;
