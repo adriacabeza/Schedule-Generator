@@ -2,7 +2,8 @@ package drivers;
 
 
 import model.Horari;
-import stubs.*;
+import model.*;
+import controllers.*;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -17,29 +18,24 @@ public class DriverHorari {
         System.out.println("3: Sortir");
     }
 
+    public static Horari creador() {
+        assignatures = new HashMap<>();
+        plaEstudis = new HashMap<>();
+        aules = new HashMap<>();
+        resCorr = new RestriccioCorrequisit();
+        resNiv = new RestriccioNivell();
+        resAul = new RestriccioAula();
+        resTeo = new RestriccioGrupTeo();
+        resSub = new RestriccioSubgrupLab();
+        resAulDia = new ArrayList<>();
+        resAulaHora = new ArrayList<>();
+        resMatiTarda = new ArrayList<>();
 
-    public static void opcioinavalida() {
-        System.out.println("Has escollit una opcio incorrecta.");
-        System.out.println("");
-    }
-
-   public static Horari creador(Scanner s) {
-        int num;
-        boolean b;
-        System.out.println("Introdueix 0 si vols fer l'horari sense forward checking i 1 si el vols fer servir");
-        b= s.nextBoolean();
-        RestriccioGrupTeo resgrupTeo = new stubs.RestriccioGrupTeo();
-        RestriccioAula resaula = new RestriccioAula();
-        RestriccioAulaDia resauladia = new RestriccioAulaDia(3,new Aula("A",0,1, Aula.TipusAula.NORMAL,50));
-        RestriccioNivell resNivell = new RestriccioNivell();
-        RestriccioCorrequisit resCorreq = new RestriccioCorrequisit();
-        RestriccioAssigMatiTarda resmati = new RestriccioAssigMatiTarda(0,"AC",false);
-        RestriccioAulaHora resaulaHora = new RestriccioAulaHora(0,0,new Aula("A",0,1, Aula.TipusAula.NORMAL,50));
-        HashMap<String, Aula> aules = new HashMap<String, Aula>();
-        HashMap<String, Assignatura> assignatures = new HashMap<>();
-        assignatures.put("AC",new Assignatura("AC",2));
-        aules.put("A01",new Aula("A",0,1, Aula.TipusAula.NORMAL,50));
-        return new Horari(b,assignatures, aules,resCorreq,resNivell,resaula,resgrupTeo,resauladia,resaulaHora,resmati);
+        CtrlIO c = new CtrlIO.getInstance();
+        assignatures = c.carregaAssignatures("assigtest.json");
+        aules = c.carregaAules("aulestest.json");
+        Horari newhorari = new Horari(false, assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
+        return newhorari;
     }
 
 
@@ -53,14 +49,26 @@ public class DriverHorari {
         int option = 0;
         boolean creat = false;
 
-        while (option != 4) {
+        HashMap<String, Assignatura> assignatures;
+        HashMap<String, PlaEstudis> plaEstudis;
+        HashMap<String, Aula> aules;
+        RestriccioCorrequisit resCorr;
+        RestriccioNivell resNiv;
+        RestriccioAula resAul;
+        RestriccioGrupTeo resTeo;
+        RestriccioSubgrupLab resSub;
+        ArrayList<RestriccioAulaDia> resAulDia;
+        ArrayList<RestriccioAulaHora> resAulaHora;
+        ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
+
+        option = scan.nextInt();
+
+        while (option != 3) {
             mostraopcions();
             Horari horari = null;
-            option = scan.nextInt();
             switch (option) {
                 case 1:
-
-                    //horari = creador(scan);
+                    horari = creador();
                     creat = true;
                     break;
 
@@ -73,14 +81,11 @@ public class DriverHorari {
                     }
                     break;
 
-                case 3:
-                    break;
-
                 default:
-                    opcioinavalida();
+                    System.out.println("Opcio invalida");
                     break;
             }
+            option = scan.nextInt();
         }
     }
-
 }
