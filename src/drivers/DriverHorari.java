@@ -1,4 +1,4 @@
-/*package drivers;
+package drivers;
 
 
 import model.Horari;
@@ -59,6 +59,7 @@ public class DriverHorari {
             option = scan.nextInt();
             switch (option) {
                 case 1:
+
                     //horari = creador(scan);
                     creat = true;
                     break;
@@ -82,4 +83,4 @@ public class DriverHorari {
         }
     }
 
-}*/
+}
