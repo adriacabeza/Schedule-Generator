@@ -1,3 +1,6 @@
+/**
+ * @Author Antoni Rambla
+ */
 package model;
 
 public abstract class Restriccions {

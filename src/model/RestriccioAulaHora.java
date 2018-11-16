@@ -1,3 +1,7 @@
+/**
+ * @Author Antoni Rambla
+ */
+
 package model;
 
 public class RestriccioAulaHora extends Restriccions {

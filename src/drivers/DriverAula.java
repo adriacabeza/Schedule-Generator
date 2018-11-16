@@ -1,3 +1,6 @@
+/**
+ * @Author Antoni Rambla
+ */
 package drivers;
 
 import model.Aula;
@@ -49,14 +52,15 @@ public class DriverAula {
     public static void mostra(Aula a, Scanner s) {
         int opt = 0;
         int aux;
-        while (opt != 6) {
+        while (opt != 7) {
             System.out.println("Escull que vols consultar:");
             System.out.println("1: Per el nom de l'edifici");
             System.out.println("2: Per la planta");
             System.out.println("3: Per la aula");
             System.out.println("4: Pel tipus d'aula");
             System.out.println("5: Per la capacitat de l'aula");
-            System.out.println("6: per sortir");
+            System.out.println("6: per la clau identificadora de l'aula");
+            System.out.println("7: per sortir");
             opt = s.nextInt();
             switch (opt) {
                 case 1:
@@ -78,6 +82,9 @@ public class DriverAula {
                     System.out.println(a.getCapacitat());
                     break;
                 case 6:
+                    System.out.println(a.getKey());
+                    break;
+                case 7:
                     break;
 
                 default:

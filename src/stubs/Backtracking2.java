@@ -1,3 +1,6 @@
+/**
+ * @Author Antoni Rambla
+ */
 package stubs;
 
 import exceptions.NotFoundException;

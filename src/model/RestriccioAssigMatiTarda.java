@@ -1,3 +1,7 @@
+/**
+ * @Author Adria Cabeza
+ */
+
 package model;
 
 public class RestriccioAssigMatiTarda extends Restriccions {
