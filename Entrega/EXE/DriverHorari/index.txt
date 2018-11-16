@@ -1,0 +1,7 @@
+DIRECTORI DRIVER Horari:
+
+- DriverHorariTest.txt: Joc de proves pel DriverHorari
+- DriverHorariExplicacio.txt: Explicacio del joc de proves pel DriverHorari
+- DriverHorari.jar: Executable del DriverHorari
+- assigtest.json: Dades de prova d'assignatures en format json per ser carregades
+- aulestest.json: Dades de prova d'aules en format json per ser carregades

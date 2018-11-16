@@ -23,3 +23,4 @@ DIRECTORI AINA:
 - SSubGrup.java: codi del Stub de la classe subgrup
 - STeoria.java: codi del Stub de la classe Teoria
 - Teoria.java: codi de la classe Teoria
+- DriverHorari.java: codi del driver de creacio d'horaris

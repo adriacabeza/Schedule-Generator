@@ -1,0 +1,23 @@
+Objecte de prova: Classe Horari, crear un Horari i consultar-lo.
+
+Elements integrats a la prova: Stub grup i stub Aula,Subgrup i Assignatura
+
+Drivers: DriverHorari
+    - Crear un horari amb assignatures i aules de prova
+    - Consultar l'horari creat amb les assignatures i aules de prova
+
+Stubs: Aula, Assignatura
+
+Fitxers de dades necessaris: assigtest.json
+			     aulestest.json
+
+Valors estudiats:
+    - Creació correcta d'un Horari amb restriccions
+    - Consulta de l'Horari
+
+Efectes estudiats: -
+
+Operativa: S'obre un menú amb totes les opcions disponibles
+    - introduir la opció desitjada
+    - passar al primer punt si vols seguir fent coses
+    - introduir la opció de sortir

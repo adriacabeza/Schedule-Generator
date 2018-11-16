@@ -1,23 +1,20 @@
 Objecte de prova: Classe Aula, crear aula, modificar-la, consultar-la
 
-Elements integrats a la prova: Stub grup i stub Aula,Subgrup i Assignatura
+Elements integrats a la prova:
 
-Drivers: DriverAssignacioL
-    - crear assignació de laboratori
-    - modificar assignació de laboratori
+Drivers: DriverAula
+    - crear assignació de aula
+    - modificar assignació de aula
 
-Stubs: Grup, Laboratori, Teoria
+Stubs:
 
-Fitxers de dades necessaris: DriverAssignacioLTest.txt (valors de prova per verificar restriccions)
+Fitxers de dades necessaris: DriverAulaTest.txt 
 
 Valors estudiats:
-    - creació correcte d'una assignació de laboratori
-    - consultar correctament una assignació de laboratori
-    - modificar el dia d'una assignació de laboratori
-    - modificar la hora d'una assignació de laboratori
-    - modificar el número de subgrup d'una assignació de laboratori
-    - modificar el nom de l'assignatura d'una assignació de laboratori
-      //TODO : CONTINUAR
+    - creació correcte d'una aula
+    - consultar correctament els atributs d'una aula
+    - modificacio correcta dels atributs d'aula
+
 
 Efectes estudiats: -
 

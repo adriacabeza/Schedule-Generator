@@ -5,9 +5,6 @@ import controllers.CtrlIO;
 import model.*;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -42,15 +39,9 @@ public class DriverHorari {
         return null;
     }
 
-    //TODO Mostrar l'horari i no un toString generic.
-    public static void mostra(Horari g, String filepath) {
-        byte[] encoded = new byte[0];
-        try {
-            encoded = Files.readAllBytes(Paths.get(filepath));
-            System.out.println(new String(encoded, Charset.defaultCharset()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+    public static void mostra(Horari g, Scanner s) {
+        System.out.println(g.getHorari());
     }
 
 
@@ -76,7 +67,7 @@ public class DriverHorari {
                     if (!creat) {
                         System.out.println("Error: no hi ha un horari creat");
                     } else {
-                        mostra(horari, "horaritest.json");
+                        mostra(horari, scan);
                     }
                     break;
 

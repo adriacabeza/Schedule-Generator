@@ -70,7 +70,7 @@ public class DriverAssignacioT {
                     break;
 
                 case 3:
-                    System.out.println(a.getAula().getAula());  //TODO: printear todos los atributos?
+                    System.out.println(a.getAula().getKey());
                     break;
                 case 4:
                     System.out.println(a.getGrup().getNum());
@@ -93,7 +93,7 @@ public class DriverAssignacioT {
 
     private static Grup creaGrup(Scanner s) {
         int opt;
-        System.out.println("Introdueix el numero de subgrup");
+        System.out.println("Introdueix el numero de grup");
         opt = s.nextInt();
         return new Grup(opt, 0, 0);
     }
@@ -112,13 +112,22 @@ public class DriverAssignacioT {
         Aula.TipusAula tAula;
         System.out.println("Introdueix el nom de l'edifici");
         edifici = s.next();
-        System.out.println("Introdueix el la planta en la que es situa l'aula");
+        System.out.println("Introdueix la planta en la que es situa l'aula");
         planta = s.nextInt();
         System.out.println("Introdueix el numero de l'aula");
         aula = s.nextInt();
         System.out.println("Introdueix la capacitat de l'aula");
         capacitat = s.nextInt();
-        tAula = Aula.TipusAula.NORMAL;
+        System.out.println("Introdueix el tipus d'aula, en cas d'input erroni sera una aula normal");
+        tipusaula = s.next();
+        if (tipusaula.equalsIgnoreCase("pcs")) {
+            tAula = Aula.TipusAula.PCS;
+        }
+        else if (tipusaula.equalsIgnoreCase("laboratori")){
+            tAula = Aula.TipusAula.LABORATORI;
+        }
+        else
+            tAula = Aula.TipusAula.NORMAL;
         return new Aula(edifici, planta, aula, tAula, capacitat);
     }
 

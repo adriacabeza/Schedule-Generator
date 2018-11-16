@@ -8,16 +8,12 @@ Drivers: DriverAssignacioL
 
 Stubs: Grup, Laboratori, Teoria
 
-Fitxers de dades necessaris: DriverAssignacioLTest.txt (valors de prova per verificar restriccions)
+Fitxers de dades necessaris: DriverAssignacioLTest.txt
 
 Valors estudiats:
     - creació correcte d'una assignació de laboratori
     - consultar correctament una assignació de laboratori
-    - modificar el dia d'una assignació de laboratori
-    - modificar la hora d'una assignació de laboratori
-    - modificar el número de subgrup d'una assignació de laboratori
-    - modificar el nom de l'assignatura d'una assignació de laboratori
-      //TODO : CONTINUAR
+    - modifica correctament la informacio d'una assignacio de laboratori
 
 Efectes estudiats: -
 
