@@ -1,14 +1,14 @@
-Objecte de prova: Classe RestriccioAulaHora, crear restriccio, comprobar
+Objecte de prova: Classe RestriccioAssigMatiTarda, crear restriccio, comprovar
 
-Elements integrats a la prova: Aula
+Elements integrats a la prova: Assignatura
 
-Drivers: DriverRestriccioAulaHora
+Drivers: DriverRestriccioAssigMatiTarda
     - crear restriccio
-    - comprobar restriccio
+    - comprovar restriccio
 
 Stubs:
 
-Fitxers de dades necessaris: DriverRestriccioAulaHora.txt
+Fitxers de dades necessaris: DriverRestriccioAssigMatiTardaTest.txt
 
 Valors estudiats:
     - creació correcte d'una restriccio

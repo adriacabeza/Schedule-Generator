@@ -98,7 +98,7 @@ public class DriverAula {
         int opt = 0;
         int aux;
         String auxs;
-        while (opt != 6) {
+        while (opt != 5) {
             System.out.println("Escull que vols modificar:");
             System.out.println("1: Per el nom de l'edifici");
             System.out.println("2: Per la planta");
