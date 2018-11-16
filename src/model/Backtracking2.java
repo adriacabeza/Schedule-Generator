@@ -191,10 +191,12 @@ public class Backtracking2 {
             }
             Assignatura assig = null;
             int indexAssig = 0;
-            for(int k = 0; k < resMatiTarda.size(); ++k ){
+            boolean found = false;
+            for(int k = 0; k < resMatiTarda.size() && !found; ++k ){
                 if (resMatiTarda.get(k).getAssig() == sessions.get(i).getAssig().getNom()){
                     assig =  sessions.get(i).getAssig();         //tenim una assignatura o de mati o de tarda
                     indexAssig = k;
+                    found = true;
                 }
             }
             ArrayList<ArrayList<ArrayList<Integer>>> diahoraaules = new ArrayList<>(5);
@@ -203,7 +205,7 @@ public class Backtracking2 {
                 for (int h = 0; h < 12; ++h) {
                         ArrayList<Integer> aulesHora = new ArrayList<>();
                         boolean restriccioMati = true;
-                        if(assig != null) restriccioMati = resMatiTarda.get(indexAssig).isAble(assig,h);        //mirem si es de mati, estiguem en el mati i el mateix per la tarda
+                        if(found) restriccioMati = resMatiTarda.get(indexAssig).isAble(assig,h);        //mirem si es de mati, estiguem en el mati i el mateix per la tarda
                         for (int n = 0; n < aules_possibles.size() && restriccioMati; ++n) {
                             boolean b = true;
                             for (int j = 0; j < resAulaHora.size() && b; ++j) {
