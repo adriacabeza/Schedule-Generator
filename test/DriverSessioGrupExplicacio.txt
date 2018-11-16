@@ -12,7 +12,8 @@ Fitxers de dades necessaris: DriverSessioGrupExplicacioTest.txt
 
 Valors estudiats:
     - creació correcte d'una SessioGrup
-    - comprobacio correcta del cumpliment o no de la restriccio
+    - Consulta correctament del atributs
+    - modificacio correcta dels atributs
 
 
 Efectes estudiats: -

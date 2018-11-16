@@ -70,7 +70,7 @@ public class DriverAssignacioL {
                     break;
 
                 case 3:
-                    System.out.println(a.getAula().getAula());  //TODO: printear todos los atributos?
+                    System.out.println(a.getAula().getKey());
                     break;
                 case 4:
                     System.out.println(a.getGrup().getSubgrups());
@@ -159,7 +159,7 @@ public class DriverAssignacioL {
                     break;
 
                 case 3:
-                   modificaAula(s, a.getAula());
+                    a.setAula(creaAula(s));
                     break;
                 case 4:
                     System.out.println("Introdueix el subgrup i nou numero de subgrup");
@@ -191,53 +191,6 @@ public class DriverAssignacioL {
             }
         }
 
-    }
-
-    public static void modificaAula(Scanner s , Aula a){
-        int opt = 0;
-        int aux;
-        String auxs;
-        while(opt != 5){
-            System.out.println("Escull que vols modificar:");
-            System.out.println("1: Per el nom de l'edifici");
-            System.out.println("2: Per la planta");
-            System.out.println("3: Per la aula");
-            System.out.println("4: Per la capacitat de l'aula");
-            System.out.println("5: per sortir");
-            opt = s.nextInt();
-            switch(opt) {
-                case 1:
-                    System.out.println("Introdueix el nou edifici");
-                    auxs = s.next();
-                    a.setEdifici(auxs);
-                    break;
-
-                case 2:
-                    System.out.println("Introdueix la nova planta");
-                    aux = s.nextInt();
-                    a.setPlanta(aux);
-                    break;
-
-                case 3:
-                    System.out.println("Introdueix la nova aula");
-                    aux = s.nextInt();
-                    a.setAula(aux);
-                    break;
-
-                case 4:
-                    System.out.println("Introdueix la nova capacitat");
-                    aux = s.nextInt();
-                    a.setCapacitat(aux);
-                    break;
-
-                case 5:
-                    break;
-                default:
-                    opcioinavalida();
-                    break;
-            }
-
-        }
     }
 
 
