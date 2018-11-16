@@ -91,7 +91,7 @@ public class DriverRestriccioAulaHora {
                     if(rest == null) System.out.println("no has creat una restriccio");
                     else {
                         aula = creaAula(scan);
-                        System.out.println("indica la hora en la que no es pot usar aquesta aula");
+                        System.out.println("indica la hora que volem consultar disponibilitat");
                         hora = scan.nextInt();
                         System.out.println("Introdueix el dia");
                         if(rest.isAble(aula, fromDia2int(scan.next()), hora)) System.out.println("aquesta aula es pot usar en aquest dia");
