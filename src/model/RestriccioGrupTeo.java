@@ -26,7 +26,7 @@ public class RestriccioGrupTeo extends Restriccions {
      * @param aules2 aules que es comproven
      * @return true si es pot realitzar l'assignació
      */
-    public boolean isable(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) { //nomes hauriem d'executar aixo si assig es de teoria
+    public boolean isable(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) {
         int grup = assig.getGrup().getNum() / 10;
         for (int j = 0; j < aules2.size(); ++j) {
             Assignacio a = horari[hora][dia][j];
