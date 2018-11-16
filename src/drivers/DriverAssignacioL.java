@@ -111,7 +111,7 @@ public class DriverAssignacioL {
         Aula.TipusAula tAula;
         System.out.println("Introdueix el nom de l'edifici");
         edifici = s.next();
-        System.out.println("Introdueix el la planta en la que es situa l'aula");
+        System.out.println("Introdueix la planta en la que es situa l'aula");
         planta = s.nextInt();
         System.out.println("Introdueix el numero de l'aula");
         aula = s.nextInt();

@@ -15,7 +15,7 @@ public class DriverAssignacioT {
 
     private static void mostraopcions() {
         System.out.println("Escull una opcio:");
-        System.out.println("1: Crear Assginacio");
+        System.out.println("1: Crear Assignacio");
         System.out.println("2: Consultar atributs");
         System.out.println("3: Modificar atributs");
         System.out.println("4: Sortir");
