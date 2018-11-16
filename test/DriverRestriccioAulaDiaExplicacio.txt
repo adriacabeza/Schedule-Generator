@@ -2,7 +2,7 @@ Objecte de prova: Classe RestriccioAulaDia, crear restriccio, comprobar
 
 Elements integrats a la prova: Aula
 
-Drivers: DriverRestriccioCorrequisit
+Drivers: DriverRestriccioAulaDia
     - crear restriccio
     - comprobar restriccio
 
