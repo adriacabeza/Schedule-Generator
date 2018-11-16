@@ -23,7 +23,7 @@ public class DriverHorari {
         System.out.println("");
     }
 
-    public static Horari creador(Scanner s) {
+   public static Horari creador(Scanner s) {
         int num;
         boolean b;
         System.out.println("Introdueix 0 si vols fer l'horari sense forward checking i 1 si el vols fer servir");
@@ -59,7 +59,7 @@ public class DriverHorari {
             option = scan.nextInt();
             switch (option) {
                 case 1:
-                    horari = creador(scan);
+                    //horari = creador(scan);
                     creat = true;
                     break;
 

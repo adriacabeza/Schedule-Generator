@@ -1,4 +1,7 @@
 package stubs;
+
+import model.Restriccions;
+
 /**
  * @Author Antoni Rambla
  */
