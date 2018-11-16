@@ -222,9 +222,18 @@ public class Backtracking2 {
 
             }
             possibilitats.put(sessions.get(i), diahoraaules);
-        }
-        for (ArrayList a : possibilitats.values()) {
-            if (a.size() == 0) return true;
+
+/*          Iterator<SessioGrup> it2 = possibilitats.keySet().iterator();
+            while(it2.hasNext()){
+                SessioGrup a = it2.next();
+                boolean pos = false;
+                for(int d = 0; d < 5; ++d){
+                    for(int h = 0 ; h < 12; ++h){
+                        if(!possibilitats.get(a).get(d).get(h).isEmpty()) pos = true;
+                    }
+                }
+                if(!pos) return true;
+            }*/
         }
         return false;
     }
@@ -264,9 +273,18 @@ public class Backtracking2 {
                borrat = true;
            }
 
-           if(possibles.get(assignat).get(dia).get(hora).size() == 0) {
-               return true;
-           }
+            /*Iterator<SessioGrup> it2 = possibles.keySet().iterator();
+            while(it2.hasNext()){
+                SessioGrup a = it2.next();
+                boolean pos = false;
+                for(int d = 0; d < 5; ++d){
+                    for(int h = 0 ; h < 12; ++h){
+                        if(!possibles.get(a).get(d).get(h).isEmpty()) pos = true;
+                    }
+                }
+                if(!pos) return true;
+            }
+        }*/
         }
         return false;
     }
