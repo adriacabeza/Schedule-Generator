@@ -94,6 +94,7 @@ public class DriverSessioGrup {
                         System.out.println("3: Grup");
                         System.out.println("4: Subgrup");
                         System.out.println("5: valor");
+                        System.out.println("6: sortir");
                         int op = s.nextInt();
                         switch(op){
                             case 1:
@@ -136,6 +137,10 @@ public class DriverSessioGrup {
                                 ses.setSubgrup(new Subgrup(nums,1,1));
                                 break;
                             case 5:
+                                System.out.println("introdueix el nou valor");
+                                ses.setValor(s.nextInt());
+                                break;
+                            case 6:
                                 break;
                             default:
                                 System.out.println("opcio incorrecta");
