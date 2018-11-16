@@ -4,6 +4,8 @@
 
 package stubs;
 
+import model.Restriccions;
+
 public class RestriccioAulaHora extends Restriccions {
 
     private int dia;
