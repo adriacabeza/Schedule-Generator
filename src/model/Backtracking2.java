@@ -244,12 +244,15 @@ public class Backtracking2 {
             SessioGrup assignat = it.next();
             boolean borrat = false;
             try {
-                if (!resCorr.isAble2(assignat,sessio,possibles,aula,dia,hora)) possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                if (!resCorr.isAble2(assignat,sessio,possibles,aula,dia,hora)){
+                    possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                    borrat = true;
+                }
             } catch (NotFoundException e) {
                 e.printStackTrace();
             }
 
-           if(!resNiv.isAble2(assignat,sessio,possibles,aula,dia,hora)){
+           if(!resNiv.isAble2(assignat,sessio,possibles,aula,dia,hora) && !borrat){
                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
                borrat = true;
            }
