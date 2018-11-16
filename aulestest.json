@@ -1,15 +1,29 @@
 {
-  "a5003": {
+  "a503": {
     "edifici": "a5",
     "planta": 0,
     "aula": 3,
     "tAula": "laboratori",
-    "capacitat": 60
+    "capacitat": 3
   },
-  "a5002": {
+  "a502": {
     "edifici": "a5",
     "planta": 0,
     "aula": 2,
+    "tAula": "normal",
+    "capacitat": 3
+  },
+  "a501": {
+    "edifici": "a5",
+    "planta": 0,
+    "aula": 1,
+    "tAula": "laboratori",
+    "capacitat": 60
+  },
+  "a505": {
+    "edifici": "a5",
+    "planta": 0,
+    "aula": 5,
     "tAula": "normal",
     "capacitat": 60
   }
