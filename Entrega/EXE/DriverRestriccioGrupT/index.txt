@@ -1,0 +1,5 @@
+DIRECTORI DRIVER RestriccioGrupTeo:
+
+- DriverRestriccioGrupTeoTest.txt: Joc de proves pel DriverRestriccioGrupTeo
+- DriverRestriccioGrupTeoExplicacio.txt: Explicacio del joc de probes pel DriverRestriccioGrupTeo
+- DriverRestriccioGrupTeo.jar: Executable del DriverRestriccioGrupTeo

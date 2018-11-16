@@ -1,0 +1,5 @@
+DIRECTORI DRIVER RestriccioAula:
+
+- DriverRestriccioAulaTest.txt: Joc de proves pel DriverRestriccioAula
+- DriverRestriccioAulaExplicacio.txt: Explicacio del joc de probes pel DriverRestriccioAula
+- DriverRestriccioAula.jar: Executable del DriverRestriccioAula

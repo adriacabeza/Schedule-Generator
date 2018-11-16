@@ -1,0 +1,5 @@
+DIRECTORI DRIVERRestriccioAssigMatiTarda:
+
+- DriverRestriccioAssigMatiTardaTest.txt: Joc de proves pel DriverRestriccioAssigMatiTarda
+- DriverRestriccioAssigMatiTardaExplicacio.txt: Explicacio del joc de probes pel DriverRestriccioAssigMatiTarda
+- DriverRestriccioAssigMatiTarda.jar: Executable del DriverRestriccioAssigMatiTarda

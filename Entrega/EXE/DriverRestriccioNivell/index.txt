@@ -1,0 +1,5 @@
+DIRECTORI DRIVER RestriccioNivell:
+
+- DriverRestriccioNivellTest.txt: Joc de proves pel DriverRestriccioNivell
+- DriverRestriccioNivellExplicacio.txt: Explicacio del joc de probes pel DriverRestriccioNivell
+- DriverRestriccioNivell.jar: Executable del DriverRestriccioNivell

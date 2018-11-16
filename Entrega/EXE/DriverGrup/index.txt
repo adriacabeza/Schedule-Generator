@@ -1,0 +1,5 @@
+DIRECTORI DRIVER Grup:
+
+- DriverGrupTest.txt: Joc de proves pel DriverGrup
+- DriverGrupExplicacio.txt: Explicacio del joc de probes pel DriverGrup
+- DriverGrup.jar: Executable del DriverGrup

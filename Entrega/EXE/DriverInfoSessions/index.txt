@@ -1,0 +1,5 @@
+DIRECTORI DRIVER InfoSessions:
+
+- DriverInfoSessionsTest.txt: Joc de proves pel DriverInfoSessions
+- DriverInfoSessionsExplicacio.txt: Explicacio del joc de probes pel DriverInfoSessions
+- DriverInfoSessions.jar: Executable del DriverInfoSessions

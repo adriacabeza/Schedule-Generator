@@ -1,0 +1,5 @@
+DIRECTORI DRIVER RestriccioCorrequisit:
+
+- DriverRestriccioCorrequisitTest.txt: Joc de proves pel DriverRestriccioCorrequisit
+- DriverRestriccioCorrequisitExplicacio.txt: Explicacio del joc de probes pel DriverRestriccioCorrequisit
+- DriverRestriccioCorrequisit.jar: Executable del DriverRestriccioCorrequisit

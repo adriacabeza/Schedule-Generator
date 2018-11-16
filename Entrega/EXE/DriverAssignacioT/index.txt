@@ -1,0 +1,5 @@
+DIRECTORI DRIVER AssignacioT:
+
+- DriverAssignacioTTest.txt: Joc de proves pel DriverAssignacioT
+- DriverAssignacioTExplicacio.txt: Explicacio del joc de probes pel DriverAssignacioT
+- DriverAssignacioT.jar: Executable del DriverAssignacioT

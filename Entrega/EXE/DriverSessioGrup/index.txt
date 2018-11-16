@@ -1,0 +1,5 @@
+DIRECTORI DRIVER SessioGrup:
+
+- DriverSessioGrupTest.txt: Joc de proves pel DriverSessioGrup
+- DriverSessioGrupExplicacio.txt: Explicacio del joc de probes pel DriverSessioGrup
+- DriverSessioGrup.jar: Executable del DriverSessioGrup

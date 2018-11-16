@@ -1,26 +1,23 @@
 DIRECTORI EXE:
 
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
-\Driver   : Conte l'executable i els testos sobre el Driver
+\DriverAssignacio: Conte l'executable i els testos sobre el DriverAssignacio
+\DriverAssignacioL: Conte l'executable i els testos sobre el DriverAssignacioL
+\DriverAssignacioT: Conte l'executable i els testos sobre el DriverAssignacioT
+\DriverAssignatura: Conte l'executable i els testos sobre el DriverAssignatura
+\DriverAula: Conte l'executable i els testos sobre el DriverAula
+\DriverCtrlDomini: Conte l'executable i els testos sobre el DriverCtrlDomini
+\DriverCtrlDominiJUnit: Conte l'executable i els testos sobre el DriverCtrlDominiJUnit
+\DriverCtrlIO: Conte l'executable i els testos sobre el DriverCtrlIO
+\DriverGrup: Conte l'executable i els testos sobre el DriverGrup
+\DriverInfoSessions: Conte l'executable i els testos sobre el DriverInfoSessions
+\DriverRestriccioAssigMatiTarda: Conte l'executable i els testos sobre el DriverRestriccioAssigMatiTarda
+\DriverRestriccioAula: Conte l'executable i els testos sobre el DriverRestriccioAula
+\DriverRestriccioAulaDia: Conte l'executable i els testos sobre el DriverRestriccioAulaDia
+\DriverRestriccioAulaHora: Conte l'executable i els testos sobre el DriverRestriccioAulaHora
+\DriverRestriccioCorrequisit: Conte l'executable i els testos sobre el DriverRestriccioCorrequisit
+\DriverRestriccioGrupT: Conte l'executable i els testos sobre el DriverRestriccioGrupT
+\DriverRestriccioSubgrupL: Conte l'executable i els testos sobre el DriverRestriccioSubgrupL
+\DriverRestriccioNivell: Conte l'executable i els testos sobre el DriverRestriccioNivell
+\DriverSessioGrup: Conte l'executable i els testos sobre el DriverSessioGrup
 
+- AclarimentsParametresRestriccions.txt: alguns aclariments pels drivers de restriccions

@@ -1,0 +1,4 @@
+DIRECTORI DRIVERCtrlDominiJUnit:
+
+- DriverCtrlDominiJUnitExplicacio.txt: Explicacio del joc de probes pel DriverCtrlDominiJUnit
+- DriverCtrlDominiJUnit.jar: Executable del DriverCtrlDominiJUnit

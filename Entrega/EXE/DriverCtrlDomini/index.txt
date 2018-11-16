@@ -1,0 +1,5 @@
+DIRECTORI DRIVER CtrlDomini:
+
+- DriverCtrlDominiTest.txt: Joc de proves pel DriverCtrlDomini
+- DriverCtrlDominiExplicacio.txt: Explicacio del joc de probes pel DriverCtrlDomini
+- DriverCtrlDomini.jar: Executable del DriverCtrlDomini

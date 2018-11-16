@@ -1,0 +1,5 @@
+DIRECTORI DRIVER RestriccioSubgruoLab:
+
+- DriverRestriccioSubgruoLabTest.txt: Joc de proves pel DriverRestriccioSubgruoLab
+- DriverRestriccioSubgruoLabExplicacio.txt: Explicacio del joc de probes pel DriverRestriccioSubgruoLab
+- DriverRestriccioSubgruoLab.jar: Executable del DriverRestriccioSubgruoLab

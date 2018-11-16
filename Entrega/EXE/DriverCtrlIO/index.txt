@@ -1,0 +1,10 @@
+DIRECTORI DRIVER CtrlIO:
+
+- DriverCtrlIOTest.txt: Joc de proves pel DriverCtrlIO
+- DriverCtrlIOExplicacio.txt: Explicacio del joc de probes pel DriverCtrlIO
+- DriverCtrlIO.jar: Executable del DriverCtrlIO
+- assigtest.json: input per assignatures
+- plaestudistest.json: input per pla d'estudis
+- horaritest.json: input per horari
+- aulestest.json: input per aules
+- assignatures_.json: assignatures alternatives

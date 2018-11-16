@@ -1,0 +1,5 @@
+DIRECTORI DRIVER RestriccioAulaHora:
+
+- DriverRestriccioAulaHoraTest.txt: Joc de proves pel DriverRestriccioAulaHora
+- DriverRestriccioAulaHoraExplicacio.txt: Explicacio del joc de probes pel DriverRestriccioAulaHora
+- DriverRestriccioAulaHora.jar: Executable del DriverRestriccioAulaHora

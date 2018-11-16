@@ -1,0 +1,5 @@
+DIRECTORI DRIVER Assignatura:
+
+- DriverAssignaturaTest.txt: Joc de proves pel DriverAssignatura
+- DriverAssignaturaExplicacio.txt: Explicacio del joc de probes pel DriverAssignatura
+- DriverAssignatura.jar: Executable del DriverAssignatura

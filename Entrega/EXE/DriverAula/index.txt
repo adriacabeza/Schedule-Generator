@@ -1,0 +1,5 @@
+DIRECTORI DRIVER Aula:
+
+- DriverAulaTest.txt: Joc de proves pel DriverAula
+- DriverAulaExplicacio.txt: Explicacio del joc de probes pel DriverAula
+- DriverAula.jar: Executable del DriverAula
