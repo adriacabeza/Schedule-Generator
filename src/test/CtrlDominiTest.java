@@ -8,6 +8,7 @@ import controllers.CtrlDomini;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import model.Aula;
+import model.Horari;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -397,9 +398,35 @@ public class CtrlDominiTest {
 
     @Test
     public void crearHorari() {
+        try {
+            c.crearAssignatura("AC", 1);
+            c.crearPlaEstudis("NouPla", 2010);
+            c.afegirAssignaturaPla("NouPla", "AC");
+            c.modificarGrups("AC", 2, 50, 2);
+            c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);
+            c.modificaInformacioLaboratori("AC", 2, 2, Aula.TipusAula.NORMAL);
+            c.creaAula("A5", 1, 2, 60, Aula.TipusAula.NORMAL);
+            Horari h = c.crearHorari();
+            assertNotNull(h);
+        } catch (NotFoundException | RestriccioIntegritatException ignored) {
+            fail();
+        }
     }
 
     @Test
     public void crearHorari2() {
+        try {
+            c.crearAssignatura("AC", 1);
+            c.crearPlaEstudis("NouPla", 2010);
+            c.afegirAssignaturaPla("NouPla", "AC");
+            c.modificarGrups("AC", 2, 50, 2);
+            c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);
+            c.modificaInformacioLaboratori("AC", 2, 2, Aula.TipusAula.NORMAL);
+            c.creaAula("A5", 1, 2, 60, Aula.TipusAula.NORMAL);
+            Horari h = c.crearHorari2();
+            assertNotNull(h);
+        } catch (NotFoundException | RestriccioIntegritatException ignored) {
+            fail();
+        }
     }
 }

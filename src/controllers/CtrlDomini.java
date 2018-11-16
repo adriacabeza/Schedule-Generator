@@ -165,11 +165,12 @@ public class CtrlDomini {
      * @param quadrimestre Quadrimestre al qual pertany
      * @throws RestriccioIntegritatException si ja existia una assignatura identificada pel mateix nom
      */
-    public void crearAssignatura(String nom, int quadrimestre) throws RestriccioIntegritatException {
+    public Assignatura crearAssignatura(String nom, int quadrimestre) throws RestriccioIntegritatException {
         if (assignatures.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix una assignatura amb nom " + nom.toUpperCase());
         }
         assignatures.put(nom, new Assignatura(nom, quadrimestre));
+        return null;
     }
 
     /**
