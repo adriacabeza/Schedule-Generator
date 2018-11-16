@@ -16,7 +16,6 @@ public class RestriccioAulaDia extends Restriccions {
         }
 
         public boolean isAble(model.Aula aula, int dia) {
-            if (this.dia == dia && aula.getKey().equals(this.aula.getKey())) return false;
             return true;
         }
 

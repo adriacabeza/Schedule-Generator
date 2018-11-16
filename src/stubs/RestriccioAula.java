@@ -1,6 +1,7 @@
 package stubs;
 
 import model.Aula;
+import model.Restriccions;
 
 public class RestriccioAula extends Restriccions {
 
@@ -9,7 +10,7 @@ public class RestriccioAula extends Restriccions {
     }
 
     public boolean isAble(Aula aula, SessioGrup assig) {
-        return (aula.getTipusAula() == assig.getSessio().gettAula());
+        return true;
     }
 
 
