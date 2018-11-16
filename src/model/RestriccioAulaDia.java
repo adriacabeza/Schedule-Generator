@@ -9,7 +9,6 @@ public class RestriccioAulaDia extends Restriccions {
     private int dia;
     private Aula aula;
 
-    //TODO: porque guardar una aula entera en restricció aula i no un identificador?
 
     /**
      * Crea una restricció on es comprova si es pot realitzar una assignació en una determinada aula en un determinat dia
