@@ -1,8 +1,10 @@
 package drivers;
 
 
+import model.Horari;
 import stubs.*;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class DriverHorari {
@@ -31,35 +33,46 @@ public class DriverHorari {
         RestriccioAulaDia resauladia = new RestriccioAulaDia(3,new Aula("A",0,1, Aula.TipusAula.NORMAL,50));
         RestriccioNivell resNivell = new RestriccioNivell();
         RestriccioCorrequisit resCorreq = new RestriccioCorrequisit();
-        RestriccioAssigMatiTarda resmati = new RestriccioAssigMatiTarda("AC",false);
+        RestriccioAssigMatiTarda resmati = new RestriccioAssigMatiTarda(0,"AC",false);
         RestriccioAulaHora resaulaHora = new RestriccioAulaHora(0,0,new Aula("A",0,1, Aula.TipusAula.NORMAL,50));
-
-        return new Horari(b,resCorreq,resNivell,resaula,resauladia,resaulaHora,resmati);
+        HashMap<String, Aula> aules = new HashMap<String, Aula>();
+        HashMap<String, Assignatura> assignatures = new HashMap<>();
+        assignatures.put("AC",new Assignatura("AC",2));
+        aules.put("A01",new Aula("A",0,1, Aula.TipusAula.NORMAL,50));
+        return new Horari(b,assignatures, aules,resCorreq,resNivell,resaula,resgrupTeo,resauladia,resaulaHora,resmati);
     }
 
+
     public static void mostra(Horari g, Scanner s) {
-        int opt = 0;
-        while (opt != 4) {
-            System.out.println("Escull que vols consultar:");
-            System.out.println("1: numero del grup");
-            System.out.println("2: capacitat del grup");
-            System.out.println("3: subgrups");
-            System.out.println("4: sortir");
-            opt = s.nextInt();
-            switch (opt) {
+        System.out.println(g.getHorari());
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int option = 0;
+        boolean creat = false;
+
+        while (option != 4) {
+            mostraopcions();
+            Horari horari = null;
+            option = scan.nextInt();
+            switch (option) {
                 case 1:
-                    System.out.println(g.getNum());
+                    horari = creador(scan);
+                    creat = true;
                     break;
 
                 case 2:
-                    System.out.println(g.getCapacitat());
+                    if (!creat) {
+                        System.out.println("Error: no hi ha un horari creat");
+                        System.out.println("");
+                    } else {
+                        mostra(horari, scan);
+                    }
                     break;
 
                 case 3:
-                    g.getSubgrups().forEach((key, value) -> System.out.println(key));
-                    break;
-
-                case 4:
                     break;
 
                 default:
@@ -68,6 +81,5 @@ public class DriverHorari {
             }
         }
     }
-
 
 }
