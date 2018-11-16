@@ -32,7 +32,7 @@ Un cop l'iterador arribi a l'última sessió que s'ha d'assignar retorna true pe
 
 #### Pseudocodi del backtracking cronològic:
 
-```pseudocode
+```java
 creaHorari(iterador per sessions, horari,HashMap<Sessió, ArrayList<possibilitats>> pos)
 if(iterador == última sessió ) return 
 for(d -> dies_possibles)
@@ -73,7 +73,7 @@ Llavors per a cada sessió efectuem les diferents restriccions i si alguna ens d
 
 #### Pseudocodi del forward checking:
 
-```pseudocode
+```java
 propagarPossibilitats(aula,dia,hora,HashMap<Sessió, ArrayList<possibilitats>> pos)
 for(i->totes les sessions)
    forAll restriccions:
