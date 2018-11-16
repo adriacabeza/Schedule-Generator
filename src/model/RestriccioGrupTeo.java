@@ -45,13 +45,10 @@ public class RestriccioGrupTeo extends Restriccions {
      * @param hora       hora que es comprova
      * @param dia        dia que es comprova
      */
-    public boolean isable2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
         if (pos.get(check).get(dia).get(hora).contains(aula)) {
-            if (check.getAssig().getNom() == assignat.getAssig().getNom()) {
-                int grup = assignat.getGrup().getNum() / 10;
-                if (check.getGrup().getNum() / 10 == grup) return false;      //solapament teories
-                if (check.getSub() != null)
-                    if (check.getSub().getNum() / 10 == grup) return false;   //solapament de lab amb teoria
+            if (check.getAssig().getNom().equals(assignat.getAssig().getNom()) && check.getSessio().getClass() == Teoria.class) {
+                if (check.getGrup().getNum() == assignat.getGrup().getNum()) return false;      //solapament teories o labs
             }
         }
 

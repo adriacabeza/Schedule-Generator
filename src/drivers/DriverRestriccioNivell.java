@@ -71,6 +71,7 @@ public class DriverRestriccioNivell {
             switch(opt){
 
                 case 1:
+                    pos = new HashMap<>();
                     rest = creador(scan);
                     System.out.println("creem la assignatura que simulara la que acabem d'assignar");
                     assignat =creaAssig(scan);

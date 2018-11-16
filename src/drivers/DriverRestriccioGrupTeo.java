@@ -1,14 +1,12 @@
 package drivers;
 
-import exceptions.NotFoundException;
-import exceptions.RestriccioIntegritatException;
 import model.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class DriverRestriccioCorrequisit {
+public class DriverRestriccioGrupTeo {
     public static void mostraopcions() {
         System.out.println("Escull una opcio:");
         System.out.println("1: Crear una restriccio");
@@ -16,13 +14,13 @@ public class DriverRestriccioCorrequisit {
         System.out.println("3: comprobar restriccio");
         System.out.println("4: Sortir");
     }
-    public static RestriccioCorrequisit creador (Scanner s){
-        return new RestriccioCorrequisit();
+    public static RestriccioGrupTeo creador (Scanner s){
+        return new RestriccioGrupTeo();
     }
 
     public static SessioGrup creaAssig(Scanner s){
         String nom,tipusaula;
-        int aux,num;
+        int aux,numg,nums;
         Aula.TipusAula tAula;
         InfoSessions ses = null;
         Assignatura ass;
@@ -32,13 +30,19 @@ public class DriverRestriccioCorrequisit {
         nom = s.next();
         aux = s.nextInt();
         ass = new Assignatura(nom,aux);
-        System.out.println("Introdueix el numero del grup");
-        num = s.nextInt();
-        System.out.println("Ara afegirem correquisits a la assignatura");
-        afegeixCo(ass,s);
+        System.out.println("Introdueix el numero del grup i del subgrup");
+        numg = s.nextInt();
+        nums = s.nextInt();
         tAula = Aula.TipusAula.NORMAL;
-        ses = new Teoria(0,0,tAula);
-        return new SessioGrup(ass,ses,new Grup(num,1,1),null,0);
+        System.out.println("introdueix un 1 per a crear la sesio de teoria qualsevol altre numero per a que sigui de lab");
+        if(s.nextInt() == 1){
+            ses = new Teoria(0,0,tAula);
+        }
+        else {
+            ses = new Laboratori(0,0,tAula);
+        }
+
+        return new SessioGrup(ass,ses,new Grup(numg,1,1),new Subgrup(nums,1,1),0);
     }
 
     public static void creaOpcions(SessioGrup check, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, Scanner s){
@@ -59,32 +63,11 @@ public class DriverRestriccioCorrequisit {
         }
         pos.put(check,diahoraaules);
     }
-    public static void afegeixCo(Assignatura ass ,Scanner s){
-        int opt = 0;
-        String corr ;
-        while(opt == 0){
-            System.out.println("prem un 0 per a afegir correquisits, qualsevol altre numero per a sortir");
-            opt = s.nextInt();
-            switch (opt){
-                case 0:
-                    System.out.println("Introdueix el nom i el quadrimestre al qual pertany");
-                    corr = s.next();
-                    try {
-                        ass.afegeixCorrequisit(new Assignatura(corr, s.nextInt()));
-                    } catch (RestriccioIntegritatException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
 
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         int aula, dia, hora;
-        RestriccioCorrequisit rest = null;
+        RestriccioGrupTeo rest = null;
         SessioGrup assignat = null;
         SessioGrup check = null;
         HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos = new HashMap<>();
@@ -103,25 +86,19 @@ public class DriverRestriccioCorrequisit {
                     check = creaAssig(scan);
                     System.out.println("Ara crearem el mapa amb les aules possibles que pot anar la sessio que volem mirar");
                     creaOpcions(check,pos,scan);
-
                     break;
 
                 case 2:
                     if(rest == null) System.out.println("Error no s'ha creat una restriccio");
                     else{
-                        try {
-                            System.out.println("Els correquisits de la assignatura ssignada son: " + assignat.getAssig().getCorrequisits());
-                        } catch (NotFoundException e) {
-                            System.out.println("La assignatura que hem assignat no te correquisits");
-                        }
-                        try {
-                            System.out.println("Els correquisits de la assignatura que este mirant son: " + check.getAssig().getCorrequisits());
-                        } catch (NotFoundException e) {
-                            System.out.println("La assignatura que estem mirant no te correquisits");
-                        }
+
+                        System.out.println("El grup de la assignatura asignada es: " + assignat.getGrup().getNum());
+                        System.out.println("El subgrup de la assignatura asignada es: " + assignat.getSub().getNum());
+                        System.out.println("El grup de la assignatura que estem mirant es: " + check.getGrup().getNum());
+                        System.out.println("El subgrup de la assignatura que estem mirant es: " + assignat.getSub().getNum());
+
                     }
                     break;
-
 
                 case 3:
                     if(rest == null) System.out.println("Error no s'ha creat una restriccio");
@@ -131,14 +108,10 @@ public class DriverRestriccioCorrequisit {
                         dia = scan.nextInt();
                         hora = scan.nextInt();
                         if(dia < 0 || hora < 0 || dia >=2 || hora >= 2) System.out.println("Error: recorda que nomes tenim dos dies i dos hores(0 i 1)");
-                        try {
-                            if(rest.isAble2(check,assignat,pos,aula,dia,hora)) System.out.println("es pot seguir usant aquesta aula en aquest dia");
-                            else System.out.println("error: no es pot seguir usant aquesta aula en aquest dia");
-                        } catch (NotFoundException e) {
-                            System.out.println("es pot seguir usant aquesta aula en aquest dia");
-                        }
-                    }
+                        if(rest.isAble2(check,assignat,pos,aula,dia,hora)) System.out.println("es pot seguir usant aquesta aula en aquest dia (en el cas que estigues abans)");
+                        else System.out.println("error: no es pot seguir usant aquesta aula en aquest dia");
 
+                    }
                     break;
 
                 case 4:
@@ -150,6 +123,4 @@ public class DriverRestriccioCorrequisit {
             }
         }
     }
-
 }
-// 1 A 1 1 0 EC 1 1 EC 1 1 0 A 1 0 AR 1 1 1 1 1 1 2 3 1 1 1

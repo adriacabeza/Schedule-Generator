@@ -51,14 +51,14 @@ public class RestriccioSubgrupLab extends Restriccions {
      * @param dia        dia que es comprova
      */
 
-    public boolean isable2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
         if (pos.get(check).get(dia).get(hora).contains(aula)) {
-            if (check.getAssig().getNom() == assignat.getAssig().getNom()) {
-                if (assignat.getSub() != null) {
-                    int grup = assignat.getSub().getNum() / 10;
-                    if (check.getGrup().getNum() / 10 == grup) return false;
-                    if (check.getSub() != null)
-                        if (check.getSub().getNum() == assignat.getSub().getNum()) return false;
+            if (check.getAssig().getNom().equals(assignat.getAssig().getNom())  && check.getSessio().getClass() == Laboratori.class) {
+                if (assignat.getSessio().getClass() == Laboratori.class) {
+                    return (assignat.getSub().getNum() != check.getSub().getNum());     //solapament laboratori¡
+                }
+                else {
+                    return (assignat.getGrup().getNum() != check.getGrup().getNum());   //solapament laboratori-teoria
                 }
             }
         }

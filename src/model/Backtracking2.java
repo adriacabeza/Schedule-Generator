@@ -249,12 +249,12 @@ public class Backtracking2 {
                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
                borrat = true;
            }
-           if (!resTeo.isable2(assignat,sessio,possibles,aula,dia,hora) && !borrat)  {
+           if (!resTeo.isAble2(assignat,sessio,possibles,aula,dia,hora) && !borrat)  {
                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
                borrat = true;
            }
 
-           if (!resSub.isable2(assignat,sessio,possibles,aula,dia,hora) && !borrat){
+           if (!resSub.isAble2(assignat,sessio,possibles,aula,dia,hora) && !borrat){
                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
                borrat = true;
            }
