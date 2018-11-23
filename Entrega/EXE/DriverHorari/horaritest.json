@@ -1,0 +1,5308 @@
+{
+  "horari": [
+    [
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 0,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 0,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 0,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 0,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 0,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 0,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Divendres",
+          "hora": 0,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 1,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 1,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 1,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 1,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 1,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 1,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Divendres",
+          "hora": 1,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 2,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 2,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 2,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 2,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 2,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 2,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Divendres",
+          "hora": 2,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 3,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 3,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 3,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 3,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 3,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 3,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Divendres",
+          "hora": 3,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 4,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 4,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 4,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 4,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "grup": {
+            "capacitat": 10,
+            "num": 20,
+            "subgrups": {
+              "21": {
+                "capacitat": 5,
+                "num": 21,
+                "subgrups": {}
+              },
+              "22": {
+                "capacitat": 5,
+                "num": 22,
+                "subgrups": {}
+              }
+            }
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 4,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 4,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Divendres",
+          "hora": 4,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 5,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 5,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 5,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 5,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "grup": {
+            "capacitat": 10,
+            "num": 20,
+            "subgrups": {
+              "21": {
+                "capacitat": 5,
+                "num": 21,
+                "subgrups": {}
+              },
+              "22": {
+                "capacitat": 5,
+                "num": 22,
+                "subgrups": {}
+              }
+            }
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 5,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 5,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Divendres",
+          "hora": 5,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 6,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 6,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 6,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 6,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 6,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 6,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Divendres",
+          "hora": 6,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 7,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 7,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 7,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 7,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 7,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 7,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Divendres",
+          "hora": 7,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "grup": {
+            "capacitat": 10,
+            "num": 20,
+            "subgrups": {
+              "21": {
+                "capacitat": 5,
+                "num": 21,
+                "subgrups": {}
+              },
+              "22": {
+                "capacitat": 5,
+                "num": 22,
+                "subgrups": {}
+              }
+            }
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 8,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 8,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 8,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 8,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 8,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 8,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "grup": {
+            "capacitat": 10,
+            "num": 20,
+            "subgrups": {
+              "21": {
+                "capacitat": 5,
+                "num": 21,
+                "subgrups": {}
+              },
+              "22": {
+                "capacitat": 5,
+                "num": 22,
+                "subgrups": {}
+              }
+            }
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 9,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 9,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 9,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 9,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 9,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 9,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "grup": {
+            "capacitat": 10,
+            "num": 20,
+            "subgrups": {
+              "21": {
+                "capacitat": 5,
+                "num": 21,
+                "subgrups": {}
+              },
+              "22": {
+                "capacitat": 5,
+                "num": 22,
+                "subgrups": {}
+              }
+            }
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 10,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 10,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 10,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 10,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "grup": {
+            "capacitat": 10,
+            "num": 20,
+            "subgrups": {
+              "21": {
+                "capacitat": 5,
+                "num": 21,
+                "subgrups": {}
+              },
+              "22": {
+                "capacitat": 5,
+                "num": 22,
+                "subgrups": {}
+              }
+            }
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 10,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 10,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null
+      ]
+    ],
+    [
+      [
+        {
+          "grup": {
+            "capacitat": 10,
+            "num": 10,
+            "subgrups": {
+              "11": {
+                "capacitat": 5,
+                "num": 11,
+                "subgrups": {}
+              },
+              "12": {
+                "capacitat": 5,
+                "num": 12,
+                "subgrups": {}
+              }
+            }
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 11,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 11,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dilluns",
+          "hora": 11,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 21,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 11,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 12,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dimarts",
+          "hora": 11,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 1,
+            "tAula": "laboratori",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null
+      ],
+      [
+        {
+          "grup": {
+            "capacitat": 10,
+            "num": 10,
+            "subgrups": {
+              "11": {
+                "capacitat": 5,
+                "num": 11,
+                "subgrups": {}
+              },
+              "12": {
+                "capacitat": 5,
+                "num": 12,
+                "subgrups": {}
+              }
+            }
+          },
+          "diaSetmana": "Dimecres",
+          "hora": 11,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "ER",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 1,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              },
+              "10": {
+                "capacitat": 10,
+                "num": 10,
+                "subgrups": {
+                  "11": {
+                    "capacitat": 5,
+                    "num": 11,
+                    "subgrups": {}
+                  },
+                  "12": {
+                    "capacitat": 5,
+                    "num": 12,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "AC"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        {
+          "subgrup": {
+            "capacitat": 5,
+            "num": 22,
+            "subgrups": {}
+          },
+          "diaSetmana": "Dijous",
+          "hora": 11,
+          "aula": {
+            "edifici": "a5",
+            "planta": 0,
+            "aula": 5,
+            "tAula": "normal",
+            "capacitat": 60
+          },
+          "assignatura": {
+            "nom": "AC",
+            "teoria": {
+              "numSessions": 2,
+              "duracioSessions": 2,
+              "tAula": "normal"
+            },
+            "laboratori": {
+              "numSessions": 3,
+              "duracioSessions": 4,
+              "tAula": "laboratori"
+            },
+            "grups": {
+              "20": {
+                "capacitat": 10,
+                "num": 20,
+                "subgrups": {
+                  "21": {
+                    "capacitat": 5,
+                    "num": 21,
+                    "subgrups": {}
+                  },
+                  "22": {
+                    "capacitat": 5,
+                    "num": 22,
+                    "subgrups": {}
+                  }
+                }
+              }
+            },
+            "correquisit": [
+              "ER"
+            ],
+            "quadrimestre": 1
+          }
+        },
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null
+      ]
+    ]
+  ]
+}
