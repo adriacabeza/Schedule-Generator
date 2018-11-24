@@ -1,0 +1,25 @@
+Objecte de prova: Classe SessioGrup, crear sessioGrup, modificar-la
+
+Elements integrats a la prova: Teoria, Laboratori, Grup, Subgrup, Assignatura
+
+Drivers: DriverSessioSubgrup
+    - crear SessioSubgrup
+    - modificar SessioSubgrup
+
+Stubs:
+
+Fitxers de dades necessaris: DriverSessioGrupExplicacioTest.txt
+
+Valors estudiats:
+    - creació correcte d'una SessioGrup
+    - Consulta correctament del atributs
+    - modificacio correcta dels atributs
+
+
+Efectes estudiats: -
+
+Operativa: S'obre un menú amb totes les opcions disponibles i l'explicació del que espera rebre
+    - introduir la opció desitjada
+    - introduir parametres que et demani la opció
+    - passar al primer punt si vols seguir fent coses
+    - introduir la opció de sortir
