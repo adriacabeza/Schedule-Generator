@@ -1,0 +1,1 @@
+al fer tests on omplim amb un numero d'aula per 2 dies amb 2 hores cada un, posem 1,1,1,1 per tenir algo ja que si al comprovar la restricio no hi ha una aula sempre retorna true.

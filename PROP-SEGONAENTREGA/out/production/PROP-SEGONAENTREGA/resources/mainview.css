@@ -1,0 +1,24 @@
+.button
+ {
+    -fx-background-color: transparent;
+    -fx-alignment:center-left;
+    -fx-border-width:0px;
+    -fx-background-radius: 0;
+ }
+
+.button:hover
+{
+    -fx-background-color:#AEABCA;
+    -fx-blend-mode: multiply;
+}
+
+#iconmenu
+{
+    -fx-background-color:#AEABCA;
+    -fx-blend-mode: darken;
+}
+
+#menu
+{
+    -fx-background-color:#D1D1D9;
+}
