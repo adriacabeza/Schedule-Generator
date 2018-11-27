@@ -3,13 +3,20 @@
     -fx-background-color: transparent;
     -fx-alignment:center-left;
     -fx-border-width:0px;
-    -fx-background-radius: 0;
+    -fx-background-radius:0;
  }
 
 .button:hover
 {
     -fx-background-color:#AEABCA;
     -fx-blend-mode: multiply;
+}
+
+#new_assig
+{
+    -fx-background-color:#72dbb1;
+    -fx-alignment:center;
+    -fx-background-radius:30;
 }
 
 #iconmenu
