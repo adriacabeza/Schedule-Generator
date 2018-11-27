@@ -108,7 +108,7 @@
          <top>
             <BorderPane prefHeight="60.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <left>
-                  <Label text="ASSIGNATURES" BorderPane.alignment="CENTER">
+                  <Label fx:id="assig_label" text="ASSIGNATURES" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -118,7 +118,7 @@
                   </Label>
                </left>
                <right>
-                  <Button id="new_assig" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" text="+" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Button id="new_assig" fx:id="new_assig" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#mostraHorari" prefHeight="35.0" prefWidth="35.0" text="+" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets right="20.0" />
                      </BorderPane.margin>
