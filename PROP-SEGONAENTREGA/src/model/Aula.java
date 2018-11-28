@@ -177,6 +177,7 @@ public class Aula {
      * @return la key de l'aula
      */
 
+    //TODO: falta un 0 en els noms que et retorna
     public String getKey() {
         return edifici + String.valueOf(planta) + String.valueOf(aula);
     }

@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ListView?>
 <AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.Controller">
   <children>
     <AnchorPane id="menu" layoutY="0.0" prefHeight="600.0" prefWidth="200.0">
@@ -89,11 +90,62 @@
         <DropShadow />
       </effect>
     </AnchorPane>
-    <BorderPane fx:id="content_tab" layoutX="200.0" layoutY="0.0" prefHeight="600.0" prefWidth="600.0">
+
+      <BorderPane fx:id="specific_content" layoutX="200.0" prefHeight="600.0" prefWidth="600.0">
          <top>
             <BorderPane prefHeight="60.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <left>
-                  <Label fx:id="tab_title" text="" BorderPane.alignment="CENTER">
+                  <Label fx:id="specific_tab_title" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets left="50.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </left>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </BorderPane>
+         </top>
+         <center>
+            <BorderPane fx:id="specific_inner_content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </BorderPane.margin>
+            </BorderPane>
+         </center>
+      </BorderPane>
+
+      <BorderPane fx:id="welcome_content" layoutX="200.0" prefHeight="600.0" prefWidth="600.0">
+          <top>
+              <BorderPane prefHeight="60.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                  <left>
+                      <Label text="Benvinguts a l'aplicació" BorderPane.alignment="CENTER">
+                          <font>
+                              <Font size="24.0" />
+                          </font>
+                          <BorderPane.margin>
+                              <Insets left="50.0" />
+                          </BorderPane.margin>
+                      </Label>
+                  </left>
+                  <BorderPane.margin>
+                      <Insets />
+                  </BorderPane.margin>
+              </BorderPane>
+          </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+
+    <BorderPane fx:id="list_content" layoutX="200.0" prefHeight="600.0" prefWidth="600.0">
+         <top>
+            <BorderPane prefHeight="60.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Label fx:id="list_tab_title" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -103,7 +155,7 @@
                   </Label>
                </left>
                <right>
-                  <Button id="plus_button" fx:id="plus_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#mostraHorari" prefHeight="35.0" prefWidth="35.0" text="+" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Button id="plus_button" fx:id="plus_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePlusButton" prefHeight="35.0" prefWidth="35.0" text="+" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets right="20.0" />
                      </BorderPane.margin>
@@ -121,10 +173,13 @@
             </BorderPane>
          </top>
          <center>
-            <BorderPane fx:id="inner_content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane fx:id="list_inner_content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </BorderPane.margin>
+                <center>
+                    <ListView fx:id="list_view"></ListView>
+                </center>
             </BorderPane>
          </center></BorderPane>
   </children>

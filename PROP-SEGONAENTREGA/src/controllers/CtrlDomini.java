@@ -9,6 +9,8 @@ import exceptions.RestriccioIntegritatException;
 import model.*;
 import model.Aula.TipusAula;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -60,6 +62,46 @@ public class CtrlDomini {
         resAulDia = new ArrayList<>();
         resAulaHora = new ArrayList<>();
         resMatiTarda = new ArrayList<>();
+    }
+
+
+    public int carrega(){ //TODO fer be
+        CtrlIO c = CtrlIO.getInstance();
+        try {
+            plaEstudis = c.carregaPlansDEstudi("plaestudistest.json");
+            assignatures = c.carregaAssignatures("assigtest.json");
+            aules = c.carregaAules("aulestest.json");
+        } catch (IOException e) {
+            return -1;
+        }
+        return 0;
+    }
+
+    public ArrayList<String> getLlistaPlansEstudis(){
+        ArrayList<String> info = new ArrayList<>();
+        for (PlaEstudis p : plaEstudis.values()){
+            info.add(p.getNomTitulacio() + " (" + p.getAny() + ")");
+        }
+        info.sort(String::compareToIgnoreCase);
+        return info;
+    }
+
+    public ArrayList<String> getLlistaAssignatures(){
+        ArrayList<String> info = new ArrayList<>();
+        for (Assignatura a : assignatures.values()){
+            info.add(a.getNom());   //TODO: posar id assig o id o el pla d'estudis al que pertany? parlar-ho
+        }
+        info.sort(String::compareToIgnoreCase);
+        return info;
+    }
+
+    public ArrayList<String> getLlistaAules() {
+        ArrayList<String> info = new ArrayList<>();
+        for (Aula a : aules.values()){
+            info.add(a.getKey());
+        }
+        info.sort(String::compareToIgnoreCase);
+        return info;
     }
 
     /**
