@@ -35,6 +35,10 @@ public class Controller {
     @FXML
     Button plus_button = new Button();
     @FXML
+    Button edit_button = new Button();
+    @FXML
+    Button delete_button = new Button();
+    @FXML
     BorderPane list_inner_content = new BorderPane();
     @FXML
     ListView<String> list_view = new ListView();
@@ -56,6 +60,88 @@ public class Controller {
         controladorDomini = CtrlDomini.getInstance();
         int i = controladorDomini.carrega(); //TODO error check
         System.out.println(i);
+
+        delete_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(!list_view.getSelectionModel().isEmpty()) {
+                    handleDelete(list_view.getSelectionModel().getSelectedItem());
+                }
+            }
+        });
+
+        edit_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(!list_view.getSelectionModel().isEmpty()) {
+                    handleModify(list_view.getSelectionModel().getSelectedItem());
+                }
+            }
+        });
+
+        plus_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                handleAdd();
+            }
+        });
+    }
+
+    private void handleDelete(String item) {
+        switch (state){
+            case 1:
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setTitle("State 1 Del");
+                a.show();
+                //controladorDomini.esborrarPlaEstudis(item);
+                break;
+            case 2:
+                //controladorDomini.esborrarAula(item);
+                break;
+            case 3:
+                //controladorDomini.esborrarAssignatura(item);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void handleModify(String item) {
+        switch (state){
+            case 1:
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setTitle("State 1 Modify");
+                a.show();
+                //controladorDomini.esborrarPlaEstudis(item);
+                break;
+            case 2:
+                //controladorDomini.esborrarAula(item);
+                break;
+            case 3:
+                //controladorDomini.esborrarAssignatura(item);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void handleAdd() {
+        switch (state){
+            case 1:
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setTitle("State 1 Add");
+                a.show();
+                //controladorDomini.esborrarPlaEstudis(item);
+                break;
+            case 2:
+                //controladorDomini.esborrarAula(item);
+                break;
+            case 3:
+                //controladorDomini.esborrarAssignatura(item);
+                break;
+            default:
+                break;
+        }
     }
 
     @FXML
@@ -70,16 +156,7 @@ public class Controller {
         ObservableList<String> plans = FXCollections.observableArrayList(controladorDomini.getLlistaPlansEstudis());
         list_view.setItems(plans);
 
-        /*Button modify_button = new Button();
-        modify_button.setText("Modificar");
-        modify_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(!llistaPlans.getSelectionModel().isEmpty()) {
-                    // Obre la finestra de modificar
-                }
-            }
-        });*/
+
     }
 
     @FXML
@@ -121,25 +198,5 @@ public class Controller {
         welcome_content.setVisible(true);
     }
 
-    @FXML
-    void handlePlusButton(){
-        switch (state){
-            case 1:
-                //afegeix un pla nou
-                    //obrir una nova finestra per tal de que l'usuari introdueixi les dades necessaries i cridar al ctrlD etc.
-                break;
-            case 2:
-                //afegeix aula
-                    //same
-                break;
-            case 3:
-                //afegeix assignatura
-                    //same
-                break;
-            default:
-                //should display an error
-                break;
-        }
-    }
 
 }

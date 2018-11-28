@@ -19,6 +19,20 @@
     -fx-background-radius:30;
 }
 
+#edit_button
+{
+    -fx-background-color:#AEABCA;
+    -fx-alignment:center;
+    -fx-background-radius:30;
+}
+
+#delete_button
+{
+    -fx-background-color:#d86382;
+    -fx-alignment:center;
+    -fx-background-radius:30;
+}
+
 #iconmenu
 {
     -fx-background-color:#AEABCA;
