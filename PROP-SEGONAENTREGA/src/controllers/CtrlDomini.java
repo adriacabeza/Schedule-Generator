@@ -20,6 +20,7 @@ public class CtrlDomini {
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
+    private Horari horari;
 
     //TODO pasar a horario + crear equals
     private RestriccioCorrequisit resCorr;
@@ -35,6 +36,7 @@ public class CtrlDomini {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
+
         resCorr = new RestriccioCorrequisit();
         resNiv = new RestriccioNivell();
         resAul = new RestriccioAula();
@@ -56,30 +58,24 @@ public class CtrlDomini {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
-        resCorr = new RestriccioCorrequisit();
-        resNiv = new RestriccioNivell();
-        resAul = new RestriccioAula();
-        resTeo = new RestriccioGrupTeo();
-        resSub = new RestriccioSubgrupLab();
-        resAulDia = new ArrayList<>();
-        resAulaHora = new ArrayList<>();
-        resMatiTarda = new ArrayList<>();
+        //horari = new Horari();
     }
 
-
-    public int carrega(){ //TODO fer be
+    /**
+     * Carrega l'informacio sobre aules, assignatures i plans d'estudi desde disc
+     */
+    public void carrega() throws IOException{ //TODO fer be
         CtrlIO c = CtrlIO.getInstance();
-        try {
-            plaEstudis = c.carregaPlansDEstudi("plaestudistest.json");
-            assignatures = c.carregaAssignatures("assigtest.json");
-            aules = c.carregaAules("aulestest.json");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return -1;
-        }
-        return 0;
+
+        plaEstudis = c.carregaPlansDEstudi("plaestudistest.json");
+        assignatures = c.carregaAssignatures("assigtest.json");
+        aules = c.carregaAules("aulestest.json");
     }
 
+    /**
+     * Obte una llista amb els noms de tots els plans d'estudi
+     * @return llista dels plans d'estudi
+     */
     public ArrayList<String> getLlistaPlansEstudis(){
         ArrayList<String> info = new ArrayList<>();
         for (PlaEstudis p : plaEstudis.values()){
@@ -89,6 +85,10 @@ public class CtrlDomini {
         return info;
     }
 
+    /**
+     * Obte una llista amb el nom de totes les assignatures
+     * @return llista d'assignatures
+     */
     public ArrayList<String> getLlistaAssignatures(){
         ArrayList<String> info = new ArrayList<>();
         for (Assignatura a : assignatures.values()){
@@ -98,6 +98,10 @@ public class CtrlDomini {
         return info;
     }
 
+    /**
+     * Obte una llista de totes les aules disponibles
+     * @return llista de totes les aules
+     */
     public ArrayList<String> getLlistaAules() {
         ArrayList<String> info = new ArrayList<>();
         for (Aula a : aules.values()){
@@ -495,7 +499,4 @@ public class CtrlDomini {
     public void afegir_restriccio_aula_hora(RestriccioAulaDia res){
         resAulDia.add(res);
     }
-
-
-
 }

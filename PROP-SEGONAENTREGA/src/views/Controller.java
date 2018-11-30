@@ -17,6 +17,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
+
 
 public class Controller {
 
@@ -52,11 +54,18 @@ public class Controller {
     private int state;
     private CtrlDomini controladorDomini;
 
+    /**
+     *
+     */
     public void initialize(){
         mostraInici();
         controladorDomini = CtrlDomini.getInstance();
-        int i = controladorDomini.carrega(); //TODO error check
-        System.out.println(i);
+
+        try {
+            controladorDomini.carrega(); //TODO error check
+        } catch (IOException e) {
+            //TODO warning wrong reading from file
+        }
 
         delete_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -84,6 +93,10 @@ public class Controller {
         });
     }
 
+    /**
+     * Esborra un element del tipus de llista concret segons de la pantalla on es troba
+     * @param item identificador del item a esborrar
+     */
     private void handleDelete(String item) {
         switch (state){
             case 1:
@@ -113,6 +126,10 @@ public class Controller {
         }
     }
 
+    /**
+     * 
+     * @param item
+     */
     private void handleModify(String item) {
         switch (state){
             case 1:
