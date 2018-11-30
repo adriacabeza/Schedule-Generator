@@ -20,6 +20,8 @@ public class CtrlDomini {
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
+
+    //TODO pasar a horario + crear equals
     private RestriccioCorrequisit resCorr;
     private RestriccioNivell resNiv;
     private RestriccioAula resAul;
