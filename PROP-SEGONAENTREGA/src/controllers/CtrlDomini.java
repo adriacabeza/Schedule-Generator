@@ -72,6 +72,7 @@ public class CtrlDomini {
             assignatures = c.carregaAssignatures("assigtest.json");
             aules = c.carregaAules("aulestest.json");
         } catch (IOException e) {
+            e.printStackTrace();
             return -1;
         }
         return 0;
@@ -80,7 +81,7 @@ public class CtrlDomini {
     public ArrayList<String> getLlistaPlansEstudis(){
         ArrayList<String> info = new ArrayList<>();
         for (PlaEstudis p : plaEstudis.values()){
-            info.add(p.getNomTitulacio() + " (" + p.getAny() + ")");
+            info.add(p.getNomTitulacio());
         }
         info.sort(String::compareToIgnoreCase);
         return info;

@@ -1,7 +1,8 @@
 package views;
 
 import controllers.CtrlDomini;
-import controllers.CtrlIO;
+import exceptions.NotFoundException;
+import exceptions.RestriccioIntegritatException;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,10 +17,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class Controller {
 
@@ -90,10 +87,20 @@ public class Controller {
     private void handleDelete(String item) {
         switch (state){
             case 1:
-                Alert a = new Alert(Alert.AlertType.WARNING);
-                a.setTitle("State 1 Del");
-                a.show();
-                //controladorDomini.esborrarPlaEstudis(item);
+                try {
+                    controladorDomini.esborrarPlaEstudis(item);
+                    reloadList();
+                } catch (NotFoundException e) {
+                    Alert a = new Alert(Alert.AlertType.WARNING);
+                    a.setTitle("Pla no trobat");
+                    a.setContentText("Error intern");
+                    a.show();
+                } catch (RestriccioIntegritatException e) {
+                    Alert a = new Alert(Alert.AlertType.WARNING);
+                    a.setTitle("Pla no obsolet");
+                    a.setContentText("No es pot esborrar un plà no obsolet");
+                    a.show();
+                }
                 break;
             case 2:
                 //controladorDomini.esborrarAula(item);
@@ -198,5 +205,12 @@ public class Controller {
         welcome_content.setVisible(true);
     }
 
-
+    void reloadList(){
+        switch (state) {
+            case 1: mostraLlistaPlans(); break;
+            case 2: mostraLlistaAules(); break;
+            case 3: mostraLlistaAssignatures(); break;
+            default: break;
+        }
+    }
 }

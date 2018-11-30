@@ -3,7 +3,7 @@
     "nomTitulacio": "Fisica",
     "any": 2012,
     "assignatures": [],
-    "obsolet": false
+    "obsolet": true
   },
   "Informatica": {
     "nomTitulacio": "Informatica",
