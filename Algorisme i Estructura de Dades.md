@@ -39,7 +39,7 @@ for(d -> dies_possibles)
   for(h->d.hores_possibles)
      for(a->h.aules_possibles){
          if(no està assignat aquest slot al horari){
-             if(es compleixen les restriccions){
+             if(no es passa de la franja de l'horari){
                  Assignar a l'horari a l'slot a,d,h durant la duració de la sessió
                  propagarPossibilitats()
                  if(propagarPossibilitats() fa que alguna sessió no tingui opcions)
