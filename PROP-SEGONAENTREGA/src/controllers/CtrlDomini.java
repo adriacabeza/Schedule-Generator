@@ -248,7 +248,6 @@ public class CtrlDomini {
         }
 
         // borrem les referencies a l'assignatura de tots els llocs
-
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (plaest.hasAssignatura(nomA)) {
                 plaest.esborrarAssignatura(nomA);
@@ -369,14 +368,10 @@ public class CtrlDomini {
     /**
      * Esborra una aula del sistema
      *
-     * @param edifici edifici en el que es troba l'aula
-     * @param planta  planta a la que es troba l'aula
-     * @param aula    numero d'aula dins d'una planta i un edifici
+     * @param nomAula nom de l'aula que es vol esborrar
      * @throws NotFoundException quan s'intenta borrar una aula inexistent
      */
-    public void esborrarAula(String edifici, int planta, int aula) throws NotFoundException {
-        String nomAula = Aula.crearkey(edifici, planta, aula);
-
+    public void esborrarAula(String nomAula) throws NotFoundException {
         if (aules.containsKey(nomAula)) {
             aules.remove(nomAula);
         } else {
@@ -418,8 +413,6 @@ public class CtrlDomini {
     }
 
     /**
-     * protected ignatura;
-     * <p>
      * Crea l'horari mitjançant backtracking
      *
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar

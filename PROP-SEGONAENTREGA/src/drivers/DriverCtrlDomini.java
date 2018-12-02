@@ -234,7 +234,7 @@ public class DriverCtrlDomini {
                     planta = scan.nextInt();
                     aula = scan.nextInt();
                     try {
-                        c.esborrarAula(edifici, planta, aula);
+                        c.esborrarAula(Aula.crearkey(edifici, planta, aula));
                     } catch (NotFoundException e) {
                         System.out.println("Error, no hi ha cap aula amb aquest nom");
                     }

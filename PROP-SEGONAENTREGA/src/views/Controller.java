@@ -55,7 +55,7 @@ public class Controller {
     private CtrlDomini controladorDomini;
 
     /**
-     *
+     * Carrega la pantalla principal i les dades dels fitxers JSON
      */
     public void initialize(){
         mostraInici();
@@ -102,7 +102,6 @@ public class Controller {
             case 1:
                 try {
                     controladorDomini.esborrarPlaEstudis(item);
-                    reloadList();
                 } catch (NotFoundException e) {
                     Alert a = new Alert(Alert.AlertType.WARNING);
                     a.setTitle("Pla no trobat");
@@ -116,19 +115,32 @@ public class Controller {
                 }
                 break;
             case 2:
-                //controladorDomini.esborrarAula(item);
+                try {
+                    controladorDomini.esborrarAula(item);
+                } catch (NotFoundException e) {
+                    Alert a = new Alert(Alert.AlertType.WARNING);
+                    a.setTitle("Aula no trobada");
+                    a.setContentText("Error intern");
+                }
                 break;
             case 3:
-                //controladorDomini.esborrarAssignatura(item);
+                try {
+                    controladorDomini.esborrarAssignatura(item);
+                } catch (NotFoundException e) {
+                    Alert a = new Alert(Alert.AlertType.WARNING);
+                    a.setTitle("Assignatura no trobada");
+                    a.setContentText("Error intern");
+                }
                 break;
             default:
                 break;
         }
+        reloadList();
     }
 
     /**
-     * 
-     * @param item
+     * Accedeix a modificar un element X segons l'estat on es trobi la pantalla
+     * @param item item concret a modificar, de tipus X
      */
     private void handleModify(String item) {
         switch (state){
@@ -149,6 +161,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Accedeix a afegir un element de tipus X segons l'estat on es trobi la pantalla
+     */
     private void handleAdd() {
         switch (state){
             case 1:
@@ -169,6 +184,9 @@ public class Controller {
     }
 
     @FXML
+    /**
+     * Mostra la pantalla de llista de plans d'estudi amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
+    */
     void mostraLlistaPlans() {
         state = 1;
         list_content.setVisible(true);
@@ -184,6 +202,9 @@ public class Controller {
     }
 
     @FXML
+    /**
+     *Mostra la pantalla de llista d'aules amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
+     */
     void mostraLlistaAules() {
         state = 2;
         list_content.setVisible(true);
@@ -197,6 +218,9 @@ public class Controller {
     }
 
     @FXML
+    /**
+     * Mostra la pantalla de llista d'assignatures amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
+     */
     void mostraLlistaAssignatures() {
         state = 3;
         list_content.setVisible(true);
@@ -210,11 +234,17 @@ public class Controller {
     }
 
     @FXML
+    /**
+     * Mostra la pantalla de gestió d'horaris, amb les opcions de carregar-ne un de disc, crear-ne un de nou o modificar-ne
+     */
     void mostraHorari() {
         state = 0; //TODO might change later
     }
 
     @FXML
+    /**
+     * Mostra la pantalla inicial
+     */
     void mostraInici() {
         state = 0;
         list_content.setVisible(false);
@@ -222,6 +252,9 @@ public class Controller {
         welcome_content.setVisible(true);
     }
 
+    /**
+     * Actualitza l'informació de la llista mostrada per pantalla
+     */
     void reloadList(){
         switch (state) {
             case 1: mostraLlistaPlans(); break;
@@ -230,4 +263,51 @@ public class Controller {
             default: break;
         }
     }
+
+    //pantalla per crear una assignatura, tots els camps buits
+    void crearAssignatura(){
+
+    }
+
+    //pantalla per modificar una assignatura, mostra tota la info anterior i accepta camps a modificar
+    void modificarAssignatura(String nomAssignatura){
+
+    }
+
+    //pantalla per mostrar tota la informació d'una assignatura
+    void consultarAssignatura(String nomAssignatura){
+
+    }
+
+    //pantalla per crear una aula, tots els camps buits
+    void crearAula(){
+
+    }
+
+    //pantalla per modificar una aula, mostra tota la info anterior i accepta camps a modificar
+    void modificarAula(String nomAula){
+
+    }
+
+    //pantalla per mostrar tota la informació d'una aula
+    void consultarAula(String nomAula){
+
+    }
+
+    //pantalla per crear un pla d'estudis, tots els camps buits
+    void crearPlaEstudis(){
+
+    }
+
+    //pantalla per modificar una assignatura, mostra tota la info anterior i accepta camps a modificar
+    void modificarPlaEstudis(String nomPla){
+
+    }
+
+    //pantalla per mostrar tota la informació d'una assignatura
+    void consultarPlaEstudis(String nomPla){
+
+    }
+
+    //TODO tot lo relatiu a horari, mostrar-los, editar-los, carregar de fitxer, etc
 }

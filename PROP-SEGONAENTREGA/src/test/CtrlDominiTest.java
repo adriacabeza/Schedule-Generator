@@ -351,14 +351,14 @@ public class CtrlDominiTest {
     @Test
     public void esborrarAula() {
         try {
-            c.esborrarAula("a5", 1, 2);
+            c.esborrarAula(Aula.crearkey("a5", 1, 2));
             fail();
         } catch (NotFoundException ignored) {
         }
 
         try {
             c.creaAula("a5", 1, 2, 60, Aula.TipusAula.LABORATORI);
-            c.esborrarAula("a5", 1, 2);
+            c.esborrarAula(Aula.crearkey("a5", 1, 2));
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
         }
