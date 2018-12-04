@@ -4,6 +4,8 @@
 
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import model.*;
@@ -222,6 +224,7 @@ public class CtrlDomini {
         return null;
     }
 
+    //TODO delet this or return json
     /**
      * Permet consultar una assignatura identificada pel seu nom
      *
@@ -229,11 +232,14 @@ public class CtrlDomini {
      * @return Assignatura
      * @throws NotFoundException si l'assignatura demanada no existeix
      */
-    public Assignatura consultarAssignatura(String nom) throws NotFoundException {
+    public String consultarAssignatura(String nom) throws NotFoundException {
         if (!assignatures.containsKey(nom)) {
             throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nom.toUpperCase());
         }
-        return assignatures.get(nom);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(assignatures.get(nom));
+        return json;
     }
 
     /**

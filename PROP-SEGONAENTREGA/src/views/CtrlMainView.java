@@ -274,12 +274,14 @@ public class CtrlMainView {
     //pantalla per crear una assignatura, tots els camps buits
     void crearAssignatura() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
-        Parent root = null;
         try {
-            root = loader.load();
+            Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            CtrlAssignaturaView c = loader.getController();
+            c.setMainController(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -296,6 +298,7 @@ public class CtrlMainView {
 
         CtrlAssignaturaView ca = loader.getController();
         ca.loadAssignatura(nomAssignatura);
+        ca.disableEditFields();
     }
 
     //pantalla per mostrar tota la informació d'una assignatura

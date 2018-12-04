@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -13,22 +14,22 @@
    <center>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
          <children>
-            <HBox id="name" alignment="CENTER_LEFT">
+            <HBox id="name" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
                         <Label id="nom_assig" text="Nom:">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField />
+                        <TextField fx:id="text_nom" HBox.hgrow="ALWAYS" />
                      </children>
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </HBox>
-                  <HBox>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
                         <Label text="Abreviacio:">
                            <VBox.margin>
@@ -38,7 +39,7 @@
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField />
+                        <TextField fx:id="text_abbvr" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
@@ -46,29 +47,29 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox id="plaest">
+            <HBox id="plaest" alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Pla d'estudis:">
+                        <Label text="Pla d'estudis:" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <ChoiceBox prefWidth="150.0" />
+                        <ChoiceBox fx:id="combobox_plaest" maxHeight="1.7976931348623157E308" maxWidth="140.0" minWidth="-Infinity" prefWidth="140.0" HBox.hgrow="ALWAYS" />
                      </children>
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </HBox>
-                  <HBox>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Quadrimestre:">
+                        <Label text="Quadrimestre:" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </Label>
-                        <TextField />
+                        <TextField fx:id="text_quadri" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
@@ -78,12 +79,12 @@
             </HBox>
             <VBox>
                <children>
-                  <Label text="Descripcio:">
+                  <Label text="Descripcio:" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextArea prefHeight="73.0" prefWidth="542.0" />
+                  <TextArea fx:id="text_descripcio" prefHeight="73.0" prefWidth="542.0" VBox.vgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets bottom="20.0" />
@@ -91,41 +92,41 @@
             </VBox>
             <HBox id="grups">
                <children>
-                  <HBox>
+                  <HBox HBox.hgrow="ALWAYS">
                      <children>
-                        <VBox>
+                        <VBox HBox.hgrow="ALWAYS">
                            <children>
-                              <HBox>
+                              <HBox VBox.vgrow="ALWAYS">
                                  <children>
                                     <Label text="#Grups:">
                                        <padding>
                                           <Insets right="10.0" />
                                        </padding></Label>
-                                    <TextField />
+                                    <TextField fx:id="text_numgrups" HBox.hgrow="ALWAYS" />
                                  </children>
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox>
+                              <HBox VBox.vgrow="ALWAYS">
                                  <children>
                                     <Label text="Capacitat:">
                                        <padding>
                                           <Insets right="10.0" />
                                        </padding></Label>
-                                    <TextField />
+                                    <TextField fx:id="text_capacitat" HBox.hgrow="ALWAYS" />
                                  </children>
                                  <padding>
                                     <Insets bottom="10.0" />
                                  </padding>
                               </HBox>
-                              <HBox>
+                              <HBox VBox.vgrow="ALWAYS">
                                  <children>
                                     <Label text="#Subgrups:">
                                        <padding>
                                           <Insets right="10.0" />
                                        </padding></Label>
-                                    <TextField />
+                                    <TextField fx:id="text_numsubgrups" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
                            </children>
@@ -140,4 +141,15 @@
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
+   <bottom>
+      <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+         <children>
+            <Button fx:id="cancelbutton" mnemonicParsing="false" onMouseClicked="#exit" text="Cancel·la" />
+            <Button fx:id="savebutton" mnemonicParsing="false" onMouseClicked="#saveChanges" text="Guarda" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
