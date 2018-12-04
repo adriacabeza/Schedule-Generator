@@ -64,7 +64,11 @@ public class Controller {
         try {
             controladorDomini.carrega(); //TODO error check
         } catch (IOException e) {
-            //TODO warning wrong reading from file
+            //TODO afegir la opcio de carregar manualment o de tornar a intentar, mostrant a l'usuari quin arxiu no s'ha pogut carregar
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setTitle("Error al carregar el fitxer");
+            a.setContentText("No s'ha trobat el fitxer");
+            a.show();
         }
 
         delete_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -197,8 +201,6 @@ public class Controller {
 
         ObservableList<String> plans = FXCollections.observableArrayList(controladorDomini.getLlistaPlansEstudis());
         list_view.setItems(plans);
-
-
     }
 
     @FXML
