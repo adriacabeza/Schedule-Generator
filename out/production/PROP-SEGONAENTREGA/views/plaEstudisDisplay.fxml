@@ -8,9 +8,9 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="views.CtrlAulaView"
+            fx:controller="views.CtrlPlaEstudisView"
             prefHeight="400.0" prefWidth="600.0">
     <center>
-        <Label text="Aula form" BorderPane.alignment="CENTER" />
+        <Label text="Pla Estudis display" BorderPane.alignment="CENTER" />
     </center>
 </BorderPane>

@@ -3,24 +3,22 @@ package views;
 import controllers.CtrlDomini;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 
-public class Controller {
+public class CtrlMainView {
 
     /* Welcome */
     @FXML
@@ -57,7 +55,7 @@ public class Controller {
     /**
      * Carrega la pantalla principal i les dades dels fitxers JSON
      */
-    public void initialize(){
+    public void initialize() {
         mostraInici();
         controladorDomini = CtrlDomini.getInstance();
 
@@ -74,7 +72,7 @@ public class Controller {
         delete_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if(!list_view.getSelectionModel().isEmpty()) {
+                if (!list_view.getSelectionModel().isEmpty()) {
                     handleDelete(list_view.getSelectionModel().getSelectedItem());
                 }
             }
@@ -83,7 +81,7 @@ public class Controller {
         edit_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if(!list_view.getSelectionModel().isEmpty()) {
+                if (!list_view.getSelectionModel().isEmpty()) {
                     handleModify(list_view.getSelectionModel().getSelectedItem());
                 }
             }
@@ -99,10 +97,11 @@ public class Controller {
 
     /**
      * Esborra un element del tipus de llista concret segons de la pantalla on es troba
+     *
      * @param item identificador del item a esborrar
      */
     private void handleDelete(String item) {
-        switch (state){
+        switch (state) {
             case 1:
                 try {
                     controladorDomini.esborrarPlaEstudis(item);
@@ -144,21 +143,23 @@ public class Controller {
 
     /**
      * Accedeix a modificar un element X segons l'estat on es trobi la pantalla
+     *
      * @param item item concret a modificar, de tipus X
      */
     private void handleModify(String item) {
-        switch (state){
+        switch (state) {
             case 1:
-                Alert a = new Alert(Alert.AlertType.WARNING);
-                a.setTitle("State 1 Modify");
-                a.show();
-                //controladorDomini.esborrarPlaEstudis(item);
+                modificarPlaEstudis(item); //TODO same try catch
                 break;
             case 2:
-                //controladorDomini.esborrarAula(item);
+                modificarAula(item);
                 break;
             case 3:
-                //controladorDomini.esborrarAssignatura(item);
+                try {
+                    modificarAssignatura(item);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 break;
@@ -169,18 +170,15 @@ public class Controller {
      * Accedeix a afegir un element de tipus X segons l'estat on es trobi la pantalla
      */
     private void handleAdd() {
-        switch (state){
+        switch (state) {
             case 1:
-                Alert a = new Alert(Alert.AlertType.WARNING);
-                a.setTitle("State 1 Add");
-                a.show();
-                //controladorDomini.esborrarPlaEstudis(item);
+                crearPlaEstudis();
                 break;
             case 2:
-                //controladorDomini.esborrarAula(item);
+                crearAula();
                 break;
             case 3:
-                //controladorDomini.esborrarAssignatura(item);
+                crearAssignatura();
                 break;
             default:
                 break;
@@ -190,7 +188,7 @@ public class Controller {
     @FXML
     /**
      * Mostra la pantalla de llista de plans d'estudi amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
-    */
+     */
     void mostraLlistaPlans() {
         state = 1;
         list_content.setVisible(true);
@@ -257,58 +255,145 @@ public class Controller {
     /**
      * Actualitza l'informació de la llista mostrada per pantalla
      */
-    void reloadList(){
+    void reloadList() {
         switch (state) {
-            case 1: mostraLlistaPlans(); break;
-            case 2: mostraLlistaAules(); break;
-            case 3: mostraLlistaAssignatures(); break;
-            default: break;
+            case 1:
+                mostraLlistaPlans();
+                break;
+            case 2:
+                mostraLlistaAules();
+                break;
+            case 3:
+                mostraLlistaAssignatures();
+                break;
+            default:
+                break;
         }
     }
 
     //pantalla per crear una assignatura, tots els camps buits
-    void crearAssignatura(){
-
+    void crearAssignatura() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    //TODO com passarli la info de l'assignatura?
     //pantalla per modificar una assignatura, mostra tota la info anterior i accepta camps a modificar
-    void modificarAssignatura(String nomAssignatura){
+    void modificarAssignatura(String nomAssignatura) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
 
+        CtrlAssignaturaView ca = loader.getController();
+        ca.loadAssignatura(nomAssignatura);
     }
 
     //pantalla per mostrar tota la informació d'una assignatura
-    void consultarAssignatura(String nomAssignatura){
-
+    void consultarAssignatura(String nomAssignatura) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaDisplay.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //pantalla per crear una aula, tots els camps buits
-    void crearAula(){
-
+    void crearAula() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaForm.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //pantalla per modificar una aula, mostra tota la info anterior i accepta camps a modificar
-    void modificarAula(String nomAula){
-
+    void modificarAula(String nomAula) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaForm.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //pantalla per mostrar tota la informació d'una aula
-    void consultarAula(String nomAula){
-
+    void consultarAula(String nomAula) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaDisplay.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //pantalla per crear un pla d'estudis, tots els camps buits
-    void crearPlaEstudis(){
-
+    void crearPlaEstudis() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisForm.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //pantalla per modificar una assignatura, mostra tota la info anterior i accepta camps a modificar
-    void modificarPlaEstudis(String nomPla){
-
+    void modificarPlaEstudis(String nomPla) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisForm.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //pantalla per mostrar tota la informació d'una assignatura
-    void consultarPlaEstudis(String nomPla){
-
+    void consultarPlaEstudis(String nomPla) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisDisplay.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //TODO tot lo relatiu a horari, mostrar-los, editar-los, carregar de fitxer, etc
