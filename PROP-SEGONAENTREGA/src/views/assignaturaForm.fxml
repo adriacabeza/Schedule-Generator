@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -8,38 +9,135 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAssignaturaView">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAssignaturaView">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
          <children>
-            <HBox id="name" prefHeight="100.0" prefWidth="200.0">
+            <HBox id="name" alignment="CENTER_LEFT">
                <children>
-                  <Label id="nom_assig" text="Nom:" />
-                  <TextField />
-                  <Label text="Abreviaci" />
-                  <TextField />
+                  <HBox>
+                     <children>
+                        <Label id="nom_assig" text="Nom:">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField />
+                     </children>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="Abreviacio:">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField />
+                     </children>
+                  </HBox>
                </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
             </HBox>
-            <HBox id="plaest" prefHeight="100.0" prefWidth="200.0">
+            <HBox id="plaest">
                <children>
-                  <Label text="Pla d'estudis:" />
-                  <ChoiceBox prefWidth="150.0" />
-                  <Label text="Quadrimestre:" />
-                  <TextField />
+                  <HBox>
+                     <children>
+                        <Label text="Pla d'estudis:">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <ChoiceBox prefWidth="150.0" />
+                     </children>
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="Quadrimestre:">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField />
+                     </children>
+                  </HBox>
                </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
             </HBox>
-            <HBox id="description" prefHeight="100.0" prefWidth="200.0">
+            <VBox>
                <children>
-                  <Label text="Descripcio:" />
-                  <TextArea prefHeight="100.0" prefWidth="524.0" />
+                  <Label text="Descripcio:">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextArea prefHeight="73.0" prefWidth="542.0" />
                </children>
-            </HBox>
-            <HBox id="grups" prefHeight="100.0" prefWidth="200.0">
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </VBox>
+            <HBox id="grups">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox>
+                     <children>
+                        <VBox>
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label text="#Grups:">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding></Label>
+                                    <TextField />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Label text="Capacitat:">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding></Label>
+                                    <TextField />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Label text="#Subgrups:">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding></Label>
+                                    <TextField />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox />
+                     </children></HBox>
                </children>
             </HBox>
          </children>
       </VBox>
    </center>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </BorderPane>
