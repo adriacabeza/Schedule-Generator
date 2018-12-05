@@ -183,14 +183,14 @@ public class CtrlAssignaturaView {
             return;
         }
 
-        String nomAbr = text_abbvr.getText(); //TODO posar al domini
+        String nomAbr = text_abbvr.getText();
         String descripcio = text_descripcio.getText();
         String nomAssig = text_nom.getText(); //TODO check not null
-        int quadrimestre = Integer.parseInt(text_quadri.getText()); //TODO check it contains a number
         String plaEstudis = combobox_plaest.getValue();
         int numgrups = Integer.parseInt(text_numgrups.getText());
         int capacitat = Integer.parseInt(text_capacitat.getText());
         int numsubgrups = Integer.parseInt(text_numsubgrups.getText());
+        int quadrimestre = Integer.parseInt(text_quadri.getText());
 
         try { //TODO verify all inputs before inserting
             if (editmode) ctrlDomini.esborrarAssignatura(nomAssig);
