@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAssignaturaView">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../resources/mainview.css" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAssignaturaView">
    <center>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
          <children>
@@ -147,8 +147,8 @@
             <Insets top="20.0" />
          </BorderPane.margin>
          <children>
-            <Button fx:id="cancelbutton" mnemonicParsing="false" onMouseClicked="#exit" text="Cancel·la" />
-            <Button fx:id="savebutton" mnemonicParsing="false" onMouseClicked="#saveChanges" text="Guarda" />
+            <Button id="assig_cancel" fx:id="cancelbutton" mnemonicParsing="false" onMouseClicked="#exit" text="Cancel·la" />
+            <Button id="assig_save" fx:id="savebutton" mnemonicParsing="false" onMouseClicked="#saveChanges" text="Guarda" />
          </children>
       </HBox>
    </bottom>

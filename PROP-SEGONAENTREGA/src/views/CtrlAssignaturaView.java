@@ -62,7 +62,7 @@ public class CtrlAssignaturaView {
             text_nom.setText((String) assignatura.get("nom"));
             text_abbvr.setText((String) assignatura.get("abr"));
             text_descripcio.setText((String) assignatura.get("descripcio"));
-            text_quadri.setText((String) assignatura.get("quadrimestre"));
+            text_quadri.setText(String.valueOf((double)assignatura.get("quadrimestre")));
 
             //TODO ni ho comento perque no ho vull ni entendre, into the garbage
             //TODO god has abandoned us

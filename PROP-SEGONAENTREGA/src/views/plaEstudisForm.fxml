@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
+            stylesheets="@../resources/mainview.css"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="views.CtrlPlaEstudisView"
             prefHeight="400.0" prefWidth="600.0">
