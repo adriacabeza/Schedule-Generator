@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -158,6 +159,33 @@ public class CtrlMainView {
                 try {
                     modificarAssignatura(item);
                 } catch (IOException e) {
+                    //TODO FIX
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * Accedeix a consultar un element X segons l'estat on es trobi la pantalla
+     *
+     * @param item item concret a consultar, de tipus X
+     */
+    private void handleDisplay(String item) {
+        switch (state) {
+            case 1:
+                consultarPlaEstudis(item); //TODO same try catch
+                break;
+            case 2:
+                consultarAula(item);
+                break;
+            case 3:
+                try {
+                    consultarAssignatura(item);
+                } catch (IOException e) {
+                    //TODO FIX
                     e.printStackTrace();
                 }
                 break;
@@ -178,7 +206,12 @@ public class CtrlMainView {
                 crearAula();
                 break;
             case 3:
-                crearAssignatura();
+                try {
+                    crearAssignatura();
+                } catch (IOException e) {
+                    //TODO FIX
+                    e.printStackTrace();
+                }
                 break;
             default:
                 break;
@@ -199,6 +232,23 @@ public class CtrlMainView {
 
         ObservableList<String> plans = FXCollections.observableArrayList(controladorDomini.getLlistaPlansEstudis());
         list_view.setItems(plans);
+        list_view.setCellFactory(lv -> new ListCell<String>(){
+            @Override
+            protected void updateItem(String s, boolean empty) {
+                super.updateItem(s, empty);
+                if(empty){
+                    setText(null);
+                    setGraphic(null);
+                }else{
+                    setText(s);
+                    setOnMouseClicked(mouseClickedEvent -> {
+                        if(mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                            handleDisplay(s);
+                        }
+                    });
+                }
+            }
+        });
     }
 
     @FXML
@@ -215,6 +265,23 @@ public class CtrlMainView {
 
         ObservableList<String> aules = FXCollections.observableArrayList(controladorDomini.getLlistaAules());
         list_view.setItems(aules);
+        list_view.setCellFactory(lv -> new ListCell<String>(){
+            @Override
+            protected void updateItem(String s, boolean empty) {
+                super.updateItem(s, empty);
+                if(empty){
+                    setText(null);
+                    setGraphic(null);
+                }else{
+                    setText(s);
+                    setOnMouseClicked(mouseClickedEvent -> {
+                        if(mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                            handleDisplay(s);
+                        }
+                    });
+                }
+            }
+        });
     }
 
     @FXML
@@ -231,6 +298,23 @@ public class CtrlMainView {
 
         ObservableList<String> assignatures = FXCollections.observableArrayList(controladorDomini.getLlistaAssignatures());
         list_view.setItems(assignatures);
+        list_view.setCellFactory(lv -> new ListCell<String>(){
+            @Override
+            protected void updateItem(String s, boolean empty) {
+                super.updateItem(s, empty);
+                if(empty){
+                    setText(null);
+                    setGraphic(null);
+                }else{
+                    setText(s);
+                    setOnMouseClicked(mouseClickedEvent -> {
+                        if(mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                            handleDisplay(s);
+                        }
+                    });
+                }
+            }
+        });
     }
 
     @FXML
@@ -272,19 +356,17 @@ public class CtrlMainView {
     }
 
     //pantalla per crear una assignatura, tots els camps buits
-    void crearAssignatura() {
+    void crearAssignatura() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
-        try {
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            CtrlAssignaturaView c = loader.getController();
-            c.setMainController(this);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Crear nova assignatura");
+        stage.show();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        CtrlAssignaturaView ca = loader.getController();
+        ca.setMainController(this);
     }
 
     //TODO com passarli la info de l'assignatura?
@@ -294,6 +376,8 @@ public class CtrlMainView {
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Modificar assignatura: " + nomAssignatura);
         stage.show();
 
         CtrlAssignaturaView ca = loader.getController();
@@ -303,17 +387,17 @@ public class CtrlMainView {
     }
 
     //pantalla per mostrar tota la informació d'una assignatura
-    void consultarAssignatura(String nomAssignatura) {
+    void consultarAssignatura(String nomAssignatura) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaDisplay.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Consultar assignatura: " + nomAssignatura);
+        stage.show();
+
+        CtrlAssignaturaView ca = loader.getController();
+        ca.loadAssignatura(nomAssignatura);
     }
 
     //pantalla per crear una aula, tots els camps buits

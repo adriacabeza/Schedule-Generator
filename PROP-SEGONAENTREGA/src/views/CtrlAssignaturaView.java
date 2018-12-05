@@ -9,8 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import utils.FormValidation;
 
-import java.util.List;
 import java.util.Map;
 
 public class CtrlAssignaturaView {
@@ -58,11 +58,45 @@ public class CtrlAssignaturaView {
             String json = ctrlDomini.consultarAssignatura(nomAssignatura);
             Map<String, Object> assignatura = new Gson().fromJson(json, Map.class);
 
-            combobox_plaest.setValue(ctrlDomini.getPlaEstudisContains(nomAssignatura));
-            text_nom.setText((String) assignatura.get("nom"));
-            text_abbvr.setText((String) assignatura.get("abr"));
-            text_descripcio.setText((String) assignatura.get("descripcio"));
-            text_quadri.setText(String.valueOf((double)assignatura.get("quadrimestre")));
+            String plaest = ctrlDomini.getPlaEstudisContains(nomAssignatura);
+            if(plaest != null && !plaest.isEmpty()){
+                combobox_plaest.setValue(plaest);
+            }
+
+            String nom = (String) assignatura.get("nom");
+            if(nom != null && !nom.isEmpty()) {
+                text_nom.setText(nom);
+            }else{
+                // Throw error
+            }
+
+            String abbvr = (String) assignatura.get("abr");
+            if(abbvr != null && !abbvr.isEmpty()) {
+                text_abbvr.setText(abbvr);
+            }
+
+            String descripcio = (String) assignatura.get("descripcio");
+            if(descripcio != null && !descripcio.isEmpty()) {
+                text_descripcio.setText(descripcio);
+            }
+
+            Double quadrimestre = (Double) assignatura.get("quadrimestre");
+            if(quadrimestre != null) {
+                text_quadri.setText(String.valueOf(quadrimestre));
+            }
+
+            Map grups = (Map) assignatura.get("grups");
+            int numgrups = grups.size();
+            text_numgrups.setText(String.valueOf(numgrups));
+
+            if(numgrups > 0){
+                Map firstgroup = (Map) grups.get(grups.keySet().iterator().next());
+                Double capacitat = (Double) firstgroup.get("capacitat");
+                text_capacitat.setText(String.valueOf(capacitat.intValue()));
+                Map subgrups = (Map) firstgroup.get("subgrups");
+                int numsubgrups = subgrups.size();
+                text_numsubgrups.setText(String.valueOf(numsubgrups));
+            }
 
             //TODO ni ho comento perque no ho vull ni entendre, into the garbage
             //TODO god has abandoned us
@@ -70,13 +104,6 @@ public class CtrlAssignaturaView {
             //TODO LORD, FORGIVE ME FOR I HAVE SINNED
             //TODO almenos tenemos salud
             //TODO el TDD rula better than this
-            Map m = (Map) assignatura.get("grups");
-            text_numgrups.setText(String.valueOf(m.size()));
-            String key = (String) m.keySet().iterator().next();
-            Map grup = (Map) m.get(key);
-            text_capacitat.setText(String.valueOf(((Double) grup.get("capacitat")).intValue())); //max cerdaco btw
-            Map m2 = (Map) grup.get("subgrups");
-            text_numsubgrups.setText((String.valueOf(m2.size())));
             //TODO end of sida
 
         } catch (NotFoundException e) {
@@ -84,8 +111,76 @@ public class CtrlAssignaturaView {
         }
     }
 
+    private int verifyFields(){
+        FormValidation formvalidator = new FormValidation();
+        int errorcount = 0;
+
+        if(!formvalidator.validateStringNoSpace(text_abbvr.getText())){
+            errorcount++;
+            text_abbvr.setBorder(formvalidator.errorBorder);
+        }else{
+            text_abbvr.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateStringSpace(text_descripcio.getText())){
+            errorcount++;
+            text_descripcio.setBorder(formvalidator.errorBorder);
+        }else{
+            text_descripcio.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateStringSpace(text_nom.getText())){
+            errorcount++;
+            text_nom.setBorder(formvalidator.errorBorder);
+        }else{
+            text_nom.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateNumber(text_quadri.getText())){
+            errorcount++;
+            text_quadri.setBorder(formvalidator.errorBorder);
+        }else{
+            text_quadri.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateStringSpace(combobox_plaest.getValue())){
+            errorcount++;
+            combobox_plaest.setBorder(formvalidator.errorBorder);
+        }else{
+            combobox_plaest.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateNumber(text_numgrups.getText())){
+            errorcount++;
+            text_numgrups.setBorder(formvalidator.errorBorder);
+        }else{
+            text_numgrups.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateNumber(text_capacitat.getText())){
+            errorcount++;
+            text_capacitat.setBorder(formvalidator.errorBorder);
+        }else{
+            text_capacitat.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateNumber(text_numsubgrups.getText())){
+            errorcount++;
+            text_numsubgrups.setBorder(formvalidator.errorBorder);
+        }else{
+            text_numsubgrups.setBorder(formvalidator.okBorder);
+        }
+
+        return errorcount;
+    }
+
     public void saveChanges(){
-        //USE INPUTVERIFIER CLASS
+        int numerrors = verifyFields();
+        if(numerrors > 0){
+            if(numerrors == 1) alert("Hi ha " + numerrors + " errors en el formulari.");
+            else alert("Hi han " + numerrors + " errors en el formulari.");
+            return;
+        }
 
         String nomAbr = text_abbvr.getText(); //TODO posar al domini
         String descripcio = text_descripcio.getText();
