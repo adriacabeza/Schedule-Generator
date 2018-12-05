@@ -123,7 +123,7 @@ public class CtrlAssignaturaView {
             text_abbvr.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateStringSpace(text_descripcio.getText())){
+        if(!formvalidator.validateStringSpaceAllowEmpty(text_descripcio.getText())){
             errorcount++;
             text_descripcio.setBorder(formvalidator.errorBorder);
         }else{
@@ -137,35 +137,35 @@ public class CtrlAssignaturaView {
             text_nom.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateNumber(text_quadri.getText())){
+        if(!formvalidator.validateNumberAllowEmpty(text_quadri.getText())){
             errorcount++;
             text_quadri.setBorder(formvalidator.errorBorder);
         }else{
             text_quadri.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateStringSpace(combobox_plaest.getValue())){
+        if(!formvalidator.validateStringSpaceAllowEmpty(combobox_plaest.getValue())){
             errorcount++;
             combobox_plaest.setBorder(formvalidator.errorBorder);
         }else{
             combobox_plaest.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateNumber(text_numgrups.getText())){
+        if(!formvalidator.validateNumberAllowEmpty(text_numgrups.getText())){
             errorcount++;
             text_numgrups.setBorder(formvalidator.errorBorder);
         }else{
             text_numgrups.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateNumber(text_capacitat.getText())){
+        if(!formvalidator.validateNumberAllowEmpty(text_capacitat.getText())){
             errorcount++;
             text_capacitat.setBorder(formvalidator.errorBorder);
         }else{
             text_capacitat.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateNumber(text_numsubgrups.getText())){
+        if(!formvalidator.validateNumberAllowEmpty(text_numsubgrups.getText())){
             errorcount++;
             text_numsubgrups.setBorder(formvalidator.errorBorder);
         }else{
