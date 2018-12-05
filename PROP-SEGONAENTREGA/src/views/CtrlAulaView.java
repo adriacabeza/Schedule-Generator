@@ -105,6 +105,7 @@ public class CtrlAulaView {
 
     /**
      * Binding amb el controlador principal
+     *
      * @param c
      */
     public void setMainController(CtrlMainView c) {
@@ -130,12 +131,20 @@ public class CtrlAulaView {
         }
     }
 
+    /**
+     * Tanca la vista i propaga els canvis fets a la vista principal
+     */
     public void exit() {
         ctrlMainView.reloadList();
         Stage stage = (Stage) cancel_button.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Mostra un pop-up amb un missatge d'error si s'en dona un
+     *
+     * @param s missatge d'error a mostrar
+     */
     public void alert(String s) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(s);
@@ -143,6 +152,9 @@ public class CtrlAulaView {
         a.show();
     }
 
+    /**
+     * Bloqueja l'ediciód els paràmetres no modificables en aules ja creades
+     */
     public void disableEditFields() {
         text_edifici.setDisable(true);
         text_planta.setDisable(true);
