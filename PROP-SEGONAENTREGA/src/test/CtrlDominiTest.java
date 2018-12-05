@@ -337,12 +337,12 @@ public class CtrlDominiTest {
     @Test
     public void creaAula() {
         try {
-            c.creaAula("a5", 1, 2, 60, Aula.TipusAula.LABORATORI);
+            c.creaAula("a5", 1, 2, 60, "laboratori");
         } catch (RestriccioIntegritatException e) {
             fail();
         }
         try {
-            c.creaAula("a5", 1, 2, 60, Aula.TipusAula.LABORATORI);
+            c.creaAula("a5", 1, 2, 60, "laboratori");
             fail();
         } catch (RestriccioIntegritatException ignored) {
         }
@@ -357,7 +357,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.creaAula("a5", 1, 2, 60, Aula.TipusAula.LABORATORI);
+            c.creaAula("a5", 1, 2, 60, "laboratori");
             c.esborrarAula(Aula.crearkey("a5", 1, 2));
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -367,14 +367,14 @@ public class CtrlDominiTest {
     @Test
     public void modificarAula() {
         try {
-            c.modificarAula(Aula.crearkey("a5", 1, 2), 60, Aula.TipusAula.LABORATORI);
+            c.modificarAula(Aula.crearkey("a5", 1, 2), 60, "laboratori");
             fail();
         } catch (NotFoundException ignored) {
         }
 
         try {
-            c.creaAula("a5", 1, 2, 60, Aula.TipusAula.LABORATORI);
-            c.modificarAula(Aula.crearkey("a5", 1, 2), 60, Aula.TipusAula.LABORATORI);
+            c.creaAula("a5", 1, 2, 60, "laboratori");
+            c.modificarAula(Aula.crearkey("a5", 1, 2), 60, "laboratori");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
         }
@@ -389,7 +389,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.creaAula("a5", 1, 2, 60, Aula.TipusAula.LABORATORI);
+            c.creaAula("a5", 1, 2, 60, "laboratori");
             c.consultarAula(Aula.crearkey("a5", 1, 2));
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -405,7 +405,7 @@ public class CtrlDominiTest {
             c.modificarGrups("AC", 2, 50, 2);
             c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);
             c.modificaInformacioLaboratori("AC", 2, 2, Aula.TipusAula.NORMAL);
-            c.creaAula("A5", 1, 2, 60, Aula.TipusAula.NORMAL);
+            c.creaAula("A5", 1, 2, 60, "normal");
             Horari h = c.crearHorari();
             assertNotNull(h);
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
@@ -422,7 +422,7 @@ public class CtrlDominiTest {
             c.modificarGrups("AC", 2, 50, 2);
             c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);
             c.modificaInformacioLaboratori("AC", 2, 2, Aula.TipusAula.NORMAL);
-            c.creaAula("A5", 1, 2, 60, Aula.TipusAula.NORMAL);
+            c.creaAula("A5", 1, 2, 60, "normal");
             Horari h = c.crearHorari2();
             assertNotNull(h);
         } catch (NotFoundException | RestriccioIntegritatException ignored) {

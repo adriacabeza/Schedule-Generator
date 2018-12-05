@@ -3,18 +3,18 @@ package views;
 import com.google.gson.Gson;
 import controllers.CtrlDomini;
 import exceptions.NotFoundException;
+import exceptions.RestriccioIntegritatException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.util.Map;
 
 public class CtrlAulaView {
+
+    /***** AULA EDIT/CREATE *****/
     @FXML
     Button save_button = new Button();
     @FXML
@@ -30,25 +30,67 @@ public class CtrlAulaView {
     @FXML
     ChoiceBox<String> choice_tipus_aula = new ChoiceBox<>();
 
+    @FXML
+    Label label_edifici = new Label();
+    @FXML
+    Label label_planta = new Label();
+    @FXML
+    Label label_aula = new Label();
+    @FXML
+    Label label_capacitat = new Label();
+    @FXML
+    Label label_tipus_aula = new Label();
+
+    /***** AULA DISPLAY *****/
+
+
+    /***** OTHER CONTROLLER VARIABLES *****/
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
     private boolean editmode = false;
+    String key = "";
 
     public void initialize(){
+        ObservableList<String> tAula = FXCollections.observableArrayList();
+        tAula.add("normal");
+        tAula.add("pcs");
+        tAula.add("laboratori");
+        choice_tipus_aula.setItems(tAula);
+    }
 
+    public void displayAula(String key) {
+        this.key = key;
+        String json = null;
+        try {
+            json = ctrlDomini.consultarAula(key);
+            Map<String, Object> aula = new Gson().fromJson(json, Map.class);
+            label_edifici.setText((String) aula.get("edifici"));
+            label_planta.setText(String.valueOf(((Double) aula.get("planta")).intValue()));
+            label_aula.setText(String.valueOf(((Double) aula.get("aula")).intValue()));
+            label_capacitat.setText(String.valueOf(((Double) aula.get("capacitat")).intValue()));
+            label_tipus_aula.setText((String) aula.get("tAula"));
+        } catch (NotFoundException e) {
+            alert(e.getMessage());
+            exit();
+        }
     }
 
     public void loadAula(String key) {
-        /*editmode = true;
+        editmode = true;
+        this.key = key;
         String json = null;
         try {
-            //json = ctrlDomini.consultarAula(key);
+            json = ctrlDomini.consultarAula(key);
+            Map<String, Object> aula = new Gson().fromJson(json, Map.class);
+            text_edifici.setText((String) aula.get("edifici"));
+            text_planta.setText(String.valueOf(((Double) aula.get("planta")).intValue()));
+            text_aula.setText(String.valueOf(((Double) aula.get("aula")).intValue()));
+            text_capacitat.setText(String.valueOf(((Double) aula.get("capacitat")).intValue()));
+            choice_tipus_aula.setValue((String) aula.get("tAula"));
         } catch (NotFoundException e) {
-            e.printStackTrace();
+            alert(e.getMessage());
+            exit();
         }
-        Map<String, Object> assignatura = new Gson().fromJson(json, Map.class);
-*/
-
     }
 
     public void setMainController(CtrlMainView c) {
@@ -56,19 +98,38 @@ public class CtrlAulaView {
     }
 
     public void saveChanges(){
-        String
+        String edifici = text_edifici.getText();
+        int planta = Integer.parseInt(text_planta.getText());
+        int aula = Integer.parseInt(text_aula.getText());
+        int capacitat = Integer.parseInt(text_capacitat.getText());
+        String tipusAula = choice_tipus_aula.getValue();
+
+        try {
+            if (editmode)  ctrlDomini.modificarAula(key, capacitat, tipusAula);
+            else ctrlDomini.creaAula(edifici, planta, aula, capacitat, tipusAula);
+            exit();
+        } catch (NotFoundException | RestriccioIntegritatException e) {
+                alert(e.getMessage());
+        }
     }
 
     public void exit(){
-
+        ctrlMainView.reloadList();
+        Stage stage = (Stage) cancel_button.getScene().getWindow();
+        stage.close();
     }
 
     public void alert(String s) {
-
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setContentText(s);
+        a.setHeaderText("HUUURRRRRRRRRR");
+        a.show();
     }
 
     public void disableEditFields() {
-
+        text_edifici.setDisable(true);
+        text_planta.setDisable(true);
+        text_aula.setDisable(true);
     }
 }
 
