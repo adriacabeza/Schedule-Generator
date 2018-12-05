@@ -50,7 +50,7 @@ public class CtrlAulaView {
     private boolean editmode = false;
     String key = "";
 
-    public void initialize(){
+    public void initialize() {
         ObservableList<String> tAula = FXCollections.observableArrayList();
         tAula.add("normal");
         tAula.add("pcs");
@@ -58,6 +58,11 @@ public class CtrlAulaView {
         choice_tipus_aula.setItems(tAula);
     }
 
+    /**
+     * Carrega la informació complerta d'una aula per mostrar-la en la interficie
+     *
+     * @param key nom de l'aula que hem seleccionat per consultar
+     */
     public void displayAula(String key) {
         this.key = key;
         String json = null;
@@ -75,6 +80,11 @@ public class CtrlAulaView {
         }
     }
 
+    /**
+     * Carrega la informació complerta d'una aula per mostrar-la en la interficie i dona accés al mode d'edició dels paràmetres permesos
+     *
+     * @param key nom de l'aula que hem seleccionat per consultar
+     */
     public void loadAula(String key) {
         editmode = true;
         this.key = key;
@@ -93,11 +103,18 @@ public class CtrlAulaView {
         }
     }
 
+    /**
+     * Binding amb el controlador principal
+     * @param c
+     */
     public void setMainController(CtrlMainView c) {
         this.ctrlMainView = c;
     }
 
-    public void saveChanges(){
+    /**
+     * Guarda totes les modificacions fetes en una aula o en guarda una de nova
+     */
+    public void saveChanges() {
         String edifici = text_edifici.getText();
         int planta = Integer.parseInt(text_planta.getText());
         int aula = Integer.parseInt(text_aula.getText());
@@ -105,15 +122,15 @@ public class CtrlAulaView {
         String tipusAula = choice_tipus_aula.getValue();
 
         try {
-            if (editmode)  ctrlDomini.modificarAula(key, capacitat, tipusAula);
+            if (editmode) ctrlDomini.modificarAula(key, capacitat, tipusAula);
             else ctrlDomini.creaAula(edifici, planta, aula, capacitat, tipusAula);
             exit();
         } catch (NotFoundException | RestriccioIntegritatException e) {
-                alert(e.getMessage());
+            alert(e.getMessage());
         }
     }
 
-    public void exit(){
+    public void exit() {
         ctrlMainView.reloadList();
         Stage stage = (Stage) cancel_button.getScene().getWindow();
         stage.close();
