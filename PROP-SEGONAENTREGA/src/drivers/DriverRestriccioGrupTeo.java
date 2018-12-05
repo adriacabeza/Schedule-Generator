@@ -32,7 +32,7 @@ public class DriverRestriccioGrupTeo {
         System.out.println("Introdueix el nom i el quadrimestre de la assignatura");
         nom = s.next();
         aux = s.nextInt();
-        ass = new Assignatura(nom,aux);
+        ass = new Assignatura(nom, "abr", "sample descr", aux);
         System.out.println("Introdueix el numero del grup i del subgrup");
         numg = s.nextInt();
         nums = s.nextInt();

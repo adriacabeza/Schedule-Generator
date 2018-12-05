@@ -3,7 +3,6 @@
  */
 package drivers;
 
-import exceptions.NotFoundException;
 import model.*;
 
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class DriverRestriccioNivell {
         aux = s.nextInt();
         System.out.println("Introdueix el numero del grup");
         num = s.nextInt();
-        ass = new Assignatura(nom,aux);
+        ass = new Assignatura(nom, "abr", "sample descr", aux);
         tAula = Aula.TipusAula.NORMAL;
         ses = new Teoria(0,0,tAula);
         return new SessioGrup(ass,ses,new Grup(num,1,1),null,0);

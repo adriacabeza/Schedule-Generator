@@ -126,7 +126,7 @@ public class CtrlDominiTest {
         try {
             c.consultarPlaEsudis("PlaEstudisTest").setObsolet(true);
             c.esborrarPlaEstudis("PlaEstudisTest");
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             c.afegirAssignaturaPla("PlaEstudisTest", "AssignaturaTest");
             fail();
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
@@ -153,7 +153,7 @@ public class CtrlDominiTest {
         try {
             c.consultarPlaEsudis("PlaEstudisTest").setObsolet(true);
             c.esborrarPlaEstudis("PlaEstudisTest");
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1,"sample descr", "abr");
             c.esborrarAssignaturaPla("PlaEstudisTest", "AssignaturaTest");
             fail();
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
@@ -195,14 +195,14 @@ public class CtrlDominiTest {
     public void crearAssignatura() {
         boolean failCrear;
         try {
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             failCrear = false;
         } catch (RestriccioIntegritatException e) {
             failCrear = true;
         }
         assertFalse(failCrear);
         try {
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             failCrear = false;
         } catch (RestriccioIntegritatException e) {
             failCrear = true;
@@ -219,7 +219,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr","abr" );
             c.consultarAssignatura("AssignaturaTest");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -235,7 +235,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1,"sample descr", "abr");
             c.esborrarAssignatura("AssignaturaTest");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -251,7 +251,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             c.modificaInformacioTeoria("AssignaturaTest", 2, 2, Aula.TipusAula.NORMAL);
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -267,7 +267,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             c.modificaInformacioLaboratori("AssignaturaTest", 2, 2, Aula.TipusAula.NORMAL);
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -283,7 +283,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTest", 1);
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             c.modificarGrups("AssignaturaTest", 10, 2, 2);
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -299,8 +299,8 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTestA", 1);
-            c.crearAssignatura("AssignaturaTestB", 2);
+            c.crearAssignatura("AssignaturaTestA", 1, "sample descr", "abr");
+            c.crearAssignatura("AssignaturaTestB", 2, "sample descr", "abr");
             c.afegeixCorrequisit("AssignaturaTestA", "AssignaturaTestB");
             fail();
         } catch (NotFoundException e) {
@@ -309,7 +309,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTestC", 1);
+            c.crearAssignatura("AssignaturaTestC", 1, "sample descr", "abr");
             c.afegeixCorrequisit("AssignaturaTestA", "AssignaturaTestC");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -325,8 +325,8 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTestA", 1);
-            c.crearAssignatura("AssignaturaTestB", 1);
+            c.crearAssignatura("AssignaturaTestA", 1, "sample descr", "abr");
+            c.crearAssignatura("AssignaturaTestB", 1, "sample descr", "abr");
             c.afegeixCorrequisit("AssignaturaTestA", "AssignaturaTestB");
             c.esborraCorrequisit("AssignaturaTestA", "AssignaturaTestB");
         } catch (NotFoundException | RestriccioIntegritatException e) {
@@ -399,7 +399,7 @@ public class CtrlDominiTest {
     @Test
     public void crearHorari() {
         try {
-            c.crearAssignatura("AC", 1);
+            c.crearAssignatura("AC", 1, "sample descr", "abr");
             c.crearPlaEstudis("NouPla", 2010);
             c.afegirAssignaturaPla("NouPla", "AC");
             c.modificarGrups("AC", 2, 50, 2);
@@ -416,7 +416,7 @@ public class CtrlDominiTest {
     @Test
     public void crearHorari2() {
         try {
-            c.crearAssignatura("AC", 1);
+            c.crearAssignatura("AC", 1, "sample descr", "abr");
             c.crearPlaEstudis("NouPla", 2010);
             c.afegirAssignaturaPla("NouPla", "AC");
             c.modificarGrups("AC", 2, 50, 2);

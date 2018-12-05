@@ -103,7 +103,7 @@ public class DriverAssignacioL {
         String nom = s.next();
         System.out.println("Introdueix el numero de quadrimestre de la assignatura");
         int quad = s.nextInt();
-        return new Assignatura(nom, quad);
+        return new Assignatura(nom, "abr" , "sample descr", quad);
     }
     public static Aula creaAula(Scanner s){
         String edifici, tipusaula;

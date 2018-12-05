@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="views.CtrlAulaView"
-            prefHeight="400.0" prefWidth="600.0">
-    <center>
-        <Label text="Aula form" BorderPane.alignment="CENTER" />
-    </center>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAulaView">
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+                  <Label text="Label" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField />
+                  <TextField />
+                  <TextField />
+                  <TextField />
+                  <ChoiceBox prefWidth="150.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
 </BorderPane>

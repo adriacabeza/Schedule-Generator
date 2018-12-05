@@ -3,13 +3,13 @@
     "nomTitulacio": "Fisica",
     "any": 2012,
     "assignatures": [],
-    "obsolet": true
+    "obsolet": false
   },
   "Informatica": {
     "nomTitulacio": "Informatica",
     "any": 2010,
     "assignatures": [
-      "AC"
+      "Arquitectura dels Computadors"
     ],
     "obsolet": false
   }

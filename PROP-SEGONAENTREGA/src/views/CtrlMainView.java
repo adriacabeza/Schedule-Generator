@@ -298,6 +298,7 @@ public class CtrlMainView {
 
         CtrlAssignaturaView ca = loader.getController();
         ca.loadAssignatura(nomAssignatura);
+        ca.setMainController(this);
         ca.disableEditFields();
     }
 

@@ -72,22 +72,22 @@ public class DriverCtrlIO {
 
         pst1.put("Informatica", new PlaEstudis("Informatica", 2010, false));
         pst1.put("Fisica", new PlaEstudis("Fisica", 2012, false));
-        at1.put("AC", new Assignatura("AC", 1));
-        at1.put("ER", new Assignatura("ER", 1));
+        at1.put("Arquitectura dels Computadors", new Assignatura("Arquitectura dels Computadors", "AC", "AC assignatura descripcio", 1));
+        at1.put("Enginyeria de Requisits", new Assignatura("Enginyeria de Requisits", "ER", "EC assignatura descripcio", 1));
 
         try {
-            at1.get("ER").afegeixCorrequisit(at1.get("AC"));
-            at1.get("AC").afegeixCorrequisit(at1.get("ER"));
+            at1.get("Enginyeria de Requisits").afegeixCorrequisit(at1.get("Arquitectura dels Computadors"));
+            at1.get("Arquitectura dels Computadors").afegeixCorrequisit(at1.get("Enginyeria de Requisits"));
         } catch (RestriccioIntegritatException ignored) {
         }
 
-        at1.get("AC").modificarGrups(2, 10, 2);
-        at1.get("AC").setTeoria(2, 2, Aula.TipusAula.NORMAL);
-        at1.get("AC").setLaboratori(3, 4, Aula.TipusAula.LABORATORI);
+        at1.get("Arquitectura dels Computadors").modificarGrups(2, 10, 2);
+        at1.get("Arquitectura dels Computadors").setTeoria(2, 2, Aula.TipusAula.NORMAL);
+        at1.get("Arquitectura dels Computadors").setLaboratori(3, 4, Aula.TipusAula.LABORATORI);
 
-        at1.get("ER").modificarGrups(2, 10, 2);
-        at1.get("ER").setTeoria(2, 2, Aula.TipusAula.NORMAL);
-        at1.get("ER").setLaboratori(3, 4, Aula.TipusAula.LABORATORI);
+        at1.get("Enginyeria de Requisits").modificarGrups(2, 10, 2);
+        at1.get("Enginyeria de Requisits").setTeoria(2, 2, Aula.TipusAula.NORMAL);
+        at1.get("Enginyeria de Requisits").setLaboratori(3, 4, Aula.TipusAula.LABORATORI);
 
         pst1.get("Informatica").afegirAssignatura("AC");
         ast1.put("a5002", new Aula("a5", 0, 2, Aula.TipusAula.NORMAL, 60));

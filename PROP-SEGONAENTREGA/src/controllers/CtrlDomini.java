@@ -12,7 +12,6 @@ import model.*;
 import model.Aula.TipusAula;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -209,18 +208,28 @@ public class CtrlDomini {
         return plaEstudis.get(nomP).getAssignatures();
     }
 
+    public String getPlaEstudisContains(String nomAssig) {
+        for (PlaEstudis plaest : plaEstudis.values()) {
+            if (plaest.hasAssignatura(nomAssig)) {
+                return plaest.getNomTitulacio();
+            }
+        }
+        return "";
+    }
+
     /**
      * Permet crear una nova assignatura
      *
      * @param nom          Nom de l'assignatura
      * @param quadrimestre Quadrimestre al qual pertany
+     * @param abr Abreviació del nom de l'assignatura
      * @throws RestriccioIntegritatException si ja existia una assignatura identificada pel mateix nom
      */
-    public Assignatura crearAssignatura(String nom, int quadrimestre) throws RestriccioIntegritatException {
+    public Assignatura crearAssignatura(String nom, int quadrimestre, String descripcio, String abr) throws RestriccioIntegritatException {
         if (assignatures.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix una assignatura amb nom " + nom.toUpperCase());
         }
-        assignatures.put(nom, new Assignatura(nom, quadrimestre));
+        assignatures.put(nom, new Assignatura(nom, abr, descripcio, quadrimestre));
         return null;
     }
 

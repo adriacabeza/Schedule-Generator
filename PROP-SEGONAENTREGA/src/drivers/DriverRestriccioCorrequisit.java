@@ -34,7 +34,7 @@ public class DriverRestriccioCorrequisit {
         System.out.println("Introdueix el nom i el quadrimestre de la assignatura");
         nom = s.next();
         aux = s.nextInt();
-        ass = new Assignatura(nom,aux);
+        ass = new Assignatura(nom, "abr", "sample descr", aux);
         System.out.println("Introdueix el numero del grup");
         num = s.nextInt();
         System.out.println("Ara afegirem correquisits a la assignatura");
@@ -73,7 +73,7 @@ public class DriverRestriccioCorrequisit {
                     System.out.println("Introdueix el nom i el quadrimestre al qual pertany");
                     corr = s.next();
                     try {
-                        ass.afegeixCorrequisit(new Assignatura(corr, s.nextInt()));
+                        ass.afegeixCorrequisit(new Assignatura(corr, "abr", "sample descr", s.nextInt()));
                     } catch (RestriccioIntegritatException e) {
                         e.printStackTrace();
                     }

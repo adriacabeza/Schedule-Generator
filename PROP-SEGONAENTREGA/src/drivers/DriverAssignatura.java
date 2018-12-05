@@ -76,7 +76,7 @@ public class DriverAssignatura {
                 case 1:
                     nomA = scan.next();
                     quadrimestre = scan.nextInt();
-                    assignatures.put(nomA, new Assignatura(nomA, quadrimestre));
+                    assignatures.put(nomA, new Assignatura(nomA, "abr", "sample descr", quadrimestre));
                     break;
                 case 2:
                     nomA = scan.next();

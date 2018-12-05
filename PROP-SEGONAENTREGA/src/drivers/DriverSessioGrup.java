@@ -2,7 +2,6 @@ package drivers;
 
 import model.*;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class DriverSessioGrup {
@@ -25,7 +24,7 @@ public class DriverSessioGrup {
         System.out.println("Introdueix el nom i el quadrimestre de la assignatura");
         nom = s.next();
         aux = s.nextInt();
-        ass = new Assignatura(nom,aux);
+        ass = new Assignatura(nom, "abr", "sample descr", aux);
         System.out.println("Introdueix el numero del grup, la seva capacitat i el numero de subgrup");
         numg = s.nextInt();
         cap = s.nextInt();
@@ -101,7 +100,7 @@ public class DriverSessioGrup {
                                 System.out.println("Introdueix el nom i el quadrimestre de la assignatura");
                                 nom = s.next();
                                 aux = s.nextInt();
-                                ass = new Assignatura(nom,aux);
+                                ass = new Assignatura(nom, "abr", "sample descr", aux);
                                 ses.setAssig(ass);
                                 break;
                             case 2:

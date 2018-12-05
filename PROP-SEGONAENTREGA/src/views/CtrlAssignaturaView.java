@@ -38,6 +38,8 @@ public class CtrlAssignaturaView {
 
 
     private CtrlMainView ctrlMainView;
+    private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
+    private boolean editmode = false;
 
     public void initialize(){
         ObservableList<String> plansEstudi = FXCollections.observableArrayList(CtrlDomini.getInstance().getLlistaPlansEstudis());
@@ -48,17 +50,34 @@ public class CtrlAssignaturaView {
         this.ctrlMainView = c;
     }
 
-    //TODO finish dis
+    //TODO FICS dis
     public void loadAssignatura(String nomAssignatura) {
         try {
-            String json = CtrlDomini.getInstance().consultarAssignatura(nomAssignatura);
+            editmode = true;
 
+            String json = ctrlDomini.consultarAssignatura(nomAssignatura);
             Map<String, Object> assignatura = new Gson().fromJson(json, Map.class);
 
+            combobox_plaest.setValue(ctrlDomini.getPlaEstudisContains(nomAssignatura));
             text_nom.setText((String) assignatura.get("nom"));
+            text_abbvr.setText((String) assignatura.get("abr"));
+            text_descripcio.setText((String) assignatura.get("descripcio"));
+            text_quadri.setText((String) assignatura.get("quadrimestre"));
 
+            //TODO ni ho comento perque no ho vull ni entendre, into the garbage
+            //TODO god has abandoned us
+            //TODO still easier than installing java 11
+            //TODO LORD, FORGIVE ME FOR I HAVE SINNED
+            //TODO almenos tenemos salud
+            //TODO el TDD rula better than this
             Map m = (Map) assignatura.get("grups");
             text_numgrups.setText(String.valueOf(m.size()));
+            String key = (String) m.keySet().iterator().next();
+            Map grup = (Map) m.get(key);
+            text_capacitat.setText(String.valueOf(((Double) grup.get("capacitat")).intValue())); //max cerdaco btw
+            Map m2 = (Map) grup.get("subgrups");
+            text_numsubgrups.setText((String.valueOf(m2.size())));
+            //TODO end of sida
 
         } catch (NotFoundException e) {
             alert("This should never show :)");
@@ -68,9 +87,8 @@ public class CtrlAssignaturaView {
     public void saveChanges(){
         //USE INPUTVERIFIER CLASS
 
-        //String nomAbr = text_abbvr.getText(); //TODO posar al domini
-        //String descripcio = text_descripcio.getText();
-
+        String nomAbr = text_abbvr.getText(); //TODO posar al domini
+        String descripcio = text_descripcio.getText();
         String nomAssig = text_nom.getText(); //TODO check not null
         int quadrimestre = Integer.parseInt(text_quadri.getText()); //TODO check it contains a number
         String plaEstudis = combobox_plaest.getValue();
@@ -80,7 +98,8 @@ public class CtrlAssignaturaView {
 
         try { //TODO verify all inputs before inserting
             CtrlDomini c = CtrlDomini.getInstance();
-            c.crearAssignatura(nomAssig, quadrimestre);
+            if (editmode) c.esborrarAssignatura(nomAssig);
+            c.crearAssignatura(nomAssig, quadrimestre, descripcio, nomAbr);
             c.modificarGrups(nomAssig, numgrups, capacitat, numsubgrups);
             c.afegirAssignaturaPla(plaEstudis, nomAssig);
 

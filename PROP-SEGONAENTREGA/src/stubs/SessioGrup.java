@@ -3,7 +3,6 @@
  */
 package stubs;
 
-import model.*;
 import model.Assignatura;
 import model.Aula;
 import model.Grup;
@@ -29,7 +28,7 @@ public class SessioGrup implements Comparable<model.SessioGrup> {
      * @param valor  heurística creada per a crear horaris més distribuïts
      */
     public SessioGrup(model.Assignatura assig, model.InfoSessions sessio, model.Grup grup, model.Subgrup sub, int valor) {
-        this.assig = new Assignatura("EC",0);
+        this.assig = new Assignatura("EC", "abr", "sample descr", 0);
         this.sessio = new Laboratori(1,1, Aula.TipusAula.NORMAL);
         this.grup = new Grup(10,1,1);
         this.sub = new Subgrup(11,1,1);

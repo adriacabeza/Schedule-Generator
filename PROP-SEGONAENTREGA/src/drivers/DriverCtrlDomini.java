@@ -139,7 +139,7 @@ public class DriverCtrlDomini {
                     nomA1 = scan.next();
                     quadrimestre = scan.nextInt();
                     try {
-                        c.crearAssignatura(nomA1, quadrimestre);
+                        c.crearAssignatura(nomA1, quadrimestre, "sample descr", "abr");
                     } catch (RestriccioIntegritatException e) {
                         System.out.println("Ja existeix una assignatura amb aquest nom");
                     }
