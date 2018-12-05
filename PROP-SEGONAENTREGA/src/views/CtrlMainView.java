@@ -369,7 +369,6 @@ public class CtrlMainView {
         ca.setMainController(this);
     }
 
-    //TODO com passarli la info de l'assignatura?
     //pantalla per modificar una assignatura, mostra tota la info anterior i accepta camps a modificar
     void modificarAssignatura(String nomAssignatura) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
@@ -408,6 +407,7 @@ public class CtrlMainView {
             root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.show();
             CtrlAulaView c = loader.getController();
             c.setMainController(this);
@@ -424,6 +424,7 @@ public class CtrlMainView {
             root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.show();
             CtrlAulaView c = loader.getController();
             c.setMainController(this);
@@ -442,6 +443,7 @@ public class CtrlMainView {
             root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.show();
             CtrlAulaView c = loader.getController();
             c.setMainController(this);

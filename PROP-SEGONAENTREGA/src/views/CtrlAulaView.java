@@ -31,6 +31,8 @@ public class CtrlAulaView {
     ChoiceBox<String> choice_tipus_aula = new ChoiceBox<>();
 
     @FXML
+    Label label_title = new Label();
+    @FXML
     Label label_edifici = new Label();
     @FXML
     Label label_planta = new Label();
@@ -69,6 +71,7 @@ public class CtrlAulaView {
         try {
             json = ctrlDomini.consultarAula(key);
             Map<String, Object> aula = new Gson().fromJson(json, Map.class);
+            label_title.setText(key.toUpperCase());
             label_edifici.setText((String) aula.get("edifici"));
             label_planta.setText(String.valueOf(((Double) aula.get("planta")).intValue()));
             label_aula.setText(String.valueOf(((Double) aula.get("aula")).intValue()));
