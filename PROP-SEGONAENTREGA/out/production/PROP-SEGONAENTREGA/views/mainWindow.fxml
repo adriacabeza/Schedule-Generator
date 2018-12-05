@@ -181,23 +181,14 @@
                         <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                            <children>
                               <Button id="delete_button" fx:id="delete_button" mnemonicParsing="false" text="Elimina" textAlignment="CENTER">
-                                   <effect>
-                                       <DropShadow blurType="GAUSSIAN" color="#0000008e" height="10.0" offsetX="1.0" offsetY="1.0" radius="4.5" width="10.0" />
-                                   </effect>
                               </Button>
                               <Button id="edit_button" fx:id="edit_button" mnemonicParsing="false" text="Modifica" textAlignment="CENTER">
-                                   <effect>
-                                       <DropShadow blurType="GAUSSIAN" color="#0000008e" height="10.0" offsetX="1.0" offsetY="1.0" radius="4.5" width="10.0" />
-                                   </effect>
                                </Button>
                            </children>
                         </HBox>
                      </left>
                      <right>
                         <Button id="plus_button" fx:id="plus_button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Afegeix" textAlignment="CENTER" BorderPane.alignment="CENTER">
-                           <effect>
-                              <DropShadow blurType="GAUSSIAN" color="#0000008e" height="10.0" offsetX="1.0" offsetY="1.0" radius="4.5" width="10.0" />
-                           </effect>
                         </Button>
                      </right>
                      <padding>

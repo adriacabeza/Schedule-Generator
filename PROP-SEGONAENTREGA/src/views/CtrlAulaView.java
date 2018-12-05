@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import utils.FormValidation;
 
 import java.util.Map;
 
@@ -65,7 +66,7 @@ public class CtrlAulaView {
      *
      * @param key nom de l'aula que hem seleccionat per consultar
      */
-    public void displayAula(String key) {
+    public void displayAula(String key) {                                                       //TODO check if this might have errors
         this.key = key;
         String json = null;
         try {
@@ -119,6 +120,13 @@ public class CtrlAulaView {
      * Guarda totes les modificacions fetes en una aula o en guarda una de nova
      */
     public void saveChanges() {
+        int numerrors = verifyFields();
+        if(numerrors > 0){
+            if(numerrors == 1) alert("Hi ha " + numerrors + " errors en el formulari.");
+            else alert("Hi han " + numerrors + " errors en el formulari.");
+            return;
+        }
+
         String edifici = text_edifici.getText();
         int planta = Integer.parseInt(text_planta.getText());
         int aula = Integer.parseInt(text_aula.getText());
@@ -148,10 +156,10 @@ public class CtrlAulaView {
      *
      * @param s missatge d'error a mostrar
      */
-    public void alert(String s) {
+    private void alert(String s) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(s);
-        a.setHeaderText("HUUURRRRRRRRRR");
+        a.setHeaderText("Hi ha hagut un error");
         a.show();
     }
 
@@ -162,6 +170,40 @@ public class CtrlAulaView {
         text_edifici.setDisable(true);
         text_planta.setDisable(true);
         text_aula.setDisable(true);
+    }
+
+    private int verifyFields(){
+        FormValidation formvalidator = new FormValidation();
+        int errorcount = 0;
+
+        if(!formvalidator.validateAlphanumeric(text_edifici.getText())){
+            errorcount++;
+            text_edifici.setBorder(formvalidator.errorBorder);
+        }else{
+            text_edifici.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateNumber(text_planta.getText())){
+            errorcount++;
+            text_planta.setBorder(formvalidator.errorBorder);
+        }else{
+            text_planta.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateNumber(text_aula.getText())){
+            errorcount++;
+            text_aula.setBorder(formvalidator.errorBorder);
+        }else{
+            text_aula.setBorder(formvalidator.okBorder);
+        }
+
+        if(!formvalidator.validateNumber(text_capacitat.getText())){
+            errorcount++;
+            text_capacitat.setBorder(formvalidator.errorBorder);
+        }else{
+            text_capacitat.setBorder(formvalidator.okBorder);
+        }
+        return errorcount;
     }
 }
 

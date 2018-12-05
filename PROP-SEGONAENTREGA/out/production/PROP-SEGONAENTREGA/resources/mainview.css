@@ -14,7 +14,35 @@
 
 #plus_button
 {
-    -fx-background-color:#72dbb1;
+    -fx-background-color:#57f271;
+    -fx-alignment:center;
+    -fx-background-radius:30;
+}
+
+#aula_save
+{
+    -fx-background-color:#57f271;
+    -fx-alignment:center;
+    -fx-background-radius:30;
+}
+
+#aula_cancel
+{
+    -fx-background-color:#f9406f;
+    -fx-alignment:center;
+    -fx-background-radius:30;
+}
+
+#assig_save
+{
+    -fx-background-color:#57f271;
+    -fx-alignment:center;
+    -fx-background-radius:30;
+}
+
+#assig_cancel
+{
+    -fx-background-color:#f9406f;
     -fx-alignment:center;
     -fx-background-radius:30;
 }
@@ -28,7 +56,7 @@
 
 #delete_button
 {
-    -fx-background-color:#d86382;
+    -fx-background-color:#f9406f;
     -fx-alignment:center;
     -fx-background-radius:30;
 }

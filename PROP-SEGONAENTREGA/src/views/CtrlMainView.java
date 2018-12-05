@@ -79,6 +79,7 @@ public class CtrlMainView {
             }
         });
 
+
         edit_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -150,17 +151,24 @@ public class CtrlMainView {
     private void handleModify(String item) {
         switch (state) {
             case 1:
-                modificarPlaEstudis(item); //TODO same try catch
+                try {
+                    modificarPlaEstudis(item); //TODO same try catch
+                } catch (IOException e) {
+                    alert(e.getMessage());
+                }
                 break;
             case 2:
-                modificarAula(item);
+                try {
+                    modificarAula(item);
+                } catch (IOException e) {
+                    alert(e.getMessage());
+                }
                 break;
             case 3:
                 try {
                     modificarAssignatura(item);
                 } catch (IOException e) {
-                    //TODO FIX
-                    e.printStackTrace();
+                    alert(e.getMessage());
                 }
                 break;
             default:
@@ -176,17 +184,25 @@ public class CtrlMainView {
     private void handleDisplay(String item) {
         switch (state) {
             case 1:
-                consultarPlaEstudis(item); //TODO same try catch
+                try {
+                    consultarPlaEstudis(item); //TODO same try catch
+                } catch (IOException e) {
+                    alert(e.getMessage());
+                }
                 break;
             case 2:
-                consultarAula(item);
+                try {
+                    consultarAula(item);
+                } catch (IOException e) {
+                    alert(e.getMessage());
+                }
                 break;
             case 3:
                 try {
                     consultarAssignatura(item);
                 } catch (IOException e) {
                     //TODO FIX
-                    e.printStackTrace();
+                    alert(e.getMessage());
                 }
                 break;
             default:
@@ -200,17 +216,25 @@ public class CtrlMainView {
     private void handleAdd() {
         switch (state) {
             case 1:
-                crearPlaEstudis();
+                try {
+                    crearPlaEstudis();
+                } catch (IOException e) {
+                    alert(e.getMessage());
+                }
                 break;
             case 2:
-                crearAula();
+                try {
+                    crearAula();
+                } catch (IOException e) {
+                    alert(e.getMessage());
+                }
                 break;
             case 3:
                 try {
                     crearAssignatura();
                 } catch (IOException e) {
                     //TODO FIX
-                    e.printStackTrace();
+                    alert(e.getMessage());
                 }
                 break;
             default:
@@ -222,7 +246,7 @@ public class CtrlMainView {
     /**
      * Mostra la pantalla de llista de plans d'estudi amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
      */
-    void mostraLlistaPlans() {
+    public void mostraLlistaPlans() {
         state = 1;
         list_content.setVisible(true);
         specific_content.setVisible(false);
@@ -232,17 +256,17 @@ public class CtrlMainView {
 
         ObservableList<String> plans = FXCollections.observableArrayList(controladorDomini.getLlistaPlansEstudis());
         list_view.setItems(plans);
-        list_view.setCellFactory(lv -> new ListCell<String>(){
+        list_view.setCellFactory(lv -> new ListCell<String>() {
             @Override
             protected void updateItem(String s, boolean empty) {
                 super.updateItem(s, empty);
-                if(empty){
+                if (empty) {
                     setText(null);
                     setGraphic(null);
-                }else{
+                } else {
                     setText(s);
                     setOnMouseClicked(mouseClickedEvent -> {
-                        if(mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
                             handleDisplay(s);
                         }
                     });
@@ -255,7 +279,7 @@ public class CtrlMainView {
     /**
      *Mostra la pantalla de llista d'aules amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
      */
-    void mostraLlistaAules() {
+    public void mostraLlistaAules() {
         state = 2;
         list_content.setVisible(true);
         specific_content.setVisible(false);
@@ -265,17 +289,17 @@ public class CtrlMainView {
 
         ObservableList<String> aules = FXCollections.observableArrayList(controladorDomini.getLlistaAules());
         list_view.setItems(aules);
-        list_view.setCellFactory(lv -> new ListCell<String>(){
+        list_view.setCellFactory(lv -> new ListCell<String>() {
             @Override
             protected void updateItem(String s, boolean empty) {
                 super.updateItem(s, empty);
-                if(empty){
+                if (empty) {
                     setText(null);
                     setGraphic(null);
-                }else{
+                } else {
                     setText(s);
                     setOnMouseClicked(mouseClickedEvent -> {
-                        if(mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
                             handleDisplay(s);
                         }
                     });
@@ -288,7 +312,7 @@ public class CtrlMainView {
     /**
      * Mostra la pantalla de llista d'assignatures amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
      */
-    void mostraLlistaAssignatures() {
+    public void mostraLlistaAssignatures() {
         state = 3;
         list_content.setVisible(true);
         specific_content.setVisible(false);
@@ -298,17 +322,17 @@ public class CtrlMainView {
 
         ObservableList<String> assignatures = FXCollections.observableArrayList(controladorDomini.getLlistaAssignatures());
         list_view.setItems(assignatures);
-        list_view.setCellFactory(lv -> new ListCell<String>(){
+        list_view.setCellFactory(lv -> new ListCell<String>() {
             @Override
             protected void updateItem(String s, boolean empty) {
                 super.updateItem(s, empty);
-                if(empty){
+                if (empty) {
                     setText(null);
                     setGraphic(null);
-                }else{
+                } else {
                     setText(s);
                     setOnMouseClicked(mouseClickedEvent -> {
-                        if(mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
                             handleDisplay(s);
                         }
                     });
@@ -321,7 +345,7 @@ public class CtrlMainView {
     /**
      * Mostra la pantalla de gestió d'horaris, amb les opcions de carregar-ne un de disc, crear-ne un de nou o modificar-ne
      */
-    void mostraHorari() {
+    public void mostraHorari() {
         state = 0; //TODO might change later
     }
 
@@ -329,7 +353,7 @@ public class CtrlMainView {
     /**
      * Mostra la pantalla inicial
      */
-    void mostraInici() {
+    public void mostraInici() {
         state = 0;
         list_content.setVisible(false);
         specific_content.setVisible(false);
@@ -339,7 +363,7 @@ public class CtrlMainView {
     /**
      * Actualitza l'informació de la llista mostrada per pantalla
      */
-    void reloadList() {
+    public void reloadList() {
         switch (state) {
             case 1:
                 mostraLlistaPlans();
@@ -355,8 +379,12 @@ public class CtrlMainView {
         }
     }
 
-    //pantalla per crear una assignatura, tots els camps buits
-    void crearAssignatura() throws IOException{
+    /**
+     * Obre la finestra per crear una nova assignatura amb tots els camps buits
+     *
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void crearAssignatura() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -369,8 +397,13 @@ public class CtrlMainView {
         ca.setMainController(this);
     }
 
-    //pantalla per modificar una assignatura, mostra tota la info anterior i accepta camps a modificar
-    void modificarAssignatura(String nomAssignatura) throws IOException {
+    /**
+     * Obre la finestra per modificar una assignatura amb els camps disponibles
+     *
+     * @param nomAssignatura nom de l'assignatura a modificar
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void modificarAssignatura(String nomAssignatura) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -385,8 +418,13 @@ public class CtrlMainView {
         ca.disableEditFields();
     }
 
-    //pantalla per mostrar tota la informació d'una assignatura
-    void consultarAssignatura(String nomAssignatura) throws IOException{
+    /**
+     * Obre la finestra per consultar una assignatura
+     *
+     * @param nomAssignatura nom de l'assignatura a consultar
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void consultarAssignatura(String nomAssignatura) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaDisplay.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -394,105 +432,127 @@ public class CtrlMainView {
         stage.setResizable(false);
         stage.setTitle("Consultar assignatura: " + nomAssignatura);
         stage.show();
-
         CtrlAssignaturaView ca = loader.getController();
         ca.loadAssignatura(nomAssignatura);
     }
 
-    //pantalla per crear una aula, tots els camps buits
-    void crearAula() {
+    /**
+     * Obre la finestra per crear una aula amb tots els camps buits
+     *
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void crearAula() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaForm.fxml"));
         Parent root = null;
-        try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.show();
-            CtrlAulaView c = loader.getController();
-            c.setMainController(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Crear aula");
+        stage.show();
+
+        CtrlAulaView c = loader.getController();
+        c.setMainController(this);
     }
 
-    //pantalla per modificar una aula, mostra tota la info anterior i accepta camps a modificar
-    void modificarAula(String nomAula) {
+    /**
+     * Obre la finestra per modificar una aula en concret amb els camps disponibles
+     *
+     * @param nomAula nom de l'aula a modificar
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void modificarAula(String nomAula) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaForm.fxml"));
         Parent root = null;
-        try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.show();
-            CtrlAulaView c = loader.getController();
-            c.setMainController(this);
-            c.loadAula(nomAula);
-            c.disableEditFields();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Modificar aula: " + nomAula);
+        stage.show();
+
+        CtrlAulaView c = loader.getController();
+        c.setMainController(this);
+        c.loadAula(nomAula);
+        c.disableEditFields();
     }
 
-    //pantalla per mostrar tota la informació d'una aula
-    void consultarAula(String nomAula) {
+    /**
+     * Obre la finestra per visualitzar una aula concreta
+     *
+     * @param nomAula nom de l'aula que es vol visualitzar
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void consultarAula(String nomAula) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaDisplay.fxml"));
         Parent root = null;
-        try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.show();
-            CtrlAulaView c = loader.getController();
-            c.setMainController(this);
-            c.displayAula(nomAula);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Consultar aula: " + nomAula);
+        stage.show();
+
+        CtrlAulaView c = loader.getController();
+        c.setMainController(this);
+        c.displayAula(nomAula);
     }
 
-    //pantalla per crear un pla d'estudis, tots els camps buits
-    void crearPlaEstudis() {
+    /**
+     * Obre la finestra per tal de crear un nou pla d'estudis
+     *
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void crearPlaEstudis() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisForm.fxml"));
         Parent root = null;
-        try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Crear Pla d'estudis");
+        stage.show();
     }
 
-    //pantalla per modificar una assignatura, mostra tota la info anterior i accepta camps a modificar
-    void modificarPlaEstudis(String nomPla) {
+    /**
+     * Obre la vista per veure i habilitar l'edició d'un plà d'estudis en concret. Només es podran editar els camps habilitats
+     *
+     * @param nomPla nom del pla d'estudis que es vol modificar
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void modificarPlaEstudis(String nomPla) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisForm.fxml"));
         Parent root = null;
-        try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Modificar Pla d'estudis: " + nomPla);
+        stage.show();
     }
 
-    //pantalla per mostrar tota la informació d'una assignatura
-    void consultarPlaEstudis(String nomPla) {
+    /**
+     * Obre la vista per consultar un pla d'estudis en concret
+     *
+     * @param nomPla nom del pla d'estudis seleccionat
+     * @throws IOException quan hi ha un error obrint la nova finestra
+     */
+    public void consultarPlaEstudis(String nomPla) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisDisplay.fxml"));
         Parent root = null;
-        try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle(nomPla);
+        stage.show();
+    }
+
+    private void alert(String s){
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setContentText(s);
+        a.setHeaderText("Hi ha hagut un error");
+        a.show();
     }
 
     //TODO tot lo relatiu a horari, mostrar-los, editar-los, carregar de fitxer, etc

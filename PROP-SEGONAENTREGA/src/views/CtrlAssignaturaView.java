@@ -67,7 +67,7 @@ public class CtrlAssignaturaView {
             if(nom != null && !nom.isEmpty()) {
                 text_nom.setText(nom);
             }else{
-                // Throw error
+                alert("No es pot mostrar una assignatura no identificada");
             }
 
             String abbvr = (String) assignatura.get("abr");
@@ -107,7 +107,7 @@ public class CtrlAssignaturaView {
             //TODO end of sida
 
         } catch (NotFoundException e) {
-            alert("This should never show :)");
+            alert("No existeix l'assignatura");
             exit();
         }
     }
@@ -218,7 +218,7 @@ public class CtrlAssignaturaView {
     public void alert(String s) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(s);
-        a.setHeaderText("HUUURRRRRRRRRR");
+        a.setHeaderText("Hi ha hagut un error");
         a.show();
     }
 
