@@ -409,6 +409,8 @@ public class CtrlMainView {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            CtrlAulaView c = loader.getController();
+            c.setMainController(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -423,6 +425,10 @@ public class CtrlMainView {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            CtrlAulaView c = loader.getController();
+            c.setMainController(this);
+            c.loadAula(nomAula);
+            c.disableEditFields();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -437,6 +443,9 @@ public class CtrlMainView {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            CtrlAulaView c = loader.getController();
+            c.setMainController(this);
+            c.displayAula(nomAula);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="views.CtrlAulaView"
-            stylesheets="@../resources/mainview.css"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAulaView">
     <center>
-        <Label text="Aula display" BorderPane.alignment="CENTER" />
+        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER_LEFT" fillWidth="false" spacing="30.0">
+                    <children>
+                        <Label text="Edifici:" />
+                        <Label text="Planta:" />
+                        <Label text="Aula:" />
+                        <Label text="Capacitat:" />
+                        <Label text="Tipus aula:" />
+                    </children>
+                    <HBox.margin>
+                        <Insets right="20.0" />
+                    </HBox.margin>
+                </VBox>
+                <VBox alignment="CENTER" spacing="30.0">
+                    <children>
+                        <Label fx:id="label_edifici" />
+                        <Label fx:id="label_planta" />
+                        <Label fx:id="label_aula" />
+                        <Label fx:id="label_capacitat" />
+                        <Label fx:id="label_tipus_aula" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
     </center>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
 </BorderPane>

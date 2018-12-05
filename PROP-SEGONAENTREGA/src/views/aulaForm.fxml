@@ -40,8 +40,8 @@
    <bottom>
       <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="aula_cancel" fx:id="cancel_button" mnemonicParsing="false" text="Cancel·la" />
-            <Button id="aula_save" fx:id="save_button" mnemonicParsing="false" text="Guarda" />
+            <Button id="aula_cancel" fx:id="cancel_button" mnemonicParsing="false" onMouseClicked="#exit" text="Cancel·la" />
+            <Button id="aula_save" fx:id="save_button" mnemonicParsing="false" onMouseClicked="#saveChanges" text="Guarda" />
          </children>
          <BorderPane.margin>
             <Insets top="20.0" />

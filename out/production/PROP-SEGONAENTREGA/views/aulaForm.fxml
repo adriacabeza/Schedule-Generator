@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.172-ea" stylesheets="@../resources/mainview.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAulaView">
+<BorderPane stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAulaView">
    <center>
       <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
@@ -27,11 +27,11 @@
             </VBox>
             <VBox alignment="CENTER" spacing="20.0">
                <children>
-                  <TextField />
-                  <TextField />
-                  <TextField />
-                  <TextField />
-                  <ChoiceBox prefWidth="170.0" />
+                  <TextField fx:id="text_edifici" />
+                  <TextField fx:id="text_planta" />
+                  <TextField fx:id="text_aula" />
+                  <TextField fx:id="text_capacitat" />
+                  <ChoiceBox fx:id="choice_tipus_aula" prefWidth="170.0" />
                </children>
             </VBox>
          </children>
@@ -40,8 +40,8 @@
    <bottom>
       <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="aula_cancel" fx:id="cancel_button" mnemonicParsing="false" text="Cancel·la" />
-            <Button id="aula_save" fx:id="save_button" mnemonicParsing="false" text="Guarda" />
+            <Button id="aula_cancel" fx:id="cancel_button" mnemonicParsing="false" onMouseClicked="#exit" text="Cancel·la" />
+            <Button id="aula_save" fx:id="save_button" mnemonicParsing="false" onMouseClicked="#saveChanges" text="Guarda" />
          </children>
          <BorderPane.margin>
             <Insets top="20.0" />

@@ -108,6 +108,7 @@ public class CtrlAssignaturaView {
 
         } catch (NotFoundException e) {
             alert("This should never show :)");
+            exit();
         }
     }
 
@@ -192,11 +193,10 @@ public class CtrlAssignaturaView {
         int numsubgrups = Integer.parseInt(text_numsubgrups.getText());
 
         try { //TODO verify all inputs before inserting
-            CtrlDomini c = CtrlDomini.getInstance();
-            if (editmode) c.esborrarAssignatura(nomAssig);
-            c.crearAssignatura(nomAssig, quadrimestre, descripcio, nomAbr);
-            c.modificarGrups(nomAssig, numgrups, capacitat, numsubgrups);
-            c.afegirAssignaturaPla(plaEstudis, nomAssig);
+            if (editmode) ctrlDomini.esborrarAssignatura(nomAssig);
+            ctrlDomini.crearAssignatura(nomAssig, quadrimestre, descripcio, nomAbr);
+            ctrlDomini.modificarGrups(nomAssig, numgrups, capacitat, numsubgrups);
+            ctrlDomini.afegirAssignaturaPla(plaEstudis, nomAssig);
 
             //TODO not implemented yet
             //c.modificaInformacioTeoria(nomAssig, 0,0,null);

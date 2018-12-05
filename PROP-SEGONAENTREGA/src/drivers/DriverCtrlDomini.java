@@ -222,9 +222,8 @@ public class DriverCtrlDomini {
                     aula = scan.nextInt();
                     capacitat = scan.nextInt();
                     taula = scan.next();
-                    t = Aula.stringToTipusAula(taula);
                     try {
-                        c.creaAula(edifici, planta, aula, capacitat, t);
+                        c.creaAula(edifici, planta, aula, capacitat, taula);
                     } catch (RestriccioIntegritatException e) {
                         System.out.println("Error, ja existeix una aula amb aquest nom");
                     }
@@ -245,9 +244,8 @@ public class DriverCtrlDomini {
                     aula = scan.nextInt();
                     capacitat = scan.nextInt();
                     taula = scan.next();
-                    t = Aula.stringToTipusAula(taula);
                     try {
-                        c.modificarAula(Aula.crearkey(edifici, planta, aula), capacitat, t);
+                        c.modificarAula(Aula.crearkey(edifici, planta, aula), capacitat, taula);
                     } catch (NotFoundException e) {
                         System.out.println("Error, no existeix una aula amb aquest nom");
                     }

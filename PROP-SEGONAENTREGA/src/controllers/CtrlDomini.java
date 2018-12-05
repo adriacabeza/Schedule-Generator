@@ -225,12 +225,11 @@ public class CtrlDomini {
      * @param abr Abreviació del nom de l'assignatura
      * @throws RestriccioIntegritatException si ja existia una assignatura identificada pel mateix nom
      */
-    public Assignatura crearAssignatura(String nom, int quadrimestre, String descripcio, String abr) throws RestriccioIntegritatException {
+    public void crearAssignatura(String nom, int quadrimestre, String descripcio, String abr) throws RestriccioIntegritatException {
         if (assignatures.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix una assignatura amb nom " + nom.toUpperCase());
         }
         assignatures.put(nom, new Assignatura(nom, abr, descripcio, quadrimestre));
-        return null;
     }
 
     //TODO delet this or return json
@@ -370,11 +369,12 @@ public class CtrlDomini {
      * @param tipusAula tipus d'aula, pot ser pcs, normal o laboratori
      * @throws RestriccioIntegritatException quan s'intenta crear una aula ja existent
      */
-    public void creaAula(String edifici, int planta, int aula, int capacitat, TipusAula tipusAula) throws RestriccioIntegritatException {
+    public void creaAula(String edifici, int planta, int aula, int capacitat, String tipusAula) throws RestriccioIntegritatException {
+        Aula.TipusAula ta = Aula.stringToTipusAula(tipusAula);
         String nomAula = Aula.crearkey(edifici, planta, aula);
 
         if (!aules.containsKey(nomAula)) {
-            aules.put(nomAula, new Aula(edifici, planta, aula, tipusAula, capacitat));
+            aules.put(nomAula, new Aula(edifici, planta, aula, ta, capacitat));
         } else {
             throw new RestriccioIntegritatException("Ja existeix una aula amb nom d'aula " + nomAula.toUpperCase());
         }
@@ -403,10 +403,12 @@ public class CtrlDomini {
      * @param tipusAula nou tipus d'aula per l'aula
      * @throws NotFoundException quan es vol modificar una aula inexistent
      */
-    public void modificarAula(String key, int capacitat, TipusAula tipusAula) throws NotFoundException {
+    public void modificarAula(String key, int capacitat, String tipusAula) throws NotFoundException {
+        TipusAula ta = Aula.stringToTipusAula(tipusAula);
+
         if (aules.containsKey(key)) {
             aules.get(key).setCapacitat(capacitat);
-            aules.get(key).setTipusAula(tipusAula);
+            aules.get(key).setTipusAula(ta);
         } else {
             throw new NotFoundException("No es pot modificar l'aula " + key + " perque no existeix");
         }
@@ -419,11 +421,14 @@ public class CtrlDomini {
      * @return l'aula corresponent al nom si existeix
      * @throws NotFoundException si no existeix l'aula buscada
      */
-    public Aula consultarAula(String key) throws NotFoundException {
+    public String consultarAula(String key) throws NotFoundException {
+        System.out.println(aules);
         if (!aules.containsKey(key)) {
             throw new NotFoundException("No existeix l'aula especificada");
         } else {
-            return aules.get(key);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String json = gson.toJson(aules.get(key));
+            return json;
         }
     }
 
