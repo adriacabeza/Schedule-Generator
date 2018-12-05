@@ -153,7 +153,7 @@ public class CtrlAulaView {
     }
 
     /**
-     * Bloqueja l'ediciód els paràmetres no modificables en aules ja creades
+     * Bloqueja l'edició dels paràmetres no modificables en aules ja creades
      */
     public void disableEditFields() {
         text_edifici.setDisable(true);
