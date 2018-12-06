@@ -473,6 +473,13 @@ public class CtrlDomini {
     }
 
 
+    //AulaDia se compone por una aula(objeto) y un dia (entero [0..4])
+    //AulaDiaHora por una una aula(objeto), un dia (entero [0..4]) y una hora (entero [0..11])
+    //AssigMatiTarda por el string que identifica a una assignatura y un booleano que indica si es de mañanas o tardes. //TODO si modificamos assignatura para identificarla con numero todo esto tmbn debe ser cambiado
+
+
+
+
 
     /**
      * Borra la restricció aula dia corresponent
@@ -492,6 +499,8 @@ public class CtrlDomini {
         resAulaHora.remove(res);
     }
 
+    public void borrar_restriccio_mati_tarda(){}
+
     /**
      * Afegir la restricció aula dia corresponent
      *
@@ -510,4 +519,8 @@ public class CtrlDomini {
     public void afegir_restriccio_aula_hora(RestriccioAulaDia res) {
         resAulDia.add(res);
     }
+
+    public void afegir_restriccio_mati_tarda(){}
+
+
 }
