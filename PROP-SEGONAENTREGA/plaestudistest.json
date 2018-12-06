@@ -10,7 +10,7 @@
     "nomTitulacio": "Informatica",
     "any": 2010,
     "assignatures": [
-      "Arquitectura dels Computadors"
+      "Arquitectura dels Computadors",  "Enginyeria de Requisits"
     ],
     "obsolet": false,
     "descripcio": "descripcio per enginyeria informatica"

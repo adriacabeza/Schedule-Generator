@@ -143,6 +143,20 @@ public class Backtracking2 extends Algorismes {
     }
 
     /**
+     * Comprova totes les restriccions per a l'assignació d'una sessió una determinada hora, dia i aula
+     * @param a assignació que hem de comprovar
+     * @param hora hora que hem de comprovar
+     * @param dia dia que hem de comprovar
+     * @param posaula aula que hem de comprovar
+     * @return true si es pot efectuar l'assignació en el dia, hora i aula
+     */
+    boolean comprovarTOTESlesrestriccions(Assignacio[][][] horari, Assignacio a, int hora, int dia, int posaula){
+
+        //PURO PALO AQuÏ HE D EPOSAR TOTES  LES RESTRICCIONS
+
+        return true;
+    }
+    /**
      * Es fa un canvi de dues assignacions ja fetes en un horari complert.
      * @param horari l'horari fet
      * @param dia1 dia de la primera assignació
@@ -156,8 +170,8 @@ public class Backtracking2 extends Algorismes {
     boolean swap_sessions(Assignacio[][][] horari, int dia1, int dia2, int hora1, int hora2, int posaula1, int posaula2 ){
         Assignacio a = horari[hora1][dia1][posaula1];
         Assignacio b = horari[hora2][dia2][posaula2];
-        if(true){
-            if(true){ //aqui hem de posar totes les restriccions que s'han de comprovar
+        if(comprovarTOTESlesrestriccions(horari, a,hora2,dia2,posaula2)){
+            if(comprovarTOTESlesrestriccions(horari,b,hora1,dia1,posaula1)){ //aqui hem de posar totes les restriccions que s'han de comprovar
                 horari[hora1][dia1][posaula1] = b;
                 horari[hora2][dia2][posaula2] = a;
                 return true;
