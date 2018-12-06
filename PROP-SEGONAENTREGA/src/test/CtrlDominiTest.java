@@ -413,20 +413,6 @@ public class CtrlDominiTest {
         }
     }
 
-    @Test
-    public void crearHorari2() {
-        try {
-            c.crearAssignatura("AC", 1, "sample descr", "abr");
-            c.crearPlaEstudis("NouPla", 2010, "descr");
-            c.afegirAssignaturaPla("NouPla", "AC");
-            c.modificarGrups("AC", 2, 50, 2);
-            c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);
-            c.modificaInformacioLaboratori("AC", 2, 2, Aula.TipusAula.NORMAL);
-            c.creaAula("A5", 1, 2, 60, "normal");
-            Horari h = c.crearHorari2();
-            assertNotNull(h);
-        } catch (NotFoundException | RestriccioIntegritatException ignored) {
-            fail();
-        }
-    }
+
+
 }

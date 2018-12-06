@@ -35,14 +35,14 @@ public class Backtracking extends Algorismes{
      * @return true si es pot realitzar l'assignació
      */
     private boolean comprovarRestriccions(Aula aula, int dia, int hora, SessioGrup assig, int duracio, int posaula) {
-        if (!resLim.isAble(posaula, dia, hora, assig, duracio, horari))
+        if (!resLim.isAble(posaula, dia, hora, assig, duracio, aula, horari))
             return false; //ens passem o de hores de dia o hi ha una altre classe mes endavant
         if (!resNiv.isable(horari, hora, dia, assig, aules)) return false; //violem la restriccio de nivell
         try {
             if (!resCorr.isable(horari, hora, dia, assig, aules)) return false; //violem restriccio de correquisit
         } catch (NotFoundException e) {
         }
-        if (!resCapAul.isAble(aula, assig)) return false;
+        if (!resCapAul.isAble(posaula, dia, hora, assig, duracio, aula, horari)) return false;
 
         //  if (!resAul.isAble(aula1, assig)) return false; //violem restriccio de aula
         if (!resTeo.isable(horari, hora, dia, assig, aules)) return false; //violem restriccio de clases de teoria
@@ -50,8 +50,8 @@ public class Backtracking extends Algorismes{
         for (RestriccioAulaDia ad : resAulDia)
             if (!ad.isAble(aula, dia)) return false; //en aquesta aula no pot haber clase avui
         for (RestriccioAulaHora ah : resAulaHora)
-            if (!ah.isAble(aula, dia, hora))
-                return false; //en aquesta aula no pot haver clase a aquesta hora*/
+            if (!ah.isAble(assig.getAssig().toString(), aula, dia, hora))
+                return false; //en aquesta aula no pot haver classe a aquesta hora*/
         return true;
     }
 
