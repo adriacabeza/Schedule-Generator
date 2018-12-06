@@ -95,6 +95,8 @@ public class Backtracking2 extends Algorismes {
         return false;
     }
 
+
+
     /**
      * Aquesta funció propaga les restriccions per a efectuar forward checking i fer la poda de domini
      *
@@ -139,6 +141,32 @@ public class Backtracking2 extends Algorismes {
         }
         return false;
     }
+
+    /**
+     * Es fa un canvi de dues assignacions ja fetes en un horari complert.
+     * @param horari l'horari fet
+     * @param dia1 dia de la primera assignació
+     * @param dia2 dia de la segona assignació
+     * @param hora1 hora de la primera assignació
+     * @param hora2 hora de la segona assignació
+     * @param posaula1 aula de la primera assignació
+     * @param posaula2 aula de la segona assignació
+     * @return true si s'ha pogut efectuar el canvi i false si no
+     */
+    boolean swap_sessions(Assignacio[][][] horari, int dia1, int dia2, int hora1, int hora2, int posaula1, int posaula2 ){
+        Assignacio a = horari[hora1][dia1][posaula1];
+        Assignacio b = horari[hora2][dia2][posaula2];
+        if(true){
+            if(true){ //aqui hem de posar totes les restriccions que s'han de comprovar
+                horari[hora1][dia1][posaula1] = b;
+                horari[hora2][dia2][posaula2] = a;
+                return true;
+            }
+        }
+        return false;
+
+    }
+
 
     /**
      * Clona l'horari que se li passa per paràmetre
