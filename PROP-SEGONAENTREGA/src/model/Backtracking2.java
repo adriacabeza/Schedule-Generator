@@ -18,6 +18,9 @@ public class Backtracking2 {
     private ArrayList<RestriccioAulaDia> resAulDia;
     private ArrayList<RestriccioAulaHora> resAulaHora;
     private ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
+    private RestriccioCapacitatAula resCapAul;
+    private RestriccioLimits resLim;
+
 
     /**
      * Construeix un horari un buit amb totes les dades que es necessitarien per a generar-lo
@@ -34,7 +37,7 @@ public class Backtracking2 {
      * @param resMatiTarda restriccio de assignatures de matins i tardes
      */
     public Backtracking2(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules, RestriccioCorrequisit resCorr, RestriccioNivell resNiv, RestriccioAula resAul, RestriccioGrupTeo resTeo,
-                         RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora, ArrayList<RestriccioAssigMatiTarda> resMatiTarda) {
+                         RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora, ArrayList<RestriccioAssigMatiTarda> resMatiTarda, RestriccioCapacitatAula resCapAul, RestriccioLimits resLim ) {
         this.assignatures = new ArrayList<>(assignatures.values());
         this.aules = new ArrayList<>(aules.values());
         this.horari = new Assignacio[12][5][this.aules.size()];
@@ -46,6 +49,8 @@ public class Backtracking2 {
         this.resAulDia = resAulDia;
         this.resAulaHora = resAulaHora;
         this.resMatiTarda = resMatiTarda;
+        this.resCapAul = resCapAul;
+        this.resLim = resLim;
     }
 
 
@@ -136,27 +141,6 @@ public class Backtracking2 {
     }
 
 
-    /**
-     * Comprova que a l'hora de fer una assignació no es passi dels límits de l'horari
-     *
-     * @param posaula enter que representa l'aula de l'assignació
-     * @param dia     enter que representa el dia de l'assignació
-     * @param hora    enter que representa l'hora de l'assignació
-     * @param assig   enter que representa l'assignatura de l'assignació
-     * @param duracio duració de la sessió que es vol assignar
-     * @return
-     */
-    private boolean checkBoundaries(int posaula, int dia, int hora, SessioGrup assig, int duracio) {
-        for (int i = 0; i < duracio; ++i) {
-            if ((hora + i) >= 12) {
-                return false;
-            } else if (horari[hora + i][dia][posaula] != null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 
     /**
      * S'encarrega de comprovar totes les restriccions per a fer assignacions correctes a l'horari
@@ -170,9 +154,9 @@ public class Backtracking2 {
      * @return true si es pot realitzar l'assignació
      */
     private boolean comprovarRestriccions(Aula aula, int dia, int hora, SessioGrup assig, int duracio, int posaula) {
-        if (!checkBoundaries(posaula, dia, hora, assig, duracio))
+        if (!resLim.isAble(posaula, dia, hora, assig, duracio, horari))
             return false;
-        if (aula.getCapacitat() < assig.getGrup().getCapacitat()) return false;
+        if (!resCapAul.isAble(aula, assig)) return false;
         return true;
     }
 
@@ -187,7 +171,7 @@ public class Backtracking2 {
         for (int i = 0; i < sessions.size(); ++i) {
             ArrayList<Integer> aules_possibles = new ArrayList<>();
             for (int k = 0; k < aules.size(); ++k) {
-                if (resAul.isAble(aules.get(k), sessions.get(i)) && (aules.get(k).getCapacitat() >= sessions.get(i).getGrup().getCapacitat()))
+                if (resAul.isAble(aules.get(k), sessions.get(i)) && resCapAul.isAble(aules.get(k), sessions.get(i)))
                     aules_possibles.add(k);
             }
             Assignatura assig = null;
