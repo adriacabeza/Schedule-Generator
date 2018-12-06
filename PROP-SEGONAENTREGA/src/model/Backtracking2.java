@@ -148,10 +148,24 @@ public class Backtracking2 extends Algorismes {
     }
 
     /**
+     * Clona l'horari que se li passa per paràmetre
+     * @param horari que ha de clonar
+     * @return horari clonat
+     */
+    HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clonar(HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> horari){
+        HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = new HashMap<>();
+
+        for(Map.Entry<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> cursor: horari.entrySet()){
+            clon.put(cursor.getKey(), new ArrayList<>(cursor.getValue()));
+        }
+        return clon;
+
+    }
+
+    /**
      * Genera l'horari
-     *
-     * @param i             és l'ièssim que indica de quina sessió estem parlant
-     * @param horari        és l'horari que portem assignat
+     * @param i és l'ièssim que indica de quina sessió estem parlant
+     * @param horari és l'horari que portem assignat
      * @param possibilitats son el conjunt de possibilitats de les sessions que no hem assignat encara
      * @return retorna true si ha pogut fer l'horari i si no ha pogut false
      */
@@ -163,25 +177,24 @@ public class Backtracking2 extends Algorismes {
         boolean teoria = (sessions.get(i).getSessio().getClass() == Teoria.class);
         ArrayList<ArrayList<ArrayList<Integer>>> posibles = possibilitats.get(sessions.get(i));
         for (int d = 0; d < posibles.size() && posibles.get(d) != null; ++d) {
-            for (int h = 0; h < posibles.get(d).size() && posibles.get(d).get(h) != null; ++h) {
+            for (int h = 0; h < posibles.get(d).size() &&  posibles.get(d).get(h) != null; ++h) {
                 for (int a = 0; a < posibles.get(d).get(h).size(); ++a) {
                     boolean possible = true;
                     int aula = posibles.get(d).get(h).get(a);
                     if (horari[h][d][aula] == null) {
                         if (teoria) {
                             if (comprovarRestriccions(aules.get(aula), d, h, sessions.get(i), duracio, a)) {
-                                HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = (HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>>) possibilitats.clone();
+                                HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = clonar(possibilitats);
                                 for (int z = 0; z < duracio && possible; ++z) {
-                                    horari[h + z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules.get(aula), sessions.get(i).getAssig(), sessions.get(i).getGrup());
-                                    if (propagarPossibilitats(aula, d, h + z, sessions.get(i), possibilitats)) {
-                                        for (int j = 0; j <= z; ++j) {
-                                            horari[h + j][d][aula] = null;
+                                    horari[h+z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules.get(aula), sessions.get(i).getAssig(), sessions.get(i).getGrup());
+                                    if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
+                                        for(int j = 0 ; j <= z; ++j){
+                                            horari[h+j][d][aula] = null;
                                         }
                                         possible = false;
-                                    }
-                                    ;
+                                    };
                                 }
-                                if (possible) {
+                                if(possible) {
                                     possibilitats.remove(sessions.get(i));
                                     if (creaHorari(i + 1, horari, possibilitats)) return true;
                                     else {
@@ -194,12 +207,12 @@ public class Backtracking2 extends Algorismes {
                             }
                         } else {
                             if (comprovarRestriccions(aules.get(aula), d, h, sessions.get(i), duracio, a)) {
-                                HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = (HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>>) possibilitats.clone();
+                                HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = clonar(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][aula] = new AssignacioL(fromInt2dia(d), h + z, aules.get(aula), sessions.get(i).getAssig(), sessions.get(i).getSub());
-                                    if (propagarPossibilitats(aula, d, h + z, sessions.get(i), possibilitats)) {
-                                        for (int j = 0; j <= z; ++j) {
-                                            horari[h + j][d][aula] = null;
+                                    if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
+                                        for(int j = 0 ; j <= z; ++j){
+                                            horari[h+j][d][aula] = null;
                                         }
                                         possible = false;
                                     }
