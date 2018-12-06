@@ -47,21 +47,20 @@ public class RestriccioSubgrupLab extends Restriccions {
     /**
      * Retorna si es possible realitzar una assignació de laboratori d'un determinat grup comprovant que no hi hagi solapaments
      *
-     * @param check      sessio de la que mirem si pot haber solapaments
-     * @param assignat   sessio que acabem d'assignar
-     * @param pos        possibles aules que pot tenir l'assignació a comprovar
-     * @param aula       aula que comprovem
-     * @param hora       hora que es comprova
-     * @param dia        dia que es comprova
+     * @param check    sessio de la que mirem si pot haber solapaments
+     * @param assignat sessio que acabem d'assignar
+     * @param pos      possibles aules que pot tenir l'assignació a comprovar
+     * @param aula     aula que comprovem
+     * @param hora     hora que es comprova
+     * @param dia      dia que es comprova
      */
 
-    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aula, int dia, int hora) {
         if (pos.get(check).get(dia).get(hora).contains(aula)) {
-            if (check.getAssig().getNom().equals(assignat.getAssig().getNom())  && check.getSessio().getClass() == Laboratori.class) {
+            if (check.getAssig().getNom().equals(assignat.getAssig().getNom()) && check.getSessio().getClass() == Laboratori.class) {
                 if (assignat.getSessio().getClass() == Laboratori.class) {
                     return (assignat.getSub().getNum() != check.getSub().getNum());     //solapament laboratori¡
-                }
-                else {
+                } else {
                     return (assignat.getGrup().getNum() != check.getGrup().getNum());   //solapament laboratori-teoria
                 }
             }

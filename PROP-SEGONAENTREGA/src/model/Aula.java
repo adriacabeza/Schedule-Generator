@@ -217,5 +217,4 @@ public class Aula {
         Aula a = (Aula) obj;
         return a.getKey().equals(this.getKey());
     }
-
 }

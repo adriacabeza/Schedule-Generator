@@ -35,15 +35,21 @@ public class RestriccioAulaDia extends Restriccions {
 
     /**
      * Retorna el dia d'una restricció d'aula en un dia
+     *
      * @return dia que es comprova a la restrició
      */
-    public int getDia(){return dia;}
+    public int getDia() {
+        return dia;
+    }
 
     /**
      * Retorna l'aula d'una restricció d'aula en un dia
+     *
      * @return aula que es comprova a la restrició
      */
-    public Aula getAula(){return aula;}
+    public Aula getAula() {
+        return aula;
+    }
 
 }
 

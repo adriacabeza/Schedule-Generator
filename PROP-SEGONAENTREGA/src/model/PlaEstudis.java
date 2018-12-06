@@ -11,18 +11,20 @@ public class PlaEstudis {
     private int any;
     private ArrayList<String> assignatures;
     private boolean obsolet;
+    private String descripcio;
 
     /**
      * Crea un Pla d'Estudis nou amb la seva informació corresponent
      *
      * @param nomTitulacio nom de la titulació
      * @param any          any que es crea el pla d'estudis
-     * @param obsolet      booleà que indica si està obsolet
+     * @param descripcio   descripció del pla d'estudis
      */
-    public PlaEstudis(String nomTitulacio, int any, boolean obsolet) {
+    public PlaEstudis(String nomTitulacio, int any, String descripcio) {
         this.nomTitulacio = nomTitulacio;
+        this.descripcio = descripcio;
         this.any = any;
-        this.obsolet = obsolet;
+        this.obsolet = false;
         this.assignatures = new ArrayList<>();
     }
 

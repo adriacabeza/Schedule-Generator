@@ -1,4 +1,4 @@
-# Algorisme i Estructura de Dades
+# Generador d'horaris
 
 
 ## Algorisme

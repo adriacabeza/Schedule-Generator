@@ -14,21 +14,26 @@ import java.util.Map;
 public class Assignatura {
 
     private String nom;
-
     private Teoria teoria;
     private Laboratori laboratori;
     private Map<Integer, Grup> grups;
-
     private ArrayList<String> correquisit;
     private int quadrimestre;
+    private String descripcio;
+    private String abr;
 
     /**
      * Crea una assignatura nova amb grups i la informació corresponent
      *
-     * @param nom nom de l'assignatura
+     * @param nom          nom de l'assignatura
+     * @param abr          abreviació del nom de l'assignatura
+     * @param descripcio   descripció de l'assignatura
+     * @param quadrimestre nivell de l'assignatura
      */
-    public Assignatura(String nom, int quadrimestre) {
+    public Assignatura(String nom, String abr, String descripcio, int quadrimestre) {
         this.nom = nom;
+        this.descripcio = descripcio;
+        this.abr = abr;
         this.laboratori = null;
         this.teoria = null;
         this.quadrimestre = quadrimestre;
@@ -314,6 +319,18 @@ public class Assignatura {
      */
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public ArrayList<String> getCorrequisit() {
+        return correquisit;
+    }
+
+    public String getDescripcio() {
+        return descripcio;
+    }
+
+    public String getAbr() {
+        return abr;
     }
 
     @Override

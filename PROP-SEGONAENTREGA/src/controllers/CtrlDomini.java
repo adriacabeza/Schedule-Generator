@@ -4,13 +4,14 @@
 
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import model.*;
 import model.Aula.TipusAula;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -64,7 +65,7 @@ public class CtrlDomini {
     /**
      * Carrega l'informacio sobre aules, assignatures i plans d'estudi desde disc
      */
-    public void carrega() throws IOException{ //TODO fer be
+    public void carrega() throws IOException { //TODO fer be
         CtrlIO c = CtrlIO.getInstance();
 
         plaEstudis = c.carregaPlansDEstudi("plaestudistest.json");
@@ -74,11 +75,12 @@ public class CtrlDomini {
 
     /**
      * Obte una llista amb els noms de tots els plans d'estudi
+     *
      * @return llista dels plans d'estudi
      */
-    public ArrayList<String> getLlistaPlansEstudis(){
+    public ArrayList<String> getLlistaPlansEstudis() {
         ArrayList<String> info = new ArrayList<>();
-        for (PlaEstudis p : plaEstudis.values()){
+        for (PlaEstudis p : plaEstudis.values()) {
             info.add(p.getNomTitulacio());
         }
         info.sort(String::compareToIgnoreCase);
@@ -87,11 +89,12 @@ public class CtrlDomini {
 
     /**
      * Obte una llista amb el nom de totes les assignatures
+     *
      * @return llista d'assignatures
      */
-    public ArrayList<String> getLlistaAssignatures(){
+    public ArrayList<String> getLlistaAssignatures() {
         ArrayList<String> info = new ArrayList<>();
-        for (Assignatura a : assignatures.values()){
+        for (Assignatura a : assignatures.values()) {
             info.add(a.getNom());   //TODO: posar id assig o id o el pla d'estudis al que pertany? parlar-ho
         }
         info.sort(String::compareToIgnoreCase);
@@ -100,11 +103,12 @@ public class CtrlDomini {
 
     /**
      * Obte una llista de totes les aules disponibles
+     *
      * @return llista de totes les aules
      */
     public ArrayList<String> getLlistaAules() {
         ArrayList<String> info = new ArrayList<>();
-        for (Aula a : aules.values()){
+        for (Aula a : aules.values()) {
             info.add(a.getKey());
         }
         info.sort(String::compareToIgnoreCase);
@@ -118,11 +122,11 @@ public class CtrlDomini {
      * @param any Any d'inici del nou pla d'estudis
      * @throws RestriccioIntegritatException si ja existia aquell pla d'estudis
      */
-    public void crearPlaEstudis(String nom, int any) throws RestriccioIntegritatException {
+    public void crearPlaEstudis(String nom, int any, String descripcio) throws RestriccioIntegritatException {
         if (plaEstudis.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix un pla d'estudis amb nom " + nom.toUpperCase());
         }
-        plaEstudis.put(nom, new PlaEstudis(nom, any, false));
+        plaEstudis.put(nom, new PlaEstudis(nom, any, descripcio));
     }
 
     /**
@@ -142,6 +146,13 @@ public class CtrlDomini {
         plaEstudis.remove(nom);
     }
 
+    public void setObsolet(String nom, boolean obsolet) throws NotFoundException {
+        if (!plaEstudis.containsKey(nom)) {
+            throw new NotFoundException("No s'ha trobat el pla d'estudis " + nom.toUpperCase());
+        }
+        plaEstudis.get(nom).setObsolet(obsolet);
+    }
+
     /**
      * Consulta tota la informació d'un pla d'estudis
      *
@@ -149,11 +160,13 @@ public class CtrlDomini {
      * @return tota la informació del pla d'estudis i les seves relacions
      * @throws NotFoundException si no existex el pla d'estudis especificat
      */
-    public PlaEstudis consultarPlaEsudis(String nom) throws NotFoundException {
+    public String consultarPlaEsudis(String nom) throws NotFoundException {
         if (!plaEstudis.containsKey(nom)) {
             throw new NotFoundException("No existeix un pla d'estudis amb nom " + nom.toUpperCase());
         }
-        return plaEstudis.get(nom);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(plaEstudis.get(nom));
+        return json;
     }
 
     /**
@@ -207,20 +220,31 @@ public class CtrlDomini {
         return plaEstudis.get(nomP).getAssignatures();
     }
 
+    public String getPlaEstudisContains(String nomAssig) {
+        for (PlaEstudis plaest : plaEstudis.values()) {
+            if (plaest.hasAssignatura(nomAssig)) {
+                return plaest.getNomTitulacio();
+            }
+        }
+        return "";
+    }
+
     /**
      * Permet crear una nova assignatura
      *
      * @param nom          Nom de l'assignatura
      * @param quadrimestre Quadrimestre al qual pertany
+     * @param abr          Abreviació del nom de l'assignatura
      * @throws RestriccioIntegritatException si ja existia una assignatura identificada pel mateix nom
      */
-    public Assignatura crearAssignatura(String nom, int quadrimestre) throws RestriccioIntegritatException {
+    public void crearAssignatura(String nom, int quadrimestre, String descripcio, String abr) throws RestriccioIntegritatException {
         if (assignatures.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix una assignatura amb nom " + nom.toUpperCase());
         }
-        assignatures.put(nom, new Assignatura(nom, quadrimestre));
-        return null;
+        assignatures.put(nom, new Assignatura(nom, abr, descripcio, quadrimestre));
     }
+
+    //TODO delet this or return json
 
     /**
      * Permet consultar una assignatura identificada pel seu nom
@@ -229,11 +253,14 @@ public class CtrlDomini {
      * @return Assignatura
      * @throws NotFoundException si l'assignatura demanada no existeix
      */
-    public Assignatura consultarAssignatura(String nom) throws NotFoundException {
+    public String consultarAssignatura(String nom) throws NotFoundException {
         if (!assignatures.containsKey(nom)) {
             throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nom.toUpperCase());
         }
-        return assignatures.get(nom);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(assignatures.get(nom));
+        return json;
     }
 
     /**
@@ -248,7 +275,6 @@ public class CtrlDomini {
         }
 
         // borrem les referencies a l'assignatura de tots els llocs
-
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (plaest.hasAssignatura(nomA)) {
                 plaest.esborrarAssignatura(nomA);
@@ -356,11 +382,12 @@ public class CtrlDomini {
      * @param tipusAula tipus d'aula, pot ser pcs, normal o laboratori
      * @throws RestriccioIntegritatException quan s'intenta crear una aula ja existent
      */
-    public void creaAula(String edifici, int planta, int aula, int capacitat, TipusAula tipusAula) throws RestriccioIntegritatException {
+    public void creaAula(String edifici, int planta, int aula, int capacitat, String tipusAula) throws RestriccioIntegritatException {
+        Aula.TipusAula ta = Aula.stringToTipusAula(tipusAula);
         String nomAula = Aula.crearkey(edifici, planta, aula);
 
         if (!aules.containsKey(nomAula)) {
-            aules.put(nomAula, new Aula(edifici, planta, aula, tipusAula, capacitat));
+            aules.put(nomAula, new Aula(edifici, planta, aula, ta, capacitat));
         } else {
             throw new RestriccioIntegritatException("Ja existeix una aula amb nom d'aula " + nomAula.toUpperCase());
         }
@@ -369,14 +396,10 @@ public class CtrlDomini {
     /**
      * Esborra una aula del sistema
      *
-     * @param edifici edifici en el que es troba l'aula
-     * @param planta  planta a la que es troba l'aula
-     * @param aula    numero d'aula dins d'una planta i un edifici
+     * @param nomAula nom de l'aula que es vol esborrar
      * @throws NotFoundException quan s'intenta borrar una aula inexistent
      */
-    public void esborrarAula(String edifici, int planta, int aula) throws NotFoundException {
-        String nomAula = Aula.crearkey(edifici, planta, aula);
-
+    public void esborrarAula(String nomAula) throws NotFoundException {
         if (aules.containsKey(nomAula)) {
             aules.remove(nomAula);
         } else {
@@ -393,10 +416,12 @@ public class CtrlDomini {
      * @param tipusAula nou tipus d'aula per l'aula
      * @throws NotFoundException quan es vol modificar una aula inexistent
      */
-    public void modificarAula(String key, int capacitat, TipusAula tipusAula) throws NotFoundException {
+    public void modificarAula(String key, int capacitat, String tipusAula) throws NotFoundException {
+        TipusAula ta = Aula.stringToTipusAula(tipusAula);
+
         if (aules.containsKey(key)) {
             aules.get(key).setCapacitat(capacitat);
-            aules.get(key).setTipusAula(tipusAula);
+            aules.get(key).setTipusAula(ta);
         } else {
             throw new NotFoundException("No es pot modificar l'aula " + key + " perque no existeix");
         }
@@ -409,17 +434,18 @@ public class CtrlDomini {
      * @return l'aula corresponent al nom si existeix
      * @throws NotFoundException si no existeix l'aula buscada
      */
-    public Aula consultarAula(String key) throws NotFoundException {
+    public String consultarAula(String key) throws NotFoundException {
+        System.out.println(aules);
         if (!aules.containsKey(key)) {
             throw new NotFoundException("No existeix l'aula especificada");
         } else {
-            return aules.get(key);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String json = gson.toJson(aules.get(key));
+            return json;
         }
     }
 
     /**
-     * protected ignatura;
-     * <p>
      * Crea l'horari mitjançant backtracking
      *
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
@@ -429,15 +455,15 @@ public class CtrlDomini {
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (!plaest.isObsolet()) {
                 ArrayList<String> a = plaest.getAssignatures();
-                for(String aux : a) {
+                for (String aux : a) {
                     if (!assignatures2.containsKey(aux) && assignatures.containsKey(aux)) {
                         assignatures2.put(aux, assignatures.get(aux));
                     }
                 }
             }
         }
-        
-        
+
+
         Horari newhorari = new Horari(true, assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
@@ -449,19 +475,19 @@ public class CtrlDomini {
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
     public Horari crearHorari2() {
-        
+
         HashMap<String, Assignatura> assignatures2 = new HashMap<>();
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (!plaest.isObsolet()) {
                 ArrayList<String> a = plaest.getAssignatures();
-                for(String aux : a) {
+                for (String aux : a) {
                     if (!assignatures2.containsKey(aux) && assignatures.containsKey(aux)) {
                         assignatures2.put(aux, assignatures.get(aux));
                     }
                 }
             }
         }
-        
+
         Horari newhorari = new Horari(false, assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
@@ -469,6 +495,7 @@ public class CtrlDomini {
 
     /**
      * Borra la restricció aula dia corresponent
+     *
      * @param res la restricció aula dia que hem de borrar
      */
     public void borrar_restriccio_aula_dia(RestriccioAulaDia res) {
@@ -477,6 +504,7 @@ public class CtrlDomini {
 
     /**
      * Borra la restricció aula hora corresponent
+     *
      * @param res la restricció aula hora que hem de borrar
      */
     public void borrar_restriccio_aula_hora(RestriccioAulaHora res) {
@@ -485,18 +513,20 @@ public class CtrlDomini {
 
     /**
      * Afegir la restricció aula dia corresponent
+     *
      * @param res la restricció aula dia que afegeix
      */
-    public void afegir_restriccio_aula_dia(RestriccioAulaDia res){
+    public void afegir_restriccio_aula_dia(RestriccioAulaDia res) {
         resAulDia.add(res);
     }
 
 
     /**
      * Afegir la restricció aula hora corresponent
+     *
      * @param res la restricció aula hora que afegeix
      */
-    public void afegir_restriccio_aula_hora(RestriccioAulaDia res){
+    public void afegir_restriccio_aula_hora(RestriccioAulaDia res) {
         resAulDia.add(res);
     }
 }
