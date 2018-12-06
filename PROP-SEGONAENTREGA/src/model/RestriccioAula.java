@@ -24,4 +24,10 @@ public class RestriccioAula extends RestriccioUnaria {
     public boolean isAble(Aula aula, SessioGrup assig) {
         return (aula.getTipusAula() == assig.getSessio().gettAula());
     }
+
+    @Override
+    public boolean isAble(int posaula, int dia, int hora, SessioGrup assig, int duracio, Assignacio[][][] horari) {
+        //s ha de implementar així pq. TOTES LES UNÀRIES HAN DE TENIR ELS MATEIXOS PARAMETRES
+        return false;
+    }
 }

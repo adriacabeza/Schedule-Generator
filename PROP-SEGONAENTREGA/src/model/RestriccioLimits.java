@@ -10,7 +10,7 @@ public class RestriccioLimits extends RestriccioUnaria {
         super(10);
     }
 
-    @Override //same here
+    @Override //EN AQUEST NO HI HA PROBLEMA PQ HE CANVIAR ELS PARAMETRES DE RESTRICCIO UNARIA
     public boolean isAble(int posaula, int dia, int hora, SessioGrup assig, int duracio, Assignacio[][][] horari) {
         for (int i = 0; i < duracio; ++i) {
             if ((hora + i) >= 12) {
