@@ -131,18 +131,15 @@ public class Backtracking2 extends Algorismes {
                 borrat = true;
             }
 
-            /*Iterator<SessioGrup> it2 = possibles.keySet().iterator();
-            while(it2.hasNext()){
-                SessioGrup a = it2.next();
-                boolean pos = false;
-                for(int d = 0; d < 5; ++d){
-                    for(int h = 0 ; h < 12; ++h){
-                        if(!possibles.get(a).get(d).get(h).isEmpty()) pos = true;
-                    }
+            boolean pos = true;
+
+            for(int d = 0; d <5; ++d){
+                for(int h = 0; h < 12; ++h){
+                    if (!possibles.get(assignat).get(d).get(h).isEmpty()) pos= false;
                 }
-                if(!pos) return true;
             }
-        }*/
+            if(pos) return true;
+
         }
         return false;
     }
