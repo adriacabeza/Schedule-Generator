@@ -80,7 +80,140 @@ public class DriverCtrlDomini {
                 case 0:
                     menu();
                     break;
+
+                case 2:
+                    nomP = scan.next();
+                    try {
+                        c.esborrarPlaEstudis(nomP);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, no existeix un pla d'estudis amb aquest nom");
+                    } catch (RestriccioIntegritatException e) {
+                        System.out.println("No es pot  borrar un pla d'estudis no obsolet");
+                    }
+                    break;
+                case 3:
+                    nomP = scan.next();
+                    try {
+                        c.consultarPlaEsudis(nomP);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, no existeix un pla d'estudis amb aquest nom");
+                    }
+                    break;
+                case 4:
+                    nomP = scan.next();
+                    nomA = scan.next();
+                    try {
+                        c.afegirAssignaturaPla(nomP, nomA);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, l'assignatura o el pla no existeixen");
+                    } catch (RestriccioIntegritatException e) {
+                        System.out.println("Error, l'assignatura ja esta assignada a  un altre pla");
+                    }
+                    break;
+                case 5:
+                    nomP = scan.next();
+                    nomA = scan.next();
+                    try {
+                        c.esborrarAssignaturaPla(nomP, nomA);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, l'assignatura no esta en el pla o aquest no existeix");
+                    }
+                    break;
+                case 6:
+                    nomP = scan.next();
+                    try {
+                        c.consultarAssignaturesPlaEstudis(nomP);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, el pla amb aquest nom no existeix");
+                    }
+
+                case 8:
+                    nomA1 = scan.next();
+                    try {
+                        c.consultarAssignatura(nomA1);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, l'assignatura amb aquest nom no existeix");
+                    }
+                    break;
+                case 9:
+                    nomA1 = scan.next();
+                    try {
+                        c.esborrarAssignatura(nomA1);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, l'assignatura amb aquest nom no existeix");
+                    }
+                    break;
+                case 10:
+                    nomA1 = scan.next();
+                    duracio = scan.nextInt();
+                    nums = scan.nextInt();
+                    taula = scan.next();
+                    Aula.TipusAula t = Aula.stringToTipusAula(taula);
+
+                    try {
+                        c.modificaInformacioTeoria(nomA1, duracio, nums, t);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, l'assignatura amb aquest nom no existeix");
+                    }
+                    break;
+                case 11:
+                    nomA1 = scan.next();
+                    duracio = scan.nextInt();
+                    nums = scan.nextInt();
+                    taula = scan.next();
+                    t = Aula.stringToTipusAula(taula);
+                    try {
+                        c.modificaInformacioLaboratori(nomA1, duracio, nums, t);
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, l'assignatura amb aquest nom no existeix");
+                    }
+                    break;
+                case 12:
+                    nomA1 = scan.next();
+                    numgrups = scan.nextInt();
+                    capgrups = scan.nextInt();
+                    numsubgrups = scan.nextInt();
+                    try {
+                        c.modificarGrups(nomA1, numgrups, capgrups, numsubgrups);
+                    } catch (NotFoundException e) {
+                        System.out.println("No existeix cap assignatura amb aquest nom");
+                    }
+                    break;
+                case 13:
+                    nomA1 = scan.next();
+                    nomA2 = scan.next();
+                    try {
+                        c.afegeixCorrequisit(nomA1, nomA2);
+                    } catch (NotFoundException e) {
+                        System.out.println("Alguna de les dues assignatures no existeix");
+                    } catch (RestriccioIntegritatException e) {
+                        System.out.println("No formen part del mateix quadrimestre o son la mateixa assignatura");
+                    }
+                    break;
+                case 14:
+                    nomA1 = scan.next();
+                    nomA2 = scan.next();
+                    try {
+                        c.esborraCorrequisit(nomA1, nomA2);
+                    } catch (NotFoundException e) {
+                        System.out.println("Alguna de les dues assignatures no existeix");
+                    }
+                    break;
+
+
+                case 18:
+                    edifici = scan.next();
+                    planta = scan.nextInt();
+                    aula = scan.nextInt();
+                    try {
+                        c.consultarAula(Aula.crearkey(edifici, planta, aula));
+                    } catch (NotFoundException e) {
+                        System.out.println("Error, no existeix una aula amb aquest nom");
+                    }
+                    break;
                 case 19:
+
+
                         try {
                             h = c.crearHorari();
                             CtrlIO.getInstance().guardaHorari(h, "horariexemple.json");
@@ -88,6 +221,8 @@ public class DriverCtrlDomini {
                         } catch (IOException e) {
                             System.out.println("Error al guardar horari");
                         }
+
+
                     break;
                 case 20:
                     c.reload();

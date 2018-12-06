@@ -269,6 +269,7 @@ public class Backtracking2 extends Algorismes {
             e.printStackTrace();
         }
         HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats = new HashMap<>();
+        filtraRestriccions((possibilitats));
         if (filtraRestriccions(possibilitats)) {
             System.out.println("No es pot generar l'horari");
             return false;

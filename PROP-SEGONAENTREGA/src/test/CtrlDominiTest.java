@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -410,6 +411,8 @@ public class CtrlDominiTest {
             assertNotNull(h);
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
             fail();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

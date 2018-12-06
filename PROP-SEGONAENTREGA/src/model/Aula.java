@@ -167,7 +167,9 @@ public class Aula {
      */
 
     public static String crearkey(String edifici, int planta, int aula) {
-        return edifici + String.valueOf(planta) + String.valueOf(aula);
+        if(aula <10)
+            return edifici + String.valueOf(planta) + "0"+ String.valueOf(aula);
+        else return edifici + String.valueOf(planta) + String.valueOf(aula);
     }
 
     /**
@@ -179,7 +181,9 @@ public class Aula {
 
     //TODO: falta un 0 en els noms que et retorna
     public String getKey() {
-        return edifici + String.valueOf(planta) + String.valueOf(aula);
+        if(aula <10)
+            return edifici + String.valueOf(planta) + "0"+ String.valueOf(aula);
+        else return edifici + String.valueOf(planta) + String.valueOf(aula);
     }
 
     /**

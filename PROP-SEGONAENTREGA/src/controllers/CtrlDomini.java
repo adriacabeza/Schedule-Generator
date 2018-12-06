@@ -454,7 +454,8 @@ public class CtrlDomini {
      *
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
-    public Horari crearHorari() {
+    public Horari crearHorari() throws IOException {
+        this.carrega();
         HashMap<String, Assignatura> assignatures2 = new HashMap<>();
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (!plaest.isObsolet()) {

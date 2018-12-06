@@ -41,7 +41,8 @@ public class Horari {
 
         Algorismes algoritme = new Backtracking2(assignatures,aules,resCorr,resNiv,resAul,resTeo,resSub,resAulDia,resAulaHora,resMatiTarda,resCapAul,resLim);
         try {
-            ((Backtracking2) algoritme).generaHorari();
+            boolean b = ((Backtracking2) algoritme).generaHorari();
+            if (!b) System.out.println("No es pot fer l'horari");
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
