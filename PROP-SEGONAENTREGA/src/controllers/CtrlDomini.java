@@ -473,29 +473,6 @@ public class CtrlDomini {
     }
 
 
-    /**
-     * Crea l'horari mitjançant backtracking i forward checking
-     *
-     * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
-     */
-    public Horari crearHorari2() {
-
-        HashMap<String, Assignatura> assignatures2 = new HashMap<>();
-        for (PlaEstudis plaest : plaEstudis.values()) {
-            if (!plaest.isObsolet()) {
-                ArrayList<String> a = plaest.getAssignatures();
-                for (String aux : a) {
-                    if (!assignatures2.containsKey(aux) && assignatures.containsKey(aux)) {
-                        assignatures2.put(aux, assignatures.get(aux));
-                    }
-                }
-            }
-        }
-//TODO: arreglar la parte de restricciones
-        Horari newhorari = new Horari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
-        return newhorari;
-    }
-
 
     /**
      * Borra la restricció aula dia corresponent

@@ -103,7 +103,7 @@ public class Backtracking2 extends Algorismes {
      * @param hora hora que ha de tenir en compte per a podar
      */
 
-    public boolean propagarPossibilitats(int aula, int dia, int hora, SessioGrup sessio, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibles) { //TODO: no haurien d'anar aqui ara les comprovacions de resTo, resSub, resNiv i resCorr ja que estem treient les possibilitats que violen alguna d'aquestes
+    public boolean propagarPossibilitats(int aula, int dia, int hora, SessioGrup sessio, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibles) {
         Iterator<SessioGrup> it = possibles.keySet().iterator();
         while (it.hasNext()) {
             SessioGrup assignat = it.next();
