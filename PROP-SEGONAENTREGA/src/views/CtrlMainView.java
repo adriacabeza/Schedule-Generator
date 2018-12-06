@@ -512,8 +512,13 @@ public class CtrlMainView {
         root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.setTitle("Crear Pla d'estudis");
         stage.show();
+
+        CtrlPlaEstudisView c = loader.getController();
+        c.setMainController(this);
+        c.disableCreateFields();
     }
 
     /**
@@ -527,9 +532,15 @@ public class CtrlMainView {
         Parent root = null;
         root = loader.load();
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.setTitle("Modificar Pla d'estudis: " + nomPla);
         stage.show();
+
+        CtrlPlaEstudisView c = loader.getController();
+        c.setMainController(this);
+        c.disableEditFields();
+        c.loadPlaEstudis(nomPla);
     }
 
     /**
@@ -544,11 +555,12 @@ public class CtrlMainView {
         root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.setTitle(nomPla);
         stage.show();
     }
 
-    private void alert(String s){
+    private void alert(String s) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(s);
         a.setHeaderText("Hi ha hagut un error");

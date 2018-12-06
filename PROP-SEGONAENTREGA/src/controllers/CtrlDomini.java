@@ -65,7 +65,7 @@ public class CtrlDomini {
     /**
      * Carrega l'informacio sobre aules, assignatures i plans d'estudi desde disc
      */
-    public void carrega() throws IOException{ //TODO fer be
+    public void carrega() throws IOException { //TODO fer be
         CtrlIO c = CtrlIO.getInstance();
 
         plaEstudis = c.carregaPlansDEstudi("plaestudistest.json");
@@ -75,11 +75,12 @@ public class CtrlDomini {
 
     /**
      * Obte una llista amb els noms de tots els plans d'estudi
+     *
      * @return llista dels plans d'estudi
      */
-    public ArrayList<String> getLlistaPlansEstudis(){
+    public ArrayList<String> getLlistaPlansEstudis() {
         ArrayList<String> info = new ArrayList<>();
-        for (PlaEstudis p : plaEstudis.values()){
+        for (PlaEstudis p : plaEstudis.values()) {
             info.add(p.getNomTitulacio());
         }
         info.sort(String::compareToIgnoreCase);
@@ -88,11 +89,12 @@ public class CtrlDomini {
 
     /**
      * Obte una llista amb el nom de totes les assignatures
+     *
      * @return llista d'assignatures
      */
-    public ArrayList<String> getLlistaAssignatures(){
+    public ArrayList<String> getLlistaAssignatures() {
         ArrayList<String> info = new ArrayList<>();
-        for (Assignatura a : assignatures.values()){
+        for (Assignatura a : assignatures.values()) {
             info.add(a.getNom());   //TODO: posar id assig o id o el pla d'estudis al que pertany? parlar-ho
         }
         info.sort(String::compareToIgnoreCase);
@@ -101,11 +103,12 @@ public class CtrlDomini {
 
     /**
      * Obte una llista de totes les aules disponibles
+     *
      * @return llista de totes les aules
      */
     public ArrayList<String> getLlistaAules() {
         ArrayList<String> info = new ArrayList<>();
-        for (Aula a : aules.values()){
+        for (Aula a : aules.values()) {
             info.add(a.getKey());
         }
         info.sort(String::compareToIgnoreCase);
@@ -119,11 +122,11 @@ public class CtrlDomini {
      * @param any Any d'inici del nou pla d'estudis
      * @throws RestriccioIntegritatException si ja existia aquell pla d'estudis
      */
-    public void crearPlaEstudis(String nom, int any) throws RestriccioIntegritatException {
+    public void crearPlaEstudis(String nom, int any, String descripcio) throws RestriccioIntegritatException {
         if (plaEstudis.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix un pla d'estudis amb nom " + nom.toUpperCase());
         }
-        plaEstudis.put(nom, new PlaEstudis(nom, any, false));
+        plaEstudis.put(nom, new PlaEstudis(nom, any, descripcio));
     }
 
     /**
@@ -143,6 +146,13 @@ public class CtrlDomini {
         plaEstudis.remove(nom);
     }
 
+    public void setObsolet(String nom, boolean obsolet) throws NotFoundException {
+        if (!plaEstudis.containsKey(nom)) {
+            throw new NotFoundException("No s'ha trobat el pla d'estudis " + nom.toUpperCase());
+        }
+        plaEstudis.get(nom).setObsolet(obsolet);
+    }
+
     /**
      * Consulta tota la informació d'un pla d'estudis
      *
@@ -150,11 +160,13 @@ public class CtrlDomini {
      * @return tota la informació del pla d'estudis i les seves relacions
      * @throws NotFoundException si no existex el pla d'estudis especificat
      */
-    public PlaEstudis consultarPlaEsudis(String nom) throws NotFoundException {
+    public String consultarPlaEsudis(String nom) throws NotFoundException {
         if (!plaEstudis.containsKey(nom)) {
             throw new NotFoundException("No existeix un pla d'estudis amb nom " + nom.toUpperCase());
         }
-        return plaEstudis.get(nom);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(plaEstudis.get(nom));
+        return json;
     }
 
     /**
@@ -222,7 +234,7 @@ public class CtrlDomini {
      *
      * @param nom          Nom de l'assignatura
      * @param quadrimestre Quadrimestre al qual pertany
-     * @param abr Abreviació del nom de l'assignatura
+     * @param abr          Abreviació del nom de l'assignatura
      * @throws RestriccioIntegritatException si ja existia una assignatura identificada pel mateix nom
      */
     public void crearAssignatura(String nom, int quadrimestre, String descripcio, String abr) throws RestriccioIntegritatException {
@@ -233,6 +245,7 @@ public class CtrlDomini {
     }
 
     //TODO delet this or return json
+
     /**
      * Permet consultar una assignatura identificada pel seu nom
      *
@@ -442,15 +455,15 @@ public class CtrlDomini {
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (!plaest.isObsolet()) {
                 ArrayList<String> a = plaest.getAssignatures();
-                for(String aux : a) {
+                for (String aux : a) {
                     if (!assignatures2.containsKey(aux) && assignatures.containsKey(aux)) {
                         assignatures2.put(aux, assignatures.get(aux));
                     }
                 }
             }
         }
-        
-        
+
+
         Horari newhorari = new Horari(true, assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
@@ -462,19 +475,19 @@ public class CtrlDomini {
      * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
      */
     public Horari crearHorari2() {
-        
+
         HashMap<String, Assignatura> assignatures2 = new HashMap<>();
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (!plaest.isObsolet()) {
                 ArrayList<String> a = plaest.getAssignatures();
-                for(String aux : a) {
+                for (String aux : a) {
                     if (!assignatures2.containsKey(aux) && assignatures.containsKey(aux)) {
                         assignatures2.put(aux, assignatures.get(aux));
                     }
                 }
             }
         }
-        
+
         Horari newhorari = new Horari(false, assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
@@ -482,6 +495,7 @@ public class CtrlDomini {
 
     /**
      * Borra la restricció aula dia corresponent
+     *
      * @param res la restricció aula dia que hem de borrar
      */
     public void borrar_restriccio_aula_dia(RestriccioAulaDia res) {
@@ -490,6 +504,7 @@ public class CtrlDomini {
 
     /**
      * Borra la restricció aula hora corresponent
+     *
      * @param res la restricció aula hora que hem de borrar
      */
     public void borrar_restriccio_aula_hora(RestriccioAulaHora res) {
@@ -498,18 +513,20 @@ public class CtrlDomini {
 
     /**
      * Afegir la restricció aula dia corresponent
+     *
      * @param res la restricció aula dia que afegeix
      */
-    public void afegir_restriccio_aula_dia(RestriccioAulaDia res){
+    public void afegir_restriccio_aula_dia(RestriccioAulaDia res) {
         resAulDia.add(res);
     }
 
 
     /**
      * Afegir la restricció aula hora corresponent
+     *
      * @param res la restricció aula hora que afegeix
      */
-    public void afegir_restriccio_aula_hora(RestriccioAulaDia res){
+    public void afegir_restriccio_aula_hora(RestriccioAulaDia res) {
         resAulDia.add(res);
     }
 }

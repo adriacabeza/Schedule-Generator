@@ -41,17 +41,18 @@ public class RestriccioGrupTeo extends Restriccions {
     /**
      * Retorna si es possible realitzar una assignació de teoria d'un determinat grup comprovant que no hi hagi solapaments
      *
-     * @param check      sessio de la que mirem si pot haber solapaments
-     * @param assignat   sessio que acabem d'assignar
-     * @param pos        possibles aules que pot tenir l'assignació a comprovar
-     * @param aula       aula que comprovem
-     * @param hora       hora que es comprova
-     * @param dia        dia que es comprova
+     * @param check    sessio de la que mirem si pot haber solapaments
+     * @param assignat sessio que acabem d'assignar
+     * @param pos      possibles aules que pot tenir l'assignació a comprovar
+     * @param aula     aula que comprovem
+     * @param hora     hora que es comprova
+     * @param dia      dia que es comprova
      */
-    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora){
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aula, int dia, int hora) {
         if (pos.get(check).get(dia).get(hora).contains(aula)) {
             if (check.getAssig().getNom().equals(assignat.getAssig().getNom()) && check.getSessio().getClass() == Teoria.class) {
-                if (check.getGrup().getNum() == assignat.getGrup().getNum()) return false;      //solapament teories o labs
+                if (check.getGrup().getNum() == assignat.getGrup().getNum())
+                    return false;      //solapament teories o labs
             }
         }
 

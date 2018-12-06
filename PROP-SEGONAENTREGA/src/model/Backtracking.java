@@ -29,7 +29,8 @@ public class Backtracking {
 
     /**
      * Construeix un horari un buit amb totes les dades que es necessitarien per a generar-lo
-     *  @param assignatures assignatures que tindrà que tenir l'horari
+     *
+     * @param assignatures assignatures que tindrà que tenir l'horari
      * @param aules        aules que tindrà que tenir l'horari
      * @param resCorr      restricció de correquísit
      * @param resNiv       restricció de nivell
@@ -57,6 +58,7 @@ public class Backtracking {
 
     /**
      * Obté l'horari
+     *
      * @return l'horari
      */
     public Assignacio[][][] getHorari() {
@@ -90,7 +92,7 @@ public class Backtracking {
                     if (horari[h][d][a] == null) System.out.println("ESPAI BUIT");
                     else {
                         ++count;
-                        System.out.println(fromInt2dia(d)+", a les "+getHora(h)+" a l'aula  " + horari[h][d][a].getAula().getKey() +" el grup " + horari[h][d][a].getGrup().getNum()+ " fa " + horari[h][d][a].getAssignatura());
+                        System.out.println(fromInt2dia(d) + ", a les " + getHora(h) + " a l'aula  " + horari[h][d][a].getAula().getKey() + " el grup " + horari[h][d][a].getGrup().getNum() + " fa " + horari[h][d][a].getAssignatura());
                     }
             }
         }
@@ -165,7 +167,7 @@ public class Backtracking {
     /**
      * S'encarrega de comprovar totes les restriccions per a fer assignacions correctes a l'horari
      *
-     * @param aula   aula de l'assignació
+     * @param aula    aula de l'assignació
      * @param dia     enter que representa el dia de l'assignació
      * @param hora    enter que representa l'hora de l'assignació
      * @param assig   assignatura de l'assignació
@@ -181,9 +183,9 @@ public class Backtracking {
             if (!resCorr.isable(horari, hora, dia, assig, aules)) return false; //violem restriccio de correquisit
         } catch (NotFoundException e) {
         }
-        if(aula.getCapacitat() < assig.getGrup().getCapacitat()) return false;
+        if (aula.getCapacitat() < assig.getGrup().getCapacitat()) return false;
 
-     //  if (!resAul.isAble(aula1, assig)) return false; //violem restriccio de aula
+        //  if (!resAul.isAble(aula1, assig)) return false; //violem restriccio de aula
         if (!resTeo.isable(horari, hora, dia, assig, aules)) return false; //violem restriccio de clases de teoria
         if (!resSub.isable(horari, hora, dia, assig, aules)) return false;
         for (RestriccioAulaDia ad : resAulDia)
@@ -275,7 +277,7 @@ public class Backtracking {
     /**
      * Crea l'horari
      *
-     * @param i  iterador per a tots els grups que s'han d'assignar
+     * @param i      iterador per a tots els grups que s'han d'assignar
      * @param horari horari que s'ha d'emplenar
      * @return true si s'ha pogut realitzar l'horari
      */
@@ -289,20 +291,20 @@ public class Backtracking {
                 for (int a = 0; a < aules.size(); ++a) {
                     if (horari[h][d][a] == null) {
                         if (teoria) {
-                           if (comprovarRestriccions(aules.get(a), d, h, sessio.get(i), duracio, a) && aules.get(a).getTipusAula() == sessio.get(i).getSessio().gettAula()) {
+                            if (comprovarRestriccions(aules.get(a), d, h, sessio.get(i), duracio, a) && aules.get(a).getTipusAula() == sessio.get(i).getSessio().gettAula()) {
                                 for (int z = 0; z < duracio; ++z) {
-                                   horari[h + z][d][a] = new AssignacioT(fromInt2dia(d), h + z, aules.get(a), sessio.get(i).getAssig(), sessio.get(i).getGrup());
+                                    horari[h + z][d][a] = new AssignacioT(fromInt2dia(d), h + z, aules.get(a), sessio.get(i).getAssig(), sessio.get(i).getGrup());
                                 }
-                               if (creaHorari(i + 1, horari)) return true;
-                               else {
-                                   for (int z = 0; z < duracio; ++z) {
-                                       horari[h + z][d][a] = null;
-                                   }
-                               }
+                                if (creaHorari(i + 1, horari)) return true;
+                                else {
+                                    for (int z = 0; z < duracio; ++z) {
+                                        horari[h + z][d][a] = null;
+                                    }
+                                }
 
                             }
                         } else {
-                           if (comprovarRestriccions(aules.get(a), d, h, sessio.get(i), duracio, a)) {
+                            if (comprovarRestriccions(aules.get(a), d, h, sessio.get(i), duracio, a)) {
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][a] = new AssignacioL(fromInt2dia(d), h + z, aules.get(a), sessio.get(i).getAssig(), sessio.get(i).getSub());
                                 }
@@ -312,7 +314,7 @@ public class Backtracking {
                                         horari[h + z][d][a] = null;
                                     }
                                 }
-                           }
+                            }
 
                         }
                     }

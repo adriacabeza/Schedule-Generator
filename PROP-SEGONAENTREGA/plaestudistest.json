@@ -3,7 +3,8 @@
     "nomTitulacio": "Fisica",
     "any": 2012,
     "assignatures": [],
-    "obsolet": false
+    "obsolet": false,
+    "descripcio": "descripcio per enginyeria fisica"
   },
   "Informatica": {
     "nomTitulacio": "Informatica",
@@ -11,6 +12,14 @@
     "assignatures": [
       "Arquitectura dels Computadors"
     ],
-    "obsolet": false
+    "obsolet": false,
+    "descripcio": "descripcio per enginyeria informatica"
+  },
+  "Quimica": {
+    "nomTitulacio": "Quimica",
+    "any": 2013,
+    "assignatures": [],
+    "obsolet": true,
+    "descripcio": "descripcio per enginyeria quimica"
   }
 }

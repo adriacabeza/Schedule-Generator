@@ -47,17 +47,18 @@ public class RestriccioNivell extends Restriccions {
 
     /**
      * Retorna si es possible realitzar una assignació d'una assignatura d'un determinat grup comprovant que no hi hagi conflictes amb el nivell d'una altra assignació
-     * @param check assignació a comprovar
+     *
+     * @param check    assignació a comprovar
      * @param assignat assignació acabada d'inserir al horari
-     * @param pos possibles aules que pot tenir l'assignació a comprovar
-     * @param aula aula que es comprova
-     * @param hora hora que es comprova
-     * @param dia  dia que es comprova
+     * @param pos      possibles aules que pot tenir l'assignació a comprovar
+     * @param aula     aula que es comprova
+     * @param hora     hora que es comprova
+     * @param dia      dia que es comprova
      * @return true si l'assignació seria compatible amb l'assignació acabada d'inserir a l'horari segons els nivells
      */
-    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos , int aula, int dia, int hora)  {
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aula, int dia, int hora) {
         if (assignat.getAssig().getQuadrimestre() == check.getAssig().getQuadrimestre() && assignat.getGrup().getNum() == check.getGrup().getNum()) {
-            if (pos.get(check).get(dia).get(hora).contains(aula)){
+            if (pos.get(check).get(dia).get(hora).contains(aula)) {
                 return false;
             }
         }

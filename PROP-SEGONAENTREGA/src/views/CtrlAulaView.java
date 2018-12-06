@@ -31,6 +31,7 @@ public class CtrlAulaView {
     @FXML
     ChoiceBox<String> choice_tipus_aula = new ChoiceBox<>();
 
+    /***** AULA DISPLAY *****/
     @FXML
     Label label_title = new Label();
     @FXML
@@ -43,9 +44,6 @@ public class CtrlAulaView {
     Label label_capacitat = new Label();
     @FXML
     Label label_tipus_aula = new Label();
-
-    /***** AULA DISPLAY *****/
-
 
     /***** OTHER CONTROLLER VARIABLES *****/
     private CtrlMainView ctrlMainView;
@@ -121,8 +119,8 @@ public class CtrlAulaView {
      */
     public void saveChanges() {
         int numerrors = verifyFields();
-        if(numerrors > 0){
-            if(numerrors == 1) alert("Hi ha " + numerrors + " errors en el formulari.");
+        if (numerrors > 0) {
+            if (numerrors == 1) alert("Hi ha " + numerrors + " errors en el formulari.");
             else alert("Hi han " + numerrors + " errors en el formulari.");
             return;
         }
@@ -172,35 +170,40 @@ public class CtrlAulaView {
         text_aula.setDisable(true);
     }
 
-    private int verifyFields(){
+    /**
+     * Verifica els camps del formulari i notifica del nombre d'errors que conté
+     *
+     * @return nombre d'errors
+     */
+    private int verifyFields() {
         FormValidation formvalidator = new FormValidation();
         int errorcount = 0;
 
-        if(!formvalidator.validateAlphanumeric(text_edifici.getText())){
+        if (!formvalidator.validateAlphanumeric(text_edifici.getText())) {
             errorcount++;
             text_edifici.setBorder(formvalidator.errorBorder);
-        }else{
+        } else {
             text_edifici.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateNumber(text_planta.getText())){
+        if (!formvalidator.validateNumber(text_planta.getText())) {
             errorcount++;
             text_planta.setBorder(formvalidator.errorBorder);
-        }else{
+        } else {
             text_planta.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateNumber(text_aula.getText())){
+        if (!formvalidator.validateNumber(text_aula.getText())) {
             errorcount++;
             text_aula.setBorder(formvalidator.errorBorder);
-        }else{
+        } else {
             text_aula.setBorder(formvalidator.okBorder);
         }
 
-        if(!formvalidator.validateNumber(text_capacitat.getText())){
+        if (!formvalidator.validateNumber(text_capacitat.getText())) {
             errorcount++;
             text_capacitat.setBorder(formvalidator.errorBorder);
-        }else{
+        } else {
             text_capacitat.setBorder(formvalidator.okBorder);
         }
         return errorcount;

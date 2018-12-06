@@ -47,6 +47,20 @@
     -fx-background-radius:30;
 }
 
+#pe_save
+{
+    -fx-background-color:#57f271;
+    -fx-alignment:center;
+    -fx-background-radius:30;
+}
+
+#pe_cancel
+{
+    -fx-background-color:#f9406f;
+    -fx-alignment:center;
+    -fx-background-radius:30;
+}
+
 #edit_button
 {
     -fx-background-color:#AEABCA;

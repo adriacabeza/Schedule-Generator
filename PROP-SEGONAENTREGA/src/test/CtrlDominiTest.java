@@ -44,14 +44,14 @@ public class CtrlDominiTest {
     public void crearPlaEstudis() {
         boolean fail;
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 2018, "descr");
             fail = false;
         } catch (RestriccioIntegritatException e) {
             fail = true;
         }
         assertFalse(fail); //probem que es pugui crear be el primer cop
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 20108, "descr");
             fail = false;
         } catch (RestriccioIntegritatException e) {
             fail = true;
@@ -73,7 +73,7 @@ public class CtrlDominiTest {
         assertFalse(failNotFound);
         boolean failNoObsolet;
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 2018, "descr");
             c.esborrarPlaEstudis("PlaEstudisTest");
             failNoObsolet = true;
         } catch (RestriccioIntegritatException e) {
@@ -84,7 +84,7 @@ public class CtrlDominiTest {
         assertFalse(failNoObsolet);
         boolean failObsolet;
         try {
-            c.consultarPlaEsudis("PlaEstudisTest").setObsolet(true);
+            c.setObsolet("PlaEstudisTest", true);
             c.esborrarPlaEstudis("PlaEstudisTest");
             failObsolet = false;
         } catch (NotFoundException | RestriccioIntegritatException e) {
@@ -105,7 +105,7 @@ public class CtrlDominiTest {
         assertFalse(failNotFound);
         boolean failNotConsultat;
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 2018, "descr");
             c.consultarPlaEsudis("PlaEstudisTest");
             failNotConsultat = false;
         } catch (NotFoundException | RestriccioIntegritatException e) {
@@ -117,14 +117,14 @@ public class CtrlDominiTest {
     @Test
     public void afegirAssignaturaPla() {
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 2018, "descr");
             c.afegirAssignaturaPla("PlaEstudisTest", "AssignaturaTest");
             fail();
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
         }
 
         try {
-            c.consultarPlaEsudis("PlaEstudisTest").setObsolet(true);
+            c.setObsolet("PlaEstudisTest", true);
             c.esborrarPlaEstudis("PlaEstudisTest");
             c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             c.afegirAssignaturaPla("PlaEstudisTest", "AssignaturaTest");
@@ -133,7 +133,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 2018, "descr");
             c.afegirAssignaturaPla("PlaEstudisTest", "AssignaturaTest");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             e.printStackTrace();
@@ -144,23 +144,23 @@ public class CtrlDominiTest {
     @Test
     public void esborrarAssignaturaPla() {
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 2018, "descr");
             c.esborrarAssignaturaPla("PlaEstudisTest", "AssignaturaTest");
             fail();
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
         }
 
         try {
-            c.consultarPlaEsudis("PlaEstudisTest").setObsolet(true);
+            c.setObsolet("PlaEstudisTest", true);
             c.esborrarPlaEstudis("PlaEstudisTest");
-            c.crearAssignatura("AssignaturaTest", 1,"sample descr", "abr");
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             c.esborrarAssignaturaPla("PlaEstudisTest", "AssignaturaTest");
             fail();
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
         }
 
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 2018, "descr");
             c.esborrarAssignaturaPla("PlaEstudisTest", "AssignaturaTest");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             e.printStackTrace();
@@ -182,7 +182,7 @@ public class CtrlDominiTest {
 
         boolean allOk;
         try {
-            c.crearPlaEstudis("PlaEstudisTest", 2018);
+            c.crearPlaEstudis("PlaEstudisTest", 2018, "descr");
             ass = c.consultarAssignaturesPlaEstudis("PlaEstudisTest");
             allOk = true;
         } catch (NotFoundException | RestriccioIntegritatException e) {
@@ -219,7 +219,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTest", 1, "sample descr","abr" );
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             c.consultarAssignatura("AssignaturaTest");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -235,7 +235,7 @@ public class CtrlDominiTest {
         }
 
         try {
-            c.crearAssignatura("AssignaturaTest", 1,"sample descr", "abr");
+            c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
             c.esborrarAssignatura("AssignaturaTest");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
@@ -400,7 +400,7 @@ public class CtrlDominiTest {
     public void crearHorari() {
         try {
             c.crearAssignatura("AC", 1, "sample descr", "abr");
-            c.crearPlaEstudis("NouPla", 2010);
+            c.crearPlaEstudis("NouPla", 2010, "descr");
             c.afegirAssignaturaPla("NouPla", "AC");
             c.modificarGrups("AC", 2, 50, 2);
             c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);
@@ -417,7 +417,7 @@ public class CtrlDominiTest {
     public void crearHorari2() {
         try {
             c.crearAssignatura("AC", 1, "sample descr", "abr");
-            c.crearPlaEstudis("NouPla", 2010);
+            c.crearPlaEstudis("NouPla", 2010, "descr");
             c.afegirAssignaturaPla("NouPla", "AC");
             c.modificarGrups("AC", 2, 50, 2);
             c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);

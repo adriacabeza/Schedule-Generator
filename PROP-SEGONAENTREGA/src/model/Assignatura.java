@@ -25,9 +25,9 @@ public class Assignatura {
     /**
      * Crea una assignatura nova amb grups i la informació corresponent
      *
-     * @param nom nom de l'assignatura
-     * @param abr abreviació del nom de l'assignatura
-     * @param descripcio descripció de l'assignatura
+     * @param nom          nom de l'assignatura
+     * @param abr          abreviació del nom de l'assignatura
+     * @param descripcio   descripció de l'assignatura
      * @param quadrimestre nivell de l'assignatura
      */
     public Assignatura(String nom, String abr, String descripcio, int quadrimestre) {
