@@ -69,7 +69,7 @@ public class Backtracking2 extends Algorismes {
                             if (!resAulaHora.get(j).isAble(null,aules.get(aules_possibles.get(n)), d, h)) b = false;
                         }
                         for (int j = 0; j < resAulDia.size() && b; ++j) {
-                            if (!resAulDia.get(j).isAble(aules.get(aules_possibles.get(n)), d)) b = false;
+                            if (!resAulDia.get(j).isAble2(null,null,aules.get(aules_possibles.get(n)),null,0, d,0)) b = false;
                         }
                         if (b) aulesHora.add(aules_possibles.get(n));
                     }
@@ -103,30 +103,26 @@ public class Backtracking2 extends Algorismes {
      * @param hora hora que ha de tenir en compte per a podar
      */
 
-    public boolean propagarPossibilitats(int aula, int dia, int hora, SessioGrup sessio, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibles) {
+    public boolean propagarPossibilitats(int aula, int dia, int hora, SessioGrup sessio, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibles) throws NotFoundException {
         Iterator<SessioGrup> it = possibles.keySet().iterator();
         while (it.hasNext()) {
             SessioGrup assignat = it.next();
             boolean borrat = false;
-            try {
-                if (!resCorr.isAble2(assignat, sessio, possibles, aula, dia, hora)) {
-                    possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
-                    borrat = true;
-                }
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-
-            if (!resNiv.isAble2(assignat, sessio, possibles, aula, dia, hora) && !borrat) {
-                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
-                borrat = true;
-            }
-            if (!resTeo.isAble2(assignat, sessio, possibles, aula, dia, hora) && !borrat) {
+            if (!resCorr.isAble2(assignat, sessio,null, possibles, aula, dia, hora)) {
                 possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
                 borrat = true;
             }
 
-            if (!resSub.isAble2(assignat, sessio, possibles, aula, dia, hora) && !borrat) {
+            if (!resNiv.isAble2(assignat, sessio,null, possibles, aula, dia, hora) && !borrat) {
+                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                borrat = true;
+            }
+            if (!resTeo.isAble2(assignat, sessio,null, possibles, aula, dia, hora) && !borrat) {
+                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                borrat = true;
+            }
+
+            if (!resSub.isAble2(assignat, sessio,null, possibles, aula, dia, hora) && !borrat) {
                 possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
                 borrat = true;
             }
@@ -167,7 +163,7 @@ public class Backtracking2 extends Algorismes {
      * @return retorna true si ha pogut fer l'horari i si no ha pogut false
      */
 
-    public boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
+    public boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) throws NotFoundException {
 
         if (i == (sessions.size())) return true;
         int duracio = sessions.get(i).getSessio().getDuracioSessions();
@@ -237,7 +233,7 @@ public class Backtracking2 extends Algorismes {
      *
      * @return true si s'ha pogut realitzar l'horari i false si no s'ha pogut
      */
-    public boolean generaHorari() {
+    public boolean generaHorari() throws NotFoundException {
         try {
             sessions = creaSessions(assignatures);
             Collections.sort(sessions);

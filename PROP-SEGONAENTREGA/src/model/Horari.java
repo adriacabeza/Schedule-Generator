@@ -3,6 +3,8 @@
  */
 package model;
 
+import exceptions.NotFoundException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -38,7 +40,11 @@ public class Horari {
                   RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora, ArrayList<RestriccioAssigMatiTarda> resMatiTarda, RestriccioCapacitatAula resCapAul, RestriccioLimits resLim ) {
 
         Algorismes algoritme = new Backtracking2(assignatures,aules,resCorr,resNiv,resAul,resTeo,resSub,resAulDia,resAulaHora,resMatiTarda,resCapAul,resLim);
-        ((Backtracking2) algoritme).generaHorari();
+        try {
+            ((Backtracking2) algoritme).generaHorari();
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
         horari = algoritme.getHorari();
     }
 }

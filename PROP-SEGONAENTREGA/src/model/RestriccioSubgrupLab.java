@@ -4,10 +4,12 @@
 
 package model;
 
+import exceptions.NotFoundException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class RestriccioSubgrupLab extends Restriccions {
+public class RestriccioSubgrupLab extends RestriccioBinaria {
 
     /**
      * Crea una restricció on es comprova que en una sessió de laboratori d'un determinat subgrup no hi hagi solapaments
@@ -50,13 +52,14 @@ public class RestriccioSubgrupLab extends Restriccions {
      * @param check    sessio de la que mirem si pot haber solapaments
      * @param assignat sessio que acabem d'assignar
      * @param pos      possibles aules que pot tenir l'assignació a comprovar
-     * @param aula     aula que comprovem
+     * @param aulaIndex index de l'aula que es comprova
      * @param hora     hora que es comprova
      * @param dia      dia que es comprova
      */
 
-    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aula, int dia, int hora) {
-        if (pos.get(check).get(dia).get(hora).contains(aula)) {
+    @Override
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) throws NotFoundException {
+        if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
             if (check.getAssig().getNom().equals(assignat.getAssig().getNom()) && check.getSessio().getClass() == Laboratori.class) {
                 if (assignat.getSessio().getClass() == Laboratori.class) {
                     return (assignat.getSub().getNum() != check.getSub().getNum());     //solapament laboratori¡

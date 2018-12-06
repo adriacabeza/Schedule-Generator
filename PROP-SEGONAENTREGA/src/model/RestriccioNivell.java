@@ -4,10 +4,12 @@
 
 package model;
 
+import exceptions.NotFoundException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class RestriccioNivell extends Restriccions {
+public class RestriccioNivell extends RestriccioBinaria {
 
     /**
      * Crea una restricció on es comprova que en no hi hagi solapaments de sessions del mateix nivell
@@ -51,18 +53,19 @@ public class RestriccioNivell extends Restriccions {
      * @param check    assignació a comprovar
      * @param assignat assignació acabada d'inserir al horari
      * @param pos      possibles aules que pot tenir l'assignació a comprovar
-     * @param aula     aula que es comprova
+     * @param aulaIndex index de l'aula que es comprova
      * @param hora     hora que es comprova
      * @param dia      dia que es comprova
      * @return true si l'assignació seria compatible amb l'assignació acabada d'inserir a l'horari segons els nivells
      */
-    public boolean isAble2(SessioGrup check, SessioGrup assignat, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aula, int dia, int hora) {
+
+    @Override
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) throws NotFoundException {
         if (assignat.getAssig().getQuadrimestre() == check.getAssig().getQuadrimestre() && assignat.getGrup().getNum() == check.getGrup().getNum()) {
-            if (pos.get(check).get(dia).get(hora).contains(aula)) {
+            if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
                 return false;
             }
         }
         return true;
     }
-
 }

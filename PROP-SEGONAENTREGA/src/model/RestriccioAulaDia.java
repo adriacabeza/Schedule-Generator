@@ -4,7 +4,10 @@
 
 package model;
 
-public class RestriccioAulaDia extends Restriccions {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class RestriccioAulaDia extends RestriccioBinaria {
 
     private int dia;
     private Aula aula;
@@ -28,7 +31,8 @@ public class RestriccioAulaDia extends Restriccions {
      * @param dia  dia que es comprova
      * @return true si es pot realitzar l'assignació
      */
-    public boolean isAble(Aula aula, int dia) {
+    @Override
+    public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) {
         if (this.dia == dia && aula.getKey().equals(this.aula.getKey())) return false;
         return true;
     }
@@ -50,6 +54,8 @@ public class RestriccioAulaDia extends Restriccions {
     public Aula getAula() {
         return aula;
     }
+
+
 
 }
 

@@ -196,5 +196,5 @@ public abstract class Algorismes {
      * @return retorna true si ha pogut fer l'horari i si no ha pogut false
      */
 
-    public abstract boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats);
+    public abstract boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) throws NotFoundException;
 }

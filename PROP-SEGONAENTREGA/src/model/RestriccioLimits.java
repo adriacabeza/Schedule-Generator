@@ -3,8 +3,6 @@ package model;
 public class RestriccioLimits extends RestriccioUnaria {
     /**
      * Es crea una restricció
-     *
-     * @param id identificador de la restricció
      */
     public RestriccioLimits() {
         super(10);
