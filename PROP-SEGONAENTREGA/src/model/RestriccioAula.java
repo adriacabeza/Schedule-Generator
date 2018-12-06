@@ -20,7 +20,7 @@ public class RestriccioAula extends RestriccioUnaria {
      * @param assig assignatura que es comprova
      * @return true si es pot realitzar la assignació a l'aula
      */
-    @Override   //why tf is override wrong?
+
     public boolean isAble(Aula aula, SessioGrup assig) {
         return (aula.getTipusAula() == assig.getSessio().gettAula());
     }
