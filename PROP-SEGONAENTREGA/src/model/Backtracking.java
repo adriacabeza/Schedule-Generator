@@ -68,7 +68,7 @@ public class Backtracking extends Algorismes{
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
-        boolean b = creaHorari(0, horari);
+        boolean b = creaHorari(0, horari, null);
         if (!b) System.out.println("No es pot realitzar l'horari");
         return b;
     }
@@ -83,7 +83,7 @@ public class Backtracking extends Algorismes{
      * @param horari horari que s'ha d'emplenar
      * @return true si s'ha pogut realitzar l'horari
      */
-    private boolean creaHorari(int i, Assignacio[][][] horari) {
+    public boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
 
         if (i == (sessions.size())) return true;
         int duracio = sessions.get(i).getSessio().getDuracioSessions();
@@ -97,7 +97,7 @@ public class Backtracking extends Algorismes{
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][a] = new AssignacioT(fromInt2dia(d), h + z, aules.get(a), sessions.get(i).getAssig(), sessions.get(i).getGrup());
                                 }
-                                if (creaHorari(i + 1, horari)) return true;
+                                if (creaHorari(i + 1, horari,null)) return true;
                                 else {
                                     for (int z = 0; z < duracio; ++z) {
                                         horari[h + z][d][a] = null;
@@ -110,7 +110,7 @@ public class Backtracking extends Algorismes{
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][a] = new AssignacioL(fromInt2dia(d), h + z, aules.get(a), sessions.get(i).getAssig(), sessions.get(i).getSub());
                                 }
-                                if (creaHorari(i + 1, horari)) return true;
+                                if (creaHorari(i + 1, horari, null)) return true;
                                 else {
                                     for (int z = 0; z < duracio; ++z) {
                                         horari[h + z][d][a] = null;

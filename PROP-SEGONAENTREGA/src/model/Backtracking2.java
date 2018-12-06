@@ -170,7 +170,7 @@ public class Backtracking2 extends Algorismes {
      * @return retorna true si ha pogut fer l'horari i si no ha pogut false
      */
 
-    private boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
+    public boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats) {
 
         if (i == (sessions.size())) return true;
         int duracio = sessions.get(i).getSessio().getDuracioSessions();

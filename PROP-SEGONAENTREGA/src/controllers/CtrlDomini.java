@@ -463,8 +463,8 @@ public class CtrlDomini {
             }
         }
 
-
-        Horari newhorari = new Horari(true, assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
+//TODO: arreglar la parte de restricciones
+        Horari newhorari = new Horari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
 
@@ -487,8 +487,8 @@ public class CtrlDomini {
                 }
             }
         }
-
-        Horari newhorari = new Horari(false, assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
+//TODO: arreglar la parte de restricciones
+        Horari newhorari = new Horari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
         return newhorari;
     }
 

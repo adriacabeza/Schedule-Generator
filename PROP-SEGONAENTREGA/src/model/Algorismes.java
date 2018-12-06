@@ -117,26 +117,6 @@ public abstract class Algorismes {
 
 
 
-    /**
-     * Printa per consola tot l'horari
-     */
-
-    public void printarHoraritot() {
-        int count = 0;
-        for (int h = 0; h < 12; ++h) {
-            for (int d = 0; d < 5; ++d) {
-                for (int a = 0; a < aules.size(); ++a)
-                    if (horari[h][d][a] == null) System.out.println("ESPAI BUIT");
-                    else {
-                        ++count;
-                        System.out.println(fromInt2dia(d) + ", a les " + getHora(h) + " a l'aula  " + horari[h][d][a].getAula().getKey() + " el grup " + horari[h][d][a].getGrup().getNum() + " fa " + horari[h][d][a].getAssignatura());
-                    }
-            }
-        }
-        System.out.println("S'han assignat " + count + (" sessions."));
-    }
-
-
 
     /**
      * Converteix un enter que representa un número en el seu pertinent dia en string
@@ -206,4 +186,15 @@ public abstract class Algorismes {
         else if (hora == 10) return 18;
         else return 19;
     }
+
+
+    /**
+     * Genera l'horari
+     * @param i és l'ièssim que indica de quina sessió estem parlant
+     * @param horari és l'horari que portem assignat
+     * @param possibilitats son el conjunt de possibilitats de les sessions que no hem assignat encara
+     * @return retorna true si ha pogut fer l'horari i si no ha pogut false
+     */
+
+    public abstract boolean creaHorari(int i, Assignacio[][][] horari, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats);
 }

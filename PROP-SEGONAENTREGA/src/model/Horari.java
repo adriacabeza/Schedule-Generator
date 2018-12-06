@@ -37,10 +37,9 @@ public class Horari {
     public Horari( HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules, RestriccioCorrequisit resCorr, RestriccioNivell resNiv, RestriccioAula resAul, RestriccioGrupTeo resTeo,
                   RestriccioSubgrupLab resSub, ArrayList<RestriccioAulaDia> resAulDia, ArrayList<RestriccioAulaHora> resAulaHora, ArrayList<RestriccioAssigMatiTarda> resMatiTarda, RestriccioCapacitatAula resCapAul, RestriccioLimits resLim ) {
 
-        Backtracking2 backtracking2 = new Backtracking2(assignatures, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda, resCapAul, resLim);
-        backtracking2.generaHorari();
-        backtracking2.printarHoraritot();
-        horari = backtracking2.getHorari();
+        Algorismes algoritme = new Backtracking2(assignatures,aules,resCorr,resNiv,resAul,resTeo,resSub,resAulDia,resAulaHora,resMatiTarda,resCapAul,resLim);
+        ((Backtracking2) algoritme).generaHorari();
+        horari = algoritme.getHorari();
     }
 }
 
