@@ -48,7 +48,7 @@ public class Backtracking extends Algorismes{
         if (!resTeo.isable(horari, hora, dia, assig, aules)) return false; //violem restriccio de clases de teoria
         if (!resSub.isable(horari, hora, dia, assig, aules)) return false;
         for (RestriccioAulaDia ad : resAulDia)
-            if (!ad.isAble(aula, dia)) return false; //en aquesta aula no pot haber clase avui
+            if (!ad.isAble2(aula, dia)) return false; //en aquesta aula no pot haber clase avui
         for (RestriccioAulaHora ah : resAulaHora)
             if (!ah.isAble(assig.getAssig().toString(), aula, dia, hora))
                 return false; //en aquesta aula no pot haver classe a aquesta hora*/
