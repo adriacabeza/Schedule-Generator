@@ -6,7 +6,7 @@ public class RestriccioLimits extends RestriccioUnaria {
      *
      * @param id identificador de la restricció
      */
-    public RestriccioLimits(int id) {
+    public RestriccioLimits() {
         super(10);
     }
 

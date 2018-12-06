@@ -6,7 +6,7 @@ public class RestriccioCapacitatAula extends  RestriccioUnaria {
      *
      * @param id identificador de la restricció
      */
-    public RestriccioCapacitatAula(int id) {
+    public RestriccioCapacitatAula() {
         super(10);
     }
 

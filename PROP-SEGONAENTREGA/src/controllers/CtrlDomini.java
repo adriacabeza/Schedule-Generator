@@ -32,6 +32,8 @@ public class CtrlDomini {
     private ArrayList<RestriccioAulaDia> resAulDia;
     private ArrayList<RestriccioAulaHora> resAulaHora;
     private ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
+    private RestriccioCapacitatAula resCapAul;
+    private RestriccioLimits resLim;
 
     private CtrlDomini() {
         assignatures = new HashMap<>();
@@ -46,6 +48,8 @@ public class CtrlDomini {
         resAulDia = new ArrayList<>();
         resAulaHora = new ArrayList<>();
         resMatiTarda = new ArrayList<>();
+        resCapAul = new RestriccioCapacitatAula();
+        resLim = new RestriccioLimits();
     }
 
     public static CtrlDomini getInstance() {
@@ -464,7 +468,7 @@ public class CtrlDomini {
         }
 
 //TODO: arreglar la parte de restricciones
-        Horari newhorari = new Horari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda);
+        Horari newhorari = new Horari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda, resCapAul, resLim);
         return newhorari;
     }
 

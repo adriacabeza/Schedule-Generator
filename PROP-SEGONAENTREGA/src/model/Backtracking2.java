@@ -62,11 +62,11 @@ public class Backtracking2 extends Algorismes {
                     ArrayList<Integer> aulesHora = new ArrayList<>();
                     boolean restriccioMati = true;
                     if (found)
-                        restriccioMati = resMatiTarda.get(indexAssig).isAble(assig, h);        //mirem si es de mati, estiguem en el mati i el mateix per la tarda
+                        restriccioMati = resMatiTarda.get(indexAssig).isAble(assig.getNom(),null,0, h);        //mirem si es de mati, estiguem en el mati i el mateix per la tarda
                     for (int n = 0; n < aules_possibles.size() && restriccioMati; ++n) {
                         boolean b = true;
                         for (int j = 0; j < resAulaHora.size() && b; ++j) {
-                            if (!resAulaHora.get(j).isAble(aules.get(aules_possibles.get(n)), d, h)) b = false;
+                            if (!resAulaHora.get(j).isAble(null,aules.get(aules_possibles.get(n)), d, h)) b = false;
                         }
                         for (int j = 0; j < resAulDia.size() && b; ++j) {
                             if (!resAulDia.get(j).isAble(aules.get(aules_possibles.get(n)), d)) b = false;

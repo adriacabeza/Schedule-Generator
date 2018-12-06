@@ -4,7 +4,7 @@
 
 package model;
 
-public class RestriccioAulaHora extends Restriccions {
+public class RestriccioAulaHora extends RestriccioNAria {
 
     private int dia;
     private int hora;
@@ -32,7 +32,8 @@ public class RestriccioAulaHora extends Restriccions {
      * @param hora hora que es comprova
      * @return true si es pot realitzar l'assignació
      */
-    public boolean isAble(Aula aula, int dia, int hora) {
+    @Override
+    public boolean isAble(String assig, Aula aula, int dia, int hora) {
         if (aula.getKey().equals(this.aula.getKey()) && dia == this.dia && hora == this.hora) return false;
         return true;
     }
@@ -64,5 +65,6 @@ public class RestriccioAulaHora extends Restriccions {
     public Aula getAula() {
         return aula;
     }
+
 
 }

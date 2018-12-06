@@ -11,5 +11,7 @@ public abstract class RestriccioNAria extends Restriccions{
         super(id);
     }
 
+    public abstract boolean isAble(String assig, Aula aula, int dia, int hora);
+
 
 }

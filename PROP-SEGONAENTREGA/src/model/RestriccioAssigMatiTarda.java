@@ -4,7 +4,7 @@
 
 package model;
 
-public class RestriccioAssigMatiTarda extends Restriccions {
+public class RestriccioAssigMatiTarda extends RestriccioNAria {
 
     private String assig;
     private boolean mati;       //true implica mati, false implica tarda
@@ -29,8 +29,9 @@ public class RestriccioAssigMatiTarda extends Restriccions {
      * @param hora  hora de l'assignació
      * @return true si es pot realitzar
      */
-    public boolean isAble(Assignatura assig, int hora) {
-        if (this.assig.equals(assig.getNom())) {
+    @Override
+    public boolean isAble(String assig, Aula aula, int dia, int hora) {
+        if (this.assig.equals(assig)) {
             if (mati) return (hora <= 6);
             return (hora > 6);
         }
@@ -55,4 +56,6 @@ public class RestriccioAssigMatiTarda extends Restriccions {
     public boolean getMati() {
         return mati;
     }
+
+
 }
