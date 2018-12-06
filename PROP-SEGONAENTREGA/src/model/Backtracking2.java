@@ -25,9 +25,9 @@ public class Backtracking2 extends Algorismes {
      * @return true si es pot realitzar l'assignació
      */
     private boolean comprovarRestriccions(Aula aula, int dia, int hora, SessioGrup assig, int duracio, int posaula) {
-        if (!resLim.isAble(posaula, dia, hora, assig, duracio, horari))
+        if (!resLim.isAble(posaula, dia, hora, assig, duracio, null, horari))
             return false;
-        if (!resCapAul.isAble(aula, assig)) return false;
+        if (!resCapAul.isAble(0,0,0, assig, 0, aula, null)) return false;
         return true;
     }
 
@@ -42,7 +42,7 @@ public class Backtracking2 extends Algorismes {
         for (int i = 0; i < sessions.size(); ++i) {
             ArrayList<Integer> aules_possibles = new ArrayList<>();
             for (int k = 0; k < aules.size(); ++k) {
-                if (resAul.isAble(aules.get(k), sessions.get(i)) && resCapAul.isAble(aules.get(k), sessions.get(i)))
+                if (resAul.isAble(0,0,0,sessions.get(i),0, aules.get(k),null) && resCapAul.isAble(0,0,0, sessions.get(i),0,aules.get(k),null))
                     aules_possibles.add(k);
             }
             Assignatura assig = null;

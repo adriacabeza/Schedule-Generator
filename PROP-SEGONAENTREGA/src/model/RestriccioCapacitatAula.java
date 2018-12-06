@@ -11,12 +11,8 @@ public class RestriccioCapacitatAula extends  RestriccioUnaria {
     }
 
     @Override
-    public boolean isAble(int posaula, int dia, int hora, SessioGrup assig, int duracio, Assignacio[][][] horari) {
-        return false;
+    public boolean isAble(int posaula, int dia, int hora, SessioGrup assig, int duracio, Aula aula, Assignacio[][][] horari) {
+            return aula.getCapacitat() >= assig.getGrup().getCapacitat();
     }
 
-
-    public boolean isAble(Aula aula, SessioGrup assig){
-        return aula.getCapacitat() >= assig.getGrup().getCapacitat();
-    }
 }
