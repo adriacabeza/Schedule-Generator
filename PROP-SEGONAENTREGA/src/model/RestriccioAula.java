@@ -20,14 +20,8 @@ public class RestriccioAula extends RestriccioUnaria {
      * @param assig assignatura que es comprova
      * @return true si es pot realitzar la assignació a l'aula
      */
-
-    public boolean isAble(Aula aula, SessioGrup assig) {
-        return (aula.getTipusAula() == assig.getSessio().gettAula());
-    }
-
     @Override
-    public boolean isAble(int posaula, int dia, int hora, SessioGrup assig, int duracio, Assignacio[][][] horari) {
-        //s ha de implementar així pq. TOTES LES UNÀRIES HAN DE TENIR ELS MATEIXOS PARAMETRES
-        return false;
+    public boolean isAble(int posaula, int dia, int hora, SessioGrup assig, int duracio, Aula aula, Assignacio[][][] horari) {
+        return (aula.getTipusAula() == assig.getSessio().gettAula());
     }
 }

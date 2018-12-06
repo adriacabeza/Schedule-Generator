@@ -10,5 +10,5 @@ public abstract class RestriccioUnaria extends Restriccions {
         super(id);
     }
 
-    public abstract boolean  isAble (int posaula, int dia, int hora, SessioGrup assig, int duracio, Assignacio[][][] horari);
+    public abstract boolean  isAble (int posaula, int dia, int hora, SessioGrup assig, int duracio, Aula aula, Assignacio[][][] horari);
 }
