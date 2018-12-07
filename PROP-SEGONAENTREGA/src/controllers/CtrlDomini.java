@@ -248,8 +248,6 @@ public class CtrlDomini {
         assignatures.put(nom, new Assignatura(nom, abr, descripcio, quadrimestre));
     }
 
-    //TODO delet this or return json
-
     /**
      * Permet consultar una assignatura identificada pel seu nom
      *
@@ -261,7 +259,6 @@ public class CtrlDomini {
         if (!assignatures.containsKey(nom)) {
             throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nom.toUpperCase());
         }
-
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(assignatures.get(nom));
         return json;
