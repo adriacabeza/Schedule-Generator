@@ -4,11 +4,17 @@ import com.google.gson.Gson;
 import controllers.CtrlDomini;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.FormValidation;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class CtrlPlaEstudisView {
@@ -20,6 +26,14 @@ public class CtrlPlaEstudisView {
     TextArea text_descripcio = new TextArea();
     @FXML
     CheckBox checkbox_obsolet = new CheckBox();
+    @FXML
+    ListView<String> list_assignatures = new ListView<>();
+    @FXML
+    ChoiceBox<String> choice_assignatures = new ChoiceBox<>();
+    @FXML
+    Button plaest_elim_assig = new Button();
+    @FXML
+    Button plaest_afegeix_assig = new Button();
 
     @FXML
     Button cancel_button = new Button();
@@ -31,11 +45,35 @@ public class CtrlPlaEstudisView {
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
     private boolean editmode = false;
 
+    private ObservableList<String> assignatures = FXCollections.observableArrayList();
+    private ObservableList<String> assignatures_pos = FXCollections.observableArrayList();
+
     /**
      * Init function
      */
     public void initialize() {
-        //carregar assignatures etc
+
+        loadAssignaturesPossibles();
+
+        plaest_elim_assig.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (!list_assignatures.getSelectionModel().isEmpty()) {
+                    assignatures_pos.add(list_assignatures.getSelectionModel().getSelectedItem());
+                    assignatures.remove(list_assignatures.getSelectionModel().getSelectedItem());
+                }
+            }
+        });
+
+        plaest_afegeix_assig.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if (!choice_assignatures.getSelectionModel().isEmpty()) {
+                    assignatures.add(choice_assignatures.getSelectionModel().getSelectedItem());
+                    assignatures_pos.remove(choice_assignatures.getSelectionModel().getSelectedItem());
+                }
+            }
+        });
     }
 
 
@@ -70,12 +108,21 @@ public class CtrlPlaEstudisView {
 
             boolean obsolet = (boolean) plaEstudis.get("obsolet");
             checkbox_obsolet.setSelected(obsolet);
-
-
+            loadAssignaturesPla(plaEst);
         } catch (NotFoundException e) {
             alert(e.getMessage());
             exit();
         }
+    }
+
+    private void loadAssignaturesPla(String nomPla) throws NotFoundException {
+        assignatures = FXCollections.observableArrayList(CtrlDomini.getInstance().consultarAssignaturesPlaEstudis(nomPla));
+        list_assignatures.setItems(assignatures);
+    }
+
+    private void loadAssignaturesPossibles() {
+        assignatures_pos = FXCollections.observableArrayList(CtrlDomini.getInstance().consultarAssignaturesLliures());
+        choice_assignatures.setItems(assignatures_pos);
     }
 
     /**
@@ -105,14 +152,27 @@ public class CtrlPlaEstudisView {
 
         try {
             if (editmode) {
+                /* Delete it */
                 ctrlDomini.setObsolet(titulacio, true);
                 ctrlDomini.esborrarPlaEstudis(titulacio);
+                /* Add it again */
                 ctrlDomini.crearPlaEstudis(titulacio, any, descripcio);
+                afegeix_assignatures_pla(titulacio);
                 ctrlDomini.setObsolet(titulacio, obsolet);
-            } else ctrlDomini.crearPlaEstudis(titulacio, any, descripcio);
+            } else {
+                ctrlDomini.crearPlaEstudis(titulacio, any, descripcio);
+                afegeix_assignatures_pla(titulacio);
+            }
+
             exit();
         } catch (NotFoundException | RestriccioIntegritatException e) {
             alert(e.getMessage());
+        }
+    }
+
+    private void afegeix_assignatures_pla(String titulacio) throws NotFoundException, RestriccioIntegritatException {
+        for (int i = 0; i < assignatures.size(); i++) {
+            ctrlDomini.afegirAssignaturaPla(titulacio, assignatures.get(i));
         }
     }
 

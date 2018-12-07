@@ -218,6 +218,6 @@ public class Aula {
     @Override
     public boolean equals(Object obj) {
         Aula a = (Aula) obj;
-        return a.getKey().equals(this.getKey());
+        return a.getKey().equalsIgnoreCase(this.getKey());
     }
 }

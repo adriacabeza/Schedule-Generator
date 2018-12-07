@@ -60,7 +60,7 @@ public class RestriccioSubgrupLab extends RestriccioBinaria {
     @Override
     public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) throws NotFoundException {
         if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
-            if (check.getAssig().getNom().equals(assignat.getAssig().getNom()) && check.getSessio().getClass() == Laboratori.class) {
+            if (check.getAssig().getNom().equalsIgnoreCase(assignat.getAssig().getNom()) && check.getSessio().getClass() == Laboratori.class) {
                 if (assignat.getSessio().getClass() == Laboratori.class) {
                     return (assignat.getSub().getNum() != check.getSub().getNum());     //solapament laboratori¡
                 } else {

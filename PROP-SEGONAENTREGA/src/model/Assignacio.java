@@ -119,6 +119,6 @@ public abstract class Assignacio {
      * @return true si les dues assignacions son iguals i false si no ho son
      */
     public boolean equals(Assignacio obj) {
-        return (this.diaSetmana.equals(obj.getDiaSetmana()) && (this.hora == obj.getHora()) && (this.aula == obj.getAula()) && (this.assignatura == obj.getAssignatura()));
+        return (this.diaSetmana.equalsIgnoreCase(obj.getDiaSetmana()) && (this.hora == obj.getHora()) && (this.aula == obj.getAula()) && (this.assignatura == obj.getAssignatura()));
     }
 }

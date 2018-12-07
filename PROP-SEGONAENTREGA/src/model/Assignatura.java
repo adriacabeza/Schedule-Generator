@@ -246,7 +246,7 @@ public class Assignatura {
             throw new RestriccioIntegritatException("L'assignatura " + a.toString() + " ja està assignada com a correquisit");
         }
 
-        if (a.getNom().equals(this.nom)) {
+        if (a.getNom().equalsIgnoreCase(this.nom)) {
             throw new RestriccioIntegritatException("L'assignatura " + a.toString() + " no pot ser correquisit d'ella mateixa");
         }
 
@@ -336,6 +336,6 @@ public class Assignatura {
     @Override
     public boolean equals(Object obj) {
         Assignatura a = (Assignatura) obj;
-        return a.getNom().equals(this.nom) && a.getQuadrimestre() == this.quadrimestre;
+        return a.getNom().equalsIgnoreCase(this.nom) && a.getQuadrimestre() == this.quadrimestre;
     }
 }
