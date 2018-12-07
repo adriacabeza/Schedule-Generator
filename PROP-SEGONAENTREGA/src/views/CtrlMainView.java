@@ -5,16 +5,19 @@ import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.Slot;
 
 import java.io.IOException;
 
@@ -346,7 +349,43 @@ public class CtrlMainView {
      * Mostra la pantalla de gestió d'horaris, amb les opcions de carregar-ne un de disc, crear-ne un de nou o modificar-ne
      */
     public void mostraHorari() {
-        state = 0; //TODO might change later
+        state = 4;
+        list_content.setVisible(false);
+        specific_content.setVisible(true);
+        welcome_content.setVisible(false);
+
+        specific_tab_title.setText("Horari");
+
+    }
+
+    public void handleLoadHorari() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("horariDisplay.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Consulta horari");
+        stage.show();
+
+        CtrlHorariView c = loader.getController();
+        c.setMainController(this);
+        c.loadHorari();
+    }
+
+    public void handleGenerateHorari() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("horariForm.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Generar Horari");
+        stage.show();
+
+        CtrlHorariView c = loader.getController();
+        c.setMainController(this);
+        //c.loadHorari();
     }
 
     @FXML
@@ -374,6 +413,8 @@ public class CtrlMainView {
             case 3:
                 mostraLlistaAssignatures();
                 break;
+            case 4:
+                mostraHorari();
             default:
                 break;
         }

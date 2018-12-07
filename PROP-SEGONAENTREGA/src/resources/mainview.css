@@ -85,3 +85,11 @@
 {
     -fx-background-color:#D1D1D9;
 }
+
+.table-cell {
+    text-align: center;
+}
+
+.table-column {
+    -fx-alignment: center;
+}

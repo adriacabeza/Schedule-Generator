@@ -436,7 +436,6 @@ public class CtrlDomini {
      * @throws NotFoundException si no existeix l'aula buscada
      */
     public String consultarAula(String key) throws NotFoundException {
-        System.out.println(aules);
         if (!aules.containsKey(key)) {
             throw new NotFoundException("No existeix l'aula especificada");
         } else {
