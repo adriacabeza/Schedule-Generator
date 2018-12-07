@@ -130,4 +130,8 @@ public class CtrlIO {
         fw.write(json);
         fw.close();
     }
+    /*
+    public void guardaRestriccions(,String filepath) throws IOException{
+       SHA DE PENSAR COM FER LO DE GUARDAR RESTRICCIONS EN TEXT
+    }*/
 }
