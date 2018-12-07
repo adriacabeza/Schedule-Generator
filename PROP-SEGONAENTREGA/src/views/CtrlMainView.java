@@ -106,7 +106,7 @@ public class CtrlMainView {
                 } else {
                     setText(s);
                     setOnMouseClicked(mouseClickedEvent -> {
-                        if (mouseClickedEvent.getButton().equalsIgnoreCase(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
                             handleDisplay(s);
                         }
                     });
