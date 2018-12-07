@@ -21,7 +21,7 @@ public class CtrlDomini {
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
-    private Horari horari;
+
 
     //TODO pasar a horario + crear equals
     private RestriccioCorrequisit resCorr;
@@ -63,7 +63,6 @@ public class CtrlDomini {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
-        //horari = new Horari();
     }
 
     /**
@@ -216,9 +215,10 @@ public class CtrlDomini {
      *
      * @param nomP Pla d'estudis
      */
-    //TODO when calling this func check that the array is not empty
+
     public ArrayList<String> consultarAssignaturesPlaEstudis(String nomP) throws NotFoundException {
-        if (!plaEstudis.containsKey(nomP)) {
+        if(plaEstudis.isEmpty())  throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
+        else if (!plaEstudis.containsKey(nomP)) {
             throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
         }
         return plaEstudis.get(nomP).getAssignatures();
@@ -472,14 +472,6 @@ public class CtrlDomini {
         Horari newhorari = new Horari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda, resCapAul, resLim);
         return newhorari;
     }
-
-
-    //AulaDia se compone por una aula(objeto) y un dia (entero [0..4])
-    //AulaDiaHora por una una aula(objeto), un dia (entero [0..4]) y una hora (entero [0..11])
-    //AssigMatiTarda por el string que identifica a una assignatura y un booleano que indica si es de mañanas o tardes. //TODO si modificamos assignatura para identificarla con numero todo esto tmbn debe ser cambiado
-
-
-
 
 
     /**
