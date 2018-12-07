@@ -31,7 +31,7 @@ public class RestriccioAssigMatiTarda extends RestriccioNAria {
      */
     @Override
     public boolean isAble(String assig, Aula aula, int dia, int hora) {
-        if (this.assig.equals(assig)) {
+        if (this.assig.equalsIgnoreCase(assig)) {
             if (mati) return (hora <= 6);
             return (hora > 6);
         }

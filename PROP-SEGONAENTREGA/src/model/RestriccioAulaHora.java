@@ -34,7 +34,7 @@ public class RestriccioAulaHora extends RestriccioNAria {
      */
     @Override
     public boolean isAble(String assig, Aula aula, int dia, int hora) {
-        if (aula.getKey().equals(this.aula.getKey()) && dia == this.dia && hora == this.hora) return false;
+        if (aula.getKey().equalsIgnoreCase(this.aula.getKey()) && dia == this.dia && hora == this.hora) return false;
         return true;
     }
 

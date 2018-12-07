@@ -33,7 +33,7 @@ public class RestriccioAulaDia extends RestriccioBinaria {
      */
     @Override
     public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) {
-        if (this.dia == dia && aula.getKey().equals(this.aula.getKey())) return false;
+        if (this.dia == dia && aula.getKey().equalsIgnoreCase(this.aula.getKey())) return false;
         return true;
     }
 

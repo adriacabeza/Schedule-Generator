@@ -95,6 +95,24 @@ public class CtrlMainView {
                 handleAdd();
             }
         });
+
+        list_view.setCellFactory(lv -> new ListCell<String>() {
+            @Override
+            protected void updateItem(String s, boolean empty) {
+                super.updateItem(s, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(s);
+                    setOnMouseClicked(mouseClickedEvent -> {
+                        if (mouseClickedEvent.getButton().equalsIgnoreCase(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                            handleDisplay(s);
+                        }
+                    });
+                }
+            }
+        });
     }
 
     /**
@@ -201,7 +219,6 @@ public class CtrlMainView {
                 try {
                     consultarAssignatura(item);
                 } catch (IOException e) {
-                    //TODO FIX
                     alert(e.getMessage());
                 }
                 break;
@@ -256,23 +273,6 @@ public class CtrlMainView {
 
         ObservableList<String> plans = FXCollections.observableArrayList(controladorDomini.getLlistaPlansEstudis());
         list_view.setItems(plans);
-        list_view.setCellFactory(lv -> new ListCell<String>() {
-            @Override
-            protected void updateItem(String s, boolean empty) {
-                super.updateItem(s, empty);
-                if (empty) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    setText(s);
-                    setOnMouseClicked(mouseClickedEvent -> {
-                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
-                            handleDisplay(s);
-                        }
-                    });
-                }
-            }
-        });
     }
 
     @FXML
@@ -289,23 +289,6 @@ public class CtrlMainView {
 
         ObservableList<String> aules = FXCollections.observableArrayList(controladorDomini.getLlistaAules());
         list_view.setItems(aules);
-        list_view.setCellFactory(lv -> new ListCell<String>() {
-            @Override
-            protected void updateItem(String s, boolean empty) {
-                super.updateItem(s, empty);
-                if (empty) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    setText(s);
-                    setOnMouseClicked(mouseClickedEvent -> {
-                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
-                            handleDisplay(s);
-                        }
-                    });
-                }
-            }
-        });
     }
 
     @FXML
@@ -322,23 +305,6 @@ public class CtrlMainView {
 
         ObservableList<String> assignatures = FXCollections.observableArrayList(controladorDomini.getLlistaAssignatures());
         list_view.setItems(assignatures);
-        list_view.setCellFactory(lv -> new ListCell<String>() {
-            @Override
-            protected void updateItem(String s, boolean empty) {
-                super.updateItem(s, empty);
-                if (empty) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    setText(s);
-                    setOnMouseClicked(mouseClickedEvent -> {
-                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
-                            handleDisplay(s);
-                        }
-                    });
-                }
-            }
-        });
     }
 
     @FXML

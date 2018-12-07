@@ -664,8 +664,8 @@
     "abr": "EDA"
   },
 
-  "Base de dades": {
-    "nom": "Base de dades",
+  "Bases de Dades": {
+    "nom": "Bases de Dades",
     "teoria": {
       "numSessions": 1,
       "duracioSessions": 2,

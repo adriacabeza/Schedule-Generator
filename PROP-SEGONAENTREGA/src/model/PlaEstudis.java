@@ -123,6 +123,6 @@ public class PlaEstudis {
     @Override
     public boolean equals(Object obj) {
         PlaEstudis ps = (PlaEstudis) obj;
-        return ps.getNomTitulacio().equals(this.nomTitulacio) && this.any == ps.getAny();
+        return ps.getNomTitulacio().equalsIgnoreCase(this.nomTitulacio) && this.any == ps.getAny();
     }
 }

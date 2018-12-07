@@ -54,7 +54,7 @@ public class RestriccioGrupTeo extends RestriccioBinaria {
     @Override
     public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) throws NotFoundException {
         if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
-            if (check.getAssig().getNom().equals(assignat.getAssig().getNom()) && check.getSessio().getClass() == Teoria.class) {
+            if (check.getAssig().getNom().equalsIgnoreCase(assignat.getAssig().getNom()) && check.getSessio().getClass() == Teoria.class) {
                 if (check.getGrup().getNum() == assignat.getGrup().getNum())
                     return false;      //solapament teories o labs
             }

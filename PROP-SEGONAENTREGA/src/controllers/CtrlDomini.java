@@ -513,4 +513,15 @@ public class CtrlDomini {
     public void afegir_restriccio_mati_tarda(){}
 
 
+    public ArrayList<String> consultarAssignaturesLliures() {
+        ArrayList<String> possibles = new ArrayList<>();
+        for (String a: assignatures.keySet()){
+            boolean trobat = false;
+            for (PlaEstudis p: plaEstudis.values()) {
+                if (p.hasAssignatura(a)) trobat = true;
+            }
+            if (!trobat) possibles.add(a);
+        }
+        return possibles;
+    }
 }
