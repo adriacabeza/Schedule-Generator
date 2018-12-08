@@ -12,49 +12,14 @@
     -fx-blend-mode: multiply;
 }
 
-#plus_button
+#assig_save, #pe_save, #aula_save, #plus_button
 {
     -fx-background-color:#57f271;
     -fx-alignment:center;
     -fx-background-radius:30;
 }
 
-#aula_save
-{
-    -fx-background-color:#57f271;
-    -fx-alignment:center;
-    -fx-background-radius:30;
-}
-
-#aula_cancel
-{
-    -fx-background-color:#f9406f;
-    -fx-alignment:center;
-    -fx-background-radius:30;
-}
-
-#assig_save
-{
-    -fx-background-color:#57f271;
-    -fx-alignment:center;
-    -fx-background-radius:30;
-}
-
-#assig_cancel
-{
-    -fx-background-color:#f9406f;
-    -fx-alignment:center;
-    -fx-background-radius:30;
-}
-
-#pe_save
-{
-    -fx-background-color:#57f271;
-    -fx-alignment:center;
-    -fx-background-radius:30;
-}
-
-#pe_cancel
+#assig_cancel, #pe_cancel, #aula_cancel, #delete_button, #plaest_elim_assig
 {
     -fx-background-color:#f9406f;
     -fx-alignment:center;
@@ -68,13 +33,6 @@
     -fx-background-radius:30;
 }
 
-#delete_button
-{
-    -fx-background-color:#f9406f;
-    -fx-alignment:center;
-    -fx-background-radius:30;
-}
-
 #iconmenu
 {
     -fx-background-color:#AEABCA;
@@ -84,4 +42,12 @@
 #menu
 {
     -fx-background-color:#D1D1D9;
+}
+
+.table-cell {
+    text-align: center;
+}
+
+.table-column {
+    -fx-alignment: center;
 }
