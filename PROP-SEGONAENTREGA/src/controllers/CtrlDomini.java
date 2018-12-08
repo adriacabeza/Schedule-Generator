@@ -464,9 +464,11 @@ public class CtrlDomini {
             }
         }
 
-//TODO: arreglar la parte de restricciones
-        Horari newhorari = new Horari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda, resCapAul, resLim);
-        return newhorari;
+        //TODO: arreglar la parte de restricciones
+        Horari horari = new Horari();
+        boolean b = horari.ConstruirHorari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda, resCapAul, resLim);
+        if (b) return horari;
+        else return null;
     }
 
 
