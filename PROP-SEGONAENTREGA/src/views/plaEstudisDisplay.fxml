@@ -1,13 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            stylesheets="@../resources/mainview.css"
-            fx:controller="views.CtrlPlaEstudisView"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlPlaEstudisView">
     <center>
-        <Label text="Pla Estudis display" BorderPane.alignment="CENTER"/>
+        <HBox BorderPane.alignment="CENTER">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <GridPane hgap="10.0" vgap="10.0" VBox.vgrow="ALWAYS">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="-Infinity" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="200.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="ALWAYS" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Nom titulacio:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Label>
+                                <Label text="Any:" GridPane.rowIndex="1">
+                                <font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font>
+                                </Label>
+                                <Label text="Descripcio:" GridPane.rowIndex="2">
+                                <font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font>
+                                </Label>
+                                <CheckBox fx:id="checkbox_obsolet_consulta" mnemonicParsing="false" text="Obsolet" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="label_nom" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="label_any" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="label_descripcio" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            </children>
+                        </GridPane>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" />
+                    </padding>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Pane>
+                            <children>
+                                <Label text="Assignatures:">
+                                    <padding>
+                                        <Insets bottom="10.0" />
+                                    </padding>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <ListView fx:id="list_assignatures_consulta" prefHeight="200.0" prefWidth="250.0">
+                            <padding>
+                                <Insets bottom="10.0" />
+                            </padding></ListView>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding></VBox>
+            </children>
+        </HBox>
     </center>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
 </BorderPane>

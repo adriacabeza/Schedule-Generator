@@ -37,7 +37,7 @@ public class Horari {
      * Constructora que et crea un horari buit
      */
     public Horari(){
-        horari = new Assignacio[][][];
+        //horari = new Assignacio[][][];
     }
 
 

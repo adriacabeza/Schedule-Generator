@@ -36,6 +36,19 @@ public class CtrlPlaEstudisView {
     Button plaest_afegeix_assig = new Button();
 
     @FXML
+    Label label_nom = new Label();
+    @FXML
+    Label label_any = new Label();
+    @FXML
+    Label label_descripcio = new Label();
+    @FXML
+    CheckBox checkbox_obsolet_consulta = new CheckBox();
+    @FXML
+    ListView<String> list_assignatures_consulta = new ListView<>();
+
+
+
+    @FXML
     Button cancel_button = new Button();
     @FXML
     Button save_button = new Button();
@@ -74,6 +87,26 @@ public class CtrlPlaEstudisView {
                 }
             }
         });
+    }
+
+    /**
+     * Carrega la informació complerta d'un pla d'estudis per mostrar-lo en la interficie
+     *
+     * @param nomPla nom de l'aula que hem seleccionat per consultar
+     */
+    public void displayAula(String nomPla) {                                                       //TODO check if this might have errors
+        String json = null;
+        try {
+            json = ctrlDomini.consultarPlaEsudis(nomPla);
+            Map<String, Object> plaEst = new Gson().fromJson(json, Map.class);
+            label_nom.setText((String) plaEst.get("titulacio"));
+            label_descripcio.setText((String) plaEst.get("descripcio"));
+            label_any.setText(String.valueOf(((Double) plaEst.get("any")).intValue()));
+            checkbox_obsolet_consulta.setSelected((boolean) plaEst.get("obsolet"));
+        } catch (NotFoundException e) {
+            alert(e.getMessage());
+            exit();
+        }
     }
 
 
