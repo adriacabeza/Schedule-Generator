@@ -12,6 +12,7 @@ import model.*;
 import model.Aula.TipusAula;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -268,6 +269,29 @@ public class CtrlDomini {
             throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
         }
         return plaEstudis.get(nomP).getAssignatures();
+    }
+
+    /**
+     *
+     * @param nomP
+     * @param quadrimestre
+     * @return
+     * @throws NotFoundException
+     */
+    public ArrayList<String> consultarAssigPlaEstQuadri(String nomP, int quadrimestre) throws NotFoundException {
+        if (plaEstudis.isEmpty())
+            throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
+        else if (!plaEstudis.containsKey(nomP)) {
+            throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
+        }
+        ArrayList<String> assigPla = plaEstudis.get(nomP).getAssignatures();
+        ArrayList<String> output = new ArrayList<>();
+        for (String assig : assigPla){
+            if(assignatures.get(assig).getQuadrimestre() == quadrimestre){
+                output.add(assig);
+            }
+        }
+        return output;
     }
 
     /**

@@ -137,7 +137,7 @@ public class CtrlHorariView {
      * @param horarijson L'horari en format JSON dins d'un String
      * @return True si ha carregat un arxiu valid, i false si es invalid
      */
-    boolean loadHorari(String horarijson) throws IOException {
+    boolean loadHorari(String horarijson) {
         this.horarijson = horarijson;
         List horari;
         try {

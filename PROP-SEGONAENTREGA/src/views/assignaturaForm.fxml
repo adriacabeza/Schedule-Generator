@@ -183,7 +183,7 @@
                         <HBox spacing="10.0">
                            <children>
                               <ChoiceBox fx:id="choice_assig" prefWidth="160.0" />
-                              <Button id="assig_plus" fx:id="button_afegeix" mnemonicParsing="false" text="+" />
+                              <Button id="assig_plus" fx:id="button_afegeix" mnemonicParsing="false" onMouseClicked="#afegeixCorrequisit" text="+" />
                            </children>
                         </HBox>
                      </children>
