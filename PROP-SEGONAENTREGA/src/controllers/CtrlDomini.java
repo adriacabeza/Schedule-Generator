@@ -6,6 +6,8 @@ package controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import model.*;
@@ -21,6 +23,7 @@ public class CtrlDomini {
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
+    private Horari horari;
 
 
     //TODO pasar a horario + crear equals
@@ -39,6 +42,7 @@ public class CtrlDomini {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
+        horari = new Horari();
 
         resCorr = new RestriccioCorrequisit();
         resNiv = new RestriccioNivell();
@@ -130,6 +134,36 @@ public class CtrlDomini {
             throw new RestriccioIntegritatException("Ja existeix un pla d'estudis amb nom " + nom.toUpperCase());
         }
         plaEstudis.put(nom, new PlaEstudis(nom, any, descripcio));
+    }
+
+    //todo de moment no te en compte restriccions i tenim codi duplicat
+    
+    public String generaHorari(){
+        String json = null;
+        boolean b = horari.ConstruirHorari(assignatures, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
+               new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
+
+        if (b) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            JsonArray obj = new JsonArray();
+            for (int i = 0; i < horari.getHorari().length; ++i) {
+                for (int j = 0; j < horari.getHorari()[i].length; ++j) {
+                    for (int k = 0; k < horari.getHorari()[i][j].length; ++k) {
+                        JsonObject jsonElement = new JsonObject();
+                        if (horari.getHorari()[i][j][k] != null) {
+                            jsonElement.addProperty("dia", horari.getHorari()[i][j][k].getDiaSetmana());
+                            jsonElement.addProperty("hora", horari.getHorari()[i][j][k].getHora());
+                            jsonElement.addProperty("assignatura", horari.getHorari()[i][j][k].getAssignatura().getNom().toUpperCase());
+                            jsonElement.addProperty("grup", horari.getHorari()[i][j][k].getGrup().getNum());
+                            jsonElement.addProperty("aula", horari.getHorari()[i][j][k].getAula().getKey().toUpperCase());
+                            obj.add(jsonElement);
+                        }
+                    }
+                }
+            }
+            json = gson.toJson(obj);
+        }
+        return json;
     }
 
     /**

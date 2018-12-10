@@ -42,7 +42,7 @@ public class DriverCtrlDomini {
                 case 19:
                     try {
                             h = c.crearHorari();
-                            CtrlIO.getInstance().guardaHorari2(h, "horariexemple.json");
+                            CtrlIO.getInstance().guardaHorari(h, "horariexemple.json");
                             System.out.println("Trobaras l'horari generat a horariexemple.json");
                         } catch (IOException e) {
                             System.out.println("Error al guardar horari");

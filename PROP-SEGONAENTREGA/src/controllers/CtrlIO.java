@@ -68,13 +68,8 @@ public class CtrlIO {
 
 
     /* ESCRIPTURA DE FITXERS */
-    public void guardaHorari(Horari h, String filepath) throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(h);
-        gd.escriu(json, filepath);
-    }
 
-    public void guardaHorari2(Horari h, String filepath) throws IOException {
+    public void guardaHorari(Horari h, String filepath) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonArray obj = new JsonArray();
         for (int i = 0; i < h.getHorari().length; ++i) {
