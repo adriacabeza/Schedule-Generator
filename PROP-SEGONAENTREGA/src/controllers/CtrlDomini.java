@@ -40,7 +40,7 @@ public class CtrlDomini {
     }
 
     /**
-     *
+     * Reinicia els valors dels parametres interns
      */
     public void reload() {
         assignatures = new HashMap<>();
@@ -116,9 +116,10 @@ public class CtrlDomini {
     }
 
     /**
+     * Genera una llista de les assignatures candidates a ser correquisit de l'especificada, es a dir, formen part del mateix pla d'estudis, no son ella mateixa i formen part del mateix quadrimestre
      *
-     * @param nomAssig
-     * @return
+     * @param nomAssig nom de l'assignatura de la qual volem generar la llista de correquisits
+     * @return llista de les possibles assignatures correquisit
      */
     public ArrayList<String> correquisitsPossibles(String nomAssig) {
         ArrayList<String> assignatures_candidates = new ArrayList<>();
@@ -138,11 +139,13 @@ public class CtrlDomini {
     }
 
     //todo de moment no te en compte restriccions i tenim codi duplicat
+
     /**
      * Genera un horari amb les restriccions especificades i el retorna per tal de ser mostrat per pantalla
+     *
      * @return Horari generat si es pot, null altrament
      */
-    public String generaHorari(/*params sobre les restriccions*/){
+    public String generaHorari(/*params sobre les restriccions*/) {
         String json = null;
 
         /* CODE TO INIT RESTRICTIONS */
@@ -163,7 +166,7 @@ public class CtrlDomini {
             }
         }
         boolean b = horari.ConstruirHorari(ass, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
-               new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
+                new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
         if (b) json = cIo.horariToJson(horari);
         return json;
     }
@@ -186,10 +189,11 @@ public class CtrlDomini {
     }
 
     /**
+     * Marca un pla d'estudis com a obsolet
      *
-     * @param nom
-     * @param obsolet
-     * @throws NotFoundException
+     * @param nom     nom del pla d'estudis
+     * @param obsolet cert si volem marcar-lo com a obsolet, fals altrament
+     * @throws NotFoundException si no es troba el pla d'estudis especificat
      */
     public void setObsolet(String nom, boolean obsolet) throws NotFoundException {
         if (!plaEstudis.containsKey(nom)) {
@@ -257,9 +261,9 @@ public class CtrlDomini {
      *
      * @param nomP Pla d'estudis
      */
-
     public ArrayList<String> consultarAssignaturesPlaEstudis(String nomP) throws NotFoundException {
-        if(plaEstudis.isEmpty())  throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
+        if (plaEstudis.isEmpty())
+            throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
         else if (!plaEstudis.containsKey(nomP)) {
             throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
         }
@@ -267,9 +271,10 @@ public class CtrlDomini {
     }
 
     /**
+     * Retorna el nom del pla d'estudis que conte una assignatura concreta
      *
-     * @param nomAssig
-     * @return
+     * @param nomAssig nom de l'assignatura
+     * @return nom del pla d'estudis que la conté
      */
     public String getPlaEstudisContains(String nomAssig) {
         for (PlaEstudis plaest : plaEstudis.values()) {
@@ -505,14 +510,15 @@ public class CtrlDomini {
     }
 
     /**
+     * Genera una llista de les assignatures que poden ser afegides a un pla d'estudis perquè no estan assignades a cap
      *
-     * @return
+     * @return llista de les assignatures lliures
      */
     public ArrayList<String> consultarAssignaturesLliures() {
         ArrayList<String> possibles = new ArrayList<>();
-        for (String a: assignatures.keySet()){
+        for (String a : assignatures.keySet()) {
             boolean trobat = false;
-            for (PlaEstudis p: plaEstudis.values()) {
+            for (PlaEstudis p : plaEstudis.values()) {
                 if (p.hasAssignatura(a)) trobat = true;
             }
             if (!trobat) possibles.add(a);

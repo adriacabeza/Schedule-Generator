@@ -112,7 +112,6 @@ public class CtrlPlaEstudisView {
         }
     }
 
-
     /**
      * Carrega la informació complerta d'un pla d'estudis per mostrar-lo en la interficie i dona accés al mode d'edició dels paràmetres permesos
      *
@@ -152,11 +151,19 @@ public class CtrlPlaEstudisView {
         }
     }
 
+    /**
+     * Carrega les assignatures que formen part inicialment del pla
+     * @param nomPla nom del pla d'estudis que volem carregar-ne les assignatures
+     * @throws NotFoundException si no existeix el pla d'estudis especificat
+     */
     private void loadAssignaturesPla(String nomPla) throws NotFoundException {
         assignatures = FXCollections.observableArrayList(CtrlDomini.getInstance().consultarAssignaturesPlaEstudis(nomPla));
         list_assignatures.setItems(assignatures);
     }
 
+    /**
+     * Carrega les assignatures que poden formar part del pla inicialment, es a dir, que no estan assignades encara a cap pla
+     */
     private void loadAssignaturesPossibles() {
         assignatures_pos = FXCollections.observableArrayList(CtrlDomini.getInstance().consultarAssignaturesLliures());
         choice_assignatures.setItems(assignatures_pos);
@@ -207,6 +214,12 @@ public class CtrlPlaEstudisView {
         }
     }
 
+    /**
+     *
+     * @param titulacio Afegeix al pla d'estudis les assignatures indicaddes
+     * @throws NotFoundException si no existeix el pla d'estudis
+     * @throws RestriccioIntegritatException si l'assignatura ja esta afegida al pla
+     */
     private void afegeix_assignatures_pla(String titulacio) throws NotFoundException, RestriccioIntegritatException {
         for (int i = 0; i < assignatures.size(); i++) {
             ctrlDomini.afegirAssignaturaPla(titulacio, assignatures.get(i));
