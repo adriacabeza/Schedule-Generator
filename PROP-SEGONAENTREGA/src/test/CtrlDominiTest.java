@@ -407,15 +407,11 @@ public class CtrlDominiTest {
             c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);
             c.modificaInformacioLaboratori("AC", 2, 2, Aula.TipusAula.NORMAL);
             c.creaAula("A5", 1, 2, 60, "normal");
-            Horari h = c.crearHorari();
+            String h = c.generaHorari();
             assertNotNull(h);
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
             fail();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
     }
-
-
-
 }

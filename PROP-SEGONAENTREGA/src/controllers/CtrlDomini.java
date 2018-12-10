@@ -124,7 +124,20 @@ public class CtrlDomini {
         /*            ...            */
         /*                           */
 
-        boolean b = horari.ConstruirHorari(assignatures, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
+
+        //volem incloure nomes les assignatures de plans no obsolets i que estiguin en algun pla d'estudis vigent
+        HashMap<String, Assignatura> ass = new HashMap<>();
+        for (PlaEstudis plaest : plaEstudis.values()) {
+            if (!plaest.isObsolet()) {
+                ArrayList<String> a = plaest.getAssignatures();
+                for (String aux : a) {
+                    if (!ass.containsKey(aux) && assignatures.containsKey(aux)) {
+                        ass.put(aux, assignatures.get(aux));
+                    }
+                }
+            }
+        }
+        boolean b = horari.ConstruirHorari(ass, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
                new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
         if (b) json = cIo.horariToJson(horari);
         return json;
@@ -442,76 +455,6 @@ public class CtrlDomini {
             return json;
         }
     }
-
-    /**
-     * Crea l'horari mitjançant backtracking
-     *
-     * @return l'horari complet si s'ha pogut realitzar o buit si no es pot realitzar
-     */
-    public Horari crearHorari() throws IOException {
-        this.carrega();
-        HashMap<String, Assignatura> assignatures2 = new HashMap<>();
-        for (PlaEstudis plaest : plaEstudis.values()) {
-            if (!plaest.isObsolet()) {
-                ArrayList<String> a = plaest.getAssignatures();
-                for (String aux : a) {
-                    if (!assignatures2.containsKey(aux) && assignatures.containsKey(aux)) {
-                        assignatures2.put(aux, assignatures.get(aux));
-                    }
-                }
-            }
-        }
-
-        //TODO: arreglar la parte de restricciones
-        Horari horari = new Horari();
-        boolean b = horari.ConstruirHorari(assignatures2, aules, resCorr, resNiv, resAul, resTeo, resSub, resAulDia, resAulaHora, resMatiTarda, resCapAul, resLim);
-        if (b) return horari;
-        else return null;
-    }
-
-
-    /**
-     * Borra la restricció aula dia corresponent
-     *
-     * @param res la restricció aula dia que hem de borrar
-     */
-    public void borrar_restriccio_aula_dia(RestriccioAulaDia res) {
-        resAulDia.remove(res);
-    }
-
-    /**
-     * Borra la restricció aula hora corresponent
-     *
-     * @param res la restricció aula hora que hem de borrar
-     */
-    public void borrar_restriccio_aula_hora(RestriccioAulaHora res) {
-        resAulaHora.remove(res);
-    }
-
-    public void borrar_restriccio_mati_tarda(){}
-
-    /**
-     * Afegir la restricció aula dia corresponent
-     *
-     * @param res la restricció aula dia que afegeix
-     */
-    public void afegir_restriccio_aula_dia(RestriccioAulaDia res) {
-        resAulDia.add(res);
-    }
-
-
-    /**
-     * Afegir la restricció aula hora corresponent
-     *
-     * @param res la restricció aula hora que afegeix
-     */
-    public void afegir_restriccio_aula_hora(RestriccioAulaDia res) {
-        resAulDia.add(res);
-    }
-
-    public void afegir_restriccio_mati_tarda(){}
-
-
     public ArrayList<String> consultarAssignaturesLliures() {
         ArrayList<String> possibles = new ArrayList<>();
         for (String a: assignatures.keySet()){
