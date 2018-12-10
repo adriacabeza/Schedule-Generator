@@ -84,7 +84,7 @@ public class CtrlIO {
                     if (h.getHorari()[i][j][k] != null) {
                         jsonElement.addProperty("dia", h.getHorari()[i][j][k].getDiaSetmana());
                         jsonElement.addProperty("hora", h.getHorari()[i][j][k].getHora());
-                        jsonElement.addProperty("assignatura", h.getHorari()[i][j][k].getAssignatura().getNom().toUpperCase());
+                        jsonElement.addProperty("assignatura", h.getHorari()[i][j][k].getAssignatura().getAbr());
                         jsonElement.addProperty("grup", h.getHorari()[i][j][k].getGrup().getNum());
                         jsonElement.addProperty("aula", h.getHorari()[i][j][k].getAula().getKey().toUpperCase());
                         obj.add(jsonElement);
