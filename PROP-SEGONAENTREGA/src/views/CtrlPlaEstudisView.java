@@ -94,15 +94,18 @@ public class CtrlPlaEstudisView {
      *
      * @param nomPla nom de l'aula que hem seleccionat per consultar
      */
-    public void displayAula(String nomPla) {                                                       //TODO check if this might have errors
+    public void displayPlaEstudis(String nomPla){ //TODO check if this might have errors
         String json = null;
         try {
             json = ctrlDomini.consultarPlaEsudis(nomPla);
             Map<String, Object> plaEst = new Gson().fromJson(json, Map.class);
             label_nom.setText((String) plaEst.get("titulacio"));
             label_descripcio.setText((String) plaEst.get("descripcio"));
+            label_descripcio.setWrapText(true);
             label_any.setText(String.valueOf(((Double) plaEst.get("any")).intValue()));
             checkbox_obsolet_consulta.setSelected((boolean) plaEst.get("obsolet"));
+            assignatures = FXCollections.observableArrayList(ctrlDomini.consultarAssignaturesPlaEstudis(nomPla));
+            list_assignatures_consulta.setItems(assignatures);
         } catch (NotFoundException e) {
             alert(e.getMessage());
             exit();
@@ -142,6 +145,7 @@ public class CtrlPlaEstudisView {
             boolean obsolet = (boolean) plaEstudis.get("obsolet");
             checkbox_obsolet.setSelected(obsolet);
             loadAssignaturesPla(plaEst);
+            text_descripcio.setWrapText(true);
         } catch (NotFoundException e) {
             alert(e.getMessage());
             exit();

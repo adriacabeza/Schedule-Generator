@@ -18,38 +18,17 @@ import java.util.HashMap;
 public class CtrlDomini {
 
     private static CtrlDomini ourInstance;
+    private CtrlSerDes cIo;
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
-
-
-    //TODO pasar a horario + crear equals
-    private RestriccioCorrequisit resCorr;
-    private RestriccioNivell resNiv;
-    private RestriccioAula resAul;
-    private RestriccioGrupTeo resTeo;
-    private RestriccioSubgrupLab resSub;
-    private ArrayList<RestriccioAulaDia> resAulDia;
-    private ArrayList<RestriccioAulaHora> resAulaHora;
-    private ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
-    private RestriccioCapacitatAula resCapAul;
-    private RestriccioLimits resLim;
+    private Horari horari;
 
     private CtrlDomini() {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
-
-        resCorr = new RestriccioCorrequisit();
-        resNiv = new RestriccioNivell();
-        resAul = new RestriccioAula();
-        resTeo = new RestriccioGrupTeo();
-        resSub = new RestriccioSubgrupLab();
-        resAulDia = new ArrayList<>();
-        resAulaHora = new ArrayList<>();
-        resMatiTarda = new ArrayList<>();
-        resCapAul = new RestriccioCapacitatAula();
-        resLim = new RestriccioLimits();
+        horari = new Horari();
     }
 
     public static CtrlDomini getInstance() {
@@ -69,7 +48,7 @@ public class CtrlDomini {
      * Carrega l'informacio sobre aules, assignatures i plans d'estudi desde disc
      */
     public void carrega() throws IOException { //TODO fer be
-        CtrlIO c = CtrlIO.getInstance();
+        CtrlSerDes c = CtrlSerDes.getInstance();
 
         plaEstudis = c.carregaPlansDEstudi("plaestudistest.json");
         assignatures = c.carregaAssignatures("assigtest.json");
@@ -130,6 +109,25 @@ public class CtrlDomini {
             throw new RestriccioIntegritatException("Ja existeix un pla d'estudis amb nom " + nom.toUpperCase());
         }
         plaEstudis.put(nom, new PlaEstudis(nom, any, descripcio));
+    }
+
+    //todo de moment no te en compte restriccions i tenim codi duplicat
+
+    /**
+     * Genera un horari amb les restriccions especificades i el retorna per tal de ser mostrat per pantalla
+     * @return Horari generat si es pot, null altrament
+     */
+    public String generaHorari(/*params sobre les restriccions*/){
+        String json = null;
+
+        /* CODE TO INIT RESTRICTIONS */
+        /*            ...            */
+        /*                           */
+
+        boolean b = horari.ConstruirHorari(assignatures, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
+               new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
+        if (b) json = cIo.horariToJson(horari);
+        return json;
     }
 
     /**

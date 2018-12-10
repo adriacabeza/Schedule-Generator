@@ -5,11 +5,7 @@
 package model;
 
 import controllers.CtrlDomini;
-import controllers.CtrlIO;
-import exceptions.NotFoundException;
-import exceptions.RestriccioIntegritatException;
-import model.Aula;
-import model.Horari;
+import controllers.CtrlSerDes;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -42,7 +38,7 @@ public class DriverCtrlDomini {
                 case 19:
                     try {
                             h = c.crearHorari();
-                            CtrlIO.getInstance().guardaHorari2(h, "horariexemple.json");
+                            CtrlSerDes.getInstance().guardaHorari(h, "horariexemple.json");
                             System.out.println("Trobaras l'horari generat a horariexemple.json");
                         } catch (IOException e) {
                             System.out.println("Error al guardar horari");

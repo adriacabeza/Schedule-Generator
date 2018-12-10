@@ -17,7 +17,7 @@
     <center>
         <HBox BorderPane.alignment="CENTER">
             <children>
-                <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                <VBox HBox.hgrow="ALWAYS">
                     <children>
                         <GridPane hgap="10.0" vgap="10.0" VBox.vgrow="ALWAYS">
                             <columnConstraints>
@@ -45,7 +45,7 @@
                                     <Font name="System Bold" size="13.0" />
                                 </font>
                                 </Label>
-                                <CheckBox fx:id="checkbox_obsolet_consulta" mnemonicParsing="false" text="Obsolet" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <CheckBox fx:id="checkbox_obsolet_consulta" disable="true" mnemonicParsing="false" text="Obsolet" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label fx:id="label_nom" text="Label" GridPane.columnIndex="1" />
                         <Label fx:id="label_any" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="label_descripcio" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
