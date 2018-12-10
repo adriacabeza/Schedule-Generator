@@ -31,90 +31,155 @@ public class Slot {
         this.divendres = new SimpleStringProperty("-");
     }
 
+    /**
+     * Obté slotname en mostrar-ho a la taula
+     *
+     * @return Nom del slot de temps
+     */
     public String getSlotname() {
         return slotname.get();
     }
 
+    /**
+     * Obté el contingut de la cel·la per aquest Slot els dilluns
+     *
+     * @return El contingut de la cel·la
+     */
     public String getDilluns() {
         return dilluns.get();
     }
 
+    /**
+     * Obté el contingut de la cel·la per aquest Slot els dimarts
+     *
+     * @return El contingut de la cel·la
+     */
     public String getDimarts() {
         return dimarts.get();
     }
 
+    /**
+     * Obté el contingut de la cel·la per aquest Slot els dimecres
+     *
+     * @return El contingut de la cel·la
+     */
     public String getDimecres() {
         return dimecres.get();
     }
 
+    /**
+     * Obté el contingut de la cel·la per aquest Slot els dijous
+     *
+     * @return El contingut de la cel·la
+     */
     public String getDijous() {
         return dijous.get();
     }
 
+    /**
+     * Obté el contingut de la cel·la per aquest Slot els divendres
+     *
+     * @return El contingut de la cel·la
+     */
     public String getDivendres() {
         return divendres.get();
     }
 
-    public void setDilluns(String dilluns) {
+    /**
+     * Fixa el contingut de la cel·la els dilluns
+     *
+     * @param value El contingut de la cel·la
+     */
+    private void setDilluns(String value) {
         this.dillunsIsSet = true;
-        this.dilluns.set(dilluns);
+        this.dilluns.set(value);
     }
 
-    public void setDimarts(String dimarts) {
+    /**
+     * Fixa el contingut de la cel·la els dimarts
+     *
+     * @param value El contingut de la cel·la
+     */
+    private void setDimarts(String value) {
         this.dimartsIsSet = true;
-        this.dimarts.set(dimarts);
+        this.dimarts.set(value);
     }
 
-    public void setDimecres(String dimecres) {
+    /**
+     * Fixa el contingut de la cel·la els dimecres
+     *
+     * @param value El contingut de la cel·la
+     */
+    private void setDimecres(String value) {
         this.dimecresIsSet = true;
-        this.dimecres.set(dimecres);
+        this.dimecres.set(value);
     }
 
-    public void setDijous(String dijous) {
+    /**
+     * Fixa el contingut de la cel·la els dijous
+     *
+     * @param value El contingut de la cel·la
+     */
+    private void setDijous(String value) {
         this.dijousIsSet = true;
-        this.dijous.set(dijous);
+        this.dijous.set(value);
     }
 
-    public void setDivendres(String divendres) {
+    /**
+     * Fixa el contingut de la cel·la els divendres
+     *
+     * @param value El contingut de la cel·la
+     */
+    private void setDivendres(String value) {
         this.divendresIsSet = true;
-        this.divendres.set(divendres);
+        this.divendres.set(value);
     }
 
-    public void setDia(String dia, String value) {
+    /**
+     * Funció externa per fixar un dia concret a partir d'un String obtingut del JSON.
+     * En cas de que ja hi hagi una assignatura en aquella cel·la, fem un append,
+     * en cas contrari, fixem el valor inicial de la cel·la
+     *
+     * @param dia   El nom del dia, obtingut del JSON
+     * @param abbvr L'abreviació de l'assignatura
+     * @param grup  El grup per a aquesta assignació
+     * @param aula  L'aula per a aquesta assignació
+     */
+    public void setDia(String dia, String abbvr, String grup, String aula) {
         switch (dia.toUpperCase()) {
             case "DILLUNS":
-                if(dillunsIsSet){
-                    setDilluns(dilluns.get() + "\n" + value);
-                }else{
-                    setDilluns(value);
+                if (dillunsIsSet) {
+                    setDilluns(dilluns.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                } else {
+                    setDilluns(formatSlotText(abbvr, grup, aula, true));
                 }
                 break;
             case "DIMARTS":
-                if(dimartsIsSet){
-                    setDimarts(dimarts.get() + "\n" + value);
-                }else{
-                    setDimarts(value);
+                if (dimartsIsSet) {
+                    setDimarts(dimarts.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                } else {
+                    setDimarts(formatSlotText(abbvr, grup, aula, true));
                 }
                 break;
             case "DIMECRES":
-                if(dimecresIsSet){
-                    setDimecres(dimecres.get() + "\n" + value);
-                }else{
-                    setDimecres(value);
+                if (dimecresIsSet) {
+                    setDimecres(dimecres.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                } else {
+                    setDimecres(formatSlotText(abbvr, grup, aula, true));
                 }
                 break;
             case "DIJOUS":
-                if(dijousIsSet){
-                    setDijous(dijous.get() + "\n" + value);
-                }else{
-                    setDijous(value);
+                if (dijousIsSet) {
+                    setDijous(dijous.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                } else {
+                    setDijous(formatSlotText(abbvr, grup, aula, true));
                 }
                 break;
             case "DIVENDRES":
-                if(divendresIsSet){
-                    setDivendres(divendres.get() + "\n" + value);
-                }else{
-                    setDivendres(value);
+                if (divendresIsSet) {
+                    setDivendres(divendres.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                } else {
+                    setDivendres(formatSlotText(abbvr, grup, aula, true));
                 }
                 break;
             default:
@@ -123,15 +188,26 @@ public class Slot {
     }
 
     /**
-     * Formatter class for Slot
+     * Funció que converteix les dades de l'assignatura en el format que s'espera dins del Slot
      *
-     * @param abbvr
-     * @param grup
-     * @param aula
-     * @return
+     * @param abbvr Abreviació de l'assignatura
+     * @param grup  Grup per aquesta assignació
+     * @param aula  Aula on es realitzarà l'assignatura per aquell grup
+     * @param full  Modificador per generar un String complet o curt
+     * @return Un String formatejat correctament per introduïr a la cel·la
      */
-    public static String formatSimpleSlotText(String abbvr, String grup, String aula) {
-        return String.join("\n", abbvr + "(" + grup + ")", aula);
+    private static String formatSlotText(String abbvr, String grup, String aula, boolean full) {
+        StringBuilder sb = new StringBuilder();
+        String grupaula = String.join(" ", "(", "G" + grup, ")", aula);
+        for (int i = 0; i <= grupaula.length() / 2 + 1; i++) {
+            sb.append(" ");
+        }
+        sb.append(abbvr);
+        if (full) {
+            return sb.append("\n").append(grupaula).toString();
+        } else {
+            return grupaula;
+        }
     }
 
 }
