@@ -2,7 +2,7 @@
  * @author Aina Garcia
  */
 
-package model;
+package test;
 
 import controllers.CtrlDomini;
 import controllers.CtrlSerDes;

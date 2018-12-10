@@ -111,6 +111,23 @@ public class CtrlDomini {
         plaEstudis.put(nom, new PlaEstudis(nom, any, descripcio));
     }
 
+    public ArrayList<String> correquisitsPossibles(String nomAssig) {
+        ArrayList<String> assignatures_candidates = new ArrayList<>();
+        for (PlaEstudis p : plaEstudis.values()) {
+            if (p.hasAssignatura(nomAssig)) {
+                for (String assig : p.getAssignatures()) {
+                    Assignatura aux = assignatures.get(assig);
+                    //si tenen mateix quadrimestre i formen part del mateix pla i no son ja correquisits
+                    if (aux.getQuadrimestre() == assignatures.get(nomAssig).getQuadrimestre()
+                            && !aux.getNom().equalsIgnoreCase(nomAssig) && !aux.esCorrequisit(nomAssig)) {
+                        assignatures_candidates.add(aux.getNom());
+                    }
+                }
+            }
+        }
+        return assignatures_candidates;
+    }
+
     //todo de moment no te en compte restriccions i tenim codi duplicat
 
     /**
