@@ -6,8 +6,6 @@ package controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import model.*;
@@ -20,40 +18,17 @@ import java.util.HashMap;
 public class CtrlDomini {
 
     private static CtrlDomini ourInstance;
+    private CtrlSerDes cIo;
     private HashMap<String, Assignatura> assignatures;
     private HashMap<String, PlaEstudis> plaEstudis;
     private HashMap<String, Aula> aules;
     private Horari horari;
-
-
-    //TODO pasar a horario + crear equals
-    private RestriccioCorrequisit resCorr;
-    private RestriccioNivell resNiv;
-    private RestriccioAula resAul;
-    private RestriccioGrupTeo resTeo;
-    private RestriccioSubgrupLab resSub;
-    private ArrayList<RestriccioAulaDia> resAulDia;
-    private ArrayList<RestriccioAulaHora> resAulaHora;
-    private ArrayList<RestriccioAssigMatiTarda> resMatiTarda;
-    private RestriccioCapacitatAula resCapAul;
-    private RestriccioLimits resLim;
 
     private CtrlDomini() {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
         horari = new Horari();
-
-        resCorr = new RestriccioCorrequisit();
-        resNiv = new RestriccioNivell();
-        resAul = new RestriccioAula();
-        resTeo = new RestriccioGrupTeo();
-        resSub = new RestriccioSubgrupLab();
-        resAulDia = new ArrayList<>();
-        resAulaHora = new ArrayList<>();
-        resMatiTarda = new ArrayList<>();
-        resCapAul = new RestriccioCapacitatAula();
-        resLim = new RestriccioLimits();
     }
 
     public static CtrlDomini getInstance() {
@@ -73,7 +48,7 @@ public class CtrlDomini {
      * Carrega l'informacio sobre aules, assignatures i plans d'estudi desde disc
      */
     public void carrega() throws IOException { //TODO fer be
-        CtrlIO c = CtrlIO.getInstance();
+        CtrlSerDes c = CtrlSerDes.getInstance();
 
         plaEstudis = c.carregaPlansDEstudi("plaestudistest.json");
         assignatures = c.carregaAssignatures("assigtest.json");
@@ -137,32 +112,21 @@ public class CtrlDomini {
     }
 
     //todo de moment no te en compte restriccions i tenim codi duplicat
-    
-    public String generaHorari(){
+
+    /**
+     * Genera un horari amb les restriccions especificades i el retorna per tal de ser mostrat per pantalla
+     * @return Horari generat si es pot, null altrament
+     */
+    public String generaHorari(/*params sobre les restriccions*/){
         String json = null;
+
+        /* CODE TO INIT RESTRICTIONS */
+        /*            ...            */
+        /*                           */
+
         boolean b = horari.ConstruirHorari(assignatures, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
                new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
-
-        if (b) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            JsonArray obj = new JsonArray();
-            for (int i = 0; i < horari.getHorari().length; ++i) {
-                for (int j = 0; j < horari.getHorari()[i].length; ++j) {
-                    for (int k = 0; k < horari.getHorari()[i][j].length; ++k) {
-                        JsonObject jsonElement = new JsonObject();
-                        if (horari.getHorari()[i][j][k] != null) {
-                            jsonElement.addProperty("dia", horari.getHorari()[i][j][k].getDiaSetmana());
-                            jsonElement.addProperty("hora", horari.getHorari()[i][j][k].getHora());
-                            jsonElement.addProperty("assignatura", horari.getHorari()[i][j][k].getAssignatura().getNom().toUpperCase());
-                            jsonElement.addProperty("grup", horari.getHorari()[i][j][k].getGrup().getNum());
-                            jsonElement.addProperty("aula", horari.getHorari()[i][j][k].getAula().getKey().toUpperCase());
-                            obj.add(jsonElement);
-                        }
-                    }
-                }
-            }
-            json = gson.toJson(obj);
-        }
+        if (b) json = cIo.horariToJson(horari);
         return json;
     }
 
