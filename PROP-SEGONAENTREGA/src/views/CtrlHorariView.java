@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import model.Slot;
 import utils.FormValidation;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class CtrlHorariView {
@@ -36,24 +38,18 @@ public class CtrlHorariView {
     @FXML
     BorderPane horari_container = new BorderPane();
 
+    TableView<Slot> horari;
+    String horarijson;
+    ObservableList<Slot> data;
+
     /**
      * Init function
      */
     public void initialize() {
-
-    }
-
-    public void loadHorari(){
-        ObservableList<Slot> data = FXCollections.observableArrayList();
-        Slot s = new Slot("8 - 10", "AS\nTest\ntest", "AC\nTest\ntest", "AD\nTest\ntest", "AE\nTest\ntest", "AQ\nTest\ntest");
-        Slot s1 = new Slot("10 - 12","AS\nTest\ntest", "-", "AD\nTest\ntest", "AE\nTest\ntest", "AQ\nTest\ntest");
-        Slot s2 = new Slot("12 - 14","AS\nTest\ntest", "AC\nTest\ntest", "AD\nTest\ntest", "AE\nTest\ntest", "AQ\nTest\ntest");
-        Slot s3 = new Slot("14 - 16","AS\nTest\ntest", "AC\nTest\ntest", "AD\nTest\ntest", "AE\nTest\ntest", "AQ\nTest\ntest");
-
-        data.addAll(s, s1, s2, s3);
-
-        TableView<Slot> horari = new TableView<>();
+        // Table creation
+        horari = new TableView<>();
         horari.getSelectionModel().setCellSelectionEnabled(true);
+        // Column creation
         TableColumn slotname = new TableColumn("Hora");
         slotname.prefWidthProperty().bind(horari.widthProperty().divide(8));
         slotname.setCellValueFactory(new PropertyValueFactory<Slot, String>("slotname"));
@@ -72,10 +68,24 @@ public class CtrlHorariView {
         TableColumn friday = new TableColumn("Divendres");
         friday.prefWidthProperty().bind(horari.widthProperty().divide(5.8));
         friday.setCellValueFactory(new PropertyValueFactory<Slot, String>("divendres"));
-        horari.getColumns().addAll(slotname, monday, tuesday, wednesday, thursday, friday);
-        horari.setItems(data);
 
+        horari.getColumns().addAll(slotname, monday, tuesday, wednesday, thursday, friday);
         horari_container.setCenter(horari);
+
+        data = FXCollections.observableArrayList();
+        horari.setItems(data);
+    }
+
+    public void loadHorari(String horarijson) {
+        this.horarijson = horarijson;
+    }
+
+    public void handleAssigChange(String assig){
+        data.setAll(generateSlotsFromJson(horarijson, assig, null));
+    }
+
+    public void handleAulaChange(String aula){
+        data.setAll(generateSlotsFromJson(horarijson, null, aula));
     }
 
     /**
@@ -86,7 +96,6 @@ public class CtrlHorariView {
     public void setMainController(CtrlMainView c) {
         this.ctrlMainView = c;
     }
-
 
 
     /**
@@ -110,4 +119,52 @@ public class CtrlHorariView {
         a.show();
     }
 
+    /**
+     * Retorna un array de Slot a partir de un Json que conté Horaris
+     *
+     * @param horariJson L'horari en JSON
+     * @param abbvr      L'abreviació del nom de la assignatura
+     * @param aula       El nom de l'aula
+     * @return Un Array de Slot
+     */
+    public ArrayList<Slot> generateSlotsFromJson(String horariJson, String abbvr, String aula) {
+        boolean AssigMode;
+
+        if (abbvr != null && !abbvr.equals("")) {
+            AssigMode = true;
+        } else if (aula != null && !aula.equals("")) {
+            AssigMode = false;
+        } else {
+            throw new IllegalArgumentException("Abbvr o Aula han de ser not null");
+        }
+        List horari = new Gson().fromJson(horariJson, List.class);
+        ArrayList<Slot> slots = new ArrayList<>();
+        for (int i = 8; i < 21; i++) {
+            slots.add(new Slot(i + ":00h"));
+        }
+
+        for (Object slot : horari) {
+            Map m = (Map) slot;
+            String abreviacio = (String) m.get("assignatura");
+            String aulaslot = (String) m.get("aula");
+            if (AssigMode) {
+                if (abbvr.equalsIgnoreCase(abreviacio)) {
+                    Double numslot = (Double) m.get("hora");
+                    String dia = (String) m.get("dia");
+                    Double grup = (Double) m.get("grup");
+                    String value = Slot.formatSlotText(abreviacio, String.valueOf(grup.intValue()), aulaslot);
+                    slots.get(numslot.intValue()).setDia(dia, value);
+                }
+            } else {
+                if (aula.equalsIgnoreCase(aulaslot)) {
+                    Double numslot = (Double) m.get("hora");
+                    String dia = (String) m.get("dia");
+                    Double grup = (Double) m.get("grup");
+                    String value = Slot.formatSlotText(abreviacio, String.valueOf(grup.intValue()), aulaslot);
+                    slots.get(numslot.intValue()).setDia(dia, value);
+                }
+            }
+        }
+        return slots;
+    }
 }
