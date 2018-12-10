@@ -110,6 +110,7 @@ public class CtrlAssignaturaView {
                 int numsubgrups = subgrups.size();
                 text_numsubgrups.setText(String.valueOf(numsubgrups));
             }
+            text_descripcio.setWrapText(true);
         } catch (NotFoundException e) {
             alert("No existeix l'assignatura");
             exit();

@@ -253,7 +253,6 @@ public class CtrlMainView {
                 try {
                     crearAssignatura();
                 } catch (IOException e) {
-                    //TODO FIX
                     alert(e.getMessage());
                 }
                 break;
@@ -558,13 +557,18 @@ public class CtrlMainView {
      */
     public void consultarPlaEstudis(String nomPla) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisDisplay.fxml"));
-        Parent root = null;
-        root = loader.load();
+        Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
+        stage.setTitle("Consultar assignatura: " + nomPla);
         stage.setTitle(nomPla);
+        stage.setResizable(false);
         stage.show();
+
+
+        CtrlPlaEstudisView ca = loader.getController();
+        ca.displayPlaEstudis(nomPla);
     }
 
     private void alert(String s) {
