@@ -276,6 +276,19 @@ public class CtrlDomini {
     }
 
     /**
+     * Obté l'abreviació de l'assignatura a partir del nom
+     * @param nom Nom de l'assignatura
+     * @return Abreviació
+     * @throws NotFoundException Si no troba l'assignatura
+     */
+    public String obtenirAbreviacioAssig(String nom) throws NotFoundException {
+        if (!assignatures.containsKey(nom)) {
+            throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nom.toUpperCase());
+        }
+        return assignatures.get(nom).getAbr();
+    }
+
+    /**
      * Esborra una assignatura amb el nom especificat
      *
      * @param nomA Nom de l'assignatura a borrar
