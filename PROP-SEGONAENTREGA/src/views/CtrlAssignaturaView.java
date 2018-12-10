@@ -15,6 +15,7 @@ import java.util.Map;
 
 public class CtrlAssignaturaView {
 
+    /************* FORM ****************/
     @FXML
     Button savebutton = new Button();
     @FXML
@@ -35,8 +36,34 @@ public class CtrlAssignaturaView {
     TextField text_capacitat = new TextField();
     @FXML
     TextField text_numsubgrups = new TextField();
+    @FXML
+    CheckBox checkbox_teo = new CheckBox();
+    @FXML
+    CheckBox checkbox_lab = new CheckBox();
+    @FXML
+    TextField text_teo_ns = new TextField();
+    @FXML
+    TextField text_lab_ns = new TextField();
+    @FXML
+    TextField text_teo_ds = new TextField();
+    @FXML
+    TextField text_lab_ds = new TextField();
+    @FXML
+    ChoiceBox<String> choice_teo_ta = new ChoiceBox<>();
+    @FXML
+    ChoiceBox<String> choice_lab_ta = new ChoiceBox<>();
+    @FXML
+    ListView<String> list_correquisits = new ListView<>();
+    @FXML
+    Button button_elimina = new Button();
+    @FXML
+    ChoiceBox<String> choice_assig = new ChoiceBox<>();
+    @FXML
+    Button button_afegeix = new Button();
+    
+    /****** DISPLAY *******/
 
-
+    /******** OTHER *******/
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
     private boolean editmode = false;

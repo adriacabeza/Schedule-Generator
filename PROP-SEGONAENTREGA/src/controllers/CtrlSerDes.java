@@ -88,9 +88,8 @@ public class CtrlSerDes {
         return gson.toJson(obj);
     }
 
-    public void guardaHorari(Horari h, String filepath) throws IOException {
-        String json = horariToJson(h);
-        gd.escriu(json, filepath);
+    public void guardaHorari(String h, String filepath) throws IOException {
+        gd.escriu(h, filepath);
     }
 
     public void guardaAssignatures(HashMap<String, Assignatura> assignatures, String filepath) throws IOException {
