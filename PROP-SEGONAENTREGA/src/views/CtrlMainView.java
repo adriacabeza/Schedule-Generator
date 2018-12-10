@@ -1,6 +1,7 @@
 package views;
 
 import controllers.CtrlDomini;
+import controllers.GestorDisc;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import javafx.collections.FXCollections;
@@ -335,8 +336,8 @@ public class CtrlMainView {
 
         CtrlHorariView c = loader.getController();
         c.setMainController(this);
-        c.loadHorari(controladorDomini.generaHorari());
-        c.handleAssigChange("PRO2");
+        c.loadHorari(GestorDisc.getInstance().llegeix("horariexemple.json"));
+        //c.handleAssigChange("PRO2");
     }
 
     public void handleGenerateHorari() throws IOException {
