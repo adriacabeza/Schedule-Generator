@@ -335,7 +335,8 @@ public class CtrlMainView {
 
         CtrlHorariView c = loader.getController();
         c.setMainController(this);
-        //c.loadHorari();
+        c.loadHorari(controladorDomini.generaHorari());
+        c.handleAssigChange("PRO2");
     }
 
     public void handleGenerateHorari() throws IOException {
