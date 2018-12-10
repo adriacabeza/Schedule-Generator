@@ -29,6 +29,7 @@ public class CtrlDomini {
         plaEstudis = new HashMap<>();
         aules = new HashMap<>();
         horari = new Horari();
+        cIo = CtrlSerDes.getInstance();
     }
 
     public static CtrlDomini getInstance() {
@@ -38,6 +39,9 @@ public class CtrlDomini {
         return ourInstance;
     }
 
+    /**
+     *
+     */
     public void reload() {
         assignatures = new HashMap<>();
         plaEstudis = new HashMap<>();
@@ -111,8 +115,29 @@ public class CtrlDomini {
         plaEstudis.put(nom, new PlaEstudis(nom, any, descripcio));
     }
 
-    //todo de moment no te en compte restriccions i tenim codi duplicat
+    /**
+     *
+     * @param nomAssig
+     * @return
+     */
+    public ArrayList<String> correquisitsPossibles(String nomAssig) {
+        ArrayList<String> assignatures_candidates = new ArrayList<>();
+        for (PlaEstudis p : plaEstudis.values()) {
+            if (p.hasAssignatura(nomAssig)) {
+                for (String assig : p.getAssignatures()) {
+                    Assignatura aux = assignatures.get(assig);
+                    //si tenen mateix quadrimestre i formen part del mateix pla i no son ja correquisits
+                    if (aux.getQuadrimestre() == assignatures.get(nomAssig).getQuadrimestre()
+                            && !aux.getNom().equalsIgnoreCase(nomAssig) && !aux.esCorrequisit(nomAssig)) {
+                        assignatures_candidates.add(aux.getNom());
+                    }
+                }
+            }
+        }
+        return assignatures_candidates;
+    }
 
+    //todo de moment no te en compte restriccions i tenim codi duplicat
     /**
      * Genera un horari amb les restriccions especificades i el retorna per tal de ser mostrat per pantalla
      * @return Horari generat si es pot, null altrament
@@ -160,6 +185,12 @@ public class CtrlDomini {
         plaEstudis.remove(nom);
     }
 
+    /**
+     *
+     * @param nom
+     * @param obsolet
+     * @throws NotFoundException
+     */
     public void setObsolet(String nom, boolean obsolet) throws NotFoundException {
         if (!plaEstudis.containsKey(nom)) {
             throw new NotFoundException("No s'ha trobat el pla d'estudis " + nom.toUpperCase());
@@ -235,6 +266,11 @@ public class CtrlDomini {
         return plaEstudis.get(nomP).getAssignatures();
     }
 
+    /**
+     *
+     * @param nomAssig
+     * @return
+     */
     public String getPlaEstudisContains(String nomAssig) {
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (plaest.hasAssignatura(nomAssig)) {
@@ -320,11 +356,11 @@ public class CtrlDomini {
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      * @throws NotFoundException si no existeix l'assignatura amb el nom especificat
      */
-    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions, TipusAula tAula) throws NotFoundException {
+    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions, String tAula) throws NotFoundException {
         if (!assignatures.containsKey(nom_assig)) {
             throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig);
         }
-        assignatures.get(nom_assig).setTeoria(num_sessions, duracio, tAula);
+        assignatures.get(nom_assig).setTeoria(num_sessions, duracio, Aula.stringToTipusAula(tAula));
     }
 
     /**
@@ -335,11 +371,11 @@ public class CtrlDomini {
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      * @throws NotFoundException si no existeix l'assignatura amb el nom especificat
      */
-    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions, TipusAula tAula) throws NotFoundException {
+    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions, String tAula) throws NotFoundException {
         if (!assignatures.containsKey(nom_assig)) {
             throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig);
         }
-        assignatures.get(nom_assig).setLaboratori(num_sessions, duracio, tAula);
+        assignatures.get(nom_assig).setLaboratori(num_sessions, duracio, Aula.stringToTipusAula(tAula));
     }
 
     /**
@@ -432,7 +468,6 @@ public class CtrlDomini {
         }
     }
 
-
     /**
      * Permet modificar una aula
      *
@@ -468,6 +503,11 @@ public class CtrlDomini {
             return json;
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> consultarAssignaturesLliures() {
         ArrayList<String> possibles = new ArrayList<>();
         for (String a: assignatures.keySet()){
