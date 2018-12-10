@@ -97,7 +97,6 @@ public class CtrlAssignaturaView {
         this.ctrlMainView = c;
     }
 
-
     /**
      * Carrega la informació complerta d'una assignatura per mostrar-la en la interficie i dona accés al mode d'edició dels paràmetres permesos
      *
@@ -172,7 +171,6 @@ public class CtrlAssignaturaView {
             }
 
             List<String> correquisits = (List) assignatura.get("correquisit");
-            System.out.println(correquisits);
             if (correquisits != null) {
                 llista_correquisits.addAll(correquisits);
             }
@@ -251,6 +249,48 @@ public class CtrlAssignaturaView {
             text_numsubgrups.setBorder(formvalidator.okBorder);
         }
 
+        if (checkbox_teo.isSelected()) {
+            if (!formvalidator.validateNumber(text_teo_ns.getText())) {
+                errorcount++;
+                text_teo_ns.setBorder(formvalidator.errorBorder);
+            } else {
+                text_teo_ns.setBorder(formvalidator.okBorder);
+            }
+            if (!formvalidator.validateNumber(text_teo_ds.getText())) {
+                errorcount++;
+                text_teo_ds.setBorder(formvalidator.errorBorder);
+            } else {
+                text_teo_ds.setBorder(formvalidator.okBorder);
+            }
+            if (!formvalidator.validateStringNoSpace(choice_teo_ta.getValue())) {
+                errorcount++;
+                choice_teo_ta.setBorder(formvalidator.errorBorder);
+            } else {
+                choice_teo_ta.setBorder(formvalidator.okBorder);
+            }
+        }
+
+        if (checkbox_lab.isSelected()) {
+            if (!formvalidator.validateNumber(text_lab_ns.getText())) {
+                errorcount++;
+                text_lab_ns.setBorder(formvalidator.errorBorder);
+            } else {
+                text_lab_ns.setBorder(formvalidator.okBorder);
+            }
+            if (!formvalidator.validateNumber(text_lab_ds.getText())) {
+                errorcount++;
+                text_lab_ds.setBorder(formvalidator.errorBorder);
+            } else {
+                text_lab_ds.setBorder(formvalidator.okBorder);
+            }
+            if (!formvalidator.validateStringNoSpace(choice_lab_ta.getValue())) {
+                errorcount++;
+                choice_lab_ta.setBorder(formvalidator.errorBorder);
+            } else {
+                choice_lab_ta.setBorder(formvalidator.okBorder);
+            }
+        }
+
         return errorcount;
     }
 
@@ -273,6 +313,12 @@ public class CtrlAssignaturaView {
         int capacitat = Integer.parseInt(text_capacitat.getText());
         int numsubgrups = Integer.parseInt(text_numsubgrups.getText());
         int quadrimestre = Integer.parseInt(text_quadri.getText());
+        int numSessTeo = Integer.parseInt(text_teo_ns.getText());
+        int numSessLab = Integer.parseInt(text_lab_ns.getText());
+        int durSessTeo = Integer.parseInt(text_teo_ds.getText());
+        int durSessLab = Integer.parseInt(text_lab_ds.getText());
+        String tAulaTeo = choice_teo_ta.getValue();
+        String tAulaLab = choice_lab_ta.getValue();
 
         try {
             if (editmode) ctrlDomini.esborrarAssignatura(nomAssig);
@@ -280,9 +326,10 @@ public class CtrlAssignaturaView {
             ctrlDomini.modificarGrups(nomAssig, numgrups, capacitat, numsubgrups);
             ctrlDomini.afegirAssignaturaPla(plaEstudis, nomAssig);
 
-            //TODO not implemented yet
-            //c.modificaInformacioTeoria(nomAssig, 0,0,null);
-            //c.modificaInformacioLab(nomAssig, 0,0,null);
+            if (checkbox_teo.isSelected())
+                ctrlDomini.modificaInformacioTeoria(nomAssig, durSessTeo, numSessTeo, tAulaTeo);
+            if (checkbox_lab.isSelected())
+                ctrlDomini.modificaInformacioLaboratori(nomAssig, durSessLab, numSessLab, tAulaLab);
             //for all correquisits, afegirlos
             exit();
 
