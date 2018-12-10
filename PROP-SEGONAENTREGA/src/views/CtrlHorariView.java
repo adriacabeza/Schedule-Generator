@@ -145,7 +145,7 @@ public class CtrlHorariView {
             Map m = (Map) horari.get(0);
             String test = (String) m.get("assignatura");
             return test != null;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }

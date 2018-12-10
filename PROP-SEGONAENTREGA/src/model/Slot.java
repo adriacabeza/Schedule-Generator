@@ -140,46 +140,46 @@ public class Slot {
      * En cas de que ja hi hagi una assignatura en aquella cel·la, fem un append,
      * en cas contrari, fixem el valor inicial de la cel·la
      *
-     * @param dia   El nom del dia, obtingut del JSON
-     * @param abbvr L'abreviació de l'assignatura
-     * @param grup  El grup per a aquesta assignació
-     * @param aula  L'aula per a aquesta assignació
+     * @param dia        El nom del dia, obtingut del JSON
+     * @param abreviacio L'abreviació de l'assignatura
+     * @param grup       El grup per a aquesta assignació
+     * @param aula       L'aula per a aquesta assignació
      */
-    public void setDia(String dia, String abbvr, String grup, String aula) {
+    public void setDia(String dia, String abreviacio, String grup, String aula) {
         switch (dia.toUpperCase()) {
             case "DILLUNS":
                 if (dillunsIsSet) {
-                    setDilluns(dilluns.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                    setDilluns(dilluns.get() + "\n" + formatSlotText(abreviacio, grup, aula, false));
                 } else {
-                    setDilluns(formatSlotText(abbvr, grup, aula, true));
+                    setDilluns(formatSlotText(abreviacio, grup, aula, true));
                 }
                 break;
             case "DIMARTS":
                 if (dimartsIsSet) {
-                    setDimarts(dimarts.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                    setDimarts(dimarts.get() + "\n" + formatSlotText(abreviacio, grup, aula, false));
                 } else {
-                    setDimarts(formatSlotText(abbvr, grup, aula, true));
+                    setDimarts(formatSlotText(abreviacio, grup, aula, true));
                 }
                 break;
             case "DIMECRES":
                 if (dimecresIsSet) {
-                    setDimecres(dimecres.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                    setDimecres(dimecres.get() + "\n" + formatSlotText(abreviacio, grup, aula, false));
                 } else {
-                    setDimecres(formatSlotText(abbvr, grup, aula, true));
+                    setDimecres(formatSlotText(abreviacio, grup, aula, true));
                 }
                 break;
             case "DIJOUS":
                 if (dijousIsSet) {
-                    setDijous(dijous.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                    setDijous(dijous.get() + "\n" + formatSlotText(abreviacio, grup, aula, false));
                 } else {
-                    setDijous(formatSlotText(abbvr, grup, aula, true));
+                    setDijous(formatSlotText(abreviacio, grup, aula, true));
                 }
                 break;
             case "DIVENDRES":
                 if (divendresIsSet) {
-                    setDivendres(divendres.get() + "\n" + formatSlotText(abbvr, grup, aula, false));
+                    setDivendres(divendres.get() + "\n" + formatSlotText(abreviacio, grup, aula, false));
                 } else {
-                    setDivendres(formatSlotText(abbvr, grup, aula, true));
+                    setDivendres(formatSlotText(abreviacio, grup, aula, true));
                 }
                 break;
             default:
@@ -190,19 +190,19 @@ public class Slot {
     /**
      * Funció que converteix les dades de l'assignatura en el format que s'espera dins del Slot
      *
-     * @param abbvr Abreviació de l'assignatura
-     * @param grup  Grup per aquesta assignació
-     * @param aula  Aula on es realitzarà l'assignatura per aquell grup
-     * @param full  Modificador per generar un String complet o curt
+     * @param abreviacio Abreviació de l'assignatura
+     * @param grup       Grup per aquesta assignació
+     * @param aula       Aula on es realitzarà l'assignatura per aquell grup
+     * @param full       Modificador per generar un String complet o curt
      * @return Un String formatejat correctament per introduïr a la cel·la
      */
-    private static String formatSlotText(String abbvr, String grup, String aula, boolean full) {
+    private static String formatSlotText(String abreviacio, String grup, String aula, boolean full) {
         StringBuilder sb = new StringBuilder();
         String grupaula = String.join(" ", "(", "G" + grup, ")", aula);
         for (int i = 0; i <= grupaula.length() / 2 + 1; i++) {
             sb.append(" ");
         }
-        sb.append(abbvr);
+        sb.append(abreviacio);
         if (full) {
             return sb.append("\n").append(grupaula).toString();
         } else {
