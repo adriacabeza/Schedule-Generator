@@ -2,13 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="horari_container" prefHeight="500.0" prefWidth="1000.0" stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlHorariView">
+<BorderPane fx:id="horari_container" prefHeight="500.0" prefWidth="1100.0" stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlHorariView">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -21,26 +24,114 @@
                 <ChoiceBox fx:id="choice_assig" prefWidth="150.0" />
             </children>
          <BorderPane.margin>
-            <Insets left="220.0" />
+            <Insets left="320.0" />
          </BorderPane.margin>
         </HBox>
     </top>
    <left>
-      <BorderPane maxWidth="200.0" minWidth="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane maxWidth="300.0" minWidth="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <top>
-            <Label text="Restriccions" BorderPane.alignment="TOP_LEFT" />
+            <Label text="Restriccions" BorderPane.alignment="TOP_LEFT">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
          </top>
          <center>
-            <VBox fx:id="restriccions_container" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+            <VBox fx:id="restriccions_container" prefHeight="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Separator prefWidth="200.0" />
+                  <Label text="Restriccio mati-tarda">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding></Label>
+                  <HBox prefHeight="30.0" prefWidth="200.0" spacing="5.0">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <children>
+                        <ChoiceBox fx:id="rmt_assig" prefWidth="150.0" />
+                        <ChoiceBox fx:id="rmt_matitarda" prefWidth="150.0" />
+                        <Button fx:id="rmt_add" mnemonicParsing="false" onAction="#handleAddRMT" text="+" />
+                     </children></HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="rmt_view" mnemonicParsing="false" onAction="#handleViewRMT" text="Veure restriccions" />
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin></Separator>
+                  <Label text="Restriccio dia-aula-hora">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding></Label>
+                  <HBox prefHeight="30.0" prefWidth="200.0" spacing="5.0">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <children>
+                        <ChoiceBox fx:id="rdah_dia" prefWidth="150.0" />
+                        <ChoiceBox fx:id="rdah_aula" prefWidth="150.0" />
+                        <ChoiceBox fx:id="rdah_hora" prefWidth="150.0" />
+                        <Button fx:id="rdah_add" mnemonicParsing="false" onAction="#handleAddRDAH" text="+" />
+                     </children></HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="rdah_view" mnemonicParsing="false" onAction="#handleViewRDAH" text="Veure restriccions" />
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin></Separator>
+                  <Label text="Restriccio aula-dia">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding></Label>
+                  <HBox prefHeight="30.0" prefWidth="200.0" spacing="5.0">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <children>
+                        <ChoiceBox fx:id="rad_aula" prefWidth="150.0" />
+                        <ChoiceBox fx:id="rad_dia" prefWidth="150.0" />
+                        <Button fx:id="rad_add" mnemonicParsing="false" onAction="#handleAddRAD" text="+" />
+                     </children></HBox>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="rad_view" mnemonicParsing="false" onAction="#handleViewRAD" text="Veure restriccions" />
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin></Separator>
+                  <CheckBox fx:id="rc_checkbox" mnemonicParsing="false" prefHeight="30.0" text="No solapar correquisits">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding></CheckBox>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="2.0" top="2.0" />
+                     </VBox.margin></Separator>
+                  <CheckBox fx:id="rgt_checkbox" mnemonicParsing="false" prefHeight="30.0" text="No solapar grups teoria">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding></CheckBox>
+               </children></VBox>
          </center>
          <bottom>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="cancel_button" mnemonicParsing="false" text="Cancela" />
-                  <Button fx:id="generate_button" mnemonicParsing="false" text="Genera" />
+                  <Button fx:id="generate_button" mnemonicParsing="false" onAction="#handleGenerar" text="Genera" />
                </children>
             </HBox>
          </bottom>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
       </BorderPane>
    </left>
 </BorderPane>

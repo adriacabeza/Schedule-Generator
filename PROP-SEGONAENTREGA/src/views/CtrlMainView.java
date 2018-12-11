@@ -372,6 +372,7 @@ public class CtrlMainView {
 
         CtrlHorariView c = loader.getController();
         c.setMainController(this);
+        c.setGenerateMode();
     }
 
     @FXML
@@ -460,6 +461,7 @@ public class CtrlMainView {
         stage.show();
         CtrlAssignaturaView ca = loader.getController();
         ca.displayAssignatura(nomAssignatura);
+        ca.setMainController(this);
     }
 
     /**

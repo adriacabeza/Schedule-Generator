@@ -10,8 +10,8 @@ public class FormValidation {
     private final Pattern patternTextAlphanumeric = Pattern.compile("^[a-zA-Z0-9]++$");
     private final Pattern patternTextSpace = Pattern.compile("^[A-zÀ-ú ]++$");
     private final Pattern patternTextSpaceAllowEmpty = Pattern.compile("^$|[A-zÀ-ú ]++$");
-    private final Pattern patternNumbers = Pattern.compile("^[1-9]\\d*$");
-    private final Pattern patternNumbersAllowEmpty = Pattern.compile("^$|[1-9]\\d*$");
+    private final Pattern patternNumbers = Pattern.compile("^[0-9]\\d*$");
+    private final Pattern patternNumbersAllowEmpty = Pattern.compile("^$|[0-9]\\d*$");
     public final Border errorBorder = new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     public final Border okBorder = new Border(new BorderStroke(Color.GREEN, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 
