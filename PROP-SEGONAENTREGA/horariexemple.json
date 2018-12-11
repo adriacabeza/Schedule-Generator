@@ -1,0 +1,2522 @@
+[
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 30,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 20,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 20,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 32,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 30,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 10,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "MATES 1",
+    "grup": 30,
+    "aula": "A5001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 30,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "MATES 1",
+    "grup": 10,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 32,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 31,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "BASES DE DADES",
+    "grup": 30,
+    "aula": "A5202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "FÍSICA",
+    "grup": 30,
+    "aula": "A6202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 30,
+    "aula": "A4002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 30,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A4104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 31,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 11,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 0,
+    "assignatura": "FÍSICA",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 0,
+    "assignatura": "FÍSICA",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 0,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 22,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 0,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 0,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 0,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 22,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 30,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 20,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 20,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 32,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 30,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 10,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "MATES 1",
+    "grup": 30,
+    "aula": "A5001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 30,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "MATES 1",
+    "grup": 10,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 32,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 31,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "BASES DE DADES",
+    "grup": 30,
+    "aula": "A5202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "FÍSICA",
+    "grup": 30,
+    "aula": "A6202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 30,
+    "aula": "A4002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 30,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A4104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 31,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 11,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 1,
+    "assignatura": "FÍSICA",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 1,
+    "assignatura": "FÍSICA",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 1,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 22,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 1,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 1,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 1,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 22,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "BASES DE DADES",
+    "grup": 10,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 30,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 10,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 11,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "FÍSICA",
+    "grup": 10,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 10,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 10,
+    "aula": "A5001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "FÍSICA",
+    "grup": 20,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 30,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "MATES 1",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 20,
+    "aula": "A5202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 20,
+    "aula": "A6202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 10,
+    "aula": "A4002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 10,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A4104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "FÍSICA",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 2,
+    "assignatura": "FÍSICA",
+    "grup": 12,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 2,
+    "assignatura": "FÍSICA",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 2,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 2,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 2,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "BASES DE DADES",
+    "grup": 10,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 30,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 10,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 11,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "FÍSICA",
+    "grup": 10,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 10,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "LLENGUATGES DE PROGRAMACIÓ",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 10,
+    "aula": "A5001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "FÍSICA",
+    "grup": 20,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 30,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "MATES 1",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 20,
+    "aula": "A5202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 20,
+    "aula": "A6202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 10,
+    "aula": "A4002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "APRENENTATGE AUTÒNOM",
+    "grup": 10,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A4104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "FÍSICA",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 3,
+    "assignatura": "FÍSICA",
+    "grup": 12,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 3,
+    "assignatura": "FÍSICA",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 3,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 3,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 3,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "MATES 2",
+    "grup": 30,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 32,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "MATES 2",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 30,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "MATES 1",
+    "grup": 11,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 31,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "MATES 1",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 30,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 30,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 10,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 30,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 30,
+    "aula": "A6103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 10,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "BASES DE DADES",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 31,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 11,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "BASES DE DADES",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 12,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 4,
+    "assignatura": "FÍSICA",
+    "grup": 22,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 4,
+    "assignatura": "FÍSICA",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 4,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 4,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 4,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 4,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "MATES 2",
+    "grup": 30,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 32,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "MATES 2",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 30,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "MATES 1",
+    "grup": 11,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 31,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "MATES 1",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 30,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 30,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ALGORÍSMIA",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 10,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 30,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 30,
+    "aula": "A6103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 10,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "BASES DE DADES",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 31,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 11,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "BASES DE DADES",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 12,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 5,
+    "assignatura": "FÍSICA",
+    "grup": 22,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 5,
+    "assignatura": "FÍSICA",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 5,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 5,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 5,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 5,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 20,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 20,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "MATES 2",
+    "grup": 11,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 20,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 31,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 10,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 32,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 31,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 12,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 10,
+    "aula": "A6103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 12,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 6,
+    "assignatura": "BASES DE DADES",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 6,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 6,
+    "assignatura": "FÍSICA",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 6,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 22,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 6,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 6,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 6,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 6,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 20,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "PROGRAMACIÓ 2",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 20,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "MATES 2",
+    "grup": 11,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 20,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 31,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ESTRUCTURA DE DADES I ALGORISMES",
+    "grup": 10,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 32,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 31,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "SISTEMES OPERATIUS",
+    "grup": 12,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 22,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 10,
+    "aula": "A6103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ALGORÍSMIA AVANÇADA",
+    "grup": 12,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 7,
+    "assignatura": "BASES DE DADES",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 7,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 7,
+    "assignatura": "FÍSICA",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 7,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 22,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 7,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 7,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 7,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 7,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "MATES 2",
+    "grup": 32,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "MATES 2",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 8,
+    "assignatura": "BASES DE DADES",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 8,
+    "assignatura": "BASES DE DADES",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 8,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 8,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 8,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 8,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 8,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "MATES 2",
+    "grup": 32,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "MATES 2",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 9,
+    "assignatura": "BASES DE DADES",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 9,
+    "assignatura": "BASES DE DADES",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 9,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 9,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 9,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 9,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 9,
+    "assignatura": "INTRODUCCIÓ ALS COMPUTADORS",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "MATES 2",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "FÍSICA",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 10,
+    "assignatura": "BASES DE DADES",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 10,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 10,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 12,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 10,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 10,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 10,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "PROGRAMACIÓ 1",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "MATES 2",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "FÍSICA",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 21,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "PROBABILITAT I ESTADÍSTICA",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ARQUITECTURA DELS COMPUTADORS",
+    "grup": 12,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ENGINYERIA DE REQUISITS",
+    "grup": 11,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 11,
+    "assignatura": "BASES DE DADES",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 11,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 11,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 12,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 11,
+    "assignatura": "INTERFÍCIES DE COMPUTADORS",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 11,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 11,
+    "assignatura": "FONAMENTS MATEMÀTICS",
+    "grup": 13,
+    "aula": "A6204"
+  }
+]
