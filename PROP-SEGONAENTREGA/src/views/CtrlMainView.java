@@ -1,6 +1,7 @@
 package views;
 
 import controllers.CtrlDomini;
+import controllers.GestorDisc;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import javafx.collections.FXCollections;
@@ -16,9 +17,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Slot;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -42,7 +45,7 @@ public class CtrlMainView {
     @FXML
     BorderPane list_inner_content = new BorderPane();
     @FXML
-    ListView<String> list_view = new ListView();
+    ListView<String> list_view = new ListView<>();
 
     /* Specific */
     @FXML
@@ -253,7 +256,6 @@ public class CtrlMainView {
                 try {
                     crearAssignatura();
                 } catch (IOException e) {
-                    //TODO FIX
                     alert(e.getMessage());
                 }
                 break;
@@ -320,25 +322,44 @@ public class CtrlMainView {
         specific_content.setVisible(true);
         welcome_content.setVisible(false);
 
-        specific_tab_title.setText("Horari");
-
+        specific_tab_title.setText("Generador i visualitzador d'horaris");
     }
 
+    /**
+     * Funció que es crida en fer click al boto de "Carregar Horari"
+     *
+     * @throws IOException si no es troba el fitxer fxml
+     */
     public void handleLoadHorari() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("horariDisplay.fxml"));
-        Parent root = loader.load();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Carregar horari JSON");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        File file = fileChooser.showOpenDialog(this.list_view.getScene().getWindow());
+        if (file != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("horariDisplay.fxml"));
+            Parent root = loader.load();
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.setTitle("Consulta horari");
-        stage.show();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.setTitle("Consulta horari");
 
-        CtrlHorariView c = loader.getController();
-        c.setMainController(this);
-        c.loadHorari();
+            CtrlHorariView c = loader.getController();
+            c.setMainController(this);
+            if (!c.loadHorari(GestorDisc.getInstance().llegeix(file.getAbsolutePath()))) {
+                alert("El fitxer sembla no ser valid. Revisa'l.");
+                return;
+            }
+            stage.show();
+        }
     }
 
+    /**
+     * Funció que es crida en fer click al boto de "Generar Horari"
+     *
+     * @throws IOException si no es troba el fitxer fxml
+     */
     public void handleGenerateHorari() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("horariForm.fxml"));
         Parent root = loader.load();
@@ -346,12 +367,11 @@ public class CtrlMainView {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
-        stage.setTitle("Generar Horari");
+        stage.setTitle("Generar i editar Horari");
         stage.show();
 
         CtrlHorariView c = loader.getController();
         c.setMainController(this);
-        //c.loadHorari();
     }
 
     @FXML
@@ -368,7 +388,7 @@ public class CtrlMainView {
     /**
      * Actualitza l'informació de la llista mostrada per pantalla
      */
-    public void reloadList() {
+    void reloadList() {
         switch (state) {
             case 1:
                 mostraLlistaPlans();
@@ -391,7 +411,7 @@ public class CtrlMainView {
      *
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void crearAssignatura() throws IOException {
+    private void crearAssignatura() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -410,7 +430,7 @@ public class CtrlMainView {
      * @param nomAssignatura nom de l'assignatura a modificar
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void modificarAssignatura(String nomAssignatura) throws IOException {
+    private void modificarAssignatura(String nomAssignatura) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -422,7 +442,6 @@ public class CtrlMainView {
         CtrlAssignaturaView ca = loader.getController();
         ca.loadAssignatura(nomAssignatura);
         ca.setMainController(this);
-        ca.disableEditFields();
     }
 
     /**
@@ -431,7 +450,7 @@ public class CtrlMainView {
      * @param nomAssignatura nom de l'assignatura a consultar
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void consultarAssignatura(String nomAssignatura) throws IOException {
+    private void consultarAssignatura(String nomAssignatura) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaDisplay.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -440,7 +459,7 @@ public class CtrlMainView {
         stage.setTitle("Consultar assignatura: " + nomAssignatura);
         stage.show();
         CtrlAssignaturaView ca = loader.getController();
-        ca.loadAssignatura(nomAssignatura);
+        ca.displayAssignatura(nomAssignatura);
     }
 
     /**
@@ -448,7 +467,7 @@ public class CtrlMainView {
      *
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void crearAula() throws IOException {
+    private void crearAula() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaForm.fxml"));
         Parent root = null;
         root = loader.load();
@@ -469,7 +488,7 @@ public class CtrlMainView {
      * @param nomAula nom de l'aula a modificar
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void modificarAula(String nomAula) throws IOException {
+    private void modificarAula(String nomAula) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaForm.fxml"));
         Parent root = null;
         root = loader.load();
@@ -492,7 +511,7 @@ public class CtrlMainView {
      * @param nomAula nom de l'aula que es vol visualitzar
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void consultarAula(String nomAula) throws IOException {
+    private void consultarAula(String nomAula) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaDisplay.fxml"));
         Parent root = null;
         root = loader.load();
@@ -513,7 +532,7 @@ public class CtrlMainView {
      *
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void crearPlaEstudis() throws IOException {
+    private void crearPlaEstudis() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisForm.fxml"));
         Parent root = null;
         root = loader.load();
@@ -534,7 +553,7 @@ public class CtrlMainView {
      * @param nomPla nom del pla d'estudis que es vol modificar
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void modificarPlaEstudis(String nomPla) throws IOException {
+    private void modificarPlaEstudis(String nomPla) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisForm.fxml"));
         Parent root = null;
         root = loader.load();
@@ -556,15 +575,20 @@ public class CtrlMainView {
      * @param nomPla nom del pla d'estudis seleccionat
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    public void consultarPlaEstudis(String nomPla) throws IOException {
+    private void consultarPlaEstudis(String nomPla) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisDisplay.fxml"));
-        Parent root = null;
-        root = loader.load();
+        Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
+        stage.setTitle("Consultar assignatura: " + nomPla);
         stage.setTitle(nomPla);
+        stage.setResizable(false);
         stage.show();
+
+
+        CtrlPlaEstudisView ca = loader.getController();
+        ca.displayPlaEstudis(nomPla);
     }
 
     private void alert(String s) {
@@ -573,6 +597,4 @@ public class CtrlMainView {
         a.setHeaderText("Hi ha hagut un error");
         a.show();
     }
-
-    //TODO tot lo relatiu a horari, mostrar-los, editar-los, carregar de fitxer, etc
 }

@@ -1,0 +1,22 @@
+[
+  {
+    "nom": "TestAssig",
+    "grups": {},
+    "correquisit": [
+      "TestAssig2"
+    ],
+    "quadrimestre": 1,
+    "descripcio": "ksamncjkabnsjkc",
+    "abr": "TA"
+  },
+  {
+    "nom": "TestAssig2",
+    "grups": {},
+    "correquisit": [
+      "TestAssig"
+    ],
+    "quadrimestre": 1,
+    "descripcio": "ksamncjkabnsjkc",
+    "abr": "TA2"
+  }
+]

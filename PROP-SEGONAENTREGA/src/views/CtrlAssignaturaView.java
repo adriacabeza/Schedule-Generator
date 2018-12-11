@@ -4,17 +4,26 @@ import com.google.gson.Gson;
 import controllers.CtrlDomini;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import utils.FormValidation;
 
+import java.util.List;
 import java.util.Map;
+
+import static javafx.collections.FXCollections.observableArrayList;
 
 public class CtrlAssignaturaView {
 
+    /************* FORM ****************/
     @FXML
     Button savebutton = new Button();
     @FXML
@@ -35,18 +44,107 @@ public class CtrlAssignaturaView {
     TextField text_capacitat = new TextField();
     @FXML
     TextField text_numsubgrups = new TextField();
+    @FXML
+    CheckBox checkbox_teo = new CheckBox();
+    @FXML
+    CheckBox checkbox_lab = new CheckBox();
+    @FXML
+    TextField text_teo_ns = new TextField();
+    @FXML
+    TextField text_lab_ns = new TextField();
+    @FXML
+    TextField text_teo_ds = new TextField();
+    @FXML
+    TextField text_lab_ds = new TextField();
+    @FXML
+    ChoiceBox<String> choice_teo_ta = new ChoiceBox<>();
+    @FXML
+    ChoiceBox<String> choice_lab_ta = new ChoiceBox<>();
+    @FXML
+    ListView<String> list_correquisits = new ListView<>();
+    @FXML
+    Button button_elimina = new Button();
+    @FXML
+    ChoiceBox<String> choice_assig = new ChoiceBox<>();
+    @FXML
+    Button button_afegeix = new Button();
 
+    /****** DISPLAY *******/
 
+    /******** OTHER *******/
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
     private boolean editmode = false;
+    private ObservableList<String> candidates_correquisit;
+    private ObservableList<String> llista_correquisits;
 
     /**
      * Init function
      */
     public void initialize() {
-        ObservableList<String> plansEstudi = FXCollections.observableArrayList(CtrlDomini.getInstance().getLlistaPlansEstudis());
+        ObservableList<String> plansEstudi = FXCollections.observableArrayList();
+        plansEstudi.add("");
+        plansEstudi.addAll(FXCollections.observableArrayList(ctrlDomini.getLlistaPlansEstudis()));
         combobox_plaest.setItems(plansEstudi);
+        combobox_plaest.getSelectionModel().selectFirst();
+
+        llista_correquisits = FXCollections.observableArrayList();
+
+        ObservableList<String> tAula = FXCollections.observableArrayList();
+        tAula.add("normal");
+        tAula.add("pcs");
+        tAula.add("laboratori");
+
+        choice_teo_ta.setItems(tAula);
+        choice_lab_ta.setItems(tAula);
+
+        combobox_plaest.getSelectionModel().select(0);
+
+        combobox_plaest.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                if (!plansEstudi.get(t1.intValue()).equalsIgnoreCase("")) {
+                    llista_correquisits = FXCollections.observableArrayList();
+                    list_correquisits.setItems(llista_correquisits);
+                    try {
+                        candidates_correquisit = FXCollections.observableArrayList(ctrlDomini.consultarAssigPlaEstQuadri(plansEstudi.get(t1.intValue()), Integer.valueOf(text_quadri.getText())));
+                        choice_assig.setItems(candidates_correquisit);
+                    } catch (NotFoundException e) {
+                        alert(e.getMessage());
+                    }
+                } else {
+                    llista_correquisits = FXCollections.observableArrayList();
+                    list_correquisits.setItems(llista_correquisits);
+                    candidates_correquisit = FXCollections.observableArrayList();
+                    choice_assig.setItems(candidates_correquisit);
+                }
+            }
+        });
+
+        text_quadri.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                FormValidation val = new FormValidation();
+                if (t1 != null && val.validateNumber(t1)) {
+                    if (!combobox_plaest.getSelectionModel().getSelectedItem().equalsIgnoreCase("")) {
+                        llista_correquisits = FXCollections.observableArrayList();
+                        list_correquisits.setItems(llista_correquisits);
+                        try {
+                            candidates_correquisit = FXCollections.observableArrayList(ctrlDomini.consultarAssigPlaEstQuadri(plansEstudi.get(combobox_plaest.getSelectionModel().getSelectedIndex()), Integer.valueOf(t1)));
+                            choice_assig.setItems(candidates_correquisit);
+                        } catch (NotFoundException e) {
+                            alert(e.getMessage());
+                        }
+                    } else {
+                        llista_correquisits = FXCollections.observableArrayList();
+                        list_correquisits.setItems(llista_correquisits);
+                        candidates_correquisit = FXCollections.observableArrayList();
+                        choice_assig.setItems(candidates_correquisit);
+                    }
+                }
+            }
+        });
+        text_quadri.setText("1");
     }
 
     /**
@@ -58,7 +156,6 @@ public class CtrlAssignaturaView {
         this.ctrlMainView = c;
     }
 
-
     /**
      * Carrega la informació complerta d'una assignatura per mostrar-la en la interficie i dona accés al mode d'edició dels paràmetres permesos
      *
@@ -67,11 +164,13 @@ public class CtrlAssignaturaView {
     public void loadAssignatura(String nomAssignatura) {
         try {
             editmode = true;
+            if (editmode) disableEditFields();
 
             String json = ctrlDomini.consultarAssignatura(nomAssignatura);
             Map<String, Object> assignatura = new Gson().fromJson(json, Map.class);
 
             String plaest = ctrlDomini.getPlaEstudisContains(nomAssignatura);
+
             if (plaest != null && !plaest.isEmpty()) {
                 combobox_plaest.setValue(plaest);
             }
@@ -94,8 +193,10 @@ public class CtrlAssignaturaView {
             }
 
             Double quadrimestre = (Double) assignatura.get("quadrimestre");
-            if (quadrimestre != null) {
-                text_quadri.setText(String.valueOf(quadrimestre));
+            if (quadrimestre != null && quadrimestre != -1) {
+                text_quadri.setText(String.valueOf(quadrimestre.intValue()));
+            } else {
+                text_quadri.setText("");
             }
 
             Map grups = (Map) assignatura.get("grups");
@@ -110,10 +211,49 @@ public class CtrlAssignaturaView {
                 int numsubgrups = subgrups.size();
                 text_numsubgrups.setText(String.valueOf(numsubgrups));
             }
+            text_descripcio.setWrapText(true);
+
+            checkbox_teo.setSelected(false);
+            checkbox_lab.setSelected(false);
+
+            Map teoria = (Map) assignatura.get("teoria");
+            if (teoria != null) {
+                checkbox_teo.setSelected(true);
+                Double numSessions = (Double) teoria.get("numSessions");
+                text_teo_ns.setText(String.valueOf(numSessions.intValue()));
+                Double duracioSessions = (Double) teoria.get("duracioSessions");
+                text_teo_ds.setText(String.valueOf(duracioSessions.intValue()));
+                String tipusAula = (String) teoria.get("tAula");
+                choice_teo_ta.setValue(tipusAula);
+            }
+
+            Map laboratori = (Map) assignatura.get("laboratori");
+            if (laboratori != null) {
+                checkbox_lab.setSelected(true);
+                Double numSessions = (Double) laboratori.get("numSessions");
+                text_lab_ns.setText(String.valueOf(numSessions.intValue()));
+                Double duracioSessions = (Double) laboratori.get("duracioSessions");
+                text_lab_ds.setText(String.valueOf(duracioSessions.intValue()));
+                String tipusAula = (String) laboratori.get("tAula");
+                choice_lab_ta.setValue(tipusAula);
+            }
+
+            List<String> correquisits = (List) assignatura.get("correquisit");
+            if (correquisits != null && !correquisits.isEmpty()) {
+                llista_correquisits.addAll(correquisits);
+            }
+            candidates_correquisit = observableArrayList(ctrlDomini.correquisitsPossibles(nomAssignatura));
+            choice_assig.setItems(candidates_correquisit);
+            list_correquisits.setItems(llista_correquisits);
+
         } catch (NotFoundException e) {
             alert("No existeix l'assignatura");
             exit();
         }
+    }
+
+    public void displayAssignatura(String nomAssignatura) {
+        //TODO
     }
 
     /**
@@ -146,7 +286,7 @@ public class CtrlAssignaturaView {
             text_nom.setBorder(formvalidator.okBorder);
         }
 
-        if (!formvalidator.validateNumberAllowEmpty(text_quadri.getText())) {
+        if (!formvalidator.validateNumber(text_quadri.getText())) {
             errorcount++;
             text_quadri.setBorder(formvalidator.errorBorder);
         } else {
@@ -160,27 +300,68 @@ public class CtrlAssignaturaView {
             combobox_plaest.setBorder(formvalidator.okBorder);
         }
 
-        if (!formvalidator.validateNumberAllowEmpty(text_numgrups.getText())) {
+        if (!formvalidator.validateNumber(text_numgrups.getText())) {
             errorcount++;
             text_numgrups.setBorder(formvalidator.errorBorder);
         } else {
             text_numgrups.setBorder(formvalidator.okBorder);
         }
 
-        if (!formvalidator.validateNumberAllowEmpty(text_capacitat.getText())) {
+        if (!formvalidator.validateNumber(text_capacitat.getText())) {
             errorcount++;
             text_capacitat.setBorder(formvalidator.errorBorder);
         } else {
             text_capacitat.setBorder(formvalidator.okBorder);
         }
 
-        if (!formvalidator.validateNumberAllowEmpty(text_numsubgrups.getText())) {
+        if (!formvalidator.validateNumber(text_numsubgrups.getText())) {
             errorcount++;
             text_numsubgrups.setBorder(formvalidator.errorBorder);
         } else {
             text_numsubgrups.setBorder(formvalidator.okBorder);
         }
 
+        if (checkbox_teo.isSelected()) {
+            if (!formvalidator.validateNumber(text_teo_ns.getText())) {
+                errorcount++;
+                text_teo_ns.setBorder(formvalidator.errorBorder);
+            } else {
+                text_teo_ns.setBorder(formvalidator.okBorder);
+            }
+            if (!formvalidator.validateNumber(text_teo_ds.getText())) {
+                errorcount++;
+                text_teo_ds.setBorder(formvalidator.errorBorder);
+            } else {
+                text_teo_ds.setBorder(formvalidator.okBorder);
+            }
+            if (!formvalidator.validateStringNoSpace(choice_teo_ta.getValue())) {
+                errorcount++;
+                choice_teo_ta.setBorder(formvalidator.errorBorder);
+            } else {
+                choice_teo_ta.setBorder(formvalidator.okBorder);
+            }
+        }
+
+        if (checkbox_lab.isSelected()) {
+            if (!formvalidator.validateNumberAllowEmpty(text_lab_ns.getText())) {
+                errorcount++;
+                text_lab_ns.setBorder(formvalidator.errorBorder);
+            } else {
+                text_lab_ns.setBorder(formvalidator.okBorder);
+            }
+            if (!formvalidator.validateNumberAllowEmpty(text_lab_ds.getText())) {
+                errorcount++;
+                text_lab_ds.setBorder(formvalidator.errorBorder);
+            } else {
+                text_lab_ds.setBorder(formvalidator.okBorder);
+            }
+            if (!formvalidator.validateStringNoSpace(choice_teo_ta.getValue())) {
+                errorcount++;
+                choice_lab_ta.setBorder(formvalidator.errorBorder);
+            } else {
+                choice_lab_ta.setBorder(formvalidator.okBorder);
+            }
+        }
         return errorcount;
     }
 
@@ -202,17 +383,32 @@ public class CtrlAssignaturaView {
         int numgrups = Integer.parseInt(text_numgrups.getText());
         int capacitat = Integer.parseInt(text_capacitat.getText());
         int numsubgrups = Integer.parseInt(text_numsubgrups.getText());
-        int quadrimestre = Integer.parseInt(text_quadri.getText());
+        int quadrimestre = -1;
+
+        String tAulaTeo = choice_teo_ta.getValue();
+        String tAulaLab = choice_lab_ta.getValue();
 
         try {
             if (editmode) ctrlDomini.esborrarAssignatura(nomAssig);
+
+            if (!plaEstudis.equalsIgnoreCase("")) {
+                ctrlDomini.afegirAssignaturaPla(plaEstudis, nomAssig);
+                quadrimestre = Integer.parseInt(text_quadri.getText());
+            }
             ctrlDomini.crearAssignatura(nomAssig, quadrimestre, descripcio, nomAbr);
             ctrlDomini.modificarGrups(nomAssig, numgrups, capacitat, numsubgrups);
-            ctrlDomini.afegirAssignaturaPla(plaEstudis, nomAssig);
 
-            //TODO not implemented yet
-            //c.modificaInformacioTeoria(nomAssig, 0,0,null);
-            //c.modificaInformacioLab(nomAssig, 0,0,null);
+            if (checkbox_teo.isSelected()){
+                int numSessTeo = Integer.parseInt(text_teo_ns.getText());
+                int durSessTeo = Integer.parseInt(text_teo_ds.getText());
+                ctrlDomini.modificaInformacioTeoria(nomAssig, durSessTeo, numSessTeo, tAulaTeo);
+            }
+
+            if (checkbox_lab.isSelected()) {
+                int numSessLab = Integer.parseInt(text_lab_ns.getText());
+                int durSessLab = Integer.parseInt(text_lab_ds.getText());
+                ctrlDomini.modificaInformacioLaboratori(nomAssig, durSessLab, numSessLab, tAulaLab);
+            }
             //for all correquisits, afegirlos
             exit();
 
@@ -245,8 +441,24 @@ public class CtrlAssignaturaView {
     /**
      * Bloqueja l'edició dels paràmetres no modificables en assignatures ja creades
      */
-    public void disableEditFields() {
+    private void disableEditFields() {
         text_nom.setDisable(true);
         combobox_plaest.setDisable(true);
+    }
+
+    /**
+     * Afegeix l'assignatura seleccionada com a correquisit de l'actual
+     */
+    public void afegeixCorrequisit(){
+        llista_correquisits.add(choice_assig.getSelectionModel().getSelectedItem());
+        candidates_correquisit.remove(choice_assig.getSelectionModel().getSelectedItem());
+    }
+
+    /**
+     * Elimina l'assignatura seleccionada com a correquisit de l'actual
+     */
+    public void eliminaCorrequisit(){
+        candidates_correquisit.add(list_correquisits.getSelectionModel().getSelectedItem());
+        llista_correquisits.remove(list_correquisits.getSelectionModel().getSelectedItem());
     }
 }

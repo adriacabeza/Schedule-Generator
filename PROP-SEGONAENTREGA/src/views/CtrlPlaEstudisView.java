@@ -87,6 +87,8 @@ public class CtrlPlaEstudisView {
                 }
             }
         });
+
+
     }
 
     /**
@@ -94,21 +96,23 @@ public class CtrlPlaEstudisView {
      *
      * @param nomPla nom de l'aula que hem seleccionat per consultar
      */
-    public void displayAula(String nomPla) {                                                       //TODO check if this might have errors
+    public void displayPlaEstudis(String nomPla){ //TODO check if this might have errors
         String json = null;
         try {
             json = ctrlDomini.consultarPlaEsudis(nomPla);
             Map<String, Object> plaEst = new Gson().fromJson(json, Map.class);
             label_nom.setText((String) plaEst.get("titulacio"));
             label_descripcio.setText((String) plaEst.get("descripcio"));
+            label_descripcio.setWrapText(true);
             label_any.setText(String.valueOf(((Double) plaEst.get("any")).intValue()));
             checkbox_obsolet_consulta.setSelected((boolean) plaEst.get("obsolet"));
+            assignatures = FXCollections.observableArrayList(ctrlDomini.consultarAssignaturesPlaEstudis(nomPla));
+            list_assignatures_consulta.setItems(assignatures);
         } catch (NotFoundException e) {
             alert(e.getMessage());
             exit();
         }
     }
-
 
     /**
      * Carrega la informació complerta d'un pla d'estudis per mostrar-lo en la interficie i dona accés al mode d'edició dels paràmetres permesos
@@ -142,17 +146,26 @@ public class CtrlPlaEstudisView {
             boolean obsolet = (boolean) plaEstudis.get("obsolet");
             checkbox_obsolet.setSelected(obsolet);
             loadAssignaturesPla(plaEst);
+            text_descripcio.setWrapText(true);
         } catch (NotFoundException e) {
             alert(e.getMessage());
             exit();
         }
     }
 
+    /**
+     * Carrega les assignatures que formen part inicialment del pla
+     * @param nomPla nom del pla d'estudis que volem carregar-ne les assignatures
+     * @throws NotFoundException si no existeix el pla d'estudis especificat
+     */
     private void loadAssignaturesPla(String nomPla) throws NotFoundException {
         assignatures = FXCollections.observableArrayList(CtrlDomini.getInstance().consultarAssignaturesPlaEstudis(nomPla));
         list_assignatures.setItems(assignatures);
     }
 
+    /**
+     * Carrega les assignatures que poden formar part del pla inicialment, es a dir, que no estan assignades encara a cap pla
+     */
     private void loadAssignaturesPossibles() {
         assignatures_pos = FXCollections.observableArrayList(CtrlDomini.getInstance().consultarAssignaturesLliures());
         choice_assignatures.setItems(assignatures_pos);
@@ -203,6 +216,12 @@ public class CtrlPlaEstudisView {
         }
     }
 
+    /**
+     *
+     * @param titulacio Afegeix al pla d'estudis les assignatures indicaddes
+     * @throws NotFoundException si no existeix el pla d'estudis
+     * @throws RestriccioIntegritatException si l'assignatura ja esta afegida al pla
+     */
     private void afegeix_assignatures_pla(String titulacio) throws NotFoundException, RestriccioIntegritatException {
         for (int i = 0; i < assignatures.size(); i++) {
             ctrlDomini.afegirAssignaturaPla(titulacio, assignatures.get(i));

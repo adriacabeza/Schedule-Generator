@@ -246,14 +246,14 @@ public class CtrlDominiTest {
     @Test
     public void modificaInformacioTeoria() {
         try {
-            c.modificaInformacioTeoria("AssignaturaTest", 2, 2, Aula.TipusAula.NORMAL);
+            c.modificaInformacioTeoria("AssignaturaTest", 2, 2, "normal");
             fail();
         } catch (NotFoundException ignored) {
         }
 
         try {
             c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
-            c.modificaInformacioTeoria("AssignaturaTest", 2, 2, Aula.TipusAula.NORMAL);
+            c.modificaInformacioTeoria("AssignaturaTest", 2, 2, "normal");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
         }
@@ -262,14 +262,14 @@ public class CtrlDominiTest {
     @Test
     public void modificaInformacioLaboratori() {
         try {
-            c.modificaInformacioLaboratori("AssignaturaTest", 2, 2, Aula.TipusAula.NORMAL);
+            c.modificaInformacioLaboratori("AssignaturaTest", 2, 2, "normal");
             fail();
         } catch (NotFoundException ignored) {
         }
 
         try {
             c.crearAssignatura("AssignaturaTest", 1, "sample descr", "abr");
-            c.modificaInformacioLaboratori("AssignaturaTest", 2, 2, Aula.TipusAula.NORMAL);
+            c.modificaInformacioLaboratori("AssignaturaTest", 2, 2, "normal");
         } catch (NotFoundException | RestriccioIntegritatException e) {
             fail();
         }
@@ -404,18 +404,14 @@ public class CtrlDominiTest {
             c.crearPlaEstudis("NouPla", 2010, "descr");
             c.afegirAssignaturaPla("NouPla", "AC");
             c.modificarGrups("AC", 2, 50, 2);
-            c.modificaInformacioTeoria("AC", 2, 2, Aula.TipusAula.NORMAL);
-            c.modificaInformacioLaboratori("AC", 2, 2, Aula.TipusAula.NORMAL);
+            c.modificaInformacioTeoria("AC", 2, 2, "normal");
+            c.modificaInformacioLaboratori("AC", 2, 2, "normal");
             c.creaAula("A5", 1, 2, 60, "normal");
-            Horari h = c.crearHorari();
+            String h = c.generaHorari();
             assertNotNull(h);
         } catch (NotFoundException | RestriccioIntegritatException ignored) {
             fail();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
     }
-
-
-
 }

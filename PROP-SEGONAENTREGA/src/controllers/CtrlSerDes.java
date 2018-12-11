@@ -14,22 +14,20 @@ import model.Aula;
 import model.Horari;
 import model.PlaEstudis;
 
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class CtrlIO {
-    private static CtrlIO ourInstance;
+public class CtrlSerDes {
+    private static CtrlSerDes ourInstance;
     private GestorDisc gd = GestorDisc.getInstance();
 
-    private CtrlIO() {
+    private CtrlSerDes() {
 
     }
 
-    public static CtrlIO getInstance() {
+    public static CtrlSerDes getInstance() {
         if (ourInstance == null) {
-            ourInstance = new CtrlIO();
+            ourInstance = new CtrlSerDes();
         }
         return ourInstance;
     }
@@ -68,13 +66,8 @@ public class CtrlIO {
 
 
     /* ESCRIPTURA DE FITXERS */
-    public void guardaHorari(Horari h, String filepath) throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(h);
-        gd.escriu(json, filepath);
-    }
 
-    public void guardaHorari2(Horari h, String filepath) throws IOException {
+    public String horariToJson(Horari h){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonArray obj = new JsonArray();
         for (int i = 0; i < h.getHorari().length; ++i) {
@@ -84,7 +77,7 @@ public class CtrlIO {
                     if (h.getHorari()[i][j][k] != null) {
                         jsonElement.addProperty("dia", h.getHorari()[i][j][k].getDiaSetmana());
                         jsonElement.addProperty("hora", h.getHorari()[i][j][k].getHora());
-                        jsonElement.addProperty("assignatura", h.getHorari()[i][j][k].getAssignatura().getNom().toUpperCase());
+                        jsonElement.addProperty("assignatura", h.getHorari()[i][j][k].getAssignatura().getAbr());
                         jsonElement.addProperty("grup", h.getHorari()[i][j][k].getGrup().getNum());
                         jsonElement.addProperty("aula", h.getHorari()[i][j][k].getAula().getKey().toUpperCase());
                         obj.add(jsonElement);
@@ -92,8 +85,11 @@ public class CtrlIO {
                 }
             }
         }
-        String json = gson.toJson(obj);
-        gd.escriu(json, filepath);
+        return gson.toJson(obj);
+    }
+
+    public void guardaHorari(String h, String filepath) throws IOException {
+        gd.escriu(h, filepath);
     }
 
     public void guardaAssignatures(HashMap<String, Assignatura> assignatures, String filepath) throws IOException {
