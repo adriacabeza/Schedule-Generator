@@ -71,7 +71,36 @@ public class CtrlAssignaturaView {
 
     /****** DISPLAY *******/
 
-    /******** OTHER *******/
+    @FXML
+    Label label_name = new Label();
+    @FXML
+    Label label_abr = new Label();
+    @FXML
+    Label label_quadrimestre = new Label();
+    @FXML
+    Label label_plaest = new Label();
+    @FXML
+    Label label_descripcio = new Label();
+    @FXML
+    Label label_numgrups = new Label();
+    @FXML
+    Label label_capacitat = new Label();
+    @FXML
+    Label label_numsubgrups = new Label();
+    @FXML
+    Label label_teo_ns = new Label();
+    @FXML
+    Label label_lab_ns = new Label();
+    @FXML
+    Label label_teo_ds = new Label();
+    @FXML
+    Label label_lab_ds = new Label();
+    @FXML
+    Label label_teo_ta = new Label();
+    @FXML
+    Label label_lab_ta = new Label();
+
+    /******* OTHER *******/
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
     private boolean editmode = false;
@@ -253,7 +282,88 @@ public class CtrlAssignaturaView {
     }
 
     public void displayAssignatura(String nomAssignatura) {
-        //TODO
+        try {
+            String json = ctrlDomini.consultarAssignatura(nomAssignatura);
+            Map<String, Object> assignatura = new Gson().fromJson(json, Map.class);
+
+            String plaest = ctrlDomini.getPlaEstudisContains(nomAssignatura);
+
+            if (plaest != null && !plaest.isEmpty()) {
+                label_plaest.setText(plaest);
+            } else {
+                label_plaest.setText(" - ");
+            }
+
+            String nom = (String) assignatura.get("nom");
+            if (nom != null && !nom.isEmpty()) {
+                label_name.setText(nom);
+            } else {
+                alert("No es pot mostrar una assignatura no identificada");
+            }
+
+            String abbvr = (String) assignatura.get("abr");
+            if (abbvr != null && !abbvr.isEmpty()) {
+                label_abr.setText("(" + abbvr + ")");
+            }
+
+            String descripcio = (String) assignatura.get("descripcio");
+            if (descripcio != null && !descripcio.isEmpty()) {
+                label_descripcio.setText(descripcio);
+            } else {
+                label_descripcio.setText(" - ");
+            }
+
+            Double quadrimestre = (Double) assignatura.get("quadrimestre");
+            if (quadrimestre != null && quadrimestre != -1) {
+                label_quadrimestre.setText(" - Q" + quadrimestre.intValue());
+            } else {
+                label_quadrimestre.setText(" - ");
+            }
+
+            Map grups = (Map) assignatura.get("grups");
+            int numgrups = grups.size();
+            label_numgrups.setText(String.valueOf(numgrups));
+
+            if (numgrups > 0) {
+                Map firstgroup = (Map) grups.get(grups.keySet().iterator().next());
+                Double capacitat = (Double) firstgroup.get("capacitat");
+                label_capacitat.setText(String.valueOf(capacitat.intValue()));
+                Map subgrups = (Map) firstgroup.get("subgrups");
+                int numsubgrups = subgrups.size();
+                label_numsubgrups.setText(String.valueOf(numsubgrups));
+            }
+            label_descripcio.setWrapText(true);
+
+            Map teoria = (Map) assignatura.get("teoria");
+            if (teoria != null) {
+                Double numSessions = (Double) teoria.get("numSessions");
+                label_teo_ns.setText(String.valueOf(numSessions.intValue()));
+                Double duracioSessions = (Double) teoria.get("duracioSessions");
+                label_teo_ds.setText(String.valueOf(duracioSessions.intValue()));
+                String tipusAula = (String) teoria.get("tAula");
+                label_teo_ta.setText(tipusAula);
+            }
+
+            Map laboratori = (Map) assignatura.get("laboratori");
+            if (laboratori != null) {
+                Double numSessions = (Double) laboratori.get("numSessions");
+                label_lab_ns.setText(String.valueOf(numSessions.intValue()));
+                Double duracioSessions = (Double) laboratori.get("duracioSessions");
+                label_lab_ds.setText(String.valueOf(duracioSessions.intValue()));
+                String tipusAula = (String) laboratori.get("tAula");
+                label_lab_ta.setText(tipusAula);
+            }
+
+            List<String> correquisits = (List) assignatura.get("correquisit");
+            if (correquisits != null && !correquisits.isEmpty()) {
+                llista_correquisits.addAll(correquisits);
+            }
+            list_correquisits.setItems(llista_correquisits);
+
+        } catch (NotFoundException e) {
+            alert("No existeix l'assignatura");
+            exit();
+        }
     }
 
     /**
@@ -272,12 +382,7 @@ public class CtrlAssignaturaView {
             text_abbvr.setBorder(formvalidator.okBorder);
         }
 
-        if (!formvalidator.validateStringSpaceAllowEmpty(text_descripcio.getText())) {
-            errorcount++;
-            text_descripcio.setBorder(formvalidator.errorBorder);
-        } else {
-            text_descripcio.setBorder(formvalidator.okBorder);
-        }
+        text_descripcio.setBorder(formvalidator.okBorder);
 
         if (!formvalidator.validateStringSpace(text_nom.getText())) {
             errorcount++;
@@ -392,13 +497,17 @@ public class CtrlAssignaturaView {
             if (editmode) ctrlDomini.esborrarAssignatura(nomAssig);
 
             if (!plaEstudis.equalsIgnoreCase("")) {
-                ctrlDomini.afegirAssignaturaPla(plaEstudis, nomAssig);
                 quadrimestre = Integer.parseInt(text_quadri.getText());
+                ctrlDomini.crearAssignatura(nomAssig, quadrimestre, descripcio, nomAbr);
+                ctrlDomini.modificarGrups(nomAssig, numgrups, capacitat, numsubgrups);
+                ctrlDomini.afegirAssignaturaPla(plaEstudis, nomAssig);
+            } else {
+                ctrlDomini.crearAssignatura(nomAssig, quadrimestre, descripcio, nomAbr);
+                ctrlDomini.modificarGrups(nomAssig, numgrups, capacitat, numsubgrups);
             }
-            ctrlDomini.crearAssignatura(nomAssig, quadrimestre, descripcio, nomAbr);
-            ctrlDomini.modificarGrups(nomAssig, numgrups, capacitat, numsubgrups);
 
-            if (checkbox_teo.isSelected()){
+
+            if (checkbox_teo.isSelected()) {
                 int numSessTeo = Integer.parseInt(text_teo_ns.getText());
                 int durSessTeo = Integer.parseInt(text_teo_ds.getText());
                 ctrlDomini.modificaInformacioTeoria(nomAssig, durSessTeo, numSessTeo, tAulaTeo);
@@ -449,7 +558,7 @@ public class CtrlAssignaturaView {
     /**
      * Afegeix l'assignatura seleccionada com a correquisit de l'actual
      */
-    public void afegeixCorrequisit(){
+    public void afegeixCorrequisit() {
         llista_correquisits.add(choice_assig.getSelectionModel().getSelectedItem());
         candidates_correquisit.remove(choice_assig.getSelectionModel().getSelectedItem());
     }
@@ -457,7 +566,7 @@ public class CtrlAssignaturaView {
     /**
      * Elimina l'assignatura seleccionada com a correquisit de l'actual
      */
-    public void eliminaCorrequisit(){
+    public void eliminaCorrequisit() {
         candidates_correquisit.add(list_correquisits.getSelectionModel().getSelectedItem());
         llista_correquisits.remove(list_correquisits.getSelectionModel().getSelectedItem());
     }

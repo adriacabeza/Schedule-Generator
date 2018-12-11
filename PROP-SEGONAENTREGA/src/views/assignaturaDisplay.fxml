@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,7 +16,7 @@
                     <children>
                         <HBox alignment="CENTER_LEFT">
                             <children>
-                                <Label id="nom_assig" text="SAMPLE NAME">
+                                <Label id="nom_assig" fx:id="label_name" text="SAMPLE NAME">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
@@ -32,7 +31,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label text="SN">
+                                <Label fx:id="label_abr" text="SN">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
@@ -43,7 +42,6 @@
                                         <Font name="System Bold" size="24.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="label_abbvr" HBox.hgrow="ALWAYS" />
                             </children>
                         </HBox>
                     </children>
@@ -53,34 +51,28 @@
                 </HBox>
                 <HBox id="plaest" alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                     <children>
-                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT">
                             <children>
-                                <Label text="Pla d'estudis:" HBox.hgrow="ALWAYS">
+                                <Label fx:id="label_plaest" text="NOM PLA EST" HBox.hgrow="ALWAYS">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
-                                    <font>
-                                        <Font name="System Bold" size="13.0" />
-                                    </font>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                                 </Label>
-                                <Label fx:id="combobox_plaest" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
                             </children>
-                            <padding>
-                                <Insets right="20.0" />
-                            </padding>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label text="Quadrimestre:" HBox.hgrow="ALWAYS">
+                                <Label fx:id="label_quadrimestre" text="- N" HBox.hgrow="ALWAYS">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
                                     <font>
-                                        <Font name="System Bold" size="13.0" />
+                                        <Font name="System Regular" size="18.0" />
                                     </font>
                                 </Label>
-
-                                <Label fx:id="label_quadri" HBox.hgrow="ALWAYS" />
                             </children>
                         </HBox>
                     </children>
@@ -90,15 +82,14 @@
                 </HBox>
                 <VBox>
                     <children>
-                        <Label text="Descripcio:" VBox.vgrow="ALWAYS">
+                        <Label fx:id="label_descripcio" text="This is a sample description bascascaschahcbsac" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin>
                             <font>
-                                <Font name="System Bold" size="13.0" />
+                                <Font name="System Italic" size="13.0" />
                             </font>
                         </Label>
-                        <TextArea fx:id="label_descripcio" prefHeight="73.0" prefWidth="542.0" VBox.vgrow="ALWAYS" />
                     </children>
                     <padding>
                         <Insets bottom="20.0" />
@@ -118,7 +109,7 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_numgrups" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_numgrups" text="3" HBox.hgrow="ALWAYS" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />
@@ -134,7 +125,7 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_capacitat" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_capacitat" text="50" HBox.hgrow="ALWAYS" />
                                     </children>
                                     <padding>
                                         <Insets bottom="10.0" />
@@ -150,69 +141,105 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_numsubgrups" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_numsubgrups" text="2" HBox.hgrow="ALWAYS" />
                                     </children>
                                 </HBox>
-                                <HBox spacing="20.0">
+                                <HBox spacing="30.0">
                                     <children>
-                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                        <VBox spacing="20.0">
                                             <children>
                                                 <Label fx:id="Label_teo" mnemonicParsing="false" text="Teoria:">
-                                                    <padding>
-                                                        <Insets bottom="10.0" />
-                                                    </padding>
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                                 </Label>
-                                                <Label text="Numero Sessions:">
-                                                    <font>
-                                                        <Font name="System Bold" size="13.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="label_teo_ns" />
-                                                <Label text="Duracio Sessions:">
-                                                    <font>
-                                                        <Font name="System Bold" size="13.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="label_teo_ds" />
-                                                <Label text="Tipus Aula:">
-                                                    <font>
-                                                        <Font name="System Bold" size="13.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="label_teo_ta" prefWidth="170.0" />
+                                    <HBox>
+                                       <children>
+                                                      <Label text="Numero Sessions:">
+                                                          <font>
+                                                              <Font name="System Bold" size="13.0" />
+                                                          </font>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                                      </Label>
+                                                      <Label fx:id="label_teo_ns" text="2" />
+                                       </children>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                                      <Label text="Duracio Sessions:">
+                                                          <font>
+                                                              <Font name="System Bold" size="13.0" />
+                                                          </font>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                                      </Label>
+                                                      <Label fx:id="label_teo_ds" text="3" />
+                                       </children>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                                      <Label text="Tipus Aula:">
+                                                          <font>
+                                                              <Font name="System Bold" size="13.0" />
+                                                          </font>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                                      </Label>
+                                                      <Label fx:id="label_teo_ta" text="pcs" />
+                                       </children>
+                                    </HBox>
                                             </children>
                                         </VBox>
-                                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                        <VBox spacing="20.0">
                                             <children>
                                                 <Label fx:id="Label_lab" mnemonicParsing="false" text="Laboratori:">
-                                                    <padding>
-                                                        <Insets bottom="10.0" />
-                                                    </padding>
                                                     <font>
                                                         <Font name="System Bold" size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Label text="Numero Sessions:">
-                                                    <font>
-                                                        <Font name="System Bold" size="13.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="label_lab_ns" />
-                                                <Label text="Duracio Sessions:">
-                                                    <font>
-                                                        <Font name="System Bold" size="13.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="label_lab_ds" />
-                                                <Label lineSpacing="10.0" text="Tipus Aula:">
-                                                    <font>
-                                                        <Font name="System Bold" size="13.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="label_lab_ta" prefWidth="170.0" />
+                                    <HBox>
+                                       <children>
+                                                      <Label text="Numero Sessions:">
+                                                          <font>
+                                                              <Font name="System Bold" size="13.0" />
+                                                          </font>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                                      </Label>
+                                                      <Label fx:id="label_lab_ns" text="5" />
+                                       </children>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                                      <Label text="Duracio Sessions:">
+                                                          <font>
+                                                              <Font name="System Bold" size="13.0" />
+                                                          </font>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                                      </Label>
+                                                      <Label fx:id="label_lab_ds" text="2" />
+                                       </children>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                                      <Label lineSpacing="10.0" text="Tipus Aula:">
+                                                          <font>
+                                                              <Font name="System Bold" size="13.0" />
+                                                          </font>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                                      </Label>
+                                                      <Label fx:id="label_lab_ta" text="normal" />
+                                       </children>
+                                    </HBox>
                                             </children>
                                         </VBox>
                                     </children>
@@ -222,12 +249,15 @@
                                 </HBox>
                             </children>
                         </VBox>
-                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                        <VBox HBox.hgrow="ALWAYS">
                             <children>
                                 <Label text="Correquisits:">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
                                 </Label>
                                 <ListView fx:id="list_correquisits" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                                 <BorderPane />
@@ -240,13 +270,6 @@
         </VBox>
     </center>
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
     </padding>
-    <bottom>
-        <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets top="20.0" />
-            </BorderPane.margin>
-        </HBox>
-    </bottom>
 </BorderPane>
