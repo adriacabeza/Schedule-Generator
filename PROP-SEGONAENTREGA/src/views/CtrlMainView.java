@@ -442,7 +442,6 @@ public class CtrlMainView {
         CtrlAssignaturaView ca = loader.getController();
         ca.loadAssignatura(nomAssignatura);
         ca.setMainController(this);
-        ca.disableEditFields();
     }
 
     /**
@@ -460,7 +459,7 @@ public class CtrlMainView {
         stage.setTitle("Consultar assignatura: " + nomAssignatura);
         stage.show();
         CtrlAssignaturaView ca = loader.getController();
-        ca.loadAssignatura(nomAssignatura);
+        ca.displayAssignatura(nomAssignatura);
     }
 
     /**

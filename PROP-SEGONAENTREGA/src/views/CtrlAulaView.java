@@ -206,6 +206,13 @@ public class CtrlAulaView {
         } else {
             text_capacitat.setBorder(formvalidator.okBorder);
         }
+
+        if (!formvalidator.validateStringNoSpace(choice_tipus_aula.getValue())) {
+            errorcount++;
+            choice_tipus_aula.setBorder(formvalidator.errorBorder);
+        } else {
+            choice_tipus_aula.setBorder(formvalidator.okBorder);
+        }
         return errorcount;
     }
 }

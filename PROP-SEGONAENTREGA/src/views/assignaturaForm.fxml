@@ -177,7 +177,7 @@
                         <ListView fx:id="list_correquisits" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                         <BorderPane>
                            <center>
-                              <Button id="assig_elimina_correq" fx:id="button_elimina" mnemonicParsing="false" text="Elimina" />
+                              <Button id="assig_elimina_correq" fx:id="button_elimina" mnemonicParsing="false" onMouseClicked="#eliminaCorrequisit" text="Elimina" />
                            </center>
                         </BorderPane>
                         <HBox spacing="10.0">
