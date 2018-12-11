@@ -101,7 +101,7 @@
                                 <Font size="24.0" />
                             </font>
                             <BorderPane.margin>
-                                <Insets left="50.0" />
+                                <Insets left="50.0" top="20.0" />
                             </BorderPane.margin>
                         </Label>
                     </left>
@@ -138,6 +138,9 @@
                             <BorderPane.margin>
                                 <Insets left="50.0" />
                             </BorderPane.margin>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                         </Label>
                     </left>
                     <BorderPane.margin>
@@ -159,7 +162,7 @@
                                 <Font size="24.0" />
                             </font>
                             <BorderPane.margin>
-                                <Insets left="50.0" />
+                                <Insets left="50.0" top="20.0" />
                             </BorderPane.margin>
                         </Label>
                     </left>

@@ -254,6 +254,13 @@ public class CtrlDomini {
         if (!assignatures.containsKey(nomA)) {
             throw new NotFoundException("No s'ha trobat una assignatura amb nom " + nomA.toUpperCase());
         }
+        //esborro tots els correquisits bijectivament
+        for (String assignatura : plaEstudis.get(nomP).getAssignatures()){
+            if (assignatures.get(assignatura).esCorrequisit(nomA)) {
+                esborraCorrequisit(nomA, assignatura);
+            }
+        }
+        //esborro l'assignatura del pla
         plaEstudis.get(nomP).esborrarAssignatura(nomA);
     }
 
