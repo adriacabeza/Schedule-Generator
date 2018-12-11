@@ -8,6 +8,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
@@ -16,20 +19,18 @@ import javafx.stage.Stage;
 import model.Slot;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CtrlHorariView {
 
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
-    private boolean editmode = false;
+    private boolean generatemode = false;
 
     @FXML
-    ChoiceBox choice_aula = new ChoiceBox();
+    ChoiceBox<String> choice_aula = new ChoiceBox<>();
     @FXML
-    ChoiceBox choice_assig = new ChoiceBox();
+    ChoiceBox<String> choice_assig = new ChoiceBox<>();
     @FXML
     VBox restriccions_container = new VBox();
     @FXML
@@ -39,65 +40,106 @@ public class CtrlHorariView {
     @FXML
     BorderPane horari_container = new BorderPane();
 
-    TableView<Slot> horari;
-    String horarijson;
-    ObservableList<Slot> data;
+    @FXML
+    ChoiceBox<String> rmt_assig = new ChoiceBox<>();
+    @FXML
+    ChoiceBox<String> rmt_matitarda = new ChoiceBox<>();
+
+    @FXML
+    ChoiceBox<String> rdah_dia = new ChoiceBox<>();
+    @FXML
+    ChoiceBox<String> rdah_hora = new ChoiceBox<>();
+    @FXML
+    ChoiceBox<String> rdah_aula = new ChoiceBox<>();
+
+    @FXML
+    ChoiceBox<String> rad_dia = new ChoiceBox<>();
+    @FXML
+    ChoiceBox<String> rad_aula = new ChoiceBox<>();
+
+    @FXML
+    CheckBox rc_checkbox = new CheckBox();
+    @FXML
+    CheckBox rgt_checkbox = new CheckBox();
+
+    private TableView<Slot> horariTable;
+    private String horarijson;
+    private ObservableList<Slot> dataTable;
+    private ObservableList<String> llistaAules;
+    private ObservableList<String> llistaAssignatures;
+    private ObservableList<String> llistaDies;
+    private ObservableList<String> llistaSlots;
+    private ObservableList<String> llistaMatiTarda;
+
+    private ArrayList<HashMap<String, String>> rmt;
+    private ArrayList<HashMap<String, String>> rdah;
+    private ArrayList<HashMap<String, String>> rad;
+
 
     /**
      * Init function
      */
     public void initialize() {
         // Table creation
-        horari = new TableView<>();
-        horari.getSelectionModel().setCellSelectionEnabled(true);
+        horariTable = new TableView<>();
+        horariTable.getSelectionModel().setCellSelectionEnabled(true);
+
         // Column creation
         TableColumn slotname = new TableColumn("Hora");
-        slotname.prefWidthProperty().bind(horari.widthProperty().divide(7.15));
+        slotname.prefWidthProperty().bind(horariTable.widthProperty().divide(7.15));
         slotname.setCellValueFactory(new PropertyValueFactory<Slot, String>("slotname"));
         TableColumn monday = new TableColumn("Dilluns");
-        monday.prefWidthProperty().bind(horari.widthProperty().divide(6));
+        monday.prefWidthProperty().bind(horariTable.widthProperty().divide(6));
         monday.setCellValueFactory(new PropertyValueFactory<Slot, String>("dilluns"));
         TableColumn tuesday = new TableColumn("Dimarts");
-        tuesday.prefWidthProperty().bind(horari.widthProperty().divide(6));
+        tuesday.prefWidthProperty().bind(horariTable.widthProperty().divide(6));
         tuesday.setCellValueFactory(new PropertyValueFactory<Slot, String>("dimarts"));
         TableColumn wednesday = new TableColumn("Dimecres");
-        wednesday.prefWidthProperty().bind(horari.widthProperty().divide(6));
+        wednesday.prefWidthProperty().bind(horariTable.widthProperty().divide(6));
         wednesday.setCellValueFactory(new PropertyValueFactory<Slot, String>("dimecres"));
         TableColumn thursday = new TableColumn("Dijous");
-        thursday.prefWidthProperty().bind(horari.widthProperty().divide(6));
+        thursday.prefWidthProperty().bind(horariTable.widthProperty().divide(6));
         thursday.setCellValueFactory(new PropertyValueFactory<Slot, String>("dijous"));
         TableColumn friday = new TableColumn("Divendres");
-        friday.prefWidthProperty().bind(horari.widthProperty().divide(6));
+        friday.prefWidthProperty().bind(horariTable.widthProperty().divide(6));
         friday.setCellValueFactory(new PropertyValueFactory<Slot, String>("divendres"));
+
         // Add columns to the table
-        horari.getColumns().addAll(slotname, monday, tuesday, wednesday, thursday, friday);
+        horariTable.getColumns().addAll(slotname, monday, tuesday, wednesday, thursday, friday);
+
         // Set starting state
         horari_container.setCenter(new Label("Escull una Assignatura o una Aula"));
+
         // Initialize observableArrayList and set as table source
-        data = FXCollections.observableArrayList();
-        horari.setItems(data);
+        dataTable = FXCollections.observableArrayList();
+        horariTable.setItems(dataTable);
+
         // Load Assignatures from CtrlDomini to populate choicebox
         ArrayList<String> assignaturesArray = new ArrayList<>();
         assignaturesArray.add(""); // Add empty value
         assignaturesArray.addAll(ctrlDomini.getLlistaAssignatures());
-        ObservableList<String> assigs = FXCollections.observableArrayList(assignaturesArray);
+        llistaAssignatures = FXCollections.observableArrayList(assignaturesArray);
+
         // Load Aules from CtrlDomini to populate choicebox
         ArrayList<String> aulesArray = new ArrayList<>();
         aulesArray.add(""); // Add empty value
         aulesArray.addAll(ctrlDomini.getLlistaAules());
-        ObservableList<String> aules = FXCollections.observableArrayList(aulesArray);
+        llistaAules = FXCollections.observableArrayList(aulesArray);
+
         // Populate ChoiceBoxes
-        choice_aula.setItems(aules);
-        choice_assig.setItems(assigs);
+        choice_aula.setItems(llistaAules);
+        choice_assig.setItems(llistaAssignatures);
+
         // Preselect empty choice
         choice_aula.getSelectionModel().select(0);
         choice_assig.getSelectionModel().select(0);
+
         // Add onChangeListeners for ChoiceBoxes
         choice_aula.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 try {
-                    String aula = aules.get(t1.intValue());
+                    String aula = llistaAules.get(t1.intValue());
                     String assignaturachoice = (String) choice_assig.getSelectionModel().getSelectedItem();
                     String assignatura;
                     if (assignaturachoice.equalsIgnoreCase("")) {
@@ -115,7 +157,7 @@ public class CtrlHorariView {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 try {
-                    String choice = assigs.get(t1.intValue());
+                    String choice = llistaAssignatures.get(t1.intValue());
                     String assignatura;
                     if (choice.equalsIgnoreCase("")) {
                         assignatura = choice;
@@ -131,10 +173,47 @@ public class CtrlHorariView {
         });
     }
 
+    void setGenerateMode(){
+        generatemode = true;
+        choice_assig.setDisable(true);
+        choice_aula.setDisable(true);
+        // Set starting state
+        horari_container.setCenter(new Label("Escull les restriccions adients i genera un horari"));
+
+        ArrayList<String> matitarda = new ArrayList<>(Arrays.asList("","Mati","Tarda"));
+        llistaMatiTarda = FXCollections.observableArrayList(matitarda);
+        rmt_assig.setItems(llistaAssignatures);
+        rmt_assig.getSelectionModel().select(0);
+        rmt_matitarda.setItems(llistaMatiTarda);
+        rmt_matitarda.getSelectionModel().select(0);
+
+        ArrayList<String> dies = new ArrayList<>(Arrays.asList("", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres"));
+        llistaDies = FXCollections.observableArrayList(dies);
+        rdah_aula.setItems(llistaAules);
+        rdah_aula.getSelectionModel().select(0);
+        rdah_dia.setItems(llistaDies);
+        rdah_dia.getSelectionModel().select(0);
+        ArrayList<String> slots = new ArrayList<>(Arrays.asList("", "8h - 9h", "9h - 10h", "10h - 11h",
+                "11h - 12h", "12h - 13h", "13h - 14h", "14h - 15h", "15h - 16h", "16h - 17h", "17h - 18h",
+                "18h - 19h", "19h - 20h", "20h - 21h"));
+        llistaSlots = FXCollections.observableArrayList(slots);
+        rdah_hora.setItems(llistaSlots);
+        rdah_hora.getSelectionModel().select(0);
+
+        rad_aula.setItems(llistaAules);
+        rad_aula.getSelectionModel().select(0);
+        rad_dia.setItems(llistaDies);
+        rad_dia.getSelectionModel().select(0);
+
+        rmt = new ArrayList<>();
+        rdah = new ArrayList<>();
+        rad = new ArrayList<>();
+    }
+
     /**
-     * Carrega un horari a partir d'un String que contingui dades en format JSON
+     * Carrega un horariTable a partir d'un String que contingui dades en format JSON
      *
-     * @param horarijson L'horari en format JSON dins d'un String
+     * @param horarijson L'horariTable en format JSON dins d'un String
      * @return True si ha carregat un arxiu valid, i false si es invalid
      */
     boolean loadHorari(String horarijson) {
@@ -151,16 +230,16 @@ public class CtrlHorariView {
     }
 
     /**
-     * Funció que es crida en canviar l'eleccio dins d'una de les ChoiceBoxes, i que actualitza l'horari
+     * Funció que es crida en canviar l'eleccio dins d'una de les ChoiceBoxes, i que actualitza l'horariTable
      *
      * @param assig Abreviació de l'assignatura
      * @param aula  Aula
      */
     private void handleAssigAulaChange(String assig, String aula) {
         // Set table as content after the first change in the ChoiceBoxes
-        horari_container.setCenter(horari);
+        horari_container.setCenter(horariTable);
         // Set Slots in the table according to the choice
-        data.setAll(generateSlotsFromJson(assig, aula));
+        dataTable.setAll(generateSlotsFromJson(assig, aula));
     }
 
     /**
@@ -172,6 +251,108 @@ public class CtrlHorariView {
         this.ctrlMainView = c;
     }
 
+    @FXML
+    private void handleAddRMT(){
+        String assignatura = rmt_assig.getValue();
+        String matitarda = rmt_matitarda.getValue();
+        if(assignatura.equalsIgnoreCase("") || matitarda.equalsIgnoreCase("")){
+            alert("Has de seleccionar els dos parametres");
+        }else{
+            HashMap<String, String> restriccio = new HashMap<>();
+            restriccio.put("assignatura", assignatura);
+            restriccio.put("matitarda", matitarda);
+            rmt.add(restriccio);
+            rmt_assig.getSelectionModel().select(0);
+            rmt_matitarda.getSelectionModel().select(0);
+        }
+    }
+
+    @FXML
+    private void handleViewRMT() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("restriccioDisplay.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Restriccions Mati-Tarda");
+        stage.show();
+
+        CtrlRestriccionsView c = loader.getController();
+        c.setRestriccions(rmt);
+    }
+
+    @FXML
+    private void handleAddRDAH(){
+        String dia = rdah_dia.getValue();
+        String aula = rdah_aula.getValue();
+        String hora = rdah_hora.getValue();
+        if(dia.equalsIgnoreCase("") || aula.equalsIgnoreCase("") || hora.equalsIgnoreCase("")){
+            alert("Has de seleccionar els tres parametres");
+        }else{
+            HashMap<String, String> restriccio = new HashMap<>();
+            restriccio.put("dia", dia);
+            restriccio.put("aula", aula);
+            restriccio.put("hora", hora);
+            rdah.add(restriccio);
+            rdah_dia.getSelectionModel().select(0);
+            rdah_hora.getSelectionModel().select(0);
+            rdah_aula.getSelectionModel().select(0);
+        }
+    }
+
+    @FXML
+    private void handleViewRDAH() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("restriccioDisplay.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Restriccions Dia-Aula-Hora");
+        stage.show();
+
+        CtrlRestriccionsView c = loader.getController();
+        c.setRestriccions(rdah);
+    }
+
+    @FXML
+    private void handleAddRAD(){
+        String aula = rad_aula.getValue();
+        String dia = rad_dia.getValue();
+        if(aula.equalsIgnoreCase("") || dia.equalsIgnoreCase("")){
+            alert("Has de seleccionar els dos parametres");
+        }else{
+            HashMap<String, String> restriccio = new HashMap<>();
+            restriccio.put("aula", aula);
+            restriccio.put("dia", dia);
+            rad.add(restriccio);
+            rad_dia.getSelectionModel().select(0);
+            rad_aula.getSelectionModel().select(0);
+        }
+    }
+
+    @FXML
+    private void handleViewRAD() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("restriccioDisplay.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Restriccions Aula-Dia");
+        stage.show();
+
+        CtrlRestriccionsView c = loader.getController();
+        c.setRestriccions(rad);
+    }
+
+    @FXML
+    private void handleGenerar(){
+        System.out.println(rad);
+        System.out.println(rdah);
+        System.out.println(rmt);
+    }
 
     /**
      * Tanca la vista i propaga els canvis fets a la vista principal
@@ -225,7 +406,7 @@ public class CtrlHorariView {
         } else {
             throw new IllegalArgumentException("Abreviació o aula es null");
         }
-        // Obté l'horari a partir del json
+        // Obté l'horariTable a partir del json
         List horari = new Gson().fromJson(horarijson, List.class);
         // Crea 12 Slots
         ArrayList<Slot> slots = new ArrayList<>();

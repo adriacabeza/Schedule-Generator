@@ -133,7 +133,7 @@ public class CtrlAssignaturaView {
      *
      * @param c main controller
      */
-    public void setMainController(CtrlMainView c) {
+    void setMainController(CtrlMainView c) {
         this.ctrlMainView = c;
     }
 
@@ -142,7 +142,7 @@ public class CtrlAssignaturaView {
      *
      * @param nomAssignatura nom de l'assignatura que hem seleccionat per consultar
      */
-    public void loadAssignatura(String nomAssignatura) {
+    void loadAssignatura(String nomAssignatura) {
         try {
             editmode = true;
 
@@ -392,7 +392,7 @@ public class CtrlAssignaturaView {
      *
      * @param s missatge d'error a mostrar
      */
-    public void alert(String s) {
+    private void alert(String s) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(s);
         a.setHeaderText("Hi ha hagut un error");
@@ -402,7 +402,7 @@ public class CtrlAssignaturaView {
     /**
      * Bloqueja l'edició dels paràmetres no modificables en assignatures ja creades
      */
-    public void disableEditFields() {
+    void disableEditFields() {
         text_nom.setDisable(true);
         combobox_plaest.setDisable(true);
     }

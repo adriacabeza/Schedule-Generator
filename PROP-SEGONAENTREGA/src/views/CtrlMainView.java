@@ -372,6 +372,7 @@ public class CtrlMainView {
 
         CtrlHorariView c = loader.getController();
         c.setMainController(this);
+        c.setGenerateMode();
     }
 
     @FXML
