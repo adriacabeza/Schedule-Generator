@@ -101,7 +101,7 @@ public class CtrlPlaEstudisView {
         try {
             json = ctrlDomini.consultarPlaEsudis(nomPla);
             Map<String, Object> plaEst = new Gson().fromJson(json, Map.class);
-            label_nom.setText((String) plaEst.get("titulacio"));
+            label_nom.setText(nomPla);
             label_descripcio.setText((String) plaEst.get("descripcio"));
             label_descripcio.setWrapText(true);
             label_any.setText(String.valueOf(((Double) plaEst.get("any")).intValue()));

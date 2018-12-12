@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAssignaturaView">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAssignaturaView">
     <center>
         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
             <children>
@@ -16,7 +16,7 @@
                     <children>
                         <HBox alignment="CENTER_LEFT">
                             <children>
-                                <Label id="nom_assig" fx:id="label_name" text="SAMPLE NAME">
+                                <Label id="nom_assig" fx:id="label_name">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
@@ -31,7 +31,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label fx:id="label_abr" text="SN">
+                                <Label fx:id="label_abr">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
@@ -53,7 +53,7 @@
                     <children>
                         <HBox alignment="CENTER_LEFT">
                             <children>
-                                <Label fx:id="label_plaest" text="NOM PLA EST" HBox.hgrow="ALWAYS">
+                                <Label fx:id="label_plaest" HBox.hgrow="ALWAYS">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
@@ -65,7 +65,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label fx:id="label_quadrimestre" text="- N" HBox.hgrow="ALWAYS">
+                                <Label fx:id="label_quadrimestre" HBox.hgrow="ALWAYS">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
@@ -82,7 +82,7 @@
                 </HBox>
                 <VBox>
                     <children>
-                        <Label fx:id="label_descripcio" text="This is a sample description bascascaschahcbsac" VBox.vgrow="ALWAYS">
+                        <Label fx:id="label_descripcio" prefWidth="535.0" wrapText="true" VBox.vgrow="ALWAYS">
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin>
@@ -95,7 +95,7 @@
                         <Insets bottom="20.0" />
                     </padding>
                 </VBox>
-                <HBox id="grups" spacing="20.0">
+                <HBox id="grups" spacing="20.0" VBox.vgrow="ALWAYS">
                     <children>
                         <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                             <children>
@@ -109,7 +109,7 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_numgrups" text="3" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_numgrups" HBox.hgrow="ALWAYS" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />
@@ -125,7 +125,7 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_capacitat" text="50" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_capacitat" HBox.hgrow="ALWAYS" />
                                     </children>
                                     <padding>
                                         <Insets bottom="10.0" />
@@ -141,7 +141,7 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_numsubgrups" text="2" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_numsubgrups" HBox.hgrow="ALWAYS" />
                                     </children>
                                 </HBox>
                                 <HBox spacing="30.0">
@@ -163,7 +163,7 @@
                                                 <Insets right="10.0" />
                                              </padding>
                                                       </Label>
-                                                      <Label fx:id="label_teo_ns" text="2" />
+                                                      <Label fx:id="label_teo_ns" />
                                        </children>
                                     </HBox>
                                     <HBox>
@@ -176,7 +176,7 @@
                                                 <Insets right="10.0" />
                                              </padding>
                                                       </Label>
-                                                      <Label fx:id="label_teo_ds" text="3" />
+                                                      <Label fx:id="label_teo_ds" />
                                        </children>
                                     </HBox>
                                     <HBox>
@@ -189,7 +189,7 @@
                                                 <Insets right="10.0" />
                                              </padding>
                                                       </Label>
-                                                      <Label fx:id="label_teo_ta" text="pcs" />
+                                                      <Label fx:id="label_teo_ta" />
                                        </children>
                                     </HBox>
                                             </children>
@@ -211,7 +211,7 @@
                                                 <Insets right="10.0" />
                                              </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="label_lab_ns" text="5" />
+                                                      <Label fx:id="label_lab_ns" />
                                        </children>
                                     </HBox>
                                     <HBox>
@@ -224,7 +224,7 @@
                                                 <Insets right="10.0" />
                                              </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="label_lab_ds" text="2" />
+                                                      <Label fx:id="label_lab_ds" />
                                        </children>
                                     </HBox>
                                     <HBox>
@@ -237,7 +237,7 @@
                                                 <Insets right="10.0" />
                                              </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="label_lab_ta" text="normal" />
+                                                      <Label fx:id="label_lab_ta" />
                                        </children>
                                     </HBox>
                                             </children>
