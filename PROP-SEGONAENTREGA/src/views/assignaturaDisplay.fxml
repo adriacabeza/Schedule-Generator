@@ -3,16 +3,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAssignaturaView">
+<BorderPane stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAssignaturaView">
     <center>
-        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+        <VBox BorderPane.alignment="CENTER">
             <children>
-                <HBox id="name" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                <HBox id="name" alignment="CENTER_LEFT">
                     <children>
                         <HBox alignment="CENTER_LEFT">
                             <children>
@@ -29,7 +30,7 @@
                                 <Insets right="20.0" />
                             </HBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT">
                             <children>
                                 <Label fx:id="label_abr">
                                     <VBox.margin>
@@ -49,11 +50,11 @@
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </HBox>
-                <HBox id="plaest" alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                <HBox id="plaest" alignment="CENTER_LEFT">
                     <children>
                         <HBox alignment="CENTER_LEFT">
                             <children>
-                                <Label fx:id="label_plaest" HBox.hgrow="ALWAYS">
+                                <Label fx:id="label_plaest">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
@@ -63,9 +64,9 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                        <HBox alignment="CENTER_LEFT">
                             <children>
-                                <Label fx:id="label_quadrimestre" HBox.hgrow="ALWAYS">
+                                <Label fx:id="label_quadrimestre">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
@@ -82,24 +83,24 @@
                 </HBox>
                 <VBox>
                     <children>
-                        <Label fx:id="label_descripcio" prefWidth="535.0" wrapText="true" VBox.vgrow="ALWAYS">
+                        <TextArea fx:id="textarea_descripcio" wrapText="true">
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin>
                             <font>
                                 <Font name="System Italic" size="13.0" />
                             </font>
-                        </Label>
+                        </TextArea>
                     </children>
                     <padding>
                         <Insets bottom="20.0" />
                     </padding>
                 </VBox>
-                <HBox id="grups" spacing="20.0" VBox.vgrow="ALWAYS">
+                <HBox id="grups" spacing="20.0">
                     <children>
-                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                        <VBox spacing="10.0">
                             <children>
-                                <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT">
                                     <children>
                                         <Label text="#Grups:">
                                             <padding>
@@ -109,13 +110,13 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_numgrups" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_numgrups" />
                                     </children>
                                     <VBox.margin>
                                         <Insets bottom="10.0" />
                                     </VBox.margin>
                                 </HBox>
-                                <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT">
                                     <children>
                                         <Label text="Capacitat:">
                                             <padding>
@@ -125,13 +126,13 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_capacitat" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_capacitat" />
                                     </children>
                                     <padding>
                                         <Insets bottom="10.0" />
                                     </padding>
                                 </HBox>
-                                <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT">
                                     <children>
                                         <Label text="#Subgrups:">
                                             <padding>
@@ -141,7 +142,7 @@
                                                 <Font name="System Bold" size="13.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="label_numsubgrups" HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="label_numsubgrups" />
                                     </children>
                                 </HBox>
                                 <HBox spacing="30.0">
@@ -155,7 +156,7 @@
                                                 </Label>
                                     <HBox>
                                        <children>
-                                                      <Label text="Numero Sessions:">
+                                                      <Label minWidth="-Infinity" text="Numero Sessions:">
                                                           <font>
                                                               <Font name="System Bold" size="13.0" />
                                                           </font>
@@ -168,7 +169,7 @@
                                     </HBox>
                                     <HBox>
                                        <children>
-                                                      <Label text="Duracio Sessions:">
+                                                      <Label minWidth="-Infinity" text="Duracio Sessions:">
                                                           <font>
                                                               <Font name="System Bold" size="13.0" />
                                                           </font>
@@ -181,7 +182,7 @@
                                     </HBox>
                                     <HBox>
                                        <children>
-                                                      <Label text="Tipus Aula:">
+                                                      <Label minWidth="-Infinity" text="Tipus Aula:">
                                                           <font>
                                                               <Font name="System Bold" size="13.0" />
                                                           </font>
@@ -189,7 +190,7 @@
                                                 <Insets right="10.0" />
                                              </padding>
                                                       </Label>
-                                                      <Label fx:id="label_teo_ta" />
+                                                      <Label fx:id="label_teo_ta" minWidth="-Infinity" />
                                        </children>
                                     </HBox>
                                             </children>
@@ -203,7 +204,7 @@
                                                 </Label>
                                     <HBox>
                                        <children>
-                                                      <Label text="Numero Sessions:">
+                                                      <Label minWidth="-Infinity" text="Numero Sessions:">
                                                           <font>
                                                               <Font name="System Bold" size="13.0" />
                                                           </font>
@@ -216,7 +217,7 @@
                                     </HBox>
                                     <HBox>
                                        <children>
-                                                      <Label text="Duracio Sessions:">
+                                                      <Label minWidth="-Infinity" text="Duracio Sessions:">
                                                           <font>
                                                               <Font name="System Bold" size="13.0" />
                                                           </font>
@@ -229,7 +230,7 @@
                                     </HBox>
                                     <HBox>
                                        <children>
-                                                      <Label lineSpacing="10.0" text="Tipus Aula:">
+                                                      <Label lineSpacing="10.0" minWidth="-Infinity" text="Tipus Aula:">
                                                           <font>
                                                               <Font name="System Bold" size="13.0" />
                                                           </font>
@@ -237,7 +238,7 @@
                                                 <Insets right="10.0" />
                                              </HBox.margin>
                                                       </Label>
-                                                      <Label fx:id="label_lab_ta" />
+                                                      <Label fx:id="label_lab_ta" minWidth="-Infinity" />
                                        </children>
                                     </HBox>
                                             </children>
@@ -249,7 +250,7 @@
                                 </HBox>
                             </children>
                         </VBox>
-                        <VBox HBox.hgrow="ALWAYS">
+                        <VBox>
                             <children>
                                 <Label text="Correquisits:">
                                     <font>

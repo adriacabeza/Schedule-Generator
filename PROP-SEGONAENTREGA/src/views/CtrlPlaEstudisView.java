@@ -71,7 +71,7 @@ public class CtrlPlaEstudisView {
         plaest_elim_assig.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (!list_assignatures.getSelectionModel().isEmpty()) {
+                if (list_assignatures.getSelectionModel().getSelectedIndex() != -1) {
                     assignatures_pos.add(list_assignatures.getSelectionModel().getSelectedItem());
                     assignatures.remove(list_assignatures.getSelectionModel().getSelectedItem());
                 }
@@ -81,7 +81,7 @@ public class CtrlPlaEstudisView {
         plaest_afegeix_assig.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (!choice_assignatures.getSelectionModel().isEmpty()) {
+                if (choice_assignatures.getSelectionModel().getSelectedIndex() != -1) {
                     assignatures.add(choice_assignatures.getSelectionModel().getSelectedItem());
                     assignatures_pos.remove(choice_assignatures.getSelectionModel().getSelectedItem());
                 }
