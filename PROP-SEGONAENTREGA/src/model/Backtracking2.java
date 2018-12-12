@@ -142,6 +142,8 @@ public class Backtracking2 extends Algorismes {
         return false;
     }
 
+    
+    //pk li pases horari com a parametre quan es una variable de la clase? (mira algorismes)
     /**
      * Comprova totes les restriccions per a l'assignació d'una sessió una determinada hora, dia i aula
      * @param a assignació que hem de comprovar
@@ -151,11 +153,37 @@ public class Backtracking2 extends Algorismes {
      * @return true si es pot efectuar l'assignació en el dia, hora i aula
      */
     boolean comprovarTOTESlesrestriccions(Assignacio[][][] horari, Assignacio a, int hora, int dia, int posaula){
+        //if(!resLim.isAble(posaula,dia,hora,null,duracio,null,horari)) return false //duracio seria la llista d'assignacions que representa la assignatura que volem canviar (mirar mes avall)
+        //crear la sessioGrup corresponent a la assignacio que volem fer
+        //if(!resTeo.isable(horari,hora,dia,ses,ArrayAules)) return false;
+        //if(!resSub.isable(horari,hora,dia,ses,ArrayAules)) return false;
+        //if(!resCapAul.isable()) return false;
+        //if(!resCorr.isable()) return false;
+        //if(!resNiv.isable()) return false;
+        //if(!resAul.isable()) return false;
+        
+        
+        //segurament necessitarem mes parametres per aplicar aquests, ja mirarem com ho fem
+        
+        
+        /*for (RestriccioAulaDia r : resAulDia){
+            if(!r.isable()) return false;
+        }*/
+        /*for (RestriccioAulaHora r : resAulHora){
+            if(!r.isable()) return false;
+        }*/
+        /*for (RestriccioAssigMAtiTarda r : resMatitarda){
+            if(!r.isable()) return false;
+        }*/
+        
+    
       return true;
       //TODO: pensar com fer-la
     }
 
-
+    //conceptualment no es una assignacio que hem de fer el swap si no una llista d'assigancions ja que en cada assignacio es nomes una hora d'un dia en una aula, llavors la 
+    //llista representaria les hores que ocupa aquesta assignacio.
+    //tambe hem de crear la llista de aules que estan ocupades en ambdues linies, en tot moment i quines assignatures/grups hi ha en marxa en aquells moments
     /**
      * Es fa un canvi de dues assignacions ja fetes en un horari complert.
      * @param horari l'horari fet
