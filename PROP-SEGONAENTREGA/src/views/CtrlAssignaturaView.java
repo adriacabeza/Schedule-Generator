@@ -4,13 +4,10 @@ import com.google.gson.Gson;
 import controllers.CtrlDomini;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -70,7 +67,6 @@ public class CtrlAssignaturaView {
     Button button_afegeix = new Button();
 
     /****** DISPLAY *******/
-
     @FXML
     Label label_name = new Label();
     @FXML
@@ -80,7 +76,7 @@ public class CtrlAssignaturaView {
     @FXML
     Label label_plaest = new Label();
     @FXML
-    Label label_descripcio = new Label();
+    TextArea textarea_descripcio = new TextArea();
     @FXML
     Label label_numgrups = new Label();
     @FXML
@@ -268,7 +264,7 @@ public class CtrlAssignaturaView {
             }
 
             List<String> correquisits = (List) assignatura.get("correquisit");
-            if (correquisits != null && !correquisits.isEmpty()) {
+            if (!correquisits.get(0).equalsIgnoreCase("")) {
                 llista_correquisits.addAll(correquisits);
             }
             candidates_correquisit = observableArrayList(ctrlDomini.correquisitsPossibles(nomAssignatura));
@@ -308,9 +304,10 @@ public class CtrlAssignaturaView {
 
             String descripcio = (String) assignatura.get("descripcio");
             if (descripcio != null && !descripcio.isEmpty()) {
-                label_descripcio.setText(descripcio);
+                textarea_descripcio.setText(descripcio);
+                textarea_descripcio.setEditable(false);
             } else {
-                label_descripcio.setText(" - ");
+                textarea_descripcio.setText(" - ");
             }
 
             Double quadrimestre = (Double) assignatura.get("quadrimestre");
@@ -332,7 +329,7 @@ public class CtrlAssignaturaView {
                 int numsubgrups = subgrups.size();
                 label_numsubgrups.setText(String.valueOf(numsubgrups));
             }
-            label_descripcio.setWrapText(true);
+            textarea_descripcio.setWrapText(true);
 
             Map teoria = (Map) assignatura.get("teoria");
             if (teoria != null) {
@@ -356,7 +353,9 @@ public class CtrlAssignaturaView {
 
             List<String> correquisits = (List) assignatura.get("correquisit");
             if (correquisits != null && !correquisits.isEmpty()) {
-                llista_correquisits.addAll(correquisits);
+                if (!correquisits.get(0).equalsIgnoreCase("")) {
+                    llista_correquisits.addAll(correquisits);
+                }
             }
             list_correquisits.setItems(llista_correquisits);
 
@@ -559,8 +558,12 @@ public class CtrlAssignaturaView {
      * Afegeix l'assignatura seleccionada com a correquisit de l'actual
      */
     public void afegeixCorrequisit() {
-        llista_correquisits.add(choice_assig.getSelectionModel().getSelectedItem());
-        candidates_correquisit.remove(choice_assig.getSelectionModel().getSelectedItem());
+        int index_correq = choice_assig.getSelectionModel().getSelectedIndex();
+        if (index_correq != -1) {
+            llista_correquisits.add(choice_assig.getSelectionModel().getSelectedItem());
+            candidates_correquisit.remove(choice_assig.getSelectionModel().getSelectedItem());
+            choice_assig.getSelectionModel().clearSelection();
+        }
     }
 
     /**

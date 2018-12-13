@@ -47,7 +47,6 @@ public class CtrlPlaEstudisView {
     ListView<String> list_assignatures_consulta = new ListView<>();
 
 
-
     @FXML
     Button cancel_button = new Button();
     @FXML
@@ -71,7 +70,7 @@ public class CtrlPlaEstudisView {
         plaest_elim_assig.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (!list_assignatures.getSelectionModel().isEmpty()) {
+                if (list_assignatures.getSelectionModel().getSelectedIndex() != -1) {
                     assignatures_pos.add(list_assignatures.getSelectionModel().getSelectedItem());
                     assignatures.remove(list_assignatures.getSelectionModel().getSelectedItem());
                 }
@@ -81,7 +80,7 @@ public class CtrlPlaEstudisView {
         plaest_afegeix_assig.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if (!choice_assignatures.getSelectionModel().isEmpty()) {
+                if (choice_assignatures.getSelectionModel().getSelectedIndex() != -1) {
                     assignatures.add(choice_assignatures.getSelectionModel().getSelectedItem());
                     assignatures_pos.remove(choice_assignatures.getSelectionModel().getSelectedItem());
                 }
@@ -101,9 +100,9 @@ public class CtrlPlaEstudisView {
         try {
             json = ctrlDomini.consultarPlaEsudis(nomPla);
             Map<String, Object> plaEst = new Gson().fromJson(json, Map.class);
-            label_nom.setText((String) plaEst.get("titulacio"));
-            label_descripcio.setText((String) plaEst.get("descripcio"));
-            label_descripcio.setWrapText(true);
+            label_nom.setText(nomPla);
+            text_descripcio.setText((String) plaEst.get("descripcio"));
+            text_descripcio.setWrapText(true);
             label_any.setText(String.valueOf(((Double) plaEst.get("any")).intValue()));
             checkbox_obsolet_consulta.setSelected((boolean) plaEst.get("obsolet"));
             assignatures = FXCollections.observableArrayList(ctrlDomini.consultarAssignaturesPlaEstudis(nomPla));
