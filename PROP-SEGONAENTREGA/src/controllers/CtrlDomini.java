@@ -664,7 +664,10 @@ public class CtrlDomini {
      * @return llista de dies on hi ha possibilitat de canvi
      */
     //TODO esto es ya consultar las vacias, paso la asignatura y el grupo por si hace falta para comprobar restricciones
-    //asumimos que es solo de una clase para ese grupo? o que es para todas las clases que ha de hacer esa asignatura, si es el primer caso tmbn debemos pasar que tipo de clase es(lab, teo)
+    //asumimos que es solo de una clase para ese grupo? o que es para todas las clases que ha de hacer esa asignatura,
+    //si es el primer caso tmbn debemos pasar que tipo de clase es(lab, teo)
+
+    //si te paso un grupo es la hora de teoria, si te paso un subgrupo es la de lab, solo para ese (sub)grupo concreto
     public ArrayList<String> consultaDiesLliures(String nomAssig, String numGrup) {
         /*
         Assignatura a = assignatures.get(nomAssig);
@@ -686,8 +689,13 @@ public class CtrlDomini {
     public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, String dia) {
         return null;
     }
-    //aqui solo hay que hacer como en la poda inicial del backtracking con forward checking pero solo para un dia y una hora (dandole pasadas de las restricciones adicionales)
+    //aqui solo hay que hacer como en la poda inicial del backtracking con forward checking pero
+    //solo para un dia y una hora (dandole pasadas de las restricciones adicionales)
+
     //si fijas dia y hora implica que la "clase" dura solo 1h
+
+    //te fijo la hora de inicio, la duracion de las siguientes la tienes que saber tu con duracion de sesiones y darme
+    //X horas seguidas disponibles
     /**
      * Consulta les aules lliures d'una hora i dia concret on una assignatura i un grup podrien encaixar
      *
@@ -703,6 +711,8 @@ public class CtrlDomini {
 
     /********************* EXCHANGE *********************/
     //el problema es que una clase pueden ser varias horas, al estilo 3 seguidas i aqui solo estamso cambiando una
+
+    // lo mismo que arriba, si son 3 horas seguidas, busco 3 horas seguidas vacias y hare el cambio de las 3
     /**
      * Intercanvia dos slots compatibles
      *
