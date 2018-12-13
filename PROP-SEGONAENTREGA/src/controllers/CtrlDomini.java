@@ -166,6 +166,12 @@ public class CtrlDomini {
                 }
             }
         }
+        
+        //forma de hacerlo con la generacion de restriccion
+        /*
+        horari.creaRestriccions(null,null,null,null);
+        boolean b = horari.ConstruirHorari(ass, aules);
+        */
         boolean b = horari.ConstruirHorari(ass, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
                 new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
         if (b) json = cIo.horariToJson(horari);
