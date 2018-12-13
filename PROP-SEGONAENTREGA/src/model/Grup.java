@@ -4,6 +4,9 @@
 
 package model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Grup {
@@ -87,6 +90,14 @@ public class Grup {
     @Override
     public String toString() {
         return "id: " + num + " capacitat: " + capacitat;
+    }
+
+    public ArrayList<String> getLlistaSubgrups() {
+        ArrayList<String> output = new ArrayList<>();
+        for (Subgrup s: subgrups.values()) {
+            output.add(String.valueOf(s.getNum()));
+        }
+        return output;
     }
 }
 

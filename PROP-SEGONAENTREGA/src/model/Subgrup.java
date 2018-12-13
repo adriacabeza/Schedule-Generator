@@ -4,6 +4,8 @@
 
 package model;
 
+import java.util.ArrayList;
+
 public class Subgrup extends Grup {
 
     /**
@@ -15,5 +17,10 @@ public class Subgrup extends Grup {
      */
     public Subgrup(int num, int capacitat, int subgrups) {
         super(num, capacitat, subgrups);
+    }
+
+    @Override
+    public ArrayList<String> getLlistaSubgrups() {
+        return null;
     }
 }

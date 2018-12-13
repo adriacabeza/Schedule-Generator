@@ -7,6 +7,7 @@ package model;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 
+import javax.management.StringValueExp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -337,5 +338,14 @@ public class Assignatura {
     public boolean equals(Object obj) {
         Assignatura a = (Assignatura) obj;
         return a.getNom().equalsIgnoreCase(this.nom) && a.getQuadrimestre() == this.quadrimestre;
+    }
+
+    public ArrayList<String> getLlistaGrupsSubgrups() {
+        ArrayList<String> output = new ArrayList<>();
+        for(Grup g : grups.values()){
+            output.add(String.valueOf(g.getNum()));
+            output.addAll(g.getLlistaSubgrups());
+        }
+        return output;
     }
 }
