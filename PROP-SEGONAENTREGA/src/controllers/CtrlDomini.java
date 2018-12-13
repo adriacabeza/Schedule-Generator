@@ -570,7 +570,7 @@ public class CtrlDomini {
     //TODO v v v v v v v v
 
     /********************* PRIMERA ASSIGNATURA *********************/
-
+    //i'll need adri to back me up here y ahora mismo esta durmiendo
     /**
      * Consulta els dies que una assignatura i un grup tenen classes assignades
      *
@@ -664,10 +664,17 @@ public class CtrlDomini {
      * @return llista de dies on hi ha possibilitat de canvi
      */
     //TODO esto es ya consultar las vacias, paso la asignatura y el grupo por si hace falta para comprobar restricciones
+    //asumimos que es solo de una clase para ese grupo? o que es para todas las clases que ha de hacer esa asignatura, si es el primer caso tmbn debemos pasar que tipo de clase es(lab, teo)
     public ArrayList<String> consultaDiesLliures(String nomAssig, String numGrup) {
+        /*
+        Assignatura a = assignatures.get(nomAssig);
+        int grup = Integer.parseInt(numGrup);
+        //crear la sessioGrup que correspon 
+        return horari.getEmptyAssign(sesgrup);
+        */
         return null;
     }
-
+    //Este no es igual que el anterior solo que buscando solo en un dia?
     /**
      * Consulta les hores lliures d'un dia concret on una assignatura i un grup podrien encaixar
      *
@@ -679,7 +686,8 @@ public class CtrlDomini {
     public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, String dia) {
         return null;
     }
-
+    //aqui solo hay que hacer como en la poda inicial del backtracking con forward checking pero solo para un dia y una hora (dandole pasadas de las restricciones adicionales)
+    //si fijas dia y hora implica que la "clase" dura solo 1h
     /**
      * Consulta les aules lliures d'una hora i dia concret on una assignatura i un grup podrien encaixar
      *
@@ -694,7 +702,7 @@ public class CtrlDomini {
     }
 
     /********************* EXCHANGE *********************/
-
+    //el problema es que una clase pueden ser varias horas, al estilo 3 seguidas i aqui solo estamso cambiando una
     /**
      * Intercanvia dos slots compatibles
      *
@@ -706,5 +714,8 @@ public class CtrlDomini {
      * @param aula2 aula del segon slot a intercanviar
      */
     public void intercanviaSlots(String dia1, String hora1, String aula1, String dia2, String hora2, String aula2) {
+        /*
+        Assignacio[][][] h = horari.getHorari();
+        */
     }
 }
