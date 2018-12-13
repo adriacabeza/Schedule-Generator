@@ -67,7 +67,6 @@ public class CtrlAssignaturaView {
     Button button_afegeix = new Button();
 
     /****** DISPLAY *******/
-
     @FXML
     Label label_name = new Label();
     @FXML

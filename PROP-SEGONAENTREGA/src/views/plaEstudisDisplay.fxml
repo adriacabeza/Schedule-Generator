@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -48,7 +49,7 @@
                                 <CheckBox fx:id="checkbox_obsolet_consulta" disable="true" mnemonicParsing="false" text="Obsolet" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label fx:id="label_nom" text="Label" GridPane.columnIndex="1" />
                         <Label fx:id="label_any" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="label_descripcio" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextArea fx:id="text_descripcio" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             </children>
                         </GridPane>
                     </children>
