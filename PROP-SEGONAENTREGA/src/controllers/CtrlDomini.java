@@ -614,6 +614,46 @@ public class CtrlDomini {
     }
 
     /**
+     * Funció auxiliar que a partir d'una hora retorna l'índex que la representa en un horari
+     * @param hora
+     * @return enter que representa l'índex de la hora
+     */
+
+    int getHora(String hora){
+        switch (hora){
+            case "8":
+                return 0;
+            case "9":
+                return 1;
+            case "10":
+                return 2;
+            case "11":
+                return 3;
+            case "12":
+                return 4;
+            case "13":
+                return 5;
+            case "14":
+                return 6;
+            case "15":
+                return 7;
+            case "16":
+                return 8;
+            case "17":
+                return 9;
+            case "18":
+                return 10;
+            case "19":
+                return 11;
+            case "20":
+                return 12;
+            default:
+                break;
+        }
+
+    }
+
+    /**
      * Consulta l'aula en que una assignatura, un grup, data i hora tenen una assignacio
      *
      * @param nomAssig nom de l'assignatura
@@ -624,9 +664,49 @@ public class CtrlDomini {
      */
     //TODO solo devolvera una, pero va mejor que todo sean arrays
     public ArrayList<String> consultaAulaPerHoresDiaAssignaturaGrup(String nomAssig, String numGrup, String dia, String hora) {
-        return null;
+        Assignacio[][][] schedule = horari.getHorari();
+        ArrayList<String> result = null;
+        if (schedule != null) {
+            String subject;
+            String group;
+            int nhora = getHora(hora);
+            int ndia = Integer.parseInt(dia);
+            Assignacio assignacio;
+            for (int i = 0; i < schedule[nhora][ndia].length; ++i) {
+                assignacio = schedule[nhora][ndia][i];
+                subject = assignacio.getAssignatura().getNom();
+                group =String.valueOf(assignacio.getGrup().getNum());
+                if(subject == nomAssig && numGrup == group){
+                    result.add(aules.get(i).toString());
+                }
+            }
+
+        }
+        return result;
     }
 
+
+    /**
+     * Converteix un enter en l'string del dia que representa
+     * @param i enter que representa un número
+     * @return string del dia que representa
+     */
+    String getDiafromNum(int i){
+        switch (i) {
+            case 0:
+                return "Dilluns";
+            case 1:
+                return "Dimarts";
+            case 2:
+                return "Dimecres";
+            case 3:
+                return "Dijous";
+            case 4:
+                return "Divendres";
+            default:
+                break;
+        }
+    }
     /********************* SEGONA ASSIGNATURA *********************/
 
     /**
@@ -639,7 +719,25 @@ public class CtrlDomini {
      * @return dies que el grup de l'assignatura te assignacions
      */
     public ArrayList<String> consultaDiesPerAssignaturaGrupAmbRestr(String nomAssigR, String numGrupR, String nomAssig, String numGrup) {
-        return null;
+        Assignacio[][][] schedule = horari.getHorari();
+        ArrayList<String> result = null;
+        if (schedule != null) {
+            Assignacio assignacio;
+           for(int i = 0; i< schedule.length(); ++i){
+               for(int j = 0; j < schedule[i].length(); ++j){
+                   for(int k = 0; k < schedule[i][j].length; ++k){
+                       assignacio = schedule[i][j][k];
+                       if(String.valueOf(assignacio.getGrup().getNum()) ==numGrup && assignacio.getAssignatura().getNom() == nomAssig){
+                           result.add(getDiafromNum(i));
+                       }
+
+                   }
+               }
+
+           }
+
+        }
+        return result;
     }
 
     /**
