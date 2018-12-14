@@ -148,16 +148,28 @@ public class CtrlDomini {
      */
     public String generaHorari(ArrayList<HashMap<String,String>> rmt,  ArrayList<HashMap<String,String>> rdah, ArrayList<HashMap<String,String>> rad, boolean rc, boolean rgt) {
         String json = null;
+
         /*
-        String assignatura = rmt.get("assignatura");
-        String matitarda = rmt.get("matitarda"); //passar a boolean
+        loop:
+            String assignatura = rmt.get("assignatura");
+            String matitarda = rmt.get("matitarda"); //passar a boolean
+            horari.afegeixRMT(assignatura, matitarda);
+        end;
 
-        String dia = rdah.get("dia");
-        String aula = rdah.get("aula");
-        String hora = rdah.get("hora"); //passar a int
+        loop:
+            String dia = rdah.get("dia");
+            String aula = rdah.get("aula");
+            String hora = rdah.get("hora"); //passar a int
+            horari. ...
+        end;
 
-        String dia = rad.get("dia"); //string amb dilluns, dimarts...
-        String aula = rad.get("aula");
+        loop:
+            String dia = rad.get("dia"); //string amb dilluns, dimarts...
+            String aula = rad.get("aula");
+        end;
+
+        horari.activaRestriccio...(bool)
+        horari.activaRestriccio2...(bool)
 
          */
 
@@ -179,9 +191,9 @@ public class CtrlDomini {
         horari.creaRestriccions(null,null,null,null);
         boolean b = horari.ConstruirHorari(ass, aules);
         */
-        boolean b = horari.ConstruirHorari(ass, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
+        /*boolean b = horari.ConstruirHorari(ass, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
                 new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
-        if (b) json = cIo.horariToJson(horari);
+        if (b) json = cIo.horariToJson(horari);*/
         return json;
     }
 
@@ -617,7 +629,6 @@ public class CtrlDomini {
 
     /********************* SEGONA ASSIGNATURA *********************/
 
-
     /**
      * Consulta els dies que una assignatura i un grup tenen classes assignades
      *
@@ -718,7 +729,6 @@ public class CtrlDomini {
 
     /********************* EXCHANGE *********************/
     //el problema es que una clase pueden ser varias horas, al estilo 3 seguidas i aqui solo estamso cambiando una
-
     // lo mismo que arriba, si son 3 horas seguidas, busco 3 horas seguidas vacias y hare el cambio de las 3
     /**
      * Intercanvia dos slots compatibles
