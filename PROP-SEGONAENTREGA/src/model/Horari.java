@@ -61,7 +61,7 @@ public class Horari {
         }
         for(String s : resMatiTarda){
             this.resMatiTarda.add(new RestriccioAssigMatiTarda());
-        }*/
+        }
     }
     
     */
