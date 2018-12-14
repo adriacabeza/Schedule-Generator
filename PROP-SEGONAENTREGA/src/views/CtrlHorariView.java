@@ -286,7 +286,7 @@ public class CtrlHorariView {
     private void handleAddRDAH(){
         String dia = rdah_dia.getValue();
         String aula = rdah_aula.getValue();
-        String hora = rdah_hora.getValue();
+        String hora = String.valueOf(rdah_hora.getSelectionModel().getSelectedIndex() - 1);
         if(dia.equalsIgnoreCase("") || aula.equalsIgnoreCase("") || hora.equalsIgnoreCase("")){
             alert("Has de seleccionar els tres parametres");
         }else{
