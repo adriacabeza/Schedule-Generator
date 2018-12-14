@@ -146,13 +146,19 @@ public class CtrlDomini {
      *
      * @return Horari generat si es pot, null altrament
      */
-    public String generaHorari(/*params sobre les restriccions*/) {
+    public String generaHorari(ArrayList<HashMap<String,String>> rmt,  ArrayList<HashMap<String,String>> rdah, ArrayList<HashMap<String,String>> rad, boolean rc, boolean rgt) {
         String json = null;
+        /*
+        String assignatura = rmt.get("assignatura");
+        String matitarda = rmt.get("matitarda"); //passar a boolean
 
-        /* CODE TO INIT RESTRICTIONS */
-        /*            ...            */
-        /*                           */
+        String dia = rdah.get("dia");
+        String aula = rdah.get("aula");
+        String hora = rdah.get("hora");
 
+
+
+         */
 
         //volem incloure nomes les assignatures de plans no obsolets i que estiguin en algun pla d'estudis vigent
         HashMap<String, Assignatura> ass = new HashMap<>();
