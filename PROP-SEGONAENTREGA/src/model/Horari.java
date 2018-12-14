@@ -32,6 +32,13 @@ public class Horari {
         return horari;
     }
 
+    /**
+     * Actualitza l'horari
+     * @param horari l'horari
+     */
+    public void setHorari(Assignacio[][][] horari) {
+        this.horari = horari;
+    }
 
     /**
      * Constructora que et crea un horari buit
@@ -39,6 +46,7 @@ public class Horari {
     public Horari(){
         //horari = new Assignacio[][][];
     }
+
     
     //forma de hacerlo con el crearestriccions
     /*
