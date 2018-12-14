@@ -39,6 +39,32 @@ public class Horari {
     public Horari(){
         //horari = new Assignacio[][][];
     }
+    
+    //forma de hacerlo con el crearestriccions
+    /*
+     public creaRestriccions(ArrayList<Boolean> checkboxes, ArrayList<String> resAula, ArrayList<String> resAulaHora, ArrayList<String> resMatiTarda){
+        resAul = new RestriccioAula();
+        resTeo = new RestriccioGrupTeo();
+        resSub = new RestriccioSubgrupLab();
+        resCapAul = new RestriccioCapacitatAula();
+        resCorr = new RestriccioCorrequisit();
+        resLim = new RestriccioLimits();
+        resNiv = new RestriccioNivell();
+        this.resAula = new ArrayList<>();
+        this.resAulDia = new ArrayList<>();
+        this. resMatiTarda = new ArrayList<>();
+        /*for(String s : resAul){
+            this.resAula.add(new RestriccioAulaDia());
+        }
+        for(String s : resAulaHora){
+            this.resAulaHora.add(new RestriccioAulaHora());
+        }
+        for(String s : resMatiTarda){
+            this.resMatiTarda.add(new RestriccioAssigMatiTarda());
+        }*/
+    }
+    
+    */
 
 
     /**
@@ -78,6 +104,20 @@ public class Horari {
         horari = algoritme.getHorari();
         return true;
     }
+
+/*
+    public boolean ConstruirHorari( HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules) {
+
+        Algorismes algoritme = new Backtracking2(assignatures,aules,resCorr,resNiv,resAul,resTeo,resSub,resAulDia,resAulaHora,resMatiTarda,resCapAul,resLim);
+        try {
+            boolean b = ((Backtracking2) algoritme).generaHorari();
+            if (!b) return false;
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+        horari = algoritme.getHorari();
+        return true;
+    */
 }
 
 

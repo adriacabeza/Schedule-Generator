@@ -47,7 +47,6 @@ public class CtrlPlaEstudisView {
     ListView<String> list_assignatures_consulta = new ListView<>();
 
 
-
     @FXML
     Button cancel_button = new Button();
     @FXML
@@ -102,8 +101,8 @@ public class CtrlPlaEstudisView {
             json = ctrlDomini.consultarPlaEsudis(nomPla);
             Map<String, Object> plaEst = new Gson().fromJson(json, Map.class);
             label_nom.setText(nomPla);
-            label_descripcio.setText((String) plaEst.get("descripcio"));
-            label_descripcio.setWrapText(true);
+            text_descripcio.setText((String) plaEst.get("descripcio"));
+            text_descripcio.setWrapText(true);
             label_any.setText(String.valueOf(((Double) plaEst.get("any")).intValue()));
             checkbox_obsolet_consulta.setSelected((boolean) plaEst.get("obsolet"));
             assignatures = FXCollections.observableArrayList(ctrlDomini.consultarAssignaturesPlaEstudis(nomPla));
