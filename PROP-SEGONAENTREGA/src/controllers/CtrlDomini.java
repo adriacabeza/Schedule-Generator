@@ -154,9 +154,10 @@ public class CtrlDomini {
 
         String dia = rdah.get("dia");
         String aula = rdah.get("aula");
-        String hora = rdah.get("hora");
+        String hora = rdah.get("hora"); //passar a int
 
-
+        String dia = rad.get("dia"); //string amb dilluns, dimarts...
+        String aula = rad.get("aula");
 
          */
 
