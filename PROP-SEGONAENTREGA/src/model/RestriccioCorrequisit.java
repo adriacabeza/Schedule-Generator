@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RestriccioCorrequisit extends RestriccioBinaria {
-
+    boolean activat;
     /**
      * Crea una restricció on es comprova que una sessió d'una assignatura d'un determinat grup no hi hagi conflictes amb correquisits
      */
-    public RestriccioCorrequisit() {
+    public RestriccioCorrequisit(boolean activat) {
         super(1);
+        this.activat = activat;
     }
 
     /**
@@ -29,22 +30,25 @@ public class RestriccioCorrequisit extends RestriccioBinaria {
      * @throws NotFoundException
      */
     public boolean isable(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) throws NotFoundException {
-        for (int j = 0; j < aules2.size(); ++j) {
-            Assignacio a = horari[hora][dia][j];
-            if (a != null) {
-                if (a.getAssignatura().getCorrequisits().contains(assig)) {
-                    if (a.getClass() == AssignacioL.class && assig.getSessio().getClass() == Laboratori.class) {
-                        if (a.getGrup().getNum() == assig.getSub().getNum() || a.getGrup().getNum() / 10 == assig.getSub().getNum() / 10) // mateix subgrup o grup de teoria
-                            return false;
-                    } else { //un dels dos es teoria
-                        int auxnum = assig.getGrup().getNum() / 10;
-                        if (assig.getSessio().getClass() == Laboratori.class) auxnum = assig.getSub().getNum() / 10;
-                        if (a.getGrup().getNum() / 10 == auxnum) return false;
+        if(activat) {
+            for (int j = 0; j < aules2.size(); ++j) {
+                Assignacio a = horari[hora][dia][j];
+                if (a != null) {
+                    if (a.getAssignatura().getCorrequisits().contains(assig)) {
+                        if (a.getClass() == AssignacioL.class && assig.getSessio().getClass() == Laboratori.class) {
+                            if (a.getGrup().getNum() == assig.getSub().getNum() || a.getGrup().getNum() / 10 == assig.getSub().getNum() / 10) // mateix subgrup o grup de teoria
+                                return false;
+                        } else { //un dels dos es teoria
+                            int auxnum = assig.getGrup().getNum() / 10;
+                            if (assig.getSessio().getClass() == Laboratori.class) auxnum = assig.getSub().getNum() / 10;
+                            if (a.getGrup().getNum() / 10 == auxnum) return false;
+                        }
                     }
                 }
             }
+            return true;
         }
-        return true;
+        else return true;
     }
 
     /**
@@ -63,11 +67,14 @@ public class RestriccioCorrequisit extends RestriccioBinaria {
 
     @Override
     public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) throws NotFoundException {
-        if (assignat.getAssig().getCorrequisits().contains(check.getAssig().getNom()) && assignat.getGrup().getNum() == check.getGrup().getNum()) {
-            if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
-                return false;
+        if (activat) {
+            if (assignat.getAssig().getCorrequisits().contains(check.getAssig().getNom()) && assignat.getGrup().getNum() == check.getGrup().getNum()) {
+                if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
+        else return true;
     }
 }

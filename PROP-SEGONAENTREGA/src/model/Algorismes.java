@@ -124,7 +124,7 @@ public abstract class Algorismes {
      * @param dia enter que representa el dia
      * @return string que representa el dia
      */
-    protected String fromInt2dia(int dia) {
+    public static String fromInt2dia(int dia) {
         if (dia == 0) return "Dilluns";
         else if (dia == 1) return "Dimarts";
         else if (dia == 2) return "Dimecres";
@@ -151,7 +151,7 @@ public abstract class Algorismes {
      * @param dia string que representa un dia
      * @return enter que representa el dia
      */
-    protected int fromDia2int(String dia) {
+    public static int fromDia2int(String dia) {
         switch (dia) {
             case "Dilluns":
                 return 0;
@@ -172,7 +172,7 @@ public abstract class Algorismes {
      * @param hora enter que representa una hora
      * @return hora que representa
      */
-    protected int getHora(int hora) {
+    public static int getHora(int hora) {
         if (hora == 0) return 8;
         else if (hora == 1) return 9;
         else if (hora == 2) return 10;

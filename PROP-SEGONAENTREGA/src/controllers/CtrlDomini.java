@@ -150,29 +150,35 @@ public class CtrlDomini {
         String json = null;
 
         /*
+        for(HashMap<String, String> res1 : rmt){
+            String assignatura = rmt.get("assignatura");
+            //boolean
+             horari.afegeixRMT(assignatura, matitarda);
+        }
         loop:
             String assignatura = rmt.get("assignatura");
             String matitarda = rmt.get("matitarda"); //passar a boolean
+                                                       //but mati esta representat com mati? I mean si faig rmt.get("matitarda").equals("mati") isok?
             horari.afegeixRMT(assignatura, matitarda);
-        end;
-
-        loop:
-            String dia = rdah.get("dia");
-            String aula = rdah.get("aula");
-            String hora = rdah.get("hora"); //passar a int
-            horari. ...
-        end;
-
-        loop:
-            String dia = rad.get("dia"); //string amb dilluns, dimarts...
-            String aula = rad.get("aula");
         end;
 
         horari.activaRestriccio...(bool)
         horari.activaRestriccio2...(bool)
 
          */
-
+        //TODO mes abaix en les consultes tenim funcions semblants a les que tenim el algorisme, es necesari tenirles alla i aqui?
+        for(HashMap<String, String> res2 : rad){
+            int dia = Algorismes.fromDia2int(res2.get("dia"));
+            Aula aula = aules.get(res2.get("aula"));
+            horari.afegirRD(dia, aula);
+        }
+        for(HashMap<String, String> res3 : rdah){
+            int dia = Algorismes.fromDia2int(res3.get("dia"));
+            Aula aula = aules.get(res3.get("aula"));
+            int hora = Integer.parseInt(res3.get("hora"));         //esta pasat de 8 a 19 o de 0 a 10 ??
+            horari.afegirRDH(hora, dia, aula);
+        }
+        horari.activaRC(rc);
         //volem incloure nomes les assignatures de plans no obsolets i que estiguin en algun pla d'estudis vigent
         HashMap<String, Assignatura> ass = new HashMap<>();
         for (PlaEstudis plaest : plaEstudis.values()) {
@@ -186,14 +192,8 @@ public class CtrlDomini {
             }
         }
 
-        //forma de hacerlo con la generacion de restriccion
-        /*
-        horari.creaRestriccions(null,null,null,null);
         boolean b = horari.ConstruirHorari(ass, aules);
-        */
-        /*boolean b = horari.ConstruirHorari(ass, aules, new RestriccioCorrequisit(), new RestriccioNivell(), new RestriccioAula(), new RestriccioGrupTeo(),
-                new RestriccioSubgrupLab(), null, null, null, new RestriccioCapacitatAula(), new RestriccioLimits());
-        if (b) json = cIo.horariToJson(horari);*/
+        if (b) json = cIo.horariToJson(horari);
         return json;
     }
 
@@ -589,7 +589,6 @@ public class CtrlDomini {
     //TODO v v v v v v v v
 
     /********************* PRIMERA ASSIGNATURA *********************/
-    //i'll need adri to back me up here y ahora mismo esta durmiendo
 
     /**
      * Consulta els dies que una assignatura i un grup tenen classes assignades
@@ -805,20 +804,64 @@ public class CtrlDomini {
     //si es el primer caso tmbn debemos pasar que tipo de clase es(lab, teo)
 
     //si te paso un grupo es la hora de teoria, si te paso un subgrupo es la de lab, solo para ese (sub)grupo concreto
-    public ArrayList<String> consultaDiesLliures(String nomAssig, String numGrup) {
+
+
+    /*
+     retornarem un arraylist de hashmap<string,string> on en cada posicio de la arraylist es una possible assignacio, el hashmap tindra dos keys, "dia" i "hora" i el valor d'aquestes es el dia (dilluns,dimarts etc) i la hora (10,11,12...)
+     mirar el generar horari mes adalt, uso la mateixa estructura i aixi ens estalviem la funcio consultar hores lliures per dia
+    */
+    public ArrayList<HashMap<String,String>> consultaDiesLliures(String nomAssig, String numGrup) {
 
         Assignatura a = assignatures.get(nomAssig);
         int grup = Integer.parseInt(numGrup);
+        Grup g = null;
+        try {
+            g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+
         Assignacio[][][] schedule = horari.getHorari();
-        ArrayList<String> result = null;
+        int duracio = 0;
+        SessioGrup ses = null;
+        if(grup%10 ==0){
+            duracio = a.getDuracioSessionsTeo(); //clase teoria
+            ses = new SessioGrup(a,new Teoria(1,1,a.getTipusAulaTeo()),g,null,0);
+        }
+        else {
+            try {
+                duracio = a.getDuracioSessionsLab();
+                Subgrup sub = g.getSubgrups().get(grup);
+                ses = new SessioGrup(a, new Laboratori(1,1,a.getTipusAulaLab()),g,sub,0);
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ArrayList<HashMap<String,String>> result = new ArrayList<>();
+
         if (schedule != null) {
+            ArrayList<Aula> llistaules = new ArrayList<>();
+            Aula aul = null;
+            HashMap<String,String> diahora;
             Assignacio assignacio;
             for (int i = 0; i < schedule.length; ++i) {
                 for (int j = 0; j < schedule[i].length; ++j) {
                     for (int k = 0; k < schedule[i][j].length; ++k) {
                         assignacio = schedule[i][j][k];
                         if (assignacio == null) {
-                            result.add(getDiafromNum(i));
+                            //hauriem de pillar la aula en [i][j][k] i la llista de aules en [i][j] problema es es una hashmap i no podem estar segurs de pillar el mateix, hauriem d'usar un linked hash map
+                            // mirar
+                            // https://stackoverflow.com/questions/5237101/is-it-possible-to-get-element-from-hashmap-by-its-position
+                            //un cop tenim aquesta info li pasem al horari i aquesta funcio ens diu si es bona posicio o no
+                            //aul = aules.get()
+                            //prodecim a mirar totes les restriccions
+                            if(horari.comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
+                                diahora = new HashMap<String,String>();
+                                diahora.put("dia",Algorismes.fromInt2dia(i));
+                                diahora.put("hora", String.valueOf(Algorismes.getHora(j)));
+                                result.add(diahora);
+                            }
                         }
 
                     }
@@ -876,43 +919,7 @@ public class CtrlDomini {
 
     //pk li pases horari com a parametre quan es una variable de la clase? (mira algorismes)
 
-    /**
-     * Comprova totes les restriccions per a l'assignació d'una sessió una determinada hora, dia i aula
-     *
-     * @param a       assignació que hem de comprovar
-     * @param hora    hora que hem de comprovar
-     * @param dia     dia que hem de comprovar
-     * @param posaula aula que hem de comprovar
-     * @return true si es pot efectuar l'assignació en el dia, hora i aula
-     */
-    boolean comprovarTOTESlesrestriccions(Assignacio[][][] horari, Assignacio a, int hora, int dia, int posaula) {
-        //if(!resLim.isAble(posaula,dia,hora,null,duracio,null,horari)) return false //duracio seria la llista d'assignacions que representa la assignatura que volem canviar (mirar mes avall)
-        //crear la sessioGrup corresponent a la assignacio que volem fer
-        //if(!resTeo.isable(horari,hora,dia,ses,ArrayAules)) return false;
-        //if(!resSub.isable(horari,hora,dia,ses,ArrayAules)) return false;
-        //if(!resCapAul.isable()) return false;
-        //if(!resCorr.isable()) return false;
-        //if(!resNiv.isable()) return false;
-        //if(!resAul.isable()) return false;
 
-
-        //segurament necessitarem mes parametres per aplicar aquests, ja mirarem com ho fem
-
-
-        /*for (RestriccioAulaDia r : resAulDia){
-            if(!r.isable()) return false;
-        }*/
-        /*for (RestriccioAulaHora r : resAulHora){
-            if(!r.isable()) return false;
-        }*/
-        /*for (RestriccioAssigMAtiTarda r : resMatitarda){
-            if(!r.isable()) return false;
-        }*/
-
-
-        return true;
-        //TODO: pensar com fer-la
-    }
 
     /**
      * Intercanvia dos slots compatibles
