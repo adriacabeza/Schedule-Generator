@@ -723,13 +723,10 @@ public class CtrlDomini {
      * @return llista de dies on hi ha possibilitat de canvi
      */
     //TODO esto es ya consultar las vacias, paso la asignatura y el grupo por si hace falta para comprobar restricciones
-    //asumimos que es solo de una clase para ese grupo? o que es para todas las clases que ha de hacer esa asignatura,
-    //si es el primer caso tmbn debemos pasar que tipo de clase es(lab, teo)
 
-    //si te paso un grupo es la hora de teoria, si te paso un subgrupo es la de lab, solo para ese (sub)grupo concreto
-
-
-    /*
+    /*asumimos que es solo de una clase para ese grupo? o que es para todas las clases que ha de hacer esa asignatura,
+    si es el primer caso tmbn debemos pasar que tipo de clase es(lab, teo)
+    si te paso un grupo es la hora de teoria, si te paso un subgrupo es la de lab, solo para ese (sub)grupo concreto
      retornarem un arraylist de hashmap<string,string> on en cada posicio de la arraylist es una possible assignacio, el hashmap tindra dos keys, "dia" i "hora" i el valor d'aquestes es el dia (dilluns,dimarts etc) i la hora (10,11,12...)
      mirar el generar horari mes adalt, uso la mateixa estructura i aixi ens estalviem la funcio consultar hores lliures per dia
     */
@@ -738,7 +735,6 @@ public class CtrlDomini {
         return horari.consultaDiesLliures(a, numGrup, aules);
 
     }
-    //Este no es igual que el anterior solo que buscando solo en un dia?
 
     /**
      * Consulta les hores lliures d'un dia concret on una assignatura i un grup podrien encaixar
@@ -753,7 +749,7 @@ public class CtrlDomini {
         if(horari.getHorari() != null){
             return horari.consultaHoresLliuresPerDia(nomAssig,numGrup,Integer.parseInt(dia));
         }
-        return  result;
+        return result;
     }
 
 
@@ -774,7 +770,12 @@ public class CtrlDomini {
      * @return aules disponibles
      */
     public ArrayList<String> consultaAulesLliuresPerDiaHora(String nomAssig, String numGrup, String dia, String hora) {
-        return null;
+        ArrayList<String> result = null;
+        if(horari.getHorari() != null){
+            Assignatura a = assignatures.get(nomAssig);
+            return horari.consultaAulesLliuresPerDiaHora(a, result, numGrup, Integer.parseInt(dia), Integer.parseInt(hora), aules);
+        }
+        return result;
     }
 
     /********************* EXCHANGE *********************/

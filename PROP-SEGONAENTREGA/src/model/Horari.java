@@ -137,6 +137,60 @@ public class Horari {
 
     public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, int dia){
         //AQUI TONI XD XD
+        return null;
+    }
+
+
+
+    public ArrayList<String> consultaAulesLliuresPerDiaHora(Assignatura a, ArrayList<String> result, String numGrup, int dia, int hora, HashMap<String, Aula> aules){
+        int grup = Integer.parseInt(numGrup);
+        Grup g = null;
+        try {
+            g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        int duracio = 0;
+        SessioGrup ses = null;
+        if(grup%10 ==0){
+            duracio = a.getDuracioSessionsTeo(); //clase teoria
+            ses = new SessioGrup(a,new Teoria(1,1,a.getTipusAulaTeo()),g,null,0);
+        }
+        else {
+            try {
+                duracio = a.getDuracioSessionsLab();
+                Subgrup sub = g.getSubgrups().get(grup);
+                ses = new SessioGrup(a, new Laboratori(1,1,a.getTipusAulaLab()),g,sub,0);
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (horari != null) {
+            ArrayList<Aula> llistaules = new ArrayList<>();
+            Aula aul = null;
+            HashMap<String,String> diahora;
+            Assignacio assignacio;
+            for (int i = 0; i < horari.length; ++i) {
+                for (int j = 0; j < horari[i].length; ++j) {
+                    for (int k = 0; k < horari[i][j].length; ++k) {
+                        assignacio = horari[i][j][k];
+                        if (assignacio == null) {
+                            if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
+                                result.add(aules.get(k).getKey());
+                            }
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+        return result;
+
     }
 
 
