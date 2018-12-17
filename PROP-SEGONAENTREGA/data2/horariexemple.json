@@ -1,0 +1,2522 @@
+[
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PRO2",
+    "grup": 30,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PRO2",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PRO2",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ER",
+    "grup": 20,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "AC",
+    "grup": 20,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "LP",
+    "grup": 32,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "LP",
+    "grup": 30,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "LP",
+    "grup": 10,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PRO2",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "M1",
+    "grup": 30,
+    "aula": "A5001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PRO1",
+    "grup": 30,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "PRO1",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "M1",
+    "grup": 10,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "APA",
+    "grup": 32,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "APA",
+    "grup": 31,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "LP",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "BD",
+    "grup": 30,
+    "aula": "A5202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "F",
+    "grup": 30,
+    "aula": "A6202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "SO",
+    "grup": 30,
+    "aula": "A4002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 0,
+    "assignatura": "FM",
+    "grup": 30,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "PRO1",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A4104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "PE",
+    "grup": 31,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "PRO1",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 0,
+    "assignatura": "PE",
+    "grup": 11,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 0,
+    "assignatura": "F",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 0,
+    "assignatura": "F",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 0,
+    "assignatura": "CI",
+    "grup": 22,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 0,
+    "assignatura": "CI",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 0,
+    "assignatura": "FM",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 0,
+    "assignatura": "IC",
+    "grup": 22,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PRO2",
+    "grup": 30,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PRO2",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PRO2",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ER",
+    "grup": 20,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "AC",
+    "grup": 20,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "LP",
+    "grup": 32,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "LP",
+    "grup": 30,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "LP",
+    "grup": 10,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PRO2",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "M1",
+    "grup": 30,
+    "aula": "A5001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PRO1",
+    "grup": 30,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "PRO1",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "M1",
+    "grup": 10,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "APA",
+    "grup": 32,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "APA",
+    "grup": 31,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "LP",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "BD",
+    "grup": 30,
+    "aula": "A5202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "F",
+    "grup": 30,
+    "aula": "A6202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "SO",
+    "grup": 30,
+    "aula": "A4002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 1,
+    "assignatura": "FM",
+    "grup": 30,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "PRO1",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A4104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "PE",
+    "grup": 31,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "PRO1",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 1,
+    "assignatura": "PE",
+    "grup": 11,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 1,
+    "assignatura": "F",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 1,
+    "assignatura": "F",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 1,
+    "assignatura": "CI",
+    "grup": 22,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 1,
+    "assignatura": "CI",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 1,
+    "assignatura": "FM",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 1,
+    "assignatura": "IC",
+    "grup": 22,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "BD",
+    "grup": 10,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "PRO2",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ER",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "APA",
+    "grup": 30,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "A",
+    "grup": 10,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "LP",
+    "grup": 11,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "F",
+    "grup": 10,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "SO",
+    "grup": 10,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "LP",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "FM",
+    "grup": 10,
+    "aula": "A5001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "F",
+    "grup": 20,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "CI",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "CI",
+    "grup": 30,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "APA",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "APA",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "M1",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "CI",
+    "grup": 20,
+    "aula": "A5202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "FM",
+    "grup": 20,
+    "aula": "A6202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "PE",
+    "grup": 10,
+    "aula": "A4002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 2,
+    "assignatura": "APA",
+    "grup": 10,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "PRO1",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A4104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "PE",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "F",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 2,
+    "assignatura": "EDA",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 2,
+    "assignatura": "F",
+    "grup": 12,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 2,
+    "assignatura": "F",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 2,
+    "assignatura": "CI",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 2,
+    "assignatura": "IC",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 2,
+    "assignatura": "IC",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "BD",
+    "grup": 10,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "PRO2",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ER",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "APA",
+    "grup": 30,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "A",
+    "grup": 10,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "LP",
+    "grup": 11,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "F",
+    "grup": 10,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "SO",
+    "grup": 10,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "LP",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "FM",
+    "grup": 10,
+    "aula": "A5001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "F",
+    "grup": 20,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "CI",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "CI",
+    "grup": 30,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "APA",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "APA",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "M1",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "CI",
+    "grup": 20,
+    "aula": "A5202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "FM",
+    "grup": 20,
+    "aula": "A6202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "PE",
+    "grup": 10,
+    "aula": "A4002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 3,
+    "assignatura": "APA",
+    "grup": 10,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "PRO1",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A4104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "PE",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "F",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 3,
+    "assignatura": "EDA",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 3,
+    "assignatura": "F",
+    "grup": 12,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 3,
+    "assignatura": "F",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 3,
+    "assignatura": "CI",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 3,
+    "assignatura": "IC",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 3,
+    "assignatura": "IC",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "M2",
+    "grup": 30,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "PRO2",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "A",
+    "grup": 32,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "M2",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "A",
+    "grup": 30,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "M1",
+    "grup": 11,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "A",
+    "grup": 31,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "M1",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "PE",
+    "grup": 30,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "EDA",
+    "grup": 30,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "A",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "A",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "PRO2",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "AC",
+    "grup": 10,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "ER",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "IC",
+    "grup": 30,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "SO",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "AA",
+    "grup": 30,
+    "aula": "A6103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 4,
+    "assignatura": "IC",
+    "grup": 10,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "BD",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "EDA",
+    "grup": 31,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "EDA",
+    "grup": 11,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "BD",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 4,
+    "assignatura": "EDA",
+    "grup": 12,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 4,
+    "assignatura": "F",
+    "grup": 22,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 4,
+    "assignatura": "F",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 4,
+    "assignatura": "FM",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 4,
+    "assignatura": "FM",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 4,
+    "assignatura": "IC",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 4,
+    "assignatura": "IC",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "M2",
+    "grup": 30,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "PRO2",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "A",
+    "grup": 32,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "M2",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "A",
+    "grup": 30,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "M1",
+    "grup": 11,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "A",
+    "grup": 31,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "M1",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "PE",
+    "grup": 30,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "EDA",
+    "grup": 30,
+    "aula": "A5002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "A",
+    "grup": 11,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "A",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "PRO2",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "AC",
+    "grup": 10,
+    "aula": "A6205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "ER",
+    "grup": 10,
+    "aula": "A6001"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "IC",
+    "grup": 30,
+    "aula": "A6002"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "SO",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "AA",
+    "grup": 30,
+    "aula": "A6103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 5,
+    "assignatura": "IC",
+    "grup": 10,
+    "aula": "A4001"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "BD",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "EDA",
+    "grup": 31,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "EDA",
+    "grup": 11,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "BD",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 5,
+    "assignatura": "EDA",
+    "grup": 12,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 5,
+    "assignatura": "F",
+    "grup": 22,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 5,
+    "assignatura": "F",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 5,
+    "assignatura": "FM",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 5,
+    "assignatura": "FM",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 5,
+    "assignatura": "IC",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 5,
+    "assignatura": "IC",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "IC",
+    "grup": 20,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "PRO2",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AA",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ER",
+    "grup": 20,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "M2",
+    "grup": 11,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AC",
+    "grup": 20,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "SO",
+    "grup": 31,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "EDA",
+    "grup": 10,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AA",
+    "grup": 32,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AA",
+    "grup": 31,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "SO",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AA",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "SO",
+    "grup": 12,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AC",
+    "grup": 10,
+    "aula": "A6103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 6,
+    "assignatura": "AA",
+    "grup": 12,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 6,
+    "assignatura": "BD",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 6,
+    "assignatura": "CI",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 6,
+    "assignatura": "F",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 6,
+    "assignatura": "FM",
+    "grup": 22,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 6,
+    "assignatura": "FM",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 6,
+    "assignatura": "IC",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 6,
+    "assignatura": "IC",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 6,
+    "assignatura": "IC",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "IC",
+    "grup": 20,
+    "aula": "A4205"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "PRO2",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AA",
+    "grup": 10,
+    "aula": "A4202"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ER",
+    "grup": 20,
+    "aula": "A4102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "M2",
+    "grup": 11,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AC",
+    "grup": 20,
+    "aula": "A5102"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "SO",
+    "grup": 31,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "EDA",
+    "grup": 10,
+    "aula": "A6203"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AA",
+    "grup": 32,
+    "aula": "A5101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AA",
+    "grup": 31,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "SO",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AA",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "SO",
+    "grup": 12,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AC",
+    "grup": 22,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AC",
+    "grup": 10,
+    "aula": "A6103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 7,
+    "assignatura": "AA",
+    "grup": 12,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 7,
+    "assignatura": "BD",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 7,
+    "assignatura": "CI",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 7,
+    "assignatura": "F",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 7,
+    "assignatura": "FM",
+    "grup": 22,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 7,
+    "assignatura": "FM",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 7,
+    "assignatura": "IC",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 7,
+    "assignatura": "IC",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 7,
+    "assignatura": "IC",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "PRO1",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "M2",
+    "grup": 32,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "PRO1",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "M2",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 8,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 8,
+    "assignatura": "BD",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 8,
+    "assignatura": "BD",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 8,
+    "assignatura": "CI",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 8,
+    "assignatura": "CI",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 8,
+    "assignatura": "FM",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 8,
+    "assignatura": "FM",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 8,
+    "assignatura": "IC",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "PRO1",
+    "grup": 32,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A4103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "M2",
+    "grup": 32,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "PRO1",
+    "grup": 33,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "M2",
+    "grup": 31,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 9,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 9,
+    "assignatura": "BD",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 9,
+    "assignatura": "BD",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 9,
+    "assignatura": "CI",
+    "grup": 33,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 9,
+    "assignatura": "CI",
+    "grup": 31,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 9,
+    "assignatura": "FM",
+    "grup": 11,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 9,
+    "assignatura": "FM",
+    "grup": 12,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Divendres",
+    "hora": 9,
+    "assignatura": "IC",
+    "grup": 24,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "PRO1",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "M2",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "F",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "PE",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 10,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 10,
+    "assignatura": "BD",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 10,
+    "assignatura": "CI",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 10,
+    "assignatura": "CI",
+    "grup": 12,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 10,
+    "assignatura": "CI",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 10,
+    "assignatura": "FM",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 10,
+    "assignatura": "FM",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "PRO1",
+    "grup": 31,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ER",
+    "grup": 21,
+    "aula": "A4201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ER",
+    "grup": 22,
+    "aula": "A6104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "M2",
+    "grup": 12,
+    "aula": "A5201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ER",
+    "grup": 12,
+    "aula": "A6105"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "F",
+    "grup": 32,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "AC",
+    "grup": 11,
+    "aula": "A6101"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "AC",
+    "grup": 21,
+    "aula": "A5104"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "PE",
+    "grup": 32,
+    "aula": "A6201"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "AC",
+    "grup": 12,
+    "aula": "A5103"
+  },
+  {
+    "dia": "Dilluns",
+    "hora": 11,
+    "assignatura": "ER",
+    "grup": 11,
+    "aula": "A4101"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 11,
+    "assignatura": "BD",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimarts",
+    "hora": 11,
+    "assignatura": "CI",
+    "grup": 11,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 11,
+    "assignatura": "CI",
+    "grup": 12,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dimecres",
+    "hora": 11,
+    "assignatura": "CI",
+    "grup": 13,
+    "aula": "A6204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 11,
+    "assignatura": "FM",
+    "grup": 13,
+    "aula": "A4204"
+  },
+  {
+    "dia": "Dijous",
+    "hora": 11,
+    "assignatura": "FM",
+    "grup": 13,
+    "aula": "A6204"
+  }
+]
