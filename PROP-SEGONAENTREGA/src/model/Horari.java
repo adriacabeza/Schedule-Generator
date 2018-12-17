@@ -147,7 +147,7 @@ public class Horari {
 
 
 
-    public ArrayList<String> consultaAulesLliuresPerDiaHora(Assignatura a, ArrayList<String> result, String numGrup, int dia, int hora, HashMap<String, Aula> aules) throws NotFoundException {
+    public ArrayList<String> consultaAulesLliuresPerDiaHora(Assignatura a, ArrayList<String> result, String numGrup, int dia, int hora, ArrayList<Aula> aules) throws NotFoundException {
         int grup = Integer.parseInt(numGrup);
         Grup g = null;
         try {
@@ -173,30 +173,15 @@ public class Horari {
         if (horari != null) {
             ArrayList<Aula> llistaules = new ArrayList<>();
             Aula aul = null;
-            Assignacio assignacio;
-            for (int i = 0; i < horari.length; ++i) {
-                for (int j = 0; j < horari[i].length; ++j) {
-                    for (int k = 0; k < horari[i][j].length; ++k) {
-                        boolean b = true;
-
-                        for(int l = 0; l < duracio && b; ++l){
-                            b = horari[i+l][j][k] == null;
-                        }
-
-                        if (b) {
-                            if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
-                                result.add(aules.get(k).getKey());
-                            }
-                        }
-                    }
+            for (int k = 0; k < horari[hora][dia].length; ++k) {
+                if(comprovarResSlotsBuits(ses,hora,dia,k,duracio,llistaules,aul)) {
+                    result.add(aules.get(k).getKey());
                 }
+
             }
         }
         return result;
-        //esto es lo de arriba leñe
     }
-
-
 
 
 
@@ -323,7 +308,6 @@ public class Horari {
         }
         return result;
     }
-
 
 
     /**

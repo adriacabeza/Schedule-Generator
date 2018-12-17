@@ -773,7 +773,7 @@ public class CtrlDomini {
         ArrayList<String> result = null;
         if(horari.getHorari() != null){
             Assignatura a = assignatures.get(nomAssig);
-            return horari.consultaAulesLliuresPerDiaHora(a, result, numGrup, Integer.parseInt(dia), Integer.parseInt(hora), aules);
+            return horari.consultaAulesLliuresPerDiaHora(a, result, numGrup, Integer.parseInt(dia), Integer.parseInt(hora), assignatures.values());
         }
         return result;
     }
