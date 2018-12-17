@@ -64,6 +64,23 @@ public class Horari {
         resCorr = new RestriccioCorrequisit(bool);
     }
 
+/********************* SEGONA ASSIGNATURA *********************/
+
+    /**
+     * Consulta els dies que una assignatura i un grup tenen classes assignades
+     *
+     * @param nomAssigR nom de l'assignatura que aplica restriccions sobre la segona
+     * @param numGrupR  numero del grup que aplica restriccions sobre la segona
+     * @param nomAssig  nom de l'assignatura
+     * @param numGrup   numero del grup o subgrup
+     * @return dies que el grup de l'assignatura te assignacions
+    */
+    public ArrayList<String> consultaDiesPerAssignaturaGrupAmbRestr(String nomAssigR, String numGrupR, String nomAssig, String numGrup) {
+    return null;
+    }
+
+
+    /********************* SLOTS BUITS *********************/
     public ArrayList<HashMap<String,String>> consultaDiesLliures (Assignatura a, String numGrup, HashMap<String, Aula> aules){
         int grup = Integer.parseInt(numGrup);
         Grup g = null;
@@ -198,8 +215,6 @@ public class Horari {
 
 
 
-
-
     /**
      * Comprova totes les restriccions per a l'assignació d'una sessió una determinada hora, dia i aula
      *
@@ -230,7 +245,6 @@ public class Horari {
             }
         }
         return true;
-        //TODO: pensar com fer-la
     }
 
 
