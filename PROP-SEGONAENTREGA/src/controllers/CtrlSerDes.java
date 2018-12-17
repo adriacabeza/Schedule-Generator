@@ -14,8 +14,9 @@ import model.Aula;
 import model.Horari;
 import model.PlaEstudis;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.*;
 
 public class CtrlSerDes {
     private static CtrlSerDes ourInstance;
@@ -33,23 +34,23 @@ public class CtrlSerDes {
     }
 
     /* LECTURA DE FITXERS */
-    public HashMap<String, Aula> carregaAules(String filepath) throws IOException {
+    public HashMap<String, Aula> carregaAules() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        HashMap<String, Aula> a = gson.fromJson(gd.llegeix(filepath), new TypeToken<HashMap<String, Aula>>() {
+        HashMap<String, Aula> a = gson.fromJson(gd.llegeix("aules"), new TypeToken<HashMap<String, Aula>>() {
         }.getType());
         return a;
     }
 
-    public HashMap<String, PlaEstudis> carregaPlansDEstudi(String filepath) throws IOException {
+    public HashMap<String, PlaEstudis> carregaPlansDEstudi() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        HashMap<String, PlaEstudis> ps = gson.fromJson(gd.llegeix(filepath), new TypeToken<HashMap<String, PlaEstudis>>() {
+        HashMap<String, PlaEstudis> ps = gson.fromJson(gd.llegeix("plansestudi"), new TypeToken<HashMap<String, PlaEstudis>>() {
         }.getType());
         return ps;
     }
 
-    public HashMap<String, Assignatura> carregaAssignatures(String filepath) throws IOException {
+    public HashMap<String, Assignatura> carregaAssignatures() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        HashMap<String, Assignatura> ass = gson.fromJson(gd.llegeix(filepath), new TypeToken<HashMap<String, Assignatura>>() {
+        HashMap<String, Assignatura> ass = gson.fromJson(gd.llegeix("assignatures"), new TypeToken<HashMap<String, Assignatura>>() {
         }.getType());
         return ass;
     }
@@ -110,8 +111,97 @@ public class CtrlSerDes {
         gd.escriu(json, filepath);
     }
 
-    /*
-    public void guardaRestriccions(,String filepath) throws IOException{
-       SHA DE PENSAR COM FER LO DE GUARDAR RESTRICCIONS EN TEXT
-    }*/
+    public boolean comprovaDefaultFilepath() {
+        gd.setDefaults();
+
+        try {
+            boolean b = checkAssigFile(gd.llegeix("assignatures"));
+            if (!b) return false;
+        } catch (IOException e) {
+            return false;
+        }
+
+        try {
+            boolean b = checkAulesFile(gd.llegeix("aules"));
+            if (!b) return false;
+        } catch (IOException e) {
+            return false;
+        }
+
+        try {
+            boolean b = checkPlansEstudiFile(gd.llegeix("plansestudi"));
+            if (!b) return false;
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkAssigFile(String file){
+        Map assignatures;
+
+        try {
+            assignatures = new Gson().fromJson(file, Map.class);
+            Set set = assignatures.keySet();
+            Map m = (Map) assignatures.get(set.iterator().next());
+            String test = (String) m.get("nom");
+            return test != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private boolean checkAulesFile(String file){
+        Map aules;
+        try {
+            aules = new Gson().fromJson(file, Map.class);
+            Set set = aules.keySet();
+            Map m = (Map) aules.get(set.iterator().next());
+            String test = (String) m.get("edifici");
+            return test != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private boolean checkPlansEstudiFile(String file){
+        Map pe;
+        try {
+            pe = new Gson().fromJson(file, Map.class);
+            Set set = pe.keySet();
+            Map m = (Map) pe.get(set.iterator().next());
+            String test = (String) m.get("nomTitulacio");
+            return test != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void setDataDirectory(File dir) {
+        gd.setFilepath(dir.getAbsolutePath());
+    }
+
+    public int buscaData() throws IOException {
+        ArrayList<String> files = gd.getLlistaArxius();
+
+        int assigFound = 0;
+        int plansEstudiFound = 0;
+        int aulesFound = 0;
+
+        for (String f : files) {
+            if(checkAssigFile(gd.llegeix(f))) {
+                gd.setFilenameAssig(f);
+                assigFound = 1;
+            }
+            else if (checkAulesFile(gd.llegeix(f))) {
+                gd.setFilenameAules(f);
+                aulesFound = 2;
+            }
+            else if (checkPlansEstudiFile(gd.llegeix(f))) {
+                gd.setFilenamePlaEst(f);
+                plansEstudiFound = 4;
+            }
+        }
+        return assigFound + aulesFound + plansEstudiFound;
+    }
 }

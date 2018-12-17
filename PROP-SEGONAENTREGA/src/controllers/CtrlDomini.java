@@ -11,6 +11,7 @@ import exceptions.RestriccioIntegritatException;
 import model.*;
 import model.Aula.TipusAula;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -52,12 +53,16 @@ public class CtrlDomini {
     /**
      * Carrega l'informacio sobre aules, assignatures i plans d'estudi desde disc
      */
-    public void carrega() throws IOException { //TODO fer be
+    public boolean carrega() throws IOException { //TODO fer be
         CtrlSerDes c = CtrlSerDes.getInstance();
 
-        plaEstudis = c.carregaPlansDEstudi("plaestudistest.json");
-        assignatures = c.carregaAssignatures("assigtest.json");
-        aules = c.carregaAules("aulestest.json");
+        boolean defaultExists = c.comprovaDefaultFilepath();
+        if (defaultExists) {
+            plaEstudis = c.carregaPlansDEstudi();
+            assignatures = c.carregaAssignatures();
+            aules = c.carregaAules();
+        }
+        return defaultExists;
     }
 
     /**
@@ -654,7 +659,7 @@ public class CtrlDomini {
      * @return enter que representa l'índex de la hora
      */
 
-    int getHora(String hora) {
+    private int getHora(String hora) {
         switch (hora) {
             case "8":
                 return 0;
@@ -686,7 +691,6 @@ public class CtrlDomini {
                 break;
         }
         return 0;
-
     }
 
     /**
@@ -728,7 +732,7 @@ public class CtrlDomini {
      * @param i enter que representa un número
      * @return string del dia que representa
      */
-    String getDiafromNum(int i) {
+    private String getDiafromNum(int i) {
         switch (i) {
             case 0:
                 return "Dilluns";
@@ -741,7 +745,7 @@ public class CtrlDomini {
             case 4:
                 return "Divendres";
             default:
-                break;
+                return null;
         }
     }
     /********************* SEGONA ASSIGNATURA *********************/
@@ -757,7 +761,7 @@ public class CtrlDomini {
      * @return dies que el grup de l'assignatura te assignacions
      */
     public ArrayList<String> consultaDiesPerAssignaturaGrupAmbRestr(String nomAssigR, String numGrupR, String nomAssig, String numGrup) {
-
+        return null;
     }
 
     /**
@@ -771,7 +775,7 @@ public class CtrlDomini {
      * @return llista d'hores assignades al grup aquell dia
      */
     public ArrayList<String> consultaHoresPerDiaAssignaturaGrupAmbRestr(String nomAssigR, String numGrupR, String nomAssig, String numGrup, String dia) {
-
+        return null;
     }
 
     /**
@@ -919,8 +923,6 @@ public class CtrlDomini {
 
     //pk li pases horari com a parametre quan es una variable de la clase? (mira algorismes)
 
-
-
     /**
      * Intercanvia dos slots compatibles
      *
@@ -949,5 +951,14 @@ public class CtrlDomini {
 
             horari.setHorari(schedule);
         }
+    }
+
+    public void setDataDirectory(File dir) {
+        cIo.setDataDirectory(dir);
+    }
+
+    public int carregaBusca() throws IOException {
+        int res = cIo.buscaData();
+        return res;
     }
 }

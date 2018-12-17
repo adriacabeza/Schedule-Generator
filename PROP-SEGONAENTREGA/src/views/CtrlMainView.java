@@ -17,8 +17,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import model.Slot;
 
 import java.io.File;
@@ -67,7 +69,23 @@ public class CtrlMainView {
         controladorDomini = CtrlDomini.getInstance();
 
         try {
-            controladorDomini.carrega(); //TODO error check
+            boolean defaultOk = controladorDomini.carrega();
+            if (defaultOk) {
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setContentText("S'han carregat els arxius per defecte correctament");
+                a.showAndWait();
+            } else {
+                Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                a.setContentText("No s'ha pogut carregar les dades per defecte. Si us plau, indica la carpeta on trobar les dades");
+                a.showAndWait();
+
+                DirectoryChooser dirChooser = new DirectoryChooser();
+                dirChooser.setTitle("Escollir directori de dades");
+                dirChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+                File dir = dirChooser.showDialog(a.getOwner());
+                controladorDomini.setDataDirectory(dir);
+                int foundData = controladorDomini.carregaBusca(); //TODO error check
+            }
         } catch (IOException e) {
             //TODO afegir la opcio de carregar manualment o de tornar a intentar, mostrant a l'usuari quin arxiu no s'ha pogut carregar
             Alert a = new Alert(Alert.AlertType.WARNING);

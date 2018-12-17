@@ -1,0 +1,26 @@
+{
+  "Fisica": {
+    "nomTitulacio": "Fisica",
+    "any": 2012,
+    "assignatures": [],
+    "obsolet": false,
+    "descripcio": "descripcio per enginyeria fisica"
+  },
+  "Informatica": {
+    "nomTitulacio": "Informatica",
+    "any": 2010,
+    "assignatures": [
+      "Arquitectura dels Computadors",  "Enginyeria de Requisits", "Algorísmia", "Programació 1", "Sistemes Operatius", "Mates 1", "Mates 2", "Programació 2","Probabilitat i Estadística","Algorísmia Avançada",
+      "Bases de Dades","Estructura de Dades i Algorismes","Aprenentatge Autònom", "Interfícies de Computadors","Llenguatges de programació", "Física", "Introducció als Computadors","Fonaments Matemàtics"
+    ],
+    "obsolet": false,
+    "descripcio": "descripcio per enginyeria informatica"
+  },
+  "Quimica": {
+    "nomTitulacio": "Quimica",
+    "any": 2013,
+    "assignatures": [],
+    "obsolet": true,
+    "descripcio": "descripcio per enginyeria quimica"
+  }
+}
