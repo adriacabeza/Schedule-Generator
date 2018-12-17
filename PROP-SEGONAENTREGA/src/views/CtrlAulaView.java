@@ -50,7 +50,7 @@ public class CtrlAulaView {
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
     private boolean editmode = false;
-    String key = "";
+    private String key = "";
 
     public void initialize() {
         ObservableList<String> tAula = FXCollections.observableArrayList();
@@ -65,7 +65,7 @@ public class CtrlAulaView {
      *
      * @param key nom de l'aula que hem seleccionat per consultar
      */
-    public void displayAula(String key) {                                                       //TODO check if this might have errors
+    void displayAula(String key) {                                                       //TODO check if this might have errors
         this.key = key;
         String json = null;
         try {
@@ -88,7 +88,7 @@ public class CtrlAulaView {
      *
      * @param key nom de l'aula que hem seleccionat per consultar
      */
-    public void loadAula(String key) {
+    void loadAula(String key) {
         editmode = true;
         this.key = key;
         String json = null;
@@ -111,7 +111,7 @@ public class CtrlAulaView {
      *
      * @param c
      */
-    public void setMainController(CtrlMainView c) {
+    void setMainController(CtrlMainView c) {
         this.ctrlMainView = c;
     }
 
@@ -165,7 +165,7 @@ public class CtrlAulaView {
     /**
      * Bloqueja l'edició dels paràmetres no modificables en aules ja creades
      */
-    public void disableEditFields() {
+    void disableEditFields() {
         text_edifici.setDisable(true);
         text_planta.setDisable(true);
         text_aula.setDisable(true);

@@ -9,13 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.FormValidation;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class CtrlPlaEstudisView {
@@ -96,7 +94,7 @@ public class CtrlPlaEstudisView {
      *
      * @param nomPla nom de l'aula que hem seleccionat per consultar
      */
-    public void displayPlaEstudis(String nomPla){ //TODO check if this might have errors
+    void displayPlaEstudis(String nomPla){ //TODO check if this might have errors
         String json = null;
         try {
             json = ctrlDomini.consultarPlaEsudis(nomPla);
@@ -119,7 +117,7 @@ public class CtrlPlaEstudisView {
      *
      * @param plaEst nom del pla d'estudis que hem seleccionat per consultar
      */
-    public void loadPlaEstudis(String plaEst) {
+    void loadPlaEstudis(String plaEst) {
         editmode = true;
         String json = null;
         try {
@@ -176,7 +174,7 @@ public class CtrlPlaEstudisView {
      *
      * @param c main controller
      */
-    public void setMainController(CtrlMainView c) {
+    void setMainController(CtrlMainView c) {
         this.ctrlMainView = c;
     }
 
@@ -203,11 +201,11 @@ public class CtrlPlaEstudisView {
                 ctrlDomini.esborrarPlaEstudis(titulacio);
                 /* Add it again */
                 ctrlDomini.crearPlaEstudis(titulacio, any, descripcio);
-                afegeix_assignatures_pla(titulacio);
+                afegeixAssignaturesPla(titulacio);
                 ctrlDomini.setObsolet(titulacio, obsolet);
             } else {
                 ctrlDomini.crearPlaEstudis(titulacio, any, descripcio);
-                afegeix_assignatures_pla(titulacio);
+                afegeixAssignaturesPla(titulacio);
             }
 
             exit();
@@ -222,7 +220,7 @@ public class CtrlPlaEstudisView {
      * @throws NotFoundException si no existeix el pla d'estudis
      * @throws RestriccioIntegritatException si l'assignatura ja esta afegida al pla
      */
-    private void afegeix_assignatures_pla(String titulacio) throws NotFoundException, RestriccioIntegritatException, IOException {
+    private void afegeixAssignaturesPla(String titulacio) throws NotFoundException, RestriccioIntegritatException, IOException {
         for (int i = 0; i < assignatures.size(); i++) {
             ctrlDomini.afegirAssignaturaPla(titulacio, assignatures.get(i));
         }
@@ -252,7 +250,7 @@ public class CtrlPlaEstudisView {
     /**
      * Deshabilita els camps restringits en la creació d'un pla d'estudis
      */
-    public void disableCreateFields() {
+    void disableCreateFields() {
         checkbox_obsolet.setSelected(false);
         checkbox_obsolet.setDisable(true);
     }
@@ -260,7 +258,7 @@ public class CtrlPlaEstudisView {
     /**
      * Bloqueja l'edició dels paràmetres no modificables en plans d'estudi ja creats
      */
-    public void disableEditFields() {
+    void disableEditFields() {
         text_titulacio.setDisable(true);
     }
 

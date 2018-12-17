@@ -320,7 +320,6 @@ public class CtrlMainView {
         }
     }
 
-    @FXML
     /**
      * Mostra la pantalla de llista de plans d'estudi amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
      */
@@ -336,7 +335,6 @@ public class CtrlMainView {
         list_view.setItems(plans);
     }
 
-    @FXML
     /**
      *Mostra la pantalla de llista d'aules amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
      */
@@ -352,7 +350,6 @@ public class CtrlMainView {
         list_view.setItems(aules);
     }
 
-    @FXML
     /**
      * Mostra la pantalla de llista d'assignatures amb l'opció d'esborrar-ne, afegir-ne i modificar-ne
      */
@@ -368,7 +365,6 @@ public class CtrlMainView {
         list_view.setItems(assignatures);
     }
 
-    @FXML
     /**
      * Mostra la pantalla de gestió d'horaris, amb les opcions de carregar-ne un de disc, crear-ne un de nou o modificar-ne
      */
@@ -403,7 +399,7 @@ public class CtrlMainView {
 
             CtrlHorariView c = loader.getController();
             c.setMainController(this);
-            if (!c.loadHorari(GestorDisc.getInstance().llegeix(file.getAbsolutePath()))) {
+            if (!c.loadHorari(GestorDisc.getInstance().llegeix(file.getName()))) {
                 alert("El fitxer sembla no ser valid. Revisa'l.");
                 return;
             }
@@ -431,7 +427,6 @@ public class CtrlMainView {
         c.setGenerateMode();
     }
 
-    @FXML
     /**
      * Mostra la pantalla inicial
      */

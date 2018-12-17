@@ -101,8 +101,8 @@ public class CtrlAssignaturaView {
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
     private boolean editmode = false;
-    private ObservableList<String> candidates_correquisit;
-    private ObservableList<String> llista_correquisits;
+    private ObservableList<String> candidatesCorrequisit;
+    private ObservableList<String> llistaCorrequisits;
 
     /**
      * Init function
@@ -114,7 +114,7 @@ public class CtrlAssignaturaView {
         combobox_plaest.setItems(plansEstudi);
         combobox_plaest.getSelectionModel().selectFirst();
 
-        llista_correquisits = FXCollections.observableArrayList();
+        llistaCorrequisits = FXCollections.observableArrayList();
 
         ObservableList<String> tAula = FXCollections.observableArrayList();
         tAula.add("normal");
@@ -130,19 +130,19 @@ public class CtrlAssignaturaView {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 if (!plansEstudi.get(t1.intValue()).equalsIgnoreCase("")) {
-                    llista_correquisits = FXCollections.observableArrayList();
-                    list_correquisits.setItems(llista_correquisits);
+                    llistaCorrequisits = FXCollections.observableArrayList();
+                    list_correquisits.setItems(llistaCorrequisits);
                     try {
-                        candidates_correquisit = FXCollections.observableArrayList(ctrlDomini.consultarAssigPlaEstQuadri(plansEstudi.get(t1.intValue()), Integer.valueOf(text_quadri.getText())));
-                        choice_assig.setItems(candidates_correquisit);
+                        candidatesCorrequisit = FXCollections.observableArrayList(ctrlDomini.consultarAssigPlaEstQuadri(plansEstudi.get(t1.intValue()), Integer.valueOf(text_quadri.getText())));
+                        choice_assig.setItems(candidatesCorrequisit);
                     } catch (NotFoundException e) {
                         alert(e.getMessage());
                     }
                 } else {
-                    llista_correquisits = FXCollections.observableArrayList();
-                    list_correquisits.setItems(llista_correquisits);
-                    candidates_correquisit = FXCollections.observableArrayList();
-                    choice_assig.setItems(candidates_correquisit);
+                    llistaCorrequisits = FXCollections.observableArrayList();
+                    list_correquisits.setItems(llistaCorrequisits);
+                    candidatesCorrequisit = FXCollections.observableArrayList();
+                    choice_assig.setItems(candidatesCorrequisit);
                 }
             }
         });
@@ -153,19 +153,19 @@ public class CtrlAssignaturaView {
                 FormValidation val = new FormValidation();
                 if (t1 != null && val.validateNumber(t1)) {
                     if (!combobox_plaest.getSelectionModel().getSelectedItem().equalsIgnoreCase("")) {
-                        llista_correquisits = FXCollections.observableArrayList();
-                        list_correquisits.setItems(llista_correquisits);
+                        llistaCorrequisits = FXCollections.observableArrayList();
+                        list_correquisits.setItems(llistaCorrequisits);
                         try {
-                            candidates_correquisit = FXCollections.observableArrayList(ctrlDomini.consultarAssigPlaEstQuadri(plansEstudi.get(combobox_plaest.getSelectionModel().getSelectedIndex()), Integer.valueOf(t1)));
-                            choice_assig.setItems(candidates_correquisit);
+                            candidatesCorrequisit = FXCollections.observableArrayList(ctrlDomini.consultarAssigPlaEstQuadri(plansEstudi.get(combobox_plaest.getSelectionModel().getSelectedIndex()), Integer.valueOf(t1)));
+                            choice_assig.setItems(candidatesCorrequisit);
                         } catch (NotFoundException e) {
                             alert(e.getMessage());
                         }
                     } else {
-                        llista_correquisits = FXCollections.observableArrayList();
-                        list_correquisits.setItems(llista_correquisits);
-                        candidates_correquisit = FXCollections.observableArrayList();
-                        choice_assig.setItems(candidates_correquisit);
+                        llistaCorrequisits = FXCollections.observableArrayList();
+                        list_correquisits.setItems(llistaCorrequisits);
+                        candidatesCorrequisit = FXCollections.observableArrayList();
+                        choice_assig.setItems(candidatesCorrequisit);
                     }
                 }
             }
@@ -266,11 +266,11 @@ public class CtrlAssignaturaView {
 
             List<String> correquisits = (List) assignatura.get("correquisit");
             if (!correquisits.get(0).equalsIgnoreCase("")) {
-                llista_correquisits.addAll(correquisits);
+                llistaCorrequisits.addAll(correquisits);
             }
-            candidates_correquisit = observableArrayList(ctrlDomini.correquisitsPossibles(nomAssignatura));
-            choice_assig.setItems(candidates_correquisit);
-            list_correquisits.setItems(llista_correquisits);
+            candidatesCorrequisit = observableArrayList(ctrlDomini.correquisitsPossibles(nomAssignatura));
+            choice_assig.setItems(candidatesCorrequisit);
+            list_correquisits.setItems(llistaCorrequisits);
 
         } catch (NotFoundException e) {
             alert("No existeix l'assignatura");
@@ -278,7 +278,7 @@ public class CtrlAssignaturaView {
         }
     }
 
-    public void displayAssignatura(String nomAssignatura) {
+    void displayAssignatura(String nomAssignatura) {
         try {
             String json = ctrlDomini.consultarAssignatura(nomAssignatura);
             Map<String, Object> assignatura = new Gson().fromJson(json, Map.class);
@@ -355,10 +355,10 @@ public class CtrlAssignaturaView {
             List<String> correquisits = (List) assignatura.get("correquisit");
             if (correquisits != null && !correquisits.isEmpty()) {
                 if (!correquisits.get(0).equalsIgnoreCase("")) {
-                    llista_correquisits.addAll(correquisits);
+                    llistaCorrequisits.addAll(correquisits);
                 }
             }
-            list_correquisits.setItems(llista_correquisits);
+            list_correquisits.setItems(llistaCorrequisits);
 
         } catch (NotFoundException e) {
             alert("No existeix l'assignatura");
@@ -561,8 +561,8 @@ public class CtrlAssignaturaView {
     public void afegeixCorrequisit() {
         int index_correq = choice_assig.getSelectionModel().getSelectedIndex();
         if (index_correq != -1) {
-            llista_correquisits.add(choice_assig.getSelectionModel().getSelectedItem());
-            candidates_correquisit.remove(choice_assig.getSelectionModel().getSelectedItem());
+            llistaCorrequisits.add(choice_assig.getSelectionModel().getSelectedItem());
+            candidatesCorrequisit.remove(choice_assig.getSelectionModel().getSelectedItem());
             choice_assig.getSelectionModel().clearSelection();
         }
     }
@@ -571,7 +571,7 @@ public class CtrlAssignaturaView {
      * Elimina l'assignatura seleccionada com a correquisit de l'actual
      */
     public void eliminaCorrequisit() {
-        candidates_correquisit.add(list_correquisits.getSelectionModel().getSelectedItem());
-        llista_correquisits.remove(list_correquisits.getSelectionModel().getSelectedItem());
+        candidatesCorrequisit.add(list_correquisits.getSelectionModel().getSelectedItem());
+        llistaCorrequisits.remove(list_correquisits.getSelectionModel().getSelectedItem());
     }
 }
