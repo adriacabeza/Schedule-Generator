@@ -100,6 +100,7 @@ public class Horari {
                     for (int k = 0; k < horari[i][j].length; ++k) {
                         assignacio = horari[i][j][k];
                         if (assignacio == null) {
+                            HashMap<String,String> diahora;
                             //hauriem de pillar la aula en [i][j][k] i la llista de aules en [i][j] problema es es una hashmap i no podem estar segurs de pillar el mateix, hauriem d'usar un linked hash map
                             // mirar
                             // https://stackoverflow.com/questions/5237101/is-it-possible-to-get-element-from-hashmap-by-its-position
@@ -140,12 +141,13 @@ public class Horari {
     public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, int dia){
         //AQUI TONI XD XD
         //esto es lo de arriba leñe
+        return null;
     }
 
 
 
 
-    public ArrayList<String> consultaAulesLliuresPerDiaHora(Assignatura a, ArrayList<String> result, String numGrup, int dia, int hora, HashMap<String, Aula> aules){
+    public ArrayList<String> consultaAulesLliuresPerDiaHora(Assignatura a, ArrayList<String> result, String numGrup, int dia, int hora, HashMap<String, Aula> aules) throws NotFoundException {
         int grup = Integer.parseInt(numGrup);
         Grup g = null;
         try {
@@ -171,7 +173,6 @@ public class Horari {
         if (horari != null) {
             ArrayList<Aula> llistaules = new ArrayList<>();
             Aula aul = null;
-            HashMap<String,String> diahora;
             Assignacio assignacio;
             for (int i = 0; i < horari.length; ++i) {
                 for (int j = 0; j < horari[i].length; ++j) {
