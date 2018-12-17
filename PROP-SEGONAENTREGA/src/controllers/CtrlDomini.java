@@ -749,13 +749,18 @@ public class CtrlDomini {
      * @return hores disponibles
      */
     public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, String dia) {
-        return null;
+        ArrayList<String> result = null;
+        if(horari.getHorari() != null){
+            return horari.consultaHoresLliuresPerDia(nomAssig,numGrup,Integer.parseInt(dia));
+        }
+        return  result;
     }
+
+
+
     //aqui solo hay que hacer como en la poda inicial del backtracking con forward checking pero
     //solo para un dia y una hora (dandole pasadas de las restricciones adicionales)
-
     //si fijas dia y hora implica que la "clase" dura solo 1h
-
     //te fijo la hora de inicio, la duracion de las siguientes la tienes que saber tu con duracion de sesiones y darme
     //X horas seguidas disponibles
 
@@ -775,13 +780,9 @@ public class CtrlDomini {
     /********************* EXCHANGE *********************/
     //el problema es que una clase pueden ser varias horas, al estilo 3 seguidas i aqui solo estamso cambiando una
     // lo mismo que arriba, si son 3 horas seguidas, busco 3 horas seguidas vacias y hare el cambio de las 3
-
-
     //conceptualment no es una assignacio que hem de fer el swap si no una llista d'assigancions ja que en cada assignacio es nomes una hora d'un dia en una aula, llavors la
     //llista representaria les hores que ocupa aquesta assignacio.
     //tambe hem de crear la llista de aules que estan ocupades en ambdues linies, en tot moment i quines assignatures/grups hi ha en marxa en aquells moments
-
-
     //pk li pases horari com a parametre quan es una variable de la clase? (mira algorismes)
 
     /**
@@ -802,8 +803,8 @@ public class CtrlDomini {
             int hora_2 = Integer.parseInt(hora2);
             int dia_1 = Integer.parseInt(dia1);
             int dia_2 = Integer.parseInt(dia2);
-            int posaula1 = 0 ;
-            int posaula2= 0; //HE DE PENSAR COM HO PILLO
+            int posaula1 = Integer.parseInt(aula1) ;
+            int posaula2= Integer.parseInt(aula2); //HE DE PENSAR COM HO PILLO
 
             Assignacio a = schedule[hora_1][dia_1][posaula1];
             Assignacio b = schedule[hora_2][dia_2][posaula2];

@@ -124,6 +124,23 @@ public class Horari {
         }
         return result;
     }
+
+
+    /**
+     * Consulta les hores lliures d'un dia concret on una assignatura i un grup podrien encaixar
+     *
+     * @param nomAssig nom de l'assignatura
+     * @param numGrup  numero del grup o subgrup
+     * @param dia      dia de la setmana
+     * @return hores disponibles
+     * */
+
+    public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, int dia){
+        //AQUI TONI XD XD
+    }
+
+
+
     //TODO fer el docs be
     /**
      * Comprova totes les restriccions per a l'assignació d'una sessió una determinada hora, dia i aula
