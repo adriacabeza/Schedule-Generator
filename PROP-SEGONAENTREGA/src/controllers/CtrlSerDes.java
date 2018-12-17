@@ -181,7 +181,7 @@ public class CtrlSerDes {
         gd.setFilepath(dir.getAbsolutePath());
     }
 
-    public int buscaData() throws IOException {
+    public int buscaData() {
         ArrayList<String> files = gd.getLlistaArxius();
 
         int assigFound = 0;
@@ -189,19 +189,23 @@ public class CtrlSerDes {
         int aulesFound = 0;
 
         for (String f : files) {
-            if(checkAssigFile(gd.llegeix(f))) {
-                gd.setFilenameAssig(f);
-                assigFound = 1;
-            }
-            else if (checkAulesFile(gd.llegeix(f))) {
-                gd.setFilenameAules(f);
-                aulesFound = 2;
-            }
-            else if (checkPlansEstudiFile(gd.llegeix(f))) {
-                gd.setFilenamePlaEst(f);
-                plansEstudiFound = 4;
+            try {
+                if(checkAssigFile(gd.llegeix(f))) {
+                    gd.setFilenameAssig(f);
+                    assigFound = 3;
+                }
+                else if (checkAulesFile(gd.llegeix(f))) {
+                    gd.setFilenameAules(f);
+                    aulesFound = 5;
+                }
+                else if (checkPlansEstudiFile(gd.llegeix(f))) {
+                    gd.setFilenamePlaEst(f);
+                    plansEstudiFound = 7;
+                }
+            } catch (IOException e) {
+
             }
         }
-        return assigFound + aulesFound + plansEstudiFound;
+        return assigFound * aulesFound * plansEstudiFound;
     }
 }

@@ -959,6 +959,11 @@ public class CtrlDomini {
 
     public int carregaBusca() throws IOException {
         int res = cIo.buscaData();
+        if (res != 0) {
+            if (res%3 == 0) assignatures = cIo.carregaAssignatures();
+            if (res%5 == 0) aules = cIo.carregaAules();
+            if (res%7 == 0) plaEstudis = cIo.carregaPlansDEstudi();
+        }
         return res;
     }
 }

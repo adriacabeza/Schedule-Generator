@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -17,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -25,6 +27,8 @@ import model.Slot;
 
 import java.io.File;
 import java.io.IOException;
+
+import static javafx.application.Platform.exit;
 
 
 public class CtrlMainView {
@@ -76,15 +80,36 @@ public class CtrlMainView {
                 a.showAndWait();
             } else {
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-                a.setContentText("No s'ha pogut carregar les dades per defecte. Si us plau, indica la carpeta on trobar les dades");
+                Text text = new Text( "No s'ha pogut carregar les dades per defecte. Si us plau, indica la carpeta on trobar les dades");
+                text.setWrappingWidth(200);
+                a.getDialogPane().setPadding(new Insets(20,20,20,20));
+                a.getDialogPane().setContent(text);
                 a.showAndWait();
 
                 DirectoryChooser dirChooser = new DirectoryChooser();
                 dirChooser.setTitle("Escollir directori de dades");
                 dirChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
                 File dir = dirChooser.showDialog(a.getOwner());
+                if (dir == null) exit();
+
                 controladorDomini.setDataDirectory(dir);
-                int foundData = controladorDomini.carregaBusca(); //TODO error check
+                int foundData = controladorDomini.carregaBusca();
+
+                a = new Alert(Alert.AlertType.INFORMATION);
+
+                String textD = "";
+                if (foundData > 0 ) {
+                    textD = "S'ha carregat \n";
+                    if (foundData % 3 == 0) textD = textD.concat(" - assignatures \n");
+                    if (foundData % 5 == 0) textD = textD.concat(" - aules \n");
+                    if (foundData % 7 == 0) textD = textD.concat(" - plans d'estudi ");
+                }
+                else {
+                    textD = "No s'ha carregat cap fitxer";
+                }
+
+                a.setContentText(textD);
+                a.showAndWait();
             }
         } catch (IOException e) {
             //TODO afegir la opcio de carregar manualment o de tornar a intentar, mostrant a l'usuari quin arxiu no s'ha pogut carregar
