@@ -34,7 +34,7 @@ public class RestriccioNivell extends RestriccioBinaria {
             if (horari[hora][dia][i] != null) {
                 if (horari[hora][dia][i].getAssignatura().getQuadrimestre() == assig.getAssig().getQuadrimestre()) {
                     if (a.getClass() == AssignacioL.class && assig.getSessio().getClass() == Laboratori.class) {
-                        if (a.getGrup().getNum() == assig.getSub().getNum() || a.getGrup().getNum() / 10 == assig.getSub().getNum() / 10) // mateix subgrup o grup de teoria
+                        if (a.getGrup().getNum() == assig.getSub().getNum()) // mateix subgrup o grup de teoria
                             return false;
                     } else { //un dels dos es teoria
                         int auxnum = assig.getGrup().getNum() / 10;

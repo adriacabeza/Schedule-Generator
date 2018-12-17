@@ -108,11 +108,15 @@ public class Horari {
                             //un cop tenim aquesta info li pasem al horari i aquesta funcio ens diu si es bona posicio o no
                             //aul = aules.get()
                             //prodecim a mirar totes les restriccions
-                            if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
-                                diahora = new HashMap<String,String>();
-                                diahora.put("dia",Algorismes.fromInt2dia(i));
-                                diahora.put("hora", String.valueOf(Algorismes.getHora(j)));
-                                result.add(diahora);
+                            try {
+                                if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
+                                    diahora = new HashMap<String,String>();
+                                    diahora.put("dia",Algorismes.fromInt2dia(i));
+                                    diahora.put("hora", String.valueOf(Algorismes.getHora(j)));
+                                    result.add(diahora);
+                                }
+                            } catch (NotFoundException e) {
+                                e.printStackTrace();
                             }
                         }
 
@@ -137,60 +141,7 @@ public class Horari {
 
     public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, int dia){
         //AQUI TONI XD XD
-        return null;
-    }
-
-
-
-    public ArrayList<String> consultaAulesLliuresPerDiaHora(Assignatura a, ArrayList<String> result, String numGrup, int dia, int hora, HashMap<String, Aula> aules){
-        int grup = Integer.parseInt(numGrup);
-        Grup g = null;
-        try {
-            g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        }
-
-
-        int duracio = 0;
-        SessioGrup ses = null;
-        if(grup%10 ==0){
-            duracio = a.getDuracioSessionsTeo(); //clase teoria
-            ses = new SessioGrup(a,new Teoria(1,1,a.getTipusAulaTeo()),g,null,0);
-        }
-        else {
-            try {
-                duracio = a.getDuracioSessionsLab();
-                Subgrup sub = g.getSubgrups().get(grup);
-                ses = new SessioGrup(a, new Laboratori(1,1,a.getTipusAulaLab()),g,sub,0);
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (horari != null) {
-            ArrayList<Aula> llistaules = new ArrayList<>();
-            Aula aul = null;
-            HashMap<String,String> diahora;
-            Assignacio assignacio;
-            for (int i = 0; i < horari.length; ++i) {
-                for (int j = 0; j < horari[i].length; ++j) {
-                    for (int k = 0; k < horari[i][j].length; ++k) {
-                        assignacio = horari[i][j][k];
-                        if (assignacio == null) {
-                            if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
-                                result.add(aules.get(k).getKey());
-                            }
-                        }
-
-                    }
-                }
-
-            }
-
-        }
-        return result;
-
+        //esto es lo de arriba leñe
     }
 
 
@@ -204,28 +155,26 @@ public class Horari {
      * @param posaula aula que hem de comprovar
      * @return true si es pot efectuar l'assignació en el dia, hora i aula
      */
-    public boolean comprovarResSlotsBuits(SessioGrup ses, int hora, int dia, int posaula,int duracio, ArrayList<Aula> aules, Aula aula) {
+    public boolean comprovarResSlotsBuits(SessioGrup ses, int hora, int dia, int posaula,int duracio, ArrayList<Aula> aules, Aula aula) throws NotFoundException {
         if(!resLim.isAble(posaula,dia,hora,ses,duracio,aula,horari)) return false; //duracio seria la llista d'assignacions que representa la assignatura que volem canviar (mirar mes avall)
+        //mirem si el que volem posar es forbidden
+        for (RestriccioAulaDia r : resAula){
+            if(!r.isAble2(null,null,aula,null,0,dia,0)) return false;
+        }
+        for (RestriccioAssigMatiTarda r : resMatiTarda){ //fem la crida amb la ultima hora ja que si aquesta entra en el interval de tardes no hem de poder afegirla
+            if(!r.isAble(ses.getAssig().getNom(),aula,dia,hora+duracio)) return false;
+        }
         //Hem vist que en la duracio que te pot estar(no colisiona, ara hem de mirar que en tota la duracio d'aquest no hi hagi problemes)
         for (int i = 0; i<duracio; ++i){
             if(!resTeo.isable(horari,hora,dia,ses,aules)) return false;
             if(!resSub.isable(horari,hora,dia,ses,aules)) return false;
             if(!resCapAul.isAble(0,dia,hora,ses,duracio,aula,horari)) return false;
-            //if(!resCorr.isable()) return false;
-            //if(!resNiv.isable()) return false;
-            //if(!resAul.isable()) return false;
-            //segurament necessitarem mes parametres per aplicar aquests, ja mirarem com ho fem
-
-
-            /*for (RestriccioAulaDia r : resAulDia){
-                if(!r.isable()) return false;
-            }*/
-            /*for (RestriccioAulaHora r : resAulHora){
-                if(!r.isable()) return false;
-            }*/
-            /*for (RestriccioAssigMAtiTarda r : resMatitarda){
-                if(!r.isable()) return false;
-            }*/
+            if(!resCorr.isable(horari,hora,dia,ses,aules)) return false;
+            if(!resNiv.isable(horari,hora,dia,ses,aules)) return false;
+            if(!resAul.isAble(0,dia,hora,ses,duracio,aula,horari)) return false;
+            for (RestriccioAulaHora r : resAulaHora){
+                if(!r.isAble(ses.getAssig().getNom(),aula,dia,hora)) return false;
+            }
         }
         return true;
         //TODO: pensar com fer-la
