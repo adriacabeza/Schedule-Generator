@@ -177,8 +177,13 @@ public class Horari {
             for (int i = 0; i < horari.length; ++i) {
                 for (int j = 0; j < horari[i].length; ++j) {
                     for (int k = 0; k < horari[i][j].length; ++k) {
-                        assignacio = horari[i][j][k];
-                        if (assignacio == null) {
+                        boolean b = true;
+
+                        for(int l = 0; l < duracio && b; ++l){
+                            b = horari[i+l][j][k] == null;
+                        }
+
+                        if (b) {
                             if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
                                 result.add(aules.get(k).getKey());
                             }
