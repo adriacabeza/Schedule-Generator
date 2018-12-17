@@ -8,6 +8,8 @@ import controllers.CtrlDomini;
 import controllers.CtrlSerDes;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class DriverCtrlDomini {
@@ -38,8 +40,9 @@ public class DriverCtrlDomini {
                 case 19:
                     try {
                             c.carrega();
-                            //h = c.generaHorari();
-                            //CtrlSerDes.getInstance().guardaHorari(h , "horariexemple.json");
+                        ArrayList<HashMap<String, String>> prova = new ArrayList();
+                            h = c.generaHorari(prova, prova, prova, false, false);
+                            CtrlSerDes.getInstance().guardaHorari(h , "horariexemple.json");
                             System.out.println("Trobaras l'horari generat a horariexemple.json");
                         } catch (IOException e) {
                             System.out.println("Error al guardar horari");
