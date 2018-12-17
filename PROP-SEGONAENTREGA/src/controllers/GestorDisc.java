@@ -73,19 +73,19 @@ public class GestorDisc {
         return new String(encoded, Charset.defaultCharset());
     }
 
-    public void setFilepath(String filepath) {
+    void setFilepath(String filepath) {
         this.filepath = filepath;
     }
 
-    public void setFilenameAssig(String filenameAssig) {
+    void setFilenameAssig(String filenameAssig) {
         this.filenameAssig = filenameAssig;
     }
 
-    public void setFilenamePlaEst(String filenamePlaEst) {
+    void setFilenamePlaEst(String filenamePlaEst) {
         this.filenamePlaEst = filenamePlaEst;
     }
 
-    public void setFilenameAules(String filenameAules) {
+    void setFilenameAules(String filenameAules) {
         this.filenameAules = filenameAules;
     }
 
@@ -93,7 +93,7 @@ public class GestorDisc {
         this.filenameHorari = filenameHorari;
     }
 
-    public void setDefaults() {
+    void setDefaults() {
         new File (defaultFolder).mkdirs();
 
         filepath = defaultFolder;
@@ -102,7 +102,7 @@ public class GestorDisc {
         filenamePlaEst = defaultPlaEstFN;
     }
 
-    public ArrayList<String> getLlistaArxius() {
+    ArrayList<String> getLlistaArxius() {
         ArrayList<String> res = new ArrayList<>();
 
         File[] files = new File(this.filepath).listFiles();
