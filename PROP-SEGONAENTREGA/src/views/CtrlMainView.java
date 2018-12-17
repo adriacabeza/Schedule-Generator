@@ -27,6 +27,7 @@ import model.Slot;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 import static javafx.application.Platform.exit;
 
@@ -84,13 +85,21 @@ public class CtrlMainView {
                 text.setWrappingWidth(200);
                 a.getDialogPane().setPadding(new Insets(20,20,20,20));
                 a.getDialogPane().setContent(text);
-                a.showAndWait();
+                Optional<ButtonType> result = a.showAndWait();
+
+                if (result.get() == ButtonType.CANCEL) {
+                    exit();
+                    return;
+                }
 
                 DirectoryChooser dirChooser = new DirectoryChooser();
                 dirChooser.setTitle("Escollir directori de dades");
                 dirChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
                 File dir = dirChooser.showDialog(a.getOwner());
-                if (dir == null) exit();
+                if (dir == null) {
+                    exit();
+                    return;
+                }
 
                 controladorDomini.setDataDirectory(dir);
                 int foundData = controladorDomini.carregaBusca();
@@ -105,18 +114,14 @@ public class CtrlMainView {
                     if (foundData % 7 == 0) textD = textD.concat(" - plans d'estudi ");
                 }
                 else {
-                    textD = "No s'ha carregat cap fitxer";
+                    textD = "No s'ha carregat cap fitxer. \nEs fara servir el directori 'data'";
                 }
 
                 a.setContentText(textD);
                 a.showAndWait();
             }
         } catch (IOException e) {
-            //TODO afegir la opcio de carregar manualment o de tornar a intentar, mostrant a l'usuari quin arxiu no s'ha pogut carregar
-            Alert a = new Alert(Alert.AlertType.WARNING);
-            a.setTitle("Error al carregar el fitxer");
-            a.setContentText("No s'ha trobat el fitxer");
-            a.show();
+
         }
 
         delete_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -184,6 +189,8 @@ public class CtrlMainView {
                     a.setTitle("Pla no obsolet");
                     a.setContentText("No es pot esborrar un plà no obsolet");
                     a.show();
+                } catch (IOException e) {
+                    alert(e.getMessage());
                 }
                 break;
             case 2:
@@ -193,11 +200,17 @@ public class CtrlMainView {
                     Alert a = new Alert(Alert.AlertType.WARNING);
                     a.setTitle("Aula no trobada");
                     a.setContentText("Error intern");
+                } catch (IOException e) {
+                    alert(e.getMessage());
                 }
                 break;
             case 3:
                 try {
-                    controladorDomini.esborrarAssignatura(item);
+                    try {
+                        controladorDomini.esborrarAssignatura(item);
+                    } catch (IOException e) {
+                        alert(e.getMessage());
+                    }
                 } catch (NotFoundException e) {
                     Alert a = new Alert(Alert.AlertType.WARNING);
                     a.setTitle("Assignatura no trobada");

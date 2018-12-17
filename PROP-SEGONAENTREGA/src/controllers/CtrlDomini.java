@@ -114,11 +114,12 @@ public class CtrlDomini {
      * @param any Any d'inici del nou pla d'estudis
      * @throws RestriccioIntegritatException si ja existia aquell pla d'estudis
      */
-    public void crearPlaEstudis(String nom, int any, String descripcio) throws RestriccioIntegritatException {
+    public void crearPlaEstudis(String nom, int any, String descripcio) throws RestriccioIntegritatException, IOException {
         if (plaEstudis.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix un pla d'estudis amb nom " + nom.toUpperCase());
         }
         plaEstudis.put(nom, new PlaEstudis(nom, any, descripcio));
+        cIo.guardaPlaDEstudis(plaEstudis);
     }
 
     /**
@@ -209,7 +210,7 @@ public class CtrlDomini {
      * @throws NotFoundException             si no existeix el pla d'estudis especificat
      * @throws RestriccioIntegritatException si el pla d'estudis no està obsolet
      */
-    public void esborrarPlaEstudis(String nom) throws NotFoundException, RestriccioIntegritatException {
+    public void esborrarPlaEstudis(String nom) throws NotFoundException, RestriccioIntegritatException, IOException {
         if (!plaEstudis.containsKey(nom)) {
             throw new NotFoundException("No s'ha trobat el pla d'estudis " + nom.toUpperCase());
         }
@@ -217,6 +218,7 @@ public class CtrlDomini {
             throw new RestriccioIntegritatException("No es pot esborrar un pla d'estudis no obsolet");
         }
         plaEstudis.remove(nom);
+        cIo.guardaPlaDEstudis(plaEstudis);
     }
 
     /**
@@ -226,11 +228,12 @@ public class CtrlDomini {
      * @param obsolet cert si volem marcar-lo com a obsolet, fals altrament
      * @throws NotFoundException si no es troba el pla d'estudis especificat
      */
-    public void setObsolet(String nom, boolean obsolet) throws NotFoundException {
+    public void setObsolet(String nom, boolean obsolet) throws NotFoundException, IOException {
         if (!plaEstudis.containsKey(nom)) {
             throw new NotFoundException("No s'ha trobat el pla d'estudis " + nom.toUpperCase());
         }
         plaEstudis.get(nom).setObsolet(obsolet);
+        cIo.guardaPlaDEstudis(plaEstudis);
     }
 
     /**
@@ -255,7 +258,7 @@ public class CtrlDomini {
      * @param nomP Nom del pla d'estudis
      * @param nomA Nom de l'assignatura
      */
-    public void afegirAssignaturaPla(String nomP, String nomA) throws NotFoundException, RestriccioIntegritatException {
+    public void afegirAssignaturaPla(String nomP, String nomA) throws NotFoundException, RestriccioIntegritatException, IOException {
         if (!plaEstudis.containsKey(nomP)) {
             throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
         }
@@ -269,6 +272,7 @@ public class CtrlDomini {
             }
         }
         plaEstudis.get(nomP).afegirAssignatura(nomA);
+        cIo.guardaPlaDEstudis(plaEstudis);
     }
 
     /**
@@ -277,7 +281,7 @@ public class CtrlDomini {
      * @param nomP Nom del pla d'estudis
      * @param nomA Nom de l'assignatura
      */
-    public void esborrarAssignaturaPla(String nomP, String nomA) throws NotFoundException {
+    public void esborrarAssignaturaPla(String nomP, String nomA) throws NotFoundException, IOException {
         if (!plaEstudis.containsKey(nomP)) {
             throw new NotFoundException("No existeix un pla d'estudis amb nom " + nomP.toUpperCase());
         }
@@ -292,6 +296,9 @@ public class CtrlDomini {
         }
         //esborro l'assignatura del pla
         plaEstudis.get(nomP).esborrarAssignatura(nomA);
+        cIo.guardaPlaDEstudis(plaEstudis);
+        cIo.guardaAssignatures(assignatures);
+
     }
 
     /**
@@ -353,11 +360,12 @@ public class CtrlDomini {
      * @param abr          Abreviació del nom de l'assignatura
      * @throws RestriccioIntegritatException si ja existia una assignatura identificada pel mateix nom
      */
-    public void crearAssignatura(String nom, int quadrimestre, String descripcio, String abr) throws RestriccioIntegritatException {
+    public void crearAssignatura(String nom, int quadrimestre, String descripcio, String abr) throws RestriccioIntegritatException, IOException {
         if (assignatures.containsKey(nom)) {
             throw new RestriccioIntegritatException("Ja existeix una assignatura amb nom " + nom.toUpperCase());
         }
         assignatures.put(nom, new Assignatura(nom, abr, descripcio, quadrimestre));
+        cIo.guardaAssignatures(assignatures);
     }
 
     /**
@@ -396,7 +404,7 @@ public class CtrlDomini {
      * @param nomA Nom de l'assignatura a borrar
      * @throws NotFoundException si no existeix l'assignatura amb el nom especificat
      */
-    public void esborrarAssignatura(String nomA) throws NotFoundException {
+    public void esborrarAssignatura(String nomA) throws NotFoundException, IOException {
         if (!assignatures.containsKey(nomA)) {
             throw new NotFoundException("No es pot esborrar l'assignatura " + nomA.toUpperCase() + " perque no existeix");
         }
@@ -412,6 +420,8 @@ public class CtrlDomini {
             if (a.esCorrequisit(nomA)) a.esborraCorrequisit(nomA);
         }
         assignatures.remove(nomA);
+        cIo.guardaAssignatures(assignatures);
+        cIo.guardaPlaDEstudis(plaEstudis);
     }
 
     /**
@@ -422,11 +432,12 @@ public class CtrlDomini {
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      * @throws NotFoundException si no existeix l'assignatura amb el nom especificat
      */
-    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions, String tAula) throws NotFoundException {
+    public void modificaInformacioTeoria(String nom_assig, int duracio, int num_sessions, String tAula) throws NotFoundException, IOException {
         if (!assignatures.containsKey(nom_assig)) {
             throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig);
         }
         assignatures.get(nom_assig).setTeoria(num_sessions, duracio, Aula.stringToTipusAula(tAula));
+        cIo.guardaAssignatures(assignatures);
     }
 
     /**
@@ -437,11 +448,12 @@ public class CtrlDomini {
      * @param num_sessions Numero de sessions setmanals de l'assignatura
      * @throws NotFoundException si no existeix l'assignatura amb el nom especificat
      */
-    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions, String tAula) throws NotFoundException {
+    public void modificaInformacioLaboratori(String nom_assig, int duracio, int num_sessions, String tAula) throws NotFoundException, IOException {
         if (!assignatures.containsKey(nom_assig)) {
             throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig);
         }
         assignatures.get(nom_assig).setLaboratori(num_sessions, duracio, Aula.stringToTipusAula(tAula));
+        cIo.guardaAssignatures(assignatures);
     }
 
     /**
@@ -453,11 +465,12 @@ public class CtrlDomini {
      * @param sgrup_num capacitat dels subgrups
      * @throws NotFoundException si no existeix l'assignatura amb el nom especificat
      */
-    public void modificarGrups(String nom_assig, int num_grups, int grup_cap, int sgrup_num) throws NotFoundException {
+    public void modificarGrups(String nom_assig, int num_grups, int grup_cap, int sgrup_num) throws NotFoundException, IOException {
         if (!assignatures.containsKey(nom_assig)) {
             throw new NotFoundException("No existeix l'assignatura amb nom " + nom_assig.toUpperCase());
         }
         assignatures.get(nom_assig).modificarGrups(num_grups, grup_cap, sgrup_num);
+        cIo.guardaAssignatures(assignatures);
     }
 
     /**
@@ -468,7 +481,7 @@ public class CtrlDomini {
      * @throws NotFoundException             si no existeix una de les dues assignatures
      * @throws RestriccioIntegritatException si les dues assignatures es diuen igual, son del mateix quadrimestre o ja eren correquists
      */
-    public void afegeixCorrequisit(String nom_a, String nom_b) throws NotFoundException, RestriccioIntegritatException {
+    public void afegeixCorrequisit(String nom_a, String nom_b) throws NotFoundException, RestriccioIntegritatException, IOException {
 
         if (!assignatures.containsKey(nom_a)) {
             throw new NotFoundException("No existeix l'assignatura " + nom_a.toUpperCase());
@@ -479,6 +492,7 @@ public class CtrlDomini {
 
         assignatures.get(nom_a).afegeixCorrequisit(assignatures.get(nom_b));
         assignatures.get(nom_b).afegeixCorrequisit(assignatures.get(nom_a));
+        cIo.guardaAssignatures(assignatures);
     }
 
     /**
@@ -488,7 +502,7 @@ public class CtrlDomini {
      * @param nom_b nom de l'altre assignatura
      * @throws NotFoundException si no existeix alguna de les dues assignatures
      */
-    public void esborraCorrequisit(String nom_a, String nom_b) throws NotFoundException {
+    public void esborraCorrequisit(String nom_a, String nom_b) throws NotFoundException, IOException {
         if (!assignatures.containsKey(nom_a)) {
             throw new NotFoundException("No existeix l'assignatura " + nom_a.toUpperCase());
         }
@@ -497,6 +511,7 @@ public class CtrlDomini {
         }
         assignatures.get(nom_a).esborraCorrequisit(nom_b);
         assignatures.get(nom_b).esborraCorrequisit(nom_a);
+        cIo.guardaAssignatures(assignatures);
     }
 
     /**
@@ -509,7 +524,7 @@ public class CtrlDomini {
      * @param tipusAula tipus d'aula, pot ser pcs, normal o laboratori
      * @throws RestriccioIntegritatException quan s'intenta crear una aula ja existent
      */
-    public void creaAula(String edifici, int planta, int aula, int capacitat, String tipusAula) throws RestriccioIntegritatException {
+    public void creaAula(String edifici, int planta, int aula, int capacitat, String tipusAula) throws RestriccioIntegritatException, IOException {
         Aula.TipusAula ta = Aula.stringToTipusAula(tipusAula);
         String nomAula = Aula.crearkey(edifici, planta, aula);
 
@@ -518,6 +533,7 @@ public class CtrlDomini {
         } else {
             throw new RestriccioIntegritatException("Ja existeix una aula amb nom d'aula " + nomAula.toUpperCase());
         }
+        cIo.guardaAules(aules);
     }
 
     /**
@@ -526,12 +542,13 @@ public class CtrlDomini {
      * @param nomAula nom de l'aula que es vol esborrar
      * @throws NotFoundException quan s'intenta borrar una aula inexistent
      */
-    public void esborrarAula(String nomAula) throws NotFoundException {
+    public void esborrarAula(String nomAula) throws NotFoundException, IOException {
         if (aules.containsKey(nomAula)) {
             aules.remove(nomAula);
         } else {
             throw new NotFoundException("No es pot esborrar l'aula " + nomAula + " perque no existeix");
         }
+        cIo.guardaAules(aules);
     }
 
     /**
@@ -542,7 +559,7 @@ public class CtrlDomini {
      * @param tipusAula nou tipus d'aula per l'aula
      * @throws NotFoundException quan es vol modificar una aula inexistent
      */
-    public void modificarAula(String key, int capacitat, String tipusAula) throws NotFoundException {
+    public void modificarAula(String key, int capacitat, String tipusAula) throws NotFoundException, IOException {
         TipusAula ta = Aula.stringToTipusAula(tipusAula);
 
         if (aules.containsKey(key)) {
@@ -551,6 +568,7 @@ public class CtrlDomini {
         } else {
             throw new NotFoundException("No es pot modificar l'aula " + key + " perque no existeix");
         }
+        cIo.guardaAules(aules);
     }
 
     /**
@@ -953,6 +971,8 @@ public class CtrlDomini {
         }
     }
 
+    /*********************************************************/
+
     public void setDataDirectory(File dir) {
         cIo.setDataDirectory(dir);
     }
@@ -963,6 +983,9 @@ public class CtrlDomini {
             if (res%3 == 0) assignatures = cIo.carregaAssignatures();
             if (res%5 == 0) aules = cIo.carregaAules();
             if (res%7 == 0) plaEstudis = cIo.carregaPlansDEstudi();
+        }
+        else {
+            cIo.setDefaultPaths();
         }
         return res;
     }

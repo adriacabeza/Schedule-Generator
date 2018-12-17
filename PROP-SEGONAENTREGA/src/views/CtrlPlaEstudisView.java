@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.FormValidation;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -210,7 +211,7 @@ public class CtrlPlaEstudisView {
             }
 
             exit();
-        } catch (NotFoundException | RestriccioIntegritatException e) {
+        } catch (NotFoundException | RestriccioIntegritatException |IOException e) {
             alert(e.getMessage());
         }
     }
@@ -221,7 +222,7 @@ public class CtrlPlaEstudisView {
      * @throws NotFoundException si no existeix el pla d'estudis
      * @throws RestriccioIntegritatException si l'assignatura ja esta afegida al pla
      */
-    private void afegeix_assignatures_pla(String titulacio) throws NotFoundException, RestriccioIntegritatException {
+    private void afegeix_assignatures_pla(String titulacio) throws NotFoundException, RestriccioIntegritatException, IOException {
         for (int i = 0; i < assignatures.size(); i++) {
             ctrlDomini.afegirAssignaturaPla(titulacio, assignatures.get(i));
         }

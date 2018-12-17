@@ -93,22 +93,22 @@ public class CtrlSerDes {
         gd.escriu(h, filepath);
     }
 
-    public void guardaAssignatures(HashMap<String, Assignatura> assignatures, String filepath) throws IOException {
+    public void guardaAssignatures(HashMap<String, Assignatura> assignatures) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(assignatures);
-        gd.escriu(json, filepath);
+        gd.escriu(json, "assignatures");
     }
 
-    public void guardaAules(HashMap<String, Aula> aules, String filepath) throws IOException {
+    public void guardaAules(HashMap<String, Aula> aules) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(aules);
-        gd.escriu(json, filepath);
+        gd.escriu(json, "aules");
     }
 
-    public void guardaPlaDEstudis(HashMap<String, PlaEstudis> ps, String filepath) throws IOException {
+    public void guardaPlaDEstudis(HashMap<String, PlaEstudis> ps) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(ps);
-        gd.escriu(json, filepath);
+        gd.escriu(json, "plansestudi");
     }
 
     public boolean comprovaDefaultFilepath() {
@@ -207,5 +207,9 @@ public class CtrlSerDes {
             }
         }
         return assigFound * aulesFound * plansEstudiFound;
+    }
+
+    public void setDefaultPaths() {
+        gd.setDefaults();
     }
 }

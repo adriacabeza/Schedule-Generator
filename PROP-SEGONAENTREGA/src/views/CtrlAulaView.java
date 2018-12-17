@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import utils.FormValidation;
 
+import java.io.IOException;
 import java.util.Map;
 
 public class CtrlAulaView {
@@ -135,7 +136,7 @@ public class CtrlAulaView {
             if (editmode) ctrlDomini.modificarAula(key, capacitat, tipusAula);
             else ctrlDomini.creaAula(edifici, planta, aula, capacitat, tipusAula);
             exit();
-        } catch (NotFoundException | RestriccioIntegritatException e) {
+        } catch (NotFoundException | IOException | RestriccioIntegritatException e) {
             alert(e.getMessage());
         }
     }

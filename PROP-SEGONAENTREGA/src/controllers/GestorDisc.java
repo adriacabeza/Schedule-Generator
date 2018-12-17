@@ -94,6 +94,8 @@ public class GestorDisc {
     }
 
     public void setDefaults() {
+        new File (defaultFolder).mkdirs();
+
         filepath = defaultFolder;
         filenameAssig = defaultAssigFN;
         filenameAules = defaultAulesFN;

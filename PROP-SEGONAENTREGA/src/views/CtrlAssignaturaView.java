@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import utils.FormValidation;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -520,7 +521,7 @@ public class CtrlAssignaturaView {
             //for all correquisits, afegirlos
             exit();
 
-        } catch (RestriccioIntegritatException | NotFoundException e) {
+        } catch (RestriccioIntegritatException | IOException | NotFoundException e) {
             alert(e.getMessage());
         }
     }
