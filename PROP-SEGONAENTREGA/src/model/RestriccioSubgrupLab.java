@@ -37,7 +37,7 @@ public class RestriccioSubgrupLab extends RestriccioBinaria {
                     if (a.getAssignatura().getNom() == assig.getAssig().getNom()) {
                         if (a.getGrup().getNum() == assig.getSub().getNum())
                             return false;                           //solapament de laboratoris
-                        if (a.getGrup().getNum() / 10 == grup)
+                        if (a.getGrup().getNum() % 10 == 0 && a.getGrup().getNum() / 10 == grup)
                             return false;                           //solapament teoria-laboratori
                     }
                 }
