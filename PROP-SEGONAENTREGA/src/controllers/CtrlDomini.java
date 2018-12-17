@@ -155,19 +155,12 @@ public class CtrlDomini {
     public String generaHorari(ArrayList<HashMap<String, String>> rmt, ArrayList<HashMap<String, String>> rdah, ArrayList<HashMap<String, String>> rad, boolean rc, boolean rgt) {
         String json = null;
 
-        /*
         for(HashMap<String, String> res1 : rmt){
-            String assignatura = rmt.get("assignatura");
-            //boolean
-             horari.afegeixRMT(assignatura, matitarda);
+            String assignatura = res1.get("assignatura");
+             horari.afegirRMT(assignatura,  Boolean.parseBoolean( res1.get("matitarda")) );
         }
-        loop:
-            String assignatura = rmt.get("assignatura");
-            String matitarda = rmt.get("matitarda"); //passar a boolean
-                                                       //but mati esta representat com mati? I mean si faig rmt.get("matitarda").equals("mati") isok?
-            horari.afegeixRMT(assignatura, matitarda);
-        end;
 
+        /*
         horari.activaRestriccio...(bool)
         horari.activaRestriccio2...(bool)
 
@@ -741,66 +734,8 @@ public class CtrlDomini {
      mirar el generar horari mes adalt, uso la mateixa estructura i aixi ens estalviem la funcio consultar hores lliures per dia
     */
     public ArrayList<HashMap<String,String>> consultaDiesLliures(String nomAssig, String numGrup) {
-
         Assignatura a = assignatures.get(nomAssig);
-        int grup = Integer.parseInt(numGrup);
-        Grup g = null;
-        try {
-            g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Assignacio[][][] schedule = horari.getHorari();
-        int duracio = 0;
-        SessioGrup ses = null;
-        if(grup%10 ==0){
-            duracio = a.getDuracioSessionsTeo(); //clase teoria
-            ses = new SessioGrup(a,new Teoria(1,1,a.getTipusAulaTeo()),g,null,0);
-        }
-        else {
-            try {
-                duracio = a.getDuracioSessionsLab();
-                Subgrup sub = g.getSubgrups().get(grup);
-                ses = new SessioGrup(a, new Laboratori(1,1,a.getTipusAulaLab()),g,sub,0);
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-        ArrayList<HashMap<String,String>> result = new ArrayList<>();
-
-        if (schedule != null) {
-            ArrayList<Aula> llistaules = new ArrayList<>();
-            Aula aul = null;
-            HashMap<String,String> diahora;
-            Assignacio assignacio;
-            for (int i = 0; i < schedule.length; ++i) {
-                for (int j = 0; j < schedule[i].length; ++j) {
-                    for (int k = 0; k < schedule[i][j].length; ++k) {
-                        assignacio = schedule[i][j][k];
-                        if (assignacio == null) {
-                            //hauriem de pillar la aula en [i][j][k] i la llista de aules en [i][j] problema es es una hashmap i no podem estar segurs de pillar el mateix, hauriem d'usar un linked hash map
-                            // mirar
-                            // https://stackoverflow.com/questions/5237101/is-it-possible-to-get-element-from-hashmap-by-its-position
-                            //un cop tenim aquesta info li pasem al horari i aquesta funcio ens diu si es bona posicio o no
-                            //aul = aules.get()
-                            //prodecim a mirar totes les restriccions
-                            if(horari.comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
-                                diahora = new HashMap<String,String>();
-                                diahora.put("dia",Algorismes.fromInt2dia(i));
-                                diahora.put("hora", String.valueOf(Algorismes.getHora(j)));
-                                result.add(diahora);
-                            }
-                        }
-
-                    }
-                }
-
-            }
-
-        }
-        return result;
+        return horari.consultaDiesLliures(a, numGrup, aules);
 
     }
     //Este no es igual que el anterior solo que buscando solo en un dia?
