@@ -732,7 +732,7 @@ public class CtrlDomini {
     */
     public ArrayList<HashMap<String,String>> consultaDiesLliures(String nomAssig, String numGrup) {
         Assignatura a = assignatures.get(nomAssig);
-        return horari.consultaDiesLliures(a, numGrup, aules);
+        return horari.consultaDiesLliures(a, numGrup, (ArrayList) aules.values());
 
     }
 

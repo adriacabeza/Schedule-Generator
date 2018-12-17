@@ -81,7 +81,7 @@ public class Horari {
 
 
     /********************* SLOTS BUITS *********************/
-    public ArrayList<HashMap<String,String>> consultaDiesLliures (Assignatura a, String numGrup, HashMap<String, Aula> aules){
+    public ArrayList<HashMap<String,String>> consultaDiesLliures (Assignatura a, String numGrup, ArrayList<Aula> aules){
         int grup = Integer.parseInt(numGrup);
         Grup g = null;
         try {
@@ -112,30 +112,23 @@ public class Horari {
             ArrayList<Aula> llistaules = new ArrayList<>();
             Aula aul = null;
             Assignacio assignacio;
+            boolean trobat = false;         //nomes mirem dies i hores, quan trobem una aula ja sabem que pot haber una solucio
             for (int i = 0; i < horari.length; ++i) {
                 for (int j = 0; j < horari[i].length; ++j) {
-                    for (int k = 0; k < horari[i][j].length; ++k) {
-                        assignacio = horari[i][j][k];
-                        if (assignacio == null) {
-                            HashMap<String,String> diahora;
-                            //hauriem de pillar la aula en [i][j][k] i la llista de aules en [i][j] problema es es una hashmap i no podem estar segurs de pillar el mateix, hauriem d'usar un linked hash map
-                            // mirar
-                            // https://stackoverflow.com/questions/5237101/is-it-possible-to-get-element-from-hashmap-by-its-position
-                            //un cop tenim aquesta info li pasem al horari i aquesta funcio ens diu si es bona posicio o no
-                            //aul = aules.get()
-                            //prodecim a mirar totes les restriccions
-                            try {
-                                if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
-                                    diahora = new HashMap<String,String>();
-                                    diahora.put("dia",Algorismes.fromInt2dia(i));
-                                    diahora.put("hora", String.valueOf(Algorismes.getHora(j)));
-                                    result.add(diahora);
-                                }
-                            } catch (NotFoundException e) {
-                                e.printStackTrace();
+                    for (int k = 0; k < horari[i][j].length && !trobat; ++k) {
+                        HashMap<String,String> diahora;
+                        aul = aules.get(k);
+                        try {
+                            if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
+                                diahora = new HashMap<String,String>();
+                                diahora.put("dia",Algorismes.fromInt2dia(i));
+                                diahora.put("hora", String.valueOf(Algorismes.getHora(j)));
+                                result.add(diahora);
+                                trobat = true;
                             }
+                        } catch (NotFoundException e) {
+                            e.printStackTrace();
                         }
-
                     }
                 }
 
@@ -191,8 +184,9 @@ public class Horari {
             ArrayList<Aula> llistaules = new ArrayList<>();
             Aula aul = null;
             for (int k = 0; k < horari[hora][dia].length; ++k) {
+                aul = aules.get(k);
                 if(comprovarResSlotsBuits(ses,hora,dia,k,duracio,llistaules,aul)) {
-                    result.add(aules.get(k).getKey());
+                    result.add(aul.getKey());
                 }
 
             }
