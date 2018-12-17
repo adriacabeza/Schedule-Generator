@@ -135,11 +135,11 @@ public class Horari {
      */
     public boolean comprovarResSlotsBuits(SessioGrup ses, int hora, int dia, int posaula,int duracio, ArrayList<Aula> aules, Aula aula) {
         if(!resLim.isAble(posaula,dia,hora,ses,duracio,aula,horari)) return false; //duracio seria la llista d'assignacions que representa la assignatura que volem canviar (mirar mes avall)
-        //Hem vist que en la duracio que te pot estar(no colisiona, ara hem de mirar que en tota la duracio d'aquest)
+        //Hem vist que en la duracio que te pot estar(no colisiona, ara hem de mirar que en tota la duracio d'aquest no hi hagi problemes)
         for (int i = 0; i<duracio; ++i){
             if(!resTeo.isable(horari,hora,dia,ses,aules)) return false;
             if(!resSub.isable(horari,hora,dia,ses,aules)) return false;
-            //if(!resCapAul.isable()) return false;
+            if(!resCapAul.isAble(0,dia,hora,ses,duracio,aula,horari)) return false;
             //if(!resCorr.isable()) return false;
             //if(!resNiv.isable()) return false;
             //if(!resAul.isable()) return false;
