@@ -5,7 +5,7 @@ package model;
 
 import exceptions.NotFoundException;
 
-import java.lang.reflect.Array;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -138,6 +138,88 @@ public class Horari {
         horari = algoritme.getHorari();
         return true;
     }
+
+
+    /**
+     * Consulta l'aula en que una assignatura, un grup, data i hora tenen una assignacio
+     *
+     * @param result resultat
+     * @param nomAssig nom de l'assignatura
+     * @param numGrup  numero de grup o subgrup
+     * @param ndia      dia de la setmana
+     * @param nhora     hora
+     * @return aula de l'assignacio
+     */
+
+    public ArrayList<String> consultaAulaPerHoresDiaAssignaturaGrup(HashMap<String, Aula> aules,ArrayList<String> result,  String nomAssig, String numGrup, int nhora, int ndia) {
+        String subject;
+        String group;
+        Assignacio assignacio;
+        for (int i = 0; i < horari[nhora][ndia].length; ++i) {
+            assignacio = horari[nhora][ndia][i];
+            subject = assignacio.getAssignatura().getNom();
+            group = String.valueOf(assignacio.getGrup().getNum());
+            if (subject == nomAssig && numGrup == group) {
+                result.add(aules.get(i).toString());
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Consulta les hores que una assignatura i un grup tenen classes assignades un dia en concret
+     *
+     * @param result resultat
+     * @param nomAssig nom de l'assignatura
+     * @param numGrup  numero del grup o subgrup
+     * @param numdia      dia de la setmana
+     * @return llista d'hores assignades al grup aquell dia
+     */
+
+
+    public ArrayList<String> consultaHoresPerDiaAssignaturaGrup(ArrayList<String> result, String nomAssig, String numGrup, int numdia){
+        Assignacio assignacio;
+        for (int j = 0; j < horari[numdia].length; ++j) {
+            for (int k = 0; k < horari[numdia][j].length; ++k) {
+                assignacio = horari[numdia][j][k];
+                if (String.valueOf(assignacio.getGrup().getNum()) == numGrup && assignacio.getAssignatura().getNom() == nomAssig) {
+                    result.add(String.valueOf(k));
+                }
+
+            }
+        }
+        return result;
+    }
+
+
+
+    /**
+     * Consulta els dies que una assignatura i un grup tenen classes assignades
+     *
+     * @param result resultat
+     * @param nomAssig nom de l'assignatura
+     * @param numGrup  numero del grup o subgrup
+     * @return dies que el grup de l'assignatura te assignacions
+     */
+
+    public ArrayList<String> consultaDiesPerAssignaturaGrup(ArrayList<String> result , String nomAssig, String numGrup) {
+        Assignacio assignacio;
+        for (int i = 0; i < horari.length; ++i) {
+            for (int j = 0; j < horari[i].length; ++j) {
+                for (int k = 0; k < horari[i][j].length; ++k) {
+                    assignacio = horari[i][j][k];
+                    if (String.valueOf(assignacio.getGrup().getNum()) == numGrup && assignacio.getAssignatura().getNom() == nomAssig) {
+                        result.add(Algorismes.fromInt2dia(i));
+                    }
+
+                }
+            }
+
+        }
+        return result;
+    }
+
+
 }
 
 
