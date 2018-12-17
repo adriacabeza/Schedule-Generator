@@ -141,6 +141,7 @@ public class Horari {
 
     public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, int dia){
         //AQUI TONI XD XD
+        //esto es lo de arriba leñe
     }
 
 
@@ -156,6 +157,13 @@ public class Horari {
      */
     public boolean comprovarResSlotsBuits(SessioGrup ses, int hora, int dia, int posaula,int duracio, ArrayList<Aula> aules, Aula aula) throws NotFoundException {
         if(!resLim.isAble(posaula,dia,hora,ses,duracio,aula,horari)) return false; //duracio seria la llista d'assignacions que representa la assignatura que volem canviar (mirar mes avall)
+        //mirem si el que volem posar es forbidden
+        for (RestriccioAulaDia r : resAula){
+            if(!r.isAble2(null,null,aula,null,0,dia,0)) return false;
+        }
+        for (RestriccioAssigMatiTarda r : resMatiTarda){ //fem la crida amb la ultima hora ja que si aquesta entra en el interval de tardes no hem de poder afegirla
+            if(!r.isAble(ses.getAssig().getNom(),aula,dia,hora+duracio)) return false;
+        }
         //Hem vist que en la duracio que te pot estar(no colisiona, ara hem de mirar que en tota la duracio d'aquest no hi hagi problemes)
         for (int i = 0; i<duracio; ++i){
             if(!resTeo.isable(horari,hora,dia,ses,aules)) return false;
@@ -163,19 +171,10 @@ public class Horari {
             if(!resCapAul.isAble(0,dia,hora,ses,duracio,aula,horari)) return false;
             if(!resCorr.isable(horari,hora,dia,ses,aules)) return false;
             if(!resNiv.isable(horari,hora,dia,ses,aules)) return false;
-            //if(!resAul.isable()) return false;
-            //segurament necessitarem mes parametres per aplicar aquests, ja mirarem com ho fem
-
-
-            /*for (RestriccioAulaDia r : resAulDia){
-                if(!r.isable()) return false;
-            }*/
-            /*for (RestriccioAulaHora r : resAulHora){
-                if(!r.isable()) return false;
-            }*/
-            /*for (RestriccioAssigMAtiTarda r : resMatitarda){
-                if(!r.isable()) return false;
-            }*/
+            if(!resAul.isAble(0,dia,hora,ses,duracio,aula,horari)) return false;
+            for (RestriccioAulaHora r : resAulaHora){
+                if(!r.isAble(ses.getAssig().getNom(),aula,dia,hora)) return false;
+            }
         }
         return true;
         //TODO: pensar com fer-la
