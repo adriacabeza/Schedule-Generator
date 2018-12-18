@@ -157,6 +157,8 @@ public class CtrlDomini {
 
         for(HashMap<String, String> res1 : rmt){
             String assignatura = res1.get("assignatura");
+            //todo matitarda contiene "mati" o "tarda" fix
+            //todo mirad las funciones de handleAdd* de CtrlHorariView para ver como esta definido
              horari.afegirRMT(assignatura,  Boolean.parseBoolean( res1.get("matitarda")) );
         }
 
