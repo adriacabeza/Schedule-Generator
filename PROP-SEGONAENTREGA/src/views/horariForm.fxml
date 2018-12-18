@@ -124,8 +124,9 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="cancel_button" mnemonicParsing="false" text="Cancela" />
-                  <Button fx:id="generate_button" mnemonicParsing="false" onAction="#handleGenerar" text="Genera" />
+                  <Button fx:id="cancel_button" minWidth="-Infinity" mnemonicParsing="false" text="Cancel·la" />
+                  <Button fx:id="generate_button" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleGenerar" text="Genera" />
+                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCanviSlots" text="Canvi Slots" />
                </children>
             </HBox>
          </bottom>
