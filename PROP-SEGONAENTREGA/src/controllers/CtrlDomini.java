@@ -157,6 +157,8 @@ public class CtrlDomini {
 
         for(HashMap<String, String> res1 : rmt){
             String assignatura = res1.get("assignatura");
+            //todo matitarda contiene "mati" o "tarda" fix
+            //todo mirad las funciones de handleAdd* de CtrlHorariView para ver como esta definido
              horari.afegirRMT(assignatura,  Boolean.parseBoolean( res1.get("matitarda")) );
         }
 
@@ -599,184 +601,6 @@ public class CtrlDomini {
     }
 
 
-    /**
-     * Genera una llista dels grups d'una assignatura
-     *
-     * @return llista dels grups d'una assignatura
-     */
-
-    public ArrayList<String> consultaGrupsAssignatura(String nomAssig) {
-        return assignatures.get(nomAssig).getLlistaGrupsSubgrups();
-    }
-
-
-    /********************* PRIMERA ASSIGNATURA *********************/
-
-    /**
-     * Consulta els dies que una assignatura i un grup tenen classes assignades
-     *
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero del grup o subgrup
-     * @return dies que el grup de l'assignatura te assignacions
-     */
-    public ArrayList<String> consultaDiesPerAssignaturaGrup(String nomAssig, String numGrup) {
-        ArrayList<String> result = null;
-        if (horari.getHorari() != null) {
-                return horari.consultaDiesPerAssignaturaGrup(result, nomAssig,numGrup);
-
-        }
-        return result;
-    }
-
-    /**
-     * Consulta les hores que una assignatura i un grup tenen classes assignades un dia en concret
-     *
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero del grup o subgrup
-     * @param dia      dia de la setmana
-     * @return llista d'hores assignades al grup aquell dia
-     */
-    public ArrayList<String> consultaHoresPerDiaAssignaturaGrup(String nomAssig, String numGrup, String dia) {
-        ArrayList<String> result = null;
-        if (horari.getHorari() != null) {
-            return horari.consultaHoresPerDiaAssignaturaGrup(result, nomAssig,numGrup,Integer.parseInt(dia));
-
-        }
-        return result;
-    }
-
-
-
-    /**
-     * Consulta l'aula en que una assignatura, un grup, data i hora tenen una assignacio
-     *
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero de grup o subgrup
-     * @param dia      dia de la setmana
-     * @param hora     hora
-     * @return aula de l'assignacio
-     */
-
-    public ArrayList<String> consultaAulaPerHoresDiaAssignaturaGrup(String nomAssig, String numGrup, String dia, String hora) {
-        ArrayList<String> result = null;
-        if (horari.getHorari() != null) {
-            result =  horari.consultaAulaPerHoresDiaAssignaturaGrup(aules, result, nomAssig, numGrup, Integer.parseInt(hora), Integer.parseInt(dia));
-        }
-        return result;
-    }
-
-
-
-    /********************* SEGONA ASSIGNATURA *********************/
-
-    /**
-     * Consulta els dies que una assignatura i un grup tenen classes assignades
-     *
-     * @param nomAssigR nom de l'assignatura que aplica restriccions sobre la segona
-     * @param numGrupR  numero del grup que aplica restriccions sobre la segona
-     * @param nomAssig  nom de l'assignatura
-     * @param numGrup   numero del grup o subgrup
-     * @return dies que el grup de l'assignatura te assignacions
-
-    public ArrayList<String> consultaDiesPerAssignaturaGrupAmbRestr(String nomAssigR, String numGrupR, String nomAssig, String numGrup) {
-        return null;
-    }  */
-
-    /**
-     * Consulta les hores que una assignatura i un grup tenen classes assignades un dia en concret
-     *
-     * @param nomAssigR nom de l'assignatura que aplica restriccions sobre la segona
-     * @param numGrupR  numero del grup que aplica restriccions sobre la segona
-     * @param nomAssig  nom de l'assignatura
-     * @param numGrup   numero del grup o subgrup
-     * @param dia       dia de la setmana
-     * @return llista d'hores assignades al grup aquell dia
-
-    public ArrayList<String> consultaHoresPerDiaAssignaturaGrupAmbRestr(String nomAssigR, String numGrupR, String nomAssig, String numGrup, String dia) {
-        return null;
-    }
-     */
-
-    /**
-     * Consulta l'aula en que una assignatura, un grup, data i hora tenen una assignacio
-     *
-     * @param nomAssigR nom de l'assignatura que aplica restriccions sobre la segona
-     * @param numGrupR  numero del grup que aplica restriccions sobre la segona
-     * @param nomAssig  nom de l'assignatura
-     * @param numGrup   numero de grup o subgrup
-     * @param dia       dia de la setmana
-     * @param hora      hora
-     * @return aula de l'assignacio
-     */
-    //TODO solo devolvera una, pero va mejor que todo sean arrays
-    public ArrayList<String> consultaAulaPerHoresDiaAssignaturaGrupAmbRestr(String nomAssigR, String numGrupR, String nomAssig, String numGrup, String dia, String hora) {
-        return null;
-    }
-
-    /********************* SLOTS BUITS *********************/
-
-    /**
-     * Consulta dies amb assignacions possibles per l'assignatura que vol intercanviar
-     *
-     * @param nomAssig nom de l'assignatura que vol un slot
-     * @param numGrup  numero del grup o subgrup concret
-     * @return llista de dies on hi ha possibilitat de canvi
-     */
-    //TODO esto es ya consultar las vacias, paso la asignatura y el grupo por si hace falta para comprobar restricciones
-
-    /*asumimos que es solo de una clase para ese grupo? o que es para todas las clases que ha de hacer esa asignatura,
-    si es el primer caso tmbn debemos pasar que tipo de clase es(lab, teo)
-    si te paso un grupo es la hora de teoria, si te paso un subgrupo es la de lab, solo para ese (sub)grupo concreto
-     retornarem un arraylist de hashmap<string,string> on en cada posicio de la arraylist es una possible assignacio, el hashmap tindra dos keys, "dia" i "hora" i el valor d'aquestes es el dia (dilluns,dimarts etc) i la hora (10,11,12...)
-     mirar el generar horari mes adalt, uso la mateixa estructura i aixi ens estalviem la funcio consultar hores lliures per dia
-    */
-    public ArrayList<HashMap<String,String>> consultaDiesLliures(String nomAssig, String numGrup) {
-        Assignatura a = assignatures.get(nomAssig);
-        return horari.consultaDiesLliures(a, numGrup, (ArrayList) aules.values());
-    }
-
-    /**
-     * Consulta les hores lliures d'un dia concret on una assignatura i un grup podrien encaixar
-     *
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero del grup o subgrup
-     * @param dia      dia de la setmana
-     * @return hores disponibles
-     */
-    public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, String dia) {
-        ArrayList<String> result = null;
-        if(horari.getHorari() != null){
-            return horari.consultaHoresLliuresPerDia(nomAssig,numGrup,Integer.parseInt(dia));
-        }
-        return result;
-    }
-
-
-
-    //aqui solo hay que hacer como en la poda inicial del backtracking con forward checking pero
-    //solo para un dia y una hora (dandole pasadas de las restricciones adicionales)
-    //si fijas dia y hora implica que la "clase" dura solo 1h
-    //te fijo la hora de inicio, la duracion de las siguientes la tienes que saber tu con duracion de sesiones y darme
-    //X horas seguidas disponibles
-
-    /**
-     * Consulta les aules lliures d'una hora i dia concret on una assignatura i un grup podrien encaixar
-     *
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero del grup o subgrup
-     * @param dia      dia de la setmana
-     * @param hora     hora
-     * @return aules disponibles
-     */
-    public ArrayList<String> consultaAulesLliuresPerDiaHora(String nomAssig, String numGrup, String dia, String hora) throws NotFoundException {
-        ArrayList<String> result = null;
-        if(horari.getHorari() != null){
-            Assignatura a = assignatures.get(nomAssig);
-            return horari.consultaAulesLliuresPerDiaHora(a, result, numGrup, Integer.parseInt(dia), Integer.parseInt(hora), (ArrayList) aules.values());
-        }
-        return result;
-    }
-
     /********************* EXCHANGE *********************/
     //el problema es que una clase pueden ser varias horas, al estilo 3 seguidas i aqui solo estamso cambiando una
     // lo mismo que arriba, si son 3 horas seguidas, busco 3 horas seguidas vacias y hare el cambio de las 3
@@ -787,16 +611,9 @@ public class CtrlDomini {
 
     /**
      * Intercanvia dos slots compatibles
-     *
-     * @param dia1  dia del primer slot a intercanviar
-     * @param hora1 hora del primer slot a intercanviar
-     * @param aula1 aula del primer slot a intercanviar
-     * @param dia2  dia del segon slot a intercanviar
-     * @param hora2 hora del segon slot a intercanviar
-     * @param aula2 aula del segon slot a intercanviar
      */
-    public void intercanviaSlots(String dia1, String hora1, String aula1, String dia2, String hora2, String aula2) {
-        Assignacio[][][] schedule = horari.getHorari();
+    /*public void intercanviaSlots(String dia1, String hora1, String aula1, String dia2, String hora2, String aula2) {
+        /*Assignacio[][][] schedule = horari.getHorari();
         if (schedule != null) {
             int hora_1 = Integer.parseInt(hora1);
             int hora_2 = Integer.parseInt(hora2);
@@ -808,10 +625,18 @@ public class CtrlDomini {
             Assignacio a = schedule[hora_1][dia_1][posaula1];
             Assignacio b = schedule[hora_2][dia_2][posaula2];
             schedule[hora_1][dia_1][posaula1] = b;
-            schedule[hora_2][dia_2][posaula2] = a;
+            schedule[hora_2][dia_2][posaula2] = a;*/
+    public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
+        /****** HASHMAP ENTRIES ******/
+        /*
+        dia
+        hora
+        assignatura
+        grup
+        aula
+         */
 
-            horari.setHorari(schedule);
-        }
+        return horari.intercanviaSlots(slot1, slot2);
     }
 
     /*********************************************************/

@@ -20,12 +20,15 @@ import model.Slot;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CtrlHorariView {
 
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
     private boolean generatemode = false;
+    private Stage swapWindow;
 
     @FXML
     ChoiceBox<String> choice_aula = new ChoiceBox<>();
@@ -80,6 +83,7 @@ public class CtrlHorariView {
      * Init function
      */
     public void initialize() {
+
         // Table creation
         horariTable = new TableView<>();
         horariTable.getSelectionModel().setCellSelectionEnabled(true);
@@ -173,14 +177,15 @@ public class CtrlHorariView {
         });
     }
 
-    void setGenerateMode(){
+    void setGenerateMode() {
         generatemode = true;
+        swapWindow = new Stage();
         choice_assig.setDisable(true);
         choice_aula.setDisable(true);
         // Set starting state
         horari_container.setCenter(new Label("Escull les restriccions adients i genera un horari"));
 
-        ArrayList<String> matitarda = new ArrayList<>(Arrays.asList("","Mati","Tarda"));
+        ArrayList<String> matitarda = new ArrayList<>(Arrays.asList("", "Mati", "Tarda"));
         llistaMatiTarda = FXCollections.observableArrayList(matitarda);
         rmt_assig.setItems(llistaAssignatures);
         rmt_assig.getSelectionModel().select(0);
@@ -227,6 +232,7 @@ public class CtrlHorariView {
         } catch (Exception e) {
             return false;
         }
+
     }
 
     /**
@@ -252,12 +258,12 @@ public class CtrlHorariView {
     }
 
     @FXML
-    private void handleAddRMT(){
+    private void handleAddRMT() {
         String assignatura = rmt_assig.getValue();
         String matitarda = rmt_matitarda.getValue();
-        if(assignatura.equalsIgnoreCase("") || matitarda.equalsIgnoreCase("")){
+        if (assignatura.equalsIgnoreCase("") || matitarda.equalsIgnoreCase("")) {
             alert("Has de seleccionar els dos parametres");
-        }else{
+        } else {
             HashMap<String, String> restriccio = new HashMap<>();
             restriccio.put("assignatura", assignatura);
             restriccio.put("matitarda", matitarda);
@@ -283,13 +289,13 @@ public class CtrlHorariView {
     }
 
     @FXML
-    private void handleAddRDAH(){
+    private void handleAddRDAH() {
         String dia = rdah_dia.getValue();
         String aula = rdah_aula.getValue();
         String hora = String.valueOf(rdah_hora.getSelectionModel().getSelectedIndex() - 1);
-        if(dia.equalsIgnoreCase("") || aula.equalsIgnoreCase("") || hora.equalsIgnoreCase("")){
+        if (dia.equalsIgnoreCase("") || aula.equalsIgnoreCase("") || hora.equalsIgnoreCase("")) {
             alert("Has de seleccionar els tres parametres");
-        }else{
+        } else {
             HashMap<String, String> restriccio = new HashMap<>();
             restriccio.put("dia", dia);
             restriccio.put("aula", aula);
@@ -317,12 +323,12 @@ public class CtrlHorariView {
     }
 
     @FXML
-    private void handleAddRAD(){
+    private void handleAddRAD() {
         String aula = rad_aula.getValue();
         String dia = rad_dia.getValue();
-        if(aula.equalsIgnoreCase("") || dia.equalsIgnoreCase("")){
+        if (aula.equalsIgnoreCase("") || dia.equalsIgnoreCase("")) {
             alert("Has de seleccionar els dos parametres");
-        }else{
+        } else {
             HashMap<String, String> restriccio = new HashMap<>();
             restriccio.put("aula", aula);
             restriccio.put("dia", dia);
@@ -348,10 +354,8 @@ public class CtrlHorariView {
     }
 
     @FXML
-    private void handleGenerar(){
-        System.out.println(rad);
-        System.out.println(rdah);
-        System.out.println(rmt);
+    private void handleGenerar() {
+        loadHorari(ctrlDomini.generaHorari(rmt, rdah, rad, rc_checkbox.isSelected(), rgt_checkbox.isSelected()));
     }
 
     /**
@@ -449,5 +453,63 @@ public class CtrlHorariView {
             }
         }
         return slots;
+    }
+
+    @FXML
+    private void handleCanviSlots() throws IOException {
+        if(!swapWindow.isShowing()){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("swapForm.fxml"));
+            Parent root = loader.load();
+
+            swapWindow.setScene(new Scene(root));
+            swapWindow.setResizable(false);
+            swapWindow.setTitle("Restriccions Dia-Aula-Hora");
+            swapWindow.show();
+
+            CtrlSwapView c = loader.getController();
+            c.setCtrlHorariView(this);
+        }else{
+            // Bring the window to front
+            swapWindow.setAlwaysOnTop(true);
+            swapWindow.setAlwaysOnTop(false);
+        }
+    }
+
+    /**
+     * TODO Fix this and set it in the Slot class after everything works properly
+     *
+     * @return
+     */
+    HashMap<String, String> getCurrentSlot() {
+        TableView.TableViewSelectionModel selected = horariTable.getSelectionModel();
+        // Check if there is something selected
+        if(selected.getSelectedIndex() != -1){
+            TablePosition tablePosition = (TablePosition) selected.getSelectedCells().get(0);
+            String text = (String) tablePosition.getTableColumn().getCellData(tablePosition.getRow());
+            String[] splittext = text.split("\n");
+            // Check if the cell is empty, as minimum length will be 2 for any occupied slot
+            if (splittext.length > 1) {
+                String assig = splittext[0];
+                String[] grups = Arrays.copyOfRange(splittext, 1, splittext.length);
+                List<String> grupsList = Arrays.asList(grups);
+                ChoiceDialog<String> dialog = new ChoiceDialog<>(grupsList.get(0), grupsList);
+                dialog.setTitle("Elecció de grup");
+                dialog.setHeaderText("Falta escollir un grup!");
+                dialog.setContentText("Grup: ");
+                Optional<String> result = dialog.showAndWait();
+                // If the user selected a group, continue
+                if (result.isPresent()) {
+                    HashMap<String, String> grupAula = Slot.grupAulaExtractor(result.get());
+                    String dia = llistaDies.get(tablePosition.getColumn());
+                    String slot = String.valueOf(tablePosition.getRow());
+                    HashMap<String, String> output = new HashMap<>();
+                    output.putAll(grupAula);
+                    output.put("assignatura", assig);
+                    output.put("dia", dia);
+                    output.put("hora", slot);
+                }
+            }
+        }
+        return null;
     }
 }

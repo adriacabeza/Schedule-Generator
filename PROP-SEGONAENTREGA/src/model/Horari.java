@@ -346,7 +346,10 @@ public class Horari {
         return result;
     }
 
-
+    //TODO
+    public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
+        return true;
+    }
 }
 
 

@@ -3,6 +3,11 @@ package model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Slot {
 
     private StringProperty slotname;
@@ -208,4 +213,23 @@ public class Slot {
         }
     }
 
+    /**
+     * Funció per extreure el grup i l'aula a partir d'una de les linies generades per mostrar a les cel·les de la taula
+     * @param text El conjunt grup i aula d'una cel·la: ( G10 ) A3002
+     * @return Un HashMap amb keys "grup" i "aula" contenint ambdós valors
+     */
+    public static HashMap<String, String> grupAulaExtractor(String text){
+        Pattern p = Pattern.compile("\\( G(\\d+) \\) (\\w+)");
+        Matcher m = p.matcher(text);
+        if(m.matches()) {
+            String grup = m.group(1);
+            String aula = m.group(2);
+            HashMap<String, String> result = new HashMap<>();
+            result.put("grup", grup);
+            result.put("aula", aula);
+            return result;
+        }else{
+            return null;
+        }
+    }
 }
