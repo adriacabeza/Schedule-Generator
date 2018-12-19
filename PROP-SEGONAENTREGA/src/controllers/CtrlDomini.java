@@ -733,7 +733,6 @@ public class CtrlDomini {
     public ArrayList<HashMap<String,String>> consultaDiesLliures(String nomAssig, String numGrup) {
         Assignatura a = assignatures.get(nomAssig);
         return horari.consultaDiesLliures(a, numGrup, (ArrayList) aules.values());
-
     }
 
     /**
@@ -797,7 +796,6 @@ public class CtrlDomini {
      * @param aula2 aula del segon slot a intercanviar
      */
     public void intercanviaSlots(String dia1, String hora1, String aula1, String dia2, String hora2, String aula2) {
-
         Assignacio[][][] schedule = horari.getHorari();
         if (schedule != null) {
             int hora_1 = Integer.parseInt(hora1);
