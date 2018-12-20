@@ -644,6 +644,10 @@ public class CtrlMainView {
         ca.displayPlaEstudis(nomPla);
     }
 
+    /**
+     * notificaciód 'errors
+     * @param s missatge a mostrar
+     */
     private void alert(String s) {
         Alert a = new Alert(Alert.AlertType.ERROR);
         a.setContentText(s);
