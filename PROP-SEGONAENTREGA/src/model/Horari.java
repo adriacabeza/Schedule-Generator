@@ -144,13 +144,14 @@ public class Horari {
             if(comprovarResSlotsBuits(null, a1.getHora(),Algorismes.fromDia2int(a1.getDiaSetmana()),posaula,duracio,aules,a1.getAula())){
                 aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
                 horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula] = aux;
+                horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula] = aux;
                 return true;
             }
         }
         else if(a2.getAssignatura() == null){ //si la segona assignació és null
             if((a1.getClass() == AssignacioT.class)) duracio = a1.getAssignatura().getDuracioSessionsTeo();
             else duracio = a1.getAssignatura().getDuracioSessionsLab();
+
             if(comprovarResSlotsBuits(null, a2.getHora(),Algorismes.fromDia2int(a2.getDiaSetmana()),posaula2,duracio,aules, a2.getAula())) {
                 aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
                 horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
