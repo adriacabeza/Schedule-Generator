@@ -541,7 +541,7 @@ public class CtrlMainView {
      * @param nomAula nom de l'aula a modificar
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    private void modificarAula(String nomAula) throws IOException {
+    void modificarAula(String nomAula) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("aulaForm.fxml"));
         Parent root = null;
         root = loader.load();
@@ -606,7 +606,7 @@ public class CtrlMainView {
      * @param nomPla nom del pla d'estudis que es vol modificar
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    private void modificarPlaEstudis(String nomPla) throws IOException {
+    void modificarPlaEstudis(String nomPla) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("plaEstudisForm.fxml"));
         Parent root = null;
         root = loader.load();
@@ -642,6 +642,7 @@ public class CtrlMainView {
 
         CtrlPlaEstudisView ca = loader.getController();
         ca.displayPlaEstudis(nomPla);
+        ca.setMainController(this);
     }
 
     /**

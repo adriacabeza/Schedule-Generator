@@ -89,12 +89,19 @@ public class CtrlPlaEstudisView {
 
     }
 
+    @FXML
+    private void handleModifica() throws IOException {
+        ctrlMainView.modificarPlaEstudis(label_nom.getText());
+        Stage stage = (Stage) label_nom.getScene().getWindow();
+        stage.close();
+    }
+
     /**
      * Carrega la informació complerta d'un pla d'estudis per mostrar-lo en la interficie
      *
      * @param nomPla nom de l'aula que hem seleccionat per consultar
      */
-    void displayPlaEstudis(String nomPla){ //TODO check if this might have errors
+    void displayPlaEstudis(String nomPla) { //TODO check if this might have errors
         String json = null;
         try {
             json = ctrlDomini.consultarPlaEsudis(nomPla);
@@ -153,6 +160,7 @@ public class CtrlPlaEstudisView {
 
     /**
      * Carrega les assignatures que formen part inicialment del pla
+     *
      * @param nomPla nom del pla d'estudis que volem carregar-ne les assignatures
      * @throws NotFoundException si no existeix el pla d'estudis especificat
      */
@@ -209,15 +217,14 @@ public class CtrlPlaEstudisView {
             }
 
             exit();
-        } catch (NotFoundException | RestriccioIntegritatException |IOException e) {
+        } catch (NotFoundException | RestriccioIntegritatException | IOException e) {
             alert(e.getMessage());
         }
     }
 
     /**
-     *
      * @param titulacio Afegeix al pla d'estudis les assignatures indicaddes
-     * @throws NotFoundException si no existeix el pla d'estudis
+     * @throws NotFoundException             si no existeix el pla d'estudis
      * @throws RestriccioIntegritatException si l'assignatura ja esta afegida al pla
      */
     private void afegeixAssignaturesPla(String titulacio) throws NotFoundException, RestriccioIntegritatException, IOException {

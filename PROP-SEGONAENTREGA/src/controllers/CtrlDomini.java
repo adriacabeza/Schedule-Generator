@@ -523,8 +523,8 @@ public class CtrlDomini {
         Aula.TipusAula ta = Aula.stringToTipusAula(tipusAula);
         String nomAula = Aula.crearkey(edifici, planta, aula);
 
-        if (!aules.containsKey(nomAula)) {
-            aules.put(nomAula, new Aula(edifici, planta, aula, ta, capacitat));
+        if (!aules.containsKey(nomAula.toUpperCase())) {
+            aules.put(nomAula.toUpperCase(), new Aula(edifici, planta, aula, ta, capacitat));
         } else {
             throw new RestriccioIntegritatException("Ja existeix una aula amb nom d'aula " + nomAula.toUpperCase());
         }
@@ -538,8 +538,8 @@ public class CtrlDomini {
      * @throws NotFoundException quan s'intenta borrar una aula inexistent
      */
     public void esborrarAula(String nomAula) throws NotFoundException, IOException {
-        if (aules.containsKey(nomAula)) {
-            aules.remove(nomAula);
+        if (aules.containsKey(nomAula.toUpperCase())) {
+            aules.remove(nomAula.toUpperCase());
         } else {
             throw new NotFoundException("No es pot esborrar l'aula " + nomAula + " perque no existeix");
         }
@@ -557,9 +557,9 @@ public class CtrlDomini {
     public void modificarAula(String key, int capacitat, String tipusAula) throws NotFoundException, IOException {
         TipusAula ta = Aula.stringToTipusAula(tipusAula);
 
-        if (aules.containsKey(key)) {
-            aules.get(key).setCapacitat(capacitat);
-            aules.get(key).setTipusAula(ta);
+        if (aules.containsKey(key.toUpperCase())) {
+            aules.get(key.toUpperCase()).setCapacitat(capacitat);
+            aules.get(key.toUpperCase()).setTipusAula(ta);
         } else {
             throw new NotFoundException("No es pot modificar l'aula " + key + " perque no existeix");
         }
@@ -574,7 +574,7 @@ public class CtrlDomini {
      * @throws NotFoundException si no existeix l'aula buscada
      */
     public String consultarAula(String key) throws NotFoundException {
-        if (!aules.containsKey(key)) {
+        if (!aules.containsKey(key.toUpperCase())) {
             throw new NotFoundException("No existeix l'aula especificada");
         } else {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

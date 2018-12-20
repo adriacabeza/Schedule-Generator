@@ -90,6 +90,11 @@ public class GestorDisc {
         return new String(encoded, Charset.defaultCharset());
     }
 
+    String llegeixAbsolute(String absoluteFilepath) throws IOException {
+        byte[] encoded = Files.readAllBytes(Paths.get(absoluteFilepath));
+        return new String(encoded, Charset.defaultCharset());
+    }
+
     /**
      * Estableix el nom del directori de dades
      *

@@ -1,216 +1,216 @@
 {
-  "a4205": {
-    "edifici": "a4",
+  "A4205": {
+    "edifici": "A4",
     "planta": 2,
     "aula": 5,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a4204": {
-    "edifici": "a4",
+  "A4204": {
+    "edifici": "A4",
     "planta": 2,
     "aula": 4,
     "tAula": "laboratori",
     "capacitat": 60
   },
-  "a4104": {
-    "edifici": "a4",
+  "A4104": {
+    "edifici": "A4",
     "planta": 1,
     "aula": 4,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a4203": {
-    "edifici": "a4",
+  "A4203": {
+    "edifici": "A4",
     "planta": 2,
     "aula": 3,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a4103": {
-    "edifici": "a4",
+  "A4103": {
+    "edifici": "A4",
     "planta": 1,
     "aula": 3,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a4202": {
-    "edifici": "a4",
+  "A4202": {
+    "edifici": "A4",
     "planta": 2,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a4102": {
-    "edifici": "a4",
+  "A4102": {
+    "edifici": "A4",
     "planta": 1,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 30
   },
-  "a4201": {
-    "edifici": "a4",
+  "A4201": {
+    "edifici": "A4",
     "planta": 2,
     "aula": 1,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a5102": {
-    "edifici": "a5",
+  "A5102": {
+    "edifici": "A5",
     "planta": 1,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 30
   },
-  "a6104": {
-    "edifici": "a6",
+  "A6104": {
+    "edifici": "A6",
     "planta": 1,
     "aula": 4,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a5201": {
-    "edifici": "a5",
+  "A5201": {
+    "edifici": "A5",
     "planta": 2,
     "aula": 1,
     "tAula": "laboratori",
     "capacitat": 40
   },
-  "a6203": {
-    "edifici": "a6",
+  "A6203": {
+    "edifici": "A6",
     "planta": 2,
     "aula": 3,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a5002": {
-    "edifici": "a5",
+  "A5002": {
+    "edifici": "A5",
     "planta": 0,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a5101": {
-    "edifici": "a5",
+  "A5101": {
+    "edifici": "A5",
     "planta": 1,
     "aula": 1,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a6105": {
-    "edifici": "a6",
+  "A6105": {
+    "edifici": "A6",
     "planta": 1,
     "aula": 5,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a6204": {
-    "edifici": "a6",
+  "A6204": {
+    "edifici": "A6",
     "planta": 2,
     "aula": 4,
     "tAula": "laboratori",
     "capacitat": 60
   },
-  "a5001": {
-    "edifici": "a5",
+  "A5001": {
+    "edifici": "A5",
     "planta": 0,
     "aula": 1,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a6205": {
-    "edifici": "a6",
+  "A6205": {
+    "edifici": "A6",
     "planta": 2,
     "aula": 5,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a6001": {
-    "edifici": "a6",
+  "A6001": {
+    "edifici": "A6",
     "planta": 0,
     "aula": 1,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a6002": {
-    "edifici": "a6",
+  "A6002": {
+    "edifici": "A6",
     "planta": 0,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a6101": {
-    "edifici": "a6",
+  "A6101": {
+    "edifici": "A6",
     "planta": 1,
     "aula": 1,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a5104": {
-    "edifici": "a5",
+  "A5104": {
+    "edifici": "A5",
     "planta": 1,
     "aula": 4,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a6102": {
-    "edifici": "a6",
+  "A6102": {
+    "edifici": "A6",
     "planta": 1,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 30
   },
-  "a6201": {
-    "edifici": "a6",
+  "A6201": {
+    "edifici": "A6",
     "planta": 2,
     "aula": 1,
     "tAula": "laboratori",
     "capacitat": 40
   },
-  "a5103": {
-    "edifici": "a5",
+  "A5103": {
+    "edifici": "A5",
     "planta": 1,
     "aula": 3,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a6103": {
-    "edifici": "a6",
+  "A6103": {
+    "edifici": "A6",
     "planta": 1,
     "aula": 3,
     "tAula": "normal",
     "capacitat": 30
   },
-  "a5202": {
-    "edifici": "a5",
+  "A5202": {
+    "edifici": "A5",
     "planta": 2,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a6202": {
-    "edifici": "a6",
+  "A6202": {
+    "edifici": "A6",
     "planta": 2,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a4002": {
-    "edifici": "a4",
+  "A4002": {
+    "edifici": "A4",
     "planta": 0,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a4101": {
-    "edifici": "a4",
+  "A4101": {
+    "edifici": "A4",
     "planta": 1,
     "aula": 1,
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a4001": {
-    "edifici": "a4",
+  "A4001": {
+    "edifici": "A4",
     "planta": 0,
     "aula": 1,
     "tAula": "normal",

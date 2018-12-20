@@ -106,6 +106,13 @@ public class CtrlAulaView {
         }
     }
 
+    @FXML
+    private void handleModifica() throws IOException {
+        ctrlMainView.modificarAula(label_title.getText());
+        Stage stage = (Stage) label_title.getScene().getWindow();
+        stage.close();
+    }
+
     /**
      * Binding amb el controlador principal
      *

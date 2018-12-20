@@ -77,7 +77,7 @@ public class CtrlSerDes {
      * @throws IOException si hi ha hagut algun problema de lectura
      */
     String carregaHorari(String filepath) throws IOException {
-        return gd.llegeix(filepath);
+        return gd.llegeixAbsolute(filepath);
     }
 
     /**
