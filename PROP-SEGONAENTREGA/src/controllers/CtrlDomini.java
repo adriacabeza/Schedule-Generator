@@ -165,10 +165,6 @@ public class CtrlDomini {
         horari.activaRestriccio...(bool)
         horari.activaRestriccio2...(bool)
          */
-        Aula aula2 = new Aula("ninguna", -1,-1,TipusAula.NORMAL, 21000);
-        if(rad.size() == 0) horari.afegirRD(-1,aula2);
-        if(rmt.size() ==0) horari.afegirRMT("ninguna",true);
-        if(rdah.size() ==0) horari.afegirRDH(-1,-1,aula2);
 
         //TODO mes abaix en les consultes tenim funcions semblants a les que tenim el algorisme, es necesari tenirles alla i aqui?
         for (HashMap<String, String> res2 : rad) {
