@@ -2,6 +2,7 @@ package model;
 
 import exceptions.NotFoundException;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Backtracking2 extends Algorismes {
@@ -232,7 +233,9 @@ public class Backtracking2 extends Algorismes {
                 }
             }
         }
+        System.out.println("tirem enrere");
         return false;
+
     }
 
     /**

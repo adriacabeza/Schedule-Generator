@@ -266,6 +266,8 @@ public class Horari {
             e.printStackTrace();
         }
         horari = algoritme.getHorari();
+        boolean n;
+
         return true;
     }
 
