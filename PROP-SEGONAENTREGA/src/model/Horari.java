@@ -126,74 +126,50 @@ public class Horari {
     }
 
 
+
     /**
      * Fa un intercanvi entre dues assignacions
      * @param a1 primera assignació que hem d'intercanviar
      * @param a2 segona assignació que hem d'intercanviar
      * @return retorna true si s'ha pogut efectuar l'intercanvi
      */
-<<<<<<< HEAD
-
-
-    public ArrayList<String> consultaHoresPerDiaAssignaturaGrup(ArrayList<String> result, String nomAssig, String numGrup, int numdia){
-        Assignacio assignacio;
-        for (int j = 0; j < horari[numdia].length; ++j) {
-            for (int k = 0; k < horari[numdia][j].length; ++k) {
-                assignacio = horari[numdia][j][k];
-                if (String.valueOf(assignacio.getGrup().getNum()) == numGrup && assignacio.getAssignatura().getNom() == nomAssig) {
-                    result.add(String.valueOf(k));
-                }
-
+    public boolean intercanviaSlots(Assignacio a1, Assignacio a2, ArrayList<Aula> aules) throws NotFoundException {
+        int duracio;
+        Assignacio aux;
+        if(a1.getAssignatura() == null){
+            if((a2.getClass() == AssignacioT.class)) duracio = a2.getAssignatura().getDuracioSessionsTeo();
+            else duracio = a2.getAssignatura().getDuracioSessionsLab();
+            if(comprovarResSlotsBuits(null, a2.getHora(),Algorismes.fromDia2int(a2.getDiaSetmana()),,duracio,aules,a2.getAula())){
+                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][]
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][];
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0] = aux;
+                return true;
             }
         }
-        return result;
-    }
-
-
-    /**
-     * Consulta els dies que una assignatura i un grup tenen classes assignades
-     *
-     * @param result resultat
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero del grup o subgrup
-     * @return dies que el grup de l'assignatura te assignacions
-     */
-
-    public ArrayList<String> consultaDiesPerAssignaturaGrup(ArrayList<String> result , String nomAssig, String numGrup) {
-        Assignacio assignacio;
-        for (int i = 0; i < horari.length; ++i) {
-            for (int j = 0; j < horari[i].length; ++j) {
-                for (int k = 0; k < horari[i][j].length; ++k) {
-                    assignacio = horari[i][j][k];
-                    if (String.valueOf(assignacio.getGrup().getNum()) == numGrup && assignacio.getAssignatura().getNom() == nomAssig) {
-                        result.add(Algorismes.fromInt2dia(i));
-                    }
-
-                }
+        else if(a2.getAssignatura() == null){
+            if((a1.getClass() == AssignacioT.class)) duracio = a1.getAssignatura().getDuracioSessionsTeo();
+            else duracio = a1.getAssignatura().getDuracioSessionsLab();
+            if(comprovarResSlotsBuits(null, a1.getHora(),Algorismes.fromDia2int(a1.getDiaSetmana()),,duracio,aules, a1.getAula())) {
+                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][]
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][];
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0] = aux;
+                return true;
             }
-
         }
-        return result;
+        else{ //cap dels dos és null
+            if((a1.getClass() == AssignacioT.class)) duracio = a1.getAssignatura().getDuracioSessionsTeo();
+            else duracio = a1.getAssignatura().getDuracioSessionsLab();
+            if(COMPROVARSIESPOTFERAMBELSDOS){
+                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][]
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][];
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0] = aux;
+                return true;
+            }
+        }
+        return false;
     }
 
-    //TODO
-    public boolean intercanviaSlots(Assignacio a1, Assignacio a2 ) {
-
-        /****** HASHMAP ENTRIES ******/
-        /*
-        dia
-        hora
-        assignatura
-        grup
-        aula
-         */
-
-
-=======
-    public boolean intercanviaSlots(Assignacio a1, Assignacio a2){
->>>>>>> d6bc4dd9f8da4d2439e1f74a3847ceccf55d0064
-        return true;
-    }
 }
+
 
 
