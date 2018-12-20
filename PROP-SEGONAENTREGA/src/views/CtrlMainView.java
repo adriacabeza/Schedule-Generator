@@ -482,7 +482,7 @@ public class CtrlMainView {
      * @param nomAssignatura nom de l'assignatura a modificar
      * @throws IOException quan hi ha un error obrint la nova finestra
      */
-    private void modificarAssignatura(String nomAssignatura) throws IOException {
+    void modificarAssignatura(String nomAssignatura) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("assignaturaForm.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();

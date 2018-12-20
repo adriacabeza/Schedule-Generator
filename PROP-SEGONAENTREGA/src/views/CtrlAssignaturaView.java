@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import controllers.CtrlDomini;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -276,8 +277,16 @@ public class CtrlAssignaturaView {
 
         } catch (NotFoundException e) {
             alert("No existeix l'assignatura");
-            exit();
+            Stage stage = (Stage) list_correquisits.getScene().getWindow();
+            stage.close();
         }
+    }
+
+    @FXML
+    private void handleModifica() throws IOException {
+        ctrlMainView.modificarAssignatura(label_name.getText());
+        Stage stage = (Stage) label_name.getScene().getWindow();
+        stage.close();
     }
 
     void displayAssignatura(String nomAssignatura) {
@@ -364,7 +373,8 @@ public class CtrlAssignaturaView {
 
         } catch (NotFoundException e) {
             alert("No existeix l'assignatura");
-            exit();
+            Stage stage = (Stage) list_correquisits.getScene().getWindow();
+            stage.close();
         }
     }
 
@@ -533,8 +543,15 @@ public class CtrlAssignaturaView {
      */
     public void exit() {
         ctrlMainView.reloadList();
-        Stage stage = (Stage) cancelbutton.getScene().getWindow();
-        stage.close();
+
+        /*
+        if(cancelbutton.isVisible()){
+            Stage stage = (Stage) cancelbutton.getScene().getWindow();
+            stage.close();
+        }else {
+            Stage stage = (Stage) label_name.getScene().getWindow();
+            stage.close();
+        }*/
     }
 
     /**
