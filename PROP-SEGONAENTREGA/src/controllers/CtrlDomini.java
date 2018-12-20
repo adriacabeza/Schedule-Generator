@@ -623,8 +623,24 @@ public class CtrlDomini {
      * @return cert si s'ha fet el canvi, fals altrament
      */
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
-    /*
-    int grup = Integer.parseInt(numGrup);
+        Assignacio a1, a2 = null;
+        if(! slot1.containsKey("grup")) {
+            a1 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot1.get("dia"))), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), null,null);
+        }
+        else {
+            if (Integer.parseInt(slot1.get("grup")) %10 == 0) {
+                try {
+                    a1 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot1.get("dia"))), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), assignatures.get(slot1.get("assignatura")),  assignatures.get(slot1.get("assignatura")).getGrup(Integer.parseInt(slot1.get("grup"))));
+                } catch (NotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if(! slot2.containsKey("grup")){
+            a2 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot1.get("dia"))), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), null,null);
+        }
+        /*
+
         Grup g = null;
         try {
             g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
@@ -649,8 +665,6 @@ public class CtrlDomini {
         }
 
      */
-
-
         return horari.intercanviaSlots(a1, a2, aules.values());
     }
 
