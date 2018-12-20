@@ -265,8 +265,10 @@ public class CtrlAssignaturaView {
             }
 
             List<String> correquisits = (List) assignatura.get("correquisit");
-            if (!correquisits.get(0).equalsIgnoreCase("")) {
-                llistaCorrequisits.addAll(correquisits);
+            if(correquisits.size() > 0){
+                if (!correquisits.get(0).equalsIgnoreCase("") ) {
+                    llistaCorrequisits.addAll(correquisits);
+                }
             }
             candidatesCorrequisit = observableArrayList(ctrlDomini.correquisitsPossibles(nomAssignatura));
             choice_assig.setItems(candidatesCorrequisit);
