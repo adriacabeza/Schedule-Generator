@@ -351,7 +351,18 @@ public class Horari {
     }
 
     //TODO
-    public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
+    public boolean intercanviaSlots(Assignacio a1, Assignacio a2 ) {
+
+        /****** HASHMAP ENTRIES ******/
+        /*
+        dia
+        hora
+        assignatura
+        grup
+        aula
+         */
+
+
         return true;
     }
 }

@@ -627,16 +627,10 @@ public class CtrlDomini {
      * @return cert si s'ha fet el canvi, fals altrament
      */
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
-        /****** HASHMAP ENTRIES ******/
-        /*
-        dia
-        hora
-        assignatura
-        grup
-        aula
-         */
 
-        return horari.intercanviaSlots(slot1, slot2);
+
+
+        return horari.intercanviaSlots(a1, a2, aules.values());
     }
 
     /**

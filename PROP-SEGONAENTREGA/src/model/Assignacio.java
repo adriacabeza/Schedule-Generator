@@ -17,6 +17,7 @@ public abstract class Assignacio {
      * @param diaSetmana dia de la setmana pot ser un número del 1 al 5
      * @param hora       hora a la que se li assigna l'assignacio
      * @param aula       identificador d'una aula a la que se li ha fet una assignació
+     * @param assignatura assignatura que esta en aquesta assignacio
      */
 
     public Assignacio(String diaSetmana, int hora, Aula aula, Assignatura assignatura) {
