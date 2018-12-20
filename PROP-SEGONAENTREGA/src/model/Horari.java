@@ -135,34 +135,37 @@ public class Horari {
      */
     public boolean intercanviaSlots(Assignacio a1, Assignacio a2, ArrayList<Aula> aules) throws NotFoundException {
         int duracio;
+        int posaula = aules.indexOf(a1.getAula());
+        int posaula2 = aules.indexOf(a2.getAula());
         Assignacio aux;
-        if(a1.getAssignatura() == null){
+        if(a1.getAssignatura() == null){ //si la primera assignació és null
             if((a2.getClass() == AssignacioT.class)) duracio = a2.getAssignatura().getDuracioSessionsTeo();
             else duracio = a2.getAssignatura().getDuracioSessionsLab();
-            if(comprovarResSlotsBuits(null, a2.getHora(),Algorismes.fromDia2int(a2.getDiaSetmana()),,duracio,aules,a2.getAula())){
-                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][]
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][];
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0] = aux;
+            if(comprovarResSlotsBuits(null, a1.getHora(),Algorismes.fromDia2int(a1.getDiaSetmana()),posaula,duracio,aules,a1.getAula())){
+                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula] = aux;
                 return true;
             }
         }
-        else if(a2.getAssignatura() == null){
+        else if(a2.getAssignatura() == null){ //si la segona assignació és null
             if((a1.getClass() == AssignacioT.class)) duracio = a1.getAssignatura().getDuracioSessionsTeo();
             else duracio = a1.getAssignatura().getDuracioSessionsLab();
-            if(comprovarResSlotsBuits(null, a1.getHora(),Algorismes.fromDia2int(a1.getDiaSetmana()),,duracio,aules, a1.getAula())) {
-                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][]
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][];
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0] = aux;
+            if(comprovarResSlotsBuits(null, a2.getHora(),Algorismes.fromDia2int(a2.getDiaSetmana()),posaula2,duracio,aules, a2.getAula())) {
+                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
+                horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula] = aux;
                 return true;
             }
         }
         else{ //cap dels dos és null
             if((a1.getClass() == AssignacioT.class)) duracio = a1.getAssignatura().getDuracioSessionsTeo();
             else duracio = a1.getAssignatura().getDuracioSessionsLab();
+            posaula = aules.indexOf(a1.getAssignatura());
             if(COMPROVARSIESPOTFERAMBELSDOS){
-                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][]
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][];
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][0] = aux;
+                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
+                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula] = aux;
                 return true;
             }
         }
