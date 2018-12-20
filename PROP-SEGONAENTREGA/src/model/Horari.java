@@ -133,7 +133,7 @@ public class Horari {
      * @return retorna true si s'ha pogut efectuar l'intercanvi
      */
     public boolean intercanviaSlots(Assignacio a1, Assignacio a2){
-
+        return true;
     }
 }
 
