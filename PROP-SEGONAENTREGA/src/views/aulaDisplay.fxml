@@ -72,7 +72,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="36.0" prefWidth="182.0" BorderPane.alignment="CENTER">
          <children>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleModifica" text="Modifica" />
+            <Button id="aula_modify" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleModifica" text="Modifica" />
          </children>
       </HBox>
    </bottom>

@@ -51,11 +51,11 @@
                      <children>
                         <ChoiceBox fx:id="rmt_assig" prefWidth="150.0" />
                         <ChoiceBox fx:id="rmt_matitarda" prefWidth="150.0" />
-                        <Button fx:id="rmt_add" mnemonicParsing="false" onAction="#handleAddRMT" text="+" />
+                        <Button id="green" fx:id="rmt_add" mnemonicParsing="false" onAction="#handleAddRMT" text="+" />
                      </children></HBox>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="rmt_view" mnemonicParsing="false" onAction="#handleViewRMT" text="Veure restriccions" />
+                        <Button id="grey" fx:id="rmt_view" mnemonicParsing="false" onAction="#handleViewRMT" text="Veure restriccions" />
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0">
@@ -74,11 +74,11 @@
                         <ChoiceBox fx:id="rdah_dia" prefWidth="150.0" />
                         <ChoiceBox fx:id="rdah_aula" prefWidth="150.0" />
                         <ChoiceBox fx:id="rdah_hora" prefWidth="150.0" />
-                        <Button fx:id="rdah_add" mnemonicParsing="false" onAction="#handleAddRDAH" text="+" />
+                        <Button id="green" fx:id="rdah_add" mnemonicParsing="false" onAction="#handleAddRDAH" text="+" />
                      </children></HBox>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="rdah_view" mnemonicParsing="false" onAction="#handleViewRDAH" text="Veure restriccions" />
+                        <Button id="grey" fx:id="rdah_view" mnemonicParsing="false" onAction="#handleViewRDAH" text="Veure restriccions" />
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0">
@@ -96,11 +96,11 @@
                      <children>
                         <ChoiceBox fx:id="rad_aula" prefWidth="150.0" />
                         <ChoiceBox fx:id="rad_dia" prefWidth="150.0" />
-                        <Button fx:id="rad_add" mnemonicParsing="false" onAction="#handleAddRAD" text="+" />
+                        <Button id="green" fx:id="rad_add" mnemonicParsing="false" onAction="#handleAddRAD" text="+" />
                      </children></HBox>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="rad_view" mnemonicParsing="false" onAction="#handleViewRAD" text="Veure restriccions" />
+                        <Button id="grey" fx:id="rad_view" mnemonicParsing="false" onAction="#handleViewRAD" text="Veure restriccions" />
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0">
@@ -124,9 +124,9 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="cancel_button" minWidth="-Infinity" mnemonicParsing="false" text="Cancel·la" />
-                  <Button fx:id="generate_button" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleGenerar" text="Genera" />
-                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCanviSlots" text="Canvi Slots" />
+                  <Button id="horari_cancel" fx:id="cancel_button" minWidth="-Infinity" mnemonicParsing="false" text="Cancel·la" />
+                  <Button id="horari_genera" fx:id="generate_button" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleGenerar" text="Genera" />
+                  <Button id="canvi_slot" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCanviSlots" text="Canvi Slots" />
                </children>
             </HBox>
          </bottom>

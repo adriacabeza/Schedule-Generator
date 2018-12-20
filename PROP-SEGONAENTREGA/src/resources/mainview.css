@@ -12,21 +12,21 @@
     -fx-blend-mode: multiply;
 }
 
-#assig_save, #pe_save, #aula_save, #plus_button, #assig_plus, #plaest_plus
+#assig_save, #pe_save, #aula_save, #plus_button, #assig_plus, #plaest_plus, #horari_genera, #accept_slot, #green
 {
     -fx-background-color:#57f271;
     -fx-alignment:center;
     -fx-background-radius:30;
 }
 
-#assig_cancel, #pe_cancel, #aula_cancel, #delete_button, #plaest_elim_assig, #assig_elimina_correq
+#assig_cancel, #pe_cancel, #aula_cancel, #delete_button, #plaest_elim_assig, #assig_elimina_correq, #horari_cancel, #elim_restr, #reset, #red
 {
     -fx-background-color:#f9406f;
     -fx-alignment:center;
     -fx-background-radius:30;
 }
 
-#edit_button
+#edit_button, #assig_modify, #aula_modify, #canvi_slot, #plaest_modif,  #grey
 {
     -fx-background-color:#AEABCA;
     -fx-alignment:center;

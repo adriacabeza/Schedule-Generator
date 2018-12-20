@@ -92,8 +92,11 @@
    <bottom>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleModifica" text="Modifica" />
+            <Button id="plaest_modif" mnemonicParsing="false" onAction="#handleModifica" text="Modifica" />
          </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
       </HBox>
    </bottom>
 </BorderPane>

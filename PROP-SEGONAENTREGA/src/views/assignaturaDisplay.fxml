@@ -277,7 +277,7 @@
    <top>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleModifica" text="Modifica" />
+            <Button id="assig_modify" mnemonicParsing="false" onAction="#handleModifica" text="Modifica" />
          </children>
       </HBox>
    </top>
