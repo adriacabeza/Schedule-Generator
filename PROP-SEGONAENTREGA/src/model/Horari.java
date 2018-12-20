@@ -45,7 +45,9 @@ public class Horari {
      * Constructora que et crea un horari buit
      */
     public Horari() {
-        //horari = new Assignacio[][][];
+        resMatiTarda = new ArrayList<>();
+        resAula = new ArrayList<>();
+        resAulaHora = new ArrayList<>();
     }
 
     public void afegirRMT(String assig, boolean mati) {
