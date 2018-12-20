@@ -165,10 +165,6 @@ public class CtrlDomini {
         horari.activaRestriccio...(bool)
         horari.activaRestriccio2...(bool)
          */
-        Aula aula2 = new Aula("ninguna", -1,-1,TipusAula.NORMAL, 21000);
-        if(rad.size() == 0) horari.afegirRD(-1,aula2);
-        if(rmt.size() ==0) horari.afegirRMT("ninguna",true);
-        if(rdah.size() ==0) horari.afegirRDH(-1,-1,aula2);
 
         //TODO mes abaix en les consultes tenim funcions semblants a les que tenim el algorisme, es necesari tenirles alla i aqui?
         for (HashMap<String, String> res2 : rad) {
@@ -627,7 +623,32 @@ public class CtrlDomini {
      * @return cert si s'ha fet el canvi, fals altrament
      */
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
+    /*
+    int grup = Integer.parseInt(numGrup);
+        Grup g = null;
+        try {
+            g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
 
+        int duracio = 0;
+        SessioGrup ses = null;
+        if(grup%10 ==0){
+            duracio = a.getDuracioSessionsTeo(); //classe teoria
+            ses = new SessioGrup(a,new Teoria(1,1,a.getTipusAulaTeo()),g,null,0);
+        }
+        else {
+            try {
+                duracio = a.getDuracioSessionsLab();
+                Subgrup sub = g.getSubgrups().get(grup);
+                ses = new SessioGrup(a, new Laboratori(1,1,a.getTipusAulaLab()),g,sub,0);
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+     */
 
 
         return horari.intercanviaSlots(a1, a2, aules.values());

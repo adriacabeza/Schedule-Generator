@@ -66,136 +66,6 @@ public class Horari {
         resCorr = new RestriccioCorrequisit(bool);
     }
 
-/********************* SEGONA ASSIGNATURA *********************/
-
-    /**
-     * Consulta els dies que una assignatura i un grup tenen classes assignades
-     *
-     * @param nomAssigR nom de l'assignatura que aplica restriccions sobre la segona
-     * @param numGrupR  numero del grup que aplica restriccions sobre la segona
-     * @param nomAssig  nom de l'assignatura
-     * @param numGrup   numero del grup o subgrup
-     * @return dies que el grup de l'assignatura te assignacions
-    */
-    public ArrayList<String> consultaDiesPerAssignaturaGrupAmbRestr(String nomAssigR, String numGrupR, String nomAssig, String numGrup) {
-    return null;
-    }
-
-
-    /********************* SLOTS BUITS *********************/
-    public ArrayList<HashMap<String,String>> consultaDiesLliures (Assignatura a, String numGrup, ArrayList<Aula> aules){
-        int grup = Integer.parseInt(numGrup);
-        Grup g = null;
-        try {
-            g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        }
-
-        int duracio = 0;
-        SessioGrup ses = null;
-        if(grup%10 ==0){
-            duracio = a.getDuracioSessionsTeo(); //classe teoria
-            ses = new SessioGrup(a,new Teoria(1,1,a.getTipusAulaTeo()),g,null,0);
-        }
-        else {
-            try {
-                duracio = a.getDuracioSessionsLab();
-                Subgrup sub = g.getSubgrups().get(grup);
-                ses = new SessioGrup(a, new Laboratori(1,1,a.getTipusAulaLab()),g,sub,0);
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-        ArrayList<HashMap<String,String>> result = new ArrayList<>();
-
-        if (horari != null) {
-            ArrayList<Aula> llistaules = new ArrayList<>();
-            Aula aul = null;
-            Assignacio assignacio;
-            boolean trobat = false;         //nomes mirem dies i hores, quan trobem una aula ja sabem que pot haber una solucio
-            for (int i = 0; i < horari.length; ++i) {
-                for (int j = 0; j < horari[i].length; ++j) {
-                    for (int k = 0; k < horari[i][j].length && !trobat; ++k) {
-                        HashMap<String,String> diahora;
-                        aul = aules.get(k);
-                        try {
-                            if(comprovarResSlotsBuits(ses,j,i,k,duracio,llistaules,aul)) {
-                                diahora = new HashMap<String,String>();
-                                diahora.put("dia",Algorismes.fromInt2dia(i));
-                                diahora.put("hora", String.valueOf(Algorismes.getHora(j)));
-                                result.add(diahora);
-                                trobat = true;
-                            }
-                        } catch (NotFoundException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-            }
-
-        }
-        return result;
-    }
-
-
-    /**
-     * Consulta les hores lliures d'un dia concret on una assignatura i un grup podrien encaixar
-     *
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero del grup o subgrup
-     * @param dia      dia de la setmana
-     * @return hores disponibles
-     * */
-
-    public ArrayList<String> consultaHoresLliuresPerDia(String nomAssig, String numGrup, int dia){
-        //AQUI TONI XD XD
-        //esto es lo de arriba leñe
-        return null;
-    }
-
-
-
-
-    public ArrayList<String> consultaAulesLliuresPerDiaHora(Assignatura a, ArrayList<String> result, String numGrup, int dia, int hora, ArrayList<Aula> aules) throws NotFoundException {
-        int grup = Integer.parseInt(numGrup);
-        Grup g = null;
-        try {
-            g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        }
-        int duracio = 0;
-        SessioGrup ses = null;
-        if(grup%10 ==0){
-            duracio = a.getDuracioSessionsTeo(); //clase teoria
-            ses = new SessioGrup(a,new Teoria(1,1,a.getTipusAulaTeo()),g,null,0);
-        }
-        else {
-            try {
-                duracio = a.getDuracioSessionsLab();
-                Subgrup sub = g.getSubgrups().get(grup);
-                ses = new SessioGrup(a, new Laboratori(1,1,a.getTipusAulaLab()),g,sub,0);
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        if (horari != null) {
-            ArrayList<Aula> llistaules = new ArrayList<>();
-            Aula aul = null;
-            for (int k = 0; k < horari[hora][dia].length; ++k) {
-                aul = aules.get(k);
-                if(comprovarResSlotsBuits(ses,hora,dia,k,duracio,llistaules,aul)) {
-                    result.add(aul.getKey());
-                }
-
-            }
-        }
-        return result;
-    }
-
 
 
     /**
@@ -231,26 +101,12 @@ public class Horari {
     }
 
 
-
-    //TODO una vez acabado todo el javadocs
-    /*
+    /**
      * Construeix l'horari
-     *
      * @param assignatures conjunt d'assignatures del pla d'estudis
      * @param aules        conjunt d'aules
-     * @param resCorr      conjunt de restriccions de correquisit
-     * @param resNiv       restricció de nivell
-     * @param resAul       restricció d'aula
-     * @param resTeo       restricció de sessió de teoria
-     * @param resSub       restricció de de sessió de laboratori
-     * @param resAulDia    conjunt de restriccions d'una aula en un dia
-     * @param resAulaHora  conjunt de restriccions d'una aula en una hora
-     * @param resMatiTarda conjunt de restriccions d'una assignatura de matins o tardes
-     * @param resCapAul    restricció de capacitat d'una aula
-     * @param resLim       restricció de límits d'hores
-     * @return true si es pot construir l'horari i false si no es pot
+     * @return
      */
-
     public boolean ConstruirHorari(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules) {
         resAul = new RestriccioAula();
         resTeo = new RestriccioGrupTeo();
@@ -266,47 +122,17 @@ public class Horari {
             e.printStackTrace();
         }
         horari = algoritme.getHorari();
-        boolean n;
-
         return true;
     }
 
 
     /**
-     * Consulta l'aula en que una assignatura, un grup, data i hora tenen una assignacio
-     *
-     * @param result resultat
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero de grup o subgrup
-     * @param ndia      dia de la setmana
-     * @param nhora     hora
-     * @return aula de l'assignacio
+     * Fa un intercanvi entre dues assignacions
+     * @param a1 primera assignació que hem d'intercanviar
+     * @param a2 segona assignació que hem d'intercanviar
+     * @return retorna true si s'ha pogut efectuar l'intercanvi
      */
-
-    public ArrayList<String> consultaAulaPerHoresDiaAssignaturaGrup(HashMap<String, Aula> aules,ArrayList<String> result,  String nomAssig, String numGrup, int nhora, int ndia) {
-        String subject;
-        String group;
-        Assignacio assignacio;
-        for (int i = 0; i < horari[nhora][ndia].length; ++i) {
-            assignacio = horari[nhora][ndia][i];
-            subject = assignacio.getAssignatura().getNom();
-            group = String.valueOf(assignacio.getGrup().getNum());
-            if (subject == nomAssig && numGrup == group) {
-                result.add(aules.get(i).toString());
-            }
-        }
-        return result;
-    }
-
-    /**
-     * Consulta les hores que una assignatura i un grup tenen classes assignades un dia en concret
-     *
-     * @param result resultat
-     * @param nomAssig nom de l'assignatura
-     * @param numGrup  numero del grup o subgrup
-     * @param numdia      dia de la setmana
-     * @return llista d'hores assignades al grup aquell dia
-     */
+<<<<<<< HEAD
 
 
     public ArrayList<String> consultaHoresPerDiaAssignaturaGrup(ArrayList<String> result, String nomAssig, String numGrup, int numdia){
@@ -363,6 +189,9 @@ public class Horari {
          */
 
 
+=======
+    public boolean intercanviaSlots(Assignacio a1, Assignacio a2){
+>>>>>>> d6bc4dd9f8da4d2439e1f74a3847ceccf55d0064
         return true;
     }
 }
