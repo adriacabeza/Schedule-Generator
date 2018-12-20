@@ -146,7 +146,6 @@ public class CtrlDomini {
     }
 
     //todo de moment no te en compte restriccions i tenim codi duplicat
-
     /**
      * Genera un horari amb les restriccions especificades i el retorna per tal de ser mostrat per pantalla
      *
@@ -155,11 +154,11 @@ public class CtrlDomini {
     public String generaHorari(ArrayList<HashMap<String, String>> rmt, ArrayList<HashMap<String, String>> rdah, ArrayList<HashMap<String, String>> rad, boolean rc, boolean rgt) {
         String json = null;
 
-        for(HashMap<String, String> res1 : rmt){
+        for (HashMap<String, String> res1 : rmt) {
             String assignatura = res1.get("assignatura");
             //todo matitarda contiene "mati" o "tarda" fix
             //todo mirad las funciones de handleAdd* de CtrlHorariView para ver como esta definido
-             horari.afegirRMT(assignatura,  Boolean.parseBoolean( res1.get("matitarda")) );
+            horari.afegirRMT(assignatura, Boolean.parseBoolean(res1.get("matitarda")));
         }
 
         /*
@@ -168,12 +167,12 @@ public class CtrlDomini {
 
          */
         //TODO mes abaix en les consultes tenim funcions semblants a les que tenim el algorisme, es necesari tenirles alla i aqui?
-        for(HashMap<String, String> res2 : rad){
+        for (HashMap<String, String> res2 : rad) {
             int dia = Algorismes.fromDia2int(res2.get("dia"));
             Aula aula = aules.get(res2.get("aula"));
             horari.afegirRD(dia, aula);
         }
-        for(HashMap<String, String> res3 : rdah){
+        for (HashMap<String, String> res3 : rdah) {
             int dia = Algorismes.fromDia2int(res3.get("dia"));
             Aula aula = aules.get(res3.get("aula"));
             int hora = Integer.parseInt(res3.get("hora"));         //esta pasat de 8 a 19 o de 0 a 10 ??
@@ -293,7 +292,6 @@ public class CtrlDomini {
         plaEstudis.get(nomP).esborrarAssignatura(nomA);
         cIo.guardaPlaDEstudis(plaEstudis);
         cIo.guardaAssignatures(assignatures);
-
     }
 
     /**
@@ -311,10 +309,12 @@ public class CtrlDomini {
     }
 
     /**
-     * @param nomP
-     * @param quadrimestre
-     * @return
-     * @throws NotFoundException
+     * Consulta les assignatures d'un quadrimestre i un pla d'estudis concrets
+     *
+     * @param nomP         Nom del pla d'estudis
+     * @param quadrimestre número del quadrimestre
+     * @return llista d'assignatures del pla i quadrimestre si n'hi ha
+     * @throws NotFoundException si no troba un pla d'estudis amb el nom especificat
      */
     public ArrayList<String> consultarAssigPlaEstQuadri(String nomP, int quadrimestre) throws NotFoundException {
         if (plaEstudis.isEmpty())
@@ -497,7 +497,7 @@ public class CtrlDomini {
      * @param nom_b nom de l'altre assignatura
      * @throws NotFoundException si no existeix alguna de les dues assignatures
      */
-    public void esborraCorrequisit(String nom_a, String nom_b) throws NotFoundException, IOException {
+    private void esborraCorrequisit(String nom_a, String nom_b) throws NotFoundException, IOException {
         if (!assignatures.containsKey(nom_a)) {
             throw new NotFoundException("No existeix l'assignatura " + nom_a.toUpperCase());
         }
@@ -600,9 +600,28 @@ public class CtrlDomini {
         return possibles;
     }
 
+    /*public void intercanviaSlots(String dia1, String hora1, String aula1, String dia2, String hora2, String aula2) {
+        /*Assignacio[][][] schedule = horari.getHorari();
+        if (schedule != null) {
+            int hora_1 = Integer.parseInt(hora1);
+            int hora_2 = Integer.parseInt(hora2);
+            int dia_1 = Integer.parseInt(dia1);
+            int dia_2 = Integer.parseInt(dia2);
+            int posaula1 = Integer.parseInt(aula1) ;
+            int posaula2= Integer.parseInt(aula2); //HE DE PENSAR COM HO PILLO
 
-    /********************* SWAP *********************/
+            Assignacio a = schedule[hora_1][dia_1][posaula1];
+            Assignacio b = schedule[hora_2][dia_2][posaula2];
+            schedule[hora_1][dia_1][posaula1] = b;
+            schedule[hora_2][dia_2][posaula2] = a;*/
 
+    /**
+     * Intenta intercanviar dos slots horaris segons les restriccions anteriorment donades d'alta
+     *
+     * @param slot1 informació sobre el primer slot, assignatura, aula, dia, hora i grup
+     * @param slot2 idem pel segon slot
+     * @return cert si s'ha fet el canvi, fals altrament
+     */
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
         /****** HASHMAP ENTRIES ******/
         /*
@@ -616,22 +635,40 @@ public class CtrlDomini {
         return horari.intercanviaSlots(slot1, slot2);
     }
 
-    /*********************************************************/
-
+    /**
+     * Notifica a la capa de dades quin es el directori arrel que l'usuari ha decidit fer servir per carregar les dades de disc
+     *
+     * @param dir nom del directori
+     */
     public void setDataDirectory(File dir) {
         cIo.setDataDirectory(dir);
     }
 
+    /**
+     * Busca en el directori especificat anteriorment com a arrel els arxius json necessaris per la correcta inicialització de disc
+     *
+     * @return valor informatiu sobre quins arxius han estat carregats i quins no
+     * @throws IOException si hi ha problemes de lectura
+     */
     public int carregaBusca() throws IOException {
         int res = cIo.buscaData();
         if (res != 0) {
-            if (res%3 == 0) assignatures = cIo.carregaAssignatures();
-            if (res%5 == 0) aules = cIo.carregaAules();
-            if (res%7 == 0) plaEstudis = cIo.carregaPlansDEstudi();
-        }
-        else {
+            if (res % 3 == 0) assignatures = cIo.carregaAssignatures();
+            if (res % 5 == 0) aules = cIo.carregaAules();
+            if (res % 7 == 0) plaEstudis = cIo.carregaPlansDEstudi();
+        } else {
             cIo.setDefaultPaths();
         }
         return res;
+    }
+
+    /**
+     * Permet un horari desde qualsevol punt del sistema de fitxers, no només desde el workspace
+     * @param filepath cami al fitxer
+     * @return informació de l'horari llegit
+     * @throws IOException si hi ha hagut algun error de lectura
+     */
+    public String llegeixHorari(String filepath) throws IOException {
+        return cIo.carregaHorari(filepath);
     }
 }

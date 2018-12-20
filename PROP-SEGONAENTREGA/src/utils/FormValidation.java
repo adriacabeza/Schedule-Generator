@@ -15,6 +15,11 @@ public class FormValidation {
     public final Border errorBorder = new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     public final Border okBorder = new Border(new BorderStroke(Color.GREEN, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
 
+    /**
+     * Valida que el text introduit és alfanumeric
+     * @param s text a validar
+     * @return resultat de la validació
+     */
     public boolean validateAlphanumeric(String s) {
         if (s == null) {
             return false;
@@ -23,6 +28,11 @@ public class FormValidation {
         }
     }
 
+    /**
+     * Valida que el text introduit és text sense espai
+     * @param s text a validar
+     * @return resultat de la validació
+     */
     public boolean validateStringNoSpace(String s) {
         if (s == null) {
             return false;
@@ -31,6 +41,11 @@ public class FormValidation {
         }
     }
 
+    /**
+     * Valida que el text introduit és un número
+     * @param number text a validar
+     * @return resultat de la validació
+     */
     public boolean validateNumber(String number) {
         if (number == null) {
             return false;
@@ -39,6 +54,11 @@ public class FormValidation {
         }
     }
 
+    /**
+     * Valida que el text introduit és un text amb espai
+     * @param s text a validar
+     * @return resultat de la validació
+     */
     public boolean validateStringSpace(String s) {
         if (s == null) {
             return false;
@@ -47,6 +67,11 @@ public class FormValidation {
         }
     }
 
+    /**
+     * Valida que el text introduit és un text amb espais o un camp buit
+     * @param s text a validar
+     * @return resultat de la validació
+     */
     public boolean validateStringSpaceAllowEmpty(String s) {
         if (s == null) {
             return false;
@@ -55,6 +80,11 @@ public class FormValidation {
         }
     }
 
+    /**
+     * Valida que el text introduit és un número o un camp buit
+     * @param number text a validar
+     * @return resultat de la validació
+     */
     public boolean validateNumberAllowEmpty(String number) {
         if (number == null) {
             return false;
