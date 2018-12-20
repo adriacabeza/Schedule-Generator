@@ -33,42 +33,60 @@ public class CtrlSerDes {
         return ourInstance;
     }
 
-    /* LECTURA DE FITXERS */
-    public HashMap<String, Aula> carregaAules() throws IOException {
+    /**
+     * Transforma un arxiu a un mapa d'objectes
+     *
+     * @return mapa d'objectes tipus aula
+     * @throws IOException si hi ha hagut algun problema de lectura
+     */
+    HashMap<String, Aula> carregaAules() throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        HashMap<String, Aula> a = gson.fromJson(gd.llegeix("aules"), new TypeToken<HashMap<String, Aula>>() {
+        return gson.fromJson(gd.llegeix("aules"), new TypeToken<HashMap<String, Aula>>() {
         }.getType());
-        return a;
-    }
-
-    public HashMap<String, PlaEstudis> carregaPlansDEstudi() throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        HashMap<String, PlaEstudis> ps = gson.fromJson(gd.llegeix("plansestudi"), new TypeToken<HashMap<String, PlaEstudis>>() {
-        }.getType());
-        return ps;
-    }
-
-    public HashMap<String, Assignatura> carregaAssignatures() throws IOException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        HashMap<String, Assignatura> ass = gson.fromJson(gd.llegeix("assignatures"), new TypeToken<HashMap<String, Assignatura>>() {
-        }.getType());
-        return ass;
     }
 
     /**
-     * Carrega horari de la forma guardaHorari2
-     * @param filepath
-     * @return
-     * @throws IOException
+     * Transforma un arxiu a un mapa d'objectes
+     *
+     * @return mapa d'objectes tipus plaEstudis
+     * @throws IOException si hi ha hagut algun problema de lectura
      */
-    public String carregaHorari(String filepath) throws IOException {
+    HashMap<String, PlaEstudis> carregaPlansDEstudi() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.fromJson(gd.llegeix("plansestudi"), new TypeToken<HashMap<String, PlaEstudis>>() {
+        }.getType());
+    }
+
+    /**
+     * Transforma un arxiu a un mapa d'objectes
+     *
+     * @return mapa d'objectes tipus assignatura
+     * @throws IOException si hi ha hagut algun problema de lectura
+     */
+    HashMap<String, Assignatura> carregaAssignatures() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.fromJson(gd.llegeix("assignatures"), new TypeToken<HashMap<String, Assignatura>>() {
+        }.getType());
+    }
+
+    /**
+     * Carrega horari de disc
+     *
+     * @param filepath path del arxiu que volem llegir
+     * @return Informació sobre l'horari
+     * @throws IOException si hi ha hagut algun problema de lectura
+     */
+    String carregaHorari(String filepath) throws IOException {
         return gd.llegeix(filepath);
     }
 
-
-    /* ESCRIPTURA DE FITXERS */
-
-    public String horariToJson(Horari h){
+    /**
+     * Transforma un objecte horari a un format json i el retorna
+     *
+     * @param h horari objecte
+     * @return json del horari
+     */
+    String horariToJson(Horari h) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonArray obj = new JsonArray();
         for (int i = 0; i < h.getHorari().length; ++i) {
@@ -89,29 +107,59 @@ public class CtrlSerDes {
         return gson.toJson(obj);
     }
 
+    /**
+     * Guarda un horari en format text al filepath especificat
+     *
+     * @param h        horari
+     * @param filepath filepath
+     * @throws IOException si hi ha hagut algun error d'escriptura
+     */
     public void guardaHorari(String h, String filepath) throws IOException {
         gd.escriu(h, filepath);
     }
 
-    public void guardaAssignatures(HashMap<String, Assignatura> assignatures) throws IOException {
+    /**
+     * Serialitza totes les assignatures i les envia a que siguin guardades a disc
+     *
+     * @param assignatures totes les assignatures
+     * @throws IOException si hi ha hagut algun error d'escriptura
+     */
+    void guardaAssignatures(HashMap<String, Assignatura> assignatures) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(assignatures);
         gd.escriu(json, "assignatures");
     }
 
-    public void guardaAules(HashMap<String, Aula> aules) throws IOException {
+    /**
+     * Serialitza totes les aules i les envia a que siguin guardades a disc
+     *
+     * @param aules totes les aules
+     * @throws IOException si hi ha hagut algun error d'escriptura
+     */
+    void guardaAules(HashMap<String, Aula> aules) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(aules);
         gd.escriu(json, "aules");
     }
 
-    public void guardaPlaDEstudis(HashMap<String, PlaEstudis> ps) throws IOException {
+    /**
+     * Serialitza tots els plans d'estudi i les envia a que siguin guardats a disc
+     *
+     * @param ps tots els plans d'estudi
+     * @throws IOException si hi ha hagut algun error d'escriptura
+     */
+    void guardaPlaDEstudis(HashMap<String, PlaEstudis> ps) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(ps);
         gd.escriu(json, "plansestudi");
     }
 
-    public boolean comprovaDefaultFilepath() {
+    /**
+     * Comprova que en el filepath per defecte s'hi troben els fitxers de dades necessaris
+     *
+     * @return cert si ha trobat tots els fitxers, fals altrament
+     */
+    boolean comprovaDefaultFilepath() {
         gd.setDefaults();
 
         try {
@@ -137,7 +185,13 @@ public class CtrlSerDes {
         return true;
     }
 
-    private boolean checkAssigFile(String file){
+    /**
+     * Comprova que un fitxer correspon a un fitxer d'assignatures
+     *
+     * @param file nom del fitxer
+     * @return cert si és un fitxer d'assignatures
+     */
+    private boolean checkAssigFile(String file) {
         Map assignatures;
 
         try {
@@ -151,7 +205,13 @@ public class CtrlSerDes {
         }
     }
 
-    private boolean checkAulesFile(String file){
+    /**
+     * Comprova que un fitxer correspon a un fitxer d'aules
+     *
+     * @param file nom del fitxer
+     * @return cert si és un fitxer d'aules
+     */
+    private boolean checkAulesFile(String file) {
         Map aules;
         try {
             aules = new Gson().fromJson(file, Map.class);
@@ -164,7 +224,13 @@ public class CtrlSerDes {
         }
     }
 
-    private boolean checkPlansEstudiFile(String file){
+    /**
+     * Comprova que un fitxer correspon a un fitxer de plans d'estudi
+     *
+     * @param file nom del fitxer
+     * @return cert si és un fitxer de plans d'estudi
+     */
+    private boolean checkPlansEstudiFile(String file) {
         Map pe;
         try {
             pe = new Gson().fromJson(file, Map.class);
@@ -177,11 +243,21 @@ public class CtrlSerDes {
         }
     }
 
-    public void setDataDirectory(File dir) {
+    /**
+     * Estableix un directori com a directori de dades del programa
+     *
+     * @param dir nom del directori
+     */
+    void setDataDirectory(File dir) {
         gd.setFilepath(dir.getAbsolutePath());
     }
 
-    public int buscaData() {
+    /**
+     * Busca en els paths per defecte si hi ha informació
+     *
+     * @return informació sobre els fitxers que s'han trobat
+     */
+    int buscaData() {
         ArrayList<String> files = gd.getLlistaArxius();
 
         int assigFound = 0;
@@ -190,26 +266,26 @@ public class CtrlSerDes {
 
         for (String f : files) {
             try {
-                if(checkAssigFile(gd.llegeix(f))) {
+                if (checkAssigFile(gd.llegeix(f))) {
                     gd.setFilenameAssig(f);
                     assigFound = 3;
-                }
-                else if (checkAulesFile(gd.llegeix(f))) {
+                } else if (checkAulesFile(gd.llegeix(f))) {
                     gd.setFilenameAules(f);
                     aulesFound = 5;
-                }
-                else if (checkPlansEstudiFile(gd.llegeix(f))) {
+                } else if (checkPlansEstudiFile(gd.llegeix(f))) {
                     gd.setFilenamePlaEst(f);
                     plansEstudiFound = 7;
                 }
-            } catch (IOException e) {
-
+            } catch (IOException ignored) {
             }
         }
         return assigFound * aulesFound * plansEstudiFound;
     }
 
-    public void setDefaultPaths() {
+    /**
+     * Estableix les rutes per defecte dels arxius i carpetes de dades
+     */
+    void setDefaultPaths() {
         gd.setDefaults();
     }
 }

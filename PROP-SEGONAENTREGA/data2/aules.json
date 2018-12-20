@@ -1,8 +1,85 @@
 {
-  "a5001": {
-    "edifici": "a5",
-    "planta": 0,
+  "a4205": {
+    "edifici": "a4",
+    "planta": 2,
+    "aula": 5,
+    "tAula": "normal",
+    "capacitat": 60
+  },
+  "a4204": {
+    "edifici": "a4",
+    "planta": 2,
+    "aula": 4,
+    "tAula": "laboratori",
+    "capacitat": 60
+  },
+  "a4104": {
+    "edifici": "a4",
+    "planta": 1,
+    "aula": 4,
+    "tAula": "laboratori",
+    "capacitat": 30
+  },
+  "a4203": {
+    "edifici": "a4",
+    "planta": 2,
+    "aula": 3,
+    "tAula": "normal",
+    "capacitat": 60
+  },
+  "a4103": {
+    "edifici": "a4",
+    "planta": 1,
+    "aula": 3,
+    "tAula": "laboratori",
+    "capacitat": 30
+  },
+  "a4202": {
+    "edifici": "a4",
+    "planta": 2,
+    "aula": 2,
+    "tAula": "normal",
+    "capacitat": 60
+  },
+  "a4102": {
+    "edifici": "a4",
+    "planta": 1,
+    "aula": 2,
+    "tAula": "normal",
+    "capacitat": 30
+  },
+  "a4201": {
+    "edifici": "a4",
+    "planta": 2,
     "aula": 1,
+    "tAula": "normal",
+    "capacitat": 60
+  },
+  "a5102": {
+    "edifici": "a5",
+    "planta": 1,
+    "aula": 2,
+    "tAula": "normal",
+    "capacitat": 30
+  },
+  "a6104": {
+    "edifici": "a6",
+    "planta": 1,
+    "aula": 4,
+    "tAula": "laboratori",
+    "capacitat": 30
+  },
+  "a5201": {
+    "edifici": "a5",
+    "planta": 2,
+    "aula": 1,
+    "tAula": "laboratori",
+    "capacitat": 40
+  },
+  "a6203": {
+    "edifici": "a6",
+    "planta": 2,
+    "aula": 3,
     "tAula": "normal",
     "capacitat": 60
   },
@@ -10,6 +87,41 @@
     "edifici": "a5",
     "planta": 0,
     "aula": 2,
+    "tAula": "normal",
+    "capacitat": 60
+  },
+  "a5101": {
+    "edifici": "a5",
+    "planta": 1,
+    "aula": 1,
+    "tAula": "laboratori",
+    "capacitat": 30
+  },
+  "a6105": {
+    "edifici": "a6",
+    "planta": 1,
+    "aula": 5,
+    "tAula": "laboratori",
+    "capacitat": 30
+  },
+  "a6204": {
+    "edifici": "a6",
+    "planta": 2,
+    "aula": 4,
+    "tAula": "laboratori",
+    "capacitat": 60
+  },
+  "a5001": {
+    "edifici": "a5",
+    "planta": 0,
+    "aula": 1,
+    "tAula": "normal",
+    "capacitat": 60
+  },
+  "a6205": {
+    "edifici": "a6",
+    "planta": 2,
+    "aula": 5,
     "tAula": "normal",
     "capacitat": 60
   },
@@ -27,24 +139,10 @@
     "tAula": "normal",
     "capacitat": 60
   },
-  "a5101": {
-    "edifici": "a5",
+  "a6101": {
+    "edifici": "a6",
     "planta": 1,
     "aula": 1,
-    "tAula": "laboratori",
-    "capacitat": 30
-  },
-  "a5102": {
-    "edifici": "a5",
-    "planta": 1,
-    "aula": 2,
-    "tAula": "normal",
-    "capacitat": 30
-  },
-  "a5103": {
-    "edifici": "a5",
-    "planta": 1,
-    "aula": 3,
     "tAula": "laboratori",
     "capacitat": 30
   },
@@ -55,54 +153,12 @@
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a6101": {
-    "edifici": "a6",
-    "planta": 1,
-    "aula": 1,
-    "tAula": "laboratori",
-    "capacitat": 30
-  },
   "a6102": {
     "edifici": "a6",
     "planta": 1,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 30
-  },
-  "a6103": {
-  "edifici": "a6",
-  "planta": 1,
-  "aula": 3,
-  "tAula": "normal",
-  "capacitat": 30
-},
-  "a6104": {
-    "edifici": "a6",
-    "planta": 1,
-    "aula": 4,
-    "tAula": "laboratori",
-    "capacitat": 30
-  },
-  "a6105": {
-    "edifici": "a6",
-    "planta": 1,
-    "aula": 5,
-    "tAula": "laboratori",
-    "capacitat": 30
-  },
-  "a5201": {
-    "edifici": "a5",
-    "planta": 2,
-    "aula": 1,
-    "tAula": "laboratori",
-    "capacitat": 40
-  },
-  "a5202": {
-    "edifici": "a5",
-    "planta": 2,
-    "aula": 2,
-    "tAula": "normal",
-    "capacitat": 60
   },
   "a6201": {
     "edifici": "a6",
@@ -111,38 +167,31 @@
     "tAula": "laboratori",
     "capacitat": 40
   },
-  "a6202": {
+  "a5103": {
+    "edifici": "a5",
+    "planta": 1,
+    "aula": 3,
+    "tAula": "laboratori",
+    "capacitat": 30
+  },
+  "a6103": {
     "edifici": "a6",
+    "planta": 1,
+    "aula": 3,
+    "tAula": "normal",
+    "capacitat": 30
+  },
+  "a5202": {
+    "edifici": "a5",
     "planta": 2,
     "aula": 2,
     "tAula": "normal",
     "capacitat": 60
   },
-  "a6203": {
+  "a6202": {
     "edifici": "a6",
     "planta": 2,
-    "aula": 3,
-    "tAula": "normal",
-    "capacitat": 60
-  },
-  "a6204": {
-    "edifici": "a6",
-    "planta": 2,
-    "aula": 4,
-    "tAula": "laboratori",
-    "capacitat": 60
-  },
-  "a6205": {
-    "edifici": "a6",
-    "planta": 2,
-    "aula": 5,
-    "tAula": "normal",
-    "capacitat": 60
-  },
-  "a4001": {
-    "edifici": "a4",
-    "planta": 0,
-    "aula": 1,
+    "aula": 2,
     "tAula": "normal",
     "capacitat": 60
   },
@@ -153,7 +202,6 @@
     "tAula": "normal",
     "capacitat": 60
   },
-
   "a4101": {
     "edifici": "a4",
     "planta": 1,
@@ -161,59 +209,10 @@
     "tAula": "laboratori",
     "capacitat": 30
   },
-  "a4102": {
+  "a4001": {
     "edifici": "a4",
-    "planta": 1,
-    "aula": 2,
-    "tAula": "normal",
-    "capacitat": 30
-  },
-  "a4103": {
-    "edifici": "a4",
-    "planta": 1,
-    "aula": 3,
-    "tAula": "laboratori",
-    "capacitat": 30
-  },
-  "a4104": {
-    "edifici": "a4",
-    "planta": 1,
-    "aula": 4,
-    "tAula": "laboratori",
-    "capacitat": 30
-  },
-  "a4201": {
-    "edifici": "a4",
-    "planta": 2,
+    "planta": 0,
     "aula": 1,
-    "tAula": "laboratori",
-    "capacitat": 40
-  },
-  "a4202": {
-    "edifici": "a4",
-    "planta": 2,
-    "aula": 2,
-    "tAula": "normal",
-    "capacitat": 60
-  },
-  "a4203": {
-    "edifici": "a4",
-    "planta": 2,
-    "aula": 3,
-    "tAula": "normal",
-    "capacitat": 60
-  },
-  "a4204": {
-    "edifici": "a4",
-    "planta": 2,
-    "aula": 4,
-    "tAula": "laboratori",
-    "capacitat": 60
-  },
-  "a4205": {
-    "edifici": "a4",
-    "planta": 2,
-    "aula": 5,
     "tAula": "normal",
     "capacitat": 60
   }

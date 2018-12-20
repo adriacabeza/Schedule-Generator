@@ -399,7 +399,7 @@ public class CtrlMainView {
 
             CtrlHorariView c = loader.getController();
             c.setMainController(this);
-            if (!c.loadHorari(GestorDisc.getInstance().llegeix(file.getName()))) {
+            if (!c.loadHorari(controladorDomini.llegeixHorari(file.getAbsolutePath()))) {
                 alert("El fitxer sembla no ser valid. Revisa'l.");
                 return;
             }

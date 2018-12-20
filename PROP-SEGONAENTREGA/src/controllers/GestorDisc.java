@@ -35,6 +35,13 @@ public class GestorDisc {
         return ourInstance;
     }
 
+    /**
+     * Escriu a disc un dels fitxers
+     *
+     * @param json  text a escriure
+     * @param tipus aula, assignatura, plans d'estudi o horari
+     * @throws IOException si hi ha hagut algun problema d'escriptura
+     */
     public void escriu(String json, String tipus) throws IOException {
         String filepath = this.filepath + "/";
         switch (tipus.toUpperCase()) {
@@ -47,7 +54,8 @@ public class GestorDisc {
             case "PLANSESTUDI":
                 filepath = filepath.concat(filenamePlaEst);
                 break;
-            default : throw new IllegalArgumentException();
+            default:
+                throw new IllegalArgumentException();
         }
 
         FileWriter fw = new FileWriter(filepath);
@@ -55,7 +63,15 @@ public class GestorDisc {
         fw.close();
     }
 
-    public String llegeix(String tipus) throws IOException, IllegalArgumentException {
+    /**
+     * Llegeix de disc un dels fitxers de dades
+     *
+     * @param tipus aula, assignatura, plans d'estudi o horari
+     * @return text llegit
+     * @throws IOException              si hi ha hagut algun problema d'escriptura
+     * @throws IllegalArgumentException si el tipus d'arxiu es incorrecte
+     */
+    String llegeix(String tipus) throws IOException, IllegalArgumentException {
         String filepath = this.filepath + "/";
         switch (tipus.toUpperCase()) {
             case "ASSIGNATURES":
@@ -67,34 +83,63 @@ public class GestorDisc {
             case "PLANSESTUDI":
                 filepath = filepath.concat(filenamePlaEst);
                 break;
-            default : filepath = filepath.concat(tipus);
+            default:
+                filepath = filepath.concat(tipus);
         }
         byte[] encoded = Files.readAllBytes(Paths.get(filepath));
         return new String(encoded, Charset.defaultCharset());
     }
 
+    /**
+     * Estableix el nom del directori de dades
+     *
+     * @param filepath nom del directori
+     */
     void setFilepath(String filepath) {
         this.filepath = filepath;
     }
 
+    /**
+     * Estableix el nom del arxiu d'assignatures
+     *
+     * @param filenameAssig nom del arxiu
+     */
     void setFilenameAssig(String filenameAssig) {
         this.filenameAssig = filenameAssig;
     }
 
+    /**
+     * Estableix el nom del arxiu de plans d'estudi
+     *
+     * @param filenamePlaEst nom del arxiu
+     */
     void setFilenamePlaEst(String filenamePlaEst) {
         this.filenamePlaEst = filenamePlaEst;
     }
 
+    /**
+     * Estableix el nom del arxiu d'aules
+     *
+     * @param filenameAules nom del arxiu
+     */
     void setFilenameAules(String filenameAules) {
         this.filenameAules = filenameAules;
     }
 
+    /**
+     * Estableix el nom del arxiu d'horari
+     *
+     * @param filenameHorari nom del arxiu
+     */
     public void setFilenameHorari(String filenameHorari) {
         this.filenameHorari = filenameHorari;
     }
 
+    /**
+     * Reset dels paths d'arxius als paths per defecte
+     */
     void setDefaults() {
-        new File (defaultFolder).mkdirs();
+        new File(defaultFolder).mkdirs();
 
         filepath = defaultFolder;
         filenameAssig = defaultAssigFN;
@@ -102,12 +147,17 @@ public class GestorDisc {
         filenamePlaEst = defaultPlaEstFN;
     }
 
+    /**
+     * Obté una llista d'arxius que hi ha en un directori
+     *
+     * @return llista d'arxius
+     */
     ArrayList<String> getLlistaArxius() {
         ArrayList<String> res = new ArrayList<>();
 
         File[] files = new File(this.filepath).listFiles();
 
-        for (File f:files) {
+        for (File f : files) {
             if (f.isFile()) res.add(f.getName());
         }
 
