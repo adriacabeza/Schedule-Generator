@@ -35,14 +35,8 @@ public class RestriccioCorrequisit extends RestriccioBinaria {
                 Assignacio a = horari[hora][dia][j];
                 if (a != null) {
                     if (a.getAssignatura().getCorrequisits().contains(assig.getAssig().getNom())) {
-                        if (a.getClass() == AssignacioL.class && assig.getSessio().getClass() == Laboratori.class) {
-                            if (a.getGrup().getNum() == assig.getSub().getNum()) // mateix subgrup o grup de teoria
-                                return false;
-                        } else { //un dels dos es teoria
-                            int auxnum = assig.getGrup().getNum() / 10;
-                            if (assig.getSessio().getClass() == Laboratori.class) auxnum = assig.getSub().getNum() / 10;
-                            if (a.getGrup().getNum() / 10 == auxnum) return false;
-                        }
+                        if (a.getGrup().getNum() == assig.getGrup().getNum())
+                            return false;
                     }
                 }
             }

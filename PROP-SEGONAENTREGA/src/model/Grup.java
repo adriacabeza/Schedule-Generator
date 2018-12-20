@@ -92,6 +92,11 @@ public class Grup {
         return "id: " + num + " capacitat: " + capacitat;
     }
 
+    /**
+     * Obtenir els subgrups del grup
+     *
+     * @return la llista de subgrups
+     */
     public ArrayList<String> getLlistaSubgrups() {
         ArrayList<String> output = new ArrayList<>();
         for (Subgrup s: subgrups.values()) {
