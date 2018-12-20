@@ -47,13 +47,13 @@ public class Backtracking2 extends Algorismes {
             Assignatura assig = null;
             int indexAssig = 0;
             boolean found = false;
-            for (int k = 0; k < resMatiTarda.size() && !found; ++k) {
+           /* for (int k = 0; k < resMatiTarda.size() && !found; ++k) {
                 if (resMatiTarda.get(k).getAssig() == sessions.get(i).getAssig().getNom()) {
                     assig = sessions.get(i).getAssig();         //tenim una assignatura o de mati o de tarda
                     indexAssig = k;
                     found = true;
                 }
-            }
+            }*/
             ArrayList<ArrayList<ArrayList<Integer>>> diahoraaules = new ArrayList<>(5);
             for (int d = 0; d < 5; ++d) {
                 ArrayList<ArrayList<Integer>> horaaules = new ArrayList<>(12);
@@ -64,12 +64,12 @@ public class Backtracking2 extends Algorismes {
                         restriccioMati = resMatiTarda.get(indexAssig).isAble(assig.getNom(),null,0, h);        //mirem si es de mati, estiguem en el mati i el mateix per la tarda
                     for (int n = 0; n < aules_possibles.size() && restriccioMati; ++n) {
                         boolean b = true;
-                        for (int j = 0; j < resAulaHora.size() && b; ++j) {
+                      /*  for (int j = 0; j < resAulaHora.size() && b; ++j) {
                             if (!resAulaHora.get(j).isAble(null,aules.get(aules_possibles.get(n)), d, h)) b = false;
                         }
                         for (int j = 0; j < resAulDia.size() && b; ++j) {
                             if (!resAulDia.get(j).isAble2(null,null,aules.get(aules_possibles.get(n)),null,0, d,0)) b = false;
-                        }
+                        }*/
                         if (b) aulesHora.add(aules_possibles.get(n));
                     }
                     horaaules.add(h, aulesHora);
@@ -186,12 +186,12 @@ public class Backtracking2 extends Algorismes {
                                 HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = clonar(possibilitats);
                                 for (int z = 0; z < duracio && possible; ++z) {
                                     horari[h+z][d][aula] = new AssignacioT(fromInt2dia(d), h + z, aules.get(aula), sessions.get(i).getAssig(), sessions.get(i).getGrup());
-                                    if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
+                                 /**   if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
                                         for(int j = 0 ; j <= z; ++j){
                                             horari[h+j][d][aula] = null;
                                         }
                                         possible = false;
-                                    };
+                                    };**/
                                 }
                                 if(possible) {
                                     possibilitats.remove(sessions.get(i));
@@ -209,12 +209,12 @@ public class Backtracking2 extends Algorismes {
                                 HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> clon = clonar(possibilitats);
                                 for (int z = 0; z < duracio; ++z) {
                                     horari[h + z][d][aula] = new AssignacioL(fromInt2dia(d), h + z, aules.get(aula), sessions.get(i).getAssig(), sessions.get(i).getSub());
-                                    if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
+                                   /** if(propagarPossibilitats(aula,d,h+z, sessions.get(i),possibilitats)){
                                         for(int j = 0 ; j <= z; ++j){
                                             horari[h+j][d][aula] = null;
                                         }
                                         possible = false;
-                                    }
+                                    }*/
                                 }
                                 possibilitats.remove(sessions.get(i));
                                 if (creaHorari(i + 1, horari, possibilitats)) return true;
@@ -247,12 +247,11 @@ public class Backtracking2 extends Algorismes {
             e.printStackTrace();
         }
         HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats = new HashMap<>();
-        filtraRestriccions((possibilitats));
-        if (filtraRestriccions(possibilitats)) {
+       if (filtraRestriccions(possibilitats)) {
             System.out.println("No es pot generar l'horari");
             return false;
         }
-        ;
+
         return creaHorari(0, horari, possibilitats);
 
     }

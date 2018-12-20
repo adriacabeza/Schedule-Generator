@@ -164,8 +164,8 @@ public class CtrlDomini {
         /*
         horari.activaRestriccio...(bool)
         horari.activaRestriccio2...(bool)
-
          */
+
         //TODO mes abaix en les consultes tenim funcions semblants a les que tenim el algorisme, es necesari tenirles alla i aqui?
         for (HashMap<String, String> res2 : rad) {
             int dia = Algorismes.fromDia2int(res2.get("dia"));
