@@ -22,6 +22,11 @@
                 <ChoiceBox fx:id="choice_aula" prefWidth="150.0" />
                 <Label text="Assignatura: " />
                 <ChoiceBox fx:id="choice_assig" prefWidth="150.0" />
+            <Button id="green" mnemonicParsing="false" onAction="#handleGuarda" text="Guarda">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </Button>
             </children>
          <BorderPane.margin>
             <Insets left="320.0" />

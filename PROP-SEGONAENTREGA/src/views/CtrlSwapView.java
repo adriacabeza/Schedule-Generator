@@ -1,6 +1,7 @@
 package views;
 
 import controllers.CtrlDomini;
+import exceptions.NotFoundException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -52,25 +53,38 @@ public class CtrlSwapView {
     }
 
     @FXML
-    private void handleSelecciona1() {
-        Alert prompt = new Alert(Alert.AlertType.CONFIRMATION);
+    private void handleSelecciona1() throws NotFoundException {
+        /*Alert prompt = new Alert(Alert.AlertType.CONFIRMATION);
         prompt.setContentText("Selecciona un slot a l'horari i prem \"OK\"");
         Optional<ButtonType> result = prompt.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            slot_1_map = horariView.getCurrentSlot();
+        if (result.get() == ButtonType.OK) {*/
+        HashMap<String, String> slot = horariView.getCurrentSlot();
+        if (slot != null) {
+            slot_1_map = slot;
             populateLabels();
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Aquest slot no conté dades valides");
         }
+        //}
     }
 
     @FXML
-    private void handleSelecciona2() {
-        Alert prompt = new Alert(Alert.AlertType.CONFIRMATION);
+    private void handleSelecciona2() throws NotFoundException {
+        /*Alert prompt = new Alert(Alert.AlertType.CONFIRMATION);
         prompt.setContentText("Selecciona un slot a l'horari i prem \"OK\"");
         Optional<ButtonType> result = prompt.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            slot_2_map = horariView.getCurrentSlot();
+        if (result.get() == ButtonType.OK) {*/
+        HashMap<String, String> slot = horariView.getCurrentSlot();
+        if (slot != null) {
+            slot_2_map = slot;
             populateLabels();
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("Aquest slot no conté dades valides");
         }
+
+        //}
     }
 
     private void populateLabels() {
