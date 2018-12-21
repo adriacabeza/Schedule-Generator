@@ -631,44 +631,8 @@ public class CtrlDomini {
      */
 
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
-        Assignacio a1 = null, a2 = null;
-        if (slot1.get("grup").equals("-")){
-            a1 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot1.get("dia"))), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), null, null);
-        } else {
-            if (Integer.parseInt(slot1.get("grup")) % 10 == 0) {
-                try {
-                    a1 = new AssignacioT(slot1.get("dia"), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), assignatures.get(slot1.get("assignatura")), assignatures.get(slot1.get("assignatura")).getGrup(Integer.parseInt(slot1.get("grup"))));
-                } catch (NotFoundException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try {
-                    a1 = new AssignacioL(slot1.get("dia"), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), assignatures.get(slot1.get("assignatura")), assignatures.get(slot1.get("assignatura")).getGrup((Integer.parseInt(slot1.get("grup")) / 10 * 10)).getSubgrups().get(Integer.parseInt(slot1.get("grup"))));
-                } catch (NotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (slot2.get("grup").equals("-")) {
-            a2 = new AssignacioT(slot1.get("dia"), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), null, null);
-        } else {
-            if (Integer.parseInt(slot2.get("grup")) % 10 == 0) {
-                try {
-                    a2 = new AssignacioT(slot2.get("dia"), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), assignatures.get(slot2.get("assignatura")), assignatures.get(slot2.get("assignatura")).getGrup(Integer.parseInt(slot2.get("grup"))));
-                } catch (NotFoundException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try {
-                    a2 = new AssignacioL(slot2.get("dia"), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), assignatures.get(slot2.get("assignatura")), assignatures.get(slot2.get("assignatura")).getGrup((Integer.parseInt(slot2.get("grup")) / 10 * 10)).getSubgrups().get(Integer.parseInt(slot2.get("grup"))));
-                } catch (NotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
         try {
-            return horari.intercanviaSlots(a1, a2, new ArrayList<Aula>(aules.values()));
+            return horari.intercanviaSlots(slot1,slot2, aules,assignatures);
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
