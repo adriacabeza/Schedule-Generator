@@ -80,6 +80,7 @@ public abstract class Algorismes {
         HashMap<Integer, Subgrup> subgrups;
         seslab = 0;
         boolean lab;
+        Grup g;
         for (Assignatura a : assignatures) {
             lab = false;
             try {
@@ -93,18 +94,19 @@ public abstract class Algorismes {
             grups = a.getGrups();
             valor = 8;
             for (int i = 0; lab && i < seslab; ++i) {
-                for (Grup g : grups.values()) {
+                for (int key : grups.keySet()) {
+                    g = grups.get(key);
                     subgrups = g.getSubgrups();
-                    for (Subgrup subg : subgrups.values()) {
-                        res.add(new SessioGrup(a, auxlab, g, subg, valor));
+                    for (int subg : subgrups.keySet()) {
+                        res.add(new SessioGrup(a, auxlab, g, subgrups.get(subg), valor));
                     }
                 }
                 valor /= 2;
             }
             valor = 8;
             for (int i = 0; i < sesteo; ++i) {
-                for (Grup g : grups.values()) {
-                    res.add(new SessioGrup(a, auxteo, g, null, valor));
+                for (int key : grups.keySet()) {
+                    res.add(new SessioGrup(a, auxteo, grups.get(key), null, valor));
                 }
 
                 valor /= 2;

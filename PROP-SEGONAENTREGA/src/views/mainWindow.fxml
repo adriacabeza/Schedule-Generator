@@ -149,7 +149,7 @@
                 </BorderPane>
             </top>
          <center>
-            <Label fx:id="label_welcome" alignment="CENTER" lineSpacing="5.0" textAlignment="JUSTIFY" wrapText="true" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" lineSpacing="5.0" textAlignment="JUSTIFY" wrapText="true" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </padding>
