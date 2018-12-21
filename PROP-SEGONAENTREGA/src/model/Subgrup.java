@@ -19,6 +19,11 @@ public class Subgrup extends Grup {
         super(num, capacitat, subgrups);
     }
 
+
+    /**
+     * Retorna la llista de subgrups d'un grup
+     * @return la llista de subgrups
+     */
     @Override
     public ArrayList<String> getLlistaSubgrups() {
         return null;

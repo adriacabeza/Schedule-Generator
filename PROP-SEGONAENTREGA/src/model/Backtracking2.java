@@ -114,35 +114,40 @@ public class Backtracking2 extends Algorismes {
         while (it.hasNext()) {
             SessioGrup assignat = it.next();
             boolean borrat = false;
-            if (!resCorr.isAble2(assignat, sessio,null, possibles, aula, dia, hora)) {
+            if (!resCorr.isAble2(assignat, sessio, null, possibles, aula, dia, hora)) {
                 possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
                 borrat = true;
             }
 
-            if (!resNiv.isAble2(assignat, sessio,null, possibles, aula, dia, hora) && !borrat) {
-                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
-                borrat = true;
-            }
-            if (!resTeo.isAble2(assignat, sessio,null, possibles, aula, dia, hora) && !borrat) {
+            if (!resNiv.isAble2(assignat, sessio, null, possibles, aula, dia, hora) && !borrat) {
                 possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
                 borrat = true;
             }
 
-            if (!resSub.isAble2(assignat, sessio,null, possibles, aula, dia, hora) && !borrat) {
-                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
-            }
-
-            boolean pos = true;
-
-            for(int d = 0; d <5; ++d){
-                for(int h = 0; h < 12; ++h){
-                    if (!possibles.get(assignat).get(d).get(h).isEmpty()) pos= false;
+                boolean b = resTeo.isAble2(assignat, sessio, null, possibles, aula, dia, hora);
+                if (!b && !borrat) {
+                    System.out.println("he entrado");
+                    possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                    borrat = true;
                 }
-            }
-            if(pos) return true;
 
-        }
-        return false;
+                boolean b2 = resSub.isAble2(assignat, sessio, null, possibles, aula, dia, hora);
+                if (!b2 && !borrat) {
+                    System.out.println("aqui tambien he entrado");
+                    possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                }
+
+                boolean pos = true;
+
+                for (int d = 0; d < 5; ++d) {
+                    for (int h = 0; h < 12; ++h) {
+                        if (!possibles.get(assignat).get(d).get(h).isEmpty()) pos = false;
+                    }
+                }
+                if (pos) return true;
+
+            }
+         return false;
     }
 
 
@@ -236,9 +241,7 @@ public class Backtracking2 extends Algorismes {
                 }
             }
         }
-        System.out.println("tirem enrere");
         return false;
-
     }
 
     /**
@@ -255,7 +258,6 @@ public class Backtracking2 extends Algorismes {
         }
         HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats = new HashMap<>();
        if (filtraRestriccions(possibilitats)) {
-            System.out.println("No es pot generar l'horari");
             return false;
         }
 

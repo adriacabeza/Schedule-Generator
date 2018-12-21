@@ -55,7 +55,7 @@ public class RestriccioNivell extends RestriccioBinaria {
 
     @Override
     public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) throws NotFoundException {
-        if (assignat.getAssig().getQuadrimestre() == check.getAssig().getQuadrimestre() && assignat.getGrup().getNum() == check.getGrup().getNum()) {
+        if (assignat.getAssig().getQuadrimestre() == check.getAssig().getQuadrimestre() && assignat.getGrup().getNum() == check.getGrup().getNum() && !assignat.getAssig().getNom().equals(check.getAssig().getNom())) {
             if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
                 return false;
             }
