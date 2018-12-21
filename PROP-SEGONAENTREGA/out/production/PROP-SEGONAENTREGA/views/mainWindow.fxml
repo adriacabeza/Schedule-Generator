@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlMainView">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlMainView">
     <children>
         <AnchorPane id="menu" layoutY="0.0" prefHeight="600.0" prefWidth="200.0">
             <children>
@@ -27,7 +27,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/scroll-solid.png" />
+                                        <Image url="/svgtopng/scroll-solid.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -40,7 +40,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/book-solid.png" />
+                                        <Image url="/svgtopng/book-solid.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -53,7 +53,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/door-open-solid.png" />
+                                        <Image url="/svgtopng/door-open-solid.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -66,7 +66,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/calendar-alt-regular.png" />
+                                        <Image url="/svgtopng/calendar-alt-regular.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -79,7 +79,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/home-solid.png" />
+                                        <Image url="/svgtopng/home-solid.png" />
                                     </image>
                                 </ImageView>
                             </center>

@@ -12,6 +12,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -60,6 +62,8 @@ public class CtrlMainView {
     BorderPane specific_inner_content = new BorderPane();
 
 
+    @FXML
+    ImageView img_inici = new ImageView();
     private int state;
     private CtrlDomini controladorDomini;
 
@@ -70,6 +74,7 @@ public class CtrlMainView {
         label_welcome.setText("Benvingut/da al generador d'horaris!\nEl funcionament d'aquest programa és molt senzill. A l'esquerra es troba el menú de gestió de dades. Fent clic a cada botó podràs accedir a les funcionalitats d'edició, creació, i consulta d'assignatures, plans d'estudi i aules. Es podran també esborrar.\nFinalment també disposa de la funcinalitat de generar horaris. Aquesta funcionalitat agafa tots els plans d'estudi no obsolets i les seves assignatures i els hi assigna un horari segons les restriccions que hagis creat. Si ho desitges pots carregar un horari antic per la seva posterior consulta o modificar manualment un que acabis de generar.\nEls canvis en els fitxers de dades es guarden de forma automàtica i tot el que s'esborri desde l'aplicació, es definitiu. Si no vols que sigui definitiu, recomanem que guardis una copia abans.\nEsperem que l'aplicació sigui d'utilitat.");
         mostraInici();
         controladorDomini = CtrlDomini.getInstance();
+        img_inici.setImage(new Image(getClass().getResource("/svgtopng/book-solid.png").toString()));
 
         try {
             boolean defaultOk = controladorDomini.carrega();

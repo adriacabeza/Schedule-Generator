@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlMainView">
+<AnchorPane id="AnchorPane" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlMainView">
     <children>
         <AnchorPane id="menu" layoutY="0.0" prefHeight="600.0" prefWidth="200.0">
             <children>
@@ -27,7 +27,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/scroll-solid.png" />
+                                        <Image url="/svgtopng/scroll-solid.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -40,7 +40,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/book-solid.png" />
+                                        <Image url="/svgtopng/book-solid.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -53,7 +53,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/door-open-solid.png" />
+                                        <Image url="/svgtopng/door-open-solid.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -66,7 +66,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/calendar-alt-regular.png" />
+                                        <Image url="/svgtopng/calendar-alt-regular.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -79,7 +79,7 @@
                             <center>
                                 <ImageView fitHeight="20.0" fitWidth="41" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../resources/svgtopng/home-solid.png" />
+                                        <Image url="/svgtopng/home-solid.png" />
                                     </image>
                                 </ImageView>
                             </center>
@@ -149,7 +149,7 @@
                 </BorderPane>
             </top>
          <center>
-            <Label alignment="CENTER" lineSpacing="5.0" textAlignment="JUSTIFY" wrapText="true" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" lineSpacing="5.0" text="Benvingut/da al generador d'horaris!El funcionament d'aquest programa és molt senzill. A l'esquerra es troba el menú de gestió de dades. Fent clic a cada botó podràs accedir a les funcionalitats d'edició, creació, i consulta d'assignatures, plans d'estudi i aules. Es podran també esborrar.Finalment també disposa de la funcinalitat de generar horaris. Aquesta funcionalitat agafa tots els plans d'estudi no obsolets i les seves assignatures i els hi assigna un horari segons les restriccions que hagis creat. Si ho desitges pots carregar un horari antic per la seva posterior consulta o modificar manualment un que acabis de generar.Els canvis en els fitxers de dades es guarden de forma automàtica i tot el que s'esborri desde l'aplicació, es definitiu. Si no vols que sigui definitiu, recomanem que guardis una copia abans.Esperem que l'aplicació sigui d'utilitat. " textAlignment="JUSTIFY" wrapText="true" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </padding>
