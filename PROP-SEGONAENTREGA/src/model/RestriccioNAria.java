@@ -1,3 +1,6 @@
+/**
+ * @author Antoni Rambla
+ */
 package model;
 
 public abstract class RestriccioNAria extends Restriccions{

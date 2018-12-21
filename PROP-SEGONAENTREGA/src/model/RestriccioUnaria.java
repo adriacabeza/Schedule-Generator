@@ -1,3 +1,6 @@
+/**
+ * @author Adria Cabeza
+ */
 package model;
 
 public abstract class RestriccioUnaria extends Restriccions {

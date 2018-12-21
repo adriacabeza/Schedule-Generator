@@ -157,17 +157,15 @@ public class CtrlDomini {
 
         for (HashMap<String, String> res1 : rmt) {
             String assignatura = res1.get("assignatura");
-            //todo matitarda contiene "mati" o "tarda" fix
             //todo mirad las funciones de handleAdd* de CtrlHorariView para ver como esta definido
-            horari.afegirRMT(assignatura, Boolean.parseBoolean(res1.get("matitarda")));
+            horari.afegirRMT(assignatura, res1.get("matitarda") == "mati");
         }
 
         /*
         horari.activaRestriccio...(bool)
-        horari.activaRestriccio2...(bool)
+        horari.activaRestriccio2...(bool) //todo restriccio 2
          */
 
-        //TODO mes abaix en les consultes tenim funcions semblants a les que tenim el algorisme, es necesari tenirles alla i aqui?
         for (HashMap<String, String> res2 : rad) {
             int dia = Algorismes.fromDia2int(res2.get("dia"));
             Aula aula = aules.get(res2.get("aula"));

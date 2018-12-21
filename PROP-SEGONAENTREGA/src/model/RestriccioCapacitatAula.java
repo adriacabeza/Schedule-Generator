@@ -1,3 +1,6 @@
+/**
+ * @author Adria Cabeza
+ */
 package model;
 
 public class RestriccioCapacitatAula extends  RestriccioUnaria {

@@ -50,18 +50,38 @@ public class Horari {
         resAulaHora = new ArrayList<>();
     }
 
+    /**
+     * Afegeix una restriccio de mati/tarda
+     * @param assig assignatura que definim
+     * @param mati boolea que indica si es de mati o tarda
+     */
     public void afegirRMT(String assig, boolean mati) {
         resMatiTarda.add(new RestriccioAssigMatiTarda(assig, mati));
     }
 
+    /**
+     * Afegeix una restriccio de dia en una aula
+     * @param dia dia en el cual no es podra fer clase
+     * @param aula aula en la cual no es podra fer clase
+     */
     public void afegirRD(int dia, Aula aula) {
         resAula.add(new RestriccioAulaDia(dia, aula));
     }
 
+    /**
+     * Afegeix una restriccio de dia i hora en una aula
+     * @param hora hora en la cual no es podra fer clase
+     * @param dia dia en el cual no es podra fer clase
+     * @param aula aula en la cual no es podra fer clase
+     */
     public void afegirRDH(int hora, int dia, Aula aula) {
         resAulaHora.add(new RestriccioAulaHora(dia, hora, aula));
     }
 
+    /**
+     * activa la restriccio de assignatures per correquisits
+     * @param bool indica si s'activa la restriccio o no
+     */
     public void activaRC(boolean bool){
         resCorr = new RestriccioCorrequisit(bool);
     }
@@ -70,11 +90,15 @@ public class Horari {
 
     /**
      * Comprova totes les restriccions per a l'assignació d'una sessió una determinada hora, dia i aula
-     *
-     * @param hora    hora que hem de comprovar
-     * @param dia     dia que hem de comprovar
-     * @param posaula aula que hem de comprovar
+     * @param ses sessio que mirem si pot anar
+     * @param hora hora que hem de comprovar
+     * @param dia dia que hem de comprovar
+     * @param posaula posicio de la aula que hem de comprovar dins de la llista
+     * @param duracio duracio de la sesio
+     * @param aules llista d'aules que tenim
+     * @param aula aula que hem de comprovar
      * @return true si es pot efectuar l'assignació en el dia, hora i aula
+     * @throws NotFoundException
      */
     public boolean comprovarResSlotsBuits(SessioGrup ses, int hora, int dia, int posaula,int duracio, ArrayList<Aula> aules, Aula aula) throws NotFoundException {
         if(!resLim.isAble(posaula,dia,hora,ses,duracio,aula,horari)) return false; //duracio seria la llista d'assignacions que representa la assignatura que volem canviar (mirar mes avall)
@@ -105,7 +129,7 @@ public class Horari {
      * Construeix l'horari
      * @param assignatures conjunt d'assignatures del pla d'estudis
      * @param aules        conjunt d'aules
-     * @return
+     * @return boolea que indica si es pot construir l'horari
      */
     public boolean ConstruirHorari(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules) {
         resAul = new RestriccioAula();

@@ -1,3 +1,6 @@
+/**
+ * @author Antoni Rambla
+ */
 package model;
 
 import exceptions.NotFoundException;
