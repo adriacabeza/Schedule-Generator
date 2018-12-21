@@ -104,6 +104,9 @@ public class Backtracking2 extends Algorismes {
      * @param aula aula que ha de tenir en compte per a podar
      * @param dia  dia que ha de de tenir en compte per a podar
      * @param hora hora que ha de tenir en compte per a podar
+     * @param sessio sessio que acabem d'assignar
+     * @param possibles possibles assignacions que es poden fer a les demes sesions
+     * @return boolea indicant si ens hem quedat sense possibilitats
      */
 
     public boolean propagarPossibilitats(int aula, int dia, int hora, SessioGrup sessio, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibles) throws NotFoundException {
