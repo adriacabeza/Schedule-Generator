@@ -203,7 +203,7 @@ public class CtrlDomini {
      */
     public String getHorariJson(){
         if(horari!=null){
-            return cIo.horariToJson(this.horari);
+            return cIo.horariToJson(horari);
         }else{
             return null;
         }

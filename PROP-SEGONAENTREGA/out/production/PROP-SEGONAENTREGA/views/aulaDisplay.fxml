@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="297.0" prefWidth="222.0"
-            stylesheets="@../resources/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            stylesheets="/mainview.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.CtrlAulaView">
     <center>
         <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
