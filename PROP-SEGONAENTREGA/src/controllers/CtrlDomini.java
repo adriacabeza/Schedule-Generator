@@ -199,6 +199,7 @@ public class CtrlDomini {
             System.out.println("horari fet");
         }
         else  System.out.println("Horari no sha podido hacer");
+        System.out.println(json);
         return json;
     }
 
