@@ -1,12 +1,10 @@
 package views;
 
 import controllers.CtrlDomini;
-import controllers.GestorDisc;
 import exceptions.NotFoundException;
 import exceptions.RestriccioIntegritatException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +12,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -22,8 +19,6 @@ import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import model.Slot;
 
 import java.io.File;
 import java.io.IOException;
@@ -123,9 +118,7 @@ public class CtrlMainView {
                 a.setContentText(textD);
                 a.showAndWait();
             }
-        } catch (IOException e) {
-
-        }
+        } catch (IOException ignored) {}
 
         delete_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -235,7 +228,7 @@ public class CtrlMainView {
         switch (state) {
             case 1:
                 try {
-                    modificarPlaEstudis(item); //TODO same try catch
+                    modificarPlaEstudis(item);
                 } catch (IOException e) {
                     alert(e.getMessage());
                 }
@@ -268,7 +261,7 @@ public class CtrlMainView {
         switch (state) {
             case 1:
                 try {
-                    consultarPlaEstudis(item); //TODO same try catch
+                    consultarPlaEstudis(item);
                 } catch (IOException e) {
                     alert(e.getMessage());
                 }
@@ -649,7 +642,7 @@ public class CtrlMainView {
     }
 
     /**
-     * notificaciód 'errors
+     * Notificaciód 'errors
      * @param s missatge a mostrar
      */
     private void alert(String s) {

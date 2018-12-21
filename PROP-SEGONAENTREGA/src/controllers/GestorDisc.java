@@ -28,6 +28,10 @@ public class GestorDisc {
         setDefaults();
     }
 
+    /**
+     * Mètode per accedir a la instancia del Gestor de disc
+     * @return La instancia del Gestor de disc
+     */
     public static GestorDisc getInstance() {
         if (ourInstance == null) {
             ourInstance = new GestorDisc();
@@ -36,10 +40,10 @@ public class GestorDisc {
     }
 
     /**
-     * Escriu a disc un dels fitxers
+     * Escriu a disc un dels fitxers predefinits, o bé escriu directament a l'arxiu indicat
      *
      * @param json  text a escriure
-     * @param tipus aula, assignatura, plans d'estudi o horari
+     * @param tipus aula, assignatura, plans d'estudi o un path absolut
      * @throws IOException si hi ha hagut algun problema d'escriptura
      */
     public void escriu(String json, String tipus) throws IOException {
@@ -64,9 +68,9 @@ public class GestorDisc {
     }
 
     /**
-     * Llegeix de disc un dels fitxers de dades
+     * Llegeix de disc un dels fitxers predefinits, o un arxiu qualsevol dins de la carpeta de dades
      *
-     * @param tipus aula, assignatura, plans d'estudi o horari
+     * @param tipus aula, assignatura, o plans d'estudi
      * @return text llegit
      * @throws IOException              si hi ha hagut algun problema d'escriptura
      * @throws IllegalArgumentException si el tipus d'arxiu es incorrecte
@@ -90,6 +94,12 @@ public class GestorDisc {
         return new String(encoded, Charset.defaultCharset());
     }
 
+    /**
+     * Llegeix un arxiu des de qualsevol punt del sistema de fitxers.
+     * @param absoluteFilepath El path absolut a l'arxiu que es vol llegir
+     * @return L'arxiu en un String
+     * @throws IOException Excepció si hi ha algun problema al llegir de disc
+     */
     String llegeixAbsolute(String absoluteFilepath) throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get(absoluteFilepath));
         return new String(encoded, Charset.defaultCharset());

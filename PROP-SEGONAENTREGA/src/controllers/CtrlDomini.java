@@ -51,9 +51,12 @@ public class CtrlDomini {
     }
 
     /**
-     * Carrega l'informacio sobre aules, assignatures i plans d'estudi desde disc
+     * Intenta carregar les dades des del directori de dades per defecte.
+     *
+     * @return True si ha pogut carregar des del directori per defecte, i false si no
+     * @throws IOException Si no ha pogut llegir del disc per algun problema
      */
-    public boolean carrega() throws IOException { //TODO fer be
+    public boolean carrega() throws IOException {
         CtrlSerDes c = CtrlSerDes.getInstance();
 
         boolean defaultExists = c.comprovaDefaultFilepath();
@@ -667,7 +670,7 @@ public class CtrlDomini {
         }
 
         try {
-            return horari.intercanviaSlots(a1, a2, new ArrayList<Aula> (aules.values()));
+            return horari.intercanviaSlots(a1, a2, new ArrayList<Aula>(aules.values()));
         } catch (NotFoundException e) {
             e.printStackTrace();
         }

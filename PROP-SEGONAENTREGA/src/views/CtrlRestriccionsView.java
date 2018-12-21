@@ -28,6 +28,10 @@ public class CtrlRestriccionsView {
 
     }
 
+    /**
+     * Carrega les restriccions existents a la view, i les formateja
+     * @param res les restriccions a mostrar
+     */
     public void setRestriccions(ArrayList<HashMap<String, String>> res){
         this.restriccions = res;
 
@@ -46,6 +50,9 @@ public class CtrlRestriccionsView {
         llistaRestriccions.setItems(restriccionsList);
     }
 
+    /**
+     * Elimina una restricció de la llista i propaga el canvi al Controlador de Horari
+     */
     @FXML
     private void handleElimina(){
         int selected = llistaRestriccions.getSelectionModel().getSelectedIndex();

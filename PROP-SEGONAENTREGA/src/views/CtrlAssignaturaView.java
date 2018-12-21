@@ -106,7 +106,8 @@ public class CtrlAssignaturaView {
     private ObservableList<String> llistaCorrequisits;
 
     /**
-     * Init function
+     * Funció d'inicialització de la view.
+     * Inicialitza les combobox i afegeix listeners
      */
     public void initialize() {
         ObservableList<String> plansEstudi = FXCollections.observableArrayList();
@@ -266,8 +267,8 @@ public class CtrlAssignaturaView {
             }
 
             List<String> correquisits = (List) assignatura.get("correquisit");
-            if(correquisits.size() > 0){
-                if (!correquisits.get(0).equalsIgnoreCase("") ) {
+            if (correquisits.size() > 0) {
+                if (!correquisits.get(0).equalsIgnoreCase("")) {
                     llistaCorrequisits.addAll(correquisits);
                 }
             }
@@ -282,6 +283,12 @@ public class CtrlAssignaturaView {
         }
     }
 
+    /**
+     * Funcio que es crida en fer clic al botó de "Modificar".
+     * Tanca la finestra actual i n'obre una de nova on es pot modificar l'assignatura
+     *
+     * @throws IOException si no s'ha pogut modificar l'assignatura
+     */
     @FXML
     private void handleModifica() throws IOException {
         ctrlMainView.modificarAssignatura(label_name.getText());
@@ -289,6 +296,11 @@ public class CtrlAssignaturaView {
         stage.close();
     }
 
+    /**
+     * Funció que carrega les dades de l'assignatura en la vista a partir del nom de l'assignatura
+     *
+     * @param nomAssignatura El nom de l'assignatura a carregar dins la vista
+     */
     void displayAssignatura(String nomAssignatura) {
         try {
             String json = ctrlDomini.consultarAssignatura(nomAssignatura);
@@ -543,15 +555,8 @@ public class CtrlAssignaturaView {
      */
     public void exit() {
         ctrlMainView.reloadList();
-
-        /*
-        if(cancelbutton.isVisible()){
-            Stage stage = (Stage) cancelbutton.getScene().getWindow();
-            stage.close();
-        }else {
-            Stage stage = (Stage) label_name.getScene().getWindow();
-            stage.close();
-        }*/
+        Stage stage = (Stage) cancelbutton.getScene().getWindow();
+        stage.close();
     }
 
     /**
