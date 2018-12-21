@@ -153,6 +153,7 @@ public class CtrlDomini {
      */
     public String generaHorari(ArrayList<HashMap<String, String>> rmt, ArrayList<HashMap<String, String>> rdah, ArrayList<HashMap<String, String>> rad, boolean rc, boolean rgt) {
         String json = null;
+        horari = new Horari();
 
         for (HashMap<String, String> res1 : rmt) {
             String assignatura = res1.get("assignatura");
@@ -193,7 +194,11 @@ public class CtrlDomini {
         }
 
         boolean b = horari.ConstruirHorari(ass, aules);
-        if (b) json = cIo.horariToJson(horari);
+        if (b) {
+            json = cIo.horariToJson(horari);
+            System.out.println("horari fet");
+        }
+        else  System.out.println("Horari no sha podido hacer");
         return json;
     }
 
