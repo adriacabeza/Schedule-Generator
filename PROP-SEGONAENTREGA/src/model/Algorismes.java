@@ -77,7 +77,6 @@ public abstract class Algorismes {
         Laboratori auxlab = new Laboratori(0, 0, null);
         int sesteo, seslab, valor;
         Map<Integer, Grup> grups;
-        Grup g;
         HashMap<Integer, Subgrup> subgrups;
         seslab = 0;
         boolean lab;
@@ -93,20 +92,19 @@ public abstract class Algorismes {
             sesteo = auxteo.getNumSessions();
             grups = a.getGrups();
             valor = 8;
-            for (int i = 0; lab && i < seslab; ++i) {
-                for (int key : grups.keySet()) {
-                    g = grups.get(key);
+            for (int i = 0; lab & i < seslab; ++i) {
+                for (Grup g : grups.values()) {
                     subgrups = g.getSubgrups();
-                    for (int subg : subgrups.keySet()) {
-                        res.add(new SessioGrup(a, auxlab, g, subgrups.get(subg), valor));
+                    for (Subgrup subg : subgrups.values()) {
+                        res.add(new SessioGrup(a, auxlab, g, subg, valor));
                     }
                 }
                 valor /= 2;
             }
             valor = 8;
             for (int i = 0; i < sesteo; ++i) {
-                for (int key : grups.keySet()) {
-                    res.add(new SessioGrup(a, auxteo, grups.get(key), null, valor));
+                for (Grup g : grups.values()) {
+                    res.add(new SessioGrup(a, auxteo, g, null, valor));
                 }
 
                 valor /= 2;
