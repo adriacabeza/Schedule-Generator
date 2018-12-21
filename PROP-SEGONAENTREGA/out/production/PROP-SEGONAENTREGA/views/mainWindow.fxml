@@ -101,7 +101,7 @@
                                 <Font size="24.0" />
                             </font>
                             <BorderPane.margin>
-                                <Insets left="50.0" />
+                                <Insets left="50.0" top="20.0" />
                             </BorderPane.margin>
                         </Label>
                     </left>
@@ -116,10 +116,10 @@
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                     </BorderPane.margin>
                <center>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="load_button" mnemonicParsing="false" onAction="#handleLoadHorari" text="Carrega Horari" />
-                        <Button fx:id="generate_button" mnemonicParsing="false" onAction="#handleGenerateHorari" text="Genera Horari" />
+                        <Button id="grey" fx:id="load_button" mnemonicParsing="false" onAction="#handleLoadHorari" text="Carrega Horari" />
+                        <Button id="grey" fx:id="generate_button" mnemonicParsing="false" onAction="#handleGenerateHorari" text="Genera Horari" />
                      </children>
                   </HBox>
                </center>
@@ -138,6 +138,9 @@
                             <BorderPane.margin>
                                 <Insets left="50.0" />
                             </BorderPane.margin>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                         </Label>
                     </left>
                     <BorderPane.margin>
@@ -145,9 +148,13 @@
                     </BorderPane.margin>
                 </BorderPane>
             </top>
-            <center>
-                <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-            </center>
+         <center>
+            <Label fx:id="label_welcome" alignment="CENTER" lineSpacing="5.0" textAlignment="JUSTIFY" wrapText="true" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
+            </Label>
+         </center>
         </BorderPane>
 
         <BorderPane fx:id="list_content" layoutX="200.0" prefHeight="600.0" prefWidth="600.0">
@@ -159,7 +166,7 @@
                                 <Font size="24.0" />
                             </font>
                             <BorderPane.margin>
-                                <Insets left="50.0" />
+                                <Insets left="50.0" top="20.0" />
                             </BorderPane.margin>
                         </Label>
                     </left>
