@@ -37,6 +37,8 @@ public class CtrlMainView {
     /* Welcome */
     @FXML
     BorderPane welcome_content = new BorderPane();
+    @FXML
+    Label label_welcome = new Label();
 
     /* List */
     @FXML
@@ -70,6 +72,7 @@ public class CtrlMainView {
      * Carrega la pantalla principal i les dades dels fitxers JSON
      */
     public void initialize() {
+        label_welcome.setText("Benvingut/da al generador d'horaris!\nEl funcionament d'aquest programa és molt senzill. A l'esquerra es troba el menú de gestió de dades. Fent clic a cada botó podràs accedir a les funcionalitats d'edició, creació, i consulta d'assignatures, plans d'estudi i aules. Es podran també esborrar.\nFinalment també disposa de la funcinalitat de generar horaris. Aquesta funcionalitat agafa tots els plans d'estudi no obsolets i les seves assignatures i els hi assigna un horari segons les restriccions que hagis creat. Si ho desitges pots carregar un horari antic per la seva posterior consulta o modificar manualment un que acabis de generar.\nEls canvis en els fitxers de dades es guarden de forma automàtica i tot el que s'esborri desde l'aplicació, es definitiu. Si no vols que sigui definitiu, recomanem que guardis una copia abans.\nEsperem que l'aplicació sigui d'utilitat.");
         mostraInici();
         controladorDomini = CtrlDomini.getInstance();
 
