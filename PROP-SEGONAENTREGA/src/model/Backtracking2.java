@@ -236,9 +236,7 @@ public class Backtracking2 extends Algorismes {
                 }
             }
         }
-        System.out.println("tirem enrere");
         return false;
-
     }
 
     /**
@@ -255,7 +253,6 @@ public class Backtracking2 extends Algorismes {
         }
         HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> possibilitats = new HashMap<>();
        if (filtraRestriccions(possibilitats)) {
-            System.out.println("No es pot generar l'horari");
             return false;
         }
 
