@@ -165,7 +165,8 @@ public class Horari {
         SessioGrup ses = null;
         boolean lab = true;
         int grupnum;
-        if(slot1.get("grup").equals("-")){ //si la primera assignació és null
+        if(slot1.get("grup").equals("-") && (slot2.get("grup").equals("-"))) return false;
+        else if(slot1.get("grup").equals("-")){ //si la primera assignació és null
             a = assig.get(slot2.get("assignatura"));
             grupnum = Integer.parseInt(slot2.get("grup"));
             if(grupnum %10 == 0) {
@@ -187,9 +188,16 @@ public class Horari {
             int dia2 = Algorismes.fromDia2int(slot2.get("dia"));
             int hora2=Integer.parseInt(slot2.get("hora"));
             int posaula2 = aulesaux.indexOf(aules.get(slot2.get("aula")));
+            Assignacio auxiliar = null;
             if(comprovarResSlotsBuits(ses, hora,dia,posaula,duracio,aulesaux,aules.get(slot1.get("aula")))){
                 for(int i = 0; i<duracio; ++i){
-                    horari[hora+i][dia][posaula] = horari[hora2+i][dia2][posaula2];
+                    if(horari[hora2+i][dia2][posaula2].getClass() == AssignacioT.class) {
+                        auxiliar = new AssignacioT(slot1.get("dia"), hora+i, aules.get(slot1.get("aula")),horari[hora2+i][dia2][posaula2].getAssignatura(),horari[hora2+i][dia2][posaula2].getGrup());
+                    }
+                    else {
+                        auxiliar = new AssignacioL(slot1.get("dia"), hora+i, aules.get(slot1.get("aula")),horari[hora2+i][dia2][posaula2].getAssignatura(),(Subgrup)horari[hora2+i][dia2][posaula2].getGrup());
+                    }
+                    horari[hora+i][dia][posaula] = auxiliar;
                     horari[hora2+i][dia2][posaula2] = null;
                 }
                 return true;
@@ -217,9 +225,16 @@ public class Horari {
             int dia2 = Algorismes.fromDia2int(slot1.get("dia"));
             int hora2=Integer.parseInt(slot1.get("hora"));
             int posaula2 = aulesaux.indexOf(aules.get(slot1.get("aula")));
+            Assignacio auxiliar = null;
             if(comprovarResSlotsBuits(ses, hora,dia,posaula,duracio,aulesaux,aules.get(slot2.get("aula")))){
                 for(int i = 0; i<duracio; ++i){
-                    horari[hora+i][dia][posaula] = horari[hora2+i][dia2][posaula2];
+                    if(horari[hora2+i][dia2][posaula2].getClass() == AssignacioT.class) {
+                        auxiliar = new AssignacioT(slot2.get("dia"), hora+i, aules.get(slot2.get("aula")),horari[hora2+i][dia2][posaula2].getAssignatura(),horari[hora2+i][dia2][posaula2].getGrup());
+                    }
+                    else {
+                        auxiliar = new AssignacioL(slot2.get("dia"), hora+i, aules.get(slot2.get("aula")),horari[hora2+i][dia2][posaula2].getAssignatura(),(Subgrup)horari[hora2+i][dia2][posaula2].getGrup());
+                    }
+                    horari[hora+i][dia][posaula] = auxiliar;
                     horari[hora2+i][dia2][posaula2] = null;
                 }
                 return true;
@@ -288,11 +303,25 @@ public class Horari {
                     horari[hora+i][dia][posaula] = null;
                 }
                 if(comprovarResSlotsBuits(ses2,hora,dia,posaula,duracio2,aulesaux,aules.get(slot1.get("aula")))){
+                    Assignacio auxiliar;
+                    ArrayList<Assignacio> tmp = new ArrayList<>();
                     for(int i = 0; i < duracio; ++i){
-                        horari[hora2+i][dia2][posaula2] = clase1.get(i);
+                        if(clase1.get(i).getClass() == AssignacioT.class) {
+                            auxiliar = new AssignacioT(slot2.get("dia"), hora2+i, aules.get(slot2.get("aula")),clase1.get(i).getAssignatura(),clase1.get(i).getGrup());
+                        }
+                        else {
+                            auxiliar = new AssignacioL(slot2.get("dia"), hora2+i, aules.get(slot2.get("aula")),clase1.get(i).getAssignatura(),(Subgrup)clase1.get(i).getGrup());
+                        }
+                        horari[hora+i][dia][posaula] = auxiliar;
                     }
                     for(int i = 0; i < duracio2; ++i){
-                        horari[hora+i][dia][posaula] = clase2.get(i);
+                        if(clase2.get(i).getClass() == AssignacioT.class) {
+                            auxiliar = new AssignacioT(slot1.get("dia"), hora+i, aules.get(slot1.get("aula")),clase2.get(i).getAssignatura(),clase2.get(i).getGrup());
+                        }
+                        else {
+                            auxiliar = new AssignacioL(slot1.get("dia"), hora+i, aules.get(slot1.get("aula")),clase2.get(i).getAssignatura(),(Subgrup)clase2.get(i).getGrup());
+                        }
+                        horari[hora2+i][dia2][posaula2] = auxiliar;
                     }
 
                     return true;
