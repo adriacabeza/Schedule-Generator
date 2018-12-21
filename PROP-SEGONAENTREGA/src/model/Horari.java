@@ -139,9 +139,15 @@ public class Horari {
         int posaula2 = aules.indexOf(a2.getAula());
         Assignacio aux;
         if(a1.getAssignatura() == null){ //si la primera assignació és null
-            if((a2.getClass() == AssignacioT.class)) duracio = a2.getAssignatura().getDuracioSessionsTeo();
+            SessioGrup ses = null;
+            boolean lab = true;
+            if((a2.getClass() == AssignacioT.class)) {
+                duracio = a2.getAssignatura().getDuracioSessionsTeo();
+                lab = false;
+            }
             else duracio = a2.getAssignatura().getDuracioSessionsLab();
-            if(comprovarResSlotsBuits(null, a1.getHora(),Algorismes.fromDia2int(a1.getDiaSetmana()),posaula,duracio,aules,a1.getAula())){
+            ses = new SessioGrup(a2.getAssignatura(), lab ? new Laboratori(0,duracio,a2.getAula().getTipusAula()) : new Teoria(0,duracio, a2.getAula().getTipusAula()),lab ? new Grup((a2.getGrup().getNum() / 10) * 10,a2.getGrup().getCapacitat(),0 ) : a2.getGrup(), lab ? (Subgrup) a2.getGrup() : null, 0);
+            if(comprovarResSlotsBuits(ses, a1.getHora(),Algorismes.fromDia2int(a1.getDiaSetmana()),posaula,duracio,aules,a1.getAula())){
                 aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
                 horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
                 horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula] = aux;
@@ -149,10 +155,15 @@ public class Horari {
             }
         }
         else if(a2.getAssignatura() == null){ //si la segona assignació és null
-            if((a1.getClass() == AssignacioT.class)) duracio = a1.getAssignatura().getDuracioSessionsTeo();
+            SessioGrup ses = null;
+            boolean lab = true;
+            if((a1.getClass() == AssignacioT.class)) {
+                duracio = a1.getAssignatura().getDuracioSessionsTeo();
+                lab = false;
+            }
             else duracio = a1.getAssignatura().getDuracioSessionsLab();
-
-            if(comprovarResSlotsBuits(null, a2.getHora(),Algorismes.fromDia2int(a2.getDiaSetmana()),posaula2,duracio,aules, a2.getAula())) {
+            ses = new SessioGrup(a1.getAssignatura(), lab ? new Laboratori(0,duracio,a1.getAula().getTipusAula()) : new Teoria(0,duracio, a1.getAula().getTipusAula()),lab ? new Grup((a1.getGrup().getNum() / 10) * 10,a2.getGrup().getCapacitat(),0 ) : a1.getGrup(), lab ? (Subgrup) a1.getGrup() : null, 0);
+            if(comprovarResSlotsBuits(ses, a2.getHora(),Algorismes.fromDia2int(a2.getDiaSetmana()),posaula2,duracio,aules, a2.getAula())) {
                 aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
                 horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
                 horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula] = aux;
@@ -160,19 +171,61 @@ public class Horari {
             }
         }
         else{ //cap dels dos és null
-            if((a1.getClass() == AssignacioT.class)) duracio = a1.getAssignatura().getDuracioSessionsTeo();
+            SessioGrup ses = null;
+            boolean lab1 = true;
+            boolean lab2 = true;
+            int duracio2;
+            if((a2.getClass() == AssignacioT.class)) {
+                duracio2 = a2.getAssignatura().getDuracioSessionsTeo();
+                lab2 = false;
+            }
+            else duracio2 = a2.getAssignatura().getDuracioSessionsLab();
+            if((a1.getClass() == AssignacioT.class)) {
+                duracio = a1.getAssignatura().getDuracioSessionsTeo();
+                lab1 = false;
+            }
             else duracio = a1.getAssignatura().getDuracioSessionsLab();
-            posaula = aules.indexOf(a1.getAssignatura());
-            if(COMPROVARSIESPOTFERAMBELSDOS){
-                aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
-                horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula] = aux;
-                return true;
+            ArrayList<Assignacio> clase1 = new ArrayList<>(duracio);
+            int dia1 = Algorismes.fromDia2int(a1.getDiaSetmana());
+            //guardem la primera clase en una arraylist i mirem si es pot posar la segona
+            for(int i = 0; i < duracio; ++i){
+                clase1.set(i,horari[dia1][a1.getHora() + i][posaula]);
+                horari[dia1][a1.getHora() + i][posaula] = null;
+            }
+            //creem la sessio de la segona i mirem si es pot posar en la posicio de la primera
+            ses = new SessioGrup(a2.getAssignatura(), lab2 ? new Laboratori(0,duracio2,a2.getAula().getTipusAula()) : new Teoria(0,duracio2, a2.getAula().getTipusAula()),lab2 ? new Grup((a2.getGrup().getNum() / 10) * 10,a2.getGrup().getCapacitat(),0 ) : a2.getGrup(), lab2 ? (Subgrup) a2.getGrup() : null, 0);
+            if(comprovarResSlotsBuits(ses,a1.getHora(),dia1,posaula,duracio2,aules,aules.get(posaula))){
+                //la 2a assignatura pot anar en la posicio de la primera ara hem de mirar que la primera pugui anar on la 2a
+                ArrayList<Assignacio> clase2 = new ArrayList<>(duracio2);
+                int dia2 = Algorismes.fromDia2int(a2.getDiaSetmana());
+                //ara guardem la segona clase
+                for(int i = 0; i < duracio2; ++i){
+                    clase2.set(i,horari[dia2][a2.getHora() + i][posaula]);
+                    horari[dia2][a2.getHora() + i][posaula] = null;
+                }
+                //creem la sesio de la primera i mirem si es pot posar en la posicio de la segona
+                ses = new SessioGrup(a1.getAssignatura(), lab1 ? new Laboratori(0,duracio,a1.getAula().getTipusAula()) : new Teoria(0,duracio, a1.getAula().getTipusAula()),lab1 ? new Grup((a1.getGrup().getNum() / 10) * 10,a2.getGrup().getCapacitat(),0 ) : a1.getGrup(), lab1 ? (Subgrup) a1.getGrup() : null, 0);
+                if(comprovarResSlotsBuits(ses,a2.getHora(),dia2,posaula2,duracio,aules,aules.get(posaula2))){
+                    for(int i = 0; i < clase1.size(); ++i){
+                        horari[dia2][a2.getHora() + i][posaula] = clase1.get(i);
+                    }
+                    for(int i = 0; i < clase2.size(); ++i){
+                        horari[dia1][a1.getHora() + i][posaula] = clase2.get(i);
+                    }
+                    return true;
+                }
+                //no es pot posar la assignatura -> revertim cambis
+                for(int i = 0; i < clase2.size(); ++i){
+                    horari[dia2][a2.getHora() + i][posaula] = clase2.get(i);
+                }
+            }
+            //no es pot posar la assignatura -> revertim cambis
+            for(int i = 0; i < clase1.size(); ++i){
+                horari[dia1][a1.getHora() + i][posaula] = clase1.get(i);
             }
         }
         return false;
     }
-
 }
 
 

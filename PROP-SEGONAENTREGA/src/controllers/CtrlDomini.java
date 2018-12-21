@@ -600,20 +600,6 @@ public class CtrlDomini {
         return possibles;
     }
 
-    /*public void intercanviaSlots(String dia1, String hora1, String aula1, String dia2, String hora2, String aula2) {
-        /*Assignacio[][][] schedule = horari.getHorari();
-        if (schedule != null) {
-            int hora_1 = Integer.parseInt(hora1);
-            int hora_2 = Integer.parseInt(hora2);
-            int dia_1 = Integer.parseInt(dia1);
-            int dia_2 = Integer.parseInt(dia2);
-            int posaula1 = Integer.parseInt(aula1) ;
-            int posaula2= Integer.parseInt(aula2); //HE DE PENSAR COM HO PILLO
-
-            Assignacio a = schedule[hora_1][dia_1][posaula1];
-            Assignacio b = schedule[hora_2][dia_2][posaula2];
-            schedule[hora_1][dia_1][posaula1] = b;
-            schedule[hora_2][dia_2][posaula2] = a;*/
 
     /**
      * Intenta intercanviar dos slots horaris segons les restriccions anteriorment donades d'alta
@@ -622,6 +608,7 @@ public class CtrlDomini {
      * @param slot2 idem pel segon slot
      * @return cert si s'ha fet el canvi, fals altrament
      */
+
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
         Assignacio a1 = null , a2 = null;
         if(! slot1.containsKey("grup")) {
@@ -662,33 +649,8 @@ public class CtrlDomini {
                 }
             }
         }
-        /*
 
-        Grup g = null;
-        try {
-            g = a.getGrup((grup/10)*10); //treiem el subgrup (si ho era)
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        }
-
-        int duracio = 0;
-        SessioGrup ses = null;
-        if(grup%10 ==0){
-            duracio = a.getDuracioSessionsTeo(); //classe teoria
-            ses = new SessioGrup(a,new Teoria(1,1,a.getTipusAulaTeo()),g,null,0);
-        }
-        else {
-            try {
-                duracio = a.getDuracioSessionsLab();
-                Subgrup sub = g.getSubgrups().get(grup);
-                ses = new SessioGrup(a, new Laboratori(1,1,a.getTipusAulaLab()),g,sub,0);
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-     */
-        try {
+       try {
             return horari.intercanviaSlots(a1, a2, (ArrayList<Aula>) aules.values());
         } catch (NotFoundException e) {
             e.printStackTrace();
