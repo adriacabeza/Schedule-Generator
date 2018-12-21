@@ -116,10 +116,10 @@
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                     </BorderPane.margin>
                <center>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button id="grey" fx:id="load_button" mnemonicParsing="false" onAction="#handleLoadHorari" text="Carrega Horari" />
-                        <Button id="grey" fx:id="generate_button" mnemonicParsing="false" onAction="#handleGenerateHorari" text="Genera Horari" />
+                        <Button fx:id="load_button" mnemonicParsing="false" onAction="#handleLoadHorari" text="Carrega Horari" />
+                        <Button fx:id="generate_button" mnemonicParsing="false" onAction="#handleGenerateHorari" text="Genera Horari" />
                      </children>
                   </HBox>
                </center>
@@ -148,13 +148,9 @@
                     </BorderPane.margin>
                 </BorderPane>
             </top>
-         <center>
-            <Label fx:id="label_welcome" alignment="CENTER" lineSpacing="5.0" textAlignment="JUSTIFY" wrapText="true" BorderPane.alignment="CENTER">
-               <padding>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-               </padding>
-            </Label>
-         </center>
+            <center>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            </center>
         </BorderPane>
 
         <BorderPane fx:id="list_content" layoutX="200.0" prefHeight="600.0" prefWidth="600.0">
