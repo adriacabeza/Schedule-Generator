@@ -195,9 +195,7 @@ public class CtrlDomini {
         boolean b = horari.ConstruirHorari(ass, aules);
         if (b) {
             json = cIo.horariToJson(horari);
-            System.out.println("horari fet");
-        } else System.out.println("Horari no sha podido hacer");
-        System.out.println(json);
+        }
         return json;
     }
 
