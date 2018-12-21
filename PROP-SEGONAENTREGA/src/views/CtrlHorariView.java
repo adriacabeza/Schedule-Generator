@@ -15,9 +15,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Slot;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -355,12 +357,15 @@ public class CtrlHorariView {
 
     @FXML
     private void handleGenerar() {
-        loadHorari(ctrlDomini.generaHorari(rmt, rdah, rad, rc_checkbox.isSelected(), rgt_checkbox.isSelected()));
+        String horaritojson;
+        horaritojson = ctrlDomini.generaHorari(rmt, rdah, rad, rc_checkbox.isSelected(), rgt_checkbox.isSelected());
+        loadHorari(horaritojson);
+        choice_assig.setDisable(false);
+        choice_aula.setDisable(false);
+
+        handleAssigAulaChange("", "");
     }
 
-    /**
-     * Tanca la vista i propaga els canvis fets a la vista principal
-     */
     public void exit() {
         ctrlMainView.reloadList();
         Stage stage = (Stage) cancel_button.getScene().getWindow();
@@ -457,7 +462,7 @@ public class CtrlHorariView {
 
     @FXML
     private void handleCanviSlots() throws IOException {
-        if(!swapWindow.isShowing()){
+        if (!swapWindow.isShowing()) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("swapForm.fxml"));
             Parent root = loader.load();
 
@@ -468,7 +473,7 @@ public class CtrlHorariView {
 
             CtrlSwapView c = loader.getController();
             c.setCtrlHorariView(this);
-        }else{
+        } else {
             // Bring the window to front
             swapWindow.setAlwaysOnTop(true);
             swapWindow.setAlwaysOnTop(false);
@@ -480,36 +485,79 @@ public class CtrlHorariView {
      *
      * @return
      */
-    HashMap<String, String> getCurrentSlot() {
+    HashMap<String, String> getCurrentSlot() throws NotFoundException {
         TableView.TableViewSelectionModel selected = horariTable.getSelectionModel();
         // Check if there is something selected
-        if(selected.getSelectedIndex() != -1){
+        if (selected.getSelectedIndex() != -1) {
             TablePosition tablePosition = (TablePosition) selected.getSelectedCells().get(0);
+            if(tablePosition.getColumn() == 0) return null;
             String text = (String) tablePosition.getTableColumn().getCellData(tablePosition.getRow());
             String[] splittext = text.split("\n");
+            HashMap<String, String> output = null;
             // Check if the cell is empty, as minimum length will be 2 for any occupied slot
             if (splittext.length > 1) {
                 String assig = splittext[0];
                 String[] grups = Arrays.copyOfRange(splittext, 1, splittext.length);
                 List<String> grupsList = Arrays.asList(grups);
-                ChoiceDialog<String> dialog = new ChoiceDialog<>(grupsList.get(0), grupsList);
-                dialog.setTitle("Elecció de grup");
-                dialog.setHeaderText("Falta escollir un grup!");
-                dialog.setContentText("Grup: ");
-                Optional<String> result = dialog.showAndWait();
-                // If the user selected a group, continue
-                if (result.isPresent()) {
-                    HashMap<String, String> grupAula = Slot.grupAulaExtractor(result.get());
-                    String dia = llistaDies.get(tablePosition.getColumn());
-                    String slot = String.valueOf(tablePosition.getRow());
-                    HashMap<String, String> output = new HashMap<>();
-                    output.putAll(grupAula);
-                    output.put("assignatura", assig);
-                    output.put("dia", dia);
-                    output.put("hora", slot);
+                HashMap<String, String> grupAula;
+                if (grupsList.size() > 1) {
+                    ChoiceDialog<String> dialog = new ChoiceDialog<>(grupsList.get(0), grupsList);
+                    dialog.setTitle("Elecció de grup");
+                    dialog.setHeaderText("Falta escollir un grup!");
+                    dialog.setContentText("Grup: ");
+                    Optional<String> result;
+                    // If the user selected a group, continue
+                    do {
+                        result = dialog.showAndWait();
+                    } while (!result.isPresent());
+                    grupAula = Slot.grupAulaExtractor(result.get());
+                } else {
+                    grupAula = Slot.grupAulaExtractor(grupsList.get(0));
                 }
+
+                String dia = llistaDies.get(tablePosition.getColumn());
+                String slot = String.valueOf(tablePosition.getRow());
+
+                if (grupAula != null) {
+                    output = new HashMap<>(grupAula);
+                } else {
+                    throw new IllegalArgumentException();
+                }
+                output.put("assignatura", ctrlDomini.obtenirAssigAbreviacio(assig.strip()));
+                output.put("dia", dia);
+                output.put("hora", slot);
+                return output;
+            }else{
+                output = new HashMap<>();
+                output.put("dia", llistaDies.get(tablePosition.getColumn()));
+                output.put("hora", String.valueOf(tablePosition.getRow()));
+                output.put("assignatura", "-");
+                output.put("grup", "-");
+                ChoiceDialog<String> dialog = new ChoiceDialog<>(llistaAules.get(0),llistaAules);
+                dialog.setTitle("Elecció d'aula");
+                dialog.setHeaderText("Falta escollir una aula pel Slot buit!");
+                dialog.setContentText("Aula: ");
+                Optional<String> result;
+                do {
+                    result = dialog.showAndWait();
+                } while (!result.isPresent());
+                output.put("aula", result.get());
+                return output;
             }
         }
         return null;
+    }
+
+    @FXML
+    private void handleGuarda() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Guarda horari JSON");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        fileChooser.setInitialFileName("horari.json");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON", "*.json"));
+        File file = fileChooser.showSaveDialog(generate_button.getScene().getWindow());
+        if (file!=null){
+            ctrlDomini.escriuHorari(horarijson, file.getAbsolutePath());
+        }
     }
 }

@@ -55,7 +55,7 @@ public class GestorDisc {
                 filepath = filepath.concat(filenamePlaEst);
                 break;
             default:
-                throw new IllegalArgumentException();
+                filepath = tipus;
         }
 
         FileWriter fw = new FileWriter(filepath);

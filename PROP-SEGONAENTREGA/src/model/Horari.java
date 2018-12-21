@@ -161,13 +161,13 @@ public class Horari {
         else{ //cap dels dos és null
             if((a1.getClass() == AssignacioT.class)) duracio = a1.getAssignatura().getDuracioSessionsTeo();
             else duracio = a1.getAssignatura().getDuracioSessionsLab();
-            posaula = aules.indexOf(a1.getAssignatura());
-            if(COMPROVARSIESPOTFERAMBELSDOS){
+            posaula = aules.indexOf(a1.getAula());
+            /*if(COMPROVARSIESPOTFERAMBELSDOS){
                 aux = horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2];
                 horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula2]  = horari[a1.getHora()][Algorismes.fromDia2int(a1.getDiaSetmana())][posaula];
                 horari[a2.getHora()][Algorismes.fromDia2int(a2.getDiaSetmana())][posaula] = aux;
                 return true;
-            }
+            }*/
         }
         return false;
     }

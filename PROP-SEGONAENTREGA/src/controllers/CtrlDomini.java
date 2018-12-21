@@ -394,6 +394,22 @@ public class CtrlDomini {
     }
 
     /**
+     * Obté l'assignatura a partir de l'abreviació
+     *
+     * @param abbvr Abreviacio de l'assignatura
+     * @return Nom
+     * @throws NotFoundException Si no troba l'assignatura
+     */
+    public String obtenirAssigAbreviacio(String abbvr) throws NotFoundException {
+        for(Assignatura a : assignatures.values()){
+            if(a.getAbr().equalsIgnoreCase(abbvr)){
+                return a.getNom();
+            }
+        }
+        throw new NotFoundException("No s'ha trobat una assignatura amb abreviació " + abbvr);
+    }
+
+    /**
      * Esborra una assignatura amb el nom especificat
      *
      * @param nomA Nom de l'assignatura a borrar
@@ -625,38 +641,57 @@ public class CtrlDomini {
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
         Assignacio a1 = null , a2 = null;
         if(! slot1.containsKey("grup")) {
-            a1 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot1.get("dia"))), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), null,null);
+            a1 = new AssignacioT(slot1.get("dia"), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), null,null);
         }
         else {
             if (Integer.parseInt(slot1.get("grup")) %10 == 0) {
                 try {
-                    a1 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot1.get("dia"))), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), assignatures.get(slot1.get("assignatura")),  assignatures.get(slot1.get("assignatura")).getGrup(Integer.parseInt(slot1.get("grup"))));
+                    Integer subGrupNum = Integer.parseInt(slot1.get("grup"));
+                    Integer grupNum = subGrupNum / 10 * 10;
+                    Grup g = assignatures.get(slot1.get("assignatura")).getGrup(grupNum);
+                    Subgrup subg = g.getSubgrups().get(subGrupNum);
+                    a1 = new AssignacioT(slot1.get("dia"),
+                            Integer.parseInt(slot1.get("hora")),
+                            aules.get(slot1.get("aula")),
+                            assignatures.get(slot1.get("assignatura")),
+                            g);
                 } catch (NotFoundException e) {
                     e.printStackTrace();
                 }
             }
             else {
                 try {
-                    a1 = new AssignacioL(Algorismes.fromInt2dia(Integer.parseInt(slot1.get("dia"))), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), assignatures.get(slot1.get("assignatura")),  assignatures.get(slot1.get("assignatura")).getGrup((Integer.parseInt(slot1.get("grup")) / 10 * 10) ).getSubgrups().get(Integer.parseInt(slot1.get("grup"))));
+                    Integer subGrupNum = Integer.parseInt(slot1.get("grup"));
+                    Integer grupNum = subGrupNum / 10 * 10;
+                    System.out.println(grupNum);
+                    Assignatura ass = assignatures.get(slot1.get("assignatura"));
+                    System.out.println(ass.getGrups());
+                    Grup g = assignatures.get(slot1.get("assignatura")).getGrup(grupNum);
+                    Subgrup subg = g.getSubgrups().get(subGrupNum);
+                    a1 = new AssignacioL(slot1.get("dia"),
+                            Integer.parseInt(slot1.get("hora")),
+                            aules.get(slot1.get("aula")),
+                            assignatures.get(slot1.get("assignatura")),
+                            subg);
                 } catch (NotFoundException e) {
                     e.printStackTrace();
                 }
             }
         }
         if(! slot2.containsKey("grup")){
-            a2 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot2.get("dia"))), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), null,null);
+            a2 = new AssignacioT(slot2.get("dia"), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), null,null);
         }
         else {
             if (Integer.parseInt(slot2.get("grup")) %10 == 0) {
                 try {
-                    a2 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot2.get("dia"))), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), assignatures.get(slot2.get("assignatura")),  assignatures.get(slot2.get("assignatura")).getGrup(Integer.parseInt(slot2.get("grup"))));
+                    a2 = new AssignacioT(slot2.get("dia"), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), assignatures.get(slot2.get("assignatura")),  assignatures.get(slot2.get("assignatura")).getGrup(Integer.parseInt(slot2.get("grup"))));
                 } catch (NotFoundException e) {
                     e.printStackTrace();
                 }
             }
             else {
                 try {
-                    a2 = new AssignacioL(Algorismes.fromInt2dia(Integer.parseInt(slot2.get("dia"))), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), assignatures.get(slot2.get("assignatura")),  assignatures.get(slot2.get("assignatura")).getGrup((Integer.parseInt(slot2.get("grup")) / 10 * 10) ).getSubgrups().get(Integer.parseInt(slot2.get("grup"))));
+                    a2 = new AssignacioL(slot2.get("dia"), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), assignatures.get(slot2.get("assignatura")),  assignatures.get(slot2.get("assignatura")).getGrup((Integer.parseInt(slot2.get("grup")) / 10 * 10) ).getSubgrups().get(Integer.parseInt(slot2.get("grup"))));
                 } catch (NotFoundException e) {
                     e.printStackTrace();
                 }
@@ -689,7 +724,8 @@ public class CtrlDomini {
 
      */
         try {
-            return horari.intercanviaSlots(a1, a2, (ArrayList<Aula>) aules.values());
+
+            return horari.intercanviaSlots(a1, a2, new ArrayList<Aula>(aules.values()));
         } catch (NotFoundException e) {
             e.printStackTrace();
         }
@@ -724,12 +760,22 @@ public class CtrlDomini {
     }
 
     /**
-     * Permet un horari desde qualsevol punt del sistema de fitxers, no només desde el workspace
+     * Permet llegir un horari desde qualsevol punt del sistema de fitxers, no només desde el workspace
      * @param filepath cami al fitxer
      * @return informació de l'horari llegit
      * @throws IOException si hi ha hagut algun error de lectura
      */
     public String llegeixHorari(String filepath) throws IOException {
         return cIo.carregaHorari(filepath);
+    }
+
+    /**
+     * Permet guardar un horari a qualsevol punt del sistema de fitxers, no només desde el workspace
+     * @param content L'horari en format json
+     * @param filepath cami al fitxer
+     * @throws IOException si hi ha hagut algun error de escriptura
+     */
+    public void escriuHorari(String content, String filepath) throws IOException {
+        cIo.guardaHorari(content, filepath);
     }
 }
