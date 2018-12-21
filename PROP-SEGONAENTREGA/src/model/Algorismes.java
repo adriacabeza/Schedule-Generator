@@ -92,7 +92,7 @@ public abstract class Algorismes {
             sesteo = auxteo.getNumSessions();
             grups = a.getGrups();
             valor = 8;
-            for (int i = 0; lab & i < seslab; ++i) {
+            for (int i = 0; lab && i < seslab; ++i) {
                 for (Grup g : grups.values()) {
                     subgrups = g.getSubgrups();
                     for (Subgrup subg : subgrups.values()) {

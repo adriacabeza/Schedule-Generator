@@ -632,7 +632,7 @@ public class CtrlDomini {
 
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2) {
         Assignacio a1 = null, a2 = null;
-        if (!slot1.containsKey("grup")) {
+        if (slot1.get("grup").equals("-")){
             a1 = new AssignacioT(Algorismes.fromInt2dia(Integer.parseInt(slot1.get("dia"))), Integer.parseInt(slot1.get("hora")), aules.get(slot1.get("aula")), null, null);
         } else {
             if (Integer.parseInt(slot1.get("grup")) % 10 == 0) {
@@ -649,7 +649,7 @@ public class CtrlDomini {
                 }
             }
         }
-        if (!slot2.containsKey("grup")) {
+        if (slot2.get("grup").equals("-")) {
             a2 = new AssignacioT(slot1.get("dia"), Integer.parseInt(slot2.get("hora")), aules.get(slot2.get("aula")), null, null);
         } else {
             if (Integer.parseInt(slot2.get("grup")) % 10 == 0) {
