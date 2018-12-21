@@ -43,7 +43,7 @@
                         <Label fx:id="label_dia_1" minWidth="-Infinity" text="-" GridPane.columnIndex="1" />
                         <Label minWidth="-Infinity" text="Hora:" GridPane.columnIndex="2" />
                         <Label fx:id="label_hora_1" minWidth="-Infinity" text="-" GridPane.columnIndex="3" />
-                        <Label fx:id="label_assig_1" text="-" GridPane.rowIndex="1" />
+                        <Label fx:id="label_assig_1" minWidth="-Infinity" text="-" GridPane.rowIndex="1" />
                         <Label minWidth="-Infinity" text="Grup:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="label_grup_1" minWidth="-Infinity" text="-" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="label_aula_1" minWidth="-Infinity" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1" />
@@ -76,7 +76,7 @@
                         <Label fx:id="label_dia_2" minWidth="-Infinity" text="-" GridPane.columnIndex="1" />
                         <Label minWidth="-Infinity" text="Hora:" GridPane.columnIndex="2" />
                         <Label fx:id="label_hora_2" minWidth="-Infinity" text="-" GridPane.columnIndex="3" />
-                        <Label fx:id="label_assig_2" text="-" GridPane.rowIndex="1" />
+                        <Label fx:id="label_assig_2" minWidth="-Infinity" text="-" GridPane.rowIndex="1" />
                         <Label minWidth="-Infinity" text="Grup:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="label_grup_2" minWidth="-Infinity" text="-" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label fx:id="label_aula_2" minWidth="-Infinity" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1" />
