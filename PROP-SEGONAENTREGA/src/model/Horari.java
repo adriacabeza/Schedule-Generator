@@ -25,7 +25,6 @@ public class Horari {
 
     /**
      * Obtenir l'horari
-     *
      * @return horari
      */
     public Assignacio[][][] getHorari() {
@@ -34,7 +33,6 @@ public class Horari {
 
     /**
      * Actualitza l'horari
-     *
      * @param horari l'horari
      */
     public void setHorari(Assignacio[][][] horari) {
@@ -86,6 +84,15 @@ public class Horari {
         resCorr = new RestriccioCorrequisit(bool);
     }
 
+    /**
+     * activa la restricció de solapament de grups
+     * @param bool indica si s'activa la restricció o no
+     */
+    public void activaRGT(boolean bool){
+        resTeo = new RestriccioGrupTeo(bool);
+        resSub = new RestriccioSubgrupLab(bool);
+    }
+
 
 
     /**
@@ -133,8 +140,6 @@ public class Horari {
      */
     public boolean ConstruirHorari(HashMap<String, Assignatura> assignatures, HashMap<String, Aula> aules) {
         resAul = new RestriccioAula();
-        resTeo = new RestriccioGrupTeo();
-        resSub = new RestriccioSubgrupLab();
         resCapAul = new RestriccioCapacitatAula();
         resLim = new RestriccioLimits();
         resNiv = new RestriccioNivell();
@@ -150,12 +155,14 @@ public class Horari {
     }
 
 
-
     /**
-     * Fa un intercanvi entre dues assignacions
-     primera assignació que hem d'intercanviar
-        segona assignació que hem d'intercanviar
+     * Fa un intercanvi entre dues assignacions primera assignació que hem d'intercanviar segona assignació que hem d'intercanviar
+     * @param slot1 primer slot
+     * @param slot2 segon slot
+     * @param aules aules
+     * @param assig assignatura
      * @return retorna true si s'ha pogut efectuar l'intercanvi
+     * @throws NotFoundException
      */
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2, HashMap<String, Aula> aules, HashMap<String, Assignatura> assig) throws NotFoundException {
         ArrayList<Aula> aulesaux = new ArrayList<>(aules.values());

@@ -97,6 +97,11 @@ public class Backtracking2 extends Algorismes {
     }
 
 
+    void borrar(){
+
+
+    }
+
 
     /**
      * Aquesta funció propaga les restriccions per a efectuar forward checking i fer la poda de domini
@@ -115,26 +120,28 @@ public class Backtracking2 extends Algorismes {
             SessioGrup assignat = it.next();
             boolean borrat = false;
             if (!resCorr.isAble2(assignat, sessio, null, possibles, aula, dia, hora)) {
-                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                int auxiliar = possibles.get(assignat).get(dia).get(hora).indexOf(aula);
+                possibles.get(assignat).get(dia).get(hora).remove(auxiliar);
                 borrat = true;
             }
 
             if (!resNiv.isAble2(assignat, sessio, null, possibles, aula, dia, hora) && !borrat) {
-                possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                int auxiliar = possibles.get(assignat).get(dia).get(hora).indexOf(aula);
+                possibles.get(assignat).get(dia).get(hora).remove(auxiliar);
                 borrat = true;
             }
 
                 boolean b = resTeo.isAble2(assignat, sessio, null, possibles, aula, dia, hora);
                 if (!b && !borrat) {
-                    System.out.println("he entrado");
-                    possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                    int auxiliar = possibles.get(assignat).get(dia).get(hora).indexOf(aula);
+                    possibles.get(assignat).get(dia).get(hora).remove(auxiliar);
                     borrat = true;
                 }
 
                 boolean b2 = resSub.isAble2(assignat, sessio, null, possibles, aula, dia, hora);
                 if (!b2 && !borrat) {
-                    System.out.println("aqui tambien he entrado");
-                    possibles.get(assignat).get(dia).get(hora).remove(possibles.get(assignat).get(dia).get(hora).indexOf(aula));
+                    int auxiliar = possibles.get(assignat).get(dia).get(hora).indexOf(aula);
+                    possibles.get(assignat).get(dia).get(hora).remove(auxiliar);
                 }
 
                 boolean pos = true;
@@ -247,7 +254,7 @@ public class Backtracking2 extends Algorismes {
     /**
      * Genera un horari
      *
-     * @return true si s'ha pogut realitzar l'horari i false si no s'ha pogut
+     * @return true si s'ha pogut realitzar l'horari i false si no s'ha pogutf
      */
     public boolean generaHorari() throws NotFoundException {
         try {

@@ -10,12 +10,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RestriccioSubgrupLab extends RestriccioBinaria {
-
+    boolean active;
     /**
      * Crea una restricció on es comprova que en una sessió de laboratori d'un determinat subgrup no hi hagi solapaments
+     * @param active indica si la restriccio esta activa o no
      */
-    public RestriccioSubgrupLab() {
+    public RestriccioSubgrupLab(boolean active) {
         super(5);
+        this.active = active;
     }
 
     /**
@@ -29,16 +31,18 @@ public class RestriccioSubgrupLab extends RestriccioBinaria {
      * @return true si es pot realitzar l'assignació
      */
     public boolean isable(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) {
-        if (assig.getSub() != null) {
-            int grup = assig.getSub().getNum() / 10;
-            for (int j = 0; j < aules2.size(); ++j) {
-                Assignacio a = horari[hora][dia][j];
-                if (a != null) {
-                    if (a.getAssignatura().getNom() == assig.getAssig().getNom()) {
-                        if (a.getGrup().getNum() == assig.getSub().getNum())
-                            return false;                           //solapament de laboratoris
-                        if (a.getGrup().getNum() % 10 == 0 && a.getGrup().getNum() / 10 == grup)
-                            return false;                           //solapament teoria-laboratori
+        if(active) {
+            if (assig.getSub() != null) {
+                int grup = assig.getSub().getNum() / 10;
+                for (int j = 0; j < aules2.size(); ++j) {
+                    Assignacio a = horari[hora][dia][j];
+                    if (a != null) {
+                        if (a.getAssignatura().getNom() == assig.getAssig().getNom()) {
+                            if (a.getGrup().getNum() == assig.getSub().getNum())
+                                return false;                           //solapament de laboratoris
+                            if (a.getGrup().getNum() % 10 == 0 && a.getGrup().getNum() / 10 == grup)
+                                return false;                           //solapament teoria-laboratori
+                        }
                     }
                 }
             }
@@ -59,12 +63,14 @@ public class RestriccioSubgrupLab extends RestriccioBinaria {
 
     @Override
     public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) throws NotFoundException {
-        if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
-            if (check.getAssig().getNom().equalsIgnoreCase(assignat.getAssig().getNom()) && check.getSessio().getClass() == Laboratori.class) {
-                if (assignat.getSessio().getClass() == Laboratori.class) {
-                    return (assignat.getSub().getNum() != check.getSub().getNum());     //solapament laboratori¡
-                } else {
-                    return (assignat.getGrup().getNum() /10 != check.getGrup().getNum()/10);   //solapament laboratori-teoria
+        if(active) {
+            if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
+                if (check.getAssig().getNom().equalsIgnoreCase(assignat.getAssig().getNom()) && check.getSessio().getClass() == Laboratori.class) {
+                    if (assignat.getSessio().getClass() == Laboratori.class) {
+                        return (assignat.getSub().getNum() != check.getSub().getNum());     //solapament laboratori¡
+                    } else {
+                        return (assignat.getGrup().getNum() / 10 != check.getGrup().getNum() / 10);   //solapament laboratori-teoria
+                    }
                 }
             }
         }

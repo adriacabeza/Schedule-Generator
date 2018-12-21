@@ -110,7 +110,7 @@ public class Assignatura {
     public int getNumSessionsTeo() {
         return this.teoria.getNumSessions();
     }
-    //TODO: mirar si a les de teoria he de mirar si pot ser null o no
+
 
     /**
      * Obtenir la duració de les sessions de teoria de l'assignatura

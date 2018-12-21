@@ -12,7 +12,7 @@ Valors estudiats:
     - creació correcte d'un grup
     - consultar correctament un grup
     - modificar correctament els grups
-    //TODO : CONTINUAR
+
 
 Operativa: S'obre un menú amb totes les opcions disponibles i l'explicació del que espera rebre
     - introduir la opció desitjada

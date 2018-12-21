@@ -17,7 +17,7 @@ Valors estudiats:
     - modificar la hora d'una assignació de laboratori
     - modificar el número de subgrup d'una assignació de laboratori
     - modificar el nom de l'assignatura d'una assignació de laboratori
-      //TODO : CONTINUAR
+
 
 Efectes estudiats: -
 

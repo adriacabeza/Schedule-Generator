@@ -90,7 +90,7 @@ public class CtrlDomini {
     public ArrayList<String> getLlistaAssignatures() {
         ArrayList<String> info = new ArrayList<>();
         for (Assignatura a : assignatures.values()) {
-            info.add(a.getNom());   //TODO: posar id assig o id o el pla d'estudis al que pertany? parlar-ho
+            info.add(a.getNom());
         }
         info.sort(String::compareToIgnoreCase);
         return info;
@@ -148,7 +148,7 @@ public class CtrlDomini {
         return assignatures_candidates;
     }
 
-    //todo de moment no te en compte restriccions i tenim codi duplicat
+
 
     /**
      * Genera un horari amb les restriccions especificades i el retorna per tal de ser mostrat per pantalla
@@ -161,14 +161,9 @@ public class CtrlDomini {
 
         for (HashMap<String, String> res1 : rmt) {
             String assignatura = res1.get("assignatura");
-            //todo mirad las funciones de handleAdd* de CtrlHorariView para ver como esta definido
             horari.afegirRMT(assignatura, res1.get("matitarda").equalsIgnoreCase("Mati") );
         }
 
-        /*
-        horari.activaRestriccio...(bool)
-        horari.activaRestriccio2...(bool) //todo restriccio 2
-         */
 
         for (HashMap<String, String> res2 : rad) {
             int dia = Algorismes.fromDia2int(res2.get("dia"));
@@ -178,11 +173,11 @@ public class CtrlDomini {
         for (HashMap<String, String> res3 : rdah) {
             int dia = Algorismes.fromDia2int(res3.get("dia"));
             Aula aula = aules.get(res3.get("aula"));
-            int hora = Integer.parseInt(res3.get("hora"));         //esta pasat de 8 a 19 o de 0 a 10 ??
+            int hora = Integer.parseInt(res3.get("hora"));
             horari.afegirRDH(hora, dia, aula);
         }
+        horari.activaRGT(rgt);
         horari.activaRC(rc);
-        //volem incloure nomes les assignatures de plans no obsolets i que estiguin en algun pla d'estudis vigent
         HashMap<String, Assignatura> ass = new HashMap<>();
         for (PlaEstudis plaest : plaEstudis.values()) {
             if (!plaest.isObsolet()) {

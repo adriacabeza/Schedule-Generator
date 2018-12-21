@@ -10,11 +10,14 @@ import java.util.HashMap;
 
 public class RestriccioGrupTeo extends RestriccioBinaria {
 
+    boolean active;
     /**
      * Crea una restricció on es comprova que en una sessió de teoria d'un determinat grup no hi hagi solapaments
+     * @param active indica si la restriccio esta activa o no
      */
-    public RestriccioGrupTeo() {
+    public RestriccioGrupTeo(boolean active) {
         super(4);
+        this.active = active;
     }
 
 
@@ -29,13 +32,16 @@ public class RestriccioGrupTeo extends RestriccioBinaria {
      * @return true si es pot realitzar l'assignació
      */
     public boolean isable(Assignacio[][][] horari, int hora, int dia, SessioGrup assig, ArrayList<Aula> aules2) {
-        int grup = assig.getGrup().getNum() / 10;
-        for (int j = 0; j < aules2.size(); ++j) {
-            Assignacio a = horari[hora][dia][j];
-            if (a != null) {
-                if (a.getAssignatura().getNom() == assig.getAssig().getNom() && a.getGrup().getNum() / 10 == grup)
-                    return false;                       //solapament teories o teoria-qualsevol laboratori
+        if(active) {
+            int grup = assig.getGrup().getNum() / 10;
+            for (int j = 0; j < aules2.size(); ++j) {
+                Assignacio a = horari[hora][dia][j];
+                if (a != null) {
+                    if (a.getAssignatura().getNom() == assig.getAssig().getNom() && a.getGrup().getNum() / 10 == grup)
+                        return false;                       //solapament teories o teoria-qualsevol laboratori
+                }
             }
+
         }
         return true;
     }
@@ -53,13 +59,16 @@ public class RestriccioGrupTeo extends RestriccioBinaria {
 
     @Override
     public boolean isAble2(SessioGrup check, SessioGrup assignat, Aula aula, HashMap<SessioGrup, ArrayList<ArrayList<ArrayList<Integer>>>> pos, int aulaIndex, int dia, int hora) throws NotFoundException {
-        if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
-            if (check.getAssig().getNom().equalsIgnoreCase(assignat.getAssig().getNom()) && check.getSessio().getClass() == Teoria.class) {
-                if (check.getGrup().getNum()/10 == assignat.getGrup().getNum()/10)
-                    return false;      //solapament teories o labs
+        if (active) {
+            if (pos.get(check).get(dia).get(hora).contains(aulaIndex)) {
+                if (check.getAssig().getNom().equalsIgnoreCase(assignat.getAssig().getNom()) && check.getSessio().getClass() == Teoria.class) {
+                    if (check.getGrup().getNum() / 10 == assignat.getGrup().getNum() / 10)
+                        return false;      //solapament teories o labs
+                }
             }
-        }
 
+
+        }
         return true;
     }
 }
