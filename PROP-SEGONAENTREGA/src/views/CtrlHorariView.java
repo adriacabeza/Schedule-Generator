@@ -242,7 +242,7 @@ public class CtrlHorariView {
      * @param assig Abreviació de l'assignatura
      * @param aula  Aula
      */
-    private void handleAssigAulaChange(String assig, String aula) {
+    void handleAssigAulaChange(String assig, String aula) {
         // Set table as content after the first change in the ChoiceBoxes
         horari_container.setCenter(horariTable);
         // Set Slots in the table according to the choice

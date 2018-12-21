@@ -203,6 +203,18 @@ public class CtrlDomini {
     }
 
     /**
+     * Retorna l'horari en format JSON
+     * @return l'horari en format JSON
+     */
+    public String getHorariJson(){
+        if(horari!=null){
+            return cIo.horariToJson(this.horari);
+        }else{
+            return null;
+        }
+    }
+
+    /**
      * Esborra del sistema un pla d'estudis OBSOLET
      *
      * @param nom Nom del pla d'estudis

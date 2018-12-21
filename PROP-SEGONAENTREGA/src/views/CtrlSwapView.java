@@ -130,6 +130,8 @@ public class CtrlSwapView {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             if (swapDone) {
                 a.setContentText("Intercanvi realitzat satisfactoriament");
+                horariView.loadHorari(CtrlDomini.getInstance().getHorariJson());
+                horariView.handleAssigAulaChange("", "");
             } else {
                 a.setContentText("Intercanvi no realitzat. Comprova les restriccions.");
             }
