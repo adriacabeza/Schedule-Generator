@@ -65,7 +65,7 @@ public class CtrlAulaView {
      *
      * @param key nom de l'aula que hem seleccionat per consultar
      */
-    void displayAula(String key) {                                                       //TODO check if this might have errors
+    void displayAula(String key) {
         this.key = key;
         String json = null;
         try {
@@ -106,6 +106,10 @@ public class CtrlAulaView {
         }
     }
 
+    /**
+     * Funció que tanca la finestra actual i n'obre una de nova on es pot modificar l'Aula.
+     * @throws IOException Si no s'ha pogut obrir la finestra de modificar Aula
+     */
     @FXML
     private void handleModifica() throws IOException {
         ctrlMainView.modificarAula(label_title.getText());

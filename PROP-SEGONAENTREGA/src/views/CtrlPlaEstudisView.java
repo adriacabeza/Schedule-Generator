@@ -89,6 +89,10 @@ public class CtrlPlaEstudisView {
 
     }
 
+    /**
+     * Tanca la finestra actual i n'obre una per modificar el Pla d'Estudis
+     * @throws IOException Si no es troba el fxml
+     */
     @FXML
     private void handleModifica() throws IOException {
         ctrlMainView.modificarPlaEstudis(label_nom.getText());
@@ -101,7 +105,7 @@ public class CtrlPlaEstudisView {
      *
      * @param nomPla nom de l'aula que hem seleccionat per consultar
      */
-    void displayPlaEstudis(String nomPla) { //TODO check if this might have errors
+    void displayPlaEstudis(String nomPla) {
         String json = null;
         try {
             json = ctrlDomini.consultarPlaEsudis(nomPla);
@@ -228,8 +232,8 @@ public class CtrlPlaEstudisView {
      * @throws RestriccioIntegritatException si l'assignatura ja esta afegida al pla
      */
     private void afegeixAssignaturesPla(String titulacio) throws NotFoundException, RestriccioIntegritatException, IOException {
-        for (int i = 0; i < assignatures.size(); i++) {
-            ctrlDomini.afegirAssignaturaPla(titulacio, assignatures.get(i));
+        for (String assignature : assignatures) {
+            ctrlDomini.afegirAssignaturaPla(titulacio, assignature);
         }
     }
 

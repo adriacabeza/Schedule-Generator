@@ -29,7 +29,6 @@ public class CtrlHorariView {
 
     private CtrlMainView ctrlMainView;
     private CtrlDomini ctrlDomini = CtrlDomini.getInstance();
-    private boolean generatemode = false;
     private Stage swapWindow;
 
     @FXML
@@ -73,8 +72,6 @@ public class CtrlHorariView {
     private ObservableList<String> llistaAules;
     private ObservableList<String> llistaAssignatures;
     private ObservableList<String> llistaDies;
-    private ObservableList<String> llistaSlots;
-    private ObservableList<String> llistaMatiTarda;
 
     private ArrayList<HashMap<String, String>> rmt;
     private ArrayList<HashMap<String, String>> rdah;
@@ -179,8 +176,10 @@ public class CtrlHorariView {
         });
     }
 
+    /**
+     * Configura la view en mode "generar horari"
+     */
     void setGenerateMode() {
-        generatemode = true;
         swapWindow = new Stage();
         choice_assig.setDisable(true);
         choice_aula.setDisable(true);
@@ -188,7 +187,7 @@ public class CtrlHorariView {
         horari_container.setCenter(new Label("Escull les restriccions adients i genera un horari"));
 
         ArrayList<String> matitarda = new ArrayList<>(Arrays.asList("", "Mati", "Tarda"));
-        llistaMatiTarda = FXCollections.observableArrayList(matitarda);
+        ObservableList<String> llistaMatiTarda = FXCollections.observableArrayList(matitarda);
         rmt_assig.setItems(llistaAssignatures);
         rmt_assig.getSelectionModel().select(0);
         rmt_matitarda.setItems(llistaMatiTarda);
@@ -203,7 +202,7 @@ public class CtrlHorariView {
         ArrayList<String> slots = new ArrayList<>(Arrays.asList("", "8h - 9h", "9h - 10h", "10h - 11h",
                 "11h - 12h", "12h - 13h", "13h - 14h", "14h - 15h", "15h - 16h", "16h - 17h", "17h - 18h",
                 "18h - 19h", "19h - 20h", "20h - 21h"));
-        llistaSlots = FXCollections.observableArrayList(slots);
+        ObservableList<String> llistaSlots = FXCollections.observableArrayList(slots);
         rdah_hora.setItems(llistaSlots);
         rdah_hora.getSelectionModel().select(0);
 
@@ -259,6 +258,9 @@ public class CtrlHorariView {
         this.ctrlMainView = c;
     }
 
+    /**
+     * Afegeix la restricció RMT seleccionada actualment a la llista de restriccions.
+     */
     @FXML
     private void handleAddRMT() {
         String assignatura = rmt_assig.getValue();
@@ -275,6 +277,10 @@ public class CtrlHorariView {
         }
     }
 
+    /**
+     * Funcio que mostra les restriccions RMT
+     * @throws IOException Si no s'ha pogut trobar el fxml
+     */
     @FXML
     private void handleViewRMT() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("restriccioDisplay.fxml"));
@@ -290,6 +296,9 @@ public class CtrlHorariView {
         c.setRestriccions(rmt);
     }
 
+    /**
+     * Afegeix la restricció RDAH seleccionada actualment a la llista de restriccions.
+     */
     @FXML
     private void handleAddRDAH() {
         String dia = rdah_dia.getValue();
@@ -309,6 +318,10 @@ public class CtrlHorariView {
         }
     }
 
+    /**
+     * Funcio que mostra les restriccions RDAH
+     * @throws IOException Si no s'ha pogut trobar el fxml
+     */
     @FXML
     private void handleViewRDAH() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("restriccioDisplay.fxml"));
@@ -324,6 +337,9 @@ public class CtrlHorariView {
         c.setRestriccions(rdah);
     }
 
+    /**
+     * Afegeix la restricció RAD seleccionada actualment a la llista de restriccions.
+     */
     @FXML
     private void handleAddRAD() {
         String aula = rad_aula.getValue();
@@ -340,6 +356,10 @@ public class CtrlHorariView {
         }
     }
 
+    /**
+     * Funcio que mostra les restriccions RAD
+     * @throws IOException Si no s'ha pogut trobar el fxml
+     */
     @FXML
     private void handleViewRAD() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("restriccioDisplay.fxml"));
@@ -355,6 +375,9 @@ public class CtrlHorariView {
         c.setRestriccions(rad);
     }
 
+    /**
+     * Funció que genera un Horari nou en prémer el botó de "Generar"
+     */
     @FXML
     private void handleGenerar() {
         String horaritojson;
@@ -366,13 +389,14 @@ public class CtrlHorariView {
         handleAssigAulaChange("", "");
     }
 
+    /**
+     * Surt del stage
+     */
     public void exit() {
         ctrlMainView.reloadList();
         Stage stage = (Stage) cancel_button.getScene().getWindow();
         stage.close();
     }
-
-    //TODO make this function into an interface, as it is shared between all views.
 
     /**
      * Mostra un pop-up amb un missatge d'error si s'en dona un
@@ -460,6 +484,10 @@ public class CtrlHorariView {
         return slots;
     }
 
+    /**
+     * Obre una nova finestra per gestionar un canvi a l'horari. No se'n pot obrir mes d'una a la vegada.
+     * @throws IOException Si no s'ha pogut trobar el fitxer fxml
+     */
     @FXML
     private void handleCanviSlots() throws IOException {
         if (!swapWindow.isShowing()) {
@@ -481,16 +509,17 @@ public class CtrlHorariView {
     }
 
     /**
-     * TODO Fix this and set it in the Slot class after everything works properly
+     * Retorna les dades de l'assignació corresponent al Slot seleccionat en la vista
      *
-     * @return
+     * @return un Map amb els camps "assignatura", "grup", "aula", "dia" i "hora".
+     * @throws NotFoundException si no s'ha trobat l'assignatura a partir de l'abreviació
      */
     HashMap<String, String> getCurrentSlot() throws NotFoundException {
         TableView.TableViewSelectionModel selected = horariTable.getSelectionModel();
         // Check if there is something selected
         if (selected.getSelectedIndex() != -1) {
             TablePosition tablePosition = (TablePosition) selected.getSelectedCells().get(0);
-            if(tablePosition.getColumn() == 0) return null;
+            if (tablePosition.getColumn() == 0) return null;
             String text = (String) tablePosition.getTableColumn().getCellData(tablePosition.getRow());
             String[] splittext = text.split("\n");
             HashMap<String, String> output = null;
@@ -501,6 +530,7 @@ public class CtrlHorariView {
                 List<String> grupsList = Arrays.asList(grups);
                 HashMap<String, String> grupAula;
                 if (grupsList.size() > 1) {
+                    // If there's more than one group, choose which
                     ChoiceDialog<String> dialog = new ChoiceDialog<>(grupsList.get(0), grupsList);
                     dialog.setTitle("Elecció de grup");
                     dialog.setHeaderText("Falta escollir un grup!");
@@ -527,13 +557,14 @@ public class CtrlHorariView {
                 output.put("dia", dia);
                 output.put("hora", slot);
                 return output;
-            }else{
+            } else {
+                // Si es un slot buit
                 output = new HashMap<>();
                 output.put("dia", llistaDies.get(tablePosition.getColumn()));
                 output.put("hora", String.valueOf(tablePosition.getRow()));
                 output.put("assignatura", "-");
                 output.put("grup", "-");
-                ChoiceDialog<String> dialog = new ChoiceDialog<>(llistaAules.get(0),llistaAules);
+                ChoiceDialog<String> dialog = new ChoiceDialog<>(llistaAules.get(0), llistaAules);
                 dialog.setTitle("Elecció d'aula");
                 dialog.setHeaderText("Falta escollir una aula pel Slot buit!");
                 dialog.setContentText("Aula: ");
@@ -548,6 +579,11 @@ public class CtrlHorariView {
         return null;
     }
 
+    /**
+     * Guarda l'horari actual a disc, en una carpeta arbitraria
+     *
+     * @throws IOException si no s'ha pogut guardar l'arxiu
+     */
     @FXML
     private void handleGuarda() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -556,7 +592,7 @@ public class CtrlHorariView {
         fileChooser.setInitialFileName("horari.json");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON", "*.json"));
         File file = fileChooser.showSaveDialog(generate_button.getScene().getWindow());
-        if (file!=null){
+        if (file != null) {
             ctrlDomini.escriuHorari(horarijson, file.getAbsolutePath());
         }
     }
