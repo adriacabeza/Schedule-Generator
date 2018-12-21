@@ -9,9 +9,7 @@
   "Fisica": {
     "nomTitulacio": "Fisica",
     "any": 2012,
-    "assignatures": [
-      "a"
-    ],
+    "assignatures": [],
     "obsolet": false,
     "descripcio": "descripcio per enginyeria fisica"
   },

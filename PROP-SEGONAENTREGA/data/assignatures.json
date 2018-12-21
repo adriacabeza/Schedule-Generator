@@ -62,57 +62,6 @@
     "descripcio": "Programació 2",
     "abr": "PRO2"
   },
-  "bb": {
-    "nom": "bb",
-    "grups": {
-      "10": {
-        "capacitat": 1,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 1,
-            "num": 11,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [],
-    "quadrimestre": -1,
-    "descripcio": "bb",
-    "abr": "b"
-  },
-  "a": {
-    "nom": "a",
-    "grups": {
-      "20": {
-        "capacitat": 22,
-        "num": 20,
-        "subgrups": {
-          "21": {
-            "capacitat": 22,
-            "num": 21,
-            "subgrups": {}
-          }
-        }
-      },
-      "10": {
-        "capacitat": 22,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 22,
-            "num": 11,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [],
-    "quadrimestre": 1,
-    "descripcio": "aaa",
-    "abr": "a"
-  },
   "Llenguatges de programació": {
     "nom": "Llenguatges de programació",
     "teoria": {

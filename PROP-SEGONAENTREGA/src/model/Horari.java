@@ -158,7 +158,7 @@ public class Horari {
      * @return retorna true si s'ha pogut efectuar l'intercanvi
      */
     public boolean intercanviaSlots(HashMap<String, String> slot1, HashMap<String, String> slot2, HashMap<String, Aula> aules, HashMap<String, Assignatura> assig) throws NotFoundException {
-        ArrayList<Aula> aulesaux = (ArrayList<Aula>) aules.values();
+        ArrayList<Aula> aulesaux = new ArrayList<>(aules.values());
         int duracio;
         Assignatura a = null;
         Aula aul = null;
@@ -240,10 +240,10 @@ public class Horari {
                 duracio2 = a2.getDuracioSessionsTeo();
                 lab2 = false;
             }
-            else duracio = a2.getDuracioSessionsLab();
+            else duracio2 = a2.getDuracioSessionsLab();
             aul2 = aules.get(slot2.get("aula"));
             if(lab2){
-                Subgrup sub = a.getGrup((grupnum2 / 10) * 10).getSubgrups().get(grupnum2);
+                Subgrup sub = a2.getGrup((grupnum2 / 10) * 10).getSubgrups().get(grupnum2);
                 ses2 = new SessioGrup(a2,new Laboratori(0,duracio2,aul2.getTipusAula()), new Grup((grupnum2 / 10) * 10,sub.getCapacitat(),0 ),sub, 0);
             }
             else{
@@ -274,17 +274,17 @@ public class Horari {
             int posaula2 = aulesaux.indexOf(aules.get(slot2.get("aula")));
 
 
-            ArrayList<Assignacio> clase2 = new ArrayList<>(duracio2);
+            ArrayList<Assignacio> clase2 = new ArrayList<>();
 
             for(int i = 0; i<duracio2; ++i ){
-                clase2.add(i,horari[hora2+i][dia2][posaula2]);
+                clase2.add(horari[hora2+i][dia2][posaula2]);
                 horari[hora2+i][dia2][posaula2] = null;
             }
 
             if(comprovarResSlotsBuits(ses,hora2,dia2,posaula2,duracio,aulesaux,aules.get(slot2.get("aula")))){
-                ArrayList<Assignacio> clase1 = new ArrayList<>(duracio);
+                ArrayList<Assignacio> clase1 = new ArrayList<>();
                 for(int i = 0; i<duracio; ++i ){
-                    clase1.add(i,horari[hora+i][dia][posaula]);
+                    clase1.add(horari[hora+i][dia][posaula]);
                     horari[hora+i][dia][posaula] = null;
                 }
                 if(comprovarResSlotsBuits(ses2,hora,dia,posaula,duracio2,aulesaux,aules.get(slot1.get("aula")))){
