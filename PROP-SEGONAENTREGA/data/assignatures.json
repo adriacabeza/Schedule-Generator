@@ -1,4 +1,350 @@
 {
+  "Programació 2": {
+    "nom": "Programació 2",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 60,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 20,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 60,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 20,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 2,
+    "descripcio": "Programació 2",
+    "abr": "PRO2"
+  },
+  "bb": {
+    "nom": "bb",
+    "grups": {
+      "10": {
+        "capacitat": 1,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 1,
+            "num": 11,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [],
+    "quadrimestre": -1,
+    "descripcio": "bb",
+    "abr": "b"
+  },
+  "a": {
+    "nom": "a",
+    "grups": {
+      "20": {
+        "capacitat": 22,
+        "num": 20,
+        "subgrups": {
+          "21": {
+            "capacitat": 22,
+            "num": 21,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 22,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 22,
+            "num": 11,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [],
+    "quadrimestre": 1,
+    "descripcio": "aaa",
+    "abr": "a"
+  },
+  "Llenguatges de programació": {
+    "nom": "Llenguatges de programació",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 40,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 40,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 5,
+    "descripcio": "Llenguatges de Programació",
+    "abr": "LP"
+  },
+  "Programació 1": {
+    "nom": "Programació 1",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 60,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 20,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 60,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 20,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 1,
+    "descripcio": "Programació 1",
+    "abr": "PRO1"
+  },
+  "Mates 1": {
+    "nom": "Mates 1",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 40,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 40,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      "Mates 2"
+    ],
+    "quadrimestre": 2,
+    "descripcio": "Mates 1",
+    "abr": "M1"
+  },
+  "Bases de Dades": {
+    "nom": "Bases de Dades",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 60,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 20,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 60,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 20,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 3,
+    "descripcio": "Base de dades",
+    "abr": "BD"
+  },
   "Enginyeria de Requisits": {
     "nom": "Enginyeria de Requisits",
     "teoria": {
@@ -52,8 +398,8 @@
     "descripcio": "EC assignatura descripcio",
     "abr": "ER"
   },
-  "Algorísmia": {
-    "nom": "Algorísmia",
+  "Física": {
+    "nom": "Física",
     "teoria": {
       "numSessions": 1,
       "duracioSessions": 2,
@@ -66,33 +412,64 @@
     },
     "grups": {
       "30": {
-        "capacitat": 16,
+        "capacitat": 60,
         "num": 30,
         "subgrups": {
-          "31": {
-            "capacitat": 8,
-            "num": 31,
+          "32": {
+            "capacitat": 20,
+            "num": 32,
             "subgrups": {}
           },
-          "32": {
-            "capacitat": 8,
-            "num": 32,
+          "33": {
+            "capacitat": 20,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
             "subgrups": {}
           }
         }
       },
       "10": {
-        "capacitat": 15,
+        "capacitat": 60,
         "num": 10,
         "subgrups": {
           "11": {
-            "capacitat": 7,
+            "capacitat": 20,
             "num": 11,
             "subgrups": {}
           },
           "12": {
-            "capacitat": 8,
+            "capacitat": 20,
             "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 20,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      },
+      "20": {
+        "capacitat": 60,
+        "num": 20,
+        "subgrups": {
+          "22": {
+            "capacitat": 20,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 20,
+            "num": 23,
+            "subgrups": {}
+          },
+          "24": {
+            "capacitat": 20,
+            "num": 24,
             "subgrups": {}
           }
         }
@@ -102,10 +479,9 @@
       ""
     ],
     "quadrimestre": 1,
-    "descripcio": "Algorísmia descripció",
-    "abr": "A"
+    "descripcio": "Física",
+    "abr": "F"
   },
-
   "Sistemes Operatius": {
     "nom": "Sistemes Operatius",
     "teoria": {
@@ -123,14 +499,14 @@
         "capacitat": 40,
         "num": 30,
         "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
           "32": {
             "capacitat": 20,
             "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
             "subgrups": {}
           }
         }
@@ -159,9 +535,8 @@
     "descripcio": "Sistemes Operatius",
     "abr": "SO"
   },
-
-  "Programació 1": {
-    "nom": "Programació 1",
+  "Interfícies de Computadors": {
+    "nom": "Interfícies de Computadors",
     "teoria": {
       "numSessions": 1,
       "duracioSessions": 2,
@@ -177,11 +552,6 @@
         "capacitat": 60,
         "num": 30,
         "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
           "32": {
             "capacitat": 20,
             "num": 32,
@@ -191,8 +561,12 @@
             "capacitat": 20,
             "num": 33,
             "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
           }
-
         }
       },
       "10": {
@@ -215,16 +589,416 @@
             "subgrups": {}
           }
         }
+      },
+      "20": {
+        "capacitat": 60,
+        "num": 20,
+        "subgrups": {
+          "22": {
+            "capacitat": 20,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 20,
+            "num": 23,
+            "subgrups": {}
+          },
+          "24": {
+            "capacitat": 20,
+            "num": 24,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 3,
+    "descripcio": "Interfícies de Computadors",
+    "abr": "CI"
+  },
+  "Aprenentatge Autònom": {
+    "nom": "Aprenentatge Autònom",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 16,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 8,
+            "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 8,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 15,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 7,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 8,
+            "num": 12,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 6,
+    "descripcio": "Aprenentatge Autònom",
+    "abr": "APA"
+  },
+  "Fonaments Matemàtics": {
+    "nom": "Fonaments Matemàtics",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 60,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 20,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 60,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 20,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      },
+      "20": {
+        "capacitat": 60,
+        "num": 20,
+        "subgrups": {
+          "22": {
+            "capacitat": 20,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 20,
+            "num": 23,
+            "subgrups": {}
+          },
+          "24": {
+            "capacitat": 20,
+            "num": 24,
+            "subgrups": {}
+          }
+        }
       }
     },
     "correquisit": [
       ""
     ],
     "quadrimestre": 1,
-    "descripcio": "Programació 1",
-    "abr": "PRO1"
-  }
-,
+    "descripcio": "Fonaments Matemàtics",
+    "abr": "FM"
+  },
+  "Mates 2": {
+    "nom": "Mates 2",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 40,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 40,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      "Mates 1"
+    ],
+    "quadrimestre": 2,
+    "descripcio": "Mates 2",
+    "abr": "M2"
+  },
+  "Algorísmia": {
+    "nom": "Algorísmia",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 16,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 8,
+            "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 8,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 15,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 7,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 8,
+            "num": 12,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 1,
+    "descripcio": "Algorísmia descripció",
+    "abr": "A"
+  },
+  "Probabilitat i Estadística": {
+    "nom": "Probabilitat i Estadística",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 40,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 40,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 3,
+    "descripcio": "Probabilitat i Estadística",
+    "abr": "PE"
+  },
+  "Introducció als Computadors": {
+    "nom": "Introducció als Computadors",
+    "teoria": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "normal"
+    },
+    "laboratori": {
+      "numSessions": 1,
+      "duracioSessions": 2,
+      "tAula": "laboratori"
+    },
+    "grups": {
+      "30": {
+        "capacitat": 60,
+        "num": 30,
+        "subgrups": {
+          "32": {
+            "capacitat": 20,
+            "num": 32,
+            "subgrups": {}
+          },
+          "33": {
+            "capacitat": 20,
+            "num": 33,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
+            "subgrups": {}
+          }
+        }
+      },
+      "10": {
+        "capacitat": 60,
+        "num": 10,
+        "subgrups": {
+          "11": {
+            "capacitat": 20,
+            "num": 11,
+            "subgrups": {}
+          },
+          "12": {
+            "capacitat": 20,
+            "num": 12,
+            "subgrups": {}
+          },
+          "13": {
+            "capacitat": 20,
+            "num": 13,
+            "subgrups": {}
+          }
+        }
+      },
+      "20": {
+        "capacitat": 60,
+        "num": 20,
+        "subgrups": {
+          "22": {
+            "capacitat": 20,
+            "num": 22,
+            "subgrups": {}
+          },
+          "23": {
+            "capacitat": 20,
+            "num": 23,
+            "subgrups": {}
+          },
+          "24": {
+            "capacitat": 20,
+            "num": 24,
+            "subgrups": {}
+          }
+        }
+      }
+    },
+    "correquisit": [
+      ""
+    ],
+    "quadrimestre": 1,
+    "descripcio": "Introducció als Computadors",
+    "abr": "IC"
+  },
   "Arquitectura dels Computadors": {
     "nom": "Arquitectura dels Computadors",
     "teoria": {
@@ -277,111 +1051,6 @@
     "quadrimestre": 1,
     "descripcio": "AC assignatura descripcio",
     "abr": "AC"
-  },  "Mates 1": {
-  "nom": "Mates 1",
-  "teoria": {
-    "numSessions": 1,
-    "duracioSessions": 2,
-    "tAula": "normal"
-  },
-  "laboratori": {
-    "numSessions": 1,
-    "duracioSessions": 2,
-    "tAula": "laboratori"
-  },
-  "grups": {
-    "30": {
-      "capacitat": 40,
-      "num": 30,
-      "subgrups": {
-        "31": {
-          "capacitat": 20,
-          "num": 31,
-          "subgrups": {}
-        },
-        "32": {
-          "capacitat": 20,
-          "num": 32,
-          "subgrups": {}
-        }
-      }
-    },
-    "10": {
-      "capacitat": 40,
-      "num": 10,
-      "subgrups": {
-        "11": {
-          "capacitat": 20,
-          "num": 11,
-          "subgrups": {}
-        },
-        "12": {
-          "capacitat": 20,
-          "num": 12,
-          "subgrups": {}
-        }
-      }
-    }
-  },
-  "correquisit": [
-    "Mates 2"
-  ],
-  "quadrimestre": 2,
-  "descripcio": "Mates 1",
-  "abr": "M1"
-},
-  "Mates 2": {
-    "nom": "Mates 2",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 40,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          }
-        }
-      },
-      "10": {
-        "capacitat": 40,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [
-      "Mates 1"
-    ],
-    "quadrimestre": 2,
-    "descripcio": "Mates 2",
-    "abr": "M2"
   },
   "Algorísmia Avançada": {
     "nom": "Algorísmia Avançada",
@@ -400,14 +1069,14 @@
         "capacitat": 16,
         "num": 30,
         "subgrups": {
-          "31": {
-            "capacitat": 8,
-            "num": 31,
-            "subgrups": {}
-          },
           "32": {
             "capacitat": 8,
             "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 8,
+            "num": 31,
             "subgrups": {}
           }
         }
@@ -436,180 +1105,6 @@
     "descripcio": "Algorísmia Avançada",
     "abr": "AA"
   },
-
-  "Probabilitat i Estadística": {
-    "nom": "Probabilitat i Estadística",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 40,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          }
-        }
-      },
-      "10": {
-        "capacitat": 40,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 3,
-    "descripcio": "Probabilitat i Estadística",
-    "abr": "PE"
-  },
-
-  "Programació 2": {
-    "nom": "Programació 2",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 60,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          },
-          "33": {
-            "capacitat": 20,
-            "num": 33,
-            "subgrups": {}
-          }
-
-        }
-      },
-      "10": {
-        "capacitat": 60,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          },
-          "13": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 2,
-    "descripcio": "Programació 2",
-    "abr": "PRO2"
-  },
-
-  "Aprenentatge Autònom": {
-    "nom": "Aprenentatge Autònom",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 16,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 8,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 8,
-            "num": 32,
-            "subgrups": {}
-          }
-        }
-      },
-      "10": {
-        "capacitat": 15,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 7,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 8,
-            "num": 12,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 6,
-    "descripcio": "Aprenentatge Autònom",
-    "abr": "APA"
-  },
-
   "Estructura de Dades i Algorismes": {
     "nom": "Estructura de Dades i Algorismes",
     "teoria": {
@@ -627,14 +1122,14 @@
         "capacitat": 40,
         "num": 30,
         "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
           "32": {
             "capacitat": 20,
             "num": 32,
+            "subgrups": {}
+          },
+          "31": {
+            "capacitat": 20,
+            "num": 31,
             "subgrups": {}
           }
         }
@@ -662,657 +1157,5 @@
     "quadrimestre": 3,
     "descripcio": "Estructura de Dades i Algorismes",
     "abr": "EDA"
-  },
-
-  "Bases de Dades": {
-    "nom": "Bases de Dades",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 60,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          },
-          "33": {
-            "capacitat": 20,
-            "num": 33,
-            "subgrups": {}
-          }
-
-        }
-      },
-      "10": {
-        "capacitat": 60,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          },
-          "13": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 3,
-    "descripcio": "Base de dades",
-    "abr": "BD"
-  },
-
-
-
-  "Llenguatges de programació": {
-    "nom": "Llenguatges de programació",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 40,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          }
-        }
-      },
-      "10": {
-        "capacitat": 40,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 5,
-    "descripcio": "Llenguatges de Programació",
-    "abr": "LP"
-  },
-
-  "Interfícies de Computadors": {
-    "nom": "Interfícies de Computadors",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 60,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          },
-          "33": {
-            "capacitat": 20,
-            "num": 33,
-            "subgrups": {}
-          }
-
-        }
-      },
-      "10": {
-        "capacitat": 60,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          },
-          "13": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      },
-      "20": {
-        "capacitat": 60,
-        "num": 20,
-        "subgrups": {
-          "22": {
-            "capacitat": 20,
-            "num": 22,
-            "subgrups": {}
-          },
-          "24": {
-            "capacitat": 20,
-            "num": 24,
-            "subgrups": {}
-          },
-          "23": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 3,
-    "descripcio": "Interfícies de Computadors",
-    "abr": "CI"
-  },
-
-  "Física": {
-    "nom": "Física",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 60,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          },
-          "33": {
-            "capacitat": 20,
-            "num": 33,
-            "subgrups": {}
-          }
-
-        }
-      },
-      "10": {
-        "capacitat": 60,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          },
-          "13": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      },
-      "20": {
-        "capacitat": 60,
-        "num": 20,
-        "subgrups": {
-          "22": {
-            "capacitat": 20,
-            "num": 22,
-            "subgrups": {}
-          },
-          "24": {
-            "capacitat": 20,
-            "num": 24,
-            "subgrups": {}
-          },
-          "23": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "60": {
-      "capacitat": 60,
-      "num": 60,
-      "subgrups": {
-        "61": {
-          "capacitat": 20,
-          "num": 61,
-          "subgrups": {}
-        },
-        "62": {
-          "capacitat": 20,
-          "num": 62,
-          "subgrups": {}
-        },
-        "63": {
-          "capacitat": 20,
-          "num": 63,
-          "subgrups": {}
-        }
-      }
-    },
-    "40": {
-      "capacitat": 60,
-      "num": 40,
-      "subgrups": {
-        "41": {
-          "capacitat": 20,
-          "num": 41,
-          "subgrups": {}
-        },
-        "42": {
-          "capacitat": 20,
-          "num": 42,
-          "subgrups": {}
-        },
-        "43": {
-          "capacitat": 20,
-          "num": 43,
-          "subgrups": {}
-        }
-      }
-    },
-    "50": {
-      "capacitat": 60,
-      "num": 50,
-      "subgrups": {
-        "51": {
-          "capacitat": 20,
-          "num": 51,
-          "subgrups": {}
-        },
-        "52": {
-          "capacitat": 20,
-          "num": 52,
-          "subgrups": {}
-        },
-        "53": {
-          "capacitat": 20,
-          "num": 53,
-          "subgrups": {}
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 1,
-    "descripcio": "Física",
-    "abr": "F"
-  },
-  "Introducció als Computadors": {
-    "nom": "Introducció als Computadors",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 60,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          },
-          "33": {
-            "capacitat": 20,
-            "num": 33,
-            "subgrups": {}
-          }
-
-        }
-      },
-      "10": {
-        "capacitat": 60,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          },
-          "13": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      },
-      "20": {
-        "capacitat": 60,
-        "num": 20,
-        "subgrups": {
-          "22": {
-            "capacitat": 20,
-            "num": 22,
-            "subgrups": {}
-          },
-          "24": {
-            "capacitat": 20,
-            "num": 24,
-            "subgrups": {}
-          },
-          "23": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "60": {
-      "capacitat": 60,
-      "num": 60,
-      "subgrups": {
-        "61": {
-          "capacitat": 20,
-          "num": 61,
-          "subgrups": {}
-        },
-        "62": {
-          "capacitat": 20,
-          "num": 62,
-          "subgrups": {}
-        },
-        "63": {
-          "capacitat": 20,
-          "num": 63,
-          "subgrups": {}
-        }
-      }
-    },
-    "40": {
-      "capacitat": 60,
-      "num": 40,
-      "subgrups": {
-        "41": {
-          "capacitat": 20,
-          "num": 41,
-          "subgrups": {}
-        },
-        "42": {
-          "capacitat": 20,
-          "num": 42,
-          "subgrups": {}
-        },
-        "43": {
-          "capacitat": 20,
-          "num": 43,
-          "subgrups": {}
-        }
-      }
-    },
-    "50": {
-      "capacitat": 60,
-      "num": 50,
-      "subgrups": {
-        "51": {
-          "capacitat": 20,
-          "num": 51,
-          "subgrups": {}
-        },
-        "52": {
-          "capacitat": 20,
-          "num": 52,
-          "subgrups": {}
-        },
-        "53": {
-          "capacitat": 20,
-          "num": 53,
-          "subgrups": {}
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 1,
-    "descripcio": "Introducció als Computadors",
-    "abr": "IC"
-  },
-  "Fonaments Matemàtics": {
-    "nom": "Fonaments Matemàtics",
-    "teoria": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "normal"
-    },
-    "laboratori": {
-      "numSessions": 1,
-      "duracioSessions": 2,
-      "tAula": "laboratori"
-    },
-    "grups": {
-      "30": {
-        "capacitat": 60,
-        "num": 30,
-        "subgrups": {
-          "31": {
-            "capacitat": 20,
-            "num": 31,
-            "subgrups": {}
-          },
-          "32": {
-            "capacitat": 20,
-            "num": 32,
-            "subgrups": {}
-          },
-          "33": {
-            "capacitat": 20,
-            "num": 33,
-            "subgrups": {}
-          }
-
-        }
-      },
-      "10": {
-        "capacitat": 60,
-        "num": 10,
-        "subgrups": {
-          "11": {
-            "capacitat": 20,
-            "num": 11,
-            "subgrups": {}
-          },
-          "12": {
-            "capacitat": 20,
-            "num": 12,
-            "subgrups": {}
-          },
-          "13": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      },
-      "20": {
-        "capacitat": 60,
-        "num": 20,
-        "subgrups": {
-          "22": {
-            "capacitat": 20,
-            "num": 22,
-            "subgrups": {}
-          },
-          "24": {
-            "capacitat": 20,
-            "num": 24,
-            "subgrups": {}
-          },
-          "23": {
-            "capacitat": 20,
-            "num": 13,
-            "subgrups": {}
-          }
-        }
-      }
-    },
-    "60": {
-      "capacitat": 60,
-      "num": 60,
-      "subgrups": {
-        "61": {
-          "capacitat": 20,
-          "num": 61,
-          "subgrups": {}
-        },
-        "62": {
-          "capacitat": 20,
-          "num": 62,
-          "subgrups": {}
-        },
-        "63": {
-          "capacitat": 20,
-          "num": 63,
-          "subgrups": {}
-        }
-      }
-    },
-    "40": {
-      "capacitat": 60,
-      "num": 40,
-      "subgrups": {
-        "41": {
-          "capacitat": 20,
-          "num": 41,
-          "subgrups": {}
-        },
-        "42": {
-          "capacitat": 20,
-          "num": 42,
-          "subgrups": {}
-        },
-        "43": {
-          "capacitat": 20,
-          "num": 43,
-          "subgrups": {}
-        }
-      }
-    },
-    "50": {
-      "capacitat": 60,
-      "num": 50,
-      "subgrups": {
-        "51": {
-          "capacitat": 20,
-          "num": 51,
-          "subgrups": {}
-        },
-        "52": {
-          "capacitat": 20,
-          "num": 52,
-          "subgrups": {}
-        },
-        "53": {
-          "capacitat": 20,
-          "num": 53,
-          "subgrups": {}
-        }
-      }
-    },
-    "correquisit": [
-      ""
-    ],
-    "quadrimestre": 1,
-    "descripcio": "Fonaments Matemàtics",
-    "abr": "FM"
   }
 }

@@ -69,7 +69,6 @@ public class Backtracking extends Algorismes{
             e.printStackTrace();
         }
         boolean b = creaHorari(0, horari, null);
-        if (!b) System.out.println("No es pot realitzar l'horari");
         return b;
     }
 
